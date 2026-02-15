@@ -1,0 +1,1112 @@
+{
+  "id": "Occurrence",
+  "title": "Occurrence Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Components/Occurrence.h",
+  "description": "Represents an occurrence of a component at any level within a subassembly.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "activate",
+      "description": "Makes the occurrence the active edit target in the user interface. This is the same as enabling the radio button next to the occurrence in the browser."
+    },
+    {
+      "name": "boundingBox2",
+      "description": "Returns the bounding box of the specified entity types within the occurrence."
+    },
+    {
+      "name": "breakLink",
+      "description": "When the component this occurrence references is an external reference (the isReferencedComponent property returns true), this will break the link and create a local Component that this occurrence will reference. The new local Component can be accessed through the Occurrence using the component property.   This method will fail if the occurrence is not referencing an external component."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence. Fails if this object is not the NativeObject."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the occurrence from the design. If this is the last occurrence referencing a specific Component, the component is also deleted."
+    },
+    {
+      "name": "getPhysicalProperties",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this occurrence."
+    },
+    {
+      "name": "moveToComponent",
+      "description": "Moves this occurrence from it's current component into the component owned by the specified occurrence. This occurrence and the target occurrence must be in the same context."
+    },
+    {
+      "name": "replace",
+      "description": "Replaces this occurrence or all occurrences that reference the same external component with a new component.   This method will fail if the occurrence is not referencing an external component."
+    },
+    {
+      "name": "switchConfiguration",
+      "description": "Changes which configuration is used for this occurrence. Use the isConfiguration property to determine if this occurrence references a configuration."
+    }
+  ],
+  "properties": [
+    {
+      "name": "appearance",
+      "description": "Read-write property that gets and sets the appearance override for this occurrence. This property can return null indicating there is no override appearance and that the contents of the occurrence are displayed using there defined appearance. Setting the property to null will remove any override appearance for this occurrence."
+    },
+    {
+      "name": "asBuiltJoints",
+      "description": "Returns the as-built joints that affect the position of this occurrence. If the occurrence is a proxy, the as-built joints returned will also be proxies in the same context as the occurrence."
+    },
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this references the component the object is defined within. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "boundingBox",
+      "description": "Returns the bounding box of this occurrence."
+    },
+    {
+      "name": "bRepBodies",
+      "description": "Returns the body proxies for the B-Rep bodies in the component referenced by this occurrence. For example if you get the occurrences from the root component and then use this property to get the bodies from those occurrences, the bodies returned will return information in the context of the root component, not the component they actually exist in."
+    },
+    {
+      "name": "childOccurrences",
+      "description": "Returns a read only list of child occurrences where only the occurrences in this occurrence's AssemblyContext are returned ."
+    },
+    {
+      "name": "component",
+      "description": "The component this occurrence references."
+    },
+    {
+      "name": "configurationRow",
+      "description": "If this occurrence is a configuration, this property returns the row that defines it. If it isn't a configuration, null is returned."
+    },
+    {
+      "name": "configuredDataFile",
+      "description": "Returns the DataFile object that represents the specific version of the design used by this occurrence. From the DataFile you can access other version of the file, most importantly, you can access the latest version and get the top configuration table from it."
+    },
+    {
+      "name": "dataComponent",
+      "description": "Gets the DataComponent for the target component in the source component's document. This only applies for Occurrence's with an assembly context whose source component is a top level opened design."
+    },
+    {
+      "name": "deriveFeature",
+      "description": "Returns the DeriveFeature if this occurrence is derived from another design. This property returns null if the occurrence is not derived from another design (i.e. isDerived property returns false)."
+    },
+    {
+      "name": "documentReference",
+      "description": "When the component this occurrence references is an external reference (the isReferencedComponent property returns true), this will return the object that represents that reference. Through the DocumentReference object you can modify the version and get other information associated with the reference.   This property will fail if the occurrence is not referencing an external component."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Occurrence object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same occurrence.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "fullPathName",
+      "description": "The name of the occurrence, including the full path of occurrences as seen in the browser. The top-level component will depend on the context but will typically be the root component of the design. A name for an occurrence that is at the third level of an assembly could be \"Sub1:1+Sub2:1+PartA:1\"."
+    },
+    {
+      "name": "initialTransform",
+      "description": "Gets and sets the initial position of the occurrence. Setting the initial transform is not valid for all occurrences. For instance, this operation could fail if the occurrence is created by a pattern among other cases. To determine if setting the initial transform is possible, use the isValidForEditInitialPosition property. If this property returns false, attempting to set the initial transform will result in failure."
+    },
+    {
+      "name": "isActive",
+      "description": "Gets whether this occurrence is the active edit target in the user interface. This is the same as checking the state of the radio button next to the occurrence in the browser. To activate the occurrence use the Activate method."
+    },
+    {
+      "name": "isConfiguration",
+      "description": "Returns if this occurrence represents a configuration or not. If true, you can access the full configuration from the parent component."
+    },
+    {
+      "name": "isDerived",
+      "description": "Returns if this occurrence is derived from another design. If true, the occurrence cannot be deleted. You should not attempt to make any edits to the component referenced by the derived occurrence. Any edits made to this derived occurrence will be lost when the derive updates."
+    },
+    {
+      "name": "isGrounded",
+      "description": "Gets and sets whether this occurrence is pinned or not."
+    },
+    {
+      "name": "isGroundToParent",
+      "description": "Gets and sets whether this occurrence is grounded to parent or not."
+    },
+    {
+      "name": "isIsolated",
+      "description": "Gets and sets whether this occurrence is isolated in the UI. When an occurrence is isolated it is the only one visible in the user-interface. Only one occurrence can be isolated at a time so setting this property to true will un-isolate an occurrence that is currently isolated. Setting this property to false for an occurrence that is current isolated will un-isolate it so that no occurrence will be isolated."
+    },
+    {
+      "name": "isLightBulbOn",
+      "description": "Gets and sets if the light bulb of this occurrence as displayed in the browser is on or off. An occurrence will only be visible if the light bulb is switched on. However, the light bulb can be on and the occurrence still invisible if a higher level occurrence in the assembly context is not visible because its light bulb is off."
+    },
+    {
+      "name": "isReferencedComponent",
+      "description": "Gets if this occurrence is referencing an external component."
+    },
+    {
+      "name": "isSelectable",
+      "description": "Gets and sets whether this occurrence is selectable or not."
+    },
+    {
+      "name": "isVaildForEditInitialPosition",
+      "description": "Gets whether this occurrence is valid for edit initial position."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets whether the occurrence is visible. This property is affected by the assembly context."
+    },
+    {
+      "name": "joints",
+      "description": "Returns the joints that affect the position of this occurrence. For example, if a joint has been created between this occurrence and another occurrence, this property will return that joint. If the occurrence is a proxy, the joints returned will also be proxies in the same context as the occurrence."
+    },
+    {
+      "name": "name",
+      "description": "The name of the occurrence. This is the name as seen in the browser. It is a reflection of the component name with an added counter suffix (i.e. 'OccurrenceName:1')."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly. Returns null in the case where this object is not in the context of an assembly but is already the native object. The return type is strongly typed for each object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "orientedMinimumBoundingBox",
+      "description": "Returns an oriented bounding box that is best oriented to tightly fit all B-Rep bodies in the occurrence. All other geometry types are ignored."
+    },
+    {
+      "name": "physicalProperties",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this occurrence. Property values will be calculated using the 'LowCalculationAccuracy' setting when using this property to get the PhysicalProperties object. To specify a higher calculation tolerance, use the getPhysicalProperties method instead."
+    },
+    {
+      "name": "preciseBoundingBox",
+      "description": "Returns a bounding box that tightly fits around all B-Rep bodies in the occurrence. All other geometry types are ignored."
+    },
+    {
+      "name": "rigidGroups",
+      "description": "Returns the rigid groups that this occurrence is a member of. If the occurrence is a proxy, the joints returned will also be proxies in the same context as the occurrence."
+    },
+    {
+      "name": "sourceComponent",
+      "description": "This is the sourceComponent for the occurrence and is affected by the assembly context. This is the top-level component where the path begins."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with the creation of this occurrence."
+    },
+    {
+      "name": "transform",
+      "description": "**RETIRED** Gets and sets the 3d matrix data that defines this occurrences orientation and position in its assembly context."
+    },
+    {
+      "name": "transform2",
+      "description": "Gets and sets the 3d matrix data that defines this occurrences orientation and position in its assembly context. This property replaces the transform property, which has been retired because there are cases where it returns the incorrect results."
+    },
+    {
+      "name": "visibleOpacity",
+      "description": "The user can set an override opacity for components and these opacity overrides combine if children and parent components have overrides. This property returns the actual opacity that is being used to render the occurrence. To set the opacity use the opacity property of the Component object."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Get Volume of Active Design API Sample",
+      "description": "Traverses through the active design and totals the volume of every body within the design."
+    },
+    {
+      "name": "Set Vise Origin As Setup WCS Origin API Sample",
+      "description": "This sample script demonstrates how to define our setup WCS origin relative to our vise origin from either a component, a sketch point or a joint origin.The Work Coordinate System is a reference point set in our CAM workspace and on our machine. All machine coordinates are drawn from the WCS. This script demonstrates defining the WCS by each of 4 alternative methods:Setup by default with no origin defined.Setup using vise origin as WCS origin.Setup using a sketch point as WCS origin.Setup using a joint origin as WCS origin."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "activate": {
+      "id": "Occurrence_activate",
+      "title": "Occurrence.activate Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Makes the occurrence the active edit target in the user interface. This is the same as enabling the radio button next to the occurrence in the browser.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "returnValue = occurrence_var.activate()",
+        "cpp": "#include \n\nreturnValue = occurrence_var->activate();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the activation was successful.",
+      "version": "Introduced in version June 2015"
+    },
+    "boundingBox2": {
+      "id": "Occurrence_boundingBox2",
+      "title": "Occurrence.boundingBox2 Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns the bounding box of the specified entity types within the occurrence.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "returnValue = occurrence_var.boundingBox2(entityTypes)",
+        "cpp": "#include \n\nreturnValue = occurrence_var->boundingBox2(entityTypes);"
+      },
+      "return_type": "BoundingBox3D",
+      "return_description": "Returns a BoundingBox3D object if the calculation was successful and null in the case where there is no valid geometry and the bounding box is empty.",
+      "parameters": [
+        {
+          "name": "entityTypes",
+          "type": "BoundingBoxEntityTypes",
+          "description": "Bitwise value that specifies the types of entities to include in the calculation of the bounding box."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "breakLink": {
+      "id": "Occurrence_breakLink",
+      "title": "Occurrence.breakLink Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "When the component this occurrence references is an external reference (the isReferencedComponent property returns true), this will break the link and create a local Component that this occurrence will reference. The new local Component can be accessed through the Occurrence using the component property. This method will fail if the occurrence is not referencing an external component.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "returnValue = occurrence_var.breakLink()",
+        "cpp": "#include \n\nreturnValue = occurrence_var->breakLink();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the break link was successful.",
+      "related_samples": [
+        {
+          "name": "Break Link API Sample",
+          "description": "Iterates over all top-level occurrences and if it's a referenced component, it will break the link."
+        }
+      ],
+      "version": "Introduced in version September 2017"
+    },
+    "classType": {
+      "id": "Occurrence_classType",
+      "title": "Occurrence.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.Occurrence.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::Occurrence::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "createForAssemblyContext": {
+      "id": "Occurrence_createForAssemblyContext",
+      "title": "Occurrence.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence. Fails if this object is not the NativeObject.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "returnValue = occurrence_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = occurrence_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "Occurrence",
+      "return_description": "Returns the proxy for the occurrence in the context of the specified occurrence.  Returns null if it failed.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that represents the context you want to create this proxy in."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "deleteMe": {
+      "id": "Occurrence_deleteMe",
+      "title": "Occurrence.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Deletes the occurrence from the design. If this is the last occurrence referencing a specific Component, the component is also deleted.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "returnValue = occurrence_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = occurrence_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "related_samples": [
+        {
+          "name": "Delete Empty Components",
+          "description": "Deletes empty components from the active design."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getPhysicalProperties": {
+      "id": "Occurrence_getPhysicalProperties",
+      "title": "Occurrence.getPhysicalProperties Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this occurrence.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = occurrence_var.getPhysicalProperties()\n\n# Uses optional arguments.\nreturnValue = occurrence_var.getPhysicalProperties(accuracy)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = occurrence_var->getPhysicalProperties();\n\n// Uses optional arguments.\nreturnValue = occurrence_var->getPhysicalProperties(accuracy);"
+      },
+      "return_type": "PhysicalProperties",
+      "return_description": "Returns a PhysicalProperties object that can be used to get the various physical property related values.",
+      "parameters": [
+        {
+          "name": "accuracy",
+          "type": "CalculationAccuracy",
+          "description": "Specifies the desired level of computational accuracy of the property calculations. The default value of 'LowCalculationAccuracy' returns results within a +/- 1% error margin.   This is an optional argument whose default value is CalculationAccuracy.LowCalculationAccuracy."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Get Physical Properties API Sample",
+          "description": "Script that demonstrates getting physical properties using the API. When this script is run it will create a new document, build a simple model, and get the various physical properties from the model."
+        }
+      ],
+      "version": "Introduced in version May 2016"
+    },
+    "moveToComponent": {
+      "id": "Occurrence_moveToComponent",
+      "title": "Occurrence.moveToComponent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Moves this occurrence from it's current component into the component owned by the specified occurrence. This occurrence and the target occurrence must be in the same context.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "returnValue = occurrence_var.moveToComponent(targetOccurrence)",
+        "cpp": "#include \n\nreturnValue = occurrence_var->moveToComponent(targetOccurrence);"
+      },
+      "return_type": "Occurrence",
+      "return_description": "Returns the moved Occurrence or null in the case the move failed.",
+      "parameters": [
+        {
+          "name": "targetOccurrence",
+          "type": "Occurrence",
+          "description": "The target occurrence defines both the component and the transform to apply when moving the occurrence. The occurrence will be copied into the parent component of the target occurrence and the target occurrence also defines the transform of how the occurrence will be copied so that the occurrence maintains it's same position in model space."
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    },
+    "replace": {
+      "id": "Occurrence_replace",
+      "title": "Occurrence.replace Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Replaces this occurrence or all occurrences that reference the same external component with a new component. This method will fail if the occurrence is not referencing an external component.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "returnValue = occurrence_var.replace(newFile, replaceAll)",
+        "cpp": "#include \n\nreturnValue = occurrence_var->replace(newFile, replaceAll);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the replacement was successful.",
+      "parameters": [
+        {
+          "name": "newFile",
+          "type": "DataFile",
+          "description": "Specifies the DataFile you want to use as the replacement. The DataFile specified must exist in the same hub as the parent assembly."
+        },
+        {
+          "name": "replaceAll",
+          "type": "boolean",
+          "description": "Indicates if you want to replace only this single occurrence or all occurrences that reference the same external design."
+        }
+      ],
+      "version": "Introduced in version October 2023"
+    },
+    "switchConfiguration": {
+      "id": "Occurrence_switchConfiguration",
+      "title": "Occurrence.switchConfiguration Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Changes which configuration is used for this occurrence. Use the isConfiguration property to determine if this occurrence references a configuration.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "returnValue = occurrence_var.switchConfiguration(newRow)",
+        "cpp": "#include \n\nreturnValue = occurrence_var->switchConfiguration(newRow);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the switch was successful.",
+      "parameters": [
+        {
+          "name": "newRow",
+          "type": "ConfigurationRow",
+          "description": "The row to switch to. This row must be from the same ConfigurationTopTable as the current row. You can access the table from the parent design."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    }
+  },
+  "property_details": {
+    "appearance": {
+      "id": "Occurrence_appearance",
+      "title": "Occurrence.appearance Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Read-write property that gets and sets the appearance override for this occurrence. This property can return null indicating there is no override appearance and that the contents of the occurrence are displayed using there defined appearance. Setting the property to null will remove any override appearance for this occurrence.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.appearance\n\n# Set the value of the property.\noccurrence_var.appearance = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->appearance();\n\n// Set the value of the property, where value_var is an Appearance.\nbool returnValue = occurrence_var->appearance(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "asBuiltJoints": {
+      "id": "Occurrence_asBuiltJoints",
+      "title": "Occurrence.asBuiltJoints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns the as-built joints that affect the position of this occurrence. If the occurrence is a proxy, the as-built joints returned will also be proxies in the same context as the occurrence.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.asBuiltJoints",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->asBuiltJoints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "assemblyContext": {
+      "id": "Occurrence_assemblyContext",
+      "title": "Occurrence.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this references the component the object is defined within. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "attributes": {
+      "id": "Occurrence_attributes",
+      "title": "Occurrence.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "bRepBodies": {
+      "id": "Occurrence_bRepBodies",
+      "title": "Occurrence.bRepBodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns the body proxies for the B-Rep bodies in the component referenced by this occurrence. For example if you get the occurrences from the root component and then use this property to get the bodies from those occurrences, the bodies returned will return information in the context of the root component, not the component they actually exist in.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.bRepBodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->bRepBodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "boundingBox": {
+      "id": "Occurrence_boundingBox",
+      "title": "Occurrence.boundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns the bounding box of this occurrence.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.boundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->boundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2015"
+    },
+    "childOccurrences": {
+      "id": "Occurrence_childOccurrences",
+      "title": "Occurrence.childOccurrences Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns a read only list of child occurrences where only the occurrences in this occurrence's AssemblyContext are returned .",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.childOccurrences",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->childOccurrences();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Assembly traversal using recursion API Sample",
+          "description": "Traverses the entire structure of the currently open assemlby using a recursive function and displays the result in a message box. This will match the occurrence structure seen in the browser."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "component": {
+      "id": "Occurrence_component",
+      "title": "Occurrence.component Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "The component this occurrence references.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.component",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->component();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Get Volume of Active Design API Sample",
+          "description": "Traverses through the active design and totals the volume of every body within the design."
+        },
+        {
+          "name": "Set Vise Origin As Setup WCS Origin API Sample",
+          "description": "This sample script demonstrates how to define our setup WCS origin relative to our vise origin from either a component, a sketch point or a joint origin.The Work Coordinate System is a reference point set in our CAM workspace and on our machine. All machine coordinates are drawn from the WCS. This script demonstrates defining the WCS by each of 4 alternative methods:Setup by default with no origin defined.Setup using vise origin as WCS origin.Setup using a sketch point as WCS origin.Setup using a joint origin as WCS origin."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "configurationRow": {
+      "id": "Occurrence_configurationRow",
+      "title": "Occurrence.configurationRow Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "If this occurrence is a configuration, this property returns the row that defines it. If it isn't a configuration, null is returned.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.configurationRow",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->configurationRow();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "configuredDataFile": {
+      "id": "Occurrence_configuredDataFile",
+      "title": "Occurrence.configuredDataFile Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns the DataFile object that represents the specific version of the design used by this occurrence. From the DataFile you can access other version of the file, most importantly, you can access the latest version and get the top configuration table from it.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.configuredDataFile",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->configuredDataFile();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "dataComponent": {
+      "id": "Occurrence_dataComponent",
+      "title": "Occurrence.dataComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Gets the DataComponent for the target component in the source component's document. This only applies for Occurrence's with an assembly context whose source component is a top level opened design.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.dataComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->dataComponent();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Get part number using GraphQL",
+          "description": "Fetches part number of root component and from occurrences via GQL query."
+        }
+      ],
+      "version": "Introduced in version July 2025"
+    },
+    "deriveFeature": {
+      "id": "Occurrence_deriveFeature",
+      "title": "Occurrence.deriveFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns the DeriveFeature if this occurrence is derived from another design. This property returns null if the occurrence is not derived from another design (i.e. isDerived property returns false).",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.deriveFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->deriveFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "documentReference": {
+      "id": "Occurrence_documentReference",
+      "title": "Occurrence.documentReference Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "When the component this occurrence references is an external reference (the isReferencedComponent property returns true), this will return the object that represents that reference. Through the DocumentReference object you can modify the version and get other information associated with the reference. This property will fail if the occurrence is not referencing an external component.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.documentReference",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->documentReference();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "entityToken": {
+      "id": "Occurrence_entityToken",
+      "title": "Occurrence.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns a token for the Occurrence object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same occurrence. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = occurrence_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "fullPathName": {
+      "id": "Occurrence_fullPathName",
+      "title": "Occurrence.fullPathName Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "The name of the occurrence, including the full path of occurrences as seen in the browser. The top-level component will depend on the context but will typically be the root component of the design. A name for an occurrence that is at the third level of an assembly could be \"Sub1:1+Sub2:1+PartA:1\".",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.fullPathName",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = occurrence_var->fullPathName();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "initialTransform": {
+      "id": "Occurrence_initialTransform",
+      "title": "Occurrence.initialTransform Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Gets and sets the initial position of the occurrence. Setting the initial transform is not valid for all occurrences. For instance, this operation could fail if the occurrence is created by a pattern among other cases. To determine if setting the initial transform is possible, use the isValidForEditInitialPosition property. If this property returns false, attempting to set the initial transform will result in failure.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.initialTransform\n\n# Set the value of the property.\noccurrence_var.initialTransform = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->initialTransform();\n\n// Set the value of the property, where value_var is a Matrix3D.\nbool returnValue = occurrence_var->initialTransform(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2024"
+    },
+    "isActive": {
+      "id": "Occurrence_isActive",
+      "title": "Occurrence.isActive Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Gets whether this occurrence is the active edit target in the user interface. This is the same as checking the state of the radio button next to the occurrence in the browser. To activate the occurrence use the Activate method.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.isActive",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = occurrence_var->isActive();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isConfiguration": {
+      "id": "Occurrence_isConfiguration",
+      "title": "Occurrence.isConfiguration Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns if this occurrence represents a configuration or not. If true, you can access the full configuration from the parent component.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.isConfiguration",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = occurrence_var->isConfiguration();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "isDerived": {
+      "id": "Occurrence_isDerived",
+      "title": "Occurrence.isDerived Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns if this occurrence is derived from another design. If true, the occurrence cannot be deleted. You should not attempt to make any edits to the component referenced by the derived occurrence. Any edits made to this derived occurrence will be lost when the derive updates.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.isDerived",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = occurrence_var->isDerived();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "isGroundToParent": {
+      "id": "Occurrence_isGroundToParent",
+      "title": "Occurrence.isGroundToParent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Gets and sets whether this occurrence is grounded to parent or not.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.isGroundToParent\n\n# Set the value of the property.\noccurrence_var.isGroundToParent = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = occurrence_var->isGroundToParent();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = occurrence_var->isGroundToParent(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Component Sample",
+          "description": "Component related functions"
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "isGrounded": {
+      "id": "Occurrence_isGrounded",
+      "title": "Occurrence.isGrounded Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Gets and sets whether this occurrence is pinned or not.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.isGrounded\n\n# Set the value of the property.\noccurrence_var.isGrounded = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = occurrence_var->isGrounded();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = occurrence_var->isGrounded(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isIsolated": {
+      "id": "Occurrence_isIsolated",
+      "title": "Occurrence.isIsolated Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Gets and sets whether this occurrence is isolated in the UI. When an occurrence is isolated it is the only one visible in the user-interface. Only one occurrence can be isolated at a time so setting this property to true will un-isolate an occurrence that is currently isolated. Setting this property to false for an occurrence that is current isolated will un-isolate it so that no occurrence will be isolated.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.isIsolated\n\n# Set the value of the property.\noccurrence_var.isIsolated = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = occurrence_var->isIsolated();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = occurrence_var->isIsolated(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isLightBulbOn": {
+      "id": "Occurrence_isLightBulbOn",
+      "title": "Occurrence.isLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Gets and sets if the light bulb of this occurrence as displayed in the browser is on or off. An occurrence will only be visible if the light bulb is switched on. However, the light bulb can be on and the occurrence still invisible if a higher level occurrence in the assembly context is not visible because its light bulb is off.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.isLightBulbOn\n\n# Set the value of the property.\noccurrence_var.isLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = occurrence_var->isLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = occurrence_var->isLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isReferencedComponent": {
+      "id": "Occurrence_isReferencedComponent",
+      "title": "Occurrence.isReferencedComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Gets if this occurrence is referencing an external component.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.isReferencedComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = occurrence_var->isReferencedComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "isSelectable": {
+      "id": "Occurrence_isSelectable",
+      "title": "Occurrence.isSelectable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Gets and sets whether this occurrence is selectable or not.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.isSelectable\n\n# Set the value of the property.\noccurrence_var.isSelectable = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = occurrence_var->isSelectable();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = occurrence_var->isSelectable(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isVaildForEditInitialPosition": {
+      "id": "Occurrence_isVaildForEditInitialPosition",
+      "title": "Occurrence.isVaildForEditInitialPosition Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Gets whether this occurrence is valid for edit initial position.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.isVaildForEditInitialPosition",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = occurrence_var->isVaildForEditInitialPosition();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2024"
+    },
+    "isValid": {
+      "id": "Occurrence_isValid",
+      "title": "Occurrence.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = occurrence_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isVisible": {
+      "id": "Occurrence_isVisible",
+      "title": "Occurrence.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Gets whether the occurrence is visible. This property is affected by the assembly context.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = occurrence_var->isVisible();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "joints": {
+      "id": "Occurrence_joints",
+      "title": "Occurrence.joints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns the joints that affect the position of this occurrence. For example, if a joint has been created between this occurrence and another occurrence, this property will return that joint. If the occurrence is a proxy, the joints returned will also be proxies in the same context as the occurrence.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.joints",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->joints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "name": {
+      "id": "Occurrence_name",
+      "title": "Occurrence.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "The name of the occurrence. This is the name as seen in the browser. It is a reflection of the component name with an added counter suffix (i.e. 'OccurrenceName:1').",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.name",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = occurrence_var->name();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Assembly traversal using recursion API Sample",
+          "description": "Traverses the entire structure of the currently open assemlby using a recursive function and displays the result in a message box. This will match the occurrence structure seen in the browser."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "nativeObject": {
+      "id": "Occurrence_nativeObject",
+      "title": "Occurrence.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "The NativeObject is the object outside the context of an assembly. Returns null in the case where this object is not in the context of an assembly but is already the native object. The return type is strongly typed for each object.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "Occurrence_objectType",
+      "title": "Occurrence.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = occurrence_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "orientedMinimumBoundingBox": {
+      "id": "Occurrence_orientedMinimumBoundingBox",
+      "title": "Occurrence.orientedMinimumBoundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns an oriented bounding box that is best oriented to tightly fit all B-Rep bodies in the occurrence. All other geometry types are ignored.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.orientedMinimumBoundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->orientedMinimumBoundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "physicalProperties": {
+      "id": "Occurrence_physicalProperties",
+      "title": "Occurrence.physicalProperties Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this occurrence. Property values will be calculated using the 'LowCalculationAccuracy' setting when using this property to get the PhysicalProperties object. To specify a higher calculation tolerance, use the getPhysicalProperties method instead.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.physicalProperties",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->physicalProperties();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Get Physical Properties API Sample",
+          "description": "Script that demonstrates getting physical properties using the API. When this script is run it will create a new document, build a simple model, and get the various physical properties from the model."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "preciseBoundingBox": {
+      "id": "Occurrence_preciseBoundingBox",
+      "title": "Occurrence.preciseBoundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns a bounding box that tightly fits around all B-Rep bodies in the occurrence. All other geometry types are ignored.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.preciseBoundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->preciseBoundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "rigidGroups": {
+      "id": "Occurrence_rigidGroups",
+      "title": "Occurrence.rigidGroups Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns the rigid groups that this occurrence is a member of. If the occurrence is a proxy, the joints returned will also be proxies in the same context as the occurrence.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.rigidGroups",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->rigidGroups();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "sourceComponent": {
+      "id": "Occurrence_sourceComponent",
+      "title": "Occurrence.sourceComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "This is the sourceComponent for the occurrence and is affected by the assembly context. This is the top-level component where the path begins.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.sourceComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->sourceComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "timelineObject": {
+      "id": "Occurrence_timelineObject",
+      "title": "Occurrence.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Returns the timeline object associated with the creation of this occurrence.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "transform": {
+      "id": "Occurrence_transform",
+      "title": "Occurrence.transform Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets and sets the 3d matrix data that defines this occurrences orientation and position in its assembly context. Remarks",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.transform\n\n# Set the value of the property.\noccurrence_var.transform = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->transform();\n\n// Set the value of the property, where value_var is a Matrix3D.\nbool returnValue = occurrence_var->transform(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "transform2": {
+      "id": "Occurrence_transform2",
+      "title": "Occurrence.transform2 Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "Gets and sets the 3d matrix data that defines this occurrences orientation and position in its assembly context. This property replaces the transform property, which has been retired because there are cases where it returns the incorrect results.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.transform2\n\n# Set the value of the property.\noccurrence_var.transform2 = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrence_var->transform2();\n\n// Set the value of the property, where value_var is a Matrix3D.\nbool returnValue = occurrence_var->transform2(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2022"
+    },
+    "visibleOpacity": {
+      "id": "Occurrence_visibleOpacity",
+      "title": "Occurrence.visibleOpacity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrence.h",
+      "description": "The user can set an override opacity for components and these opacity overrides combine if children and parent components have overrides. This property returns the actual opacity that is being used to render the occurrence. To set the opacity use the opacity property of the Component object.",
+      "parent_class": "Occurrence",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrence_var.visibleOpacity",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = occurrence_var->visibleOpacity();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    }
+  }
+}

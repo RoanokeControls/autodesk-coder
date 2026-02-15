@@ -1,0 +1,26 @@
+{
+  "id": "ECD-ULP-CONTACTREF",
+  "title": "UL_CONTACTREF",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "contact",
+      "type": "UL_CONTACT"
+    },
+    {
+      "name": "element",
+      "type": "UL_ELEMENT"
+    },
+    {
+      "name": "route",
+      "type": "int (CONTACT_ROUTE_...)"
+    },
+    {
+      "name": "routetag",
+      "type": "string (see note)"
+    }
+  ],
+  "loop_members": [],
+  "content": "# UL_CONTACTREF\n\n## Data members\n\n| | |\n| --- | --- |\n| contact | UL_CONTACT |\n| element | UL_ELEMENT |\n| route | int (CONTACT_ROUTE_...) |\n| routetag | string (see note) |\n\nSee also UL_SIGNAL, UL_PINREF\n\n## Constants\n\n| | |\n| --- | --- |\n| CONTACT_ROUTE_ALL | must explicitly route to all contacts |\n| CONTACT_ROUTE_ANY | may route to any contact |\n\n## Notes\n\nIf *route* has the value CONTACT_ROUTE_ANY, the *routetag* data member returns an additional tag which describes a group of *contactrefs* belonging to the same pin.\n\n## Example\n\n```\nboard(B) {\n B.signals(S) {\n printf(\"Signal '%s'\\n\", S.name);\n S.contactrefs(C) {\n printf(\"\\t%s, %s\\n\", C.element.name, C.contact.name);\n }\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

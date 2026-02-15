@@ -1,0 +1,311 @@
+{
+  "id": "LoftFeatureInput",
+  "title": "LoftFeatureInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/LoftFeatureInput.h",
+  "description": "This object defines the all of the input necessary to create a loft feature. It is the programming equivalent to the Loft command dialog. Through this object you provide the input needed to fully define a loft. To create the loft feature you pass this object the LoftFeatures.add method.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    }
+  ],
+  "properties": [
+    {
+      "name": "centerLineOrRails",
+      "description": "The single centerline or set of rails that define the shape of the loft. Use methods on the returned LoftCenterLineOrRails object to define the centerline or rails."
+    },
+    {
+      "name": "creationOccurrence",
+      "description": "In order for geometry to be transformed correctly, an Occurrence for creation needs to be specified when the loft is created based on geometry (e.g. a profile and/or face(s)) when the loft is being created in another component AND the loft is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI"
+    },
+    {
+      "name": "endLoftEdgeAlignment",
+      "description": "Specifies the end edge alignment option for the loft feature. The default is Free Edges."
+    },
+    {
+      "name": "isClosed",
+      "description": "Specifies if the loft closes back on itself. In other words, the first section is also used as the last section and the connection is smooth. This property defaults to false."
+    },
+    {
+      "name": "isSolid",
+      "description": "Specifies if the loft should be created as a solid or surface. This is initialized to true so a solid will attempt to be created if it's not changed."
+    },
+    {
+      "name": "isTangentEdgesMerged",
+      "description": "Specifies if the loft will keep or merge tangent edges. These are edges between tangent faces in the resulting loft surface. If true, the faces will be merged so the connecting edge no longer exists"
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "loftSections",
+      "description": "The set of sections, (or profiles as they're referred to in the user-interface), that the loft will pass through. Use the add method on the LoftSections object to specify new sections."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "operation",
+      "description": "Gets and sets the type of operation performed by the loft."
+    },
+    {
+      "name": "participantBodies",
+      "description": "Gets and sets the list of bodies that will participate in the feature when the operation is a cut or intersection.   If this property has not been set, the default behavior is that all bodies that are intersected by the feature will participate.   This property can return null in the case where the feature has not been fully defined so that possible intersecting bodies can be computed."
+    },
+    {
+      "name": "startLoftEdgeAlignment",
+      "description": "Specifies the start edge alignment option for the loft feature. The default is Free Edges."
+    },
+    {
+      "name": "targetBaseFeature",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature.   Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Loft Feature API Sample",
+      "description": "Demonstrates creating a new loft feature."
+    }
+  ],
+  "version": "Introduced in version August 2016",
+  "property_details": {
+    "centerLineOrRails": {
+      "id": "LoftFeatureInput_centerLineOrRails",
+      "title": "LoftFeatureInput.centerLineOrRails Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeatureInput.h",
+      "description": "The single centerline or set of rails that define the shape of the loft. Use methods on the returned LoftCenterLineOrRails object to define the centerline or rails.",
+      "parent_class": "LoftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeatureInput_var.centerLineOrRails",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeatureInput_var->centerLineOrRails();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "creationOccurrence": {
+      "id": "LoftFeatureInput_creationOccurrence",
+      "title": "LoftFeatureInput.creationOccurrence Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeatureInput.h",
+      "description": "In order for geometry to be transformed correctly, an Occurrence for creation needs to be specified when the loft is created based on geometry (e.g. a profile and/or face(s)) when the loft is being created in another component AND the loft is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI",
+      "parent_class": "LoftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeatureInput_var.creationOccurrence\n\n# Set the value of the property.\nloftFeatureInput_var.creationOccurrence = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeatureInput_var->creationOccurrence();\n\n// Set the value of the property, where value_var is an Occurrence.\nbool returnValue = loftFeatureInput_var->creationOccurrence(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "endLoftEdgeAlignment": {
+      "id": "LoftFeatureInput_endLoftEdgeAlignment",
+      "title": "LoftFeatureInput.endLoftEdgeAlignment Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeatureInput.h",
+      "description": "Specifies the end edge alignment option for the loft feature. The default is Free Edges.",
+      "parent_class": "LoftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeatureInput_var.endLoftEdgeAlignment\n\n# Set the value of the property.\nloftFeatureInput_var.endLoftEdgeAlignment = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nLoftEdgeAlignments propertyValue = loftFeatureInput_var->endLoftEdgeAlignment();\n\n// Set the value of the property, where value_var is a LoftEdgeAlignments.\nbool returnValue = loftFeatureInput_var->endLoftEdgeAlignment(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "isClosed": {
+      "id": "LoftFeatureInput_isClosed",
+      "title": "LoftFeatureInput.isClosed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeatureInput.h",
+      "description": "Specifies if the loft closes back on itself. In other words, the first section is also used as the last section and the connection is smooth. This property defaults to false.",
+      "parent_class": "LoftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeatureInput_var.isClosed\n\n# Set the value of the property.\nloftFeatureInput_var.isClosed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = loftFeatureInput_var->isClosed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = loftFeatureInput_var->isClosed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2022"
+    },
+    "isSolid": {
+      "id": "LoftFeatureInput_isSolid",
+      "title": "LoftFeatureInput.isSolid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeatureInput.h",
+      "description": "Specifies if the loft should be created as a solid or surface. This is initialized to true so a solid will attempt to be created if it's not changed.",
+      "parent_class": "LoftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeatureInput_var.isSolid\n\n# Set the value of the property.\nloftFeatureInput_var.isSolid = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = loftFeatureInput_var->isSolid();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = loftFeatureInput_var->isSolid(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "loftFeatures.add",
+          "description": "Demonstrates the loftFeatures.add method."
+        },
+        {
+          "name": "Loft Feature API Sample",
+          "description": "Demonstrates creating a new loft feature."
+        }
+      ],
+      "version": "Introduced in version August 2016"
+    },
+    "isTangentEdgesMerged": {
+      "id": "LoftFeatureInput_isTangentEdgesMerged",
+      "title": "LoftFeatureInput.isTangentEdgesMerged Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeatureInput.h",
+      "description": "Specifies if the loft will keep or merge tangent edges. These are edges between tangent faces in the resulting loft surface. If true, the faces will be merged so the connecting edge no longer exists",
+      "parent_class": "LoftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeatureInput_var.isTangentEdgesMerged\n\n# Set the value of the property.\nloftFeatureInput_var.isTangentEdgesMerged = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = loftFeatureInput_var->isTangentEdgesMerged();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = loftFeatureInput_var->isTangentEdgesMerged(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2022"
+    },
+    "isValid": {
+      "id": "LoftFeatureInput_isValid",
+      "title": "LoftFeatureInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeatureInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "LoftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeatureInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = loftFeatureInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "loftSections": {
+      "id": "LoftFeatureInput_loftSections",
+      "title": "LoftFeatureInput.loftSections Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeatureInput.h",
+      "description": "The set of sections, (or profiles as they're referred to in the user-interface), that the loft will pass through. Use the add method on the LoftSections object to specify new sections.",
+      "parent_class": "LoftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeatureInput_var.loftSections",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeatureInput_var->loftSections();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "loftFeatures.add",
+          "description": "Demonstrates the loftFeatures.add method."
+        },
+        {
+          "name": "Loft Feature API Sample",
+          "description": "Demonstrates creating a new loft feature."
+        }
+      ],
+      "version": "Introduced in version August 2016"
+    },
+    "objectType": {
+      "id": "LoftFeatureInput_objectType",
+      "title": "LoftFeatureInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeatureInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "LoftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeatureInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = loftFeatureInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "operation": {
+      "id": "LoftFeatureInput_operation",
+      "title": "LoftFeatureInput.operation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeatureInput.h",
+      "description": "Gets and sets the type of operation performed by the loft.",
+      "parent_class": "LoftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeatureInput_var.operation\n\n# Set the value of the property.\nloftFeatureInput_var.operation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureOperations propertyValue = loftFeatureInput_var->operation();\n\n// Set the value of the property, where value_var is a FeatureOperations.\nbool returnValue = loftFeatureInput_var->operation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "participantBodies": {
+      "id": "LoftFeatureInput_participantBodies",
+      "title": "LoftFeatureInput.participantBodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeatureInput.h",
+      "description": "Gets and sets the list of bodies that will participate in the feature when the operation is a cut or intersection. If this property has not been set, the default behavior is that all bodies that are intersected by the feature will participate. This property can return null in the case where the feature has not been fully defined so that possible intersecting bodies can be computed.",
+      "parent_class": "LoftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeatureInput_var.participantBodies\n\n# Set the value of the property.\nloftFeatureInput_var.participantBodies = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = loftFeatureInput_var->participantBodies();\n\n// Set the value of the property, where value_var is a BRepBody.\nbool returnValue = loftFeatureInput_var->participantBodies(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "startLoftEdgeAlignment": {
+      "id": "LoftFeatureInput_startLoftEdgeAlignment",
+      "title": "LoftFeatureInput.startLoftEdgeAlignment Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeatureInput.h",
+      "description": "Specifies the start edge alignment option for the loft feature. The default is Free Edges.",
+      "parent_class": "LoftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeatureInput_var.startLoftEdgeAlignment\n\n# Set the value of the property.\nloftFeatureInput_var.startLoftEdgeAlignment = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nLoftEdgeAlignments propertyValue = loftFeatureInput_var->startLoftEdgeAlignment();\n\n// Set the value of the property, where value_var is a LoftEdgeAlignments.\nbool returnValue = loftFeatureInput_var->startLoftEdgeAlignment(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "targetBaseFeature": {
+      "id": "LoftFeatureInput_targetBaseFeature",
+      "title": "LoftFeatureInput.targetBaseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeatureInput.h",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature. Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it.",
+      "parent_class": "LoftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeatureInput_var.targetBaseFeature\n\n# Set the value of the property.\nloftFeatureInput_var.targetBaseFeature = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeatureInput_var->targetBaseFeature();\n\n// Set the value of the property, where value_var is a BaseFeature.\nbool returnValue = loftFeatureInput_var->targetBaseFeature(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "LoftFeatureInput_classType",
+      "title": "LoftFeatureInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeatureInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "LoftFeatureInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.LoftFeatureInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::LoftFeatureInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2016"
+    }
+  }
+}

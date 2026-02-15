@@ -1,0 +1,203 @@
+{
+  "id": "ArrangeFeatures",
+  "title": "ArrangeFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Arrange/ArrangeFeatures.h",
+  "description": "Provides access to the Arrange features in a component and provides the functionality to create new Arrange features",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new Arrange feature. Use the create2DInput or create3DInput method to first create an input object and fully define the required input. Then, pass that input object to the add method to create the Arrange feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a new ArrangeFeatureInput object. An ArrangeFeatureInput object is the logical equivalent to the command dialog when creating an Arrange feature. It provides access to the various options and collects all the required input when creating an Arrange feature. Once fully defined, you pass this into the add method to create the Arrange feature."
+    },
+    {
+      "name": "item",
+      "description": "Returns the specified Arrange feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns the specified Arrange feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of Arrange features in the component."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version January 2025",
+  "method_details": {
+    "add": {
+      "id": "ArrangeFeatures_add",
+      "title": "ArrangeFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeFeatures.h",
+      "description": "Creates a new Arrange feature. Use the create2DInput or create3DInput method to first create an input object and fully define the required input. Then, pass that input object to the add method to create the Arrange feature.",
+      "parent_class": "ArrangeFeatures",
+      "syntax": {
+        "python": "returnValue = arrangeFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = arrangeFeatures_var->add(input);"
+      },
+      "return_type": "ArrangeFeature",
+      "return_description": "Returns the newly created ArrangeFeature object.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "ArrangeFeatureInput",
+          "description": "The ArrangeFeature2DInput or ArrangeFeature3DInput object that defines the required information needed to create a new Arrange feature. An ArrangeFeatureInput object is the logical equivalent to the command dialog when creating an Arrange feature. It provides access to the various options and collects all of the required input when creating an Arrange feature and call the add method is the API equivalent to clicking the OK button on the command dialog to create the Arrange feature."
+        }
+      ],
+      "version": "Introduced in version January 2025"
+    },
+    "classType": {
+      "id": "ArrangeFeatures_classType",
+      "title": "ArrangeFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ArrangeFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ArrangeFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ArrangeFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2025"
+    },
+    "createInput": {
+      "id": "ArrangeFeatures_createInput",
+      "title": "ArrangeFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeFeatures.h",
+      "description": "Creates a new ArrangeFeatureInput object. An ArrangeFeatureInput object is the logical equivalent to the command dialog when creating an Arrange feature. It provides access to the various options and collects all the required input when creating an Arrange feature. Once fully defined, you pass this into the add method to create the Arrange feature.",
+      "parent_class": "ArrangeFeatures",
+      "syntax": {
+        "python": "returnValue = arrangeFeatures_var.createInput(solverType)",
+        "cpp": "#include \n\nreturnValue = arrangeFeatures_var->createInput(solverType);"
+      },
+      "return_type": "ArrangeFeatureInput",
+      "return_description": "Returns an ArrangeFeatureInput object or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "solverType",
+          "type": "ArrangeSolverTypes",
+          "description": "Specify if the input will be used to define a \"2D True Shape\", \"2D Rectangular\", or \"3D\" type of arrange feature."
+        }
+      ],
+      "version": "Introduced in version January 2025"
+    },
+    "item": {
+      "id": "ArrangeFeatures_item",
+      "title": "ArrangeFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeFeatures.h",
+      "description": "Returns the specified Arrange feature using an index into the collection.",
+      "parent_class": "ArrangeFeatures",
+      "syntax": {
+        "python": "returnValue = arrangeFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = arrangeFeatures_var->item(index);"
+      },
+      "return_type": "ArrangeFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version January 2025"
+    },
+    "itemByName": {
+      "id": "ArrangeFeatures_itemByName",
+      "title": "ArrangeFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeFeatures.h",
+      "description": "Returns the specified Arrange feature using the name of the feature.",
+      "parent_class": "ArrangeFeatures",
+      "syntax": {
+        "python": "returnValue = arrangeFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = arrangeFeatures_var->itemByName(name);"
+      },
+      "return_type": "ArrangeFeature",
+      "return_description": "Returns the specified Arrange feature, if it exists. Otherwise it returns null.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the Arrange feature as seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version January 2025"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "ArrangeFeatures_count",
+      "title": "ArrangeFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeFeatures.h",
+      "description": "Returns the number of Arrange features in the component.",
+      "parent_class": "ArrangeFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = arrangeFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "isValid": {
+      "id": "ArrangeFeatures_isValid",
+      "title": "ArrangeFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ArrangeFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = arrangeFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "objectType": {
+      "id": "ArrangeFeatures_objectType",
+      "title": "ArrangeFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ArrangeFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = arrangeFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    }
+  }
+}

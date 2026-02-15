@@ -1,0 +1,12 @@
+{
+  "id": "SketchCircles_addByTwoTangents_Sample",
+  "title": "SketchCircles.addByTwoTangents",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the SketchCircles.addByTwoTangets method.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_Circles_addByTwoTangents(sketch: adsk.fusion.Sketch):\n    # Create three lines.\n    lines = sketch.sketchCurves.sketchLines\n    line1 = lines.addByTwoPoints(adsk.core.Point3D.create(-10, 0, 0), adsk.core.Point3D.create(10, 0, 0))\n    line2 = lines.addByTwoPoints(adsk.core.Point3D.create(0, -10, 0), adsk.core.Point3D.create(0, 10, 0))\n\n    # Define a hint point to create the circle in the positive quadrant.\n    hintPoint = adsk.core.Point3D.create(5, 5, 0)\n\n    # Create a circle that is tangent to the two lines.\n    circles = sketch.sketchCurves.sketchCircles\n    circle = circles.addByTwoTangents(line1, line2, 5, hintPoint)\n\n    # If you want tangent constraints between the circle and the line, you need to create them.\n    geomConstraints = sketch.geometricConstraints\n    geomConstraints.addTangent(line1, circle)\n    geomConstraints.addTangent(line2, circle)"
+  }
+}

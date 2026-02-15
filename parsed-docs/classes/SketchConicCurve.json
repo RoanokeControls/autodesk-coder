@@ -1,0 +1,763 @@
+{
+  "id": "SketchConicCurve",
+  "title": "SketchConicCurve Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Sketch/SketchConicCurve.h",
+  "description": "The SketchConicCurve class represents conic curves in a sketch.",
+  "parent_class": "SketchCurve",
+  "methods": [
+    {
+      "name": "breakCurve",
+      "description": "Breaks a curve into two or three pieces by finding intersections of this curve with all other curves in the sketch and splitting this curve at the nearest intersections to a specified point on the curve."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the entity from the sketch."
+    },
+    {
+      "name": "extend",
+      "description": "Extend a curve by specifying a point that determines the end of the curve to extend"
+    },
+    {
+      "name": "intersections",
+      "description": "Get the curves that intersect this curve along with the intersection points (Point3D)"
+    },
+    {
+      "name": "split",
+      "description": "Split a curve at a position specified along the curve"
+    },
+    {
+      "name": "trim",
+      "description": "Trim a curve by specifying a point that determines the segment of the curve to trim away"
+    }
+  ],
+  "properties": [
+    {
+      "name": "apexSketchPoint",
+      "description": "The sketch point at the apex of the conic curve."
+    },
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "boundingBox",
+      "description": "Returns the bounding box of the entity in sketch space."
+    },
+    {
+      "name": "endSketchPoint",
+      "description": "The sketch point at the end of the curve."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the SketchEntity object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same sketch entity.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "evaluator",
+      "description": "Returns an evaluator object that lets you perform evaluations on the precise geometry of the curve."
+    },
+    {
+      "name": "geometricConstraints",
+      "description": "Returns the sketch constraints that are attached to this curve."
+    },
+    {
+      "name": "geometry",
+      "description": "Returns the transient geometry of the curve which provides geometric information about the curve. The returned geometry is always in sketch space.   Because the fixed spline can be analytically defined, for example it can be the precise intersection of a surface and the sketch plane, returning a NURBS curve that represents the spline may be an approximation of the actual curve. You can use the Evaluator property of the SketchFixedSpline object to perform evaluations on the precise curve."
+    },
+    {
+      "name": "is2D",
+      "description": "Indicates if this curve lies entirely on the sketch x-y plane."
+    },
+    {
+      "name": "isConstruction",
+      "description": "Gets and sets whether this curve is construction geometry."
+    },
+    {
+      "name": "isDeletable",
+      "description": "Indicates if this sketch entity can be deleted. There are cases, especially with sketch points where another entity is dependent on an entity so deleting it is not allowed. For example, you can't delete the center point of circle by itself but deleting the circle will delete the point. The same is true for the end points of a line."
+    },
+    {
+      "name": "isFixed",
+      "description": "Indicates if this geometry is \"fixed\"."
+    },
+    {
+      "name": "isFullyConstrained",
+      "description": "Indicates if this sketch entity is fully constrained."
+    },
+    {
+      "name": "isLinked",
+      "description": "Indicates if this sketch entity was created by a projection, inclusion, or driven by an API script. If this returns true, then the entity is presented to the user as not editable and with a 'break link' command available."
+    },
+    {
+      "name": "isReference",
+      "description": "Indicates if this geometry is a reference. Changing this property from true to false removes the reference. This property can not be set to true if it is already false."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "When a sketch is created, geometry is sometimes automatically added to the sketch. For example a sketch point that references the origin point is always included and if a face was selected to create the sketch on, geometry from the face is also included. This automatically created geometry behaves in a special way in that it is invisible but is available for selection and it also participates in profile calculations. It's not possible to make them visible but they can be deleted and they can be used for any other standard sketch operation."
+    },
+    {
+      "name": "length",
+      "description": "Returns the length of the curve in centimeters."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentSketch",
+      "description": "Returns the parent sketch."
+    },
+    {
+      "name": "referencedEntity",
+      "description": "Returns the referenced entity in the case where IsReference is true. However, this property can also return null when IsReference is true in the case where the reference is not parametric."
+    },
+    {
+      "name": "rhoValue",
+      "description": "Get and sets the rho value for the curve. The value must be greater than zero and less than one."
+    },
+    {
+      "name": "sketchDimensions",
+      "description": "Returns the sketch dimensions that are attached to this curve."
+    },
+    {
+      "name": "startSketchPoint",
+      "description": "The sketch point at the start of the curve."
+    },
+    {
+      "name": "worldGeometry",
+      "description": "Returns a NurbsCurve3D object that is the equivalent of this sketch curve but is in the space of the parent component rather than in sketch space."
+    }
+  ],
+  "version": "Introduced in version January 2015",
+  "property_details": {
+    "apexSketchPoint": {
+      "id": "SketchConicCurve_apexSketchPoint",
+      "title": "SketchConicCurve.apexSketchPoint Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "The sketch point at the apex of the conic curve.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.apexSketchPoint",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchConicCurve_var->apexSketchPoint();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "assemblyContext": {
+      "id": "SketchConicCurve_assemblyContext",
+      "title": "SketchConicCurve.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchConicCurve_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "attributes": {
+      "id": "SketchConicCurve_attributes",
+      "title": "SketchConicCurve.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchConicCurve_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "boundingBox": {
+      "id": "SketchConicCurve_boundingBox",
+      "title": "SketchConicCurve.boundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Returns the bounding box of the entity in sketch space.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.boundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchConicCurve_var->boundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "endSketchPoint": {
+      "id": "SketchConicCurve_endSketchPoint",
+      "title": "SketchConicCurve.endSketchPoint Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "The sketch point at the end of the curve.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.endSketchPoint",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchConicCurve_var->endSketchPoint();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "entityToken": {
+      "id": "SketchConicCurve_entityToken",
+      "title": "SketchConicCurve.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Returns a token for the SketchEntity object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same sketch entity. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchConicCurve_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "evaluator": {
+      "id": "SketchConicCurve_evaluator",
+      "title": "SketchConicCurve.evaluator Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Returns an evaluator object that lets you perform evaluations on the precise geometry of the curve.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.evaluator",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchConicCurve_var->evaluator();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "geometricConstraints": {
+      "id": "SketchConicCurve_geometricConstraints",
+      "title": "SketchConicCurve.geometricConstraints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Returns the sketch constraints that are attached to this curve.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.geometricConstraints",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchConicCurve_var->geometricConstraints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "geometry": {
+      "id": "SketchConicCurve_geometry",
+      "title": "SketchConicCurve.geometry Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Returns the transient geometry of the curve which provides geometric information about the curve. The returned geometry is always in sketch space. Because the fixed spline can be analytically defined, for example it can be the precise intersection of a surface and the sketch plane, returning a NURBS curve that represents the spline may be an approximation of the actual curve. You can use the Evaluator property of the SketchFixedSpline object to perform evaluations on the precise curve.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.geometry",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchConicCurve_var->geometry();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "is2D": {
+      "id": "SketchConicCurve_is2D",
+      "title": "SketchConicCurve.is2D Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Indicates if this curve lies entirely on the sketch x-y plane.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.is2D",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchConicCurve_var->is2D();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isConstruction": {
+      "id": "SketchConicCurve_isConstruction",
+      "title": "SketchConicCurve.isConstruction Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Gets and sets whether this curve is construction geometry.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.isConstruction\n\n# Set the value of the property.\nsketchConicCurve_var.isConstruction = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchConicCurve_var->isConstruction();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchConicCurve_var->isConstruction(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isDeletable": {
+      "id": "SketchConicCurve_isDeletable",
+      "title": "SketchConicCurve.isDeletable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Indicates if this sketch entity can be deleted. There are cases, especially with sketch points where another entity is dependent on an entity so deleting it is not allowed. For example, you can't delete the center point of circle by itself but deleting the circle will delete the point. The same is true for the end points of a line.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.isDeletable",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchConicCurve_var->isDeletable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isFixed": {
+      "id": "SketchConicCurve_isFixed",
+      "title": "SketchConicCurve.isFixed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Indicates if this geometry is \"fixed\".",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.isFixed\n\n# Set the value of the property.\nsketchConicCurve_var.isFixed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchConicCurve_var->isFixed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchConicCurve_var->isFixed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isFullyConstrained": {
+      "id": "SketchConicCurve_isFullyConstrained",
+      "title": "SketchConicCurve.isFullyConstrained Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Indicates if this sketch entity is fully constrained.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.isFullyConstrained",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchConicCurve_var->isFullyConstrained();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isLinked": {
+      "id": "SketchConicCurve_isLinked",
+      "title": "SketchConicCurve.isLinked Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Indicates if this sketch entity was created by a projection, inclusion, or driven by an API script. If this returns true, then the entity is presented to the user as not editable and with a 'break link' command available.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.isLinked",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchConicCurve_var->isLinked();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "isReference": {
+      "id": "SketchConicCurve_isReference",
+      "title": "SketchConicCurve.isReference Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Indicates if this geometry is a reference. Changing this property from true to false removes the reference. This property can not be set to true if it is already false.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.isReference\n\n# Set the value of the property.\nsketchConicCurve_var.isReference = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchConicCurve_var->isReference();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchConicCurve_var->isReference(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isValid": {
+      "id": "SketchConicCurve_isValid",
+      "title": "SketchConicCurve.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchConicCurve_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isVisible": {
+      "id": "SketchConicCurve_isVisible",
+      "title": "SketchConicCurve.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "When a sketch is created, geometry is sometimes automatically added to the sketch. For example a sketch point that references the origin point is always included and if a face was selected to create the sketch on, geometry from the face is also included. This automatically created geometry behaves in a special way in that it is invisible but is available for selection and it also participates in profile calculations. It's not possible to make them visible but they can be deleted and they can be used for any other standard sketch operation.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchConicCurve_var->isVisible();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "length": {
+      "id": "SketchConicCurve_length",
+      "title": "SketchConicCurve.length Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Returns the length of the curve in centimeters.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.length",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sketchConicCurve_var->length();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "nativeObject": {
+      "id": "SketchConicCurve_nativeObject",
+      "title": "SketchConicCurve.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchConicCurve_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "objectType": {
+      "id": "SketchConicCurve_objectType",
+      "title": "SketchConicCurve.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchConicCurve_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "parentSketch": {
+      "id": "SketchConicCurve_parentSketch",
+      "title": "SketchConicCurve.parentSketch Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Returns the parent sketch.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.parentSketch",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchConicCurve_var->parentSketch();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "referencedEntity": {
+      "id": "SketchConicCurve_referencedEntity",
+      "title": "SketchConicCurve.referencedEntity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Returns the referenced entity in the case where IsReference is true. However, this property can also return null when IsReference is true in the case where the reference is not parametric.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.referencedEntity",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchConicCurve_var->referencedEntity();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "rhoValue": {
+      "id": "SketchConicCurve_rhoValue",
+      "title": "SketchConicCurve.rhoValue Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Get and sets the rho value for the curve. The value must be greater than zero and less than one.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.rhoValue\n\n# Set the value of the property.\nsketchConicCurve_var.rhoValue = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sketchConicCurve_var->rhoValue();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sketchConicCurve_var->rhoValue(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "sketchDimensions": {
+      "id": "SketchConicCurve_sketchDimensions",
+      "title": "SketchConicCurve.sketchDimensions Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Returns the sketch dimensions that are attached to this curve.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.sketchDimensions",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchConicCurve_var->sketchDimensions();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "startSketchPoint": {
+      "id": "SketchConicCurve_startSketchPoint",
+      "title": "SketchConicCurve.startSketchPoint Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "The sketch point at the start of the curve.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.startSketchPoint",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchConicCurve_var->startSketchPoint();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "worldGeometry": {
+      "id": "SketchConicCurve_worldGeometry",
+      "title": "SketchConicCurve.worldGeometry Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Returns a NurbsCurve3D object that is the equivalent of this sketch curve but is in the space of the parent component rather than in sketch space.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchConicCurve_var.worldGeometry",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchConicCurve_var->worldGeometry();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    }
+  },
+  "method_details": {
+    "breakCurve": {
+      "id": "SketchConicCurve_breakCurve",
+      "title": "SketchConicCurve.breakCurve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Breaks a curve into two or three pieces by finding intersections of this curve with all other curves in the sketch and splitting this curve at the nearest intersections to a specified point on the curve.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchConicCurve_var.breakCurve(segmentPoint)\n\n# Uses optional arguments.\nreturnValue = sketchConicCurve_var.breakCurve(segmentPoint, createConstraints)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchConicCurve_var->breakCurve(segmentPoint);\n\n// Uses optional arguments.\nreturnValue = sketchConicCurve_var->breakCurve(segmentPoint, createConstraints);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "All of the curves resulting from the break are returned in an ObjectCollection. In the case where no intersections are found and as a result the curve is not broken, an empty ObjectCollection is returned.",
+      "parameters": [
+        {
+          "name": "segmentPoint",
+          "type": "Point3D",
+          "description": "A point that specifies the segment of the curve that is to be split from the rest of the curve. The nearest intersection(s) to this point define the break location(s)."
+        },
+        {
+          "name": "createConstraints",
+          "type": "boolean",
+          "description": "Optional argument that specifies if constraints should be created between the new curve segments. A value of true indicates constraints will be created.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "classType": {
+      "id": "SketchConicCurve_classType",
+      "title": "SketchConicCurve.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.SketchConicCurve.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::SketchConicCurve::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2015"
+    },
+    "createForAssemblyContext": {
+      "id": "SketchConicCurve_createForAssemblyContext",
+      "title": "SketchConicCurve.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "returnValue = sketchConicCurve_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = sketchConicCurve_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "SketchConicCurve",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "deleteMe": {
+      "id": "SketchConicCurve_deleteMe",
+      "title": "SketchConicCurve.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Deletes the entity from the sketch.",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "returnValue = sketchConicCurve_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = sketchConicCurve_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true is the delete was successful.",
+      "version": "Introduced in version January 2015"
+    },
+    "extend": {
+      "id": "SketchConicCurve_extend",
+      "title": "SketchConicCurve.extend Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Extend a curve by specifying a point that determines the end of the curve to extend",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchConicCurve_var.extend(endPoint)\n\n# Uses optional arguments.\nreturnValue = sketchConicCurve_var.extend(endPoint, createConstraints)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchConicCurve_var->extend(endPoint);\n\n// Uses optional arguments.\nreturnValue = sketchConicCurve_var->extend(endPoint, createConstraints);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "Returns the modified original curve if the start or end of the curve is extended If the extend joins a curve to another, the two original curves are deleted and a new curve is returned If an arc is extended so as to become a circle, the original arc is deleted and a new circle is returned",
+      "parameters": [
+        {
+          "name": "endPoint",
+          "type": "Point3D",
+          "description": "A point (transient Point3D) on or closest to the end of the curve to extend. (start or end) The end of the curve closest to the endPoint gets extended"
+        },
+        {
+          "name": "createConstraints",
+          "type": "boolean",
+          "description": "Constraints are created by default. Specify false to not create constraints.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "intersections": {
+      "id": "SketchConicCurve_intersections",
+      "title": "SketchConicCurve.intersections Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Get the curves that intersect this curve along with the intersection points (Point3D)",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "(returnValue, intersectingCurves, intersectionPoints) = sketchConicCurve_var.intersections(sketchCurves)",
+        "cpp": "#include  sketchCurves;\nPtr intersectingCurves;\nPtr intersectionPoints;\nboolean returnValue = sketchConicCurve_var->intersections(sketchCurves, intersectingCurves, intersectionPoints);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the method was successful. It can be successful regardless of whether intersections were found or not.",
+      "parameters": [
+        {
+          "name": "sketchCurves",
+          "type": "ObjectCollection",
+          "description": "A collection of curves to attempt to find intersections with. Set the value of this parameter to null to use all curves in the sketch for the calculation."
+        },
+        {
+          "name": "intersectingCurves",
+          "type": "ObjectCollection",
+          "description": "A collection of the actual intersecting curves"
+        },
+        {
+          "name": "intersectionPoints",
+          "type": "ObjectCollection",
+          "description": "A collection of intersection points (Point3D) Item numbers in this collection correspond to the item numbers in the intersectingCurves collection."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "split": {
+      "id": "SketchConicCurve_split",
+      "title": "SketchConicCurve.split Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Split a curve at a position specified along the curve",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchConicCurve_var.split(splitPoint)\n\n# Uses optional arguments.\nreturnValue = sketchConicCurve_var.split(splitPoint, createConstraints)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchConicCurve_var->split(splitPoint);\n\n// Uses optional arguments.\nreturnValue = sketchConicCurve_var->split(splitPoint, createConstraints);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "Returns the resulting 2 curves; the original curve + the newly created curve When split spline the original is deleted and two new curves returned. Empty collection returned if curve is closed.",
+      "parameters": [
+        {
+          "name": "splitPoint",
+          "type": "Point3D",
+          "description": "A position (transient Point3D) on the curve that defines the point at which to split the curve"
+        },
+        {
+          "name": "createConstraints",
+          "type": "boolean",
+          "description": "Constraints are created by default. Specify false to create no constraints.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "trim": {
+      "id": "SketchConicCurve_trim",
+      "title": "SketchConicCurve.trim Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchConicCurve.h",
+      "description": "Trim a curve by specifying a point that determines the segment of the curve to trim away",
+      "parent_class": "SketchConicCurve",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchConicCurve_var.trim(segmentPoint)\n\n# Uses optional arguments.\nreturnValue = sketchConicCurve_var.trim(segmentPoint, createConstraints)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchConicCurve_var->trim(segmentPoint);\n\n// Uses optional arguments.\nreturnValue = sketchConicCurve_var->trim(segmentPoint, createConstraints);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "When trimming the start or end side of a line, unclosed circular or elliptical arc, the original entity is modified and returned When trimming the middle of a line, unclosed circular or elliptical arc the original entity is deleted and two new entities are returned When trimming the start or end of any type of closed curve, the original is deleted and a new curve is returned Any trimming of a spline (open or closed) deletes the original and new spline/s are returned Trimming a curve having no intersections deletes the original and returns an empty collection",
+      "parameters": [
+        {
+          "name": "segmentPoint",
+          "type": "Point3D",
+          "description": "A point (transient Point3D) on or closest to the segment of the curve to remove. (start, end or middle) The segment of the curve closest to the segmentPoint gets removed"
+        },
+        {
+          "name": "createConstraints",
+          "type": "boolean",
+          "description": "Constraints are created by default. Specify false to not create constraints.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    }
+  }
+}

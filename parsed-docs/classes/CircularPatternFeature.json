@@ -1,0 +1,624 @@
+{
+  "id": "CircularPatternFeature",
+  "title": "CircularPatternFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/CircularPatternFeature.h",
+  "description": "Object that represents an existing circular pattern feature in a design.",
+  "parent_class": "Feature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "axis",
+      "description": "Gets and sets the axis of circular pattern. This can be a sketch line, linear edge, construction axis, an edge/sketch curve that defines an axis (circle, etc.) or a face that defines an axis (cylinder, cone, torus, etc.).   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "inputEntities",
+      "description": "Gets and sets the input entities. The collection can contain faces, features, bodies or occurrences. All of the entities must be of a single type. For example, it can't contain features and occurrences but only features or occurrences.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isSymmetric",
+      "description": "Gets and sets if the angle extent is in one direction or symmetric.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "patternComputeOption",
+      "description": "Gets and sets the compute option for this pattern feature. This property only applies when patterning features and is ignored in the direct modeling environment.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "patternElements",
+      "description": "Gets the PatternElements collection that contains the elements created by this pattern."
+    },
+    {
+      "name": "patternEntityType",
+      "description": "Returns the type of entities the pattern consists of. This can be used to help determine the type of results that will be found in the pattern elements."
+    },
+    {
+      "name": "quantity",
+      "description": "Returns the parameter controlling the number of pattern elements, including any suppressed elements. To edit the quantity use properties on the parameter to edit its value. This property returns null in the case where the feature is non-parametric."
+    },
+    {
+      "name": "resultFeatures",
+      "description": "Returns the features that were created as a result of this pattern. This is only valid for a direct edit model and this returns null in the case where the feature is parametric."
+    },
+    {
+      "name": "suppressedElementsIds",
+      "description": "Gets and sets the id's of the elements to suppress.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    },
+    {
+      "name": "totalAngle",
+      "description": "Returns the parameter controlling the total angle. To edit the angle use properties on the parameter to edit its value. This property returns null in the case where the feature is non-parametric. A negative value can be used to change the direction of the pattern."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "CircularPattern Feature API Sample",
+      "description": "Demonstrates creating a new circular pattern feature."
+    }
+  ],
+  "version": "Introduced in version November 2014",
+  "property_details": {
+    "assemblyContext": {
+      "id": "CircularPatternFeature_assemblyContext",
+      "title": "CircularPatternFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = circularPatternFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "attributes": {
+      "id": "CircularPatternFeature_attributes",
+      "title": "CircularPatternFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = circularPatternFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "axis": {
+      "id": "CircularPatternFeature_axis",
+      "title": "CircularPatternFeature.axis Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Gets and sets the axis of circular pattern. This can be a sketch line, linear edge, construction axis, an edge/sketch curve that defines an axis (circle, etc.) or a face that defines an axis (cylinder, cone, torus, etc.). To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.axis\n\n# Set the value of the property.\ncircularPatternFeature_var.axis = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = circularPatternFeature_var->axis();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = circularPatternFeature_var->axis(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "baseFeature": {
+      "id": "CircularPatternFeature_baseFeature",
+      "title": "CircularPatternFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = circularPatternFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "bodies": {
+      "id": "CircularPatternFeature_bodies",
+      "title": "CircularPatternFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = circularPatternFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "entityToken": {
+      "id": "CircularPatternFeature_entityToken",
+      "title": "CircularPatternFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = circularPatternFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "errorOrWarningMessage": {
+      "id": "CircularPatternFeature_errorOrWarningMessage",
+      "title": "CircularPatternFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = circularPatternFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "faces": {
+      "id": "CircularPatternFeature_faces",
+      "title": "CircularPatternFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = circularPatternFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "healthState": {
+      "id": "CircularPatternFeature_healthState",
+      "title": "CircularPatternFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = circularPatternFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "inputEntities": {
+      "id": "CircularPatternFeature_inputEntities",
+      "title": "CircularPatternFeature.inputEntities Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Gets and sets the input entities. The collection can contain faces, features, bodies or occurrences. All of the entities must be of a single type. For example, it can't contain features and occurrences but only features or occurrences. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.inputEntities\n\n# Set the value of the property.\ncircularPatternFeature_var.inputEntities = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = circularPatternFeature_var->inputEntities();\n\n// Set the value of the property, where value_var is an ObjectCollection.\nbool returnValue = circularPatternFeature_var->inputEntities(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isParametric": {
+      "id": "CircularPatternFeature_isParametric",
+      "title": "CircularPatternFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = circularPatternFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isSuppressed": {
+      "id": "CircularPatternFeature_isSuppressed",
+      "title": "CircularPatternFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.isSuppressed\n\n# Set the value of the property.\ncircularPatternFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = circularPatternFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = circularPatternFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isSymmetric": {
+      "id": "CircularPatternFeature_isSymmetric",
+      "title": "CircularPatternFeature.isSymmetric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Gets and sets if the angle extent is in one direction or symmetric. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.isSymmetric\n\n# Set the value of the property.\ncircularPatternFeature_var.isSymmetric = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = circularPatternFeature_var->isSymmetric();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = circularPatternFeature_var->isSymmetric(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isValid": {
+      "id": "CircularPatternFeature_isValid",
+      "title": "CircularPatternFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = circularPatternFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "linkedFeatures": {
+      "id": "CircularPatternFeature_linkedFeatures",
+      "title": "CircularPatternFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = circularPatternFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "name": {
+      "id": "CircularPatternFeature_name",
+      "title": "CircularPatternFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.name\n\n# Set the value of the property.\ncircularPatternFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = circularPatternFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = circularPatternFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "nativeObject": {
+      "id": "CircularPatternFeature_nativeObject",
+      "title": "CircularPatternFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = circularPatternFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "objectType": {
+      "id": "CircularPatternFeature_objectType",
+      "title": "CircularPatternFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = circularPatternFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "parentComponent": {
+      "id": "CircularPatternFeature_parentComponent",
+      "title": "CircularPatternFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = circularPatternFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "patternComputeOption": {
+      "id": "CircularPatternFeature_patternComputeOption",
+      "title": "CircularPatternFeature.patternComputeOption Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Gets and sets the compute option for this pattern feature. This property only applies when patterning features and is ignored in the direct modeling environment. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.patternComputeOption\n\n# Set the value of the property.\ncircularPatternFeature_var.patternComputeOption = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPatternComputeOptions propertyValue = circularPatternFeature_var->patternComputeOption();\n\n// Set the value of the property, where value_var is a PatternComputeOptions.\nbool returnValue = circularPatternFeature_var->patternComputeOption(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2015"
+    },
+    "patternElements": {
+      "id": "CircularPatternFeature_patternElements",
+      "title": "CircularPatternFeature.patternElements Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Gets the PatternElements collection that contains the elements created by this pattern.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.patternElements",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = circularPatternFeature_var->patternElements();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "patternEntityType": {
+      "id": "CircularPatternFeature_patternEntityType",
+      "title": "CircularPatternFeature.patternEntityType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Returns the type of entities the pattern consists of. This can be used to help determine the type of results that will be found in the pattern elements.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.patternEntityType",
+        "cpp": "#include \n\n// Get the value of the property.\nPatternEntityTypes propertyValue = circularPatternFeature_var->patternEntityType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "quantity": {
+      "id": "CircularPatternFeature_quantity",
+      "title": "CircularPatternFeature.quantity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Returns the parameter controlling the number of pattern elements, including any suppressed elements. To edit the quantity use properties on the parameter to edit its value. This property returns null in the case where the feature is non-parametric.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.quantity",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = circularPatternFeature_var->quantity();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "resultFeatures": {
+      "id": "CircularPatternFeature_resultFeatures",
+      "title": "CircularPatternFeature.resultFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Returns the features that were created as a result of this pattern. This is only valid for a direct edit model and this returns null in the case where the feature is parametric.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.resultFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = circularPatternFeature_var->resultFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "suppressedElementsIds": {
+      "id": "CircularPatternFeature_suppressedElementsIds",
+      "title": "CircularPatternFeature.suppressedElementsIds Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Gets and sets the id's of the elements to suppress. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.suppressedElementsIds\n\n# Set the value of the property.\ncircularPatternFeature_var.suppressedElementsIds = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector propertyValue = circularPatternFeature_var->suppressedElementsIds();\n\n// Set the value of the property, where value_var is a uinteger.\nbool returnValue = circularPatternFeature_var->suppressedElementsIds(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "timelineObject": {
+      "id": "CircularPatternFeature_timelineObject",
+      "title": "CircularPatternFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = circularPatternFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "totalAngle": {
+      "id": "CircularPatternFeature_totalAngle",
+      "title": "CircularPatternFeature.totalAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Returns the parameter controlling the total angle. To edit the angle use properties on the parameter to edit its value. This property returns null in the case where the feature is non-parametric. A negative value can be used to change the direction of the pattern.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeature_var.totalAngle",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = circularPatternFeature_var->totalAngle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "CircularPatternFeature_classType",
+      "title": "CircularPatternFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.CircularPatternFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::CircularPatternFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version November 2014"
+    },
+    "createForAssemblyContext": {
+      "id": "CircularPatternFeature_createForAssemblyContext",
+      "title": "CircularPatternFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "returnValue = circularPatternFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = circularPatternFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "CircularPatternFeature",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "deleteMe": {
+      "id": "CircularPatternFeature_deleteMe",
+      "title": "CircularPatternFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "returnValue = circularPatternFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = circularPatternFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version November 2014"
+    },
+    "dissolve": {
+      "id": "CircularPatternFeature_dissolve",
+      "title": "CircularPatternFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "CircularPatternFeature",
+      "syntax": {
+        "python": "returnValue = circularPatternFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = circularPatternFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version November 2014"
+    }
+  }
+}

@@ -1,0 +1,357 @@
+{
+  "id": "MoveFeatureInput",
+  "title": "MoveFeatureInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/MoveFeatureInput.h",
+  "description": "This class defines the methods and properties that pertain to the definition of a move feature.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "defineAsFreeMove",
+      "description": "This method will define a move feature whose translation and orientation is defined using a transformation matrix. A matrix can define any translation and orientation."
+    },
+    {
+      "name": "defineAsPointToPoint",
+      "description": "This method defines a move feature described by a translation from one point to another."
+    },
+    {
+      "name": "defineAsPointToPosition",
+      "description": "This method defines a move feature described by a point and an offset. The distances define offsets in the X, Y, and Z directions in either design or component space. To not move the input entities at all the offset distances should be set to the current location of the point in either design or component space. Adding or subtracting to those values will then move the entities that distance. It's best to experiment with the command interactively to understand the behavior."
+    },
+    {
+      "name": "defineAsRotate",
+      "description": "This method defines a move feature that is described by an axis and rotation angle."
+    },
+    {
+      "name": "defineAsTranslateAlongEntity",
+      "description": "This method will define a move feature that defines a translation along a specified entity."
+    },
+    {
+      "name": "defineAsTranslateXYZ",
+      "description": "This method will define a move feature that defines a translation in X, Y, and Z."
+    }
+  ],
+  "properties": [
+    {
+      "name": "inputEntities",
+      "description": "An ObjectCollection containing the objects to move. The collection can contain BRepBody or BRepFace objects but not a mixture of the two types."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "targetBaseFeature",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature.   Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it."
+    },
+    {
+      "name": "transform",
+      "description": "**RETIRED** Gets and sets the transform to apply to the input entities. This can describe a move (translation) or a rotation. The matrix must define an orthogonal transform. That is the axes remain perpendicular to each other and there isn't any scale or mirror defined."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Move Feature API Sample",
+      "description": "Demonstrates creating a new move feature."
+    }
+  ],
+  "version": "Introduced in version March 2015",
+  "method_details": {
+    "classType": {
+      "id": "MoveFeatureInput_classType",
+      "title": "MoveFeatureInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatureInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "MoveFeatureInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.MoveFeatureInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::MoveFeatureInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version March 2015"
+    },
+    "defineAsFreeMove": {
+      "id": "MoveFeatureInput_defineAsFreeMove",
+      "title": "MoveFeatureInput.defineAsFreeMove Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatureInput.h",
+      "description": "This method will define a move feature whose translation and orientation is defined using a transformation matrix. A matrix can define any translation and orientation.",
+      "parent_class": "MoveFeatureInput",
+      "syntax": {
+        "python": "returnValue = moveFeatureInput_var.defineAsFreeMove(transform)",
+        "cpp": "#include \n\nreturnValue = moveFeatureInput_var->defineAsFreeMove(transform);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if defining the type of move is successful.",
+      "parameters": [
+        {
+          "name": "transform",
+          "type": "Matrix3D",
+          "description": "The transformation matrix that defines the transform to apply. The matrix must be an orthogonal matrix; that is the axes are perpendicular to each other and there isn't any scaling or mirroring defined."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Move Feature API Sample",
+          "description": "Demonstrates creating a new move feature."
+        }
+      ],
+      "version": "Introduced in version January 2023"
+    },
+    "defineAsPointToPoint": {
+      "id": "MoveFeatureInput_defineAsPointToPoint",
+      "title": "MoveFeatureInput.defineAsPointToPoint Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatureInput.h",
+      "description": "This method defines a move feature described by a translation from one point to another.",
+      "parent_class": "MoveFeatureInput",
+      "syntax": {
+        "python": "returnValue = moveFeatureInput_var.defineAsPointToPoint(originPoint, targetPoint)",
+        "cpp": "#include \n\nreturnValue = moveFeatureInput_var->defineAsPointToPoint(originPoint, targetPoint);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if defining the type of move is successful.",
+      "parameters": [
+        {
+          "name": "originPoint",
+          "type": "Base",
+          "description": "The first point that defines the start position of the move."
+        },
+        {
+          "name": "targetPoint",
+          "type": "Base",
+          "description": "The second point that defines the direction and distance of the move."
+        }
+      ],
+      "version": "Introduced in version January 2023"
+    },
+    "defineAsPointToPosition": {
+      "id": "MoveFeatureInput_defineAsPointToPosition",
+      "title": "MoveFeatureInput.defineAsPointToPosition Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatureInput.h",
+      "description": "This method defines a move feature described by a point and an offset. The distances define offsets in the X, Y, and Z directions in either design or component space. To not move the input entities at all the offset distances should be set to the current location of the point in either design or component space. Adding or subtracting to those values will then move the entities that distance. It's best to experiment with the command interactively to understand the behavior.",
+      "parent_class": "MoveFeatureInput",
+      "syntax": {
+        "python": "returnValue = moveFeatureInput_var.defineAsPointToPosition(point, xDistance, yDistance, zDistance, isDesignSpace)",
+        "cpp": "#include \n\nreturnValue = moveFeatureInput_var->defineAsPointToPosition(point, xDistance, yDistance, zDistance, isDesignSpace);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if defining the type of move is successful.",
+      "parameters": [
+        {
+          "name": "point",
+          "type": "Base",
+          "description": "An entity that defines a point in space. This can be a sketch point, a construction point, or a BRepVertex."
+        },
+        {
+          "name": "xDistance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset in the X direction. If the ValueInput is created using a real value, the distance is in centimeters. If it's defined using a string, the default document units will be used."
+        },
+        {
+          "name": "yDistance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset in the Y direction. If the ValueInput is created using a real value, the distance is in centimeters. If it's defined using a string, the default document units will be used."
+        },
+        {
+          "name": "zDistance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset in the Z direction. If the ValueInput is created using a real value, the distance is in centimeters. If it's defined using a string, the default document units will be used."
+        },
+        {
+          "name": "isDesignSpace",
+          "type": "boolean",
+          "description": "Defines if the translation is defined with respect to the design or component space. Design space is the same as the root component space."
+        }
+      ],
+      "version": "Introduced in version January 2023"
+    },
+    "defineAsRotate": {
+      "id": "MoveFeatureInput_defineAsRotate",
+      "title": "MoveFeatureInput.defineAsRotate Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatureInput.h",
+      "description": "This method defines a move feature that is described by an axis and rotation angle.",
+      "parent_class": "MoveFeatureInput",
+      "syntax": {
+        "python": "returnValue = moveFeatureInput_var.defineAsRotate(axisEntity, angle)",
+        "cpp": "#include \n\nreturnValue = moveFeatureInput_var->defineAsRotate(axisEntity, angle);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if defining the type of move is successful.",
+      "parameters": [
+        {
+          "name": "axisEntity",
+          "type": "Base",
+          "description": "A linear entity that defines the axis of rotation. This can be a linear BRepEdge, ConstructionAxis, or a SketchLine. The natural direction of the entity defines a right-hand rule for the rotation direction."
+        },
+        {
+          "name": "angle",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the rotation angle. If the ValueInput is created using a real value, the angle is in radians. If it's defined using a string, the default document units will be used."
+        }
+      ],
+      "version": "Introduced in version January 2023"
+    },
+    "defineAsTranslateAlongEntity": {
+      "id": "MoveFeatureInput_defineAsTranslateAlongEntity",
+      "title": "MoveFeatureInput.defineAsTranslateAlongEntity Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatureInput.h",
+      "description": "This method will define a move feature that defines a translation along a specified entity.",
+      "parent_class": "MoveFeatureInput",
+      "syntax": {
+        "python": "returnValue = moveFeatureInput_var.defineAsTranslateAlongEntity(linearEntity, distance)",
+        "cpp": "#include \n\nreturnValue = moveFeatureInput_var->defineAsTranslateAlongEntity(linearEntity, distance);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if defining the type of move is successful.",
+      "parameters": [
+        {
+          "name": "linearEntity",
+          "type": "Base",
+          "description": "A linear entity that defines the direction of the move. This can be a linear BRepEdge, ConstructionAxis, or a SketchLine. The entity defines the direction, not the distance. The natural direction of the entity defines the translation direction."
+        },
+        {
+          "name": "distance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset distance. If the ValueInput is created using a real value, the distance is in centimeters. If it's defined using a string, the default document units are used."
+        }
+      ],
+      "version": "Introduced in version January 2023"
+    },
+    "defineAsTranslateXYZ": {
+      "id": "MoveFeatureInput_defineAsTranslateXYZ",
+      "title": "MoveFeatureInput.defineAsTranslateXYZ Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatureInput.h",
+      "description": "This method will define a move feature that defines a translation in X, Y, and Z.",
+      "parent_class": "MoveFeatureInput",
+      "syntax": {
+        "python": "returnValue = moveFeatureInput_var.defineAsTranslateXYZ(xDistance, yDistance, zDistance, isDesignSpace)",
+        "cpp": "#include \n\nreturnValue = moveFeatureInput_var->defineAsTranslateXYZ(xDistance, yDistance, zDistance, isDesignSpace);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if defining the type of move is successful.",
+      "parameters": [
+        {
+          "name": "xDistance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset in the X direction. If the ValueInput is created using a real value, the distance is in centimeters. If it's defined using a string, the default document units are used."
+        },
+        {
+          "name": "yDistance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset in the Y direction. If the ValueInput is created using a real value, the distance is in centimeters. If it's defined using a string, the default document units are used."
+        },
+        {
+          "name": "zDistance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset in the Z direction. If the ValueInput is created using a real value, the distance is in centimeters. If it's defined using a string, the default document units are used."
+        },
+        {
+          "name": "isDesignSpace",
+          "type": "boolean",
+          "description": "Defines if the translation is defined with respect to the design or component space. Design space is the same as the root component space."
+        }
+      ],
+      "version": "Introduced in version January 2023"
+    }
+  },
+  "property_details": {
+    "inputEntities": {
+      "id": "MoveFeatureInput_inputEntities",
+      "title": "MoveFeatureInput.inputEntities Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatureInput.h",
+      "description": "An ObjectCollection containing the objects to move. The collection can contain BRepBody or BRepFace objects but not a mixture of the two types.",
+      "parent_class": "MoveFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeatureInput_var.inputEntities\n\n# Set the value of the property.\nmoveFeatureInput_var.inputEntities = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = moveFeatureInput_var->inputEntities();\n\n// Set the value of the property, where value_var is an ObjectCollection.\nbool returnValue = moveFeatureInput_var->inputEntities(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "isValid": {
+      "id": "MoveFeatureInput_isValid",
+      "title": "MoveFeatureInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatureInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "MoveFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeatureInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = moveFeatureInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "objectType": {
+      "id": "MoveFeatureInput_objectType",
+      "title": "MoveFeatureInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatureInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "MoveFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeatureInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = moveFeatureInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "targetBaseFeature": {
+      "id": "MoveFeatureInput_targetBaseFeature",
+      "title": "MoveFeatureInput.targetBaseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatureInput.h",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature. Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it.",
+      "parent_class": "MoveFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeatureInput_var.targetBaseFeature\n\n# Set the value of the property.\nmoveFeatureInput_var.targetBaseFeature = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = moveFeatureInput_var->targetBaseFeature();\n\n// Set the value of the property, where value_var is a BaseFeature.\nbool returnValue = moveFeatureInput_var->targetBaseFeature(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "transform": {
+      "id": "MoveFeatureInput_transform",
+      "title": "MoveFeatureInput.transform Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatureInput.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets and sets the transform to apply to the input entities. This can describe a move (translation) or a rotation. The matrix must define an orthogonal transform. That is the axes remain perpendicular to each other and there isn't any scale or mirror defined. Remarks",
+      "parent_class": "MoveFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeatureInput_var.transform\n\n# Set the value of the property.\nmoveFeatureInput_var.transform = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = moveFeatureInput_var->transform();\n\n// Set the value of the property, where value_var is a Matrix3D.\nbool returnValue = moveFeatureInput_var->transform(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    }
+  }
+}

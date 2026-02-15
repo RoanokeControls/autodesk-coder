@@ -1,0 +1,594 @@
+{
+  "id": "Vector3D",
+  "title": "Vector3D Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Geometry/Vector3D.h",
+  "description": "Transient 3D vector. This object is a wrapper over 3D vector data and is used as way to pass vector data in and out of the API and as a convenience when operating on vector data. They are created statically using the create method of the Vector3D class.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Adds a vector to this vector."
+    },
+    {
+      "name": "angleTo",
+      "description": "Determines the angle between this vector and the specified vector."
+    },
+    {
+      "name": "asArray",
+      "description": "Returns the vector coordinates as an array [x, y, z]."
+    },
+    {
+      "name": "asPoint",
+      "description": "Returns a new point with the same coordinate values as this vector."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "copy",
+      "description": "Creates a copy of this vector."
+    },
+    {
+      "name": "create",
+      "description": "Creates a 3D vector object. This object is created statically using the Vector3D.create method."
+    },
+    {
+      "name": "crossProduct",
+      "description": "Returns the cross product between this vector and the specified vector."
+    },
+    {
+      "name": "dotProduct",
+      "description": "Returns the dot product between this vector and the specified vector."
+    },
+    {
+      "name": "isEqualTo",
+      "description": "Determines if this vector is equal to the specified vector."
+    },
+    {
+      "name": "isParallelTo",
+      "description": "Determines if the input vector is parallel with this vector."
+    },
+    {
+      "name": "isPerpendicularTo",
+      "description": "Determines if the input vector is perpendicular to this vector."
+    },
+    {
+      "name": "normalize",
+      "description": "Makes this vector of unit length. This vector should not be zero length."
+    },
+    {
+      "name": "scaleBy",
+      "description": "Scale this vector by the specified product."
+    },
+    {
+      "name": "setWithArray",
+      "description": "Reset this vector with the coordinate values in an array [x, y, z]."
+    },
+    {
+      "name": "subtract",
+      "description": "Subtract a vector from this vector."
+    },
+    {
+      "name": "transformBy",
+      "description": "Transform this vector by the specified matrix."
+    }
+  ],
+  "properties": [
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "length",
+      "description": "Get the length of this vector."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "x",
+      "description": "The x value."
+    },
+    {
+      "name": "y",
+      "description": "The y value."
+    },
+    {
+      "name": "z",
+      "description": "The z value."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Create Setups From Hole Recognition API Sample",
+      "description": "This sample script demonstrates how to create a correctly oriented setup using Hole Recognition functionality.The Fusion Manufacturing Extension is required for Hole Recognition.The script starts by opening a sample model from the CAM Samples folder via its URN. The model comprises a 3 way coupling containing holes in various orientations and mounted on a fixture. A reference setup is created for the model using a simple stock mode and offsets. The Hole Recognition feature of the Fusion Manufacturing Extension creates 5 hole groups containing 11 holes between them. For each unique hole group vector captured, a new setup is created and its orientation transformed to match the vector."
+    },
+    {
+      "name": "moveFeatures.add",
+      "description": "Demonstrates the moveFeatures.add method."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "add": {
+      "id": "Vector3D_add",
+      "title": "Vector3D.add Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Adds a vector to this vector.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "returnValue = vector3D_var.add(vector)",
+        "cpp": "#include \n\nreturnValue = vector3D_var->add(vector);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "vector",
+          "type": "Vector3D",
+          "description": "The vector to add to this vector."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "angleTo": {
+      "id": "Vector3D_angleTo",
+      "title": "Vector3D.angleTo Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Determines the angle between this vector and the specified vector.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "returnValue = vector3D_var.angleTo(vector)",
+        "cpp": "#include \n\nreturnValue = vector3D_var->angleTo(vector);"
+      },
+      "return_type": "double",
+      "return_description": "The angle in radians between this vector and the specified vector.",
+      "parameters": [
+        {
+          "name": "vector",
+          "type": "Vector3D",
+          "description": "The vector to measure the angle to."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Rendering Sample",
+          "description": "Demonstrates using the Rendering capabilities in the API. This starts a series of local renderings to generate a series of frames, where the camera is repositioned and a parameter is modified for each frame to create a dynamic animation. To use the sample, have a design open that contains a parameter named \"Length\". It can be a user or model parameter. The sample will modify this parameter from a value of 0.1 cm to 15 cm, but you can change these values by editing the values of the paramStartVal and paramEndVal variables on lines 90 and 91 of the sample. It expects a folder named \"C:\\Temp\\RenderSample\" to exist, and will fail if it doesn't. The rendered frames will be written to that folder.An example rendering is shown below where this file was used. The parameter is modifying a move feature which results in changing the shape of an extrusion. The parameter could be driving anything and you could modify the code to edit more than one parameter. The result of this sample is a folder containing all of the rendered frames. You can process these to create an animation. The sample animation was created using GIMP."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "asArray": {
+      "id": "Vector3D_asArray",
+      "title": "Vector3D.asArray Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Returns the vector coordinates as an array [x, y, z].",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "returnValue = vector3D_var.asArray()",
+        "cpp": "#include \n\nreturnValue = vector3D_var->asArray();"
+      },
+      "return_type": "double[]",
+      "return_description": "Returns the array of vector coordinates [x, y, z].",
+      "version": "Introduced in version August 2014"
+    },
+    "asPoint": {
+      "id": "Vector3D_asPoint",
+      "title": "Vector3D.asPoint Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Returns a new point with the same coordinate values as this vector.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "returnValue = vector3D_var.asPoint()",
+        "cpp": "#include \n\nreturnValue = vector3D_var->asPoint();"
+      },
+      "return_type": "Point3D",
+      "return_description": "Return the new point.",
+      "version": "Introduced in version August 2014"
+    },
+    "classType": {
+      "id": "Vector3D_classType",
+      "title": "Vector3D.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "returnValue = adsk.core.Vector3D.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Vector3D::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "copy": {
+      "id": "Vector3D_copy",
+      "title": "Vector3D.copy Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Creates a copy of this vector.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "returnValue = vector3D_var.copy()",
+        "cpp": "#include \n\nreturnValue = vector3D_var->copy();"
+      },
+      "return_type": "Vector3D",
+      "return_description": "Returns the new vector copy.",
+      "version": "Introduced in version August 2014"
+    },
+    "create": {
+      "id": "Vector3D_create",
+      "title": "Vector3D.create Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Creates a 3D vector object. This object is created statically using the Vector3D.create method.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = adsk.core.Vector3D.create()\n\n# Uses optional arguments.\nreturnValue = adsk.core.Vector3D.create(x, y, z)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = adsk::core::Vector3D::create();\n\n// Uses optional arguments.\nreturnValue = adsk::core::Vector3D::create(x, y, z);"
+      },
+      "return_type": "Vector3D",
+      "return_description": "Returns the new vector.",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "double",
+          "description": "The optional x value.   This is an optional argument whose default value is 0.0."
+        },
+        {
+          "name": "y",
+          "type": "double",
+          "description": "The optional y value.   This is an optional argument whose default value is 0.0."
+        },
+        {
+          "name": "z",
+          "type": "double",
+          "description": "The optional z value.   This is an optional argument whose default value is 0.0."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "moveFeatures.add",
+          "description": "Demonstrates the moveFeatures.add method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "crossProduct": {
+      "id": "Vector3D_crossProduct",
+      "title": "Vector3D.crossProduct Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Returns the cross product between this vector and the specified vector.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "returnValue = vector3D_var.crossProduct(vector)",
+        "cpp": "#include \n\nreturnValue = vector3D_var->crossProduct(vector);"
+      },
+      "return_type": "Vector3D",
+      "return_description": "Returns the vector cross product.",
+      "parameters": [
+        {
+          "name": "vector",
+          "type": "Vector3D",
+          "description": "The vector to take the cross product to."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "dotProduct": {
+      "id": "Vector3D_dotProduct",
+      "title": "Vector3D.dotProduct Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Returns the dot product between this vector and the specified vector.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "returnValue = vector3D_var.dotProduct(vector)",
+        "cpp": "#include \n\nreturnValue = vector3D_var->dotProduct(vector);"
+      },
+      "return_type": "double",
+      "return_description": "Returns the dot product value.",
+      "parameters": [
+        {
+          "name": "vector",
+          "type": "Vector3D",
+          "description": "The vector to take the dot product to."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isEqualTo": {
+      "id": "Vector3D_isEqualTo",
+      "title": "Vector3D.isEqualTo Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Determines if this vector is equal to the specified vector.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "returnValue = vector3D_var.isEqualTo(vector)",
+        "cpp": "#include \n\nreturnValue = vector3D_var->isEqualTo(vector);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the vectors are equal.",
+      "parameters": [
+        {
+          "name": "vector",
+          "type": "Vector3D",
+          "description": "The vector to test equality to."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isParallelTo": {
+      "id": "Vector3D_isParallelTo",
+      "title": "Vector3D.isParallelTo Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Determines if the input vector is parallel with this vector.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "returnValue = vector3D_var.isParallelTo(vector)",
+        "cpp": "#include \n\nreturnValue = vector3D_var->isParallelTo(vector);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the vectors are parallel.",
+      "parameters": [
+        {
+          "name": "vector",
+          "type": "Vector3D",
+          "description": "The vector to test parallelism to."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isPerpendicularTo": {
+      "id": "Vector3D_isPerpendicularTo",
+      "title": "Vector3D.isPerpendicularTo Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Determines if the input vector is perpendicular to this vector.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "returnValue = vector3D_var.isPerpendicularTo(vector)",
+        "cpp": "#include \n\nreturnValue = vector3D_var->isPerpendicularTo(vector);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the vectors are perpendicular.",
+      "parameters": [
+        {
+          "name": "vector",
+          "type": "Vector3D",
+          "description": "The vector to test perpendicularity to."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "normalize": {
+      "id": "Vector3D_normalize",
+      "title": "Vector3D.normalize Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Makes this vector of unit length. This vector should not be zero length.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "returnValue = vector3D_var.normalize()",
+        "cpp": "#include \n\nreturnValue = vector3D_var->normalize();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "related_samples": [
+        {
+          "name": "Create Setups From Hole Recognition API Sample",
+          "description": "This sample script demonstrates how to create a correctly oriented setup using Hole Recognition functionality.The Fusion Manufacturing Extension is required for Hole Recognition.The script starts by opening a sample model from the CAM Samples folder via its URN. The model comprises a 3 way coupling containing holes in various orientations and mounted on a fixture. A reference setup is created for the model using a simple stock mode and offsets. The Hole Recognition feature of the Fusion Manufacturing Extension creates 5 hole groups containing 11 holes between them. For each unique hole group vector captured, a new setup is created and its orientation transformed to match the vector."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "scaleBy": {
+      "id": "Vector3D_scaleBy",
+      "title": "Vector3D.scaleBy Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Scale this vector by the specified product.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "returnValue = vector3D_var.scaleBy(scale)",
+        "cpp": "#include \n\nreturnValue = vector3D_var->scaleBy(scale);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "scale",
+          "type": "double",
+          "description": "The scale value."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setWithArray": {
+      "id": "Vector3D_setWithArray",
+      "title": "Vector3D.setWithArray Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Reset this vector with the coordinate values in an array [x, y, z].",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "returnValue = vector3D_var.setWithArray(coordinates)",
+        "cpp": "#include \n\nreturnValue = vector3D_var->setWithArray(coordinates);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "coordinates",
+          "type": "double[]",
+          "description": "The array of coordinate values."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "subtract": {
+      "id": "Vector3D_subtract",
+      "title": "Vector3D.subtract Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Subtract a vector from this vector.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "returnValue = vector3D_var.subtract(vector)",
+        "cpp": "#include \n\nreturnValue = vector3D_var->subtract(vector);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "vector",
+          "type": "Vector3D",
+          "description": "The vector to subtract."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "transformBy": {
+      "id": "Vector3D_transformBy",
+      "title": "Vector3D.transformBy Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Transform this vector by the specified matrix.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "returnValue = vector3D_var.transformBy(matrix)",
+        "cpp": "#include \n\nreturnValue = vector3D_var->transformBy(matrix);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "matrix",
+          "type": "Matrix3D",
+          "description": "The transformation matrix."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "isValid": {
+      "id": "Vector3D_isValid",
+      "title": "Vector3D.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = vector3D_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = vector3D_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "length": {
+      "id": "Vector3D_length",
+      "title": "Vector3D.length Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "Get the length of this vector.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = vector3D_var.length",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = vector3D_var->length();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "Vector3D_objectType",
+      "title": "Vector3D.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = vector3D_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = vector3D_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "x": {
+      "id": "Vector3D_x",
+      "title": "Vector3D.x Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "The x value.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = vector3D_var.x\n\n# Set the value of the property.\nvector3D_var.x = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = vector3D_var->x();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = vector3D_var->x(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "y": {
+      "id": "Vector3D_y",
+      "title": "Vector3D.y Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "The y value.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = vector3D_var.y\n\n# Set the value of the property.\nvector3D_var.y = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = vector3D_var->y();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = vector3D_var->y(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "z": {
+      "id": "Vector3D_z",
+      "title": "Vector3D.z Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Vector3D.h",
+      "description": "The z value.",
+      "parent_class": "Vector3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = vector3D_var.z\n\n# Set the value of the property.\nvector3D_var.z = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = vector3D_var->z();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = vector3D_var->z(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

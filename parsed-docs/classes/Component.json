@@ -1,0 +1,1895 @@
+{
+  "id": "Component",
+  "title": "Component Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Components/Component.h",
+  "description": "Represents a component in the data model. A component represents a set of geometry, features, and parameters that make up an item in the design. A component can be referenced multiple times into a design with a Occurrence object.",
+  "parent_class": "BaseComponent",
+  "methods": [
+    {
+      "name": "allOccurrencesByComponent",
+      "description": "Returns all occurrences, at any level of the assembly, that reference the specified component. The returned list is read-only."
+    },
+    {
+      "name": "boundingBox2",
+      "description": "Returns the bounding box of the specified entity types within the component."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createBRepEdgeProfile",
+      "description": "Creates a profile based on the outside open edges of a BRepFace."
+    },
+    {
+      "name": "createFlatPattern",
+      "description": "Creates a flat pattern of the sheet metal folded body. The isSheetMetal property of the BRepBody object can be used to determine if a particular body can be flattened. Creating a flat pattern will fail if a flat pattern already exists in the component. You can determine if a flat pattern already exists by checking if the flatPattern property returns a FlatPattern object or null."
+    },
+    {
+      "name": "createOpenProfile",
+      "description": "Creates an open profile based on the input curve(s)."
+    },
+    {
+      "name": "createThumbnail",
+      "description": "Creates a thumbnail for this component. This can be a root component to get a thumbnail that represents the associated file, or it can be any sub component to get a thumbnail of a subset of the complete assembly or individual parts."
+    },
+    {
+      "name": "findBRepUsingPoint",
+      "description": "Finds all the entities of the specified type at the specified location."
+    },
+    {
+      "name": "findBRepUsingRay",
+      "description": "Finds all the B-Rep entities that are intersected by the specified ray. This can return BRepFace, BrepEdge, and BRepVertex objects."
+    },
+    {
+      "name": "getPhysicalProperties",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this component."
+    },
+    {
+      "name": "occurrencesByComponent",
+      "description": "Returns all occurrences at the top-level of this component that reference the specified component. The returned list is read-only."
+    },
+    {
+      "name": "saveCopyAs",
+      "description": "Performs a Save Copy As on this component. This saves the specified component as a new document in the specified location."
+    },
+    {
+      "name": "transformOccurrences",
+      "description": "Transforms a set of occurrences in one step. This provides better performance than transforming them one at a time. This method is only valid when called on the root component because Fusion flattens the entire assembly structure when manipulating the assembly so all transforms are relative to the root component."
+    }
+  ],
+  "properties": [
+    {
+      "name": "activeSheetMetalRule",
+      "description": "Gets and sets the active sheet metal rule. This can return null in the case where the component has never contained any sheet metal related data."
+    },
+    {
+      "name": "allAsBuiltJoints",
+      "description": "Returns all joint origins in this component and any sub components. The joint origins returned are all in the context of this component so any joint origins in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including joint origins, when manipulating an assembly."
+    },
+    {
+      "name": "allAssemblyConstraints",
+      "description": "Returns all assembly constraints in this component and any sub components. The assembly constraints returned are all in the context of this component so any joints in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including joints, when manipulating an assembly."
+    },
+    {
+      "name": "allJointOrigins",
+      "description": "Returns all as-built joints in this component and any sub components. The as-built joints returned are all in the context of this component so any as-built joints in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including as-built joints, when manipulating an assembly."
+    },
+    {
+      "name": "allJoints",
+      "description": "Returns all joints in this component and any sub components. The joints returned are all in the context of this component so any joints in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including joints, when manipulating an assembly."
+    },
+    {
+      "name": "allOccurrences",
+      "description": "Returns all of the occurrences in the assembly regardless of their level within the assembly structure. The returned list is read-only."
+    },
+    {
+      "name": "allRigidGroups",
+      "description": "Returns all rigid groups in this component and any sub components. The rigid groups returned are all in the context of this component so any rigid groups in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including rigid groups, when manipulating an assembly."
+    },
+    {
+      "name": "allTangentRelationships",
+      "description": "Returns all tangent relationships in this component and any sub components. The tangent relationships returned are all in the context of this component so any tangent relationships in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including tangent relationships, when manipulating an assembly."
+    },
+    {
+      "name": "asBuiltJoints",
+      "description": "Returns the collection of as-built joints associated with this component."
+    },
+    {
+      "name": "assemblyConstraints",
+      "description": "Returns the collection of assembly constraints associated with this component."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "boundingBox",
+      "description": "Returns the bounding box of this component. This is always in world space of the component. The boundingBox2 method provides greater control over which types of entities you want included in the bounding box calculation."
+    },
+    {
+      "name": "bRepBodies",
+      "description": "Returns the B-Rep bodies collection associated with this component."
+    },
+    {
+      "name": "canvases",
+      "description": "Returns the canvases collection associated with this component. This provides access to the existing canvases and supports the creation of new canvases."
+    },
+    {
+      "name": "componentColor",
+      "description": "Gets and sets the color associated with a component. This color is only used when the \"Display Component Colors\" command is enabled. Enabling the display of component colors is done through the command or API using the Application.isComponentColorsDisplayed property. When this is on, all bodies in a component will display using the color assigned to the component. Fusion randomly assigns a color to a component when it is created. This property allows you to get and change the assigned default color. Setting this property to null results in a new color being randomly assigned by Fusion. This is the equivalent of the \"Cycle Component Color\" command available in the context menu of a component."
+    },
+    {
+      "name": "constructionAxes",
+      "description": "Returns the construction axes collection associated with this component. This provides access to the existing construction axes and supports the creation of new construction axes."
+    },
+    {
+      "name": "constructionPlanes",
+      "description": "Returns the construction planes collection associated with this component. This provides access to the existing construction planes and supports the creation of new construction planes."
+    },
+    {
+      "name": "constructionPoints",
+      "description": "Returns the construction points collection associated with this component. This provides access to the existing construction points and supports the creation of new construction points."
+    },
+    {
+      "name": "customGraphicsGroups",
+      "description": "Returns the customGraphicsGroups object in this component."
+    },
+    {
+      "name": "dataComponent",
+      "description": "Returns the DataComponent associated with this component. The DataComponent provides ID information that can be used to access this component using the MFG DM API. These ID's don't exist until a component has been saved. The ID's are generated by MFG DM API on the cloud, so there will be a slight delay after saving before the ID's are available. This property returns null in the case the MFG DM API information doesn't exist yet.   When opening a design, the MFG DM API information is obtained from the cloud and as a result may not be available immediately after opening a document. Again, this property will return null in this case too. Essentially, null is returned in all cases where good ID information is not yet available."
+    },
+    {
+      "name": "decals",
+      "description": "Returns the decals collection associated with this component. This provides access to the existing decals and supports the creation of new decals."
+    },
+    {
+      "name": "description",
+      "description": "Gets and sets the description associated with this component."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Component object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same component.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "features",
+      "description": "Returns the collection that provides access to all of the features associated with this component."
+    },
+    {
+      "name": "flatPattern",
+      "description": "Gets the existing flat pattern or returns null in the case where a flat pattern doesn't exist in this component."
+    },
+    {
+      "name": "id",
+      "description": "Returns the persistent ID of the component. This ID is created with the component and does not change. Because this ID does not change, different revisions of the same design or copies of the design asset/file will retain this ID. If components from different designs have the same ID, it indicates they are either different revisions or a copy of the design was made. Therefore, this ID will always be unique within a single design, but may not be unique in an assembly where externally referenced designs include different revisions or copies of a design.   The ID is also the same ID used by PIM (Product Information Model)."
+    },
+    {
+      "name": "isBodiesFolderLightBulbOn",
+      "description": "Gets and sets if the light bulb of the bodies folder as seen in the browser is on or off. This controls the visibility of the solid/surface bodies and the mesh bodies in this component."
+    },
+    {
+      "name": "isCanvasFolderLightBulbOn",
+      "description": "Gets and sets if the light bulb of the canvas folder as seen in the browser is on or off. This controls the visibility of all the canvases in the component."
+    },
+    {
+      "name": "isConstructionFolderLightBulbOn",
+      "description": "Gets and sets if the light bulb of the construction folder as seen in the browser is on or off. This controls the visibility of the (non-origin) construction geometry (i.e. planes, points, axes)."
+    },
+    {
+      "name": "isDecalFolderLightBulbOn",
+      "description": "Gets and sets whether the light bulb of the decal folder, as seen in the browser, is on or off. This controls the visibility of all the decals in the component."
+    },
+    {
+      "name": "isJointOriginsFolderLightBulbOn",
+      "description": "Gets and sets if the light bulb of the joint origins folder as seen in the browser is on or off. This controls the visibility of the joint origins in this occurrence. The light bulb for the folder is component specific and will turn off the joints for all occurrences referencing the component."
+    },
+    {
+      "name": "isJointsFolderLightBulbOn",
+      "description": "Gets and sets if the light bulb of the joints folder as seen in the browser is on or off. This controls the visibility of the joints in this occurrence. The light bulb for the folder is component specific and will turn off the joints for all occurrences referencing the component."
+    },
+    {
+      "name": "isLibraryItem",
+      "description": "Gets whether the component was created from a fasteners library item.\""
+    },
+    {
+      "name": "isOriginFolderLightBulbOn",
+      "description": "Gets and sets if the light bulb of the origin folder as seen in the browser is on or off. This controls the visibility of the origin construction geometry."
+    },
+    {
+      "name": "isSketchFolderLightBulbOn",
+      "description": "Gets and sets if the light bulb of the sketch folder as seen in the browser is on or off. This controls the visibility of the sketches in this component."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "jointOrigins",
+      "description": "Returns the collection of joint origins associated with this component."
+    },
+    {
+      "name": "joints",
+      "description": "Returns the collection of joints associated with this component."
+    },
+    {
+      "name": "material",
+      "description": "Gets and sets the physical material assigned to this component."
+    },
+    {
+      "name": "meshBodies",
+      "description": "Returns the mesh bodies collection associated with this component."
+    },
+    {
+      "name": "mfgdmModelId",
+      "description": "Returns the MFGDM model ID for this component."
+    },
+    {
+      "name": "modelParameters",
+      "description": "Returns the collection of model parameters in the Component."
+    },
+    {
+      "name": "motionLinks",
+      "description": "Returns the collection of MotionLinks associated with this component."
+    },
+    {
+      "name": "name",
+      "description": "Property that gets and sets the name of this component. This is the name shown in the browser for each occurrence referencing this component."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "occurrences",
+      "description": "Property that returns the Occurrences collection associated with this component. This provides access to the occurrences at the top-level of this component and provides the functionality to add new occurrences."
+    },
+    {
+      "name": "opacity",
+      "description": "Gets and sets the opacity override assigned to this component. A value of 1.0 specifies that is it completely opaque and a value of 0.0 specifies that is it completely transparent.   This is only applicable for a non-root local component.   This value is not necessarily related to what the user sees because the opacity is inherited. For example, if you have TopComponent and it has a component in it called SubComponent and you set the opacity of TopComponent to be 0.5, SubComponent will also be shown as slightly transparent even though the opacity property for it will return 1.0. Because a component can be referenced as an occurrence in other components and they can have different opacity settings, it's possible that different instances of the same component can display using different opacity levels. To get the opacity that it is being displayed with use the Occurrence.visibleOpacity property."
+    },
+    {
+      "name": "orientedMinimumBoundingBox",
+      "description": "Returns an oriented bounding box that is best oriented to tightly fit all B-Rep bodies in the component. All other geometry types are ignored."
+    },
+    {
+      "name": "originConstructionPoint",
+      "description": "Returns the origin construction point."
+    },
+    {
+      "name": "parentDesign",
+      "description": "Returns the parent product this component is owned by."
+    },
+    {
+      "name": "partNumber",
+      "description": "Gets and sets the part number associated with this component. Setting this to an empty string will reset it to be the same as the component name."
+    },
+    {
+      "name": "physicalProperties",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this component. Property values will be calculated using the 'LowCalculationAccuracy' setting when using this property to get the PhysicalProperties object. To specify a higher calculation tolerance, use the getPhysicalProperties method instead."
+    },
+    {
+      "name": "preciseBoundingBox",
+      "description": "Returns a bounding box that tightly fits around all B-Rep bodies in the component. All other geometry types are ignored."
+    },
+    {
+      "name": "propertyGroups",
+      "description": "Returns the PropertyGroups object associated with this component."
+    },
+    {
+      "name": "revisionId",
+      "description": "Returns the current revision ID of the component. This ID changes any time the component is modified in any way. By getting and saving the ID when you create any data that is dependent on the component, you can then compare the saved ID with the current ID to determine if the component has changed to know if you should update your data."
+    },
+    {
+      "name": "rigidGroups",
+      "description": "Returns the collection of rigid groups associated with this component."
+    },
+    {
+      "name": "sketches",
+      "description": "Returns the sketches collection associated with this component. This provides access to the existing sketches and supports the creation of new sketches."
+    },
+    {
+      "name": "tangentRelationships",
+      "description": "Returns the collection of tangent relationships associated with this component."
+    },
+    {
+      "name": "xConstructionAxis",
+      "description": "Returns the X origin construction axis."
+    },
+    {
+      "name": "xYConstructionPlane",
+      "description": "Returns the XY origin construction plane."
+    },
+    {
+      "name": "xZConstructionPlane",
+      "description": "Returns the XZ origin construction plane."
+    },
+    {
+      "name": "yConstructionAxis",
+      "description": "Returns the Y origin construction axis."
+    },
+    {
+      "name": "yZConstructionPlane",
+      "description": "Returns the YZ origin construction plane."
+    },
+    {
+      "name": "zConstructionAxis",
+      "description": "Returns the Z origin construction axis."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Create Setups From Hole Recognition API Sample",
+      "description": "This sample script demonstrates how to create a correctly oriented setup using Hole Recognition functionality.The Fusion Manufacturing Extension is required for Hole Recognition.The script starts by opening a sample model from the CAM Samples folder via its URN. The model comprises a 3 way coupling containing holes in various orientations and mounted on a fixture. A reference setup is created for the model using a simple stock mode and offsets. The Hole Recognition feature of the Fusion Manufacturing Extension creates 5 hole groups containing 11 holes between them. For each unique hole group vector captured, a new setup is created and its orientation transformed to match the vector."
+    },
+    {
+      "name": "Library Item API Sample",
+      "description": "Demonstrates how to examine library items using the API.\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the existing default code. The script will search for and record all components and library items in the current project. They are displayed in a dialog when the script has finished."
+    },
+    {
+      "name": "Loft Feature API Sample",
+      "description": "Demonstrates creating a new loft feature."
+    },
+    {
+      "name": "Set Vise Origin As Setup WCS Origin API Sample",
+      "description": "This sample script demonstrates how to define our setup WCS origin relative to our vise origin from either a component, a sketch point or a joint origin.The Work Coordinate System is a reference point set in our CAM workspace and on our machine. All machine coordinates are drawn from the WCS. This script demonstrates defining the WCS by each of 4 alternative methods:Setup by default with no origin defined.Setup using vise origin as WCS origin.Setup using a sketch point as WCS origin.Setup using a joint origin as WCS origin."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "property_details": {
+    "activeSheetMetalRule": {
+      "id": "Component_activeSheetMetalRule",
+      "title": "Component.activeSheetMetalRule Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Gets and sets the active sheet metal rule. This can return null in the case where the component has never contained any sheet metal related data.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.activeSheetMetalRule\n\n# Set the value of the property.\ncomponent_var.activeSheetMetalRule = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->activeSheetMetalRule();\n\n// Set the value of the property, where value_var is a SheetMetalRule.\nbool returnValue = component_var->activeSheetMetalRule(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "allAsBuiltJoints": {
+      "id": "Component_allAsBuiltJoints",
+      "title": "Component.allAsBuiltJoints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns all joint origins in this component and any sub components. The joint origins returned are all in the context of this component so any joint origins in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including joint origins, when manipulating an assembly.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.allAsBuiltJoints",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = component_var->allAsBuiltJoints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "allAssemblyConstraints": {
+      "id": "Component_allAssemblyConstraints",
+      "title": "Component.allAssemblyConstraints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns all assembly constraints in this component and any sub components. The assembly constraints returned are all in the context of this component so any joints in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including joints, when manipulating an assembly.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.allAssemblyConstraints",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = component_var->allAssemblyConstraints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "allJointOrigins": {
+      "id": "Component_allJointOrigins",
+      "title": "Component.allJointOrigins Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns all as-built joints in this component and any sub components. The as-built joints returned are all in the context of this component so any as-built joints in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including as-built joints, when manipulating an assembly.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.allJointOrigins",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = component_var->allJointOrigins();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "allJoints": {
+      "id": "Component_allJoints",
+      "title": "Component.allJoints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns all joints in this component and any sub components. The joints returned are all in the context of this component so any joints in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including joints, when manipulating an assembly.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.allJoints",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = component_var->allJoints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "allOccurrences": {
+      "id": "Component_allOccurrences",
+      "title": "Component.allOccurrences Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns all of the occurrences in the assembly regardless of their level within the assembly structure. The returned list is read-only.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.allOccurrences",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->allOccurrences();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Create Setups From Hole Recognition API Sample",
+          "description": "This sample script demonstrates how to create a correctly oriented setup using Hole Recognition functionality.The Fusion Manufacturing Extension is required for Hole Recognition.The script starts by opening a sample model from the CAM Samples folder via its URN. The model comprises a 3 way coupling containing holes in various orientations and mounted on a fixture. A reference setup is created for the model using a simple stock mode and offsets. The Hole Recognition feature of the Fusion Manufacturing Extension creates 5 hole groups containing 11 holes between them. For each unique hole group vector captured, a new setup is created and its orientation transformed to match the vector."
+        },
+        {
+          "name": "Get Volume of Active Design API Sample",
+          "description": "Traverses through the active design and totals the volume of every body within the design."
+        },
+        {
+          "name": "Set Vise Origin As Setup WCS Origin API Sample",
+          "description": "This sample script demonstrates how to define our setup WCS origin relative to our vise origin from either a component, a sketch point or a joint origin.The Work Coordinate System is a reference point set in our CAM workspace and on our machine. All machine coordinates are drawn from the WCS. This script demonstrates defining the WCS by each of 4 alternative methods:Setup by default with no origin defined.Setup using vise origin as WCS origin.Setup using a sketch point as WCS origin.Setup using a joint origin as WCS origin."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "allRigidGroups": {
+      "id": "Component_allRigidGroups",
+      "title": "Component.allRigidGroups Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns all rigid groups in this component and any sub components. The rigid groups returned are all in the context of this component so any rigid groups in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including rigid groups, when manipulating an assembly.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.allRigidGroups",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = component_var->allRigidGroups();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "allTangentRelationships": {
+      "id": "Component_allTangentRelationships",
+      "title": "Component.allTangentRelationships Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns all tangent relationships in this component and any sub components. The tangent relationships returned are all in the context of this component so any tangent relationships in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including tangent relationships, when manipulating an assembly.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.allTangentRelationships",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = component_var->allTangentRelationships();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "asBuiltJoints": {
+      "id": "Component_asBuiltJoints",
+      "title": "Component.asBuiltJoints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the collection of as-built joints associated with this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.asBuiltJoints",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->asBuiltJoints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "assemblyConstraints": {
+      "id": "Component_assemblyConstraints",
+      "title": "Component.assemblyConstraints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the collection of assembly constraints associated with this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.assemblyConstraints",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->assemblyConstraints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "attributes": {
+      "id": "Component_attributes",
+      "title": "Component.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "bRepBodies": {
+      "id": "Component_bRepBodies",
+      "title": "Component.bRepBodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the B-Rep bodies collection associated with this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.bRepBodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->bRepBodies();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Get Volume of Active Design API Sample",
+          "description": "Traverses through the active design and totals the volume of every body within the design."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "boundingBox": {
+      "id": "Component_boundingBox",
+      "title": "Component.boundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the bounding box of this component. This is always in world space of the component. The boundingBox2 method provides greater control over which types of entities you want included in the bounding box calculation.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.boundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->boundingBox();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Rendering Sample",
+          "description": "Demonstrates using the Rendering capabilities in the API. This starts a series of local renderings to generate a series of frames, where the camera is repositioned and a parameter is modified for each frame to create a dynamic animation. To use the sample, have a design open that contains a parameter named \"Length\". It can be a user or model parameter. The sample will modify this parameter from a value of 0.1 cm to 15 cm, but you can change these values by editing the values of the paramStartVal and paramEndVal variables on lines 90 and 91 of the sample. It expects a folder named \"C:\\Temp\\RenderSample\" to exist, and will fail if it doesn't. The rendered frames will be written to that folder.An example rendering is shown below where this file was used. The parameter is modifying a move feature which results in changing the shape of an extrusion. The parameter could be driving anything and you could modify the code to edit more than one parameter. The result of this sample is a folder containing all of the rendered frames. You can process these to create an animation. The sample animation was created using GIMP."
+        }
+      ],
+      "version": "Introduced in version November 2015"
+    },
+    "canvases": {
+      "id": "Component_canvases",
+      "title": "Component.canvases Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the canvases collection associated with this component. This provides access to the existing canvases and supports the creation of new canvases.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.canvases",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->canvases();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "componentColor": {
+      "id": "Component_componentColor",
+      "title": "Component.componentColor Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Gets and sets the color associated with a component. This color is only used when the \"Display Component Colors\" command is enabled. Enabling the display of component colors is done through the command or API using the Application.isComponentColorsDisplayed property. When this is on, all bodies in a component will display using the color assigned to the component. Fusion randomly assigns a color to a component when it is created. This property allows you to get and change the assigned default color. Setting this property to null results in a new color being randomly assigned by Fusion. This is the equivalent of the \"Cycle Component Color\" command available in the context menu of a component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.componentColor\n\n# Set the value of the property.\ncomponent_var.componentColor = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->componentColor();\n\n// Set the value of the property, where value_var is a Color.\nbool returnValue = component_var->componentColor(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2024"
+    },
+    "constructionAxes": {
+      "id": "Component_constructionAxes",
+      "title": "Component.constructionAxes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the construction axes collection associated with this component. This provides access to the existing construction axes and supports the creation of new construction axes.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.constructionAxes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->constructionAxes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "constructionPlanes": {
+      "id": "Component_constructionPlanes",
+      "title": "Component.constructionPlanes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the construction planes collection associated with this component. This provides access to the existing construction planes and supports the creation of new construction planes.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.constructionPlanes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->constructionPlanes();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Loft Feature API Sample",
+          "description": "Demonstrates creating a new loft feature."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "constructionPoints": {
+      "id": "Component_constructionPoints",
+      "title": "Component.constructionPoints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the construction points collection associated with this component. This provides access to the existing construction points and supports the creation of new construction points.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.constructionPoints",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->constructionPoints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "customGraphicsGroups": {
+      "id": "Component_customGraphicsGroups",
+      "title": "Component.customGraphicsGroups Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the customGraphicsGroups object in this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.customGraphicsGroups",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->customGraphicsGroups();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Custom Graphics Sample",
+          "description": "A sample demonstrating how to create custom graphics entities.\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.\u00a0You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+        }
+      ],
+      "version": "Introduced in version September 2017"
+    },
+    "dataComponent": {
+      "id": "Component_dataComponent",
+      "title": "Component.dataComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the DataComponent associated with this component. The DataComponent provides ID information that can be used to access this component using the MFG DM API. These ID's don't exist until a component has been saved. The ID's are generated by MFG DM API on the cloud, so there will be a slight delay after saving before the ID's are available. This property returns null in the case the MFG DM API information doesn't exist yet. When opening a design, the MFG DM API information is obtained from the cloud and as a result may not be available immediately after opening a document. Again, this property will return null in this case too. Essentially, null is returned in all cases where good ID information is not yet available.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.dataComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->dataComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2024"
+    },
+    "decals": {
+      "id": "Component_decals",
+      "title": "Component.decals Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the decals collection associated with this component. This provides access to the existing decals and supports the creation of new decals.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.decals",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->decals();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "description": {
+      "id": "Component_description",
+      "title": "Component.description Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Gets and sets the description associated with this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.description\n\n# Set the value of the property.\ncomponent_var.description = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = component_var->description();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = component_var->description(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "entityToken": {
+      "id": "Component_entityToken",
+      "title": "Component.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns a token for the Component object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same component. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = component_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "features": {
+      "id": "Component_features",
+      "title": "Component.features Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the collection that provides access to all of the features associated with this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.features",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->features();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "baseFeatures.add",
+          "description": "Demonstrates the baseFeature.add method."
+        },
+        {
+          "name": "extrudeFeatures.add using setSymmetricExtent",
+          "description": "Demonstrates the extrudeFeatures.add method using the setSymmetricExtent method. To use this sample have a design open that contains a sketch with a profile. When you run the script you will be prompted to select the profile that will be used to create the extrusion."
+        },
+        {
+          "name": "extrudeFeatures.add using ThroughAllExtent",
+          "description": "Demonstrates the extrudeFeatures.add method using the ThroughAllExtent method."
+        },
+        {
+          "name": "formFeatures.add",
+          "description": "Demonstrates the formFeatures.add method. This creates a new empty form (T-Spline) feature, which you'll see in the timeline."
+        },
+        {
+          "name": "Loft Feature API Sample",
+          "description": "Demonstrates creating a new loft feature."
+        },
+        {
+          "name": "moveFeatures.add",
+          "description": "Demonstrates the moveFeatures.add method."
+        },
+        {
+          "name": "Simple Extrusion Sample",
+          "description": "Creates a new extrusion feature, resulting in a new component."
+        },
+        {
+          "name": "Simple Revolve Feature Sample",
+          "description": "Creates a new revolve feature, resulting in a new component."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "flatPattern": {
+      "id": "Component_flatPattern",
+      "title": "Component.flatPattern Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Gets the existing flat pattern or returns null in the case where a flat pattern doesn't exist in this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.flatPattern",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->flatPattern();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "id": {
+      "id": "Component_id",
+      "title": "Component.id Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the persistent ID of the component. This ID is created with the component and does not change. Because this ID does not change, different revisions of the same design or copies of the design asset/file will retain this ID. If components from different designs have the same ID, it indicates they are either different revisions or a copy of the design was made. Therefore, this ID will always be unique within a single design, but may not be unique in an assembly where externally referenced designs include different revisions or copies of a design. The ID is also the same ID used by PIM (Product Information Model).",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = component_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "isBodiesFolderLightBulbOn": {
+      "id": "Component_isBodiesFolderLightBulbOn",
+      "title": "Component.isBodiesFolderLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Gets and sets if the light bulb of the bodies folder as seen in the browser is on or off. This controls the visibility of the solid/surface bodies and the mesh bodies in this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.isBodiesFolderLightBulbOn\n\n# Set the value of the property.\ncomponent_var.isBodiesFolderLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = component_var->isBodiesFolderLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = component_var->isBodiesFolderLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "isCanvasFolderLightBulbOn": {
+      "id": "Component_isCanvasFolderLightBulbOn",
+      "title": "Component.isCanvasFolderLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Gets and sets if the light bulb of the canvas folder as seen in the browser is on or off. This controls the visibility of all the canvases in the component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.isCanvasFolderLightBulbOn\n\n# Set the value of the property.\ncomponent_var.isCanvasFolderLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = component_var->isCanvasFolderLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = component_var->isCanvasFolderLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "isConstructionFolderLightBulbOn": {
+      "id": "Component_isConstructionFolderLightBulbOn",
+      "title": "Component.isConstructionFolderLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Gets and sets if the light bulb of the construction folder as seen in the browser is on or off. This controls the visibility of the (non-origin) construction geometry (i.e. planes, points, axes).",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.isConstructionFolderLightBulbOn\n\n# Set the value of the property.\ncomponent_var.isConstructionFolderLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = component_var->isConstructionFolderLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = component_var->isConstructionFolderLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isDecalFolderLightBulbOn": {
+      "id": "Component_isDecalFolderLightBulbOn",
+      "title": "Component.isDecalFolderLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Gets and sets whether the light bulb of the decal folder, as seen in the browser, is on or off. This controls the visibility of all the decals in the component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.isDecalFolderLightBulbOn\n\n# Set the value of the property.\ncomponent_var.isDecalFolderLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = component_var->isDecalFolderLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = component_var->isDecalFolderLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "isJointOriginsFolderLightBulbOn": {
+      "id": "Component_isJointOriginsFolderLightBulbOn",
+      "title": "Component.isJointOriginsFolderLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Gets and sets if the light bulb of the joint origins folder as seen in the browser is on or off. This controls the visibility of the joint origins in this occurrence. The light bulb for the folder is component specific and will turn off the joints for all occurrences referencing the component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.isJointOriginsFolderLightBulbOn\n\n# Set the value of the property.\ncomponent_var.isJointOriginsFolderLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = component_var->isJointOriginsFolderLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = component_var->isJointOriginsFolderLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "isJointsFolderLightBulbOn": {
+      "id": "Component_isJointsFolderLightBulbOn",
+      "title": "Component.isJointsFolderLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Gets and sets if the light bulb of the joints folder as seen in the browser is on or off. This controls the visibility of the joints in this occurrence. The light bulb for the folder is component specific and will turn off the joints for all occurrences referencing the component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.isJointsFolderLightBulbOn\n\n# Set the value of the property.\ncomponent_var.isJointsFolderLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = component_var->isJointsFolderLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = component_var->isJointsFolderLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isLibraryItem": {
+      "id": "Component_isLibraryItem",
+      "title": "Component.isLibraryItem Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Gets whether the component was created from a fasteners library item.\"",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.isLibraryItem",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = component_var->isLibraryItem();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Library Item API Sample",
+          "description": "Demonstrates how to examine library items using the API.\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the existing default code. The script will search for and record all components and library items in the current project. They are displayed in a dialog when the script has finished."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "isOriginFolderLightBulbOn": {
+      "id": "Component_isOriginFolderLightBulbOn",
+      "title": "Component.isOriginFolderLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Gets and sets if the light bulb of the origin folder as seen in the browser is on or off. This controls the visibility of the origin construction geometry.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.isOriginFolderLightBulbOn\n\n# Set the value of the property.\ncomponent_var.isOriginFolderLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = component_var->isOriginFolderLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = component_var->isOriginFolderLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isSketchFolderLightBulbOn": {
+      "id": "Component_isSketchFolderLightBulbOn",
+      "title": "Component.isSketchFolderLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Gets and sets if the light bulb of the sketch folder as seen in the browser is on or off. This controls the visibility of the sketches in this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.isSketchFolderLightBulbOn\n\n# Set the value of the property.\ncomponent_var.isSketchFolderLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = component_var->isSketchFolderLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = component_var->isSketchFolderLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isValid": {
+      "id": "Component_isValid",
+      "title": "Component.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = component_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "jointOrigins": {
+      "id": "Component_jointOrigins",
+      "title": "Component.jointOrigins Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the collection of joint origins associated with this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.jointOrigins",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->jointOrigins();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "joints": {
+      "id": "Component_joints",
+      "title": "Component.joints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the collection of joints associated with this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.joints",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->joints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "material": {
+      "id": "Component_material",
+      "title": "Component.material Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Gets and sets the physical material assigned to this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.material\n\n# Set the value of the property.\ncomponent_var.material = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->material();\n\n// Set the value of the property, where value_var is a Material.\nbool returnValue = component_var->material(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "meshBodies": {
+      "id": "Component_meshBodies",
+      "title": "Component.meshBodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the mesh bodies collection associated with this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.meshBodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->meshBodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "mfgdmModelId": {
+      "id": "Component_mfgdmModelId",
+      "title": "Component.mfgdmModelId Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the MFGDM model ID for this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.mfgdmModelId",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = component_var->mfgdmModelId();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "modelParameters": {
+      "id": "Component_modelParameters",
+      "title": "Component.modelParameters Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the collection of model parameters in the Component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.modelParameters",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->modelParameters();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "motionLinks": {
+      "id": "Component_motionLinks",
+      "title": "Component.motionLinks Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the collection of MotionLinks associated with this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.motionLinks",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->motionLinks();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2025"
+    },
+    "name": {
+      "id": "Component_name",
+      "title": "Component.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Property that gets and sets the name of this component. This is the name shown in the browser for each occurrence referencing this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.name\n\n# Set the value of the property.\ncomponent_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = component_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = component_var->name(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Delete Empty Components",
+          "description": "Deletes empty components from the active design."
+        },
+        {
+          "name": "Set Vise Origin As Setup WCS Origin API Sample",
+          "description": "This sample script demonstrates how to define our setup WCS origin relative to our vise origin from either a component, a sketch point or a joint origin.The Work Coordinate System is a reference point set in our CAM workspace and on our machine. All machine coordinates are drawn from the WCS. This script demonstrates defining the WCS by each of 4 alternative methods:Setup by default with no origin defined.Setup using vise origin as WCS origin.Setup using a sketch point as WCS origin.Setup using a joint origin as WCS origin."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "Component_objectType",
+      "title": "Component.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = component_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "occurrences": {
+      "id": "Component_occurrences",
+      "title": "Component.occurrences Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Property that returns the Occurrences collection associated with this component. This provides access to the occurrences at the top-level of this component and provides the functionality to add new occurrences.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.occurrences",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->occurrences();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Assembly traversal using recursion API Sample",
+          "description": "Traverses the entire structure of the currently open assemlby using a recursive function and displays the result in a message box. This will match the occurrence structure seen in the browser."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "opacity": {
+      "id": "Component_opacity",
+      "title": "Component.opacity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Gets and sets the opacity override assigned to this component. A value of 1.0 specifies that is it completely opaque and a value of 0.0 specifies that is it completely transparent. This is only applicable for a non-root local component. This value is not necessarily related to what the user sees because the opacity is inherited. For example, if you have TopComponent and it has a component in it called SubComponent and you set the opacity of TopComponent to be 0.5, SubComponent will also be shown as slightly transparent even though the opacity property for it will return 1.0. Because a component can be referenced as an occurrence in other components and they can have different opacity settings, it's possible that different instances of the same component can display using different opacity levels. To get the opacity that it is being displayed with use the Occurrence.visibleOpacity property.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.opacity\n\n# Set the value of the property.\ncomponent_var.opacity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = component_var->opacity();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = component_var->opacity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "orientedMinimumBoundingBox": {
+      "id": "Component_orientedMinimumBoundingBox",
+      "title": "Component.orientedMinimumBoundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns an oriented bounding box that is best oriented to tightly fit all B-Rep bodies in the component. All other geometry types are ignored.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.orientedMinimumBoundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->orientedMinimumBoundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "originConstructionPoint": {
+      "id": "Component_originConstructionPoint",
+      "title": "Component.originConstructionPoint Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the origin construction point.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.originConstructionPoint",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->originConstructionPoint();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Create Setups From Hole Recognition API Sample",
+          "description": "This sample script demonstrates how to create a correctly oriented setup using Hole Recognition functionality.The Fusion Manufacturing Extension is required for Hole Recognition.The script starts by opening a sample model from the CAM Samples folder via its URN. The model comprises a 3 way coupling containing holes in various orientations and mounted on a fixture. A reference setup is created for the model using a simple stock mode and offsets. The Hole Recognition feature of the Fusion Manufacturing Extension creates 5 hole groups containing 11 holes between them. For each unique hole group vector captured, a new setup is created and its orientation transformed to match the vector."
+        },
+        {
+          "name": "Set Vise Origin As Setup WCS Origin API Sample",
+          "description": "This sample script demonstrates how to define our setup WCS origin relative to our vise origin from either a component, a sketch point or a joint origin.The Work Coordinate System is a reference point set in our CAM workspace and on our machine. All machine coordinates are drawn from the WCS. This script demonstrates defining the WCS by each of 4 alternative methods:Setup by default with no origin defined.Setup using vise origin as WCS origin.Setup using a sketch point as WCS origin.Setup using a joint origin as WCS origin."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "parentDesign": {
+      "id": "Component_parentDesign",
+      "title": "Component.parentDesign Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the parent product this component is owned by.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.parentDesign",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->parentDesign();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "partNumber": {
+      "id": "Component_partNumber",
+      "title": "Component.partNumber Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Gets and sets the part number associated with this component. Setting this to an empty string will reset it to be the same as the component name.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.partNumber\n\n# Set the value of the property.\ncomponent_var.partNumber = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = component_var->partNumber();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = component_var->partNumber(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "physicalProperties": {
+      "id": "Component_physicalProperties",
+      "title": "Component.physicalProperties Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this component. Property values will be calculated using the 'LowCalculationAccuracy' setting when using this property to get the PhysicalProperties object. To specify a higher calculation tolerance, use the getPhysicalProperties method instead.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.physicalProperties",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->physicalProperties();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Get Physical Properties API Sample",
+          "description": "Script that demonstrates getting physical properties using the API. When this script is run it will create a new document, build a simple model, and get the various physical properties from the model."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "preciseBoundingBox": {
+      "id": "Component_preciseBoundingBox",
+      "title": "Component.preciseBoundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns a bounding box that tightly fits around all B-Rep bodies in the component. All other geometry types are ignored.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.preciseBoundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->preciseBoundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "propertyGroups": {
+      "id": "Component_propertyGroups",
+      "title": "Component.propertyGroups Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the PropertyGroups object associated with this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.propertyGroups",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->propertyGroups();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Library Item API Sample",
+          "description": "Demonstrates how to examine library items using the API.\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the existing default code. The script will search for and record all components and library items in the current project. They are displayed in a dialog when the script has finished."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "revisionId": {
+      "id": "Component_revisionId",
+      "title": "Component.revisionId Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the current revision ID of the component. This ID changes any time the component is modified in any way. By getting and saving the ID when you create any data that is dependent on the component, you can then compare the saved ID with the current ID to determine if the component has changed to know if you should update your data.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.revisionId",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = component_var->revisionId();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Component Sample",
+          "description": "Component related functions"
+        }
+      ],
+      "version": "Introduced in version September 2017"
+    },
+    "rigidGroups": {
+      "id": "Component_rigidGroups",
+      "title": "Component.rigidGroups Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the collection of rigid groups associated with this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.rigidGroups",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->rigidGroups();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "sketches": {
+      "id": "Component_sketches",
+      "title": "Component.sketches Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the sketches collection associated with this component. This provides access to the existing sketches and supports the creation of new sketches.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.sketches",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->sketches();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "API Sample that demonstrates creating sketch lines in various ways.",
+          "description": "Demonstrates several ways to create sketch lines, including as the result of creating a rectangle."
+        },
+        {
+          "name": "Loft Feature API Sample",
+          "description": "Demonstrates creating a new loft feature."
+        },
+        {
+          "name": "Simple Extrusion Sample",
+          "description": "Creates a new extrusion feature, resulting in a new component."
+        },
+        {
+          "name": "Simple Revolve Feature Sample",
+          "description": "Creates a new revolve feature, resulting in a new component."
+        },
+        {
+          "name": "Sketches.add",
+          "description": "Demonstrates the Sketches.add method."
+        },
+        {
+          "name": "Sketches.addToBaseOrFormFeature",
+          "description": "Demonstrates the Sketches.addToBaseOrFormFeature method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "tangentRelationships": {
+      "id": "Component_tangentRelationships",
+      "title": "Component.tangentRelationships Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the collection of tangent relationships associated with this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.tangentRelationships",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->tangentRelationships();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "xConstructionAxis": {
+      "id": "Component_xConstructionAxis",
+      "title": "Component.xConstructionAxis Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the X origin construction axis.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.xConstructionAxis",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->xConstructionAxis();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Create Setups From Hole Recognition API Sample",
+          "description": "This sample script demonstrates how to create a correctly oriented setup using Hole Recognition functionality.The Fusion Manufacturing Extension is required for Hole Recognition.The script starts by opening a sample model from the CAM Samples folder via its URN. The model comprises a 3 way coupling containing holes in various orientations and mounted on a fixture. A reference setup is created for the model using a simple stock mode and offsets. The Hole Recognition feature of the Fusion Manufacturing Extension creates 5 hole groups containing 11 holes between them. For each unique hole group vector captured, a new setup is created and its orientation transformed to match the vector."
+        },
+        {
+          "name": "Manage Participant Bodies API Sample",
+          "description": "Demonstrates how to manage participant During Cut operation. Same API can be used to manage participants During intersection also."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "xYConstructionPlane": {
+      "id": "Component_xYConstructionPlane",
+      "title": "Component.xYConstructionPlane Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the XY origin construction plane.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.xYConstructionPlane",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->xYConstructionPlane();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "mirrorFeatures.add",
+          "description": "Demonstrates the mirrorFeatures.add method by mirroring the selected body around the base X-Y construction plane."
+        },
+        {
+          "name": "Simple Extrusion Sample",
+          "description": "Creates a new extrusion feature, resulting in a new component."
+        },
+        {
+          "name": "Simple Revolve Feature Sample",
+          "description": "Creates a new revolve feature, resulting in a new component."
+        },
+        {
+          "name": "Sketches.add",
+          "description": "Demonstrates the Sketches.add method."
+        },
+        {
+          "name": "Sketches.addToBaseOrFormFeature",
+          "description": "Demonstrates the Sketches.addToBaseOrFormFeature method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "xZConstructionPlane": {
+      "id": "Component_xZConstructionPlane",
+      "title": "Component.xZConstructionPlane Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the XZ origin construction plane.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.xZConstructionPlane",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->xZConstructionPlane();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Loft Feature API Sample",
+          "description": "Demonstrates creating a new loft feature."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "yConstructionAxis": {
+      "id": "Component_yConstructionAxis",
+      "title": "Component.yConstructionAxis Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the Y origin construction axis.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.yConstructionAxis",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->yConstructionAxis();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Create Setups From Hole Recognition API Sample",
+          "description": "This sample script demonstrates how to create a correctly oriented setup using Hole Recognition functionality.The Fusion Manufacturing Extension is required for Hole Recognition.The script starts by opening a sample model from the CAM Samples folder via its URN. The model comprises a 3 way coupling containing holes in various orientations and mounted on a fixture. A reference setup is created for the model using a simple stock mode and offsets. The Hole Recognition feature of the Fusion Manufacturing Extension creates 5 hole groups containing 11 holes between them. For each unique hole group vector captured, a new setup is created and its orientation transformed to match the vector."
+        },
+        {
+          "name": "Manage Participant Bodies API Sample",
+          "description": "Demonstrates how to manage participant During Cut operation. Same API can be used to manage participants During intersection also."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "yZConstructionPlane": {
+      "id": "Component_yZConstructionPlane",
+      "title": "Component.yZConstructionPlane Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the YZ origin construction plane.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.yZConstructionPlane",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->yZConstructionPlane();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "zConstructionAxis": {
+      "id": "Component_zConstructionAxis",
+      "title": "Component.zConstructionAxis Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the Z origin construction axis.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = component_var.zConstructionAxis",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = component_var->zConstructionAxis();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "method_details": {
+    "allOccurrencesByComponent": {
+      "id": "Component_allOccurrencesByComponent",
+      "title": "Component.allOccurrencesByComponent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns all occurrences, at any level of the assembly, that reference the specified component. The returned list is read-only.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "returnValue = component_var.allOccurrencesByComponent(component)",
+        "cpp": "#include \n\nreturnValue = component_var->allOccurrencesByComponent(component);"
+      },
+      "return_type": "OccurrenceList",
+      "return_description": "The occurrences referenced by the specified component.",
+      "parameters": [
+        {
+          "name": "component",
+          "type": "Component",
+          "description": "The component that is being referenced by the occurrences that will be returned."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Delete Empty Components",
+          "description": "Deletes empty components from the active design."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "boundingBox2": {
+      "id": "Component_boundingBox2",
+      "title": "Component.boundingBox2 Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the bounding box of the specified entity types within the component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "returnValue = component_var.boundingBox2(entityTypes)",
+        "cpp": "#include \n\nreturnValue = component_var->boundingBox2(entityTypes);"
+      },
+      "return_type": "BoundingBox3D",
+      "return_description": "Returns a BoundingBox3D object if the calculation was successful and null in the case where there is no valid geometry and the bounding box is empty.",
+      "parameters": [
+        {
+          "name": "entityTypes",
+          "type": "BoundingBoxEntityTypes",
+          "description": "Bitwise value that specifies the types of entities to include in the calculation of the bounding box."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "classType": {
+      "id": "Component_classType",
+      "title": "Component.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.Component.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::Component::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "createBRepEdgeProfile": {
+      "id": "Component_createBRepEdgeProfile",
+      "title": "Component.createBRepEdgeProfile Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Creates a profile based on the outside open edges of a BRepFace.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = component_var.createBRepEdgeProfile(edges)\n\n# Uses optional arguments.\nreturnValue = component_var.createBRepEdgeProfile(edges, chainEdges)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = component_var->createBRepEdgeProfile(edges);\n\n// Uses optional arguments.\nreturnValue = component_var->createBRepEdgeProfile(edges, chainEdges);"
+      },
+      "return_type": "Profile",
+      "return_description": "Returns the new Profile object or null in the case of a failure.",
+      "parameters": [
+        {
+          "name": "edges",
+          "type": "Base",
+          "description": "A single BRepEdge object or an ObjectCollection containing multiple BRepEdge objects, or a BRepLoop object. If a single edge is input, the chainEdges argument is checked to determine if connected edges (they do not need to be tangent) should be automatically found. If multiple edges are provided the chainEdges argument is always treated as false so you must provide all of the edges in the object collection that you want included in the profile. and the edges must all connect together in a single path. if a BRepLoop object is provided, all of the edges in the loop are included in the profile and the chainEdges argument is ignored."
+        },
+        {
+          "name": "chainEdges",
+          "type": "boolean",
+          "description": "If true, this finds any edges that connect to the single input edge and automatically includes them in the profile. If false, only the edges provided will be used to define the profile. This argument is ignored and treated as false if multiple edges or a BRepLoop is input.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "createFlatPattern": {
+      "id": "Component_createFlatPattern",
+      "title": "Component.createFlatPattern Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Creates a flat pattern of the sheet metal folded body. The isSheetMetal property of the BRepBody object can be used to determine if a particular body can be flattened. Creating a flat pattern will fail if a flat pattern already exists in the component. You can determine if a flat pattern already exists by checking if the flatPattern property returns a FlatPattern object or null.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "returnValue = component_var.createFlatPattern(stationaryFace)",
+        "cpp": "#include \n\nreturnValue = component_var->createFlatPattern(stationaryFace);"
+      },
+      "return_type": "FlatPattern",
+      "return_description": "Returns the newly created flat pattern.",
+      "parameters": [
+        {
+          "name": "stationaryFace",
+          "type": "BRepFace",
+          "description": "A planar face in the sheet metal body that is on the top or bottom of the part and not an edge face. This face will be positioned on the X-Y plane of the flat pattern and the rest of the model will be flattened relative to this face. The face must exist on a body that is owned by this component."
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    },
+    "createOpenProfile": {
+      "id": "Component_createOpenProfile",
+      "title": "Component.createOpenProfile Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Creates an open profile based on the input curve(s).",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = component_var.createOpenProfile(curves)\n\n# Uses optional arguments.\nreturnValue = component_var.createOpenProfile(curves, chainCurves)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = component_var->createOpenProfile(curves);\n\n// Uses optional arguments.\nreturnValue = component_var->createOpenProfile(curves, chainCurves);"
+      },
+      "return_type": "Profile",
+      "return_description": "Returns the new Profile object or null in the case of a failure.",
+      "parameters": [
+        {
+          "name": "curves",
+          "type": "Base",
+          "description": "A SketchCurve or an ObjectCollection containing multiple sketch entities. If a single sketch curve is input the chainCurves argument is checked to determine if connected curves (they do not need to be tangent) should be automatically found. If multiple curves are provided the chainCurves argument is always treated as false so you must provide all of the curves in the object collection that you want included in the profile. The provided curves must all connect together in a single path.   The input curves do not need to be in the same sketch, but they do need to geometrically connect for a valid profile to be created."
+        },
+        {
+          "name": "chainCurves",
+          "type": "boolean",
+          "description": "If true, this finds any curves within the same sketch that connect to the single input curve and automatically includes them in the profile. If false, only the curves provided will be used to define the profile. This argument is ignored and treated as false if multiple curves are input.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "createThumbnail": {
+      "id": "Component_createThumbnail",
+      "title": "Component.createThumbnail Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Creates a thumbnail for this component. This can be a root component to get a thumbnail that represents the associated file, or it can be any sub component to get a thumbnail of a subset of the complete assembly or individual parts.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = component_var.createThumbnail()\n\n# Uses optional arguments.\nreturnValue = component_var.createThumbnail(width, height, imageType)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = component_var->createThumbnail();\n\n// Uses optional arguments.\nreturnValue = component_var->createThumbnail(width, height, imageType);"
+      },
+      "return_type": "DataObject",
+      "return_description": "Returns a DataObject that you can use to save the thumbnail to a file or to access the binary data of the bitmap directly.",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "integer",
+          "description": "Optional argument to define the width of the thumbnail in pixels. A default width of 256 pixels is used if no width is specified.   This is an optional argument whose default value is 256."
+        },
+        {
+          "name": "height",
+          "type": "integer",
+          "description": "Optional argument to define the height of the thumbnail in pixels. A default height of 256 pixels is used if no height is specified.   This is an optional argument whose default value is 256."
+        },
+        {
+          "name": "imageType",
+          "type": "string",
+          "description": "Optional argument to define the type of image data to create. The default of PNG is used if no type is specified. Valid types include \"PNG\", \"JPG\", \"TIF\", and \"BMP\".   This is an optional argument whose default value is \"PNG\"."
+        }
+      ],
+      "version": "Introduced in version November 2024"
+    },
+    "findBRepUsingPoint": {
+      "id": "Component_findBRepUsingPoint",
+      "title": "Component.findBRepUsingPoint Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Finds all the entities of the specified type at the specified location.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = component_var.findBRepUsingPoint(point, entityType)\n\n# Uses optional arguments.\nreturnValue = component_var.findBRepUsingPoint(point, entityType, proximityTolerance, visibleEntitiesOnly)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = component_var->findBRepUsingPoint(point, entityType);\n\n// Uses optional arguments.\nreturnValue = component_var->findBRepUsingPoint(point, entityType, proximityTolerance, visibleEntitiesOnly);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "Returns an ObjectCollection containing the entities found. The returned collection can be empty indicating nothing was found.",
+      "parameters": [
+        {
+          "name": "point",
+          "type": "Point3D",
+          "description": "Input coordinate that specifies the component space point at which to find the entities."
+        },
+        {
+          "name": "entityType",
+          "type": "BRepEntityTypes",
+          "description": "The type of B-Rep entity wanted. You can also take advantage of B-Rep topology to infer other that other entities were found. For example, If you get a BRepEdge it implies that the faces the edge connects were also found. If a BRepVertex is returned it implies the edges that the vertex connects were found and the faces that the edges connect were found."
+        },
+        {
+          "name": "proximityTolerance",
+          "type": "double",
+          "description": "Specifies the tolerance for the search. All entities within this distance from the search point that match the filter will be returned. If not specified a default tolerance is used.   This is an optional argument whose default value is -1.0."
+        },
+        {
+          "name": "visibleEntitiesOnly",
+          "type": "boolean",
+          "description": "indicates whether or not invisible objects should be included in the search. Defaults to True indicating that invisible objects will be ignored.   This is an optional argument whose default value is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        }
+      ],
+      "version": "Introduced in version December 2016"
+    },
+    "findBRepUsingRay": {
+      "id": "Component_findBRepUsingRay",
+      "title": "Component.findBRepUsingRay Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Finds all the B-Rep entities that are intersected by the specified ray. This can return BRepFace, BrepEdge, and BRepVertex objects.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = component_var.findBRepUsingRay(originPoint, rayDirection, entityType)\n\n# Uses optional arguments.\nreturnValue = component_var.findBRepUsingRay(originPoint, rayDirection, entityType, proximityTolerance, visibleEntitiesOnly, hitPoints)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = component_var->findBRepUsingRay(originPoint, rayDirection, entityType);\n\n// Uses optional arguments.\nreturnValue = component_var->findBRepUsingRay(originPoint, rayDirection, entityType, proximityTolerance, visibleEntitiesOnly, hitPoints);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "Returns an ObjectCollection containing the entities found. The returned collection can be empty indicating nothing was found. The points are returned in an order where they are arranged based on their distance from the origin point where the closest point is first. If an entity is hit more than once, the entity is returned once for the first intersection.",
+      "parameters": [
+        {
+          "name": "originPoint",
+          "type": "Point3D",
+          "description": "Input point that defines the origin of the ray. The search for entities begins at this point."
+        },
+        {
+          "name": "rayDirection",
+          "type": "Vector3D",
+          "description": "Input vector that defines the direction of the ray. The ray is infinite so the length of the vector is ignored."
+        },
+        {
+          "name": "entityType",
+          "type": "BRepEntityTypes",
+          "description": "The type of B-Rep entity wanted. You can also take advantage of B-Rep topology to infer other intersections. For example, If you get a BRepEdge it implies that the faces the edge connects were also intersected. If a BRepVertex is returned it implies the edges that the vertex connects were intersected and the faces that the edges connect were intersected."
+        },
+        {
+          "name": "proximityTolerance",
+          "type": "double",
+          "description": "Optional argument that specifies the tolerance for the search. All entities within this distance from the ray and of the specified type will be returned. If not specified a default small tolerance is used.   This is an optional argument whose default value is -1.0."
+        },
+        {
+          "name": "visibleEntitiesOnly",
+          "type": "boolean",
+          "description": "Optional argument that indicates whether or not invisible entities should be included in the search. Defaults to True indicating that invisible entities will be ignored.   This is an optional argument whose default value is True."
+        },
+        {
+          "name": "hitPoints",
+          "type": "ObjectCollection",
+          "description": "An ObjectCollection of Point3D objects that represent the coordinates where the ray hit the found entity. There will be the same number of hit points as returned entities and they will be in the collections in the same order. In other words, hit point 1 corresponds with found entity 1, hit point 2 corresponds with found entity 2, and so on. Because of the proximity tolerance the hitPoint may not actually lie on the entity but will be within the proximity tolerance to it. It's an optional out argument, returns the hit points if an existing ObjectCollection is input. You can create a new ObjectCollection by using the static create method on the ObjectCollection class.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version December 2016"
+    },
+    "getPhysicalProperties": {
+      "id": "Component_getPhysicalProperties",
+      "title": "Component.getPhysicalProperties Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = component_var.getPhysicalProperties()\n\n# Uses optional arguments.\nreturnValue = component_var.getPhysicalProperties(accuracy)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = component_var->getPhysicalProperties();\n\n// Uses optional arguments.\nreturnValue = component_var->getPhysicalProperties(accuracy);"
+      },
+      "return_type": "PhysicalProperties",
+      "return_description": "Returns a PhysicalProperties object that can be used to get the various physical property related values.",
+      "parameters": [
+        {
+          "name": "accuracy",
+          "type": "CalculationAccuracy",
+          "description": "Specifies the desired level of computational accuracy of the property calculations. The default value of 'LowCalculationAccuracy' returns results within a +/- 1% error margin.   This is an optional argument whose default value is CalculationAccuracy.LowCalculationAccuracy."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Get Physical Properties API Sample",
+          "description": "Script that demonstrates getting physical properties using the API. When this script is run it will create a new document, build a simple model, and get the various physical properties from the model."
+        }
+      ],
+      "version": "Introduced in version May 2016"
+    },
+    "occurrencesByComponent": {
+      "id": "Component_occurrencesByComponent",
+      "title": "Component.occurrencesByComponent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Returns all occurrences at the top-level of this component that reference the specified component. The returned list is read-only.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "returnValue = component_var.occurrencesByComponent(component)",
+        "cpp": "#include \n\nreturnValue = component_var->occurrencesByComponent(component);"
+      },
+      "return_type": "OccurrenceList",
+      "return_description": "The occurrences referenced by the specified component.",
+      "parameters": [
+        {
+          "name": "component",
+          "type": "Component",
+          "description": "The component that is being referenced by the occurrences that will be returned."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "saveCopyAs": {
+      "id": "Component_saveCopyAs",
+      "title": "Component.saveCopyAs Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Performs a Save Copy As on this component. This saves the specified component as a new document in the specified location.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "returnValue = component_var.saveCopyAs(name, dataFolder, description, tag)",
+        "cpp": "#include \n\nreturnValue = component_var->saveCopyAs(name, dataFolder, description, tag);"
+      },
+      "return_type": "DataFileFuture",
+      "return_description": "Returns a DataFileFuture object that can be used to track the progress of the upload and get the resulting DataFile once it's available on A360.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name to use for the new document. If this is an empty string, Fusion will use the name of the component being saved."
+        },
+        {
+          "name": "dataFolder",
+          "type": "DataFolder",
+          "description": "The data folder to save the new document to."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "The description string of the document. This can be an empty string."
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "description": "The tag string of the document. This can be an empty string."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "transformOccurrences": {
+      "id": "Component_transformOccurrences",
+      "title": "Component.transformOccurrences Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Component.h",
+      "description": "Transforms a set of occurrences in one step. This provides better performance than transforming them one at a time. This method is only valid when called on the root component because Fusion flattens the entire assembly structure when manipulating the assembly so all transforms are relative to the root component.",
+      "parent_class": "Component",
+      "syntax": {
+        "python": "returnValue = component_var.transformOccurrences(occurrences, transforms, ignoreJoints)",
+        "cpp": "#include \n\nreturnValue = component_var->transformOccurrences(occurrences, transforms, ignoreJoints);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the transform was successful.",
+      "parameters": [
+        {
+          "name": "occurrences",
+          "type": "Occurrence[]",
+          "description": "An array of Occurrence objects that you want to transform. These must all be in the context of the root component which means proxies must be used for occurrences that are in sub-components."
+        },
+        {
+          "name": "transforms",
+          "type": "Matrix3D[]",
+          "description": "An array of Matrix3D objects that defines the transform to apply to each occurrence. This array must be the same size as the array provided for the occurrences argument and the transform will be applied to the occurrence at the same index in the occurrences array."
+        },
+        {
+          "name": "ignoreJoints",
+          "type": "boolean",
+          "description": "Specifies if the joints are to be ignored and the occurrences are to be positioned based on then specified transform or if the joints should be used and the occurrence is transformed the best it can while still honoring the joints."
+        }
+      ],
+      "version": "Introduced in version August 2016"
+    }
+  }
+}

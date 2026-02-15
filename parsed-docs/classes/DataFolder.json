@@ -1,0 +1,283 @@
+{
+  "id": "DataFolder",
+  "title": "DataFolder Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Dashboard/DataFolder.h",
+  "description": "A data folder that contains a collection of data items.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this folder item."
+    },
+    {
+      "name": "uploadAssembly",
+      "description": "Uploads a set of files that represent an assembly There should only be a single top-level assembly file but there can be any number of other files that represent sub-assemblies."
+    },
+    {
+      "name": "uploadFile",
+      "description": "Uploads a single file to this directory."
+    }
+  ],
+  "properties": [
+    {
+      "name": "dataFiles",
+      "description": "Returns a collection containing all of the items within this folder, excluding folders. Use the dataFolders property to get the folders."
+    },
+    {
+      "name": "dataFolders",
+      "description": "Returns a collection containing all of the folders within this folder."
+    },
+    {
+      "name": "id",
+      "description": "Returns the unique ID for this folder. This is the same id used in the APS Data Management API."
+    },
+    {
+      "name": "isRoot",
+      "description": "Indicates if this folder is the root folder within the parent project."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the displayed name of this folder."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentFolder",
+      "description": "Returns the parent folder this folder is contained within. Returns null if this is the project's root folder."
+    },
+    {
+      "name": "parentProject",
+      "description": "Returns the parent project that owns this folder."
+    }
+  ],
+  "version": "Introduced in version January 2015",
+  "method_details": {
+    "classType": {
+      "id": "DataFolder_classType",
+      "title": "DataFolder.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFolder.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "DataFolder",
+      "syntax": {
+        "python": "returnValue = adsk.core.DataFolder.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::DataFolder::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2015"
+    },
+    "deleteMe": {
+      "id": "DataFolder_deleteMe",
+      "title": "DataFolder.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFolder.h",
+      "description": "Deletes this folder item.",
+      "parent_class": "DataFolder",
+      "syntax": {
+        "python": "returnValue = dataFolder_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = dataFolder_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the deletion was successful.",
+      "version": "Introduced in version September 2016"
+    },
+    "uploadAssembly": {
+      "id": "DataFolder_uploadAssembly",
+      "title": "DataFolder.uploadAssembly Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFolder.h",
+      "description": "Uploads a set of files that represent an assembly There should only be a single top-level assembly file but there can be any number of other files that represent sub-assemblies. Remarks",
+      "parent_class": "DataFolder",
+      "syntax": {
+        "python": "returnValue = dataFolder_var.uploadAssembly(filenames)",
+        "cpp": "#include \n\nreturnValue = dataFolder_var->uploadAssembly(filenames);"
+      },
+      "return_type": "DataFileFuture",
+      "return_description": "The upload process is asynchronous which means that this method will return before the upload process had completed. The returned DataFileFuture object can be used to check on the current state of the upload to determine if it is still uploading, is complete, or has failed. If it is complete the final DataFinal can be retrieved through the DataFileFuture object.",
+      "parameters": [
+        {
+          "name": "filenames",
+          "type": "string[]",
+          "description": "An array of strings that contains the list of all of the files that are part of the assembly. The name of the top-level assembly file must be the first file in the array."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    },
+    "uploadFile": {
+      "id": "DataFolder_uploadFile",
+      "title": "DataFolder.uploadFile Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFolder.h",
+      "description": "Uploads a single file to this directory. Remarks",
+      "parent_class": "DataFolder",
+      "syntax": {
+        "python": "returnValue = dataFolder_var.uploadFile(filename)",
+        "cpp": "#include \n\nreturnValue = dataFolder_var->uploadFile(filename);"
+      },
+      "return_type": "DataFileFuture",
+      "return_description": "The upload process is asynchronous which means that this method will return before the upload process had completed. The returned DataFileFuture object can be used to check on the current state of the upload to determine if it is still uploading, is complete, or has failed. If it is complete the final DataFinal can be retrieved through the DataFileFuture object.",
+      "parameters": [
+        {
+          "name": "filename",
+          "type": "string",
+          "description": "The full filename of the file to upload."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    }
+  },
+  "property_details": {
+    "dataFiles": {
+      "id": "DataFolder_dataFiles",
+      "title": "DataFolder.dataFiles Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFolder.h",
+      "description": "Returns a collection containing all of the items within this folder, excluding folders. Use the dataFolders property to get the folders.",
+      "parent_class": "DataFolder",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFolder_var.dataFiles",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFolder_var->dataFiles();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "dataFolders": {
+      "id": "DataFolder_dataFolders",
+      "title": "DataFolder.dataFolders Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFolder.h",
+      "description": "Returns a collection containing all of the folders within this folder.",
+      "parent_class": "DataFolder",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFolder_var.dataFolders",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFolder_var->dataFolders();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "id": {
+      "id": "DataFolder_id",
+      "title": "DataFolder.id Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFolder.h",
+      "description": "Returns the unique ID for this folder. This is the same id used in the APS Data Management API.",
+      "parent_class": "DataFolder",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFolder_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = dataFolder_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "isRoot": {
+      "id": "DataFolder_isRoot",
+      "title": "DataFolder.isRoot Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFolder.h",
+      "description": "Indicates if this folder is the root folder within the parent project.",
+      "parent_class": "DataFolder",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFolder_var.isRoot",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = dataFolder_var->isRoot();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isValid": {
+      "id": "DataFolder_isValid",
+      "title": "DataFolder.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFolder.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "DataFolder",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFolder_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = dataFolder_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "name": {
+      "id": "DataFolder_name",
+      "title": "DataFolder.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFolder.h",
+      "description": "Gets and sets the displayed name of this folder.",
+      "parent_class": "DataFolder",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFolder_var.name\n\n# Set the value of the property.\ndataFolder_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = dataFolder_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = dataFolder_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "objectType": {
+      "id": "DataFolder_objectType",
+      "title": "DataFolder.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFolder.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "DataFolder",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFolder_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = dataFolder_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "parentFolder": {
+      "id": "DataFolder_parentFolder",
+      "title": "DataFolder.parentFolder Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFolder.h",
+      "description": "Returns the parent folder this folder is contained within. Returns null if this is the project's root folder.",
+      "parent_class": "DataFolder",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFolder_var.parentFolder",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFolder_var->parentFolder();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "parentProject": {
+      "id": "DataFolder_parentProject",
+      "title": "DataFolder.parentProject Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFolder.h",
+      "description": "Returns the parent project that owns this folder.",
+      "parent_class": "DataFolder",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFolder_var.parentProject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFolder_var->parentProject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    }
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "id": "HTMLEvent",
+  "title": "HTMLEvent Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/HTMLEvent.h",
+  "description": "A HTMLEvent is fired when triggered from JavaScript code associated with HTML used in a palette.",
+  "parent_class": "Event",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Add a handler to be notified when the event occurs."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "remove",
+      "description": "Removes a handler from the event."
+    }
+  ],
+  "properties": [
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "name",
+      "description": "The name of the event - e.g. \"DocumentOpening\""
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "sender",
+      "description": "The object that is firing the event. For example, in the case of a command input event this will return the command."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Palette Sample",
+      "description": "Demonstrates how to create a palette, how to dock and snap palettes and how Fusion communicates with the palette HTML. The sample is an add-in.  To use it, create a new Python add-in and replace the code with the code below. You also need to create an html file using the name and code below. The html file needs to be in the same folder as the py file.\n\tWhen you load the add-in, you'll see two new commands under the ADD-INS panel of the TOOLS tab. The \"Show Custom Palette\" command will cause the custom palette to be displayed. It will remain displayed until you click its Close button. Clicking the \"Click to send info to Fusion\" button on the palette, will send information to your add-in, which uses the API to display that information in a message box. Running the \"Send Info to HTML\" command to send data to the javascript running in the palette, which uses it to update the content of a paragraph.\n\npalette.html"
+    }
+  ],
+  "version": "Introduced in version March 2017",
+  "method_details": {
+    "add": {
+      "id": "HTMLEvent_add",
+      "title": "HTMLEvent.add Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/HTMLEvent.h",
+      "description": "Add a handler to be notified when the event occurs.",
+      "parent_class": "HTMLEvent",
+      "syntax": {
+        "python": "returnValue = hTMLEvent_var.add(handler)",
+        "cpp": "#include \n\nreturnValue = hTMLEvent_var->add(handler);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the addition of the handler was successful.",
+      "parameters": [
+        {
+          "name": "handler",
+          "type": "HTMLEventHandler",
+          "description": "The handler object to be called when this event is fired."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Palette Sample",
+          "description": "Demonstrates how to create a palette, how to dock and snap palettes and how Fusion communicates with the palette HTML. The sample is an add-in.\u00a0To use it, create a new Python add-in and replace the code with the code below. You also need to create an html file using the name and code below. The html file needs to be in the same folder as the py file.\n\tWhen you load the add-in, you'll see two new commands under the ADD-INS panel of the TOOLS tab. The \"Show Custom Palette\" command will cause the custom palette to be displayed. It will remain displayed until you click its Close button. Clicking the \"Click to send info to Fusion\" button on the palette, will send information to your add-in, which uses the API to display that information in a message box. Running the \"Send Info to HTML\" command to send data to the javascript running in the palette, which uses it to update the content of a paragraph.\n\npalette.html"
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    },
+    "classType": {
+      "id": "HTMLEvent_classType",
+      "title": "HTMLEvent.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/HTMLEvent.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "HTMLEvent",
+      "syntax": {
+        "python": "returnValue = adsk.core.HTMLEvent.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::HTMLEvent::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version March 2017"
+    },
+    "remove": {
+      "id": "HTMLEvent_remove",
+      "title": "HTMLEvent.remove Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/HTMLEvent.h",
+      "description": "Removes a handler from the event.",
+      "parent_class": "HTMLEvent",
+      "syntax": {
+        "python": "returnValue = hTMLEvent_var.remove(handler)",
+        "cpp": "#include \n\nreturnValue = hTMLEvent_var->remove(handler);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if removal of the handler was successful.",
+      "parameters": [
+        {
+          "name": "handler",
+          "type": "HTMLEventHandler",
+          "description": "The handler object to be removed from the event."
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    }
+  },
+  "property_details": {
+    "isValid": {
+      "id": "HTMLEvent_isValid",
+      "title": "HTMLEvent.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/HTMLEvent.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "HTMLEvent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = hTMLEvent_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = hTMLEvent_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    },
+    "name": {
+      "id": "HTMLEvent_name",
+      "title": "HTMLEvent.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/HTMLEvent.h",
+      "description": "The name of the event - e.g. \"DocumentOpening\"",
+      "parent_class": "HTMLEvent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = hTMLEvent_var.name",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = hTMLEvent_var->name();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    },
+    "objectType": {
+      "id": "HTMLEvent_objectType",
+      "title": "HTMLEvent.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/HTMLEvent.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "HTMLEvent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = hTMLEvent_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = hTMLEvent_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    },
+    "sender": {
+      "id": "HTMLEvent_sender",
+      "title": "HTMLEvent.sender Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/HTMLEvent.h",
+      "description": "The object that is firing the event. For example, in the case of a command input event this will return the command.",
+      "parent_class": "HTMLEvent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = hTMLEvent_var.sender",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = hTMLEvent_var->sender();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    }
+  }
+}

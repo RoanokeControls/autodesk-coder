@@ -1,0 +1,323 @@
+{
+  "id": "HoleFeatures",
+  "title": "HoleFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/HoleFeatures.h",
+  "description": "Collection that provides access to all of the existing hole features in a component and supports the ability to create new hole features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new hole feature based on the information provided by a HoleFeatureInput object. To create a new hole, use one of the createInput functions to define a new input object for the type of hole you want to create. Use the methods and properties on the input object to define any additional input. Once the information is defined on the input object, you can pass it to the Add method to create the hole."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createCounterboreInput",
+      "description": "Creates a HoleFeatureInput object that defines a counterbore hole. This is not a hole feature but an object used to create a hole feature. Functionality on the returned HoleFeatureInput object is used to define the position and extent of the hole."
+    },
+    {
+      "name": "createCountersinkInput",
+      "description": "Creates a HoleFeatureInput object that defines a countersink hole. This is not a hole feature but an object used to create a hole feature. Functionality on the returned HoleFeatureInput object is used to define the position and extent of the hole."
+    },
+    {
+      "name": "createSimpleInput",
+      "description": "Creates a HoleFeatureInput object that defines a simple hole (a single diameter). This is not a hole feature, but an object used to create a hole feature. Functionality on the returned HoleFeatureInput object is used to define the position and extent of the hole."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified hole feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified hole feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of hole features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Hole Feature API Sample",
+      "description": "Demonstrates creating a new hole feature."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "add": {
+      "id": "HoleFeatures_add",
+      "title": "HoleFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/HoleFeatures.h",
+      "description": "Creates a new hole feature based on the information provided by a HoleFeatureInput object. To create a new hole, use one of the createInput functions to define a new input object for the type of hole you want to create. Use the methods and properties on the input object to define any additional input. Once the information is defined on the input object, you can pass it to the Add method to create the hole.",
+      "parent_class": "HoleFeatures",
+      "syntax": {
+        "python": "returnValue = holeFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = holeFeatures_var->add(input);"
+      },
+      "return_type": "HoleFeature",
+      "return_description": "Returns the newly created HoleFeature or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "HoleFeatureInput",
+          "description": "The HoleFeatureInput object that defines the hole you want to create."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "holeFeatures.add",
+          "description": "Demonstrates the holeFeatures.add method using the createSimpleInput method. To use this sample, have a design open with a box. Select the face for the hole and two edges to define the position of the hole."
+        },
+        {
+          "name": "Hole Feature API Sample",
+          "description": "Demonstrates creating a new hole feature."
+        },
+        {
+          "name": "holeFeatures.add with Counterbore",
+          "description": "Demonstrates the holeFeatures.add method using the createCounterboreInput method. The hole is positioned at the center of the selected edge."
+        },
+        {
+          "name": "holeFeatures.add with Countersink",
+          "description": "Demonstrates the holeFeatures.add method using the createCountersinkInput method and postions the hole in the center of a selected circular edge."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "classType": {
+      "id": "HoleFeatures_classType",
+      "title": "HoleFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/HoleFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "HoleFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.HoleFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::HoleFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "createCounterboreInput": {
+      "id": "HoleFeatures_createCounterboreInput",
+      "title": "HoleFeatures.createCounterboreInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/HoleFeatures.h",
+      "description": "Creates a HoleFeatureInput object that defines a counterbore hole. This is not a hole feature but an object used to create a hole feature. Functionality on the returned HoleFeatureInput object is used to define the position and extent of the hole.",
+      "parent_class": "HoleFeatures",
+      "syntax": {
+        "python": "returnValue = holeFeatures_var.createCounterboreInput(holeDiameter, counterboreDiameter, counterboreDepth)",
+        "cpp": "#include \n\nreturnValue = holeFeatures_var->createCounterboreInput(holeDiameter, counterboreDiameter, counterboreDepth);"
+      },
+      "return_type": "HoleFeatureInput",
+      "return_description": "Returns the newly created HoleFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "holeDiameter",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the diameter of the hole. If the ValueInput uses a real, it is interpreted as centimeters. If it is a string, the units can be defined as part of the string (i.e. \"3 in\") If no units are specified, it is interpreted using the current default units for length.   If tap information is added to the hole using the returned HoleFeatureInput, it will override this diameter, and the hole will be the correct size for the specified tap."
+        },
+        {
+          "name": "counterboreDiameter",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the counterbore diameter of the hole. If the ValueInput uses a real, it is interpreted as centimeters. If it is a string, the units can be defined as part of the string (i.e. \"3 in\") If no units are specified, it is interpreted using the current default units for length."
+        },
+        {
+          "name": "counterboreDepth",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the counterbore depth of the hole. If the ValueInput uses a real, it is interpreted as centimeters. If it is a string, the units can be defined as part of the string (i.e. \"3 in\") If no units are specified, it is interpreted using the current default units for length."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "holeFeatures.add with Counterbore",
+          "description": "Demonstrates the holeFeatures.add method using the createCounterboreInput method. The hole is positioned at the center of the selected edge."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "createCountersinkInput": {
+      "id": "HoleFeatures_createCountersinkInput",
+      "title": "HoleFeatures.createCountersinkInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/HoleFeatures.h",
+      "description": "Creates a HoleFeatureInput object that defines a countersink hole. This is not a hole feature but an object used to create a hole feature. Functionality on the returned HoleFeatureInput object is used to define the position and extent of the hole.",
+      "parent_class": "HoleFeatures",
+      "syntax": {
+        "python": "returnValue = holeFeatures_var.createCountersinkInput(holeDiameter, countersinkDiameter, countersinkAngle)",
+        "cpp": "#include \n\nreturnValue = holeFeatures_var->createCountersinkInput(holeDiameter, countersinkDiameter, countersinkAngle);"
+      },
+      "return_type": "HoleFeatureInput",
+      "return_description": "Returns the newly created HoleFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "holeDiameter",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the diameter of the hole. If the ValueInput uses a real, it is interpreted as centimeters. If it is a string, the units can be defined as part of the string (i.e. \"3 in\") If no units are specified, it is interpreted using the current default units for length.   If tap information is added to the hole using the returned HoleFeatureInput, it will override this diameter, and the hole will be the correct size for the specified tap."
+        },
+        {
+          "name": "countersinkDiameter",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the diameter of the countersink. If the ValueInput uses a real, it is interpreted as centimeters. If it is a string, the units can be defined as part of the string (i.e. \"3 in\") If no units are specified, it is interpreted using the current default units for length."
+        },
+        {
+          "name": "countersinkAngle",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the angle of the countersink. If the ValueInput uses a real then it is interpreted as radians. If it is a string then the units can be defined as part of the string (i.e. \"120 deg\"). If no units are specified it is interpreted using the current default units for angles."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "holeFeatures.add with Countersink",
+          "description": "Demonstrates the holeFeatures.add method using the createCountersinkInput method and postions the hole in the center of a selected circular edge."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "createSimpleInput": {
+      "id": "HoleFeatures_createSimpleInput",
+      "title": "HoleFeatures.createSimpleInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/HoleFeatures.h",
+      "description": "Creates a HoleFeatureInput object that defines a simple hole (a single diameter). This is not a hole feature, but an object used to create a hole feature. Functionality on the returned HoleFeatureInput object is used to define the position and extent of the hole.",
+      "parent_class": "HoleFeatures",
+      "syntax": {
+        "python": "returnValue = holeFeatures_var.createSimpleInput(holeDiameter)",
+        "cpp": "#include \n\nreturnValue = holeFeatures_var->createSimpleInput(holeDiameter);"
+      },
+      "return_type": "HoleFeatureInput",
+      "return_description": "Returns the newly created HoleFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "holeDiameter",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the diameter of the hole. If the ValueInput uses a real, it is interpreted as centimeters. If it is a string, the units can be defined as part of the string (i.e. \"3 in\") If no units are specified, it is interpreted using the current default units for length.   If tap information is added to the hole using the returned HoleFeatureInput, it will override this diameter, and the hole will be the correct size for the specified tap."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "holeFeatures.add",
+          "description": "Demonstrates the holeFeatures.add method using the createSimpleInput method. To use this sample, have a design open with a box. Select the face for the hole and two edges to define the position of the hole."
+        },
+        {
+          "name": "Hole Feature API Sample",
+          "description": "Demonstrates creating a new hole feature."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "HoleFeatures_item",
+      "title": "HoleFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/HoleFeatures.h",
+      "description": "Function that returns the specified hole feature using an index into the collection.",
+      "parent_class": "HoleFeatures",
+      "syntax": {
+        "python": "returnValue = holeFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = holeFeatures_var->item(index);"
+      },
+      "return_type": "HoleFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "itemByName": {
+      "id": "HoleFeatures_itemByName",
+      "title": "HoleFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/HoleFeatures.h",
+      "description": "Function that returns the specified hole feature using the name of the feature.",
+      "parent_class": "HoleFeatures",
+      "syntax": {
+        "python": "returnValue = holeFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = holeFeatures_var->itemByName(name);"
+      },
+      "return_type": "HoleFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "HoleFeatures_count",
+      "title": "HoleFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/HoleFeatures.h",
+      "description": "The number of hole features in the collection.",
+      "parent_class": "HoleFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = holeFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = holeFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "HoleFeatures_isValid",
+      "title": "HoleFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/HoleFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "HoleFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = holeFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = holeFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "HoleFeatures_objectType",
+      "title": "HoleFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/HoleFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "HoleFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = holeFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = holeFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

@@ -1,0 +1,400 @@
+{
+  "id": "PlasticRule",
+  "title": "PlasticRule Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Plastic/PlasticRule.h",
+  "description": "A plastic rule.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the rule from the design or library. If the rule is in the library and set as the default rule, you cannot delete it. If the rule is in a design and is used by a component you cannot delete it."
+    }
+  ],
+  "properties": [
+    {
+      "name": "clearance",
+      "description": "The clearance used for plastic features. When using a float to set the value, it is defined in centimeters. When using a string to set the expression, the units can be defined as part of the expression or it defaults to the units associated with the rule if no units are specified."
+    },
+    {
+      "name": "draftAngle",
+      "description": "The draft angle used for plastic features. When using a float to set the value, it is defined in radians. When using a string to set the expression it uses degrees."
+    },
+    {
+      "name": "isDefault",
+      "description": "This gets and sets which rule in a library is the default rule. This is only valid for rules in a library and will fail for rules in a design."
+    },
+    {
+      "name": "isUsed",
+      "description": "Indicates if this rule is currently being used by a component. This is only valid for rules in a design."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "knifeEdgeThreshold",
+      "description": "The minimal thickness where an edge is considered a knife edge. This is used by the Design Advice command when analyzing the part for manufacturability.   When using a float to set the value, it is defined in centimeters. When using a string to set the expression, the units can be defined as part of the expression or it defaults to the units associated with the rule if no units are specified."
+    },
+    {
+      "name": "material",
+      "description": "Gets and sets the material assigned to this plastic rule"
+    },
+    {
+      "name": "maximumThickness",
+      "description": "The maximum thickness of the part in centimeters.\u00a0This is used by the Design Advice command when analyzing the part for manufacturability."
+    },
+    {
+      "name": "minimumDraftAngle",
+      "description": "The minimum draft angle allowed in radians. This is used by the Design Advice command when analyzing the part for manufacturability."
+    },
+    {
+      "name": "minimumThickness",
+      "description": "The minimum thickness of the part in centimeters.\u00a0This is used by the Design Advice command when analyzing the part for manufacturability."
+    },
+    {
+      "name": "name",
+      "description": "The name of the plastic rule. When setting the name, it must be unique with respect to other plastic rules in the design or library."
+    },
+    {
+      "name": "nominalRadius",
+      "description": "The nominal radius used for plastic features. When using a float to set the value, it is defined in centimeters. When using a string to set the expression, the units can be defined as part of the expression or it defaults to the units associated with the rule if no units are specified."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentDesign",
+      "description": "Returns the parent design for a plastic rule in a design or it returns null if the plastic rule is in the library."
+    },
+    {
+      "name": "revealHeight",
+      "description": "The reveal height used for plastic features. When using a float to set the value, it is defined in centimeters. When using a string to set the expression, the units can be defined as part of the expression or it defaults to the units associated with the rule if no units are specified."
+    },
+    {
+      "name": "thickness",
+      "description": "The thickness used for plastic features. This value must be within the range specified by the minimumThickness and maximumThickness properties. This is used by the plastic commands when a wall thickness is needed.   When using a float to set the value, it is defined in centimeters. When using a string to set the expression, the units can be defined as part of the expression or it defaults to the units associated with the rule if no units are specified."
+    },
+    {
+      "name": "thicknessVariation",
+      "description": "The maximum thickness of the part. This is used by the Design Advice command when analyzing the part for manufacturability.   When using a float to set the value, it is defined in centimeters. When using a string to set the expression, the units can be defined as part of the expression or it defaults to the units associated with the rule if no units are specified."
+    },
+    {
+      "name": "units",
+      "description": "Gets the units this rule uses to display values in the dialog. Rules currently only use mm or inch and the units are permanently associated with a rule and cannot be modified."
+    }
+  ],
+  "version": "Introduced in version January 2024",
+  "method_details": {
+    "classType": {
+      "id": "PlasticRule_classType",
+      "title": "PlasticRule.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.PlasticRule.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::PlasticRule::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2024"
+    },
+    "deleteMe": {
+      "id": "PlasticRule_deleteMe",
+      "title": "PlasticRule.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "Deletes the rule from the design or library. If the rule is in the library and set as the default rule, you cannot delete it. If the rule is in a design and is used by a component you cannot delete it.",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "returnValue = plasticRule_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = plasticRule_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version January 2024"
+    }
+  },
+  "property_details": {
+    "clearance": {
+      "id": "PlasticRule_clearance",
+      "title": "PlasticRule.clearance Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "The clearance used for plastic features. When using a float to set the value, it is defined in centimeters. When using a string to set the expression, the units can be defined as part of the expression or it defaults to the units associated with the rule if no units are specified.",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.clearance",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = plasticRule_var->clearance();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "draftAngle": {
+      "id": "PlasticRule_draftAngle",
+      "title": "PlasticRule.draftAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "The draft angle used for plastic features. When using a float to set the value, it is defined in radians. When using a string to set the expression it uses degrees.",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.draftAngle",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = plasticRule_var->draftAngle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "isDefault": {
+      "id": "PlasticRule_isDefault",
+      "title": "PlasticRule.isDefault Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "This gets and sets which rule in a library is the default rule. This is only valid for rules in a library and will fail for rules in a design.",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.isDefault\n\n# Set the value of the property.\nplasticRule_var.isDefault = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = plasticRule_var->isDefault();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = plasticRule_var->isDefault(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "isUsed": {
+      "id": "PlasticRule_isUsed",
+      "title": "PlasticRule.isUsed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "Indicates if this rule is currently being used by a component. This is only valid for rules in a design.",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.isUsed",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = plasticRule_var->isUsed();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "isValid": {
+      "id": "PlasticRule_isValid",
+      "title": "PlasticRule.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = plasticRule_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "knifeEdgeThreshold": {
+      "id": "PlasticRule_knifeEdgeThreshold",
+      "title": "PlasticRule.knifeEdgeThreshold Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "The minimal thickness where an edge is considered a knife edge. This is used by the Design Advice command when analyzing the part for manufacturability. When using a float to set the value, it is defined in centimeters. When using a string to set the expression, the units can be defined as part of the expression or it defaults to the units associated with the rule if no units are specified.",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.knifeEdgeThreshold",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = plasticRule_var->knifeEdgeThreshold();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "material": {
+      "id": "PlasticRule_material",
+      "title": "PlasticRule.material Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "Gets and sets the material assigned to this plastic rule",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.material\n\n# Set the value of the property.\nplasticRule_var.material = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = plasticRule_var->material();\n\n// Set the value of the property, where value_var is a Material.\nbool returnValue = plasticRule_var->material(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "maximumThickness": {
+      "id": "PlasticRule_maximumThickness",
+      "title": "PlasticRule.maximumThickness Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "The maximum thickness of the part in centimeters.\u00a0This is used by the Design Advice command when analyzing the part for manufacturability.",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.maximumThickness\n\n# Set the value of the property.\nplasticRule_var.maximumThickness = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = plasticRule_var->maximumThickness();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = plasticRule_var->maximumThickness(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "minimumDraftAngle": {
+      "id": "PlasticRule_minimumDraftAngle",
+      "title": "PlasticRule.minimumDraftAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "The minimum draft angle allowed in radians. This is used by the Design Advice command when analyzing the part for manufacturability.",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.minimumDraftAngle\n\n# Set the value of the property.\nplasticRule_var.minimumDraftAngle = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = plasticRule_var->minimumDraftAngle();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = plasticRule_var->minimumDraftAngle(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "minimumThickness": {
+      "id": "PlasticRule_minimumThickness",
+      "title": "PlasticRule.minimumThickness Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "The minimum thickness of the part in centimeters.\u00a0This is used by the Design Advice command when analyzing the part for manufacturability.",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.minimumThickness\n\n# Set the value of the property.\nplasticRule_var.minimumThickness = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = plasticRule_var->minimumThickness();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = plasticRule_var->minimumThickness(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "name": {
+      "id": "PlasticRule_name",
+      "title": "PlasticRule.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "The name of the plastic rule. When setting the name, it must be unique with respect to other plastic rules in the design or library.",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.name\n\n# Set the value of the property.\nplasticRule_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = plasticRule_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = plasticRule_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "nominalRadius": {
+      "id": "PlasticRule_nominalRadius",
+      "title": "PlasticRule.nominalRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "The nominal radius used for plastic features. When using a float to set the value, it is defined in centimeters. When using a string to set the expression, the units can be defined as part of the expression or it defaults to the units associated with the rule if no units are specified.",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.nominalRadius",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = plasticRule_var->nominalRadius();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "objectType": {
+      "id": "PlasticRule_objectType",
+      "title": "PlasticRule.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = plasticRule_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "parentDesign": {
+      "id": "PlasticRule_parentDesign",
+      "title": "PlasticRule.parentDesign Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "Returns the parent design for a plastic rule in a design or it returns null if the plastic rule is in the library.",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.parentDesign",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = plasticRule_var->parentDesign();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "revealHeight": {
+      "id": "PlasticRule_revealHeight",
+      "title": "PlasticRule.revealHeight Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "The reveal height used for plastic features. When using a float to set the value, it is defined in centimeters. When using a string to set the expression, the units can be defined as part of the expression or it defaults to the units associated with the rule if no units are specified.",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.revealHeight",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = plasticRule_var->revealHeight();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "thickness": {
+      "id": "PlasticRule_thickness",
+      "title": "PlasticRule.thickness Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "The thickness used for plastic features. This value must be within the range specified by the minimumThickness and maximumThickness properties. This is used by the plastic commands when a wall thickness is needed. When using a float to set the value, it is defined in centimeters. When using a string to set the expression, the units can be defined as part of the expression or it defaults to the units associated with the rule if no units are specified.",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.thickness",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = plasticRule_var->thickness();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "thicknessVariation": {
+      "id": "PlasticRule_thicknessVariation",
+      "title": "PlasticRule.thicknessVariation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "The maximum thickness of the part. This is used by the Design Advice command when analyzing the part for manufacturability. When using a float to set the value, it is defined in centimeters. When using a string to set the expression, the units can be defined as part of the expression or it defaults to the units associated with the rule if no units are specified.",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.thicknessVariation",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = plasticRule_var->thicknessVariation();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "units": {
+      "id": "PlasticRule_units",
+      "title": "PlasticRule.units Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/PlasticRule.h",
+      "description": "Gets the units this rule uses to display values in the dialog. Rules currently only use mm or inch and the units are permanently associated with a rule and cannot be modified.",
+      "parent_class": "PlasticRule",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plasticRule_var.units",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = plasticRule_var->units();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2024"
+    }
+  }
+}

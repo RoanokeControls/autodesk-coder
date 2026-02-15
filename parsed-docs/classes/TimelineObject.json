@@ -1,0 +1,368 @@
+{
+  "id": "TimelineObject",
+  "title": "TimelineObject Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Fusion/TimelineObject.h",
+  "description": "Represents an object in the timeline.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "canReorder",
+      "description": "Checks to see if this object can be reordered to the specified position. The default value of -1 indicates the end of the timeline.   This method will fail if this is a timelineGroup object and the group is expanded."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "reorder",
+      "description": "Reorders this object to the position specified. The default value of -1 indicates the end of the timeline."
+    },
+    {
+      "name": "rollTo",
+      "description": "Rolls the timeline by repositioning the marker to either before or after this object. This method will fail if this is a timelineGroup object and the group is expanded."
+    }
+  ],
+  "properties": [
+    {
+      "name": "entity",
+      "description": "Returns the entity associated with this timeline object. Edit operations can be performed by getting the object representing the associated entity and using the methods and properties on that entity to make changes.   Returns null if this TimelineObject represents a TimelineGroup object, since it does not have an associated entity."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the object associated with this TimelineObject."
+    },
+    {
+      "name": "index",
+      "description": "Returns the position of this item within the timeline where the first item has an index of 0.   This property can return -1 in the two cases where this object is not currently represented in the timeline. The two cases are:   1. When this is a TimelineGroup object and the group is expanded.   2. When this object is part of a group and the group is collapsed."
+    },
+    {
+      "name": "isGroup",
+      "description": "Indicates if this TimelineObject represents a group. If True you can operate on this object as a TimelineGroup object."
+    },
+    {
+      "name": "isRolledBack",
+      "description": "Indicates if this item is currently not being computed because it has been rolled back.   If this is a timelineGroup object and the group is expanded the value of this property should be ignored."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this object is suppressed."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name of this timeline object. This name is shared by the object the timeline object represents. For example, if the TimelineObject represents a Sketch and you change the name using the TimelineObject, the name of the sketch in the browser is also changed. The reverse is also true. Setting the name of an object; sketch, feature construction geometry, etc, will also change the name of the associated node in the timeline."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentGroup",
+      "description": "Returns the parent group, if this object is part of a group. Returns null if this object is not part of a group."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Extrude Feature API Sample",
+      "description": "Demonstrates creating a new extrude feature."
+    },
+    {
+      "name": "Fillet Feature Edit API Sample",
+      "description": "Demonstrates editing a fillet feature. To successfully run this sample you can use this Ruled Surface Feature API Sample"
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "canReorder": {
+      "id": "TimelineObject_canReorder",
+      "title": "TimelineObject.canReorder Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/TimelineObject.h",
+      "description": "Checks to see if this object can be reordered to the specified position. The default value of -1 indicates the end of the timeline. This method will fail if this is a timelineGroup object and the group is expanded.",
+      "parent_class": "TimelineObject",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = timelineObject_var.canReorder()\n\n# Uses optional arguments.\nreturnValue = timelineObject_var.canReorder(beforeIndex)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = timelineObject_var->canReorder();\n\n// Uses optional arguments.\nreturnValue = timelineObject_var->canReorder(beforeIndex);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the object can be reordered to the specified position",
+      "parameters": [
+        {
+          "name": "beforeIndex",
+          "type": "integer",
+          "description": "The index number of the position in the timeline to check   This is an optional argument whose default value is -1."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "classType": {
+      "id": "TimelineObject_classType",
+      "title": "TimelineObject.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/TimelineObject.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "TimelineObject",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.TimelineObject.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::TimelineObject::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "reorder": {
+      "id": "TimelineObject_reorder",
+      "title": "TimelineObject.reorder Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/TimelineObject.h",
+      "description": "Reorders this object to the position specified. The default value of -1 indicates the end of the timeline.",
+      "parent_class": "TimelineObject",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = timelineObject_var.reorder()\n\n# Uses optional arguments.\nreturnValue = timelineObject_var.reorder(beforeIndex)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = timelineObject_var->reorder();\n\n// Uses optional arguments.\nreturnValue = timelineObject_var->reorder(beforeIndex);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the reorder operation was successful This method will fail and return false if this is a timelineGroup object and the  group is expanded.",
+      "parameters": [
+        {
+          "name": "beforeIndex",
+          "type": "integer",
+          "description": "The index number of the position in the timeline to place this object before   This is an optional argument whose default value is -1."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "rollTo": {
+      "id": "TimelineObject_rollTo",
+      "title": "TimelineObject.rollTo Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/TimelineObject.h",
+      "description": "Rolls the timeline by repositioning the marker to either before or after this object. This method will fail if this is a timelineGroup object and the group is expanded.",
+      "parent_class": "TimelineObject",
+      "syntax": {
+        "python": "returnValue = timelineObject_var.rollTo(rollBefore)",
+        "cpp": "#include \n\nreturnValue = timelineObject_var->rollTo(rollBefore);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the move was successful",
+      "parameters": [
+        {
+          "name": "rollBefore",
+          "type": "boolean",
+          "description": "Set rollBefore to true to reposition the marker before this object or to false to reposition the marker after this object"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Extrude Feature API Sample",
+          "description": "Demonstrates creating a new extrude feature."
+        },
+        {
+          "name": "Fillet Feature Edit API Sample",
+          "description": "Demonstrates editing a fillet feature. To successfully run this sample you can use this Ruled Surface Feature API Sample"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "entity": {
+      "id": "TimelineObject_entity",
+      "title": "TimelineObject.entity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/TimelineObject.h",
+      "description": "Returns the entity associated with this timeline object. Edit operations can be performed by getting the object representing the associated entity and using the methods and properties on that entity to make changes. Returns null if this TimelineObject represents a TimelineGroup object, since it does not have an associated entity.",
+      "parent_class": "TimelineObject",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = timelineObject_var.entity",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = timelineObject_var->entity();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "errorOrWarningMessage": {
+      "id": "TimelineObject_errorOrWarningMessage",
+      "title": "TimelineObject.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/TimelineObject.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "TimelineObject",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = timelineObject_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = timelineObject_var->errorOrWarningMessage();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Extrude Feature API Sample",
+          "description": "Demonstrates creating a new extrude feature."
+        },
+        {
+          "name": "Ruled Surface Feature API Sample",
+          "description": "Demonstrates creating a new ruled surface feature."
+        }
+      ],
+      "version": "Introduced in version July 2016"
+    },
+    "healthState": {
+      "id": "TimelineObject_healthState",
+      "title": "TimelineObject.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/TimelineObject.h",
+      "description": "Returns the current health state of the object associated with this TimelineObject.",
+      "parent_class": "TimelineObject",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = timelineObject_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = timelineObject_var->healthState();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Extrude Feature API Sample",
+          "description": "Demonstrates creating a new extrude feature."
+        },
+        {
+          "name": "Ruled Surface Feature API Sample",
+          "description": "Demonstrates creating a new ruled surface feature."
+        }
+      ],
+      "version": "Introduced in version July 2016"
+    },
+    "index": {
+      "id": "TimelineObject_index",
+      "title": "TimelineObject.index Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/TimelineObject.h",
+      "description": "Returns the position of this item within the timeline where the first item has an index of 0. This property can return -1 in the two cases where this object is not currently represented in the timeline. The two cases are: 1. When this is a TimelineGroup object and the group is expanded. 2. When this object is part of a group and the group is collapsed.",
+      "parent_class": "TimelineObject",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = timelineObject_var.index",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = timelineObject_var->index();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isGroup": {
+      "id": "TimelineObject_isGroup",
+      "title": "TimelineObject.isGroup Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/TimelineObject.h",
+      "description": "Indicates if this TimelineObject represents a group. If True you can operate on this object as a TimelineGroup object.",
+      "parent_class": "TimelineObject",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = timelineObject_var.isGroup",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = timelineObject_var->isGroup();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isRolledBack": {
+      "id": "TimelineObject_isRolledBack",
+      "title": "TimelineObject.isRolledBack Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/TimelineObject.h",
+      "description": "Indicates if this item is currently not being computed because it has been rolled back. If this is a timelineGroup object and the group is expanded the value of this property should be ignored.",
+      "parent_class": "TimelineObject",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = timelineObject_var.isRolledBack",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = timelineObject_var->isRolledBack();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isSuppressed": {
+      "id": "TimelineObject_isSuppressed",
+      "title": "TimelineObject.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/TimelineObject.h",
+      "description": "Gets and sets if this object is suppressed.",
+      "parent_class": "TimelineObject",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = timelineObject_var.isSuppressed\n\n# Set the value of the property.\ntimelineObject_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = timelineObject_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = timelineObject_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "TimelineObject_isValid",
+      "title": "TimelineObject.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/TimelineObject.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "TimelineObject",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = timelineObject_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = timelineObject_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "name": {
+      "id": "TimelineObject_name",
+      "title": "TimelineObject.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/TimelineObject.h",
+      "description": "Gets and sets the name of this timeline object. This name is shared by the object the timeline object represents. For example, if the TimelineObject represents a Sketch and you change the name using the TimelineObject, the name of the sketch in the browser is also changed. The reverse is also true. Setting the name of an object; sketch, feature construction geometry, etc, will also change the name of the associated node in the timeline.",
+      "parent_class": "TimelineObject",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = timelineObject_var.name\n\n# Set the value of the property.\ntimelineObject_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = timelineObject_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = timelineObject_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "objectType": {
+      "id": "TimelineObject_objectType",
+      "title": "TimelineObject.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/TimelineObject.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "TimelineObject",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = timelineObject_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = timelineObject_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "parentGroup": {
+      "id": "TimelineObject_parentGroup",
+      "title": "TimelineObject.parentGroup Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/TimelineObject.h",
+      "description": "Returns the parent group, if this object is part of a group. Returns null if this object is not part of a group.",
+      "parent_class": "TimelineObject",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = timelineObject_var.parentGroup",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = timelineObject_var->parentGroup();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

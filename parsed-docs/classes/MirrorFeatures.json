@@ -1,0 +1,226 @@
+{
+  "id": "MirrorFeatures",
+  "title": "MirrorFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/MirrorFeatures.h",
+  "description": "Collection that provides access to all of the existing mirror features in a component and supports the ability to create new mirror features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new mirror feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a MirrorFeatureInput object. Use properties and methods on this object to define the mirror you want to create and then use the Add method, passing in the MirrorFeatureInput object."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified mirror feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified mirror feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of mirror features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Mirror Feature API Sample",
+      "description": "Demonstrates creating a new mirror feature"
+    }
+  ],
+  "version": "Introduced in version November 2014",
+  "method_details": {
+    "add": {
+      "id": "MirrorFeatures_add",
+      "title": "MirrorFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeatures.h",
+      "description": "Creates a new mirror feature.",
+      "parent_class": "MirrorFeatures",
+      "syntax": {
+        "python": "returnValue = mirrorFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = mirrorFeatures_var->add(input);"
+      },
+      "return_type": "MirrorFeature",
+      "return_description": "Returns the newly created MirrorFeature object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "MirrorFeatureInput",
+          "description": "A MirrorFeatureInput object that defines the desired mirror. Use the createInput method to create a new MirrorFeatureInput object and then use methods on it (the MirrorFeatureInput object) to define the mirror."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "mirrorFeatures.add",
+          "description": "Demonstrates the mirrorFeatures.add method by mirroring the selected body around the base X-Y construction plane."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "classType": {
+      "id": "MirrorFeatures_classType",
+      "title": "MirrorFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "MirrorFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.MirrorFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::MirrorFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version November 2014"
+    },
+    "createInput": {
+      "id": "MirrorFeatures_createInput",
+      "title": "MirrorFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeatures.h",
+      "description": "Creates a MirrorFeatureInput object. Use properties and methods on this object to define the mirror you want to create and then use the Add method, passing in the MirrorFeatureInput object.",
+      "parent_class": "MirrorFeatures",
+      "syntax": {
+        "python": "returnValue = mirrorFeatures_var.createInput(inputEntities, mirrorPlane)",
+        "cpp": "#include \n\nreturnValue = mirrorFeatures_var->createInput(inputEntities, mirrorPlane);"
+      },
+      "return_type": "MirrorFeatureInput",
+      "return_description": "Returns the newly created MirrorFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "inputEntities",
+          "type": "ObjectCollection",
+          "description": "A collection of the entities to mirror. It can contain faces, features, bodies, or components. The input must all be of a single type. For example, you can't provide a body and a component but the collection must be either all bodies or all components."
+        },
+        {
+          "name": "mirrorPlane",
+          "type": "Base",
+          "description": "Input planar entity that defines the mirror plane. This can be either a planar face or a construction plane."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "mirrorFeatures.add",
+          "description": "Demonstrates the mirrorFeatures.add method by mirroring the selected body around the base X-Y construction plane."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "item": {
+      "id": "MirrorFeatures_item",
+      "title": "MirrorFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeatures.h",
+      "description": "Function that returns the specified mirror feature using an index into the collection.",
+      "parent_class": "MirrorFeatures",
+      "syntax": {
+        "python": "returnValue = mirrorFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = mirrorFeatures_var->item(index);"
+      },
+      "return_type": "MirrorFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "itemByName": {
+      "id": "MirrorFeatures_itemByName",
+      "title": "MirrorFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeatures.h",
+      "description": "Function that returns the specified mirror feature using the name of the feature.",
+      "parent_class": "MirrorFeatures",
+      "syntax": {
+        "python": "returnValue = mirrorFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = mirrorFeatures_var->itemByName(name);"
+      },
+      "return_type": "MirrorFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "MirrorFeatures_count",
+      "title": "MirrorFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeatures.h",
+      "description": "The number of mirror features in the collection.",
+      "parent_class": "MirrorFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = mirrorFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isValid": {
+      "id": "MirrorFeatures_isValid",
+      "title": "MirrorFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "MirrorFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = mirrorFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "objectType": {
+      "id": "MirrorFeatures_objectType",
+      "title": "MirrorFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "MirrorFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = mirrorFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    }
+  }
+}

@@ -1,0 +1,337 @@
+{
+  "id": "GeometricRelationship",
+  "title": "GeometricRelationship Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Components/GeometricRelationship.h",
+  "description": "This object represents a pair of entity inputs that are used when inferring a joint from geometry or for an assembly constraint.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "This method deletes this geometric relationship.   If the isTemporary property is True, it removes it from the input object.   If the GeometricRelationship is associated with an existing joint or assembly constraint (the isTemporary property is false), you need to position the timeline marker immediately before the joint or assembly constraint. This can be accomplished using the following code: thisJointOrConstraint.timelineObject.rollTo(True)."
+    },
+    {
+      "name": "redefineOffsetOrAngle",
+      "description": "This method redefines an existing geometric relationship by defining if it is a mate or angle and specifying a new value.   If the GeometricRelationship is associated with an existing joint or assembly constraint (the isTemporary property is false), you need to position the timeline marker immediately before the joint or assembly constraint. This can be accomplished using the following code: thisJointOrConstraint.timelineObject.rollTo(True)."
+    }
+  ],
+  "properties": [
+    {
+      "name": "angleReferenceEntity",
+      "description": "This property is used to define a third vector when an angle constraint is being defined. This property is ignored for mate constraints.   In some cases, when specifying entityOne and entityTwo for an angle constraint there is more than one solution. When the constraint is solved, entityOne and entityTwo each define a vector. When the reference entity is provided, the vectors need to follow the \"right hand rule\" with respect to the reference entity. This means the angle between the reference entity and the cross product of entityOne and entityTwo should be between 0 and 90 deg.   The reference entity can be a planar BRepFace or a linear or circular BRepedge.   This property can return and be set to null to indicate there is no reference entity."
+    },
+    {
+      "name": "entityOne",
+      "description": "Gets and sets the first entity in the relationship. The entity can be a BRepFace, BRepedge, BRepVertex, SketchPoint, SketchCurve, ConstructionPlane, ConstructionAxis, or ConstructionPoint object.   If the GeometricRelationship is associated with an existing joint or assembly constraint (the isTemporary property is false), you need to position the timeline marker immediately before the joint or assembly constraint. This can be accomplished using the following code: thisJointOrConstraint.timelineObject.rollTo(True)."
+    },
+    {
+      "name": "entityTwo",
+      "description": "Gets and sets the second entity in the relationship. The entity can be a BRepFace, BRepedge, BRepVertex, SketchPoint, SketchCurve, ConstructionPlane, ConstructionAxis, or ConstructionPoint object.   If the GeometricRelationship is associated with an existing joint or assembly constraint (the isTemporary property is false), you need to position the timeline marker immediately before the joint or assembly constraint. This can be accomplished using the following code: thisJointOrConstraint.timelineObject.rollTo(True)."
+    },
+    {
+      "name": "isFlipped",
+      "description": "Gets and sets if the directions of the entities are aligned or opposed. The natural direction is for them to be opposed, and flipping them will align them.   If the GeometricRelationship is associated with an existing joint or assembly constraint (the isTemporary property is false), you need to position the timeline marker immediately before the joint or assembly constraint. This can be accomplished using the following code: thisJointOrConstraint.timelineObject.rollTo(True)."
+    },
+    {
+      "name": "isMate",
+      "description": "Gets and sets if this geometric relationships defines a mate or angle relationship between the two input entities. If true, it is a mate relationship."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this relationship is suppressed. This property is only valid when this geometric relationship is associated with an existing AssemblyConstraint. Otherwise, getting the value of this property will always return false, and setting it will be ignored."
+    },
+    {
+      "name": "isTemporary",
+      "description": "Specifies if this GeometricRelationship is a child of an input object is being used to create a new Joint or AssemblyConstraint or is being used by an existing Joint or AssemblyConstraint."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the constraint as seen in the browser. This property will only return a name when the geometric relationship is associated with an existing AssemblyConstraint or inferred Joint (the isTemporary property is false). Otherwise, it will return an empty string."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "offsetOrAngle",
+      "description": "This property is used when the geometric relationship is associated with an existing joint or assembly constraint (the isTemporary property is false). It returns the parameter that controls the offset or angle of this geometric relationship. You can change the value by editing properties on the returned ModelParameter object.   If this geometric relationship is associated with a JointInput object (the isTemporary property is true), this property returns null, and you should use the offsetOrAngleValue property to get and set the value."
+    },
+    {
+      "name": "offsetOrAngleValue",
+      "description": "This property is used when creating a new joint or assembly constraint and defines the offset or angle associated with this geometric relationship. The value defaults to 0, but can be set with a ValueInput defining a length or angle. It can be either a real value, which will be in centimeters or radians, or a string, which is an expression whose units are length or angle.   If the GeometricRelationship is associated with an existing joint or assembly constraint (the isTemporary property is false), this property will return null and fail if set. To get and set the value in this case you should use the offsetOrAngle property to access the controlling parameter."
+    },
+    {
+      "name": "parent",
+      "description": "Returns the parent AssemblyConstraint, Joint, InferredJointInput, or\u00a0AssemblyConstraintInput object with which this geometric relationship is associated."
+    }
+  ],
+  "version": "Introduced in version July 2025",
+  "property_details": {
+    "angleReferenceEntity": {
+      "id": "GeometricRelationship_angleReferenceEntity",
+      "title": "GeometricRelationship.angleReferenceEntity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/GeometricRelationship.h",
+      "description": "This property is used to define a third vector when an angle constraint is being defined. This property is ignored for mate constraints. In some cases, when specifying entityOne and entityTwo for an angle constraint there is more than one solution. When the constraint is solved, entityOne and entityTwo each define a vector. When the reference entity is provided, the vectors need to follow the \"right hand rule\" with respect to the reference entity. This means the angle between the reference entity and the cross product of entityOne and entityTwo should be between 0 and 90 deg. The reference entity can be a planar BRepFace or a linear or circular BRepedge. This property can return and be set to null to indicate there is no reference entity.",
+      "parent_class": "GeometricRelationship",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = geometricRelationship_var.angleReferenceEntity\n\n# Set the value of the property.\ngeometricRelationship_var.angleReferenceEntity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = geometricRelationship_var->angleReferenceEntity();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = geometricRelationship_var->angleReferenceEntity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "entityOne": {
+      "id": "GeometricRelationship_entityOne",
+      "title": "GeometricRelationship.entityOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/GeometricRelationship.h",
+      "description": "Gets and sets the first entity in the relationship. The entity can be a BRepFace, BRepedge, BRepVertex, SketchPoint, SketchCurve, ConstructionPlane, ConstructionAxis, or ConstructionPoint object. If the GeometricRelationship is associated with an existing joint or assembly constraint (the isTemporary property is false), you need to position the timeline marker immediately before the joint or assembly constraint. This can be accomplished using the following code: thisJointOrConstraint.timelineObject.rollTo(True).",
+      "parent_class": "GeometricRelationship",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = geometricRelationship_var.entityOne\n\n# Set the value of the property.\ngeometricRelationship_var.entityOne = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = geometricRelationship_var->entityOne();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = geometricRelationship_var->entityOne(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "entityTwo": {
+      "id": "GeometricRelationship_entityTwo",
+      "title": "GeometricRelationship.entityTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/GeometricRelationship.h",
+      "description": "Gets and sets the second entity in the relationship. The entity can be a BRepFace, BRepedge, BRepVertex, SketchPoint, SketchCurve, ConstructionPlane, ConstructionAxis, or ConstructionPoint object. If the GeometricRelationship is associated with an existing joint or assembly constraint (the isTemporary property is false), you need to position the timeline marker immediately before the joint or assembly constraint. This can be accomplished using the following code: thisJointOrConstraint.timelineObject.rollTo(True).",
+      "parent_class": "GeometricRelationship",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = geometricRelationship_var.entityTwo\n\n# Set the value of the property.\ngeometricRelationship_var.entityTwo = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = geometricRelationship_var->entityTwo();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = geometricRelationship_var->entityTwo(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "isFlipped": {
+      "id": "GeometricRelationship_isFlipped",
+      "title": "GeometricRelationship.isFlipped Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/GeometricRelationship.h",
+      "description": "Gets and sets if the directions of the entities are aligned or opposed. The natural direction is for them to be opposed, and flipping them will align them. If the GeometricRelationship is associated with an existing joint or assembly constraint (the isTemporary property is false), you need to position the timeline marker immediately before the joint or assembly constraint. This can be accomplished using the following code: thisJointOrConstraint.timelineObject.rollTo(True).",
+      "parent_class": "GeometricRelationship",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = geometricRelationship_var.isFlipped\n\n# Set the value of the property.\ngeometricRelationship_var.isFlipped = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = geometricRelationship_var->isFlipped();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = geometricRelationship_var->isFlipped(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "isMate": {
+      "id": "GeometricRelationship_isMate",
+      "title": "GeometricRelationship.isMate Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/GeometricRelationship.h",
+      "description": "Gets and sets if this geometric relationships defines a mate or angle relationship between the two input entities. If true, it is a mate relationship.",
+      "parent_class": "GeometricRelationship",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = geometricRelationship_var.isMate",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = geometricRelationship_var->isMate();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "isSuppressed": {
+      "id": "GeometricRelationship_isSuppressed",
+      "title": "GeometricRelationship.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/GeometricRelationship.h",
+      "description": "Gets and sets if this relationship is suppressed. This property is only valid when this geometric relationship is associated with an existing AssemblyConstraint. Otherwise, getting the value of this property will always return false, and setting it will be ignored.",
+      "parent_class": "GeometricRelationship",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = geometricRelationship_var.isSuppressed\n\n# Set the value of the property.\ngeometricRelationship_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = geometricRelationship_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = geometricRelationship_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "isTemporary": {
+      "id": "GeometricRelationship_isTemporary",
+      "title": "GeometricRelationship.isTemporary Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/GeometricRelationship.h",
+      "description": "Specifies if this GeometricRelationship is a child of an input object is being used to create a new Joint or AssemblyConstraint or is being used by an existing Joint or AssemblyConstraint.",
+      "parent_class": "GeometricRelationship",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = geometricRelationship_var.isTemporary",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = geometricRelationship_var->isTemporary();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "isValid": {
+      "id": "GeometricRelationship_isValid",
+      "title": "GeometricRelationship.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/GeometricRelationship.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "GeometricRelationship",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = geometricRelationship_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = geometricRelationship_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "name": {
+      "id": "GeometricRelationship_name",
+      "title": "GeometricRelationship.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/GeometricRelationship.h",
+      "description": "Returns the name of the constraint as seen in the browser. This property will only return a name when the geometric relationship is associated with an existing AssemblyConstraint or inferred Joint (the isTemporary property is false). Otherwise, it will return an empty string.",
+      "parent_class": "GeometricRelationship",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = geometricRelationship_var.name",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = geometricRelationship_var->name();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "objectType": {
+      "id": "GeometricRelationship_objectType",
+      "title": "GeometricRelationship.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/GeometricRelationship.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "GeometricRelationship",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = geometricRelationship_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = geometricRelationship_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "offsetOrAngle": {
+      "id": "GeometricRelationship_offsetOrAngle",
+      "title": "GeometricRelationship.offsetOrAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/GeometricRelationship.h",
+      "description": "This property is used when the geometric relationship is associated with an existing joint or assembly constraint (the isTemporary property is false). It returns the parameter that controls the offset or angle of this geometric relationship. You can change the value by editing properties on the returned ModelParameter object. If this geometric relationship is associated with a JointInput object (the isTemporary property is true), this property returns null, and you should use the offsetOrAngleValue property to get and set the value.",
+      "parent_class": "GeometricRelationship",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = geometricRelationship_var.offsetOrAngle",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = geometricRelationship_var->offsetOrAngle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "offsetOrAngleValue": {
+      "id": "GeometricRelationship_offsetOrAngleValue",
+      "title": "GeometricRelationship.offsetOrAngleValue Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/GeometricRelationship.h",
+      "description": "This property is used when creating a new joint or assembly constraint and defines the offset or angle associated with this geometric relationship. The value defaults to 0, but can be set with a ValueInput defining a length or angle. It can be either a real value, which will be in centimeters or radians, or a string, which is an expression whose units are length or angle. If the GeometricRelationship is associated with an existing joint or assembly constraint (the isTemporary property is false), this property will return null and fail if set. To get and set the value in this case you should use the offsetOrAngle property to access the controlling parameter.",
+      "parent_class": "GeometricRelationship",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = geometricRelationship_var.offsetOrAngleValue\n\n# Set the value of the property.\ngeometricRelationship_var.offsetOrAngleValue = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = geometricRelationship_var->offsetOrAngleValue();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = geometricRelationship_var->offsetOrAngleValue(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "parent": {
+      "id": "GeometricRelationship_parent",
+      "title": "GeometricRelationship.parent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/GeometricRelationship.h",
+      "description": "Returns the parent AssemblyConstraint, Joint, InferredJointInput, or\u00a0AssemblyConstraintInput object with which this geometric relationship is associated.",
+      "parent_class": "GeometricRelationship",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = geometricRelationship_var.parent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = geometricRelationship_var->parent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "GeometricRelationship_classType",
+      "title": "GeometricRelationship.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/GeometricRelationship.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "GeometricRelationship",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.GeometricRelationship.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::GeometricRelationship::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version July 2025"
+    },
+    "deleteMe": {
+      "id": "GeometricRelationship_deleteMe",
+      "title": "GeometricRelationship.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/GeometricRelationship.h",
+      "description": "This method deletes this geometric relationship. If the isTemporary property is True, it removes it from the input object. If the GeometricRelationship is associated with an existing joint or assembly constraint (the isTemporary property is false), you need to position the timeline marker immediately before the joint or assembly constraint. This can be accomplished using the following code: thisJointOrConstraint.timelineObject.rollTo(True).",
+      "parent_class": "GeometricRelationship",
+      "syntax": {
+        "python": "returnValue = geometricRelationship_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = geometricRelationship_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version July 2025"
+    },
+    "redefineOffsetOrAngle": {
+      "id": "GeometricRelationship_redefineOffsetOrAngle",
+      "title": "GeometricRelationship.redefineOffsetOrAngle Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/GeometricRelationship.h",
+      "description": "This method redefines an existing geometric relationship by defining if it is a mate or angle and specifying a new value. If the GeometricRelationship is associated with an existing joint or assembly constraint (the isTemporary property is false), you need to position the timeline marker immediately before the joint or assembly constraint. This can be accomplished using the following code: thisJointOrConstraint.timelineObject.rollTo(True).",
+      "parent_class": "GeometricRelationship",
+      "syntax": {
+        "python": "returnValue = geometricRelationship_var.redefineOffsetOrAngle(isMate, offsetOrAngleValue)",
+        "cpp": "#include \n\nreturnValue = geometricRelationship_var->redefineOffsetOrAngle(isMate, offsetOrAngleValue);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the redefinition was successful.",
+      "parameters": [
+        {
+          "name": "isMate",
+          "type": "boolean",
+          "description": "This argument indicates if the geometric relationship defines a mate or an angle. A value of true indicates a mate relationship."
+        },
+        {
+          "name": "offsetOrAngleValue",
+          "type": "ValueInput",
+          "description": "This argument specifies the value associated with the geometric relationship. If isMate is true, the value is a length, and if it is a real value, then it is centimeters. If it is a string, it is an expression that must evaluate to a length. If isMate is False, the value is an angle, and if it is a real value, then it is radians. If it is a string, it is an expression that must evaluate to an angle."
+        }
+      ],
+      "version": "Introduced in version July 2025"
+    }
+  }
+}

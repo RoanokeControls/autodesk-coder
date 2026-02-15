@@ -1,0 +1,509 @@
+{
+  "id": "ThreadInfo",
+  "title": "ThreadInfo Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/ThreadInfo.h",
+  "description": "This class defines the methods and properties that define the type and size of a thread. This object is used to create and query thread and tapped (straight and tapered) hole features. A new ThreadInfo object is created by using the ThreadInfo.create method. If the ThreadInfo object is obtained from an existing thread or hole feature, modifying the ThreadInfo object will modify the feature.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "create",
+      "description": "This method creates a new ThreadInfo object that can be used to create a thread or tapped-hole feature. The ThreadInfo object defines the type and size of the thread to create. When creating a thread, the type and size of the thread are defined by specifying the thread type, designation, and class. Fusion uses this information to look up the full details of the thread in tables delivered with Fusion. The ThreadDataQuery object can be used to determine valid input for this information.   The thread type implicitly defines if the thread is standard or tapered. Tapered threads can only be used when creating tapped holes and are not supported for thread features."
+    },
+    {
+      "name": "redefine",
+      "description": "Method that redefines an existing ThreadInfo object. This is typically used to change the thread of an existing thread or tapped hole.   The ThreadInfo object defines the type and size of a thread by specifying the thread type, designation, and class. Fusion uses this information to look up the full details of the thread in tables delivered with Fusion. The ThreadDataQuery object can be used to determine valid input for this information.   Tapered threads can only be used when creating or editing tapped holes and are not supported for thread features."
+    }
+  ],
+  "properties": [
+    {
+      "name": "isInternal",
+      "description": "Returns and sets if the thread is an internal or external thread. A value of true indicates an internal thread. It defaults to true."
+    },
+    {
+      "name": "isRightHanded",
+      "description": "Gets and sets if the thread is right or left-handed thread. A value of true indicates a right-handed thread. It defaults to true."
+    },
+    {
+      "name": "isTapered",
+      "description": "Indicates if this ThreadInfo object defines a standard or tapered thread."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "majorDiameter",
+      "description": "Returns the value that defines the major diameter. The units are centimeters."
+    },
+    {
+      "name": "minorDiameter",
+      "description": "Returns the value that defines the minor diameter. The units are centimeters."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "pitchDiameter",
+      "description": "Returns the value that defines the pitch diameter. The units are centimeters."
+    },
+    {
+      "name": "taperAngle",
+      "description": "Returns the angle of the tapered thread in centimeters.   This is only valid when isTapered is true."
+    },
+    {
+      "name": "taperTapDrillDiameter",
+      "description": "Returns the Diameter of the tap drill required to create this tap.   This is only valid when isTapered is true."
+    },
+    {
+      "name": "taperThreadHeight",
+      "description": "Returns the height of a tapered thread in centimeters.   This is only valid when isTapered is true."
+    },
+    {
+      "name": "taperUsefulThreadLength",
+      "description": "Returns the useful length of threads for a tapered thread in centimeters.   This is only valid when isTapered is true."
+    },
+    {
+      "name": "taperWrenchMakeupInternalDiameter",
+      "description": "The wrench makeup internal diameter for a taper pipe thread, also known as the effective thread diameter, is the diameter at the point where the thread engagement occurs when the pipe is tightened with a wrench.   This is only valid when isTapered is true."
+    },
+    {
+      "name": "threadAngle",
+      "description": "Returns the value that defines the thread angle. The units are degrees."
+    },
+    {
+      "name": "threadClass",
+      "description": "Returns and sets the string that defines the thread class."
+    },
+    {
+      "name": "threadDesignation",
+      "description": "Returns and sets the string that defines the thread designation."
+    },
+    {
+      "name": "threadPitch",
+      "description": "Returns the value that defines the thread pitch. The units are centimeters."
+    },
+    {
+      "name": "threadSize",
+      "description": "Returns the string that defines the thread size."
+    },
+    {
+      "name": "threadType",
+      "description": "Returns and sets the string that defines the thread type."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Thread Feature API Sample",
+      "description": "Demonstrates creating a new thread feature."
+    }
+  ],
+  "version": "Introduced in version January 2015",
+  "method_details": {
+    "classType": {
+      "id": "ThreadInfo_classType",
+      "title": "ThreadInfo.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ThreadInfo.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ThreadInfo::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2015"
+    },
+    "create": {
+      "id": "ThreadInfo_create",
+      "title": "ThreadInfo.create Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "This method creates a new ThreadInfo object that can be used to create a thread or tapped-hole feature. The ThreadInfo object defines the type and size of the thread to create. When creating a thread, the type and size of the thread are defined by specifying the thread type, designation, and class. Fusion uses this information to look up the full details of the thread in tables delivered with Fusion. The ThreadDataQuery object can be used to determine valid input for this information. The thread type implicitly defines if the thread is standard or tapered. Tapered threads can only be used when creating tapped holes and are not supported for thread features.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ThreadInfo.create(isTapered, isInternal, threadType, threadDesignation, threadClass, isRightHanded)",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ThreadInfo::create(isTapered, isInternal, threadType, threadDesignation, threadClass, isRightHanded);"
+      },
+      "return_type": "ThreadInfo",
+      "return_description": "Returns the newly created ThreadInfo object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "isTapered",
+          "type": "boolean",
+          "description": "Input Boolean that indicates if the thread is straight or tapered."
+        },
+        {
+          "name": "isInternal",
+          "type": "boolean",
+          "description": "Input Boolean that indicates if the thread is internal or external. A value of true indicates an internal thread. When the ThreadInfo is used to create a tapped hole, this value is ignored since it is always an internal thread."
+        },
+        {
+          "name": "threadType",
+          "type": "string",
+          "description": "Input string that defines the thread type."
+        },
+        {
+          "name": "threadDesignation",
+          "type": "string",
+          "description": "Input string that contains the thread designation."
+        },
+        {
+          "name": "threadClass",
+          "type": "string",
+          "description": "Input string that defines the thread class. This argument is ignored for tapered threads, so an empty string can be used."
+        },
+        {
+          "name": "isRightHanded",
+          "type": "boolean",
+          "description": "Input boolean that defines if the thread is right or left-handed."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    },
+    "redefine": {
+      "id": "ThreadInfo_redefine",
+      "title": "ThreadInfo.redefine Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Method that redefines an existing ThreadInfo object. This is typically used to change the thread of an existing thread or tapped hole. The ThreadInfo object defines the type and size of a thread by specifying the thread type, designation, and class. Fusion uses this information to look up the full details of the thread in tables delivered with Fusion. The ThreadDataQuery object can be used to determine valid input for this information. Tapered threads can only be used when creating or editing tapped holes and are not supported for thread features.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "returnValue = threadInfo_var.redefine(isTapered, isInternal, threadType, threadDesignation, threadClass, isRightHanded)",
+        "cpp": "#include \n\nreturnValue = threadInfo_var->redefine(isTapered, isInternal, threadType, threadDesignation, threadClass, isRightHanded);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the redefinition was successful.",
+      "parameters": [
+        {
+          "name": "isTapered",
+          "type": "boolean",
+          "description": "Input Boolean that indicates if the thread is straight or tapered."
+        },
+        {
+          "name": "isInternal",
+          "type": "boolean",
+          "description": "Input Boolean that indicates if the thread is internal or external. A value of true indicates an internal thread. This value is ignored when the ThreadInfo is used for a tapped hole since they are always internal."
+        },
+        {
+          "name": "threadType",
+          "type": "string",
+          "description": "Input string that defines the thread type."
+        },
+        {
+          "name": "threadDesignation",
+          "type": "string",
+          "description": "Input string that defines the thread designation."
+        },
+        {
+          "name": "threadClass",
+          "type": "string",
+          "description": "Input string that defines the thread class. This argument is ignored for tapered threads."
+        },
+        {
+          "name": "isRightHanded",
+          "type": "boolean",
+          "description": "Input Boolean that specifies if the thread is straight or tapered."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    }
+  },
+  "property_details": {
+    "isInternal": {
+      "id": "ThreadInfo_isInternal",
+      "title": "ThreadInfo.isInternal Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Returns and sets if the thread is an internal or external thread. A value of true indicates an internal thread. It defaults to true.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.isInternal\n\n# Set the value of the property.\nthreadInfo_var.isInternal = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = threadInfo_var->isInternal();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = threadInfo_var->isInternal(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isRightHanded": {
+      "id": "ThreadInfo_isRightHanded",
+      "title": "ThreadInfo.isRightHanded Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Gets and sets if the thread is right or left-handed thread. A value of true indicates a right-handed thread. It defaults to true.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.isRightHanded\n\n# Set the value of the property.\nthreadInfo_var.isRightHanded = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = threadInfo_var->isRightHanded();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = threadInfo_var->isRightHanded(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "isTapered": {
+      "id": "ThreadInfo_isTapered",
+      "title": "ThreadInfo.isTapered Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Indicates if this ThreadInfo object defines a standard or tapered thread.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.isTapered",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = threadInfo_var->isTapered();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "isValid": {
+      "id": "ThreadInfo_isValid",
+      "title": "ThreadInfo.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = threadInfo_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "majorDiameter": {
+      "id": "ThreadInfo_majorDiameter",
+      "title": "ThreadInfo.majorDiameter Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Returns the value that defines the major diameter. The units are centimeters.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.majorDiameter",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = threadInfo_var->majorDiameter();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "minorDiameter": {
+      "id": "ThreadInfo_minorDiameter",
+      "title": "ThreadInfo.minorDiameter Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Returns the value that defines the minor diameter. The units are centimeters.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.minorDiameter",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = threadInfo_var->minorDiameter();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "objectType": {
+      "id": "ThreadInfo_objectType",
+      "title": "ThreadInfo.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = threadInfo_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "pitchDiameter": {
+      "id": "ThreadInfo_pitchDiameter",
+      "title": "ThreadInfo.pitchDiameter Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Returns the value that defines the pitch diameter. The units are centimeters.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.pitchDiameter",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = threadInfo_var->pitchDiameter();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "taperAngle": {
+      "id": "ThreadInfo_taperAngle",
+      "title": "ThreadInfo.taperAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Returns the angle of the tapered thread in centimeters. This is only valid when isTapered is true.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.taperAngle",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = threadInfo_var->taperAngle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "taperTapDrillDiameter": {
+      "id": "ThreadInfo_taperTapDrillDiameter",
+      "title": "ThreadInfo.taperTapDrillDiameter Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Returns the Diameter of the tap drill required to create this tap. This is only valid when isTapered is true.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.taperTapDrillDiameter",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = threadInfo_var->taperTapDrillDiameter();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "taperThreadHeight": {
+      "id": "ThreadInfo_taperThreadHeight",
+      "title": "ThreadInfo.taperThreadHeight Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Returns the height of a tapered thread in centimeters. This is only valid when isTapered is true.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.taperThreadHeight",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = threadInfo_var->taperThreadHeight();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "taperUsefulThreadLength": {
+      "id": "ThreadInfo_taperUsefulThreadLength",
+      "title": "ThreadInfo.taperUsefulThreadLength Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Returns the useful length of threads for a tapered thread in centimeters. This is only valid when isTapered is true.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.taperUsefulThreadLength",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = threadInfo_var->taperUsefulThreadLength();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "taperWrenchMakeupInternalDiameter": {
+      "id": "ThreadInfo_taperWrenchMakeupInternalDiameter",
+      "title": "ThreadInfo.taperWrenchMakeupInternalDiameter Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "The wrench makeup internal diameter for a taper pipe thread, also known as the effective thread diameter, is the diameter at the point where the thread engagement occurs when the pipe is tightened with a wrench. This is only valid when isTapered is true.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.taperWrenchMakeupInternalDiameter",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = threadInfo_var->taperWrenchMakeupInternalDiameter();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "threadAngle": {
+      "id": "ThreadInfo_threadAngle",
+      "title": "ThreadInfo.threadAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Returns the value that defines the thread angle. The units are degrees.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.threadAngle",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = threadInfo_var->threadAngle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "threadClass": {
+      "id": "ThreadInfo_threadClass",
+      "title": "ThreadInfo.threadClass Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Returns and sets the string that defines the thread class.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.threadClass\n\n# Set the value of the property.\nthreadInfo_var.threadClass = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = threadInfo_var->threadClass();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = threadInfo_var->threadClass(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "threadDesignation": {
+      "id": "ThreadInfo_threadDesignation",
+      "title": "ThreadInfo.threadDesignation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Returns and sets the string that defines the thread designation.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.threadDesignation\n\n# Set the value of the property.\nthreadInfo_var.threadDesignation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = threadInfo_var->threadDesignation();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = threadInfo_var->threadDesignation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "threadPitch": {
+      "id": "ThreadInfo_threadPitch",
+      "title": "ThreadInfo.threadPitch Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Returns the value that defines the thread pitch. The units are centimeters.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.threadPitch",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = threadInfo_var->threadPitch();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "threadSize": {
+      "id": "ThreadInfo_threadSize",
+      "title": "ThreadInfo.threadSize Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Returns the string that defines the thread size.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.threadSize",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = threadInfo_var->threadSize();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "threadType": {
+      "id": "ThreadInfo_threadType",
+      "title": "ThreadInfo.threadType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadInfo.h",
+      "description": "Returns and sets the string that defines the thread type.",
+      "parent_class": "ThreadInfo",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadInfo_var.threadType\n\n# Set the value of the property.\nthreadInfo_var.threadType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = threadInfo_var->threadType();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = threadInfo_var->threadType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    }
+  }
+}

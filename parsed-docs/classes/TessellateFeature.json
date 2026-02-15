@@ -1,0 +1,561 @@
+{
+  "id": "TessellateFeature",
+  "title": "TessellateFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/MeshBody/TessellateFeature.h",
+  "description": "Object that represents an existing tessellate feature in a design.",
+  "parent_class": "MeshFeature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    }
+  ],
+  "properties": [
+    {
+      "name": "aspectRatio",
+      "description": "Specify ratio between the height and width of each face on the mesh body. Only valid if tessellateRefinementType is CustomTessellateRefinementType."
+    },
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "createQuads",
+      "description": "Creates quad faces on the mesh body where possible."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "inputBodies",
+      "description": "Gets and sets the input B-Rep bodies.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "maximumEdgeLength",
+      "description": "Specify maximum length of any face edge on the mesh body. Only valid if tessellateRefinementType is CustomTessellateRefinementType."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "normalDeviation",
+      "description": "Specify maximum angle between the normal vectors of each face on the mesh body. Only valid if tessellateRefinementType is CustomTessellateRefinementType."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "surfaceDeviation",
+      "description": "Specify maximum distance between the surface of the original body and the surface of the mesh body. Only valid if tessellateRefinementType is CustomTessellateRefinementType."
+    },
+    {
+      "name": "tessellateRefinementType",
+      "description": "Gets and sets the type of refinement."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    }
+  ],
+  "version": "Introduced in version January 2025",
+  "property_details": {
+    "aspectRatio": {
+      "id": "TessellateFeature_aspectRatio",
+      "title": "TessellateFeature.aspectRatio Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Specify ratio between the height and width of each face on the mesh body. Only valid if tessellateRefinementType is CustomTessellateRefinementType.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.aspectRatio",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = tessellateFeature_var->aspectRatio();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "assemblyContext": {
+      "id": "TessellateFeature_assemblyContext",
+      "title": "TessellateFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = tessellateFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "attributes": {
+      "id": "TessellateFeature_attributes",
+      "title": "TessellateFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = tessellateFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "baseFeature": {
+      "id": "TessellateFeature_baseFeature",
+      "title": "TessellateFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = tessellateFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "bodies": {
+      "id": "TessellateFeature_bodies",
+      "title": "TessellateFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = tessellateFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "createQuads": {
+      "id": "TessellateFeature_createQuads",
+      "title": "TessellateFeature.createQuads Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Creates quad faces on the mesh body where possible.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.createQuads\n\n# Set the value of the property.\ntessellateFeature_var.createQuads = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = tessellateFeature_var->createQuads();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = tessellateFeature_var->createQuads(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "entityToken": {
+      "id": "TessellateFeature_entityToken",
+      "title": "TessellateFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = tessellateFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "errorOrWarningMessage": {
+      "id": "TessellateFeature_errorOrWarningMessage",
+      "title": "TessellateFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = tessellateFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "faces": {
+      "id": "TessellateFeature_faces",
+      "title": "TessellateFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = tessellateFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "healthState": {
+      "id": "TessellateFeature_healthState",
+      "title": "TessellateFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = tessellateFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "inputBodies": {
+      "id": "TessellateFeature_inputBodies",
+      "title": "TessellateFeature.inputBodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Gets and sets the input B-Rep bodies. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.inputBodies\n\n# Set the value of the property.\ntessellateFeature_var.inputBodies = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = tessellateFeature_var->inputBodies();\n\n// Set the value of the property, where value_var is a BRepBody.\nbool returnValue = tessellateFeature_var->inputBodies(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "isParametric": {
+      "id": "TessellateFeature_isParametric",
+      "title": "TessellateFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = tessellateFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "isSuppressed": {
+      "id": "TessellateFeature_isSuppressed",
+      "title": "TessellateFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.isSuppressed\n\n# Set the value of the property.\ntessellateFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = tessellateFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = tessellateFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "isValid": {
+      "id": "TessellateFeature_isValid",
+      "title": "TessellateFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = tessellateFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "linkedFeatures": {
+      "id": "TessellateFeature_linkedFeatures",
+      "title": "TessellateFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = tessellateFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "maximumEdgeLength": {
+      "id": "TessellateFeature_maximumEdgeLength",
+      "title": "TessellateFeature.maximumEdgeLength Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Specify maximum length of any face edge on the mesh body. Only valid if tessellateRefinementType is CustomTessellateRefinementType.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.maximumEdgeLength",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = tessellateFeature_var->maximumEdgeLength();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "name": {
+      "id": "TessellateFeature_name",
+      "title": "TessellateFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.name\n\n# Set the value of the property.\ntessellateFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = tessellateFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = tessellateFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "nativeObject": {
+      "id": "TessellateFeature_nativeObject",
+      "title": "TessellateFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = tessellateFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "normalDeviation": {
+      "id": "TessellateFeature_normalDeviation",
+      "title": "TessellateFeature.normalDeviation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Specify maximum angle between the normal vectors of each face on the mesh body. Only valid if tessellateRefinementType is CustomTessellateRefinementType.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.normalDeviation",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = tessellateFeature_var->normalDeviation();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "objectType": {
+      "id": "TessellateFeature_objectType",
+      "title": "TessellateFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = tessellateFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "parentComponent": {
+      "id": "TessellateFeature_parentComponent",
+      "title": "TessellateFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = tessellateFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "surfaceDeviation": {
+      "id": "TessellateFeature_surfaceDeviation",
+      "title": "TessellateFeature.surfaceDeviation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Specify maximum distance between the surface of the original body and the surface of the mesh body. Only valid if tessellateRefinementType is CustomTessellateRefinementType.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.surfaceDeviation",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = tessellateFeature_var->surfaceDeviation();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "tessellateRefinementType": {
+      "id": "TessellateFeature_tessellateRefinementType",
+      "title": "TessellateFeature.tessellateRefinementType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Gets and sets the type of refinement.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.tessellateRefinementType\n\n# Set the value of the property.\ntessellateFeature_var.tessellateRefinementType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nTessellateRefinementTypes propertyValue = tessellateFeature_var->tessellateRefinementType();\n\n// Set the value of the property, where value_var is a TessellateRefinementTypes.\nbool returnValue = tessellateFeature_var->tessellateRefinementType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "timelineObject": {
+      "id": "TessellateFeature_timelineObject",
+      "title": "TessellateFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tessellateFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = tessellateFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "TessellateFeature_classType",
+      "title": "TessellateFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.TessellateFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::TessellateFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2025"
+    },
+    "createForAssemblyContext": {
+      "id": "TessellateFeature_createForAssemblyContext",
+      "title": "TessellateFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "returnValue = tessellateFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = tessellateFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "TessellateFeature",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version January 2025"
+    },
+    "deleteMe": {
+      "id": "TessellateFeature_deleteMe",
+      "title": "TessellateFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "returnValue = tessellateFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = tessellateFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version January 2025"
+    },
+    "dissolve": {
+      "id": "TessellateFeature_dissolve",
+      "title": "TessellateFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/TessellateFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "TessellateFeature",
+      "syntax": {
+        "python": "returnValue = tessellateFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = tessellateFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version January 2025"
+    }
+  }
+}

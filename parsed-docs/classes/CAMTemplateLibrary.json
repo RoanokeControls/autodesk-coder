@@ -1,0 +1,440 @@
+{
+  "id": "CAMTemplateLibrary",
+  "title": "CAMTemplateLibrary Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/CAMTemplate/CAMTemplateLibrary.h",
+  "description": "The CAMTemplateLibrary provides access to templates. Using this object you can import templates and get existing templates using a URL.",
+  "parent_class": "CAMLibrary",
+  "methods": [
+    {
+      "name": "childAssetURLs",
+      "description": "Get all assets under given URL."
+    },
+    {
+      "name": "childFolderURLs",
+      "description": "Get all library folders under given URL."
+    },
+    {
+      "name": "childTemplates",
+      "description": "Get all templates by the given parent folder URL. Returns null if there is no folder at the URL."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createFolder",
+      "description": "Create a new folder in the library. Create the folder under given parent URL with given folder name. Add counting suffix, in case a folder with given name already exists. Throw an error if given URL does not point to a valid folder or the URL is read-only. Also throws an error if given folder name is empty."
+    },
+    {
+      "name": "deleteAsset",
+      "description": "Delete asset by URL from the library. Throw an error if given URL does not point to a valid asset or the URL is read-only."
+    },
+    {
+      "name": "deleteFolder",
+      "description": "Delete folder by URL from the library. Any content of the folder will also be deleted. Throw an error if given URL does not point to a valid folder or the URL is read-only."
+    },
+    {
+      "name": "displayName",
+      "description": "Get the localized display name for a given URL. The URL must point to a folder."
+    },
+    {
+      "name": "doesPathExist",
+      "description": "Checks if the given URL points to an existing folder or asset in the library."
+    },
+    {
+      "name": "importTemplate",
+      "description": "Import a given template at a specific location. The template will be stored in the library. Throws an error if the given URL is read-only."
+    },
+    {
+      "name": "templateAtURL",
+      "description": "Gets a specific template specified by the given URL. Returns null if the specified template does not exist."
+    },
+    {
+      "name": "updateTemplate",
+      "description": "Update a template in the library. The library substitutes the existing template at the URL by given template. Throws an error if the URL does not already point to an existing template. If the name member of the CAMTemplate doesn't match the name portion of the URL then this will include a rename operation and the returned URL will reflect the new name."
+    },
+    {
+      "name": "urlByLocation",
+      "description": "Get the URL for a given LibraryLocations."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assetTypeName",
+      "description": "Get the name of the asset type which can be accessed by the library."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Additive Manufacturing SLA API Sample",
+      "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "property_details": {
+    "assetTypeName": {
+      "id": "CAMTemplateLibrary_assetTypeName",
+      "title": "CAMTemplateLibrary.assetTypeName Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplateLibrary.h",
+      "description": "Get the name of the asset type which can be accessed by the library.",
+      "parent_class": "CAMTemplateLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMTemplateLibrary_var.assetTypeName",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMTemplateLibrary_var->assetTypeName();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "CAMTemplateLibrary_isValid",
+      "title": "CAMTemplateLibrary.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplateLibrary.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CAMTemplateLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMTemplateLibrary_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMTemplateLibrary_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "CAMTemplateLibrary_objectType",
+      "title": "CAMTemplateLibrary.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplateLibrary.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CAMTemplateLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMTemplateLibrary_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMTemplateLibrary_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  },
+  "method_details": {
+    "childAssetURLs": {
+      "id": "CAMTemplateLibrary_childAssetURLs",
+      "title": "CAMTemplateLibrary.childAssetURLs Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplateLibrary.h",
+      "description": "Get all assets under given URL.",
+      "parent_class": "CAMTemplateLibrary",
+      "syntax": {
+        "python": "returnValue = cAMTemplateLibrary_var.childAssetURLs(url)",
+        "cpp": "#include \n\nreturnValue = cAMTemplateLibrary_var->childAssetURLs(url);"
+      },
+      "return_type": "URL[]",
+      "return_description": "Returns list of asset URLs at given location.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the parent folder."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "childFolderURLs": {
+      "id": "CAMTemplateLibrary_childFolderURLs",
+      "title": "CAMTemplateLibrary.childFolderURLs Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplateLibrary.h",
+      "description": "Get all library folders under given URL.",
+      "parent_class": "CAMTemplateLibrary",
+      "syntax": {
+        "python": "returnValue = cAMTemplateLibrary_var.childFolderURLs(url)",
+        "cpp": "#include \n\nreturnValue = cAMTemplateLibrary_var->childFolderURLs(url);"
+      },
+      "return_type": "URL[]",
+      "return_description": "Returns list of folder URLs at given location.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the parent folder."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "childTemplates": {
+      "id": "CAMTemplateLibrary_childTemplates",
+      "title": "CAMTemplateLibrary.childTemplates Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplateLibrary.h",
+      "description": "Get all templates by the given parent folder URL. Returns null if there is no folder at the URL.",
+      "parent_class": "CAMTemplateLibrary",
+      "syntax": {
+        "python": "returnValue = cAMTemplateLibrary_var.childTemplates(url)",
+        "cpp": "#include \n\nreturnValue = cAMTemplateLibrary_var->childTemplates(url);"
+      },
+      "return_type": "CAMTemplate[]",
+      "return_description": "Returns an array of templates contained within the specified folder URL. Returns null if the URL is not valid.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL of the folder to get the templates from."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "classType": {
+      "id": "CAMTemplateLibrary_classType",
+      "title": "CAMTemplateLibrary.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplateLibrary.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CAMTemplateLibrary",
+      "syntax": {
+        "python": "returnValue = adsk.cam.CAMTemplateLibrary.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::CAMTemplateLibrary::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    },
+    "createFolder": {
+      "id": "CAMTemplateLibrary_createFolder",
+      "title": "CAMTemplateLibrary.createFolder Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplateLibrary.h",
+      "description": "Create a new folder in the library. Create the folder under given parent URL with given folder name. Add counting suffix, in case a folder with given name already exists. Throw an error if given URL does not point to a valid folder or the URL is read-only. Also throws an error if given folder name is empty.",
+      "parent_class": "CAMTemplateLibrary",
+      "syntax": {
+        "python": "returnValue = cAMTemplateLibrary_var.createFolder(parentUrl, folderName)",
+        "cpp": "#include \n\nreturnValue = cAMTemplateLibrary_var->createFolder(parentUrl, folderName);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL to the newly created folder",
+      "parameters": [
+        {
+          "name": "parentUrl",
+          "type": "URL",
+          "description": "The parent URL for the folder to be created."
+        },
+        {
+          "name": "folderName",
+          "type": "string",
+          "description": "Name of the new folder to be created. Must not be empty."
+        }
+      ],
+      "version": "Introduced in version May 2023"
+    },
+    "deleteAsset": {
+      "id": "CAMTemplateLibrary_deleteAsset",
+      "title": "CAMTemplateLibrary.deleteAsset Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplateLibrary.h",
+      "description": "Delete asset by URL from the library. Throw an error if given URL does not point to a valid asset or the URL is read-only.",
+      "parent_class": "CAMTemplateLibrary",
+      "syntax": {
+        "python": "returnValue = cAMTemplateLibrary_var.deleteAsset(url)",
+        "cpp": "#include \n\nreturnValue = cAMTemplateLibrary_var->deleteAsset(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if asset was deleted successfully, false otherwise",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the asset that should be removed."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "deleteFolder": {
+      "id": "CAMTemplateLibrary_deleteFolder",
+      "title": "CAMTemplateLibrary.deleteFolder Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplateLibrary.h",
+      "description": "Delete folder by URL from the library. Any content of the folder will also be deleted. Throw an error if given URL does not point to a valid folder or the URL is read-only.",
+      "parent_class": "CAMTemplateLibrary",
+      "syntax": {
+        "python": "returnValue = cAMTemplateLibrary_var.deleteFolder(url)",
+        "cpp": "#include \n\nreturnValue = cAMTemplateLibrary_var->deleteFolder(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if folder was deleted successfully, false otherwise",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the folder that should be removed."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "displayName": {
+      "id": "CAMTemplateLibrary_displayName",
+      "title": "CAMTemplateLibrary.displayName Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplateLibrary.h",
+      "description": "Get the localized display name for a given URL. The URL must point to a folder.",
+      "parent_class": "CAMTemplateLibrary",
+      "syntax": {
+        "python": "returnValue = cAMTemplateLibrary_var.displayName(url)",
+        "cpp": "#include \n\nreturnValue = cAMTemplateLibrary_var->displayName(url);"
+      },
+      "return_type": "string",
+      "return_description": "Returns localized display name for the folder. Returns empty string for invalid URL.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL that defines the path to a folder."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "doesPathExist": {
+      "id": "CAMTemplateLibrary_doesPathExist",
+      "title": "CAMTemplateLibrary.doesPathExist Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplateLibrary.h",
+      "description": "Checks if the given URL points to an existing folder or asset in the library.",
+      "parent_class": "CAMTemplateLibrary",
+      "syntax": {
+        "python": "returnValue = cAMTemplateLibrary_var.doesPathExist(url)",
+        "cpp": "#include \n\nreturnValue = cAMTemplateLibrary_var->doesPathExist(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the URL points to an existing folder or asset, false otherwise.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to be checked."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    },
+    "importTemplate": {
+      "id": "CAMTemplateLibrary_importTemplate",
+      "title": "CAMTemplateLibrary.importTemplate Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplateLibrary.h",
+      "description": "Import a given template at a specific location. The template will be stored in the library. Throws an error if the given URL is read-only.",
+      "parent_class": "CAMTemplateLibrary",
+      "syntax": {
+        "python": "returnValue = cAMTemplateLibrary_var.importTemplate(camTemplate, destinationUrl)",
+        "cpp": "#include \n\nreturnValue = cAMTemplateLibrary_var->importTemplate(camTemplate, destinationUrl);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL of the newly imported template, or null if the import failed.",
+      "parameters": [
+        {
+          "name": "camTemplate",
+          "type": "CAMTemplate",
+          "description": "The template that should be imported."
+        },
+        {
+          "name": "destinationUrl",
+          "type": "URL",
+          "description": "The URL to the folder where to save the template."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "templateAtURL": {
+      "id": "CAMTemplateLibrary_templateAtURL",
+      "title": "CAMTemplateLibrary.templateAtURL Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplateLibrary.h",
+      "description": "Gets a specific template specified by the given URL. Returns null if the specified template does not exist.",
+      "parent_class": "CAMTemplateLibrary",
+      "syntax": {
+        "python": "returnValue = cAMTemplateLibrary_var.templateAtURL(url)",
+        "cpp": "#include \n\nreturnValue = cAMTemplateLibrary_var->templateAtURL(url);"
+      },
+      "return_type": "CAMTemplate",
+      "return_description": "Returns the template for a valid URL, returns null otherwise.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the template to be fetched."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "updateTemplate": {
+      "id": "CAMTemplateLibrary_updateTemplate",
+      "title": "CAMTemplateLibrary.updateTemplate Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplateLibrary.h",
+      "description": "Update a template in the library. The library substitutes the existing template at the URL by given template. Throws an error if the URL does not already point to an existing template. If the name member of the CAMTemplate doesn't match the name portion of the URL then this will include a rename operation and the returned URL will reflect the new name.",
+      "parent_class": "CAMTemplateLibrary",
+      "syntax": {
+        "python": "returnValue = cAMTemplateLibrary_var.updateTemplate(camTemplate, url)",
+        "cpp": "#include \n\nreturnValue = cAMTemplateLibrary_var->updateTemplate(camTemplate, url);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL of the updated template, or null if the update failed.",
+      "parameters": [
+        {
+          "name": "camTemplate",
+          "type": "CAMTemplate",
+          "description": "The template that should be persisted."
+        },
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the existing template in the library that should be updated."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "urlByLocation": {
+      "id": "CAMTemplateLibrary_urlByLocation",
+      "title": "CAMTemplateLibrary.urlByLocation Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplateLibrary.h",
+      "description": "Get the URL for a given LibraryLocations.",
+      "parent_class": "CAMTemplateLibrary",
+      "syntax": {
+        "python": "returnValue = cAMTemplateLibrary_var.urlByLocation(location)",
+        "cpp": "#include \n\nreturnValue = cAMTemplateLibrary_var->urlByLocation(location);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL for given location.",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "LibraryLocations",
+          "description": "The LibraryLocations to be converted into an URL."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

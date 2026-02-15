@@ -1,0 +1,42 @@
+{
+  "id": "ECD-ULP-VIA",
+  "title": "UL_VIA",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "diameter[layer]",
+      "type": "int"
+    },
+    {
+      "name": "drill",
+      "type": "int"
+    },
+    {
+      "name": "drillsymbol",
+      "type": "int"
+    },
+    {
+      "name": "end",
+      "type": "int"
+    },
+    {
+      "name": "flags",
+      "type": "int (VIA_FLAG_...)"
+    },
+    {
+      "name": "shape[layer]",
+      "type": "int (VIA_SHAPE_...)"
+    },
+    {
+      "name": "start",
+      "type": "int"
+    },
+    {
+      "name": "x, y",
+      "type": "int (center point)"
+    }
+  ],
+  "loop_members": [],
+  "content": "# UL_VIA\n\n## Data members\n\n| | |\n| --- | --- |\n| diameter[layer] | int |\n| drill | int |\n| drillsymbol | int |\n| end | int |\n| flags | int (VIA_FLAG_...) |\n| shape[layer] | int (VIA_SHAPE_...) |\n| start | int |\n| x, y | int (center point) |\n\nSee also UL_SIGNAL\n\n## Constants\n\n| | |\n| --- | --- |\n| VIA_FLAG_STOP | always generate stop mask |\n| VIA_SHAPE_SQUARE | square |\n| VIA_SHAPE_ROUND | round |\n| VIA_SHAPE_OCTAGON | octagon |\n\n## Note\n\nThe diameter and shape of the via depend on the layer for which they shall be retrieved, because they may be different in each layer depending on the Design Rules. If one of the layers LAYER_TOP...LAYER_BOTTOM, LAYER_TSTOP or LAYER_BSTOP is given as the index to the diameter or shape data member, the resulting value will be calculated according to the Design Rules. If LAYER_VIAS is given, the raw value as defined in the via will be returned.\n\nNote that *diameter* and *shape* will always return the diameter or shape that a via would have in the given layer, even if that particular via doesn't cover that layer (or if that layer isn't used in the layer setup at all).\n\n*start* and *end* return the layer numbers in which that via starts and ends. The value of *start* will always be less than that of *end*.\n\n*drillsymbol* returns the number of the drill symbol that has been assigned to this drill diameter (see the manual for a list of defined drill symbols). A value of 0 means that no symbol has been assigned to this drill diameter.\n\n## Example\n\n```\nboard(B) {\n B.signals(S) {\n S.vias(V) {\n printf(\"Via: (%f %f)\\n\", u2mm(V.x), u2mm(V.y));\n }\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

@@ -1,0 +1,456 @@
+{
+  "id": "SketchTextInput",
+  "title": "SketchTextInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Sketch/SketchTextInput.h",
+  "description": "The SketchTextInput object is equivalent to the Sketch Text dialog in that it collects all of the input required to create sketch text. Once the properties of the SketchTextInput object have been defined, use the add method to create the sketch text. A SketchTextInput object is created by using the createInput of the SketchTexts object.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "setAsAlongPath",
+      "description": "Sets this SketchTextInput to define text that follows along a specified path."
+    },
+    {
+      "name": "setAsFitOnPath",
+      "description": "Sets this SketchTextInput to define text that fits along a specified path. Fitting on a path will space the characters so the text fits along the entire length of the path entity."
+    },
+    {
+      "name": "setAsMultiLine",
+      "description": "Defines the first corner point of the rectangle that will contain the text."
+    }
+  ],
+  "properties": [
+    {
+      "name": "angle",
+      "description": "**RETIRED** Gets and sets the angle of the text relative to the x-axis of the x-y plane of the sketch."
+    },
+    {
+      "name": "definition",
+      "description": "Returns the SketchTextDefinition object associated with this input. When the SketchTextInput is first created this property will return null. Once one of the \"set\" methods have been called, this will return the SketchTextDefinition of the appropriate type and can be used to make any additional changes to the text."
+    },
+    {
+      "name": "expression",
+      "description": "Gets and sets the expression of the parameter that will be created when this SketchText is created. It can be a simple string or it can be an expression that combines text with parameter values. Simple text must be enclosed within single quotes, the same as it is required in the TEXT command dialog.   An example of a valid expression is: \"'Length: ' + lengthParam\" and will result in \"Length: 3.0 mm\". The expression result can be obtained by using the text property on the created SketchTextInput object."
+    },
+    {
+      "name": "fontName",
+      "description": "Gets and sets the name of the font to use."
+    },
+    {
+      "name": "height",
+      "description": "**RETIRED** This property has been retired and replaced by the height2 property."
+    },
+    {
+      "name": "height2",
+      "description": "Gets and sets the ValueInput that defines the height of the text. This value is used to create a parameter that will control the height of the text. It can be a value where it defines the height of the text in centimeters, or it can be a string where it defines the equation of the parameter and must evaluate to a valid length."
+    },
+    {
+      "name": "isHorizontalFlip",
+      "description": "Gets and sets if the text is flipped horizontally."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVerticalFlip",
+      "description": "Gets and sets if the text is flipped vertically."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "position",
+      "description": "**RETIRED** Gets and sets the position of the text on the x-y plane of the sketch. The text must lie on the x-y plane so the Z component of the point is ignored and always treated as zero."
+    },
+    {
+      "name": "text",
+      "description": "Gets and sets the displayed text. This represents the text that results from evaluating the input formatted text. For example, if the formatted text is \"'Length: ' + lengthParam\", this property will return \"Length: 3.0 in\".   Setting this property will overwrite any equation defined by the expression and replace it with simple text. Use the expression property to be able to define a full expression."
+    },
+    {
+      "name": "textStyle",
+      "description": "Gets and sets the text style to apply to the entire text. This is a bitwise enum so styles can be combined to apply multiple styles. For example you can apply bold and italic."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Sketch Text API Sample",
+      "description": "Demonstrates creating sketch text by creating both mult-line text and text along a curve."
+    }
+  ],
+  "version": "Introduced in version March 2015",
+  "property_details": {
+    "angle": {
+      "id": "SketchTextInput_angle",
+      "title": "SketchTextInput.angle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTextInput.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets and sets the angle of the text relative to the x-axis of the x-y plane of the sketch. Remarks",
+      "parent_class": "SketchTextInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchTextInput_var.angle\n\n# Set the value of the property.\nsketchTextInput_var.angle = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sketchTextInput_var->angle();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sketchTextInput_var->angle(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "definition": {
+      "id": "SketchTextInput_definition",
+      "title": "SketchTextInput.definition Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTextInput.h",
+      "description": "Returns the SketchTextDefinition object associated with this input. When the SketchTextInput is first created this property will return null. Once one of the \"set\" methods have been called, this will return the SketchTextDefinition of the appropriate type and can be used to make any additional changes to the text.",
+      "parent_class": "SketchTextInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchTextInput_var.definition",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchTextInput_var->definition();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "expression": {
+      "id": "SketchTextInput_expression",
+      "title": "SketchTextInput.expression Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTextInput.h",
+      "description": "Gets and sets the expression of the parameter that will be created when this SketchText is created. It can be a simple string or it can be an expression that combines text with parameter values. Simple text must be enclosed within single quotes, the same as it is required in the TEXT command dialog. An example of a valid expression is: \"'Length: ' + lengthParam\" and will result in \"Length: 3.0 mm\". The expression result can be obtained by using the text property on the created SketchTextInput object.",
+      "parent_class": "SketchTextInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchTextInput_var.expression\n\n# Set the value of the property.\nsketchTextInput_var.expression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchTextInput_var->expression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = sketchTextInput_var->expression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2025"
+    },
+    "fontName": {
+      "id": "SketchTextInput_fontName",
+      "title": "SketchTextInput.fontName Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTextInput.h",
+      "description": "Gets and sets the name of the font to use.",
+      "parent_class": "SketchTextInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchTextInput_var.fontName\n\n# Set the value of the property.\nsketchTextInput_var.fontName = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchTextInput_var->fontName();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = sketchTextInput_var->fontName(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Sketch Text API Sample",
+          "description": "Demonstrates creating sketch text by creating both mult-line text and text along a curve."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    },
+    "height": {
+      "id": "SketchTextInput_height",
+      "title": "SketchTextInput.height Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTextInput.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. This property has been retired and replaced by the height2 property. Remarks",
+      "parent_class": "SketchTextInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchTextInput_var.height\n\n# Set the value of the property.\nsketchTextInput_var.height = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sketchTextInput_var->height();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sketchTextInput_var->height(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "height2": {
+      "id": "SketchTextInput_height2",
+      "title": "SketchTextInput.height2 Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTextInput.h",
+      "description": "Gets and sets the ValueInput that defines the height of the text. This value is used to create a parameter that will control the height of the text. It can be a value where it defines the height of the text in centimeters, or it can be a string where it defines the equation of the parameter and must evaluate to a valid length.",
+      "parent_class": "SketchTextInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchTextInput_var.height2\n\n# Set the value of the property.\nsketchTextInput_var.height2 = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchTextInput_var->height2();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = sketchTextInput_var->height2(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2025"
+    },
+    "isHorizontalFlip": {
+      "id": "SketchTextInput_isHorizontalFlip",
+      "title": "SketchTextInput.isHorizontalFlip Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTextInput.h",
+      "description": "Gets and sets if the text is flipped horizontally.",
+      "parent_class": "SketchTextInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchTextInput_var.isHorizontalFlip\n\n# Set the value of the property.\nsketchTextInput_var.isHorizontalFlip = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchTextInput_var->isHorizontalFlip();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchTextInput_var->isHorizontalFlip(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Sketch Text API Sample",
+          "description": "Demonstrates creating sketch text by creating both mult-line text and text along a curve."
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    },
+    "isValid": {
+      "id": "SketchTextInput_isValid",
+      "title": "SketchTextInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTextInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SketchTextInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchTextInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchTextInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "isVerticalFlip": {
+      "id": "SketchTextInput_isVerticalFlip",
+      "title": "SketchTextInput.isVerticalFlip Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTextInput.h",
+      "description": "Gets and sets if the text is flipped vertically.",
+      "parent_class": "SketchTextInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchTextInput_var.isVerticalFlip\n\n# Set the value of the property.\nsketchTextInput_var.isVerticalFlip = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchTextInput_var->isVerticalFlip();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchTextInput_var->isVerticalFlip(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Sketch Text API Sample",
+          "description": "Demonstrates creating sketch text by creating both mult-line text and text along a curve."
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    },
+    "objectType": {
+      "id": "SketchTextInput_objectType",
+      "title": "SketchTextInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTextInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SketchTextInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchTextInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchTextInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "position": {
+      "id": "SketchTextInput_position",
+      "title": "SketchTextInput.position Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTextInput.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets and sets the position of the text on the x-y plane of the sketch. The text must lie on the x-y plane so the Z component of the point is ignored and always treated as zero. Remarks",
+      "parent_class": "SketchTextInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchTextInput_var.position\n\n# Set the value of the property.\nsketchTextInput_var.position = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchTextInput_var->position();\n\n// Set the value of the property, where value_var is a Point3D.\nbool returnValue = sketchTextInput_var->position(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "text": {
+      "id": "SketchTextInput_text",
+      "title": "SketchTextInput.text Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTextInput.h",
+      "description": "Gets and sets the displayed text. This represents the text that results from evaluating the input formatted text. For example, if the formatted text is \"'Length: ' + lengthParam\", this property will return \"Length: 3.0 in\". Setting this property will overwrite any equation defined by the expression and replace it with simple text. Use the expression property to be able to define a full expression.",
+      "parent_class": "SketchTextInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchTextInput_var.text\n\n# Set the value of the property.\nsketchTextInput_var.text = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchTextInput_var->text();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = sketchTextInput_var->text(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "textStyle": {
+      "id": "SketchTextInput_textStyle",
+      "title": "SketchTextInput.textStyle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTextInput.h",
+      "description": "Gets and sets the text style to apply to the entire text. This is a bitwise enum so styles can be combined to apply multiple styles. For example you can apply bold and italic.",
+      "parent_class": "SketchTextInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchTextInput_var.textStyle\n\n# Set the value of the property.\nsketchTextInput_var.textStyle = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nTextStyles propertyValue = sketchTextInput_var->textStyle();\n\n// Set the value of the property, where value_var is a TextStyles.\nbool returnValue = sketchTextInput_var->textStyle(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "SketchTextInput_classType",
+      "title": "SketchTextInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTextInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SketchTextInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.SketchTextInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::SketchTextInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version March 2015"
+    },
+    "setAsAlongPath": {
+      "id": "SketchTextInput_setAsAlongPath",
+      "title": "SketchTextInput.setAsAlongPath Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTextInput.h",
+      "description": "Sets this SketchTextInput to define text that follows along a specified path.",
+      "parent_class": "SketchTextInput",
+      "syntax": {
+        "python": "returnValue = sketchTextInput_var.setAsAlongPath(path, isAbovePath, horizontalAlignment, characterSpacing)",
+        "cpp": "#include \n\nreturnValue = sketchTextInput_var->setAsAlongPath(path, isAbovePath, horizontalAlignment, characterSpacing);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the setting the definition was successful.",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "Base",
+          "description": "The entity that defines the path for the text. This can be a SketchCurve or BRepEdge object."
+        },
+        {
+          "name": "isAbovePath",
+          "type": "boolean",
+          "description": "Indicates if the text should be positioned above or below the path entity."
+        },
+        {
+          "name": "horizontalAlignment",
+          "type": "HorizontalAlignments",
+          "description": "Specifies the horizontal alignment of the text with respect to the path curve."
+        },
+        {
+          "name": "characterSpacing",
+          "type": "double",
+          "description": "The percentage change in default spacing between characters."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "SketchTextInput.setAsAlongPath",
+          "description": "Demonstrates the SketchTextInput.setAsAlongPath method."
+        },
+        {
+          "name": "Sketch Text API Sample",
+          "description": "Demonstrates creating sketch text by creating both mult-line text and text along a curve."
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    },
+    "setAsFitOnPath": {
+      "id": "SketchTextInput_setAsFitOnPath",
+      "title": "SketchTextInput.setAsFitOnPath Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTextInput.h",
+      "description": "Sets this SketchTextInput to define text that fits along a specified path. Fitting on a path will space the characters so the text fits along the entire length of the path entity.",
+      "parent_class": "SketchTextInput",
+      "syntax": {
+        "python": "returnValue = sketchTextInput_var.setAsFitOnPath(path, isAbovePath)",
+        "cpp": "#include \n\nreturnValue = sketchTextInput_var->setAsFitOnPath(path, isAbovePath);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the setting the definition was successful.",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "Base",
+          "description": "The entity that defines the path for the text. This can be a SketchCurve or BRepEdge object."
+        },
+        {
+          "name": "isAbovePath",
+          "type": "boolean",
+          "description": "Indicates if the text should be positioned above or below the path entity."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "SketchTextInput.setAsFitOnPath",
+          "description": "Demoonstrates the SketchTextInput.setAsFitOnPath method."
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    },
+    "setAsMultiLine": {
+      "id": "SketchTextInput_setAsMultiLine",
+      "title": "SketchTextInput.setAsMultiLine Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTextInput.h",
+      "description": "Defines the first corner point of the rectangle that will contain the text.",
+      "parent_class": "SketchTextInput",
+      "syntax": {
+        "python": "returnValue = sketchTextInput_var.setAsMultiLine(cornerPoint, diagonalPoint, horizontalAlignment, verticalAlignment, characterSpacing)",
+        "cpp": "#include \n\nreturnValue = sketchTextInput_var->setAsMultiLine(cornerPoint, diagonalPoint, horizontalAlignment, verticalAlignment, characterSpacing);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the setting the definition was successful.",
+      "parameters": [
+        {
+          "name": "cornerPoint",
+          "type": "Base",
+          "description": "Specifies the location of one of the corner points of the rectangle that will contain the text. This can be a Point3D object, with a Z component of zero, to define any arbitrary location on the X-Y plane of the sketch or it can be an existing SketchPoint that lies on the sketch X-Y plane."
+        },
+        {
+          "name": "diagonalPoint",
+          "type": "Base",
+          "description": "Specifies the location of the diagonal point of the rectangle that will contain the text. This point cannot be aligned vertically or horizontally to the corner point but be a diagonal point to define a rectangle. This can be a Point3D object, with a Z component of zero, to define any arbitrary location on the X-Y plane of the sketch or it can be an existing SketchPoint that lies on the sketch X-Y plane and the sketch point will become the opposing corner point."
+        },
+        {
+          "name": "horizontalAlignment",
+          "type": "HorizontalAlignments",
+          "description": "Specifies the horizontal alignment of the text with respect to the text rectangle."
+        },
+        {
+          "name": "verticalAlignment",
+          "type": "VerticalAlignments",
+          "description": "Specifies the vertical alignment of the text with respect to the text rectangle."
+        },
+        {
+          "name": "characterSpacing",
+          "type": "double",
+          "description": "The spacing between the characters. This is an additional spacing to apply that is defined as a percentage of the default spacing. A spacing of 0 indicates no additional spacing. A spacing of 50 indicates to use the default plus 50% of the default."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "SketchTextInput.setAsMultiLine",
+          "description": "Demonstrates the SketchTextInput.setAsMultiLine method."
+        },
+        {
+          "name": "Sketch Text API Sample",
+          "description": "Demonstrates creating sketch text by creating both mult-line text and text along a curve."
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "id": "VariableRadiusFilletEdgeSetInput",
+  "title": "VariableRadiusFilletEdgeSetInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/VariableRadiusFilletEdgeSetInput.h",
+  "description": "Provides access to the edges and the parameters associated with a variable radius fillet.",
+  "parent_class": "FilletEdgeSetInput",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "setMidRadii",
+      "description": "Defines any additional points along the fillet where a radius is specified."
+    }
+  ],
+  "properties": [
+    {
+      "name": "continuity",
+      "description": "Gets and sets the continuity of the fillet edge set. Valid values are TangentSurfaceContinuityType and CurvatureSurfaceContinuityType. The default is TangentSurfaceContinuityType.   For an asymmetric fillet edge set, this must always be tangent continuity (G1) and setting it to another value will fail."
+    },
+    {
+      "name": "endRadius",
+      "description": "Gets and sets a ValueInput object that defines the ending radius of the fillet. If a single edge is being filleted, the end radius is at the end of the edge. If multiple tangent edges are being filleted the end radius is the open end of the last edge in the collection.   If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length."
+    },
+    {
+      "name": "entities",
+      "description": "Gets and sets the entities associated with this fillet edge set. For constant radius and chord length edge sets, this can be edges, faces, and features. For variable radius edges sets, this must be edges."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "startRadius",
+      "description": "Gets and sets a ValueInput object that defines the starting radius of the fillet. If a single edge is being filleted, the start radius is at the start end of the edge. If multiple tangent edges are being filleted the start radius is the start end of the first edge in the collection.   If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length."
+    },
+    {
+      "name": "tangencyWeight",
+      "description": "Gets and sets the tangency weight for the given edge set. The tangency weight controls the influence of the continuity (G1 or G2) on the fillet. The ValueInput must be a real value between 0.1 and 2.0 inclusive, with no units. The default value is 1.0."
+    }
+  ],
+  "version": "Introduced in version November 2022",
+  "method_details": {
+    "classType": {
+      "id": "VariableRadiusFilletEdgeSetInput_classType",
+      "title": "VariableRadiusFilletEdgeSetInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSetInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "VariableRadiusFilletEdgeSetInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.VariableRadiusFilletEdgeSetInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::VariableRadiusFilletEdgeSetInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version November 2022"
+    },
+    "setMidRadii": {
+      "id": "VariableRadiusFilletEdgeSetInput_setMidRadii",
+      "title": "VariableRadiusFilletEdgeSetInput.setMidRadii Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSetInput.h",
+      "description": "Defines any additional points along the fillet where a radius is specified.",
+      "parent_class": "VariableRadiusFilletEdgeSetInput",
+      "syntax": {
+        "python": "returnValue = variableRadiusFilletEdgeSetInput_var.setMidRadii(radii, positions)",
+        "cpp": "#include \n\nreturnValue = variableRadiusFilletEdgeSetInput_var->setMidRadii(radii, positions);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "radii",
+          "type": "ValueInput[]",
+          "description": "An array of ValueInput objects that define the radii at positions along the edge(s). This array must have the same number of values as the positions argument.   If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the the units can be defined as part of the string (i.e. \"2 in\"). If no units are specified it will be interpreted using the current default units for length."
+        },
+        {
+          "name": "positions",
+          "type": "ValueInput[]",
+          "description": "An array of ValueInput objects that defines the positions of any additional radii along the edge(s). The value must be between 0 and 1 and defines the percentage along the curve where a radius is defined. This array must have the same number of values as the radii argument.   If the ValueInput uses a real then it is interpreted as a unitless number. If it is a string then the the string must evaluate to a unitless number."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Fillet Feature API Sample",
+          "description": "Demonstrates creating fillets using the various types of fillets. Create a new design and add a box that is at least 2 cm on each side. The script creates a constant radius, variable radius and chord length fillets. After creating each one, it deletes it and then creates the next. To see any of the fillets that were deleted, undo to get the fillet back."
+        }
+      ],
+      "version": "Introduced in version November 2022"
+    }
+  },
+  "property_details": {
+    "continuity": {
+      "id": "VariableRadiusFilletEdgeSetInput_continuity",
+      "title": "VariableRadiusFilletEdgeSetInput.continuity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSetInput.h",
+      "description": "Gets and sets the continuity of the fillet edge set. Valid values are TangentSurfaceContinuityType and CurvatureSurfaceContinuityType. The default is TangentSurfaceContinuityType. For an asymmetric fillet edge set, this must always be tangent continuity (G1) and setting it to another value will fail.",
+      "parent_class": "VariableRadiusFilletEdgeSetInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = variableRadiusFilletEdgeSetInput_var.continuity\n\n# Set the value of the property.\nvariableRadiusFilletEdgeSetInput_var.continuity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nSurfaceContinuityTypes propertyValue = variableRadiusFilletEdgeSetInput_var->continuity();\n\n// Set the value of the property, where value_var is a SurfaceContinuityTypes.\nbool returnValue = variableRadiusFilletEdgeSetInput_var->continuity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "endRadius": {
+      "id": "VariableRadiusFilletEdgeSetInput_endRadius",
+      "title": "VariableRadiusFilletEdgeSetInput.endRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSetInput.h",
+      "description": "Gets and sets a ValueInput object that defines the ending radius of the fillet. If a single edge is being filleted, the end radius is at the end of the edge. If multiple tangent edges are being filleted the end radius is the open end of the last edge in the collection. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length.",
+      "parent_class": "VariableRadiusFilletEdgeSetInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = variableRadiusFilletEdgeSetInput_var.endRadius\n\n# Set the value of the property.\nvariableRadiusFilletEdgeSetInput_var.endRadius = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = variableRadiusFilletEdgeSetInput_var->endRadius();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = variableRadiusFilletEdgeSetInput_var->endRadius(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "entities": {
+      "id": "VariableRadiusFilletEdgeSetInput_entities",
+      "title": "VariableRadiusFilletEdgeSetInput.entities Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSetInput.h",
+      "description": "Gets and sets the entities associated with this fillet edge set. For constant radius and chord length edge sets, this can be edges, faces, and features. For variable radius edges sets, this must be edges.",
+      "parent_class": "VariableRadiusFilletEdgeSetInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = variableRadiusFilletEdgeSetInput_var.entities\n\n# Set the value of the property.\nvariableRadiusFilletEdgeSetInput_var.entities = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = variableRadiusFilletEdgeSetInput_var->entities();\n\n// Set the value of the property, where value_var is an ObjectCollection.\nbool returnValue = variableRadiusFilletEdgeSetInput_var->entities(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "isValid": {
+      "id": "VariableRadiusFilletEdgeSetInput_isValid",
+      "title": "VariableRadiusFilletEdgeSetInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSetInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "VariableRadiusFilletEdgeSetInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = variableRadiusFilletEdgeSetInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = variableRadiusFilletEdgeSetInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "objectType": {
+      "id": "VariableRadiusFilletEdgeSetInput_objectType",
+      "title": "VariableRadiusFilletEdgeSetInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSetInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "VariableRadiusFilletEdgeSetInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = variableRadiusFilletEdgeSetInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = variableRadiusFilletEdgeSetInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "startRadius": {
+      "id": "VariableRadiusFilletEdgeSetInput_startRadius",
+      "title": "VariableRadiusFilletEdgeSetInput.startRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSetInput.h",
+      "description": "Gets and sets a ValueInput object that defines the starting radius of the fillet. If a single edge is being filleted, the start radius is at the start end of the edge. If multiple tangent edges are being filleted the start radius is the start end of the first edge in the collection. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length.",
+      "parent_class": "VariableRadiusFilletEdgeSetInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = variableRadiusFilletEdgeSetInput_var.startRadius\n\n# Set the value of the property.\nvariableRadiusFilletEdgeSetInput_var.startRadius = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = variableRadiusFilletEdgeSetInput_var->startRadius();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = variableRadiusFilletEdgeSetInput_var->startRadius(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "tangencyWeight": {
+      "id": "VariableRadiusFilletEdgeSetInput_tangencyWeight",
+      "title": "VariableRadiusFilletEdgeSetInput.tangencyWeight Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSetInput.h",
+      "description": "Gets and sets the tangency weight for the given edge set. The tangency weight controls the influence of the continuity (G1 or G2) on the fillet. The ValueInput must be a real value between 0.1 and 2.0 inclusive, with no units. The default value is 1.0.",
+      "parent_class": "VariableRadiusFilletEdgeSetInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = variableRadiusFilletEdgeSetInput_var.tangencyWeight\n\n# Set the value of the property.\nvariableRadiusFilletEdgeSetInput_var.tangencyWeight = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = variableRadiusFilletEdgeSetInput_var->tangencyWeight();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = variableRadiusFilletEdgeSetInput_var->tangencyWeight(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    }
+  }
+}

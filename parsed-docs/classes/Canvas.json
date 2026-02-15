@@ -1,0 +1,511 @@
+{
+  "id": "Canvas",
+  "title": "Canvas Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Image/Canvas.h",
+  "description": "Represents a Canvas within a component.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the canvas from the component."
+    },
+    {
+      "name": "flipHorizontal",
+      "description": "Flips the image along the horizontal axis. This is a convenience method that flips the direction of the X axis of the transform."
+    },
+    {
+      "name": "flipVertical",
+      "description": "Flips the image along the vertical axis. This is a convenience method that flips the direction of the Y axis of the transform."
+    },
+    {
+      "name": "saveImage",
+      "description": "Saves the image associated with the canvas to the specified file. This is useful in cases where the original image file is no longer available but you need the image for some other purpose."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "deriveFeature",
+      "description": "Returns the DeriveFeature if this canvas is derived from another design. This property returns null if the canvas is not derived from another design (i.e. isDerived property returns false)."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Canvas object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same canvas.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "imageFilename",
+      "description": "Gets and sets the filename of the image used for the canvas. When getting this property, the filename returned is the file that was used when the canvas was initially created. it's possible the file may no longer exist.   When setting this property, it is the full filename to the image to use for the canvas. PNG, JPEG, and TIFF files are supported."
+    },
+    {
+      "name": "isDerived",
+      "description": "Returns if this canvas is derived from another design. If true, the canvas cannot be deleted. You should not attempt to make any edits to the derived canvas. Any edits made to this derived canvas will be lost when the derive updates."
+    },
+    {
+      "name": "isDisplayedThrough",
+      "description": "Controls if the image is visible through the model or not."
+    },
+    {
+      "name": "isLightBulbOn",
+      "description": "Gets and sets if the light bulb of this canvas as displayed in the browser is on or off.   A canvas will only be visible if the light bulb is switched on. However, the light bulb can be on and the canvas still invisible if the visibility of a higher level occurrence has its light bulb off or if the light bulb for Canvases folder is off to turn off all canvases in a component."
+    },
+    {
+      "name": "isRenderable",
+      "description": "Controls if the canvas will be rendered when ray tracing within the Render workspace."
+    },
+    {
+      "name": "isSelectable",
+      "description": "Controls if the canvas is selectable or not within the graphics window."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Returns if the canvas is currently visible in the graphics window. The isLightBulbOn property of the canvas controls if the canvas should be displayed or not, but even when true, the canvas may not be visible because the occurrence that references the component may not be visible. It's also possible to turn off the visibility of all canvases for a component. This property takes all of that into account when reporting if the canvas is visible or not."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name of the canvas. This is the name seen in the browser and timeline."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "opacity",
+      "description": "Gets and sets the opacity of the canvas where 0 is completely transparent and 100 is completely opaque. Setting this property to a value outside the range of 0-100 will result in the value being set to the closest valid value."
+    },
+    {
+      "name": "planarEntity",
+      "description": "Gets and sets the plane the canvas is associated with. This can be either a planar Face or a construction plane. In a direct modeling design or the canvas is being created in a base feature, this can be a Plane object."
+    },
+    {
+      "name": "plane",
+      "description": "Returns a Plane object that represents the position and orientation of the canvas in model space."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with the creation of this canvas."
+    },
+    {
+      "name": "transform",
+      "description": "Gets and sets the transform of the canvas. This allows you to control the position, rotation, scaling, and flipping. The X and Y axes defined by the matrix and must be perpendicular to one another.   This is a 3x3 matrix where the third column controls the position of the canvas and defines the position using 2D coordinates in the model space."
+    }
+  ],
+  "version": "Introduced in version May 2023",
+  "property_details": {
+    "assemblyContext": {
+      "id": "Canvas_assemblyContext",
+      "title": "Canvas.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = canvas_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "deriveFeature": {
+      "id": "Canvas_deriveFeature",
+      "title": "Canvas.deriveFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Returns the DeriveFeature if this canvas is derived from another design. This property returns null if the canvas is not derived from another design (i.e. isDerived property returns false).",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.deriveFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = canvas_var->deriveFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "entityToken": {
+      "id": "Canvas_entityToken",
+      "title": "Canvas.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Returns a token for the Canvas object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same canvas. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = canvas_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "imageFilename": {
+      "id": "Canvas_imageFilename",
+      "title": "Canvas.imageFilename Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Gets and sets the filename of the image used for the canvas. When getting this property, the filename returned is the file that was used when the canvas was initially created. it's possible the file may no longer exist. When setting this property, it is the full filename to the image to use for the canvas. PNG, JPEG, and TIFF files are supported.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.imageFilename\n\n# Set the value of the property.\ncanvas_var.imageFilename = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = canvas_var->imageFilename();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = canvas_var->imageFilename(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "isDerived": {
+      "id": "Canvas_isDerived",
+      "title": "Canvas.isDerived Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Returns if this canvas is derived from another design. If true, the canvas cannot be deleted. You should not attempt to make any edits to the derived canvas. Any edits made to this derived canvas will be lost when the derive updates.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.isDerived",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = canvas_var->isDerived();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "isDisplayedThrough": {
+      "id": "Canvas_isDisplayedThrough",
+      "title": "Canvas.isDisplayedThrough Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Controls if the image is visible through the model or not.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.isDisplayedThrough\n\n# Set the value of the property.\ncanvas_var.isDisplayedThrough = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = canvas_var->isDisplayedThrough();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = canvas_var->isDisplayedThrough(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "isLightBulbOn": {
+      "id": "Canvas_isLightBulbOn",
+      "title": "Canvas.isLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Gets and sets if the light bulb of this canvas as displayed in the browser is on or off. A canvas will only be visible if the light bulb is switched on. However, the light bulb can be on and the canvas still invisible if the visibility of a higher level occurrence has its light bulb off or if the light bulb for Canvases folder is off to turn off all canvases in a component.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.isLightBulbOn\n\n# Set the value of the property.\ncanvas_var.isLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = canvas_var->isLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = canvas_var->isLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "isRenderable": {
+      "id": "Canvas_isRenderable",
+      "title": "Canvas.isRenderable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Controls if the canvas will be rendered when ray tracing within the Render workspace.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.isRenderable\n\n# Set the value of the property.\ncanvas_var.isRenderable = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = canvas_var->isRenderable();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = canvas_var->isRenderable(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "isSelectable": {
+      "id": "Canvas_isSelectable",
+      "title": "Canvas.isSelectable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Controls if the canvas is selectable or not within the graphics window.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.isSelectable\n\n# Set the value of the property.\ncanvas_var.isSelectable = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = canvas_var->isSelectable();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = canvas_var->isSelectable(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "isValid": {
+      "id": "Canvas_isValid",
+      "title": "Canvas.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = canvas_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "isVisible": {
+      "id": "Canvas_isVisible",
+      "title": "Canvas.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Returns if the canvas is currently visible in the graphics window. The isLightBulbOn property of the canvas controls if the canvas should be displayed or not, but even when true, the canvas may not be visible because the occurrence that references the component may not be visible. It's also possible to turn off the visibility of all canvases for a component. This property takes all of that into account when reporting if the canvas is visible or not.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = canvas_var->isVisible();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "name": {
+      "id": "Canvas_name",
+      "title": "Canvas.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Gets and sets the name of the canvas. This is the name seen in the browser and timeline.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.name\n\n# Set the value of the property.\ncanvas_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = canvas_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = canvas_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "nativeObject": {
+      "id": "Canvas_nativeObject",
+      "title": "Canvas.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = canvas_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "objectType": {
+      "id": "Canvas_objectType",
+      "title": "Canvas.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = canvas_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "opacity": {
+      "id": "Canvas_opacity",
+      "title": "Canvas.opacity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Gets and sets the opacity of the canvas where 0 is completely transparent and 100 is completely opaque. Setting this property to a value outside the range of 0-100 will result in the value being set to the closest valid value.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.opacity\n\n# Set the value of the property.\ncanvas_var.opacity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = canvas_var->opacity();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = canvas_var->opacity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "planarEntity": {
+      "id": "Canvas_planarEntity",
+      "title": "Canvas.planarEntity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Gets and sets the plane the canvas is associated with. This can be either a planar Face or a construction plane. In a direct modeling design or the canvas is being created in a base feature, this can be a Plane object.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.planarEntity\n\n# Set the value of the property.\ncanvas_var.planarEntity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = canvas_var->planarEntity();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = canvas_var->planarEntity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "plane": {
+      "id": "Canvas_plane",
+      "title": "Canvas.plane Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Returns a Plane object that represents the position and orientation of the canvas in model space.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.plane",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = canvas_var->plane();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "timelineObject": {
+      "id": "Canvas_timelineObject",
+      "title": "Canvas.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Returns the timeline object associated with the creation of this canvas.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = canvas_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "transform": {
+      "id": "Canvas_transform",
+      "title": "Canvas.transform Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Gets and sets the transform of the canvas. This allows you to control the position, rotation, scaling, and flipping. The X and Y axes defined by the matrix and must be perpendicular to one another. This is a 3x3 matrix where the third column controls the position of the canvas and defines the position using 2D coordinates in the model space.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvas_var.transform\n\n# Set the value of the property.\ncanvas_var.transform = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = canvas_var->transform();\n\n// Set the value of the property, where value_var is a Matrix2D.\nbool returnValue = canvas_var->transform(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "Canvas_classType",
+      "title": "Canvas.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.Canvas.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::Canvas::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version May 2023"
+    },
+    "createForAssemblyContext": {
+      "id": "Canvas_createForAssemblyContext",
+      "title": "Canvas.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "returnValue = canvas_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = canvas_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "Canvas",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version May 2023"
+    },
+    "deleteMe": {
+      "id": "Canvas_deleteMe",
+      "title": "Canvas.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Deletes the canvas from the component.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "returnValue = canvas_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = canvas_var->deleteMe();"
+      },
+      "version": "Introduced in version May 2023"
+    },
+    "flipHorizontal": {
+      "id": "Canvas_flipHorizontal",
+      "title": "Canvas.flipHorizontal Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Flips the image along the horizontal axis. This is a convenience method that flips the direction of the X axis of the transform.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "returnValue = canvas_var.flipHorizontal()",
+        "cpp": "#include \n\nreturnValue = canvas_var->flipHorizontal();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the flip was successful.",
+      "version": "Introduced in version May 2023"
+    },
+    "flipVertical": {
+      "id": "Canvas_flipVertical",
+      "title": "Canvas.flipVertical Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Flips the image along the vertical axis. This is a convenience method that flips the direction of the Y axis of the transform.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "returnValue = canvas_var.flipVertical()",
+        "cpp": "#include \n\nreturnValue = canvas_var->flipVertical();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the flip was successful.",
+      "version": "Introduced in version May 2023"
+    },
+    "saveImage": {
+      "id": "Canvas_saveImage",
+      "title": "Canvas.saveImage Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvas.h",
+      "description": "Saves the image associated with the canvas to the specified file. This is useful in cases where the original image file is no longer available but you need the image for some other purpose.",
+      "parent_class": "Canvas",
+      "syntax": {
+        "python": "returnValue = canvas_var.saveImage(filename)",
+        "cpp": "#include \n\nreturnValue = canvas_var->saveImage(filename);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if writing the file was successful.",
+      "parameters": [
+        {
+          "name": "filename",
+          "type": "string",
+          "description": "The full filename of the image to save, including the file extension, which controls the format of the image file. If a file extension other than png, jpg, or tiff is specified, a png extension will be added to the filename by default.   This method will fail if a file with the specified filename already exists. If you want to overwrite the file, you'll need to delete it first before calling this method."
+        }
+      ],
+      "version": "Introduced in version May 2023"
+    }
+  }
+}

@@ -1,0 +1,518 @@
+{
+  "id": "MachineLibrary",
+  "title": "MachineLibrary Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/Machine/MachineLibrary.h",
+  "description": "The MachineLibrary provides access to machines. Using this object you can import machines and get existing machines using either URL or query to find specific Machines.",
+  "parent_class": "CAMLibrary",
+  "methods": [
+    {
+      "name": "childAssetURLs",
+      "description": "Get all assets under given URL."
+    },
+    {
+      "name": "childFolderURLs",
+      "description": "Get all library folders under given URL."
+    },
+    {
+      "name": "childMachines",
+      "description": "Get all machines by the given parent folder URL. Returns null, if the URL does not exist."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createFolder",
+      "description": "Create a new folder in the library. Create the folder under given parent URL with given folder name. Add counting suffix, in case a folder with given name already exists. Throw an error if given URL does not point to a valid folder or the URL is read-only. Also throws an error if given folder name is empty."
+    },
+    {
+      "name": "createQuery",
+      "description": "Creates a new MachineQuery that is used to query the library for machines matching the query."
+    },
+    {
+      "name": "deleteAsset",
+      "description": "Delete asset by URL from the library. Throw an error if given URL does not point to a valid asset or the URL is read-only."
+    },
+    {
+      "name": "deleteFolder",
+      "description": "Delete folder by URL from the library. Any content of the folder will also be deleted. Throw an error if given URL does not point to a valid folder or the URL is read-only."
+    },
+    {
+      "name": "displayName",
+      "description": "Get the localized display name for a given URL. The URL must point to a folder."
+    },
+    {
+      "name": "doesPathExist",
+      "description": "Checks if the given URL points to an existing folder or asset in the library."
+    },
+    {
+      "name": "importMachine",
+      "description": "Import a given machine at a specific location. The machine will be stored in the library. Throws an error, if the given URL is read-only."
+    },
+    {
+      "name": "machineAtURL",
+      "description": "Get a specific machine by the given URL. Returns null, if the URL does not exist."
+    },
+    {
+      "name": "updateMachine",
+      "description": "Update a machine in the library. The library overrides the URL by given machine. Throws an error if the URL does not already point to an existing machine."
+    },
+    {
+      "name": "urlByLocation",
+      "description": "Get the URL for a given LibraryLocations."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assetTypeName",
+      "description": "Get the name of the asset type which can be accessed by the library."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Additive Manufacturing FFF API Sample",
+      "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+    },
+    {
+      "name": "Additive Manufacturing MJF API Sample",
+      "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+    },
+    {
+      "name": "Additive Manufacturing SLA API Sample",
+      "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "property_details": {
+    "assetTypeName": {
+      "id": "MachineLibrary_assetTypeName",
+      "title": "MachineLibrary.assetTypeName Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineLibrary.h",
+      "description": "Get the name of the asset type which can be accessed by the library.",
+      "parent_class": "MachineLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = machineLibrary_var.assetTypeName",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = machineLibrary_var->assetTypeName();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "MachineLibrary_isValid",
+      "title": "MachineLibrary.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineLibrary.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "MachineLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = machineLibrary_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = machineLibrary_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "MachineLibrary_objectType",
+      "title": "MachineLibrary.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineLibrary.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "MachineLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = machineLibrary_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = machineLibrary_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  },
+  "method_details": {
+    "childAssetURLs": {
+      "id": "MachineLibrary_childAssetURLs",
+      "title": "MachineLibrary.childAssetURLs Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineLibrary.h",
+      "description": "Get all assets under given URL.",
+      "parent_class": "MachineLibrary",
+      "syntax": {
+        "python": "returnValue = machineLibrary_var.childAssetURLs(url)",
+        "cpp": "#include \n\nreturnValue = machineLibrary_var->childAssetURLs(url);"
+      },
+      "return_type": "URL[]",
+      "return_description": "Returns list of asset URLs at given location.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the parent folder."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "childFolderURLs": {
+      "id": "MachineLibrary_childFolderURLs",
+      "title": "MachineLibrary.childFolderURLs Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineLibrary.h",
+      "description": "Get all library folders under given URL.",
+      "parent_class": "MachineLibrary",
+      "syntax": {
+        "python": "returnValue = machineLibrary_var.childFolderURLs(url)",
+        "cpp": "#include \n\nreturnValue = machineLibrary_var->childFolderURLs(url);"
+      },
+      "return_type": "URL[]",
+      "return_description": "Returns list of folder URLs at given location.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the parent folder."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "childMachines": {
+      "id": "MachineLibrary_childMachines",
+      "title": "MachineLibrary.childMachines Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineLibrary.h",
+      "description": "Get all machines by the given parent folder URL. Returns null, if the URL does not exist.",
+      "parent_class": "MachineLibrary",
+      "syntax": {
+        "python": "returnValue = machineLibrary_var.childMachines(url)",
+        "cpp": "#include \n\nreturnValue = machineLibrary_var->childMachines(url);"
+      },
+      "return_type": "Machine[]",
+      "return_description": "Returns the machine for a valid URL, returns null otherwise.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL of the folder to get machines from."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Additive Manufacturing FFF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+        },
+        {
+          "name": "Additive Manufacturing MJF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+        },
+        {
+          "name": "Additive Manufacturing SLA API Sample",
+          "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "classType": {
+      "id": "MachineLibrary_classType",
+      "title": "MachineLibrary.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineLibrary.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "MachineLibrary",
+      "syntax": {
+        "python": "returnValue = adsk.cam.MachineLibrary.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::MachineLibrary::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    },
+    "createFolder": {
+      "id": "MachineLibrary_createFolder",
+      "title": "MachineLibrary.createFolder Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineLibrary.h",
+      "description": "Create a new folder in the library. Create the folder under given parent URL with given folder name. Add counting suffix, in case a folder with given name already exists. Throw an error if given URL does not point to a valid folder or the URL is read-only. Also throws an error if given folder name is empty.",
+      "parent_class": "MachineLibrary",
+      "syntax": {
+        "python": "returnValue = machineLibrary_var.createFolder(parentUrl, folderName)",
+        "cpp": "#include \n\nreturnValue = machineLibrary_var->createFolder(parentUrl, folderName);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL to the newly created folder",
+      "parameters": [
+        {
+          "name": "parentUrl",
+          "type": "URL",
+          "description": "The parent URL for the folder to be created."
+        },
+        {
+          "name": "folderName",
+          "type": "string",
+          "description": "Name of the new folder to be created. Must not be empty."
+        }
+      ],
+      "version": "Introduced in version May 2023"
+    },
+    "createQuery": {
+      "id": "MachineLibrary_createQuery",
+      "title": "MachineLibrary.createQuery Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineLibrary.h",
+      "description": "Creates a new MachineQuery that is used to query the library for machines matching the query.",
+      "parent_class": "MachineLibrary",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = machineLibrary_var.createQuery(location)\n\n# Uses optional arguments.\nreturnValue = machineLibrary_var.createQuery(location, vendor, model)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = machineLibrary_var->createQuery(location);\n\n// Uses optional arguments.\nreturnValue = machineLibrary_var->createQuery(location, vendor, model);"
+      },
+      "return_type": "MachineQuery",
+      "return_description": "Returns a new MachineQuery. The query is predefined by given parameter.",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "LibraryLocations",
+          "description": "The location specifies the LibraryLocations where to search for in the machine library."
+        },
+        {
+          "name": "vendor",
+          "type": "string",
+          "description": "The vendor specifies the vendor of the machine. The default empty vendor applies to all machines.   This is an optional argument whose default value is \"\"."
+        },
+        {
+          "name": "model",
+          "type": "string",
+          "description": "The model specifies the model of the machine. The default empty model applies to all machines.   This is an optional argument whose default value is \"\"."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "deleteAsset": {
+      "id": "MachineLibrary_deleteAsset",
+      "title": "MachineLibrary.deleteAsset Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineLibrary.h",
+      "description": "Delete asset by URL from the library. Throw an error if given URL does not point to a valid asset or the URL is read-only.",
+      "parent_class": "MachineLibrary",
+      "syntax": {
+        "python": "returnValue = machineLibrary_var.deleteAsset(url)",
+        "cpp": "#include \n\nreturnValue = machineLibrary_var->deleteAsset(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if asset was deleted successfully, false otherwise",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the asset that should be removed."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "deleteFolder": {
+      "id": "MachineLibrary_deleteFolder",
+      "title": "MachineLibrary.deleteFolder Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineLibrary.h",
+      "description": "Delete folder by URL from the library. Any content of the folder will also be deleted. Throw an error if given URL does not point to a valid folder or the URL is read-only.",
+      "parent_class": "MachineLibrary",
+      "syntax": {
+        "python": "returnValue = machineLibrary_var.deleteFolder(url)",
+        "cpp": "#include \n\nreturnValue = machineLibrary_var->deleteFolder(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if folder was deleted successfully, false otherwise",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the folder that should be removed."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "displayName": {
+      "id": "MachineLibrary_displayName",
+      "title": "MachineLibrary.displayName Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineLibrary.h",
+      "description": "Get the localized display name for a given URL. The URL must point to a folder.",
+      "parent_class": "MachineLibrary",
+      "syntax": {
+        "python": "returnValue = machineLibrary_var.displayName(url)",
+        "cpp": "#include \n\nreturnValue = machineLibrary_var->displayName(url);"
+      },
+      "return_type": "string",
+      "return_description": "Returns localized display name for the folder. Returns empty string for invalid URL.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL that defines the path to a folder."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "doesPathExist": {
+      "id": "MachineLibrary_doesPathExist",
+      "title": "MachineLibrary.doesPathExist Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineLibrary.h",
+      "description": "Checks if the given URL points to an existing folder or asset in the library.",
+      "parent_class": "MachineLibrary",
+      "syntax": {
+        "python": "returnValue = machineLibrary_var.doesPathExist(url)",
+        "cpp": "#include \n\nreturnValue = machineLibrary_var->doesPathExist(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the URL points to an existing folder or asset, false otherwise.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to be checked."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    },
+    "importMachine": {
+      "id": "MachineLibrary_importMachine",
+      "title": "MachineLibrary.importMachine Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineLibrary.h",
+      "description": "Import a given machine at a specific location. The machine will be stored in the library. Throws an error, if the given URL is read-only.",
+      "parent_class": "MachineLibrary",
+      "syntax": {
+        "python": "returnValue = machineLibrary_var.importMachine(machine, destinationUrl, machineName)",
+        "cpp": "#include \n\nreturnValue = machineLibrary_var->importMachine(machine, destinationUrl, machineName);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL of the newly imported machine, or null if the import failed.",
+      "parameters": [
+        {
+          "name": "machine",
+          "type": "Machine",
+          "description": "The machine that should be imported."
+        },
+        {
+          "name": "destinationUrl",
+          "type": "URL",
+          "description": "The URL to the folder where to save the machine."
+        },
+        {
+          "name": "machineName",
+          "type": "string",
+          "description": "The name of the machine that should be created due to the import. The name can be extended if the asset already exists at given location to ensure a unique name."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "machineAtURL": {
+      "id": "MachineLibrary_machineAtURL",
+      "title": "MachineLibrary.machineAtURL Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineLibrary.h",
+      "description": "Get a specific machine by the given URL. Returns null, if the URL does not exist.",
+      "parent_class": "MachineLibrary",
+      "syntax": {
+        "python": "returnValue = machineLibrary_var.machineAtURL(url)",
+        "cpp": "#include \n\nreturnValue = machineLibrary_var->machineAtURL(url);"
+      },
+      "return_type": "Machine",
+      "return_description": "Returns the machine for a valid URL, returns null otherwise.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the machine to be loaded."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "updateMachine": {
+      "id": "MachineLibrary_updateMachine",
+      "title": "MachineLibrary.updateMachine Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineLibrary.h",
+      "description": "Update a machine in the library. The library overrides the URL by given machine. Throws an error if the URL does not already point to an existing machine.",
+      "parent_class": "MachineLibrary",
+      "syntax": {
+        "python": "returnValue = machineLibrary_var.updateMachine(url, machine)",
+        "cpp": "#include \n\nreturnValue = machineLibrary_var->updateMachine(url, machine);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if asset was updated successfully, false otherwise.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the existing asset in the library that should be updated."
+        },
+        {
+          "name": "machine",
+          "type": "Machine",
+          "description": "The machine that should be persisted."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "urlByLocation": {
+      "id": "MachineLibrary_urlByLocation",
+      "title": "MachineLibrary.urlByLocation Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineLibrary.h",
+      "description": "Get the URL for a given LibraryLocations.",
+      "parent_class": "MachineLibrary",
+      "syntax": {
+        "python": "returnValue = machineLibrary_var.urlByLocation(location)",
+        "cpp": "#include \n\nreturnValue = machineLibrary_var->urlByLocation(location);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL for given location.",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "LibraryLocations",
+          "description": "The LibraryLocations to be converted into an URL."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Additive Manufacturing FFF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+        },
+        {
+          "name": "Additive Manufacturing MJF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+        },
+        {
+          "name": "Additive Manufacturing SLA API Sample",
+          "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "id": "ChamferFeatureInput",
+  "title": "ChamferFeatureInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/ChamferFeatureInput.h",
+  "description": "This class defines the methods and properties that pertain to the definition of a chamfer feature.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "setToDistanceAndAngle",
+      "description": "**RETIRED** Adds a set of edges to this input."
+    },
+    {
+      "name": "setToEqualDistance",
+      "description": "**RETIRED** Adds a set of edges to this input."
+    },
+    {
+      "name": "setToTwoDistances",
+      "description": "**RETIRED** Adds a set of edges to this input."
+    }
+  ],
+  "properties": [
+    {
+      "name": "chamferEdgeSets",
+      "description": "Returns the collection of edge sets for this chamfer feature input."
+    },
+    {
+      "name": "cornerType",
+      "description": "Gets and sets the type of corner to be modeled when multiple edges connect at a vertex."
+    },
+    {
+      "name": "edges",
+      "description": "**RETIRED** Gets and sets the collection of edges that will be chamfered.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isTangentChain",
+      "description": "**RETIRED** Gets and sets if any edges that are tangentially connected to any of chamfered edges will also be included in the chamfer."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "targetBaseFeature",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature.   Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Equal Distance Chamfer Feature API Sample",
+      "description": "Creates an equal distance chamfer on the selected edge. If there are tangent contiguous edges that will also be included in the chamfer."
+    }
+  ],
+  "version": "Introduced in version November 2014",
+  "property_details": {
+    "chamferEdgeSets": {
+      "id": "ChamferFeatureInput_chamferEdgeSets",
+      "title": "ChamferFeatureInput.chamferEdgeSets Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatureInput.h",
+      "description": "Returns the collection of edge sets for this chamfer feature input.",
+      "parent_class": "ChamferFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeatureInput_var.chamferEdgeSets",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = chamferFeatureInput_var->chamferEdgeSets();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "chamferFeatures.add",
+          "description": "Demonstrates the chamferFeatures.add method. To use this sample have a part open that contains a body. When you run the script, you will be prompted to select an edge to chamfer."
+        },
+        {
+          "name": "Equal Distance Chamfer Feature API Sample",
+          "description": "Creates an equal distance chamfer on the selected edge. If there are tangent contiguous edges that will also be included in the chamfer."
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    },
+    "cornerType": {
+      "id": "ChamferFeatureInput_cornerType",
+      "title": "ChamferFeatureInput.cornerType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatureInput.h",
+      "description": "Gets and sets the type of corner to be modeled when multiple edges connect at a vertex.",
+      "parent_class": "ChamferFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeatureInput_var.cornerType\n\n# Set the value of the property.\nchamferFeatureInput_var.cornerType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nChamferCornerTypes propertyValue = chamferFeatureInput_var->cornerType();\n\n// Set the value of the property, where value_var is a ChamferCornerTypes.\nbool returnValue = chamferFeatureInput_var->cornerType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "edges": {
+      "id": "ChamferFeatureInput_edges",
+      "title": "ChamferFeatureInput.edges Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatureInput.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets and sets the collection of edges that will be chamfered. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "ChamferFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeatureInput_var.edges\n\n# Set the value of the property.\nchamferFeatureInput_var.edges = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = chamferFeatureInput_var->edges();\n\n// Set the value of the property, where value_var is an ObjectCollection.\nbool returnValue = chamferFeatureInput_var->edges(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isTangentChain": {
+      "id": "ChamferFeatureInput_isTangentChain",
+      "title": "ChamferFeatureInput.isTangentChain Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatureInput.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets and sets if any edges that are tangentially connected to any of chamfered edges will also be included in the chamfer.",
+      "parent_class": "ChamferFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeatureInput_var.isTangentChain\n\n# Set the value of the property.\nchamferFeatureInput_var.isTangentChain = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = chamferFeatureInput_var->isTangentChain();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = chamferFeatureInput_var->isTangentChain(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isValid": {
+      "id": "ChamferFeatureInput_isValid",
+      "title": "ChamferFeatureInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatureInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ChamferFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeatureInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = chamferFeatureInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "objectType": {
+      "id": "ChamferFeatureInput_objectType",
+      "title": "ChamferFeatureInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatureInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ChamferFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeatureInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = chamferFeatureInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "targetBaseFeature": {
+      "id": "ChamferFeatureInput_targetBaseFeature",
+      "title": "ChamferFeatureInput.targetBaseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatureInput.h",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature. Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it.",
+      "parent_class": "ChamferFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeatureInput_var.targetBaseFeature\n\n# Set the value of the property.\nchamferFeatureInput_var.targetBaseFeature = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = chamferFeatureInput_var->targetBaseFeature();\n\n// Set the value of the property, where value_var is a BaseFeature.\nbool returnValue = chamferFeatureInput_var->targetBaseFeature(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "ChamferFeatureInput_classType",
+      "title": "ChamferFeatureInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatureInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ChamferFeatureInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ChamferFeatureInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ChamferFeatureInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version November 2014"
+    },
+    "setToDistanceAndAngle": {
+      "id": "ChamferFeatureInput_setToDistanceAndAngle",
+      "title": "ChamferFeatureInput.setToDistanceAndAngle Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatureInput.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Adds a set of edges to this input.",
+      "parent_class": "ChamferFeatureInput",
+      "syntax": {
+        "python": "returnValue = chamferFeatureInput_var.setToDistanceAndAngle(distance, angle)",
+        "cpp": "#include \n\nreturnValue = chamferFeatureInput_var->setToDistanceAndAngle(distance, angle);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "distance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the distance of the chamfer. This distance is along the face which is on the right of the selected edge. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\"). If no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "angle",
+          "type": "ValueInput",
+          "description": "A valueInput object that defines the angle. The direction will be towards to the face which is on the left of the selected edge. This can be a string or a value. If it's a string it is interpreted using the current document units and can include equations. For example all of the following are valid as long as they result in angle units; \"45\", \"45 deg\", \"a1 / 2\". If a value is input it is interpreted as radians. It cannot be negative."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "setToEqualDistance": {
+      "id": "ChamferFeatureInput_setToEqualDistance",
+      "title": "ChamferFeatureInput.setToEqualDistance Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatureInput.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Adds a set of edges to this input.",
+      "parent_class": "ChamferFeatureInput",
+      "syntax": {
+        "python": "returnValue = chamferFeatureInput_var.setToEqualDistance(distance)",
+        "cpp": "#include \n\nreturnValue = chamferFeatureInput_var->setToEqualDistance(distance);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the set of edges was successfully added to the ChamferFeatureInput.",
+      "parameters": [
+        {
+          "name": "distance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the size of the chamfer. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\"). If no units are specified it is interpreted using the current default units for length."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "setToTwoDistances": {
+      "id": "ChamferFeatureInput_setToTwoDistances",
+      "title": "ChamferFeatureInput.setToTwoDistances Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatureInput.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Adds a set of edges to this input.",
+      "parent_class": "ChamferFeatureInput",
+      "syntax": {
+        "python": "returnValue = chamferFeatureInput_var.setToTwoDistances(distanceOne, distanceTwo)",
+        "cpp": "#include \n\nreturnValue = chamferFeatureInput_var->setToTwoDistances(distanceOne, distanceTwo);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "distanceOne",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the distanceOne of the chamfer. This distance is along the face which is on the left of the selected edge. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\"). If no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "distanceTwo",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the distanceTwo of the chamfer. This distance is along the face which is on the right of the selected edge. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\"). If no units are specified it is interpreted using the current default units for length."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    }
+  }
+}

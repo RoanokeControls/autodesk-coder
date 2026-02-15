@@ -1,0 +1,63 @@
+{
+  "id": "ECD-ULP-POLYPOUR",
+  "title": "UL_POLYPOUR",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "hatched",
+      "type": "int (0=off, 1=on)"
+    },
+    {
+      "name": "isolate",
+      "type": "int"
+    },
+    {
+      "name": "layer",
+      "type": "int"
+    },
+    {
+      "name": "orphans",
+      "type": "int (0=off, 1=on)"
+    },
+    {
+      "name": "pour",
+      "type": "int (POLYGON_POUR_...)"
+    },
+    {
+      "name": "rank",
+      "type": "int"
+    },
+    {
+      "name": "spacing",
+      "type": "int"
+    },
+    {
+      "name": "thermals",
+      "type": "int (0=off, 1=on)"
+    },
+    {
+      "name": "thermalWidth",
+      "type": "int"
+    },
+    {
+      "name": "width",
+      "type": "int"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "contours()",
+      "type": "UL_WIRE (see note)"
+    },
+    {
+      "name": "fillings()",
+      "type": "UL_WIRE (see note)"
+    },
+    {
+      "name": "wires()",
+      "type": "UL_WIRE"
+    }
+  ],
+  "content": "# UL_POLYPOUR\n\n## Data members\n\n| | |\n| --- | --- |\n| hatched | int (0=off, 1=on) |\n| isolate | int |\n| layer | int |\n| orphans | int (0=off, 1=on) |\n| pour | int (POLYGON_POUR_...) |\n| rank | int |\n| spacing | int |\n| thermals | int (0=off, 1=on) |\n| thermalWidth | int |\n| width | int |\n\n## Loop members\n\n| | |\n| --- | --- |\n| contours() | UL_WIRE (see note) |\n| fillings() | UL_WIRE (see note) |\n| wires() | UL_WIRE |\n\nSee also UL_SIGNAL\n\n## Note\n\nThe *contours()* loop member loops through the wires that are used to draw the outlines of the polygon pour's fill data. The *fillings()* loop member loops through the hatching wires that are used to draw the polygon pour when its hatched data member is set. When the hatched data member is not set, then *fillings()* does nothing. The *wires()* loop member always loops through the polygon wires as they were drawn by the user.\n\nA polygon pour's fill results may consist of several distinct closed figures (called positive polygon contours), each of which can contain voids/holes (negative polygon contours) resulting from other objects being subtracted from the positive contour. Negative contours can again contain other positive contours and so on.\n\n## Invoking contours() and interpreting its results\n\nIf the *contours()* loop member is called without a second parameter, it loops through all of the contour wires, regardless of whether they belong to a positive polygon contour outline or a negative polygon contour hole. In this case, the wires looped through by *contours()* always start with a positive polygon contour. If you are interested in getting the positive and negative contour wires separately, you can call *contours()* with an additional integer parameter (see the second example below). The sign of that parameter determines whether a positive or a negative polygon contour will be returned, and the value indicates the index of that polygon contour. If there is no polygon contour with the given index, the statement will not be executed. An advantage of this method is that you don't need to determine the beginning and end of a particular polygon contour yourself (by comparing coordinates). For any given index, the statement will be executed for all the wires of that polygon contour. Passing the second parameter as 0 produces the same behavior as without a second parameter.\n\nThe wires of a polygon contour are directed end-to-end. To determine where one contour ends and the next one begins, simply store the (x1,y1) coordinates of the first wire and check them against (x2,y2) of each following wire. When these points are equivalent, the last wire of the polygon contour has been found.\n\nPositive polygon contours (forming outer edges) are oriented clockwise, while negative polygon contours (forming hole edges) are oriented counter-clockwise. To determine \"inside\" and \"outside\" of the polygon pour, imagine sighting along any contour wire from its point (x1,y1) to (x2,y2). The \"inside\" of the polygon pour is always on the right side of the wire.\n\n## Example\n\n```\nboard(B) {\n B.signals(S) {\n S.polypours(P) {\n int x0, y0, first = 1;\n P.contours(W) {\n if (first) {\n // a new polygon contouris starting\n x0 = W.x1;\n y0 = W.y1;\n }\n // ...\n // do something with the wire\n // ...\n if (first)\n first = 0;\n else if (W.x2 == x0 && W.y2 == y0) {\n // this was the last wire of the polygon contour,\n // so the next wire (if any) will be the first wire\n // of the next polygon contour\n first = 1;\n }\n }\n }\n }\n }\nboard(B) {\n B.signals(S) {\n S.polypours(P) {\n // process only the \"positive\" polygon contours:\n int i = 1;\n int active;\n do {\n active = 0;\n P.contours(W, i) {\n active = 1;\n // do something with the wire\n }\n i++;\n } while (active);\n }\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

@@ -1,0 +1,277 @@
+{
+  "id": "ScaleFeatureInput",
+  "title": "ScaleFeatureInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/ScaleFeatureInput.h",
+  "description": "This class defines the methods and properties that pertain to the definition of a scale feature.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "setToNonUniform",
+      "description": "Sets the scale factor for the x, y, z directions to define a non-uniform scale. Calling this method will cause the isUniform property to be set to false. This will fail if the inputEntities collection contains sketches or components."
+    }
+  ],
+  "properties": [
+    {
+      "name": "inputEntities",
+      "description": "Gets and sets the input entities. This collection can contain sketches, BRep bodies and T-Spline bodies in parametric modeling. It can contain sketches, BRep bodies, T-Spline bodies, mesh bodies, root component and occurrences in non-parametric modeling. If the scaling is non-uniform (the isUniform property is false), this collection cannot contain sketches or components."
+    },
+    {
+      "name": "isUniform",
+      "description": "Gets if the scale is uniform."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "point",
+      "description": "Gets and sets the origin point of the scale. This can be a BRepVertex, a SketchPoint or a ConstructionPoint."
+    },
+    {
+      "name": "scaleFactor",
+      "description": "Gets and sets the scale factor used for a uniform scale. Setting this value will cause the isUniform property to be set to true."
+    },
+    {
+      "name": "targetBaseFeature",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature.   Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it."
+    },
+    {
+      "name": "xScale",
+      "description": "Gets the scale in X direction."
+    },
+    {
+      "name": "yScale",
+      "description": "Gets the scale in Y direction."
+    },
+    {
+      "name": "zScale",
+      "description": "Gets the scale in Z direction."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Scale Feature API Sample",
+      "description": "Demonstrates creating a new scale feature."
+    }
+  ],
+  "version": "Introduced in version January 2015",
+  "method_details": {
+    "classType": {
+      "id": "ScaleFeatureInput_classType",
+      "title": "ScaleFeatureInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatureInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ScaleFeatureInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ScaleFeatureInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ScaleFeatureInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2015"
+    },
+    "setToNonUniform": {
+      "id": "ScaleFeatureInput_setToNonUniform",
+      "title": "ScaleFeatureInput.setToNonUniform Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatureInput.h",
+      "description": "Sets the scale factor for the x, y, z directions to define a non-uniform scale. Calling this method will cause the isUniform property to be set to false. This will fail if the inputEntities collection contains sketches or components.",
+      "parent_class": "ScaleFeatureInput",
+      "syntax": {
+        "python": "returnValue = scaleFeatureInput_var.setToNonUniform(xScale, yScale, zScale)",
+        "cpp": "#include \n\nreturnValue = scaleFeatureInput_var->setToNonUniform(xScale, yScale, zScale);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "xScale",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the scale in the X direction."
+        },
+        {
+          "name": "yScale",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the scale in the Y direction."
+        },
+        {
+          "name": "zScale",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the scale in the Z direction."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Scale Feature API Sample",
+          "description": "Demonstrates creating a new scale feature."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    }
+  },
+  "property_details": {
+    "inputEntities": {
+      "id": "ScaleFeatureInput_inputEntities",
+      "title": "ScaleFeatureInput.inputEntities Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatureInput.h",
+      "description": "Gets and sets the input entities. This collection can contain sketches, BRep bodies and T-Spline bodies in parametric modeling. It can contain sketches, BRep bodies, T-Spline bodies, mesh bodies, root component and occurrences in non-parametric modeling. If the scaling is non-uniform (the isUniform property is false), this collection cannot contain sketches or components.",
+      "parent_class": "ScaleFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = scaleFeatureInput_var.inputEntities\n\n# Set the value of the property.\nscaleFeatureInput_var.inputEntities = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = scaleFeatureInput_var->inputEntities();\n\n// Set the value of the property, where value_var is an ObjectCollection.\nbool returnValue = scaleFeatureInput_var->inputEntities(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isUniform": {
+      "id": "ScaleFeatureInput_isUniform",
+      "title": "ScaleFeatureInput.isUniform Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatureInput.h",
+      "description": "Gets if the scale is uniform.",
+      "parent_class": "ScaleFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = scaleFeatureInput_var.isUniform",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = scaleFeatureInput_var->isUniform();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isValid": {
+      "id": "ScaleFeatureInput_isValid",
+      "title": "ScaleFeatureInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatureInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ScaleFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = scaleFeatureInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = scaleFeatureInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "objectType": {
+      "id": "ScaleFeatureInput_objectType",
+      "title": "ScaleFeatureInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatureInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ScaleFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = scaleFeatureInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = scaleFeatureInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "point": {
+      "id": "ScaleFeatureInput_point",
+      "title": "ScaleFeatureInput.point Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatureInput.h",
+      "description": "Gets and sets the origin point of the scale. This can be a BRepVertex, a SketchPoint or a ConstructionPoint.",
+      "parent_class": "ScaleFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = scaleFeatureInput_var.point\n\n# Set the value of the property.\nscaleFeatureInput_var.point = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = scaleFeatureInput_var->point();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = scaleFeatureInput_var->point(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "scaleFactor": {
+      "id": "ScaleFeatureInput_scaleFactor",
+      "title": "ScaleFeatureInput.scaleFactor Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatureInput.h",
+      "description": "Gets and sets the scale factor used for a uniform scale. Setting this value will cause the isUniform property to be set to true.",
+      "parent_class": "ScaleFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = scaleFeatureInput_var.scaleFactor\n\n# Set the value of the property.\nscaleFeatureInput_var.scaleFactor = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = scaleFeatureInput_var->scaleFactor();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = scaleFeatureInput_var->scaleFactor(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "targetBaseFeature": {
+      "id": "ScaleFeatureInput_targetBaseFeature",
+      "title": "ScaleFeatureInput.targetBaseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatureInput.h",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature. Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it.",
+      "parent_class": "ScaleFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = scaleFeatureInput_var.targetBaseFeature\n\n# Set the value of the property.\nscaleFeatureInput_var.targetBaseFeature = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = scaleFeatureInput_var->targetBaseFeature();\n\n// Set the value of the property, where value_var is a BaseFeature.\nbool returnValue = scaleFeatureInput_var->targetBaseFeature(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "xScale": {
+      "id": "ScaleFeatureInput_xScale",
+      "title": "ScaleFeatureInput.xScale Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatureInput.h",
+      "description": "Gets the scale in X direction.",
+      "parent_class": "ScaleFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = scaleFeatureInput_var.xScale",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = scaleFeatureInput_var->xScale();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "yScale": {
+      "id": "ScaleFeatureInput_yScale",
+      "title": "ScaleFeatureInput.yScale Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatureInput.h",
+      "description": "Gets the scale in Y direction.",
+      "parent_class": "ScaleFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = scaleFeatureInput_var.yScale",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = scaleFeatureInput_var->yScale();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "zScale": {
+      "id": "ScaleFeatureInput_zScale",
+      "title": "ScaleFeatureInput.zScale Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatureInput.h",
+      "description": "Gets the scale in Z direction.",
+      "parent_class": "ScaleFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = scaleFeatureInput_var.zScale",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = scaleFeatureInput_var->zScale();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    }
+  }
+}

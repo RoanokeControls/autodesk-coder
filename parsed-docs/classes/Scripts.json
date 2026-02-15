@@ -1,0 +1,267 @@
+{
+  "id": "Scripts",
+  "title": "Scripts Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/Scripts.h",
+  "description": "API object that provides equivalent functionality of the \"Scripts and Add-Ins\" dialog. Provides access to the scripts and add-ins that Fusion is aware of. It also supports loading other unknown scripts and add-ins, and creating new scripts and add-ins.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "addExisting",
+      "description": "Fusion looks in specific folders for scripts and add-ins, but you can manually add other scripts and add-ins to the list of known scripts and add-ins so they will be listed in the \"Scripts and Add-ins\" dialog. This method does that."
+    },
+    {
+      "name": "addNew",
+      "description": "Creates a new script or add-in. This uses the same internal template that's used when creating a new script or add-in using the \"Scripts and Add-Ins\" dialog. The provided ScriptInput object defines the information needed to create a new script or add-in."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createScriptInput",
+      "description": "Creates a new ScriptInput object. Logically, this object is equivalent to the dialog that is shown when you click the \"Create\" button in the \"Scripts and Add-Ins\" command dialog. It collects the information needed to create a new script or add-in. To create the script or add-in, call the addNew method, passing in the ScriptInput object."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified script or add-in using an index into the collection."
+    },
+    {
+      "name": "itemByPath",
+      "description": "Function that returns the script that is located in the specified folder."
+    },
+    {
+      "name": "itemsByName",
+      "description": "Function that returns an array of scripts that have the specified name. In most cases this will return an array containing a single script, but it's possible to have more than one script with the same name in the case where the scripts are in different folders."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of scripts and add-ins."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version October 2023",
+  "method_details": {
+    "addExisting": {
+      "id": "Scripts_addExisting",
+      "title": "Scripts.addExisting Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Scripts.h",
+      "description": "Fusion looks in specific folders for scripts and add-ins, but you can manually add other scripts and add-ins to the list of known scripts and add-ins so they will be listed in the \"Scripts and Add-ins\" dialog. This method does that.",
+      "parent_class": "Scripts",
+      "syntax": {
+        "python": "returnValue = scripts_var.addExisting(scriptFolderPath)",
+        "cpp": "#include \n\nreturnValue = scripts_var->addExisting(scriptFolderPath);"
+      },
+      "return_type": "Script",
+      "return_description": "Returns the Script object that represents the script or add-in just added. Returns null in the case of failure.",
+      "parameters": [
+        {
+          "name": "scriptFolderPath",
+          "type": "string",
+          "description": "The full path to the folder that contains the script or add-in."
+        }
+      ],
+      "version": "Introduced in version October 2023"
+    },
+    "addNew": {
+      "id": "Scripts_addNew",
+      "title": "Scripts.addNew Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Scripts.h",
+      "description": "Creates a new script or add-in. This uses the same internal template that's used when creating a new script or add-in using the \"Scripts and Add-Ins\" dialog. The provided ScriptInput object defines the information needed to create a new script or add-in.",
+      "parent_class": "Scripts",
+      "syntax": {
+        "python": "returnValue = scripts_var.addNew(input)",
+        "cpp": "#include \n\nreturnValue = scripts_var->addNew(input);"
+      },
+      "return_type": "Script",
+      "return_description": "Returns the newly created Script object.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "ScriptInput",
+          "description": "A ScriptInput object which defines the required information to create a new script or add-in. It is created using the createNewScriptInput method."
+        }
+      ],
+      "version": "Introduced in version October 2023"
+    },
+    "classType": {
+      "id": "Scripts_classType",
+      "title": "Scripts.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Scripts.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Scripts",
+      "syntax": {
+        "python": "returnValue = adsk.core.Scripts.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Scripts::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version October 2023"
+    },
+    "createScriptInput": {
+      "id": "Scripts_createScriptInput",
+      "title": "Scripts.createScriptInput Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Scripts.h",
+      "description": "Creates a new ScriptInput object. Logically, this object is equivalent to the dialog that is shown when you click the \"Create\" button in the \"Scripts and Add-Ins\" command dialog. It collects the information needed to create a new script or add-in. To create the script or add-in, call the addNew method, passing in the ScriptInput object.",
+      "parent_class": "Scripts",
+      "syntax": {
+        "python": "returnValue = scripts_var.createScriptInput(name, programmingLanguage, isAddIn)",
+        "cpp": "#include \n\nreturnValue = scripts_var->createScriptInput(name, programmingLanguage, isAddIn);"
+      },
+      "return_type": "ScriptInput",
+      "return_description": "Returns a ScriptInput object or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the script or add-in to create. By default, it will be created in the folder specified by the \"Default Path for Scripts and Add-Ins\" preference, but a different path can be specified using the returned ScriptInput object. Regardless of where it is created, the name must be unique with respect to the other scripts and add-ins in that folder. If it's not unique the creation of the script or add-in will fail."
+        },
+        {
+          "name": "programmingLanguage",
+          "type": "ProgrammingLanguages",
+          "description": "The programming language to use for the new script or add-in."
+        },
+        {
+          "name": "isAddIn",
+          "type": "boolean",
+          "description": "Specifies if a script or add-in is to be created. If true, an add-in is created."
+        }
+      ],
+      "version": "Introduced in version October 2023"
+    },
+    "item": {
+      "id": "Scripts_item",
+      "title": "Scripts.item Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Scripts.h",
+      "description": "Function that returns the specified script or add-in using an index into the collection.",
+      "parent_class": "Scripts",
+      "syntax": {
+        "python": "returnValue = scripts_var.item(index)",
+        "cpp": "#include \n\nreturnValue = scripts_var->item(index);"
+      },
+      "return_type": "Script",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version October 2023"
+    },
+    "itemByPath": {
+      "id": "Scripts_itemByPath",
+      "title": "Scripts.itemByPath Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Scripts.h",
+      "description": "Function that returns the script that is located in the specified folder.",
+      "parent_class": "Scripts",
+      "syntax": {
+        "python": "returnValue = scripts_var.itemByPath(folderPath)",
+        "cpp": "#include \n\nreturnValue = scripts_var->itemByPath(folderPath);"
+      },
+      "return_type": "Script",
+      "return_description": "Returns the specified script or null if there isn't a script at the specified path.",
+      "parameters": [
+        {
+          "name": "folderPath",
+          "type": "string",
+          "description": "The full path to the folder that contains the script. This does not include the name of the script, but only the path. For example \"C:\\Scripts\\MyScript\" is valid where \"C:\\Scripts\\MyScripts\\MyScript.py\" is not."
+        }
+      ],
+      "version": "Introduced in version July 2024"
+    },
+    "itemsByName": {
+      "id": "Scripts_itemsByName",
+      "title": "Scripts.itemsByName Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Scripts.h",
+      "description": "Function that returns an array of scripts that have the specified name. In most cases this will return an array containing a single script, but it's possible to have more than one script with the same name in the case where the scripts are in different folders.",
+      "parent_class": "Scripts",
+      "syntax": {
+        "python": "returnValue = scripts_var.itemsByName(name)",
+        "cpp": "#include \n\nreturnValue = scripts_var->itemsByName(name);"
+      },
+      "return_type": "Script[]",
+      "return_description": "Returns the scripts with the specified name or an empty array if there aren't any scripts with that name.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The script name to search for."
+        }
+      ],
+      "version": "Introduced in version July 2024"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "Scripts_count",
+      "title": "Scripts.count Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Scripts.h",
+      "description": "Returns the number of scripts and add-ins.",
+      "parent_class": "Scripts",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = scripts_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = scripts_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "isValid": {
+      "id": "Scripts_isValid",
+      "title": "Scripts.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Scripts.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Scripts",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = scripts_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = scripts_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "objectType": {
+      "id": "Scripts_objectType",
+      "title": "Scripts.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Scripts.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Scripts",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = scripts_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = scripts_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    }
+  }
+}

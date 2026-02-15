@@ -1,0 +1,234 @@
+{
+  "id": "ShellFeatures",
+  "title": "ShellFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/ShellFeatures.h",
+  "description": "Collection that provides access to all of the existing shell features in a component and supports the ability to create new shell features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new shell feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a ShellFeatureInput object. Use properties and methods on this object to define the shell you want to create and then use the Add method, passing in the ShellFeatureInput object."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified shell feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified shell feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of shell features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Shell Feature API Sample",
+      "description": "Demonstrates creating a new shell feature."
+    }
+  ],
+  "version": "Introduced in version November 2014",
+  "method_details": {
+    "add": {
+      "id": "ShellFeatures_add",
+      "title": "ShellFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ShellFeatures.h",
+      "description": "Creates a new shell feature.",
+      "parent_class": "ShellFeatures",
+      "syntax": {
+        "python": "returnValue = shellFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = shellFeatures_var->add(input);"
+      },
+      "return_type": "ShellFeature",
+      "return_description": "Returns the newly created ShellFeature object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "ShellFeatureInput",
+          "description": "A ShellFeatureInput object that defines the desired shell. Use the createInput method to create a new ShellFeatureInput object and then use methods on it (the ShellFeatureInput object) to define the shell."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "shellFeatures.add",
+          "description": "Demonstrates creating a shell feature."
+        },
+        {
+          "name": "Shell Feature API Sample",
+          "description": "Demonstrates creating a new shell feature."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "classType": {
+      "id": "ShellFeatures_classType",
+      "title": "ShellFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ShellFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ShellFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ShellFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ShellFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version November 2014"
+    },
+    "createInput": {
+      "id": "ShellFeatures_createInput",
+      "title": "ShellFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ShellFeatures.h",
+      "description": "Creates a ShellFeatureInput object. Use properties and methods on this object to define the shell you want to create and then use the Add method, passing in the ShellFeatureInput object.",
+      "parent_class": "ShellFeatures",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = shellFeatures_var.createInput(inputEntities)\n\n# Uses optional arguments.\nreturnValue = shellFeatures_var.createInput(inputEntities, isTangentChain)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = shellFeatures_var->createInput(inputEntities);\n\n// Uses optional arguments.\nreturnValue = shellFeatures_var->createInput(inputEntities, isTangentChain);"
+      },
+      "return_type": "ShellFeatureInput",
+      "return_description": "Returns the newly created ShellFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "inputEntities",
+          "type": "ObjectCollection",
+          "description": "The collection contains the faces to remove and the bodies to perform shell. Fails if any faces are input, and the owning bodies of the faces are also input."
+        },
+        {
+          "name": "isTangentChain",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not faces that are tangentially connected to the input faces (if any) will also be included. It defaults to true.   This is an optional argument whose default value is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "shellFeatures.add",
+          "description": "Demonstrates creating a shell feature."
+        },
+        {
+          "name": "Shell Feature API Sample",
+          "description": "Demonstrates creating a new shell feature."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "item": {
+      "id": "ShellFeatures_item",
+      "title": "ShellFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ShellFeatures.h",
+      "description": "Function that returns the specified shell feature using an index into the collection.",
+      "parent_class": "ShellFeatures",
+      "syntax": {
+        "python": "returnValue = shellFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = shellFeatures_var->item(index);"
+      },
+      "return_type": "ShellFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "itemByName": {
+      "id": "ShellFeatures_itemByName",
+      "title": "ShellFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ShellFeatures.h",
+      "description": "Function that returns the specified shell feature using the name of the feature.",
+      "parent_class": "ShellFeatures",
+      "syntax": {
+        "python": "returnValue = shellFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = shellFeatures_var->itemByName(name);"
+      },
+      "return_type": "ShellFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "ShellFeatures_count",
+      "title": "ShellFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ShellFeatures.h",
+      "description": "The number of shell features in the collection.",
+      "parent_class": "ShellFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = shellFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = shellFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isValid": {
+      "id": "ShellFeatures_isValid",
+      "title": "ShellFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ShellFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ShellFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = shellFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = shellFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "objectType": {
+      "id": "ShellFeatures_objectType",
+      "title": "ShellFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ShellFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ShellFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = shellFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = shellFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    }
+  }
+}

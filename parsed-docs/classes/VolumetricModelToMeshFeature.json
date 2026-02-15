@@ -1,0 +1,599 @@
+{
+  "id": "VolumetricModelToMeshFeature",
+  "title": "VolumetricModelToMeshFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+  "description": "Object that represents a model to mesh feature.",
+  "parent_class": "Feature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "elementSize",
+      "description": "Gets the element size that will be used when creating the mesh. This value is only used when the refinement type is set to Custom. The value must be greater than 0.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "isComputeSuspended",
+      "description": "Gets and sets if the feature compute should be suspended if a dependent entity changes. If true, the feature will need to be recomputed manually if a dependent entity changes.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSmallShellsRemoved",
+      "description": "Gets and sets if small mesh shells should be removed after creating the mesh.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVolumetricModelRemoved",
+      "description": "Gets and sets if the volumetric model should be removed after creating the mesh.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "meshBody",
+      "description": "Get the mesh body created from the volumetric model."
+    },
+    {
+      "name": "meshingApproach",
+      "description": "Gets and sets the meshing approach to be used when creating the mesh.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "refinementType",
+      "description": "Gets and sets the refinement type to be used when creating the mesh.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "smallShellThreshold",
+      "description": "Gets the small mesh threshold used to determine if a mesh shell is considered small. The value is a fraction of the total mesh area and must be between 0 and 1.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    },
+    {
+      "name": "volumetricModel",
+      "description": "Gets and sets the volumetric model to be converted to a mesh. The volumetric model must have the same parent component as the VolumetricModelToMeshFeature.This property is typed as core.Base because the adsk.fusion library does not reference the volume library where the VolumetricModel object is defined. At runtime, this property will return a VolumetricModel object.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    }
+  ],
+  "version": "Introduced in version May 2025",
+  "property_details": {
+    "assemblyContext": {
+      "id": "VolumetricModelToMeshFeature_assemblyContext",
+      "title": "VolumetricModelToMeshFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = volumetricModelToMeshFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "attributes": {
+      "id": "VolumetricModelToMeshFeature_attributes",
+      "title": "VolumetricModelToMeshFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = volumetricModelToMeshFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "baseFeature": {
+      "id": "VolumetricModelToMeshFeature_baseFeature",
+      "title": "VolumetricModelToMeshFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = volumetricModelToMeshFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "bodies": {
+      "id": "VolumetricModelToMeshFeature_bodies",
+      "title": "VolumetricModelToMeshFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = volumetricModelToMeshFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "elementSize": {
+      "id": "VolumetricModelToMeshFeature_elementSize",
+      "title": "VolumetricModelToMeshFeature.elementSize Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Gets the element size that will be used when creating the mesh. This value is only used when the refinement type is set to Custom. The value must be greater than 0. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.elementSize",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = volumetricModelToMeshFeature_var->elementSize();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "entityToken": {
+      "id": "VolumetricModelToMeshFeature_entityToken",
+      "title": "VolumetricModelToMeshFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = volumetricModelToMeshFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "errorOrWarningMessage": {
+      "id": "VolumetricModelToMeshFeature_errorOrWarningMessage",
+      "title": "VolumetricModelToMeshFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = volumetricModelToMeshFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "faces": {
+      "id": "VolumetricModelToMeshFeature_faces",
+      "title": "VolumetricModelToMeshFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = volumetricModelToMeshFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "healthState": {
+      "id": "VolumetricModelToMeshFeature_healthState",
+      "title": "VolumetricModelToMeshFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = volumetricModelToMeshFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "isComputeSuspended": {
+      "id": "VolumetricModelToMeshFeature_isComputeSuspended",
+      "title": "VolumetricModelToMeshFeature.isComputeSuspended Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Gets and sets if the feature compute should be suspended if a dependent entity changes. If true, the feature will need to be recomputed manually if a dependent entity changes. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.isComputeSuspended\n\n# Set the value of the property.\nvolumetricModelToMeshFeature_var.isComputeSuspended = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = volumetricModelToMeshFeature_var->isComputeSuspended();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = volumetricModelToMeshFeature_var->isComputeSuspended(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "isParametric": {
+      "id": "VolumetricModelToMeshFeature_isParametric",
+      "title": "VolumetricModelToMeshFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = volumetricModelToMeshFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "isSmallShellsRemoved": {
+      "id": "VolumetricModelToMeshFeature_isSmallShellsRemoved",
+      "title": "VolumetricModelToMeshFeature.isSmallShellsRemoved Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Gets and sets if small mesh shells should be removed after creating the mesh. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.isSmallShellsRemoved\n\n# Set the value of the property.\nvolumetricModelToMeshFeature_var.isSmallShellsRemoved = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = volumetricModelToMeshFeature_var->isSmallShellsRemoved();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = volumetricModelToMeshFeature_var->isSmallShellsRemoved(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "isSuppressed": {
+      "id": "VolumetricModelToMeshFeature_isSuppressed",
+      "title": "VolumetricModelToMeshFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.isSuppressed\n\n# Set the value of the property.\nvolumetricModelToMeshFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = volumetricModelToMeshFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = volumetricModelToMeshFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "isValid": {
+      "id": "VolumetricModelToMeshFeature_isValid",
+      "title": "VolumetricModelToMeshFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = volumetricModelToMeshFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "isVolumetricModelRemoved": {
+      "id": "VolumetricModelToMeshFeature_isVolumetricModelRemoved",
+      "title": "VolumetricModelToMeshFeature.isVolumetricModelRemoved Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Gets and sets if the volumetric model should be removed after creating the mesh. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.isVolumetricModelRemoved\n\n# Set the value of the property.\nvolumetricModelToMeshFeature_var.isVolumetricModelRemoved = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = volumetricModelToMeshFeature_var->isVolumetricModelRemoved();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = volumetricModelToMeshFeature_var->isVolumetricModelRemoved(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "linkedFeatures": {
+      "id": "VolumetricModelToMeshFeature_linkedFeatures",
+      "title": "VolumetricModelToMeshFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = volumetricModelToMeshFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "meshBody": {
+      "id": "VolumetricModelToMeshFeature_meshBody",
+      "title": "VolumetricModelToMeshFeature.meshBody Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Get the mesh body created from the volumetric model.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.meshBody",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = volumetricModelToMeshFeature_var->meshBody();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "meshingApproach": {
+      "id": "VolumetricModelToMeshFeature_meshingApproach",
+      "title": "VolumetricModelToMeshFeature.meshingApproach Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Gets and sets the meshing approach to be used when creating the mesh. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.meshingApproach\n\n# Set the value of the property.\nvolumetricModelToMeshFeature_var.meshingApproach = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nVolumetricMeshingApproachTypes propertyValue = volumetricModelToMeshFeature_var->meshingApproach();\n\n// Set the value of the property, where value_var is a VolumetricMeshingApproachTypes.\nbool returnValue = volumetricModelToMeshFeature_var->meshingApproach(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "name": {
+      "id": "VolumetricModelToMeshFeature_name",
+      "title": "VolumetricModelToMeshFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.name\n\n# Set the value of the property.\nvolumetricModelToMeshFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = volumetricModelToMeshFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = volumetricModelToMeshFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "nativeObject": {
+      "id": "VolumetricModelToMeshFeature_nativeObject",
+      "title": "VolumetricModelToMeshFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = volumetricModelToMeshFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "objectType": {
+      "id": "VolumetricModelToMeshFeature_objectType",
+      "title": "VolumetricModelToMeshFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = volumetricModelToMeshFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "parentComponent": {
+      "id": "VolumetricModelToMeshFeature_parentComponent",
+      "title": "VolumetricModelToMeshFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = volumetricModelToMeshFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "refinementType": {
+      "id": "VolumetricModelToMeshFeature_refinementType",
+      "title": "VolumetricModelToMeshFeature.refinementType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Gets and sets the refinement type to be used when creating the mesh. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.refinementType\n\n# Set the value of the property.\nvolumetricModelToMeshFeature_var.refinementType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nVolumetricMeshRefinementTypes propertyValue = volumetricModelToMeshFeature_var->refinementType();\n\n// Set the value of the property, where value_var is a VolumetricMeshRefinementTypes.\nbool returnValue = volumetricModelToMeshFeature_var->refinementType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "smallShellThreshold": {
+      "id": "VolumetricModelToMeshFeature_smallShellThreshold",
+      "title": "VolumetricModelToMeshFeature.smallShellThreshold Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Gets the small mesh threshold used to determine if a mesh shell is considered small. The value is a fraction of the total mesh area and must be between 0 and 1. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.smallShellThreshold",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = volumetricModelToMeshFeature_var->smallShellThreshold();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "timelineObject": {
+      "id": "VolumetricModelToMeshFeature_timelineObject",
+      "title": "VolumetricModelToMeshFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = volumetricModelToMeshFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "volumetricModel": {
+      "id": "VolumetricModelToMeshFeature_volumetricModel",
+      "title": "VolumetricModelToMeshFeature.volumetricModel Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Gets and sets the volumetric model to be converted to a mesh. The volumetric model must have the same parent component as the VolumetricModelToMeshFeature.This property is typed as core.Base because the adsk.fusion library does not reference the volume library where the VolumetricModel object is defined. At runtime, this property will return a VolumetricModel object. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeature_var.volumetricModel\n\n# Set the value of the property.\nvolumetricModelToMeshFeature_var.volumetricModel = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = volumetricModelToMeshFeature_var->volumetricModel();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = volumetricModelToMeshFeature_var->volumetricModel(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "VolumetricModelToMeshFeature_classType",
+      "title": "VolumetricModelToMeshFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.VolumetricModelToMeshFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::VolumetricModelToMeshFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version May 2025"
+    },
+    "createForAssemblyContext": {
+      "id": "VolumetricModelToMeshFeature_createForAssemblyContext",
+      "title": "VolumetricModelToMeshFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "returnValue = volumetricModelToMeshFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = volumetricModelToMeshFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "VolumetricModelToMeshFeature",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "deleteMe": {
+      "id": "VolumetricModelToMeshFeature_deleteMe",
+      "title": "VolumetricModelToMeshFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "returnValue = volumetricModelToMeshFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = volumetricModelToMeshFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version May 2025"
+    },
+    "dissolve": {
+      "id": "VolumetricModelToMeshFeature_dissolve",
+      "title": "VolumetricModelToMeshFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "VolumetricModelToMeshFeature",
+      "syntax": {
+        "python": "returnValue = volumetricModelToMeshFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = volumetricModelToMeshFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version May 2025"
+    }
+  }
+}

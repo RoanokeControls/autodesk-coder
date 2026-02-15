@@ -1,0 +1,249 @@
+{
+  "id": "CloudFileDialog",
+  "title": "CloudFileDialog Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/CloudFileDialog.h",
+  "description": "Provides access to a cloud file dialog. A cloud file dialog can be used to prompt the user to select a location and file on Fusion web client.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "showOpen",
+      "description": "Displays a modal open dialog, allowing the user to select one or more files. The return value can be used to determine if the dialog was canceled without selecting a file. The dataFile and dataFiles properties can be used to get the selected files."
+    },
+    {
+      "name": "showSave",
+      "description": "Displays a modal save dialog, allowing the user to specify a file. The return value can be used to determine if the dialog was canceled without giving a filename. The filename property can be used to get that file."
+    }
+  ],
+  "properties": [
+    {
+      "name": "dataFile",
+      "description": "Gets the DataFile selected by the user in the dialog. This property is used after the ShowOpen method has been called to retrieve the filename specified by the user.   If ShowOpen was used and isMultiSelectEnabled is true, then this property will only display the first DataFile selected and the dataFiles property should be used instead to retrieved the full list. If ShowSave was used, then only a single DataFile is ever returned."
+    },
+    {
+      "name": "dataFiles",
+      "description": "Gets the DataFiles specified by the user in the dialog. This property is used after the ShowOpen method has been called to retrieve the DataFiles specified by the user.   If ShowOpen is used and isMultiSelectEnabled is true, the user is able to select more than one file. This property returns all of the files that were selected."
+    },
+    {
+      "name": "dataFolder",
+      "description": "Gets or sets the initial DataFolder displayed in the dialog. The DataFolder should be in current project. If null, this defaults to the DataFolder that is currently active in the Data Panel.   When using the showSave method, use this property to get the DataFolder that the user specified."
+    },
+    {
+      "name": "filename",
+      "description": "Gets and sets the filename when using the showSave method. If you set this value before using the showSave method, this will display the filename as the default in the dialog, but the user can change it. The default is an empty string, which indicates there is not an initial filename.   After calling the showSave method, use this property to get the filename the user specified. You can use this in combination with the dataFolder property to know where the user has specified to save the file."
+    },
+    {
+      "name": "filter",
+      "description": "Gets or sets the current file type filter. This controls the types of files displayed in the dialog. The filter consists of file extensions separated by a semi-colon. The string below is an example of the filter used by Fusion for the Open command.   \"f3d;f2d;f2t;fbrd;fsch;flbr;fprj;prt;par;sldprt;sldasm;ipt;iam;stp;ste;step\"   An empty string indicates that no filter should be used and all files in the current DataFolder should be displayed."
+    },
+    {
+      "name": "isMultiSelectEnabled",
+      "description": "Gets or sets a value indicating whether the dialog allows multiple files to be selected. This defaults to False when a new CloudFileDialog is created. It is only used when using the showOpen method."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "title",
+      "description": "Gets or sets the title displayed on the dialog."
+    }
+  ],
+  "version": "Introduced in version October 2022",
+  "method_details": {
+    "classType": {
+      "id": "CloudFileDialog_classType",
+      "title": "CloudFileDialog.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CloudFileDialog.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CloudFileDialog",
+      "syntax": {
+        "python": "returnValue = adsk.core.CloudFileDialog.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::CloudFileDialog::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version October 2022"
+    },
+    "showOpen": {
+      "id": "CloudFileDialog_showOpen",
+      "title": "CloudFileDialog.showOpen Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CloudFileDialog.h",
+      "description": "Displays a modal open dialog, allowing the user to select one or more files. The return value can be used to determine if the dialog was canceled without selecting a file. The dataFile and dataFiles properties can be used to get the selected files.",
+      "parent_class": "CloudFileDialog",
+      "syntax": {
+        "python": "returnValue = cloudFileDialog_var.showOpen()",
+        "cpp": "#include \n\nreturnValue = cloudFileDialog_var->showOpen();"
+      },
+      "return_type": "DialogResults",
+      "return_description": "Returns an enum value indicating which button was clicked on the dialog.",
+      "version": "Introduced in version October 2022"
+    },
+    "showSave": {
+      "id": "CloudFileDialog_showSave",
+      "title": "CloudFileDialog.showSave Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CloudFileDialog.h",
+      "description": "Displays a modal save dialog, allowing the user to specify a file. The return value can be used to determine if the dialog was canceled without giving a filename. The filename property can be used to get that file.",
+      "parent_class": "CloudFileDialog",
+      "syntax": {
+        "python": "returnValue = cloudFileDialog_var.showSave()",
+        "cpp": "#include \n\nreturnValue = cloudFileDialog_var->showSave();"
+      },
+      "return_type": "DialogResults",
+      "return_description": "Returns an enum value indicating which button was clicked on the dialog.",
+      "version": "Introduced in version October 2022"
+    }
+  },
+  "property_details": {
+    "dataFile": {
+      "id": "CloudFileDialog_dataFile",
+      "title": "CloudFileDialog.dataFile Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CloudFileDialog.h",
+      "description": "Gets the DataFile selected by the user in the dialog. This property is used after the ShowOpen method has been called to retrieve the filename specified by the user. If ShowOpen was used and isMultiSelectEnabled is true, then this property will only display the first DataFile selected and the dataFiles property should be used instead to retrieved the full list. If ShowSave was used, then only a single DataFile is ever returned.",
+      "parent_class": "CloudFileDialog",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cloudFileDialog_var.dataFile",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cloudFileDialog_var->dataFile();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "dataFiles": {
+      "id": "CloudFileDialog_dataFiles",
+      "title": "CloudFileDialog.dataFiles Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CloudFileDialog.h",
+      "description": "Gets the DataFiles specified by the user in the dialog. This property is used after the ShowOpen method has been called to retrieve the DataFiles specified by the user. If ShowOpen is used and isMultiSelectEnabled is true, the user is able to select more than one file. This property returns all of the files that were selected.",
+      "parent_class": "CloudFileDialog",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cloudFileDialog_var.dataFiles",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = cloudFileDialog_var->dataFiles();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "dataFolder": {
+      "id": "CloudFileDialog_dataFolder",
+      "title": "CloudFileDialog.dataFolder Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CloudFileDialog.h",
+      "description": "Gets or sets the initial DataFolder displayed in the dialog. The DataFolder should be in current project. If null, this defaults to the DataFolder that is currently active in the Data Panel. When using the showSave method, use this property to get the DataFolder that the user specified.",
+      "parent_class": "CloudFileDialog",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cloudFileDialog_var.dataFolder\n\n# Set the value of the property.\ncloudFileDialog_var.dataFolder = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cloudFileDialog_var->dataFolder();\n\n// Set the value of the property, where value_var is a DataFolder.\nbool returnValue = cloudFileDialog_var->dataFolder(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "filename": {
+      "id": "CloudFileDialog_filename",
+      "title": "CloudFileDialog.filename Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CloudFileDialog.h",
+      "description": "Gets and sets the filename when using the showSave method. If you set this value before using the showSave method, this will display the filename as the default in the dialog, but the user can change it. The default is an empty string, which indicates there is not an initial filename. After calling the showSave method, use this property to get the filename the user specified. You can use this in combination with the dataFolder property to know where the user has specified to save the file.",
+      "parent_class": "CloudFileDialog",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cloudFileDialog_var.filename\n\n# Set the value of the property.\ncloudFileDialog_var.filename = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cloudFileDialog_var->filename();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = cloudFileDialog_var->filename(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "filter": {
+      "id": "CloudFileDialog_filter",
+      "title": "CloudFileDialog.filter Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CloudFileDialog.h",
+      "description": "Gets or sets the current file type filter. This controls the types of files displayed in the dialog. The filter consists of file extensions separated by a semi-colon. The string below is an example of the filter used by Fusion for the Open command. \"f3d;f2d;f2t;fbrd;fsch;flbr;fprj;prt;par;sldprt;sldasm;ipt;iam;stp;ste;step\" An empty string indicates that no filter should be used and all files in the current DataFolder should be displayed.",
+      "parent_class": "CloudFileDialog",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cloudFileDialog_var.filter\n\n# Set the value of the property.\ncloudFileDialog_var.filter = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cloudFileDialog_var->filter();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = cloudFileDialog_var->filter(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isMultiSelectEnabled": {
+      "id": "CloudFileDialog_isMultiSelectEnabled",
+      "title": "CloudFileDialog.isMultiSelectEnabled Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CloudFileDialog.h",
+      "description": "Gets or sets a value indicating whether the dialog allows multiple files to be selected. This defaults to False when a new CloudFileDialog is created. It is only used when using the showOpen method.",
+      "parent_class": "CloudFileDialog",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cloudFileDialog_var.isMultiSelectEnabled\n\n# Set the value of the property.\ncloudFileDialog_var.isMultiSelectEnabled = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cloudFileDialog_var->isMultiSelectEnabled();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = cloudFileDialog_var->isMultiSelectEnabled(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isValid": {
+      "id": "CloudFileDialog_isValid",
+      "title": "CloudFileDialog.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CloudFileDialog.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CloudFileDialog",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cloudFileDialog_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cloudFileDialog_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "objectType": {
+      "id": "CloudFileDialog_objectType",
+      "title": "CloudFileDialog.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CloudFileDialog.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CloudFileDialog",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cloudFileDialog_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cloudFileDialog_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "title": {
+      "id": "CloudFileDialog_title",
+      "title": "CloudFileDialog.title Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CloudFileDialog.h",
+      "description": "Gets or sets the title displayed on the dialog.",
+      "parent_class": "CloudFileDialog",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cloudFileDialog_var.title\n\n# Set the value of the property.\ncloudFileDialog_var.title = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cloudFileDialog_var->title();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = cloudFileDialog_var->title(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    }
+  }
+}

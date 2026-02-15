@@ -1,0 +1,221 @@
+{
+  "id": "VolumetricCustomFeatures",
+  "title": "VolumetricCustomFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/VolumetricCustomFeatures.h",
+  "description": "Collection that provides access to all of the existing volumetric custom features in a component and supports the ability to create new Volumetric Custom features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Add a new volumetric custom feature. To create a new volumetric custom feature use the createInput method to create a new input object and use the methods and properties on that object to define the required input for a volumetric custom feature. Once the information is defined on the input object you can pass it to the add method to create the feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Create a new VolumetricCustomFeatureInput object."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified item using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns the item with the specified internal name."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Volumetric Custom Feature API Sample",
+      "description": "Demonstrates how to create a Volumetric Custom Feature using the API for graph creation.\n\nTo run the sample script, have a document open in Fusion\u2019s DESIGN workspace. This script will create a component with a box by sketching then extruding that sketch. It will then use that box as a boundary body and create a Volumetric Custom Feature.\n\nThe script will the create a gyroid lattice using the Volumetric Model API with the appropriate Graphs, Nodes and Connections for a minimal example. Finally, the script will convert that Volumetric Model to Mesh using the API and the VolumetricModelToMeshFeature."
+    }
+  ],
+  "version": "Introduced in version May 2025",
+  "method_details": {
+    "add": {
+      "id": "VolumetricCustomFeatures_add",
+      "title": "VolumetricCustomFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricCustomFeatures.h",
+      "description": "Add a new volumetric custom feature. To create a new volumetric custom feature use the createInput method to create a new input object and use the methods and properties on that object to define the required input for a volumetric custom feature. Once the information is defined on the input object you can pass it to the add method to create the feature.",
+      "parent_class": "VolumetricCustomFeatures",
+      "syntax": {
+        "python": "returnValue = volumetricCustomFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = volumetricCustomFeatures_var->add(input);"
+      },
+      "return_type": "VolumetricCustomFeature",
+      "return_description": "The newly added volumetric custom feature object or null if one cannot be added. Only one volumetric model can be added to each body.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "VolumetricCustomFeatureInput",
+          "description": "The input object for creating a volumetric custom feature."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Volumetric Custom Feature API Sample",
+          "description": "Demonstrates how to create a Volumetric Custom Feature using the API for graph creation.\n\nTo run the sample script, have a document open in Fusion\u2019s DESIGN workspace. This script will create a component with a box by sketching then extruding that sketch. It will then use that box as a boundary body and create a Volumetric Custom Feature.\n\nThe script will the create a gyroid lattice using the Volumetric Model API with the appropriate Graphs, Nodes and Connections for a minimal example. Finally, the script will convert that Volumetric Model to Mesh using the API and the VolumetricModelToMeshFeature."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "classType": {
+      "id": "VolumetricCustomFeatures_classType",
+      "title": "VolumetricCustomFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricCustomFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "VolumetricCustomFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.VolumetricCustomFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::VolumetricCustomFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version May 2025"
+    },
+    "createInput": {
+      "id": "VolumetricCustomFeatures_createInput",
+      "title": "VolumetricCustomFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricCustomFeatures.h",
+      "description": "Create a new VolumetricCustomFeatureInput object.",
+      "parent_class": "VolumetricCustomFeatures",
+      "syntax": {
+        "python": "returnValue = volumetricCustomFeatures_var.createInput(boundaryBody)",
+        "cpp": "#include \n\nreturnValue = volumetricCustomFeatures_var->createInput(boundaryBody);"
+      },
+      "return_type": "VolumetricCustomFeatureInput",
+      "return_description": "Returns the newly created VolumetricCustomFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "boundaryBody",
+          "type": "Base",
+          "description": "The boundary body for the volumetric model. Must be a BRepBody or MeshBody. Must have the same parent component as the VolumetricCustomFeatures."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Volumetric Custom Feature API Sample",
+          "description": "Demonstrates how to create a Volumetric Custom Feature using the API for graph creation.\n\nTo run the sample script, have a document open in Fusion\u2019s DESIGN workspace. This script will create a component with a box by sketching then extruding that sketch. It will then use that box as a boundary body and create a Volumetric Custom Feature.\n\nThe script will the create a gyroid lattice using the Volumetric Model API with the appropriate Graphs, Nodes and Connections for a minimal example. Finally, the script will convert that Volumetric Model to Mesh using the API and the VolumetricModelToMeshFeature."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "item": {
+      "id": "VolumetricCustomFeatures_item",
+      "title": "VolumetricCustomFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricCustomFeatures.h",
+      "description": "Function that returns the specified item using an index into the collection.",
+      "parent_class": "VolumetricCustomFeatures",
+      "syntax": {
+        "python": "returnValue = volumetricCustomFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = volumetricCustomFeatures_var->item(index);"
+      },
+      "return_type": "VolumetricCustomFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "itemByName": {
+      "id": "VolumetricCustomFeatures_itemByName",
+      "title": "VolumetricCustomFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricCustomFeatures.h",
+      "description": "Returns the item with the specified internal name.",
+      "parent_class": "VolumetricCustomFeatures",
+      "syntax": {
+        "python": "returnValue = volumetricCustomFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = volumetricCustomFeatures_var->itemByName(name);"
+      },
+      "return_type": "VolumetricCustomFeature",
+      "return_description": "Returns the specified item or null in the case where there is no item with the specified name.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the item."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "VolumetricCustomFeatures_count",
+      "title": "VolumetricCustomFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricCustomFeatures.h",
+      "description": "The number of features in the collection.",
+      "parent_class": "VolumetricCustomFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricCustomFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = volumetricCustomFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "isValid": {
+      "id": "VolumetricCustomFeatures_isValid",
+      "title": "VolumetricCustomFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricCustomFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "VolumetricCustomFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricCustomFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = volumetricCustomFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "objectType": {
+      "id": "VolumetricCustomFeatures_objectType",
+      "title": "VolumetricCustomFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricCustomFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "VolumetricCustomFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricCustomFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = volumetricCustomFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    }
+  }
+}

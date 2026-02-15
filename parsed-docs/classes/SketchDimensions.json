@@ -1,0 +1,691 @@
+{
+  "id": "SketchDimensions",
+  "title": "SketchDimensions Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Sketch/SketchDimensions.h",
+  "description": "A collection of the dimensions in a sketch. This object also supports the methods to add new sketch dimensions.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "addAngularDimension",
+      "description": "Creates a new angular dimension constraint between the two input lines. The position of the text controls which of the four quadrants will be dimensioned."
+    },
+    {
+      "name": "addConcentricCircleDimension",
+      "description": "Creates a new dimension constraint between to concentric circles or arcs."
+    },
+    {
+      "name": "addDiameterDimension",
+      "description": "Creates a new diameter dimension constraint on the arc or circle."
+    },
+    {
+      "name": "addDistanceBetweenLineAndPlanarSurfaceDimension",
+      "description": "Creates a new linear dimension controlling the distance between a sketch line and the specified planar face or construction plane. The sketch line must lie on a plane that is parallel to the planar surface. The text position is automatically chosen and is positioned so it is midway between the line and surface and the extension lines are a minimum length. You can modify the position by using functionality on the returned SketchDistanceBetweenLineAndPlanarSurfaceDimension object."
+    },
+    {
+      "name": "addDistanceBetweenPointAndSurfaceDimension",
+      "description": "Creates a new linear dimension controlling the distance between a sketch point and the specified surface or point. The text position is automatically chosen and is positioned so it is midway between the point and surface and the extension lines are a minimum length. You can modify the position by using functionality on the returned SketchDistanceBetweenPointAndSurfaceDimension object."
+    },
+    {
+      "name": "addDistanceDimension",
+      "description": "Creates a new linear dimension constraint between the two input entities."
+    },
+    {
+      "name": "addEllipseMajorRadiusDimension",
+      "description": "Creates a new dimension constraint on the major radius of an ellipse."
+    },
+    {
+      "name": "addEllipseMinorRadiusDimension",
+      "description": "Creates a new dimension constraint on the minor radius of an ellipse."
+    },
+    {
+      "name": "addLinearDiameterDimension",
+      "description": "Creates a new linear dimension showing the diameter where the first line acts as the center line and the second entity defines the size. The first input entity must be a sketch line. The second entity can be a point or a line that is parallel to the first. The dimension controls the distance as measured perpendicular to the first input line."
+    },
+    {
+      "name": "addOffsetDimension",
+      "description": "Creates a new linear dimension constraint between the two input entities. The first input entity must be a sketch line. The second entity can be a point or a line that is parallel to the first. The dimension controls the distance as measured perpendicular to the first input line."
+    },
+    {
+      "name": "addRadialDimension",
+      "description": "Creates a new radial dimension constraint on the arc or circle."
+    },
+    {
+      "name": "addTangentDistanceDimension",
+      "description": "Creates a new linear dimension from between a line and circle or arc and a second circle or arc where the dimension is to the tangent on the edge of the circle or arc."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified sketch dimension using an index into the collection."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of sketch dimensions in the sketch."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "API Sample that demonstrates creating sketch lines in various ways.",
+      "description": "Demonstrates several ways to create sketch lines, including as the result of creating a rectangle."
+    },
+    {
+      "name": "SketchDimensions.addAngularDimension",
+      "description": "Demonstrates the SketchDimension.addAngularDimension method."
+    },
+    {
+      "name": "SketchDimensions.addConcentricCicleDimension",
+      "description": "Demonstrates the SketchDimension.addConcentricCircleDimension method."
+    },
+    {
+      "name": "SketchDimensions.addDiameterDimension",
+      "description": "Demonstrates the SketchDimension.addDiameterDimension method."
+    },
+    {
+      "name": "SketchDimensions.addDistanceDimension",
+      "description": "Demonstrates the SketchDimension.addDistanceDimension method."
+    },
+    {
+      "name": "SketchDimensions.AddEllipseMajorRadiusDimension",
+      "description": "Demonstrates the SketchDimension.addEllipseMajorRadiusDimension method."
+    },
+    {
+      "name": "SketchDimensions.AddEllipseMinorRadiusDimension",
+      "description": "Demonstrates the SketchDimension.addEllipseMinorRadiusDimension method."
+    },
+    {
+      "name": "SketchDimensions.addOffsetDimension",
+      "description": "Demonstrates the SketchDimension.addOffsetDimension method."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "addAngularDimension": {
+      "id": "SketchDimensions_addAngularDimension",
+      "title": "SketchDimensions.addAngularDimension Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchDimensions.h",
+      "description": "Creates a new angular dimension constraint between the two input lines. The position of the text controls which of the four quadrants will be dimensioned.",
+      "parent_class": "SketchDimensions",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchDimensions_var.addAngularDimension(lineOne, lineTwo, textPoint)\n\n# Uses optional arguments.\nreturnValue = sketchDimensions_var.addAngularDimension(lineOne, lineTwo, textPoint, isDriving)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchDimensions_var->addAngularDimension(lineOne, lineTwo, textPoint);\n\n// Uses optional arguments.\nreturnValue = sketchDimensions_var->addAngularDimension(lineOne, lineTwo, textPoint, isDriving);"
+      },
+      "return_type": "SketchAngularDimension",
+      "return_description": "Returns the newly created dimension or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "lineOne",
+          "type": "SketchLine",
+          "description": "The first SketchLine to dimension to."
+        },
+        {
+          "name": "lineTwo",
+          "type": "SketchLine",
+          "description": "The second SketchLine to dimension to."
+        },
+        {
+          "name": "textPoint",
+          "type": "Point3D",
+          "description": "A Point3D object that defines the position of the dimension text. The position of the text also defines which quadrant will be dimensioned."
+        },
+        {
+          "name": "isDriving",
+          "type": "boolean",
+          "description": "Optional argument that specifies if a driving (the dimension controls the geometry) or a driven (the geometry controls the dimension) dimension is created. If not provided a driving dimension will be created.   This is an optional argument whose default value is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "SketchDimensions.addAngularDimension",
+          "description": "Demonstrates the SketchDimension.addAngularDimension method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addConcentricCircleDimension": {
+      "id": "SketchDimensions_addConcentricCircleDimension",
+      "title": "SketchDimensions.addConcentricCircleDimension Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchDimensions.h",
+      "description": "Creates a new dimension constraint between to concentric circles or arcs.",
+      "parent_class": "SketchDimensions",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchDimensions_var.addConcentricCircleDimension(circleOne, circleTwo, textPoint)\n\n# Uses optional arguments.\nreturnValue = sketchDimensions_var.addConcentricCircleDimension(circleOne, circleTwo, textPoint, isDriving)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchDimensions_var->addConcentricCircleDimension(circleOne, circleTwo, textPoint);\n\n// Uses optional arguments.\nreturnValue = sketchDimensions_var->addConcentricCircleDimension(circleOne, circleTwo, textPoint, isDriving);"
+      },
+      "return_type": "SketchConcentricCircleDimension",
+      "return_description": "Returns the newly created dimension or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "circleOne",
+          "type": "SketchCurve",
+          "description": "The first SketchCircle or SketchArc to dimension."
+        },
+        {
+          "name": "circleTwo",
+          "type": "SketchCurve",
+          "description": "The second SketchCircle or SketchArc to dimension."
+        },
+        {
+          "name": "textPoint",
+          "type": "Point3D",
+          "description": "A Point3D object that defines the position of the dimension text."
+        },
+        {
+          "name": "isDriving",
+          "type": "boolean",
+          "description": "Optional argument that specifies if a driving (the dimension controls the geometry) or a driven (the geometry controls the dimension) dimension is created. If not provided a driving dimension will be created.   This is an optional argument whose default value is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "SketchDimensions.addConcentricCicleDimension",
+          "description": "Demonstrates the SketchDimension.addConcentricCircleDimension method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addDiameterDimension": {
+      "id": "SketchDimensions_addDiameterDimension",
+      "title": "SketchDimensions.addDiameterDimension Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchDimensions.h",
+      "description": "Creates a new diameter dimension constraint on the arc or circle.",
+      "parent_class": "SketchDimensions",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchDimensions_var.addDiameterDimension(entity, textPoint)\n\n# Uses optional arguments.\nreturnValue = sketchDimensions_var.addDiameterDimension(entity, textPoint, isDriving)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchDimensions_var->addDiameterDimension(entity, textPoint);\n\n// Uses optional arguments.\nreturnValue = sketchDimensions_var->addDiameterDimension(entity, textPoint, isDriving);"
+      },
+      "return_type": "SketchDiameterDimension",
+      "return_description": "Returns the newly created dimension or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "SketchCurve",
+          "description": "The SketchCircle or SketchArc to dimension."
+        },
+        {
+          "name": "textPoint",
+          "type": "Point3D",
+          "description": "A Point3D object that defines the position of the dimension text."
+        },
+        {
+          "name": "isDriving",
+          "type": "boolean",
+          "description": "Optional argument that specifies if a driving (the dimension controls the geometry) or a driven (the geometry controls the dimension) dimension is created. If not provided a driving dimension will be created.   This is an optional argument whose default value is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "SketchDimensions.addDiameterDimension",
+          "description": "Demonstrates the SketchDimension.addDiameterDimension method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addDistanceBetweenLineAndPlanarSurfaceDimension": {
+      "id": "SketchDimensions_addDistanceBetweenLineAndPlanarSurfaceDimension",
+      "title": "SketchDimensions.addDistanceBetweenLineAndPlanarSurfaceDimension Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchDimensions.h",
+      "description": "Creates a new linear dimension controlling the distance between a sketch line and the specified planar face or construction plane. The sketch line must lie on a plane that is parallel to the planar surface. The text position is automatically chosen and is positioned so it is midway between the line and surface and the extension lines are a minimum length. You can modify the position by using functionality on the returned SketchDistanceBetweenLineAndPlanarSurfaceDimension object.",
+      "parent_class": "SketchDimensions",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchDimensions_var.addDistanceBetweenLineAndPlanarSurfaceDimension(line, planarSurface)\n\n# Uses optional arguments.\nreturnValue = sketchDimensions_var.addDistanceBetweenLineAndPlanarSurfaceDimension(line, planarSurface, isDriving)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchDimensions_var->addDistanceBetweenLineAndPlanarSurfaceDimension(line, planarSurface);\n\n// Uses optional arguments.\nreturnValue = sketchDimensions_var->addDistanceBetweenLineAndPlanarSurfaceDimension(line, planarSurface, isDriving);"
+      },
+      "return_type": "SketchDistanceBetweenLineAndPlanarSurfaceDimension",
+      "return_description": "Returns the newly created dimension or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "line",
+          "type": "SketchLine",
+          "description": "The SketchLine being constrained by the dimension."
+        },
+        {
+          "name": "planarSurface",
+          "type": "Base",
+          "description": "The planar BRepFace or ConstructionPlane that the dimension will anchor to."
+        },
+        {
+          "name": "isDriving",
+          "type": "boolean",
+          "description": "Optional argument that specifies if a driving (the dimension controls the geometry) or a driven (the geometry controls the dimension) dimension is created. If not provided a driving dimension will be created.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    },
+    "addDistanceBetweenPointAndSurfaceDimension": {
+      "id": "SketchDimensions_addDistanceBetweenPointAndSurfaceDimension",
+      "title": "SketchDimensions.addDistanceBetweenPointAndSurfaceDimension Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchDimensions.h",
+      "description": "Creates a new linear dimension controlling the distance between a sketch point and the specified surface or point. The text position is automatically chosen and is positioned so it is midway between the point and surface and the extension lines are a minimum length. You can modify the position by using functionality on the returned SketchDistanceBetweenPointAndSurfaceDimension object.",
+      "parent_class": "SketchDimensions",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchDimensions_var.addDistanceBetweenPointAndSurfaceDimension(point, surface)\n\n# Uses optional arguments.\nreturnValue = sketchDimensions_var.addDistanceBetweenPointAndSurfaceDimension(point, surface, isDriving)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchDimensions_var->addDistanceBetweenPointAndSurfaceDimension(point, surface);\n\n// Uses optional arguments.\nreturnValue = sketchDimensions_var->addDistanceBetweenPointAndSurfaceDimension(point, surface, isDriving);"
+      },
+      "return_type": "SketchDistanceBetweenPointAndSurfaceDimension",
+      "return_description": "Returns the newly created dimension or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "point",
+          "type": "SketchPoint",
+          "description": "The SketchPoint being constrained by the dimension."
+        },
+        {
+          "name": "surface",
+          "type": "Base",
+          "description": "The BRepFace or ConstructionPlane to which the dimension will anchor. Planar, cylindrical, spherical and conical faces are supported. If a cylindrical, spherical or conical face is used, the dimension is from the point to the nearest point on the surface."
+        },
+        {
+          "name": "isDriving",
+          "type": "boolean",
+          "description": "Optional argument that specifies if a driving (the dimension controls the geometry) or a driven (the geometry controls the dimension) dimension is created. If not provided a driving dimension will be created.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    },
+    "addDistanceDimension": {
+      "id": "SketchDimensions_addDistanceDimension",
+      "title": "SketchDimensions.addDistanceDimension Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchDimensions.h",
+      "description": "Creates a new linear dimension constraint between the two input entities.",
+      "parent_class": "SketchDimensions",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchDimensions_var.addDistanceDimension(pointOne, pointTwo, orientation, textPoint)\n\n# Uses optional arguments.\nreturnValue = sketchDimensions_var.addDistanceDimension(pointOne, pointTwo, orientation, textPoint, isDriving)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchDimensions_var->addDistanceDimension(pointOne, pointTwo, orientation, textPoint);\n\n// Uses optional arguments.\nreturnValue = sketchDimensions_var->addDistanceDimension(pointOne, pointTwo, orientation, textPoint, isDriving);"
+      },
+      "return_type": "SketchLinearDimension",
+      "return_description": "Returns the newly created dimension or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "pointOne",
+          "type": "SketchPoint",
+          "description": "The first SketchPoint to dimension to."
+        },
+        {
+          "name": "pointTwo",
+          "type": "SketchPoint",
+          "description": "The second SketchPoint to dimension to.."
+        },
+        {
+          "name": "orientation",
+          "type": "DimensionOrientations",
+          "description": "The orientation of the dimension."
+        },
+        {
+          "name": "textPoint",
+          "type": "Point3D",
+          "description": "A Point3D object that defines the position of the dimension text."
+        },
+        {
+          "name": "isDriving",
+          "type": "boolean",
+          "description": "Optional argument that specifies if a driving (the dimension controls the geometry) or a driven (the geometry controls the dimension) dimension is created. If not provided a driving dimension will be created.   This is an optional argument whose default value is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "API Sample that demonstrates creating sketch lines in various ways.",
+          "description": "Demonstrates several ways to create sketch lines, including as the result of creating a rectangle."
+        },
+        {
+          "name": "SketchDimensions.addDistanceDimension",
+          "description": "Demonstrates the SketchDimension.addDistanceDimension method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addEllipseMajorRadiusDimension": {
+      "id": "SketchDimensions_addEllipseMajorRadiusDimension",
+      "title": "SketchDimensions.addEllipseMajorRadiusDimension Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchDimensions.h",
+      "description": "Creates a new dimension constraint on the major radius of an ellipse.",
+      "parent_class": "SketchDimensions",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchDimensions_var.addEllipseMajorRadiusDimension(ellipse, textPoint)\n\n# Uses optional arguments.\nreturnValue = sketchDimensions_var.addEllipseMajorRadiusDimension(ellipse, textPoint, isDriving)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchDimensions_var->addEllipseMajorRadiusDimension(ellipse, textPoint);\n\n// Uses optional arguments.\nreturnValue = sketchDimensions_var->addEllipseMajorRadiusDimension(ellipse, textPoint, isDriving);"
+      },
+      "return_type": "SketchEllipseMajorRadiusDimension",
+      "return_description": "Returns the newly created dimension or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "ellipse",
+          "type": "SketchCurve",
+          "description": "The SketchEllipse to dimension."
+        },
+        {
+          "name": "textPoint",
+          "type": "Point3D",
+          "description": "A Point3D object that defines the position of the dimension text."
+        },
+        {
+          "name": "isDriving",
+          "type": "boolean",
+          "description": "Optional argument that specifies if a driving (the dimension controls the geometry) or a driven (the geometry controls the dimension) dimension is created. If not provided a driving dimension will be created.   This is an optional argument whose default value is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "SketchDimensions.AddEllipseMajorRadiusDimension",
+          "description": "Demonstrates the SketchDimension.addEllipseMajorRadiusDimension method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addEllipseMinorRadiusDimension": {
+      "id": "SketchDimensions_addEllipseMinorRadiusDimension",
+      "title": "SketchDimensions.addEllipseMinorRadiusDimension Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchDimensions.h",
+      "description": "Creates a new dimension constraint on the minor radius of an ellipse.",
+      "parent_class": "SketchDimensions",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchDimensions_var.addEllipseMinorRadiusDimension(ellipse, textPoint)\n\n# Uses optional arguments.\nreturnValue = sketchDimensions_var.addEllipseMinorRadiusDimension(ellipse, textPoint, isDriving)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchDimensions_var->addEllipseMinorRadiusDimension(ellipse, textPoint);\n\n// Uses optional arguments.\nreturnValue = sketchDimensions_var->addEllipseMinorRadiusDimension(ellipse, textPoint, isDriving);"
+      },
+      "return_type": "SketchEllipseMinorRadiusDimension",
+      "return_description": "Returns the newly created dimension or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "ellipse",
+          "type": "SketchCurve",
+          "description": "The SketchEllipse to dimension."
+        },
+        {
+          "name": "textPoint",
+          "type": "Point3D",
+          "description": "A Point3D object that defines the position of the dimension text."
+        },
+        {
+          "name": "isDriving",
+          "type": "boolean",
+          "description": "Optional argument that specifies if a driving (the dimension controls the geometry) or a driven (the geometry controls the dimension) dimension is created. If not provided a driving dimension will be created.   This is an optional argument whose default value is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "SketchDimensions.AddEllipseMinorRadiusDimension",
+          "description": "Demonstrates the SketchDimension.addEllipseMinorRadiusDimension method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addLinearDiameterDimension": {
+      "id": "SketchDimensions_addLinearDiameterDimension",
+      "title": "SketchDimensions.addLinearDiameterDimension Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchDimensions.h",
+      "description": "Creates a new linear dimension showing the diameter where the first line acts as the center line and the second entity defines the size. The first input entity must be a sketch line. The second entity can be a point or a line that is parallel to the first. The dimension controls the distance as measured perpendicular to the first input line.",
+      "parent_class": "SketchDimensions",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchDimensions_var.addLinearDiameterDimension(centerLine, entityTwo, textPoint)\n\n# Uses optional arguments.\nreturnValue = sketchDimensions_var.addLinearDiameterDimension(centerLine, entityTwo, textPoint, isDriving)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchDimensions_var->addLinearDiameterDimension(centerLine, entityTwo, textPoint);\n\n// Uses optional arguments.\nreturnValue = sketchDimensions_var->addLinearDiameterDimension(centerLine, entityTwo, textPoint, isDriving);"
+      },
+      "return_type": "SketchLinearDiameterDimension",
+      "return_description": "Returns the newly created dimension or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "centerLine",
+          "type": "SketchLine",
+          "description": "The SketchLine to dimension to which acts as the center line."
+        },
+        {
+          "name": "entityTwo",
+          "type": "SketchEntity",
+          "description": "The parallel SketchLine or SketchPoint to dimension to. If a SketchLine is used it must be parallel to the first line."
+        },
+        {
+          "name": "textPoint",
+          "type": "Point3D",
+          "description": "A Point3D object that defines the position of the dimension text."
+        },
+        {
+          "name": "isDriving",
+          "type": "boolean",
+          "description": "Optional argument that specifies if a driving (the dimension controls the geometry) or a driven (the geometry controls the dimension) dimension is created. If not provided a driving dimension will be created.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version September 2022"
+    },
+    "addOffsetDimension": {
+      "id": "SketchDimensions_addOffsetDimension",
+      "title": "SketchDimensions.addOffsetDimension Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchDimensions.h",
+      "description": "Creates a new linear dimension constraint between the two input entities. The first input entity must be a sketch line. The second entity can be a point or a line that is parallel to the first. The dimension controls the distance as measured perpendicular to the first input line.",
+      "parent_class": "SketchDimensions",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchDimensions_var.addOffsetDimension(line, entityTwo, textPoint)\n\n# Uses optional arguments.\nreturnValue = sketchDimensions_var.addOffsetDimension(line, entityTwo, textPoint, isDriving)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchDimensions_var->addOffsetDimension(line, entityTwo, textPoint);\n\n// Uses optional arguments.\nreturnValue = sketchDimensions_var->addOffsetDimension(line, entityTwo, textPoint, isDriving);"
+      },
+      "return_type": "SketchOffsetDimension",
+      "return_description": "Returns the newly created dimension or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "line",
+          "type": "SketchLine",
+          "description": "The SketchLine to dimension to."
+        },
+        {
+          "name": "entityTwo",
+          "type": "SketchEntity",
+          "description": "The parallel SketchLine or SketchPoint to dimension to. If a SketchLine is used it must be parallel to the first line."
+        },
+        {
+          "name": "textPoint",
+          "type": "Point3D",
+          "description": "A Point3D object that defines the position of the dimension text."
+        },
+        {
+          "name": "isDriving",
+          "type": "boolean",
+          "description": "Optional argument that specifies if a driving (the dimension controls the geometry) or a driven (the geometry controls the dimension) dimension is created. If not provided a driving dimension will be created.   This is an optional argument whose default value is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "SketchDimensions.addOffsetDimension",
+          "description": "Demonstrates the SketchDimension.addOffsetDimension method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addRadialDimension": {
+      "id": "SketchDimensions_addRadialDimension",
+      "title": "SketchDimensions.addRadialDimension Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchDimensions.h",
+      "description": "Creates a new radial dimension constraint on the arc or circle.",
+      "parent_class": "SketchDimensions",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchDimensions_var.addRadialDimension(entity, textPoint)\n\n# Uses optional arguments.\nreturnValue = sketchDimensions_var.addRadialDimension(entity, textPoint, isDriving)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchDimensions_var->addRadialDimension(entity, textPoint);\n\n// Uses optional arguments.\nreturnValue = sketchDimensions_var->addRadialDimension(entity, textPoint, isDriving);"
+      },
+      "return_type": "SketchRadialDimension",
+      "return_description": "Returns the newly created dimension or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "SketchCurve",
+          "description": "The SketchCircle or SketchArc to dimension."
+        },
+        {
+          "name": "textPoint",
+          "type": "Point3D",
+          "description": "A Point3D object that defines the position of the dimension text."
+        },
+        {
+          "name": "isDriving",
+          "type": "boolean",
+          "description": "Optional argument that specifies if a driving (the dimension controls the geometry) or a driven (the geometry controls the dimension) dimension is created. If not provided a driving dimension will be created.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addTangentDistanceDimension": {
+      "id": "SketchDimensions_addTangentDistanceDimension",
+      "title": "SketchDimensions.addTangentDistanceDimension Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchDimensions.h",
+      "description": "Creates a new linear dimension from between a line and circle or arc and a second circle or arc where the dimension is to the tangent on the edge of the circle or arc.",
+      "parent_class": "SketchDimensions",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchDimensions_var.addTangentDistanceDimension(entityOne, isCloseToEnityTwo, entityTwo, isCloseToEnityOne, textPoint)\n\n# Uses optional arguments.\nreturnValue = sketchDimensions_var.addTangentDistanceDimension(entityOne, isCloseToEnityTwo, entityTwo, isCloseToEnityOne, textPoint, isDriving)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchDimensions_var->addTangentDistanceDimension(entityOne, isCloseToEnityTwo, entityTwo, isCloseToEnityOne, textPoint);\n\n// Uses optional arguments.\nreturnValue = sketchDimensions_var->addTangentDistanceDimension(entityOne, isCloseToEnityTwo, entityTwo, isCloseToEnityOne, textPoint, isDriving);"
+      },
+      "return_type": "SketchTangentDistanceDimension",
+      "return_description": "Returns the newly created dimension or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "entityOne",
+          "type": "SketchEntity",
+          "description": "The first entity to dimension to. This can be a SketchPoint, SketchLine, SketchCircle or SketchArc. If a circle or arc is provided then the tangentSideOne argument must be specified."
+        },
+        {
+          "name": "isCloseToEnityTwo",
+          "type": "boolean",
+          "description": "If entityOne is a circle or arc this specifies which side of the circle or arc the dimension will be tangent to. If true, it will be on the side that is closer to entityTwo. If a SketchLine or SketchPoint was input for the entityOne argument this argument is ignored and any value can be used."
+        },
+        {
+          "name": "entityTwo",
+          "type": "SketchCurve",
+          "description": "A SketchCircle or SketchArc entity that you will dimension to."
+        },
+        {
+          "name": "isCloseToEnityOne",
+          "type": "boolean",
+          "description": "Specifies which side of the circle or arc input as the entityTwo argument the dimension will be tangent to. If true, it will be on the side that is closer to entityOne."
+        },
+        {
+          "name": "textPoint",
+          "type": "Point3D",
+          "description": "A Point3D object that defines the position of the dimension text."
+        },
+        {
+          "name": "isDriving",
+          "type": "boolean",
+          "description": "Optional argument that specifies if a driving (the dimension controls the geometry) or a driven (the geometry controls the dimension) dimension is created. If not provided a driving dimension will be created.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version July 2022"
+    },
+    "classType": {
+      "id": "SketchDimensions_classType",
+      "title": "SketchDimensions.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchDimensions.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SketchDimensions",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.SketchDimensions.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::SketchDimensions::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "SketchDimensions_item",
+      "title": "SketchDimensions.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchDimensions.h",
+      "description": "Function that returns the specified sketch dimension using an index into the collection.",
+      "parent_class": "SketchDimensions",
+      "syntax": {
+        "python": "returnValue = sketchDimensions_var.item(index)",
+        "cpp": "#include \n\nreturnValue = sketchDimensions_var->item(index);"
+      },
+      "return_type": "SketchDimension",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "SketchDimensions_count",
+      "title": "SketchDimensions.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchDimensions.h",
+      "description": "Returns the number of sketch dimensions in the sketch.",
+      "parent_class": "SketchDimensions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchDimensions_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = sketchDimensions_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "SketchDimensions_isValid",
+      "title": "SketchDimensions.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchDimensions.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SketchDimensions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchDimensions_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchDimensions_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "SketchDimensions_objectType",
+      "title": "SketchDimensions.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchDimensions.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SketchDimensions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchDimensions_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchDimensions_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "id": "Materials",
+  "title": "Materials Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Materials/Materials.h",
+  "description": "Collection of materials within a Library or Design.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "addByCopy",
+      "description": "Add a Material to a Design by copying an existing Material from Favorites, a Library or from the Materials stored in the Design. This method currently only applies to the Materials collection from a Design and cannot be used to copy a Material to a library."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Returns the specified Material using an index into the collection."
+    },
+    {
+      "name": "itemById",
+      "description": "Returns the Material by it's internal unique ID."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns the specified Material using the name as seen in the user interface. This often isn't a reliable way of accessing a specific material because materials are not required to be unique."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of Materials in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "addByCopy": {
+      "id": "Materials_addByCopy",
+      "title": "Materials.addByCopy Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Materials/Materials.h",
+      "description": "Add a Material to a Design by copying an existing Material from Favorites, a Library or from the Materials stored in the Design. This method currently only applies to the Materials collection from a Design and cannot be used to copy a Material to a library.",
+      "parent_class": "Materials",
+      "syntax": {
+        "python": "returnValue = materials_var.addByCopy(materialToCopy, name)",
+        "cpp": "#include \n\nreturnValue = materials_var->addByCopy(materialToCopy, name);"
+      },
+      "return_type": "Material",
+      "return_description": "Returns the newly created Material or null if the copy operation failed.",
+      "parameters": [
+        {
+          "name": "materialToCopy",
+          "type": "Material",
+          "description": "The Material you want to copy. The Material to copy can be from Favorites, a Library or from the materials stored in the Design."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The Material name to apply to the copy."
+        }
+      ],
+      "version": "Introduced in version January 2016"
+    },
+    "classType": {
+      "id": "Materials_classType",
+      "title": "Materials.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Materials/Materials.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Materials",
+      "syntax": {
+        "python": "returnValue = adsk.core.Materials.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Materials::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "Materials_item",
+      "title": "Materials.item Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Materials/Materials.h",
+      "description": "Returns the specified Material using an index into the collection.",
+      "parent_class": "Materials",
+      "syntax": {
+        "python": "returnValue = materials_var.item(index)",
+        "cpp": "#include \n\nreturnValue = materials_var->item(index);"
+      },
+      "return_type": "Material",
+      "return_description": "Returns the specified material or null if an invalid index is specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "integer",
+          "description": "The index of the material to return where the first item in the collection is 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "itemById": {
+      "id": "Materials_itemById",
+      "title": "Materials.itemById Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Materials/Materials.h",
+      "description": "Returns the Material by it's internal unique ID.",
+      "parent_class": "Materials",
+      "syntax": {
+        "python": "returnValue = materials_var.itemById(id)",
+        "cpp": "#include \n\nreturnValue = materials_var->itemById(id);"
+      },
+      "return_type": "Material",
+      "return_description": "Returns the specified material or null if there isn't a matching ID.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The ID of the material to return."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "itemByName": {
+      "id": "Materials_itemByName",
+      "title": "Materials.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Materials/Materials.h",
+      "description": "Returns the specified Material using the name as seen in the user interface. This often isn't a reliable way of accessing a specific material because materials are not required to be unique.",
+      "parent_class": "Materials",
+      "syntax": {
+        "python": "returnValue = materials_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = materials_var->itemByName(name);"
+      },
+      "return_type": "Material",
+      "return_description": "Returns the specified material or null if there isn't a matching name.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the material to return,."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "Materials_count",
+      "title": "Materials.count Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Materials/Materials.h",
+      "description": "The number of Materials in the collection.",
+      "parent_class": "Materials",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = materials_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = materials_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "Materials_isValid",
+      "title": "Materials.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Materials/Materials.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Materials",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = materials_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = materials_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "Materials_objectType",
+      "title": "Materials.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Materials/Materials.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Materials",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = materials_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = materials_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

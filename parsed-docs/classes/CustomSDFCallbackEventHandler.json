@@ -1,0 +1,78 @@
+{
+  "id": "CustomSDFCallbackEventHandler",
+  "title": "CustomSDFCallbackEventHandler Object",
+  "type": "class",
+  "namespace": "adsk::volume",
+  "header_file": "Volume/Volumetric/CustomSDFCallbackEventHandler.h",
+  "description": "API clients can implement subclasses of this handler to enable custom Signed Distance Field geometries.",
+  "parent_class": "EventHandler",
+  "methods": [
+    {
+      "name": "boundingBox",
+      "description": "This method should be implemented in the subclass of the handler to return the bounding box of the Signed Distance Field that it can provide. This method will be called infrequently by the system."
+    },
+    {
+      "name": "signedDistanceAt",
+      "description": "This method should be implemented in the subclass of the handler to return the Signed Distance value at the given coordinates within the bounding box. This method will be called very frequently and potentially from several differrent threads, it should be made as fast as possible"
+    }
+  ],
+  "version": "Introduced in version May 2025",
+  "method_details": {
+    "boundingBox": {
+      "id": "CustomSDFCallbackEventHandler_boundingBox",
+      "title": "CustomSDFCallbackEventHandler.boundingBox Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/CustomSDFCallbackEventHandler.h",
+      "description": "This method should be implemented in the subclass of the handler to return the bounding box of the Signed Distance Field that it can provide. This method will be called infrequently by the system.",
+      "parent_class": "CustomSDFCallbackEventHandler",
+      "syntax": {
+        "python": "returnValue = customSDFCallbackEventHandler_var.boundingBox(bboxOut)",
+        "cpp": "#include \n\nreturnValue = customSDFCallbackEventHandler_var->boundingBox(bboxOut);"
+      },
+      "return_type": "boolean",
+      "return_description": "True if there is a valid bounding box.",
+      "parameters": [
+        {
+          "name": "bboxOut",
+          "type": "BoundingBox3D",
+          "description": "This is a return parameter. The values of this should be set by the client implementation."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "signedDistanceAt": {
+      "id": "CustomSDFCallbackEventHandler_signedDistanceAt",
+      "title": "CustomSDFCallbackEventHandler.signedDistanceAt Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/CustomSDFCallbackEventHandler.h",
+      "description": "This method should be implemented in the subclass of the handler to return the Signed Distance value at the given coordinates within the bounding box. This method will be called very frequently and potentially from several differrent threads, it should be made as fast as possible",
+      "parent_class": "CustomSDFCallbackEventHandler",
+      "syntax": {
+        "python": "returnValue = customSDFCallbackEventHandler_var.signedDistanceAt(x, y, z)",
+        "cpp": "#include \n\nreturnValue = customSDFCallbackEventHandler_var->signedDistanceAt(x, y, z);"
+      },
+      "return_type": "double",
+      "return_description": "The signed distance value at the sampled point (X,Y,Z).",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "double",
+          "description": "X coordinate of the sampled point."
+        },
+        {
+          "name": "y",
+          "type": "double",
+          "description": "Y coordinate of the sampled point."
+        },
+        {
+          "name": "z",
+          "type": "double",
+          "description": "Z coordinate of the sampled point."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    }
+  }
+}

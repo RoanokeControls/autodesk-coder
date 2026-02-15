@@ -1,0 +1,1572 @@
+{
+  "id": "TriadCommandInput",
+  "title": "TriadCommandInput Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/TriadCommandInput.h",
+  "description": "Represents a command input that displays a triad and allows the user to control translation rotation, and scaling. Using properties on the input you can choose which controls are available to the user. This displays inputs in the command dialog where the user can enter values and also displays a manipulator in the graphics window to allow them to graphically set the values. The input boxes are displayed in the dialog when the isVisible property of the command input is true. The manipulator is displayed in the graphics window when both the isVisible and isEnabled properties are true. It will often be useful to first create a GroupCommandInput and then create the TriadCommandInput within the group so it's apparent to the user these items are related and they can be collapsed to reduce clutter in the dialog. This also allows you to label the set of displayed inputs by using the name of the GroupCommandInput.",
+  "parent_class": "CommandInput",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this Command input."
+    },
+    {
+      "name": "hideAll",
+      "description": "Hides all controls."
+    },
+    {
+      "name": "hideAllRotations",
+      "description": "Sets all rotation related controls to be invisible. This is useful if you are only using translations or scaling."
+    },
+    {
+      "name": "hideAllScaling",
+      "description": "Sets all scaling related controls to be invisible. This is useful if you are only using translations or rotations."
+    },
+    {
+      "name": "setFlipVisibility",
+      "description": "A convenience method to turn on and off the visibility of the horizontal and vertical flip controls."
+    },
+    {
+      "name": "setFullVisibility",
+      "description": "A convenience method to turn on and off the visibility of commonly used controls in a triad. These include the X, Y, and Z axis translations, the X, Y, and Z axis rotations, scaling in the X, Y, and Z directions, scaling on the X-Y, Y-Z and Z-X planes, translation on the X-Y, Y-Z, and Z-X planes, and the origin move."
+    },
+    {
+      "name": "setPlanarMoveVisibility",
+      "description": "A convenience method to turn on and off the visibility of the X-Y, Y-Z, and Z-X planar translation controls."
+    },
+    {
+      "name": "setRotateVisibility",
+      "description": "A convenience method to turn on and off the visibility of the X, Y, and Z axis rotation controls."
+    },
+    {
+      "name": "setScaleVisibility",
+      "description": "A convenience method to turn on and off the visibility of the controls that define scaling in the X, Y, and Z direction and the X-Y, Y-Z, and Z-X planes."
+    },
+    {
+      "name": "setTranslateVisibility",
+      "description": "A convenience method to turn on and off the visibility of the X, Y, and Z translation controls."
+    }
+  ],
+  "properties": [
+    {
+      "name": "commandInputs",
+      "description": "Gets the CommandInputs class of the parent, which can be a Command, GroupCommandInput or TabCommandInput."
+    },
+    {
+      "name": "id",
+      "description": "Gets the unique identifier for this input in the command's CommandInputs."
+    },
+    {
+      "name": "isEnabled",
+      "description": "Gets or sets if this input is currently enabled or disabled for user interaction.   Currently, the isEnabled property does not disable SelectionCommandInput objects but instead has the same effect as the SelectionCommandInput.hasFocus property."
+    },
+    {
+      "name": "isFlippedHorizontal",
+      "description": "Gets and sets if the triad is flipped horizontally (around the around the Y-Z plane of the triad)."
+    },
+    {
+      "name": "isFlippedVertical",
+      "description": "Gets and sets if the triad is flipped vertically (around the around the X-Z plane of the triad)."
+    },
+    {
+      "name": "isFullWidth",
+      "description": "Gets or sets if this input fills the entire width of the dialog. If true, the name is ignored and the input control will fill the entire width of the command dialog. The default value for this property in a new command input if false, or not to fill the width. This property does not apply to GroupCommandInputs or TabCommandInputs."
+    },
+    {
+      "name": "isHorizontalFlipVisible",
+      "description": "Gets and sets if the control that lets the user flip horizontally (around the Y-Z plane of the triad) is visible in both the graphical manipulator and the dialog."
+    },
+    {
+      "name": "isOriginTranslationVisible",
+      "description": "Gets and sets if the control that supports translation in the X, Y, and Z directions is visible in both the graphical manipulator and in the dialog. In the manipulator, this is the large dot at the origin or the triad."
+    },
+    {
+      "name": "isUnifiedScalingVisible",
+      "description": "Gets and sets if the control that defines the scaling in all directions visible in both the graphical manipulator and in the dialog."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isValidExpressions",
+      "description": "Returns true if all of the input fields have valid expressions. If this property is false, the triad is incorrectly defined and the current values should not be used."
+    },
+    {
+      "name": "isVerticalFlipVisible",
+      "description": "Gets and sets if the control that lets the user flip vertical (around the X-Z plane of the triad) is visible in both the graphical manipulator and the dialog."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets or sets if this input will be visible to the user.   Setting a SelectionCommandInput to be invisible will clear any selections it currently has."
+    },
+    {
+      "name": "isXRotationVisible",
+      "description": "Gets and sets if the control that defines the rotation around the X axis is visible in both the graphical manipulator and in the dialog."
+    },
+    {
+      "name": "isXScalingInXYVisible",
+      "description": "Gets and sets if the control that defines the scaling along the X axis is visible in both the graphical manipulator and in the dialog. This control lies on the X-Y plane of the triad."
+    },
+    {
+      "name": "isXScalingInXZVisible",
+      "description": "Gets and sets if the control that defines the scaling along the X axis is visible in both the graphical manipulator and in the dialog. This control lies on the X-Z plane of the triad."
+    },
+    {
+      "name": "isXTranslationVisible",
+      "description": "Gets and sets if the control that supports X Translation is visible in both the graphical manipulator and in the dialog."
+    },
+    {
+      "name": "isXYPlaneScalingVisible",
+      "description": "Gets and sets if the control that defines the scaling in the X-Y plane is visible in both the graphical manipulator and in the dialog."
+    },
+    {
+      "name": "isXYPlaneTranslationVisible",
+      "description": "Gets and sets if the control that defines the translation in the X-Y plane is visible in both the graphical manipulator and in the dialog."
+    },
+    {
+      "name": "isXZPlaneScalingVisible",
+      "description": "Gets and sets if the control that defines the scaling in the X-Z plane is visible in both the graphical manipulator and in the dialog."
+    },
+    {
+      "name": "isXZPlaneTranslationVisible",
+      "description": "Gets and sets if the control that defines the translation in the X-Z plane is visible in both the graphical manipulator and in the dialog."
+    },
+    {
+      "name": "isYRotationVisible",
+      "description": "Gets and sets if the control that defines the rotation around the Y axis is visible in both the graphical manipulator and in the dialog."
+    },
+    {
+      "name": "isYScalingInXYVisible",
+      "description": "Gets and sets if the control that defines the scaling along the Y axis is visible in both the graphical manipulator and in the dialog. This control lies on the X-Y plane of the triad."
+    },
+    {
+      "name": "isYScalingInYZVisible",
+      "description": "Gets and sets if the control that defines the scaling along the Y axis is visible in both the graphical manipulator and in the dialog. This control lies on the Y-Z plane of the triad."
+    },
+    {
+      "name": "isYTranslationVisible",
+      "description": "Gets and sets if the control that defines the Y Translation is visible in both the graphical manipulator and in the dialog."
+    },
+    {
+      "name": "isYZPlaneScalingVisible",
+      "description": "Gets and sets if the control that defines the scaling in the Y-Z plane is visible in both the graphical manipulator and in the dialog."
+    },
+    {
+      "name": "isYZPlaneTranslationVisible",
+      "description": "Gets and sets if the control that defines the translation in the Y-Z plane is visible in both the graphical manipulator and in the dialog."
+    },
+    {
+      "name": "isZRotationVisible",
+      "description": "Gets and sets if the control that defines the rotation around the Z axis is visible in both the graphical manipulator and in the dialog."
+    },
+    {
+      "name": "isZScalingInXZVisible",
+      "description": "Gets and sets if the control that defines the scaling along the Z axis is visible in both the graphical manipulator and in the dialog. This control lies on the X-Z plane of the triad."
+    },
+    {
+      "name": "isZScalingInYZVisible",
+      "description": "Gets and sets if the control that defines the scaling along the Z axis is visible in both the graphical manipulator and in the dialog. This control lies on the Y-Z plane of the triad."
+    },
+    {
+      "name": "isZTranslationVisible",
+      "description": "Gets and sets if the control that defines the Z Translation is visible in both the graphical manipulator and in the dialog."
+    },
+    {
+      "name": "lastChangeMade",
+      "description": "Returns which value was most recently changed. To determine the actual change made you need to compare the transforms returned by the transform and lastTransform properties. Having information about the specific type of change made makes it easier to compare the matrices because you know what to look for."
+    },
+    {
+      "name": "lastTransform",
+      "description": "Returns the transform of the triad before the latest change. Using the matrices returned by this property and the transform property you can determine what changed. The lastChangeMade property is also useful to help you know the type of change to look for when comparing the matrices."
+    },
+    {
+      "name": "name",
+      "description": "Gets the user visible name of this input."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentCommand",
+      "description": "Gets the parent Command."
+    },
+    {
+      "name": "parentCommandInput",
+      "description": "Gets the parent CommandInput if this commandInput is the child of a TabCommandInput or GroupCommandInput. Returns null if there is no parent."
+    },
+    {
+      "name": "positionTransform",
+      "description": "Gets the current position and orientation of the triad using a transformation matrix. This transform does not include any scaling."
+    },
+    {
+      "name": "toolClipFilename",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text."
+    },
+    {
+      "name": "tooltip",
+      "description": "Gets or sets the base tooltip string. This is always shown for commands. If the tooltip description and/or tool clip are also specified then the tooltip will progressively display more information as the user hovers the mouse over the control."
+    },
+    {
+      "name": "tooltipDescription",
+      "description": "Gets or sets additional text to display progressively along with the tooltip. The text for the description can contain some basic HTML formatting tags to format the tags. For example the br tag can be used to create multiple paragraphs. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text."
+    },
+    {
+      "name": "transform",
+      "description": "Gets or sets the current position, orientation, and scale of the triad using a transformation matrix."
+    },
+    {
+      "name": "unifiedeScaleFactor",
+      "description": "Gets and sets the current value of the unified scale factor of the triad.   The isValidExpressions property should be checked before using the value within the command."
+    },
+    {
+      "name": "unifiedScaleFactorExpression",
+      "description": "Gets or sets the expression displayed in the input field for the unified scale. This can contain equations and references to parameters but must result in a valid unitless expression."
+    },
+    {
+      "name": "xRotation",
+      "description": "Gets and sets the current value of the rotation around the X axis of the triad. The value is in radians but will be displayed to the user in degrees.   The isValidExpressions property should be checked before using the value within the command."
+    },
+    {
+      "name": "xRotationExpression",
+      "description": "Gets or sets the expression displayed in the input field for the X rotation. This can contain equations and references to parameters but must result in a valid distance expression. If units are not specified as part of the expression degrees are used."
+    },
+    {
+      "name": "xScaleFactor",
+      "description": "Gets and sets the current value of the scale factor along the X axis of the triad.   The isValidExpressions property should be checked before using the value within the command."
+    },
+    {
+      "name": "xScaleFactorExpression",
+      "description": "Gets or sets the expression displayed in the input field for the X scale. This can contain equations and references to parameters but must result in a valid unitless expression."
+    },
+    {
+      "name": "xTranslation",
+      "description": "Gets and sets the current value of the translation along the X axis of the triad. The value is in centimeters but will be displayed to the user in default units for the design.   The isValidExpressions property should be checked before using the returned value."
+    },
+    {
+      "name": "xTranslationExpression",
+      "description": "Gets or sets the expression displayed in the input field for the X translation. This can contain equations and references to parameters but must result in a valid distance expression. If units are not specified as part of the expression, the default user units of length are used."
+    },
+    {
+      "name": "xYPlaneScaleFactor",
+      "description": "Gets and sets the current value of the scale factor on the X-Y plane of the triad.   The isValidExpressions property should be checked before using the value within the command."
+    },
+    {
+      "name": "xYPlaneScaleFactorExpression",
+      "description": "Gets or sets the expression displayed in the input field for the X-Y plane scale. This can contain equations and references to parameters but must result in a valid unitless expression."
+    },
+    {
+      "name": "yRotation",
+      "description": "Gets and sets the current value of the rotation around the Y axis of the triad. The value is in radians but will be displayed to the user in degrees.   The isValidExpressions property should be checked before using the value within the command."
+    },
+    {
+      "name": "yRotationExpression",
+      "description": "Gets or sets the expression displayed in the input field for the Y rotation. This can contain equations and references to parameters but must result in a valid distance expression. If units are not specified as part of the expression degrees are used."
+    },
+    {
+      "name": "yScaleFactor",
+      "description": "Gets and sets the current value of the scale factor along the Y axis of the triad.   The isValidExpressions property should be checked before using the value within the command."
+    },
+    {
+      "name": "yScaleFactorExpression",
+      "description": "Gets or sets the expression displayed in the input field for the Y scale. This can contain equations and references to parameters but must result in a valid unitless expression."
+    },
+    {
+      "name": "yTranslation",
+      "description": "Gets and sets the current value of the translation along the Y axis of the triad. The value is in centimeters but will be displayed to the user in default units for the design.   The isValidExpressions property should be checked before using the value within the command."
+    },
+    {
+      "name": "yTranslationExpression",
+      "description": "Gets or sets the expression displayed in the input field for the Y translation. This can contain equations and references to parameters but must result in a valid distance expression. If units are not specified as part of the expression, the default user units of length are used."
+    },
+    {
+      "name": "yZPlaneScaleFactor",
+      "description": "Gets and sets the current value of the scale factor on the Y-Z plane of the triad.   The isValidExpressions property should be checked before using the value within the command."
+    },
+    {
+      "name": "yZPlaneScaleFactorExpression",
+      "description": "Gets or sets the expression displayed in the input field for the Y-Z plane scale. This can contain equations and references to parameters but must result in a valid unitless expression."
+    },
+    {
+      "name": "zRotation",
+      "description": "Gets and sets the current value of the rotation around the Z axis of the triad. The value is in radians but will be displayed to the user in degrees.   The isValidExpressions property should be checked before using the value within the command."
+    },
+    {
+      "name": "zRotationExpression",
+      "description": "Gets or sets the expression displayed in the input field for the Z rotation. This can contain equations and references to parameters but must result in a valid distance expression. If units are not specified as part of the expression degrees are used."
+    },
+    {
+      "name": "zScaleFactor",
+      "description": "Gets and sets the current value of the scale factor along the Z axis of the triad.   The isValidExpressions property should be checked before using the value within the command."
+    },
+    {
+      "name": "zScaleFactorExpression",
+      "description": "Gets or sets the expression displayed in the input field for the Z scale. This can contain equations and references to parameters but must result in a valid unitless expression."
+    },
+    {
+      "name": "zTranslation",
+      "description": "Gets and sets the current value of the translation along the Z axis of the triad. The value is in centimeters but will be displayed to the user in default units for the design.   The isValidExpressions property should be checked before using the value within the command."
+    },
+    {
+      "name": "zTranslationExpression",
+      "description": "Gets or sets the expression displayed in the input field for the Z translation. This can contain equations and references to parameters but must result in a valid distance expression. If units are not specified as part of the expression, the default user units of length are used."
+    },
+    {
+      "name": "zXPlaneScaleFactor",
+      "description": "Gets and sets the current value of the scale factor on the Z-X plane of the triad.   The isValidExpressions property should be checked before using the value within the command."
+    },
+    {
+      "name": "zXPlaneScaleFactorExpression",
+      "description": "Gets or sets the expression displayed in the input field for the Z-X plane scale. This can contain equations and references to parameters but must result in a valid unitless expression."
+    }
+  ],
+  "version": "Introduced in version May 2022",
+  "method_details": {
+    "classType": {
+      "id": "TriadCommandInput_classType",
+      "title": "TriadCommandInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "returnValue = adsk.core.TriadCommandInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::TriadCommandInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version May 2022"
+    },
+    "deleteMe": {
+      "id": "TriadCommandInput_deleteMe",
+      "title": "TriadCommandInput.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Deletes this Command input.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "returnValue = triadCommandInput_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = triadCommandInput_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version May 2022"
+    },
+    "hideAll": {
+      "id": "TriadCommandInput_hideAll",
+      "title": "TriadCommandInput.hideAll Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Hides all controls.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "returnValue = triadCommandInput_var.hideAll()",
+        "cpp": "#include \n\nreturnValue = triadCommandInput_var->hideAll();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if hiding the controls was successful.",
+      "version": "Introduced in version May 2022"
+    },
+    "hideAllRotations": {
+      "id": "TriadCommandInput_hideAllRotations",
+      "title": "TriadCommandInput.hideAllRotations Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Sets all rotation related controls to be invisible. This is useful if you are only using translations or scaling.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "returnValue = triadCommandInput_var.hideAllRotations()",
+        "cpp": "#include \n\nreturnValue = triadCommandInput_var->hideAllRotations();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if hiding the controls was successful.",
+      "version": "Introduced in version May 2022"
+    },
+    "hideAllScaling": {
+      "id": "TriadCommandInput_hideAllScaling",
+      "title": "TriadCommandInput.hideAllScaling Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Sets all scaling related controls to be invisible. This is useful if you are only using translations or rotations.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "returnValue = triadCommandInput_var.hideAllScaling()",
+        "cpp": "#include \n\nreturnValue = triadCommandInput_var->hideAllScaling();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if hiding the controls was successful.",
+      "version": "Introduced in version May 2022"
+    },
+    "setFlipVisibility": {
+      "id": "TriadCommandInput_setFlipVisibility",
+      "title": "TriadCommandInput.setFlipVisibility Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "A convenience method to turn on and off the visibility of the horizontal and vertical flip controls.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "returnValue = triadCommandInput_var.setFlipVisibility(isVisible)",
+        "cpp": "#include \n\nreturnValue = triadCommandInput_var->setFlipVisibility(isVisible);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if it was successful.",
+      "parameters": [
+        {
+          "name": "isVisible",
+          "type": "boolean",
+          "description": "Defines if the visibility of the controls should be turned on or off. True indicates they will be visible."
+        }
+      ],
+      "version": "Introduced in version May 2022"
+    },
+    "setFullVisibility": {
+      "id": "TriadCommandInput_setFullVisibility",
+      "title": "TriadCommandInput.setFullVisibility Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "A convenience method to turn on and off the visibility of commonly used controls in a triad. These include the X, Y, and Z axis translations, the X, Y, and Z axis rotations, scaling in the X, Y, and Z directions, scaling on the X-Y, Y-Z and Z-X planes, translation on the X-Y, Y-Z, and Z-X planes, and the origin move.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "returnValue = triadCommandInput_var.setFullVisibility(isVisible)",
+        "cpp": "#include \n\nreturnValue = triadCommandInput_var->setFullVisibility(isVisible);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if it was successful.",
+      "parameters": [
+        {
+          "name": "isVisible",
+          "type": "boolean",
+          "description": "Defines if the visibility of the controls should be turned on or off. True indicates they will be visible."
+        }
+      ],
+      "version": "Introduced in version May 2022"
+    },
+    "setPlanarMoveVisibility": {
+      "id": "TriadCommandInput_setPlanarMoveVisibility",
+      "title": "TriadCommandInput.setPlanarMoveVisibility Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "A convenience method to turn on and off the visibility of the X-Y, Y-Z, and Z-X planar translation controls.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "returnValue = triadCommandInput_var.setPlanarMoveVisibility(isVisible)",
+        "cpp": "#include \n\nreturnValue = triadCommandInput_var->setPlanarMoveVisibility(isVisible);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if it was successful.",
+      "parameters": [
+        {
+          "name": "isVisible",
+          "type": "boolean",
+          "description": "Defines if the visibility of the controls should be turned on or off. True indicates they will be visible."
+        }
+      ],
+      "version": "Introduced in version May 2022"
+    },
+    "setRotateVisibility": {
+      "id": "TriadCommandInput_setRotateVisibility",
+      "title": "TriadCommandInput.setRotateVisibility Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "A convenience method to turn on and off the visibility of the X, Y, and Z axis rotation controls.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "returnValue = triadCommandInput_var.setRotateVisibility(isVisible)",
+        "cpp": "#include \n\nreturnValue = triadCommandInput_var->setRotateVisibility(isVisible);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if it was successful.",
+      "parameters": [
+        {
+          "name": "isVisible",
+          "type": "boolean",
+          "description": "Defines if the visibility of the controls should be turned on or off. True indicates they will be visible."
+        }
+      ],
+      "version": "Introduced in version May 2022"
+    },
+    "setScaleVisibility": {
+      "id": "TriadCommandInput_setScaleVisibility",
+      "title": "TriadCommandInput.setScaleVisibility Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "A convenience method to turn on and off the visibility of the controls that define scaling in the X, Y, and Z direction and the X-Y, Y-Z, and Z-X planes.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "returnValue = triadCommandInput_var.setScaleVisibility(isVisible)",
+        "cpp": "#include \n\nreturnValue = triadCommandInput_var->setScaleVisibility(isVisible);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if it was successful.",
+      "parameters": [
+        {
+          "name": "isVisible",
+          "type": "boolean",
+          "description": "Defines if the visibility of the controls should be turned on or off. True indicates they will be visible."
+        }
+      ],
+      "version": "Introduced in version May 2022"
+    },
+    "setTranslateVisibility": {
+      "id": "TriadCommandInput_setTranslateVisibility",
+      "title": "TriadCommandInput.setTranslateVisibility Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "A convenience method to turn on and off the visibility of the X, Y, and Z translation controls.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "returnValue = triadCommandInput_var.setTranslateVisibility(isVisible)",
+        "cpp": "#include \n\nreturnValue = triadCommandInput_var->setTranslateVisibility(isVisible);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if it was successful.",
+      "parameters": [
+        {
+          "name": "isVisible",
+          "type": "boolean",
+          "description": "Defines if the visibility of the controls should be turned on or off. True indicates they will be visible."
+        }
+      ],
+      "version": "Introduced in version May 2022"
+    }
+  },
+  "property_details": {
+    "commandInputs": {
+      "id": "TriadCommandInput_commandInputs",
+      "title": "TriadCommandInput.commandInputs Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets the CommandInputs class of the parent, which can be a Command, GroupCommandInput or TabCommandInput.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.commandInputs",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = triadCommandInput_var->commandInputs();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "id": {
+      "id": "TriadCommandInput_id",
+      "title": "TriadCommandInput.id Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets the unique identifier for this input in the command's CommandInputs.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isEnabled": {
+      "id": "TriadCommandInput_isEnabled",
+      "title": "TriadCommandInput.isEnabled Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets if this input is currently enabled or disabled for user interaction. Currently, the isEnabled property does not disable SelectionCommandInput objects but instead has the same effect as the SelectionCommandInput.hasFocus property.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isEnabled\n\n# Set the value of the property.\ntriadCommandInput_var.isEnabled = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isEnabled();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isEnabled(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isFlippedHorizontal": {
+      "id": "TriadCommandInput_isFlippedHorizontal",
+      "title": "TriadCommandInput.isFlippedHorizontal Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the triad is flipped horizontally (around the around the Y-Z plane of the triad).",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isFlippedHorizontal\n\n# Set the value of the property.\ntriadCommandInput_var.isFlippedHorizontal = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isFlippedHorizontal();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isFlippedHorizontal(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isFlippedVertical": {
+      "id": "TriadCommandInput_isFlippedVertical",
+      "title": "TriadCommandInput.isFlippedVertical Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the triad is flipped vertically (around the around the X-Z plane of the triad).",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isFlippedVertical\n\n# Set the value of the property.\ntriadCommandInput_var.isFlippedVertical = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isFlippedVertical();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isFlippedVertical(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isFullWidth": {
+      "id": "TriadCommandInput_isFullWidth",
+      "title": "TriadCommandInput.isFullWidth Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets if this input fills the entire width of the dialog. If true, the name is ignored and the input control will fill the entire width of the command dialog. The default value for this property in a new command input if false, or not to fill the width. This property does not apply to GroupCommandInputs or TabCommandInputs.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isFullWidth\n\n# Set the value of the property.\ntriadCommandInput_var.isFullWidth = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isFullWidth();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isFullWidth(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isHorizontalFlipVisible": {
+      "id": "TriadCommandInput_isHorizontalFlipVisible",
+      "title": "TriadCommandInput.isHorizontalFlipVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that lets the user flip horizontally (around the Y-Z plane of the triad) is visible in both the graphical manipulator and the dialog.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isHorizontalFlipVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isHorizontalFlipVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isHorizontalFlipVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isHorizontalFlipVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isOriginTranslationVisible": {
+      "id": "TriadCommandInput_isOriginTranslationVisible",
+      "title": "TriadCommandInput.isOriginTranslationVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that supports translation in the X, Y, and Z directions is visible in both the graphical manipulator and in the dialog. In the manipulator, this is the large dot at the origin or the triad.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isOriginTranslationVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isOriginTranslationVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isOriginTranslationVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isOriginTranslationVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isUnifiedScalingVisible": {
+      "id": "TriadCommandInput_isUnifiedScalingVisible",
+      "title": "TriadCommandInput.isUnifiedScalingVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the scaling in all directions visible in both the graphical manipulator and in the dialog.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isUnifiedScalingVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isUnifiedScalingVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isUnifiedScalingVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isUnifiedScalingVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isValid": {
+      "id": "TriadCommandInput_isValid",
+      "title": "TriadCommandInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isValidExpressions": {
+      "id": "TriadCommandInput_isValidExpressions",
+      "title": "TriadCommandInput.isValidExpressions Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Returns true if all of the input fields have valid expressions. If this property is false, the triad is incorrectly defined and the current values should not be used.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isValidExpressions",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isValidExpressions();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isVerticalFlipVisible": {
+      "id": "TriadCommandInput_isVerticalFlipVisible",
+      "title": "TriadCommandInput.isVerticalFlipVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that lets the user flip vertical (around the X-Z plane of the triad) is visible in both the graphical manipulator and the dialog.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isVerticalFlipVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isVerticalFlipVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isVerticalFlipVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isVerticalFlipVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isVisible": {
+      "id": "TriadCommandInput_isVisible",
+      "title": "TriadCommandInput.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets if this input will be visible to the user. Setting a SelectionCommandInput to be invisible will clear any selections it currently has.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isXRotationVisible": {
+      "id": "TriadCommandInput_isXRotationVisible",
+      "title": "TriadCommandInput.isXRotationVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the rotation around the X axis is visible in both the graphical manipulator and in the dialog.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isXRotationVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isXRotationVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isXRotationVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isXRotationVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isXScalingInXYVisible": {
+      "id": "TriadCommandInput_isXScalingInXYVisible",
+      "title": "TriadCommandInput.isXScalingInXYVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the scaling along the X axis is visible in both the graphical manipulator and in the dialog. This control lies on the X-Y plane of the triad.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isXScalingInXYVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isXScalingInXYVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isXScalingInXYVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isXScalingInXYVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isXScalingInXZVisible": {
+      "id": "TriadCommandInput_isXScalingInXZVisible",
+      "title": "TriadCommandInput.isXScalingInXZVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the scaling along the X axis is visible in both the graphical manipulator and in the dialog. This control lies on the X-Z plane of the triad.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isXScalingInXZVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isXScalingInXZVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isXScalingInXZVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isXScalingInXZVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isXTranslationVisible": {
+      "id": "TriadCommandInput_isXTranslationVisible",
+      "title": "TriadCommandInput.isXTranslationVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that supports X Translation is visible in both the graphical manipulator and in the dialog.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isXTranslationVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isXTranslationVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isXTranslationVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isXTranslationVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isXYPlaneScalingVisible": {
+      "id": "TriadCommandInput_isXYPlaneScalingVisible",
+      "title": "TriadCommandInput.isXYPlaneScalingVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the scaling in the X-Y plane is visible in both the graphical manipulator and in the dialog.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isXYPlaneScalingVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isXYPlaneScalingVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isXYPlaneScalingVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isXYPlaneScalingVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isXYPlaneTranslationVisible": {
+      "id": "TriadCommandInput_isXYPlaneTranslationVisible",
+      "title": "TriadCommandInput.isXYPlaneTranslationVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the translation in the X-Y plane is visible in both the graphical manipulator and in the dialog.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isXYPlaneTranslationVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isXYPlaneTranslationVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isXYPlaneTranslationVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isXYPlaneTranslationVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isXZPlaneScalingVisible": {
+      "id": "TriadCommandInput_isXZPlaneScalingVisible",
+      "title": "TriadCommandInput.isXZPlaneScalingVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the scaling in the X-Z plane is visible in both the graphical manipulator and in the dialog.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isXZPlaneScalingVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isXZPlaneScalingVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isXZPlaneScalingVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isXZPlaneScalingVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isXZPlaneTranslationVisible": {
+      "id": "TriadCommandInput_isXZPlaneTranslationVisible",
+      "title": "TriadCommandInput.isXZPlaneTranslationVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the translation in the X-Z plane is visible in both the graphical manipulator and in the dialog.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isXZPlaneTranslationVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isXZPlaneTranslationVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isXZPlaneTranslationVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isXZPlaneTranslationVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isYRotationVisible": {
+      "id": "TriadCommandInput_isYRotationVisible",
+      "title": "TriadCommandInput.isYRotationVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the rotation around the Y axis is visible in both the graphical manipulator and in the dialog.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isYRotationVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isYRotationVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isYRotationVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isYRotationVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isYScalingInXYVisible": {
+      "id": "TriadCommandInput_isYScalingInXYVisible",
+      "title": "TriadCommandInput.isYScalingInXYVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the scaling along the Y axis is visible in both the graphical manipulator and in the dialog. This control lies on the X-Y plane of the triad.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isYScalingInXYVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isYScalingInXYVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isYScalingInXYVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isYScalingInXYVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isYScalingInYZVisible": {
+      "id": "TriadCommandInput_isYScalingInYZVisible",
+      "title": "TriadCommandInput.isYScalingInYZVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the scaling along the Y axis is visible in both the graphical manipulator and in the dialog. This control lies on the Y-Z plane of the triad.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isYScalingInYZVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isYScalingInYZVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isYScalingInYZVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isYScalingInYZVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isYTranslationVisible": {
+      "id": "TriadCommandInput_isYTranslationVisible",
+      "title": "TriadCommandInput.isYTranslationVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the Y Translation is visible in both the graphical manipulator and in the dialog.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isYTranslationVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isYTranslationVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isYTranslationVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isYTranslationVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isYZPlaneScalingVisible": {
+      "id": "TriadCommandInput_isYZPlaneScalingVisible",
+      "title": "TriadCommandInput.isYZPlaneScalingVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the scaling in the Y-Z plane is visible in both the graphical manipulator and in the dialog.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isYZPlaneScalingVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isYZPlaneScalingVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isYZPlaneScalingVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isYZPlaneScalingVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isYZPlaneTranslationVisible": {
+      "id": "TriadCommandInput_isYZPlaneTranslationVisible",
+      "title": "TriadCommandInput.isYZPlaneTranslationVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the translation in the Y-Z plane is visible in both the graphical manipulator and in the dialog.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isYZPlaneTranslationVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isYZPlaneTranslationVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isYZPlaneTranslationVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isYZPlaneTranslationVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isZRotationVisible": {
+      "id": "TriadCommandInput_isZRotationVisible",
+      "title": "TriadCommandInput.isZRotationVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the rotation around the Z axis is visible in both the graphical manipulator and in the dialog.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isZRotationVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isZRotationVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isZRotationVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isZRotationVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isZScalingInXZVisible": {
+      "id": "TriadCommandInput_isZScalingInXZVisible",
+      "title": "TriadCommandInput.isZScalingInXZVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the scaling along the Z axis is visible in both the graphical manipulator and in the dialog. This control lies on the X-Z plane of the triad.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isZScalingInXZVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isZScalingInXZVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isZScalingInXZVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isZScalingInXZVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isZScalingInYZVisible": {
+      "id": "TriadCommandInput_isZScalingInYZVisible",
+      "title": "TriadCommandInput.isZScalingInYZVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the scaling along the Z axis is visible in both the graphical manipulator and in the dialog. This control lies on the Y-Z plane of the triad.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isZScalingInYZVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isZScalingInYZVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isZScalingInYZVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isZScalingInYZVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isZTranslationVisible": {
+      "id": "TriadCommandInput_isZTranslationVisible",
+      "title": "TriadCommandInput.isZTranslationVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets if the control that defines the Z Translation is visible in both the graphical manipulator and in the dialog.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.isZTranslationVisible\n\n# Set the value of the property.\ntriadCommandInput_var.isZTranslationVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = triadCommandInput_var->isZTranslationVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = triadCommandInput_var->isZTranslationVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "lastChangeMade": {
+      "id": "TriadCommandInput_lastChangeMade",
+      "title": "TriadCommandInput.lastChangeMade Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Returns which value was most recently changed. To determine the actual change made you need to compare the transforms returned by the transform and lastTransform properties. Having information about the specific type of change made makes it easier to compare the matrices because you know what to look for.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.lastChangeMade",
+        "cpp": "#include \n\n// Get the value of the property.\nTriadChanges propertyValue = triadCommandInput_var->lastChangeMade();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "lastTransform": {
+      "id": "TriadCommandInput_lastTransform",
+      "title": "TriadCommandInput.lastTransform Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Returns the transform of the triad before the latest change. Using the matrices returned by this property and the transform property you can determine what changed. The lastChangeMade property is also useful to help you know the type of change to look for when comparing the matrices.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.lastTransform",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = triadCommandInput_var->lastTransform();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "name": {
+      "id": "TriadCommandInput_name",
+      "title": "TriadCommandInput.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets the user visible name of this input.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.name",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->name();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "objectType": {
+      "id": "TriadCommandInput_objectType",
+      "title": "TriadCommandInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "parentCommand": {
+      "id": "TriadCommandInput_parentCommand",
+      "title": "TriadCommandInput.parentCommand Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets the parent Command.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.parentCommand",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = triadCommandInput_var->parentCommand();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "parentCommandInput": {
+      "id": "TriadCommandInput_parentCommandInput",
+      "title": "TriadCommandInput.parentCommandInput Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets the parent CommandInput if this commandInput is the child of a TabCommandInput or GroupCommandInput. Returns null if there is no parent.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.parentCommandInput",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = triadCommandInput_var->parentCommandInput();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "positionTransform": {
+      "id": "TriadCommandInput_positionTransform",
+      "title": "TriadCommandInput.positionTransform Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets the current position and orientation of the triad using a transformation matrix. This transform does not include any scaling.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.positionTransform",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = triadCommandInput_var->positionTransform();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "toolClipFilename": {
+      "id": "TriadCommandInput_toolClipFilename",
+      "title": "TriadCommandInput.toolClipFilename Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.toolClipFilename\n\n# Set the value of the property.\ntriadCommandInput_var.toolClipFilename = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->toolClipFilename();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = triadCommandInput_var->toolClipFilename(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "tooltip": {
+      "id": "TriadCommandInput_tooltip",
+      "title": "TriadCommandInput.tooltip Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets the base tooltip string. This is always shown for commands. If the tooltip description and/or tool clip are also specified then the tooltip will progressively display more information as the user hovers the mouse over the control.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.tooltip\n\n# Set the value of the property.\ntriadCommandInput_var.tooltip = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->tooltip();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = triadCommandInput_var->tooltip(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "tooltipDescription": {
+      "id": "TriadCommandInput_tooltipDescription",
+      "title": "TriadCommandInput.tooltipDescription Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets additional text to display progressively along with the tooltip. The text for the description can contain some basic HTML formatting tags to format the tags. For example the br tag can be used to create multiple paragraphs. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.tooltipDescription\n\n# Set the value of the property.\ntriadCommandInput_var.tooltipDescription = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->tooltipDescription();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = triadCommandInput_var->tooltipDescription(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "transform": {
+      "id": "TriadCommandInput_transform",
+      "title": "TriadCommandInput.transform Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets the current position, orientation, and scale of the triad using a transformation matrix.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.transform\n\n# Set the value of the property.\ntriadCommandInput_var.transform = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = triadCommandInput_var->transform();\n\n// Set the value of the property, where value_var is a Matrix3D.\nbool returnValue = triadCommandInput_var->transform(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "unifiedScaleFactorExpression": {
+      "id": "TriadCommandInput_unifiedScaleFactorExpression",
+      "title": "TriadCommandInput.unifiedScaleFactorExpression Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets the expression displayed in the input field for the unified scale. This can contain equations and references to parameters but must result in a valid unitless expression.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.unifiedScaleFactorExpression\n\n# Set the value of the property.\ntriadCommandInput_var.unifiedScaleFactorExpression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->unifiedScaleFactorExpression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = triadCommandInput_var->unifiedScaleFactorExpression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "unifiedeScaleFactor": {
+      "id": "TriadCommandInput_unifiedeScaleFactor",
+      "title": "TriadCommandInput.unifiedeScaleFactor Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets the current value of the unified scale factor of the triad. The isValidExpressions property should be checked before using the value within the command.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.unifiedeScaleFactor\n\n# Set the value of the property.\ntriadCommandInput_var.unifiedeScaleFactor = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = triadCommandInput_var->unifiedeScaleFactor();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = triadCommandInput_var->unifiedeScaleFactor(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "xRotation": {
+      "id": "TriadCommandInput_xRotation",
+      "title": "TriadCommandInput.xRotation Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets the current value of the rotation around the X axis of the triad. The value is in radians but will be displayed to the user in degrees. The isValidExpressions property should be checked before using the value within the command.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.xRotation\n\n# Set the value of the property.\ntriadCommandInput_var.xRotation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = triadCommandInput_var->xRotation();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = triadCommandInput_var->xRotation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "xRotationExpression": {
+      "id": "TriadCommandInput_xRotationExpression",
+      "title": "TriadCommandInput.xRotationExpression Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets the expression displayed in the input field for the X rotation. This can contain equations and references to parameters but must result in a valid distance expression. If units are not specified as part of the expression degrees are used.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.xRotationExpression\n\n# Set the value of the property.\ntriadCommandInput_var.xRotationExpression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->xRotationExpression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = triadCommandInput_var->xRotationExpression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "xScaleFactor": {
+      "id": "TriadCommandInput_xScaleFactor",
+      "title": "TriadCommandInput.xScaleFactor Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets the current value of the scale factor along the X axis of the triad. The isValidExpressions property should be checked before using the value within the command.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.xScaleFactor\n\n# Set the value of the property.\ntriadCommandInput_var.xScaleFactor = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = triadCommandInput_var->xScaleFactor();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = triadCommandInput_var->xScaleFactor(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "xScaleFactorExpression": {
+      "id": "TriadCommandInput_xScaleFactorExpression",
+      "title": "TriadCommandInput.xScaleFactorExpression Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets the expression displayed in the input field for the X scale. This can contain equations and references to parameters but must result in a valid unitless expression.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.xScaleFactorExpression\n\n# Set the value of the property.\ntriadCommandInput_var.xScaleFactorExpression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->xScaleFactorExpression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = triadCommandInput_var->xScaleFactorExpression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "xTranslation": {
+      "id": "TriadCommandInput_xTranslation",
+      "title": "TriadCommandInput.xTranslation Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets the current value of the translation along the X axis of the triad. The value is in centimeters but will be displayed to the user in default units for the design. The isValidExpressions property should be checked before using the returned value.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.xTranslation\n\n# Set the value of the property.\ntriadCommandInput_var.xTranslation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = triadCommandInput_var->xTranslation();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = triadCommandInput_var->xTranslation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "xTranslationExpression": {
+      "id": "TriadCommandInput_xTranslationExpression",
+      "title": "TriadCommandInput.xTranslationExpression Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets the expression displayed in the input field for the X translation. This can contain equations and references to parameters but must result in a valid distance expression. If units are not specified as part of the expression, the default user units of length are used.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.xTranslationExpression\n\n# Set the value of the property.\ntriadCommandInput_var.xTranslationExpression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->xTranslationExpression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = triadCommandInput_var->xTranslationExpression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "xYPlaneScaleFactor": {
+      "id": "TriadCommandInput_xYPlaneScaleFactor",
+      "title": "TriadCommandInput.xYPlaneScaleFactor Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets the current value of the scale factor on the X-Y plane of the triad. The isValidExpressions property should be checked before using the value within the command.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.xYPlaneScaleFactor\n\n# Set the value of the property.\ntriadCommandInput_var.xYPlaneScaleFactor = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = triadCommandInput_var->xYPlaneScaleFactor();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = triadCommandInput_var->xYPlaneScaleFactor(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "xYPlaneScaleFactorExpression": {
+      "id": "TriadCommandInput_xYPlaneScaleFactorExpression",
+      "title": "TriadCommandInput.xYPlaneScaleFactorExpression Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets the expression displayed in the input field for the X-Y plane scale. This can contain equations and references to parameters but must result in a valid unitless expression.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.xYPlaneScaleFactorExpression\n\n# Set the value of the property.\ntriadCommandInput_var.xYPlaneScaleFactorExpression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->xYPlaneScaleFactorExpression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = triadCommandInput_var->xYPlaneScaleFactorExpression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "yRotation": {
+      "id": "TriadCommandInput_yRotation",
+      "title": "TriadCommandInput.yRotation Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets the current value of the rotation around the Y axis of the triad. The value is in radians but will be displayed to the user in degrees. The isValidExpressions property should be checked before using the value within the command.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.yRotation\n\n# Set the value of the property.\ntriadCommandInput_var.yRotation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = triadCommandInput_var->yRotation();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = triadCommandInput_var->yRotation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "yRotationExpression": {
+      "id": "TriadCommandInput_yRotationExpression",
+      "title": "TriadCommandInput.yRotationExpression Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets the expression displayed in the input field for the Y rotation. This can contain equations and references to parameters but must result in a valid distance expression. If units are not specified as part of the expression degrees are used.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.yRotationExpression\n\n# Set the value of the property.\ntriadCommandInput_var.yRotationExpression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->yRotationExpression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = triadCommandInput_var->yRotationExpression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "yScaleFactor": {
+      "id": "TriadCommandInput_yScaleFactor",
+      "title": "TriadCommandInput.yScaleFactor Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets the current value of the scale factor along the Y axis of the triad. The isValidExpressions property should be checked before using the value within the command.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.yScaleFactor\n\n# Set the value of the property.\ntriadCommandInput_var.yScaleFactor = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = triadCommandInput_var->yScaleFactor();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = triadCommandInput_var->yScaleFactor(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "yScaleFactorExpression": {
+      "id": "TriadCommandInput_yScaleFactorExpression",
+      "title": "TriadCommandInput.yScaleFactorExpression Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets the expression displayed in the input field for the Y scale. This can contain equations and references to parameters but must result in a valid unitless expression.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.yScaleFactorExpression\n\n# Set the value of the property.\ntriadCommandInput_var.yScaleFactorExpression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->yScaleFactorExpression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = triadCommandInput_var->yScaleFactorExpression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "yTranslation": {
+      "id": "TriadCommandInput_yTranslation",
+      "title": "TriadCommandInput.yTranslation Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets the current value of the translation along the Y axis of the triad. The value is in centimeters but will be displayed to the user in default units for the design. The isValidExpressions property should be checked before using the value within the command.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.yTranslation\n\n# Set the value of the property.\ntriadCommandInput_var.yTranslation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = triadCommandInput_var->yTranslation();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = triadCommandInput_var->yTranslation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "yTranslationExpression": {
+      "id": "TriadCommandInput_yTranslationExpression",
+      "title": "TriadCommandInput.yTranslationExpression Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets the expression displayed in the input field for the Y translation. This can contain equations and references to parameters but must result in a valid distance expression. If units are not specified as part of the expression, the default user units of length are used.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.yTranslationExpression\n\n# Set the value of the property.\ntriadCommandInput_var.yTranslationExpression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->yTranslationExpression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = triadCommandInput_var->yTranslationExpression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "yZPlaneScaleFactor": {
+      "id": "TriadCommandInput_yZPlaneScaleFactor",
+      "title": "TriadCommandInput.yZPlaneScaleFactor Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets the current value of the scale factor on the Y-Z plane of the triad. The isValidExpressions property should be checked before using the value within the command.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.yZPlaneScaleFactor\n\n# Set the value of the property.\ntriadCommandInput_var.yZPlaneScaleFactor = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = triadCommandInput_var->yZPlaneScaleFactor();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = triadCommandInput_var->yZPlaneScaleFactor(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "yZPlaneScaleFactorExpression": {
+      "id": "TriadCommandInput_yZPlaneScaleFactorExpression",
+      "title": "TriadCommandInput.yZPlaneScaleFactorExpression Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets the expression displayed in the input field for the Y-Z plane scale. This can contain equations and references to parameters but must result in a valid unitless expression.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.yZPlaneScaleFactorExpression\n\n# Set the value of the property.\ntriadCommandInput_var.yZPlaneScaleFactorExpression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->yZPlaneScaleFactorExpression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = triadCommandInput_var->yZPlaneScaleFactorExpression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "zRotation": {
+      "id": "TriadCommandInput_zRotation",
+      "title": "TriadCommandInput.zRotation Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets the current value of the rotation around the Z axis of the triad. The value is in radians but will be displayed to the user in degrees. The isValidExpressions property should be checked before using the value within the command.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.zRotation\n\n# Set the value of the property.\ntriadCommandInput_var.zRotation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = triadCommandInput_var->zRotation();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = triadCommandInput_var->zRotation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "zRotationExpression": {
+      "id": "TriadCommandInput_zRotationExpression",
+      "title": "TriadCommandInput.zRotationExpression Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets the expression displayed in the input field for the Z rotation. This can contain equations and references to parameters but must result in a valid distance expression. If units are not specified as part of the expression degrees are used.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.zRotationExpression\n\n# Set the value of the property.\ntriadCommandInput_var.zRotationExpression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->zRotationExpression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = triadCommandInput_var->zRotationExpression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "zScaleFactor": {
+      "id": "TriadCommandInput_zScaleFactor",
+      "title": "TriadCommandInput.zScaleFactor Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets the current value of the scale factor along the Z axis of the triad. The isValidExpressions property should be checked before using the value within the command.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.zScaleFactor\n\n# Set the value of the property.\ntriadCommandInput_var.zScaleFactor = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = triadCommandInput_var->zScaleFactor();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = triadCommandInput_var->zScaleFactor(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "zScaleFactorExpression": {
+      "id": "TriadCommandInput_zScaleFactorExpression",
+      "title": "TriadCommandInput.zScaleFactorExpression Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets the expression displayed in the input field for the Z scale. This can contain equations and references to parameters but must result in a valid unitless expression.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.zScaleFactorExpression\n\n# Set the value of the property.\ntriadCommandInput_var.zScaleFactorExpression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->zScaleFactorExpression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = triadCommandInput_var->zScaleFactorExpression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "zTranslation": {
+      "id": "TriadCommandInput_zTranslation",
+      "title": "TriadCommandInput.zTranslation Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets the current value of the translation along the Z axis of the triad. The value is in centimeters but will be displayed to the user in default units for the design. The isValidExpressions property should be checked before using the value within the command.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.zTranslation\n\n# Set the value of the property.\ntriadCommandInput_var.zTranslation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = triadCommandInput_var->zTranslation();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = triadCommandInput_var->zTranslation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "zTranslationExpression": {
+      "id": "TriadCommandInput_zTranslationExpression",
+      "title": "TriadCommandInput.zTranslationExpression Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets the expression displayed in the input field for the Z translation. This can contain equations and references to parameters but must result in a valid distance expression. If units are not specified as part of the expression, the default user units of length are used.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.zTranslationExpression\n\n# Set the value of the property.\ntriadCommandInput_var.zTranslationExpression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->zTranslationExpression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = triadCommandInput_var->zTranslationExpression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "zXPlaneScaleFactor": {
+      "id": "TriadCommandInput_zXPlaneScaleFactor",
+      "title": "TriadCommandInput.zXPlaneScaleFactor Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets and sets the current value of the scale factor on the Z-X plane of the triad. The isValidExpressions property should be checked before using the value within the command.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.zXPlaneScaleFactor\n\n# Set the value of the property.\ntriadCommandInput_var.zXPlaneScaleFactor = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = triadCommandInput_var->zXPlaneScaleFactor();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = triadCommandInput_var->zXPlaneScaleFactor(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "zXPlaneScaleFactorExpression": {
+      "id": "TriadCommandInput_zXPlaneScaleFactorExpression",
+      "title": "TriadCommandInput.zXPlaneScaleFactorExpression Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TriadCommandInput.h",
+      "description": "Gets or sets the expression displayed in the input field for the Z-X plane scale. This can contain equations and references to parameters but must result in a valid unitless expression.",
+      "parent_class": "TriadCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = triadCommandInput_var.zXPlaneScaleFactorExpression\n\n# Set the value of the property.\ntriadCommandInput_var.zXPlaneScaleFactorExpression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = triadCommandInput_var->zXPlaneScaleFactorExpression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = triadCommandInput_var->zXPlaneScaleFactorExpression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    }
+  }
+}

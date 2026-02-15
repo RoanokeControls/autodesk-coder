@@ -1,0 +1,393 @@
+{
+  "id": "CAMParameter",
+  "title": "CAMParameter Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/Operations/CAMParameter.h",
+  "description": "Base class for representing parameter of an operation.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "saveExpressionAsUserDefault",
+      "description": "Saves the current expression as user default value. Throws an exception if the parent is not an operation or does not support user default expressions."
+    }
+  ],
+  "properties": [
+    {
+      "name": "error",
+      "description": "Returns a message corresponding to any active error associated with the value of this parameter."
+    },
+    {
+      "name": "expression",
+      "description": "Gets and sets the value expression of the parameter."
+    },
+    {
+      "name": "fullTitle",
+      "description": "Returns the full title of this parameter as seen in the user interface. This can potentially be more descriptive than the basic title. This title is localized and can change based on the current language."
+    },
+    {
+      "name": "isDeprecated",
+      "description": "Gets if this parameter is deprecated. Some parameters are deprecated when their usage becomes obsolete. Reading deprecated parameters is allowed, but setting deprecated parameters will throw an error."
+    },
+    {
+      "name": "isEditable",
+      "description": "Returns whether or not the parameter's expression or value can be modified."
+    },
+    {
+      "name": "isEnabled",
+      "description": "Gets if this parameter is enabled.\u00a0Some parameters are enabled/disabled depending on the values set for other parameters."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets if this parameter is visible in the user interface."
+    },
+    {
+      "name": "name",
+      "description": "Gets the name (internal name) of the parameter."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "systemDefaultExpression",
+      "description": "Returns the systemDefaultExpression of this parameter."
+    },
+    {
+      "name": "title",
+      "description": "Returns the title of this parameter as seen in the user interface. This title is localized and can change based on the current language"
+    },
+    {
+      "name": "userDefaultExpression",
+      "description": "Gets and sets the userDefaultExpression of this parameter. If no userDefaultExpression is set, the systemDefaultExpression is returned. Throws an exception if the parent is not an operation or does not support user default expressions."
+    },
+    {
+      "name": "value",
+      "description": "Returns an object that allows you to get and set the value associated with the parameter."
+    },
+    {
+      "name": "warning",
+      "description": "Returns a message corresponding to any active warning associated with the value of this parameter."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Additive Manufacturing FFF API Sample",
+      "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+    },
+    {
+      "name": "Additive Manufacturing MJF API Sample",
+      "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+    },
+    {
+      "name": "Additive Manufacturing SLA API Sample",
+      "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+    },
+    {
+      "name": "CAM Parameter Modification API Sample",
+      "description": "Demonstrates changing parameters of existing toolpaths."
+    },
+    {
+      "name": "Create Setups From Hole Recognition API Sample",
+      "description": "This sample script demonstrates how to create a correctly oriented setup using Hole Recognition functionality.The Fusion Manufacturing Extension is required for Hole Recognition.The script starts by opening a sample model from the CAM Samples folder via its URN. The model comprises a 3 way coupling containing holes in various orientations and mounted on a fixture. A reference setup is created for the model using a simple stock mode and offsets. The Hole Recognition feature of the Fusion Manufacturing Extension creates 5 hole groups containing 11 holes between them. For each unique hole group vector captured, a new setup is created and its orientation transformed to match the vector."
+    }
+  ],
+  "version": "Introduced in version September 2020",
+  "method_details": {
+    "classType": {
+      "id": "CAMParameter_classType",
+      "title": "CAMParameter.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/CAMParameter.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CAMParameter",
+      "syntax": {
+        "python": "returnValue = adsk.cam.CAMParameter.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::CAMParameter::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2020"
+    },
+    "saveExpressionAsUserDefault": {
+      "id": "CAMParameter_saveExpressionAsUserDefault",
+      "title": "CAMParameter.saveExpressionAsUserDefault Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/CAMParameter.h",
+      "description": "Saves the current expression as user default value. Throws an exception if the parent is not an operation or does not support user default expressions.",
+      "parent_class": "CAMParameter",
+      "syntax": {
+        "python": "returnValue = cAMParameter_var.saveExpressionAsUserDefault()",
+        "cpp": "#include \n\nreturnValue = cAMParameter_var->saveExpressionAsUserDefault();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if saving was successful.",
+      "version": "Introduced in version September 2025"
+    }
+  },
+  "property_details": {
+    "error": {
+      "id": "CAMParameter_error",
+      "title": "CAMParameter.error Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/CAMParameter.h",
+      "description": "Returns a message corresponding to any active error associated with the value of this parameter.",
+      "parent_class": "CAMParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMParameter_var.error",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMParameter_var->error();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "expression": {
+      "id": "CAMParameter_expression",
+      "title": "CAMParameter.expression Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/CAMParameter.h",
+      "description": "Gets and sets the value expression of the parameter.",
+      "parent_class": "CAMParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMParameter_var.expression\n\n# Set the value of the property.\ncAMParameter_var.expression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMParameter_var->expression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = cAMParameter_var->expression(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "CAM Parameter Modification API Sample",
+          "description": "Demonstrates changing parameters of existing toolpaths."
+        },
+        {
+          "name": "Create Setups From Hole Recognition API Sample",
+          "description": "This sample script demonstrates how to create a correctly oriented setup using Hole Recognition functionality.The Fusion Manufacturing Extension is required for Hole Recognition.The script starts by opening a sample model from the CAM Samples folder via its URN. The model comprises a 3 way coupling containing holes in various orientations and mounted on a fixture. A reference setup is created for the model using a simple stock mode and offsets. The Hole Recognition feature of the Fusion Manufacturing Extension creates 5 hole groups containing 11 holes between them. For each unique hole group vector captured, a new setup is created and its orientation transformed to match the vector."
+        }
+      ],
+      "version": "Introduced in version September 2020"
+    },
+    "fullTitle": {
+      "id": "CAMParameter_fullTitle",
+      "title": "CAMParameter.fullTitle Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/CAMParameter.h",
+      "description": "Returns the full title of this parameter as seen in the user interface. This can potentially be more descriptive than the basic title. This title is localized and can change based on the current language.",
+      "parent_class": "CAMParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMParameter_var.fullTitle",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMParameter_var->fullTitle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "isDeprecated": {
+      "id": "CAMParameter_isDeprecated",
+      "title": "CAMParameter.isDeprecated Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/CAMParameter.h",
+      "description": "Gets if this parameter is deprecated. Some parameters are deprecated when their usage becomes obsolete. Reading deprecated parameters is allowed, but setting deprecated parameters will throw an error.",
+      "parent_class": "CAMParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMParameter_var.isDeprecated",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMParameter_var->isDeprecated();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "isEditable": {
+      "id": "CAMParameter_isEditable",
+      "title": "CAMParameter.isEditable Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/CAMParameter.h",
+      "description": "Returns whether or not the parameter's expression or value can be modified.",
+      "parent_class": "CAMParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMParameter_var.isEditable",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMParameter_var->isEditable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2021"
+    },
+    "isEnabled": {
+      "id": "CAMParameter_isEnabled",
+      "title": "CAMParameter.isEnabled Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/CAMParameter.h",
+      "description": "Gets if this parameter is enabled.\u00a0Some parameters are enabled/disabled depending on the values set for other parameters.",
+      "parent_class": "CAMParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMParameter_var.isEnabled",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMParameter_var->isEnabled();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "isValid": {
+      "id": "CAMParameter_isValid",
+      "title": "CAMParameter.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/CAMParameter.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CAMParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMParameter_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMParameter_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "isVisible": {
+      "id": "CAMParameter_isVisible",
+      "title": "CAMParameter.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/CAMParameter.h",
+      "description": "Gets if this parameter is visible in the user interface.",
+      "parent_class": "CAMParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMParameter_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMParameter_var->isVisible();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "name": {
+      "id": "CAMParameter_name",
+      "title": "CAMParameter.name Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/CAMParameter.h",
+      "description": "Gets the name (internal name) of the parameter.",
+      "parent_class": "CAMParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMParameter_var.name",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMParameter_var->name();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "objectType": {
+      "id": "CAMParameter_objectType",
+      "title": "CAMParameter.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/CAMParameter.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CAMParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMParameter_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMParameter_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "systemDefaultExpression": {
+      "id": "CAMParameter_systemDefaultExpression",
+      "title": "CAMParameter.systemDefaultExpression Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/CAMParameter.h",
+      "description": "Returns the systemDefaultExpression of this parameter.",
+      "parent_class": "CAMParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMParameter_var.systemDefaultExpression",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMParameter_var->systemDefaultExpression();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "title": {
+      "id": "CAMParameter_title",
+      "title": "CAMParameter.title Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/CAMParameter.h",
+      "description": "Returns the title of this parameter as seen in the user interface. This title is localized and can change based on the current language",
+      "parent_class": "CAMParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMParameter_var.title",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMParameter_var->title();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "userDefaultExpression": {
+      "id": "CAMParameter_userDefaultExpression",
+      "title": "CAMParameter.userDefaultExpression Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/CAMParameter.h",
+      "description": "Gets and sets the userDefaultExpression of this parameter. If no userDefaultExpression is set, the systemDefaultExpression is returned. Throws an exception if the parent is not an operation or does not support user default expressions.",
+      "parent_class": "CAMParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMParameter_var.userDefaultExpression",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMParameter_var->userDefaultExpression();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "value": {
+      "id": "CAMParameter_value",
+      "title": "CAMParameter.value Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/CAMParameter.h",
+      "description": "Returns an object that allows you to get and set the value associated with the parameter. Remarks",
+      "parent_class": "CAMParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMParameter_var.value",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAMParameter_var->value();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Additive Manufacturing FFF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+        },
+        {
+          "name": "Additive Manufacturing MJF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+        },
+        {
+          "name": "Additive Manufacturing SLA API Sample",
+          "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+        },
+        {
+          "name": "Create Setups From Hole Recognition API Sample",
+          "description": "This sample script demonstrates how to create a correctly oriented setup using Hole Recognition functionality.The Fusion Manufacturing Extension is required for Hole Recognition.The script starts by opening a sample model from the CAM Samples folder via its URN. The model comprises a 3 way coupling containing holes in various orientations and mounted on a fixture. A reference setup is created for the model using a simple stock mode and offsets. The Hole Recognition feature of the Fusion Manufacturing Extension creates 5 hole groups containing 11 holes between them. For each unique hole group vector captured, a new setup is created and its orientation transformed to match the vector."
+        }
+      ],
+      "version": "Introduced in version November 2021"
+    },
+    "warning": {
+      "id": "CAMParameter_warning",
+      "title": "CAMParameter.warning Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/CAMParameter.h",
+      "description": "Returns a message corresponding to any active warning associated with the value of this parameter.",
+      "parent_class": "CAMParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMParameter_var.warning",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMParameter_var->warning();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    }
+  }
+}

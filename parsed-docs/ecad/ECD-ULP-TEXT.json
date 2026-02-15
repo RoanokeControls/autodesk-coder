@@ -1,0 +1,59 @@
+{
+  "id": "ECD-ULP-TEXT",
+  "title": "UL_TEXT",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "align",
+      "type": "int (ALIGN_...)"
+    },
+    {
+      "name": "angle",
+      "type": "real (0.0...359.9)"
+    },
+    {
+      "name": "font",
+      "type": "int (FONT_...)"
+    },
+    {
+      "name": "layer",
+      "type": "int"
+    },
+    {
+      "name": "linedistance",
+      "type": "int"
+    },
+    {
+      "name": "mirror",
+      "type": "int"
+    },
+    {
+      "name": "ratio",
+      "type": "int"
+    },
+    {
+      "name": "size",
+      "type": "int"
+    },
+    {
+      "name": "spin",
+      "type": "int"
+    },
+    {
+      "name": "value",
+      "type": "string"
+    },
+    {
+      "name": "x, y",
+      "type": "int (origin point)"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "wires()",
+      "type": "UL_WIRE (see note)"
+    }
+  ],
+  "content": "# UL_TEXT\n\n## Data members\n\n| | |\n| --- | --- |\n| align | int (ALIGN_...) |\n| angle | real (0.0...359.9) |\n| font | int (FONT_...) |\n| layer | int |\n| linedistance | int |\n| mirror | int |\n| ratio | int |\n| size | int |\n| spin | int |\n| value | string |\n| x, y | int (origin point) |\n\n## Loop members\n\n| | |\n| --- | --- |\n| wires() | UL_WIRE (see note) |\n\nSee also UL_BOARD, UL_FOOTPRINT, UL_SHEET, UL_SYMBOL\n\n## Constants\n\n| | |\n| --- | --- |\n| FONT_VECTOR | vector font |\n| FONT_PROPORTIONAL | proportional font |\n| FONT_FIXED | fixed font |\n| ALIGN_BOTTOM_LEFT | bottom/left aligned |\n| ALIGN_BOTTOM_CENTER | bottom/center aligned |\n| ALIGN_BOTTOM_RIGHT | bottom/right aligned |\n| ALIGN_CENTER_LEFT | center/left aligned |\n| ALIGN_CENTER | centered |\n| ALIGN_CENTER_RIGHT | center/right aligned |\n| ALIGN_TOP_LEFT | top/left aligned |\n| ALIGN_TOP_CENTER | top/center aligned |\n| ALIGN_TOP_RIGHT | top/right aligned |\n\n## Note\n\nThe *wires()* loop member always accesses the individual wires the text is composed of when using the vector font, even if the actual font is not FONT_VECTOR.\n\nIf the UL_TEXT is derived from a UL_ELEMENT or UL_INSTANCE context, the member values will be those of the actual text as located in the board or sheet drawing.\n\n## Example\n\n```\nboard(B) {\n B.texts(T) {\n printf(\"Text: %s\\n\", T.value);\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

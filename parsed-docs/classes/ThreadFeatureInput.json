@@ -1,0 +1,284 @@
+{
+  "id": "ThreadFeatureInput",
+  "title": "ThreadFeatureInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/ThreadFeatureInput.h",
+  "description": "This class defines the methods and properties that pertain to the definition of a thread feature.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    }
+  ],
+  "properties": [
+    {
+      "name": "inputCylindricalFace",
+      "description": "Gets and sets the threaded face. In the case where there are multiple faces, only the first one is returned. Setting this results in a thread being applied to only a single face. It is recommended that you use the inputCylindricalfaces property in order to have full access to the collection of faces to be threaded."
+    },
+    {
+      "name": "inputCylindricalFaces",
+      "description": "Gets and sets the cylindrical input faces."
+    },
+    {
+      "name": "isFullLength",
+      "description": "Gets and sets if this thread is the full length of the cylinder. It defaults to true."
+    },
+    {
+      "name": "isModeled",
+      "description": "Gets and sets if the thread is physical or cosmetic thread. A value of true indicates a physical thread. It defaults to false."
+    },
+    {
+      "name": "isRightHanded",
+      "description": "**RETIRED** Gets and sets if the thread is right or left-handed thread. A value of true indicates a right-handed thread. It defaults to true."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "targetBaseFeature",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature.   Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it."
+    },
+    {
+      "name": "threadInfo",
+      "description": "Gets and sets the information that defines the thread."
+    },
+    {
+      "name": "threadLength",
+      "description": "Gets and sets the thread length. It is only used in the case where the isFullLength property is false."
+    },
+    {
+      "name": "threadLocation",
+      "description": "Gets and sets which end of the cylinder the thread is measured from when it's not full length. The thread position and length can be measured from either the \"low\" or \"high\" end. You can determine the low and high end by using the Cylinder associated with the cylindrical BRepFace the thread is being added to. The BRepFace.geometry which will return a Cylinder object. The axis property of the Cylinder is a vector and the high end of the cylinder is at the far end of the cylinder with respect to the axis vector.   This property is only used in the case where the isFullLength property is false and is otherwise ignored. It defaults to creating a thread at the high end."
+    },
+    {
+      "name": "threadOffset",
+      "description": "Gets and sets the thread offset. The offset is the distance along the axis of the cylinder from the edge to the start of the thread. It is only used in the case where the isFullLength property is false. Returns nothing in the case where the feature is non-parametric."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Thread Feature API Sample",
+      "description": "Demonstrates creating a new thread feature."
+    }
+  ],
+  "version": "Introduced in version January 2015",
+  "method_details": {
+    "classType": {
+      "id": "ThreadFeatureInput_classType",
+      "title": "ThreadFeatureInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatureInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ThreadFeatureInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ThreadFeatureInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ThreadFeatureInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2015"
+    }
+  },
+  "property_details": {
+    "inputCylindricalFace": {
+      "id": "ThreadFeatureInput_inputCylindricalFace",
+      "title": "ThreadFeatureInput.inputCylindricalFace Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatureInput.h",
+      "description": "Gets and sets the threaded face. In the case where there are multiple faces, only the first one is returned. Setting this results in a thread being applied to only a single face. It is recommended that you use the inputCylindricalfaces property in order to have full access to the collection of faces to be threaded.",
+      "parent_class": "ThreadFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadFeatureInput_var.inputCylindricalFace\n\n# Set the value of the property.\nthreadFeatureInput_var.inputCylindricalFace = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = threadFeatureInput_var->inputCylindricalFace();\n\n// Set the value of the property, where value_var is a BRepFace.\nbool returnValue = threadFeatureInput_var->inputCylindricalFace(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2015"
+    },
+    "inputCylindricalFaces": {
+      "id": "ThreadFeatureInput_inputCylindricalFaces",
+      "title": "ThreadFeatureInput.inputCylindricalFaces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatureInput.h",
+      "description": "Gets and sets the cylindrical input faces.",
+      "parent_class": "ThreadFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadFeatureInput_var.inputCylindricalFaces\n\n# Set the value of the property.\nthreadFeatureInput_var.inputCylindricalFaces = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = threadFeatureInput_var->inputCylindricalFaces();\n\n// Set the value of the property, where value_var is an ObjectCollection.\nbool returnValue = threadFeatureInput_var->inputCylindricalFaces(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2015"
+    },
+    "isFullLength": {
+      "id": "ThreadFeatureInput_isFullLength",
+      "title": "ThreadFeatureInput.isFullLength Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatureInput.h",
+      "description": "Gets and sets if this thread is the full length of the cylinder. It defaults to true.",
+      "parent_class": "ThreadFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadFeatureInput_var.isFullLength\n\n# Set the value of the property.\nthreadFeatureInput_var.isFullLength = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = threadFeatureInput_var->isFullLength();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = threadFeatureInput_var->isFullLength(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Thread Feature API Sample",
+          "description": "Demonstrates creating a new thread feature."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "isModeled": {
+      "id": "ThreadFeatureInput_isModeled",
+      "title": "ThreadFeatureInput.isModeled Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatureInput.h",
+      "description": "Gets and sets if the thread is physical or cosmetic thread. A value of true indicates a physical thread. It defaults to false.",
+      "parent_class": "ThreadFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadFeatureInput_var.isModeled\n\n# Set the value of the property.\nthreadFeatureInput_var.isModeled = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = threadFeatureInput_var->isModeled();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = threadFeatureInput_var->isModeled(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isRightHanded": {
+      "id": "ThreadFeatureInput_isRightHanded",
+      "title": "ThreadFeatureInput.isRightHanded Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatureInput.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets and sets if the thread is right or left-handed thread. A value of true indicates a right-handed thread. It defaults to true. Remarks",
+      "parent_class": "ThreadFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadFeatureInput_var.isRightHanded\n\n# Set the value of the property.\nthreadFeatureInput_var.isRightHanded = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = threadFeatureInput_var->isRightHanded();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = threadFeatureInput_var->isRightHanded(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isValid": {
+      "id": "ThreadFeatureInput_isValid",
+      "title": "ThreadFeatureInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatureInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ThreadFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadFeatureInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = threadFeatureInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "objectType": {
+      "id": "ThreadFeatureInput_objectType",
+      "title": "ThreadFeatureInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatureInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ThreadFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadFeatureInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = threadFeatureInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "targetBaseFeature": {
+      "id": "ThreadFeatureInput_targetBaseFeature",
+      "title": "ThreadFeatureInput.targetBaseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatureInput.h",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature. Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it.",
+      "parent_class": "ThreadFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadFeatureInput_var.targetBaseFeature\n\n# Set the value of the property.\nthreadFeatureInput_var.targetBaseFeature = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = threadFeatureInput_var->targetBaseFeature();\n\n// Set the value of the property, where value_var is a BaseFeature.\nbool returnValue = threadFeatureInput_var->targetBaseFeature(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "threadInfo": {
+      "id": "ThreadFeatureInput_threadInfo",
+      "title": "ThreadFeatureInput.threadInfo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatureInput.h",
+      "description": "Gets and sets the information that defines the thread.",
+      "parent_class": "ThreadFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadFeatureInput_var.threadInfo\n\n# Set the value of the property.\nthreadFeatureInput_var.threadInfo = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = threadFeatureInput_var->threadInfo();\n\n// Set the value of the property, where value_var is a ThreadInfo.\nbool returnValue = threadFeatureInput_var->threadInfo(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "threadLength": {
+      "id": "ThreadFeatureInput_threadLength",
+      "title": "ThreadFeatureInput.threadLength Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatureInput.h",
+      "description": "Gets and sets the thread length. It is only used in the case where the isFullLength property is false.",
+      "parent_class": "ThreadFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadFeatureInput_var.threadLength\n\n# Set the value of the property.\nthreadFeatureInput_var.threadLength = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = threadFeatureInput_var->threadLength();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = threadFeatureInput_var->threadLength(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Thread Feature API Sample",
+          "description": "Demonstrates creating a new thread feature."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "threadLocation": {
+      "id": "ThreadFeatureInput_threadLocation",
+      "title": "ThreadFeatureInput.threadLocation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatureInput.h",
+      "description": "Gets and sets which end of the cylinder the thread is measured from when it's not full length. The thread position and length can be measured from either the \"low\" or \"high\" end. You can determine the low and high end by using the Cylinder associated with the cylindrical BRepFace the thread is being added to. The BRepFace.geometry which will return a Cylinder object. The axis property of the Cylinder is a vector and the high end of the cylinder is at the far end of the cylinder with respect to the axis vector. This property is only used in the case where the isFullLength property is false and is otherwise ignored. It defaults to creating a thread at the high end.",
+      "parent_class": "ThreadFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadFeatureInput_var.threadLocation\n\n# Set the value of the property.\nthreadFeatureInput_var.threadLocation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nThreadLocations propertyValue = threadFeatureInput_var->threadLocation();\n\n// Set the value of the property, where value_var is a ThreadLocations.\nbool returnValue = threadFeatureInput_var->threadLocation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "threadOffset": {
+      "id": "ThreadFeatureInput_threadOffset",
+      "title": "ThreadFeatureInput.threadOffset Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatureInput.h",
+      "description": "Gets and sets the thread offset. The offset is the distance along the axis of the cylinder from the edge to the start of the thread. It is only used in the case where the isFullLength property is false. Returns nothing in the case where the feature is non-parametric.",
+      "parent_class": "ThreadFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadFeatureInput_var.threadOffset\n\n# Set the value of the property.\nthreadFeatureInput_var.threadOffset = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = threadFeatureInput_var->threadOffset();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = threadFeatureInput_var->threadOffset(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    }
+  }
+}

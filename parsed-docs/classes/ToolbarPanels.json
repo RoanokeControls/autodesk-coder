@@ -1,0 +1,233 @@
+{
+  "id": "ToolbarPanels",
+  "title": "ToolbarPanels Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/ToolbarPanels.h",
+  "description": "Provides access to a set of toolbar panels. Many toolbar panels exist and their visibility is determined by the active workspace. A panel can be associated with one or more workspaces and when the associated workspace is active, the panel is made visible. This collection is associated with a workspace and possibly a tab in the toolbar for that workspace. If this collection is from a toolbar tab, the collection order is the left-to-right order of panels in the toolbar tab.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new ToolbarPanel. The panel is initially empty. Use the associated ToolbarControls collection to add buttons.   If this collection is associated with a tab, the new panel will be added to that tab. If this collection is not associated with a tab, the new panel will be added to the end of the \"Tools\" Tab. A \"Tools\" tab will be created for you if it does not currently exist for this collection's workspace."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Returns the specified toolbar panel using an index into the collection. When iterating by index, the panels are returned in the same order as they are shown in the user interface."
+    },
+    {
+      "name": "itemById",
+      "description": "Returns the ToolbarPanel at the specified ID."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Gets the number of ToolbarPanels."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Palette Sample",
+      "description": "Demonstrates how to create a palette, how to dock and snap palettes and how Fusion communicates with the palette HTML. The sample is an add-in.  To use it, create a new Python add-in and replace the code with the code below. You also need to create an html file using the name and code below. The html file needs to be in the same folder as the py file.\n\tWhen you load the add-in, you'll see two new commands under the ADD-INS panel of the TOOLS tab. The \"Show Custom Palette\" command will cause the custom palette to be displayed. It will remain displayed until you click its Close button. Clicking the \"Click to send info to Fusion\" button on the palette, will send information to your add-in, which uses the API to display that information in a message box. Running the \"Send Info to HTML\" command to send data to the javascript running in the palette, which uses it to update the content of a paragraph.\n\npalette.html"
+    },
+    {
+      "name": "Customizing the UI using the API Sample",
+      "description": "Demonstrates how to work with tabs, panels, and command in the user interface. The full source for C++ and Python samples can be downloaded. This is especially useful for getting the resource files."
+    },
+    {
+      "name": "Write user interface to a file API Sample",
+      "description": "Writes out the full structure of the Fusion user interface. This information is useful when editing the user-interface, as discussed in the usre manual topic User-Interface Customization with Fusion's API"
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "add": {
+      "id": "ToolbarPanels_add",
+      "title": "ToolbarPanels.add Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ToolbarPanels.h",
+      "description": "Creates a new ToolbarPanel. The panel is initially empty. Use the associated ToolbarControls collection to add buttons. If this collection is associated with a tab, the new panel will be added to that tab. If this collection is not associated with a tab, the new panel will be added to the end of the \"Tools\" Tab. A \"Tools\" tab will be created for you if it does not currently exist for this collection's workspace.",
+      "parent_class": "ToolbarPanels",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = toolbarPanels_var.add(id, name)\n\n# Uses optional arguments.\nreturnValue = toolbarPanels_var.add(id, name, positionID, isBefore)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = toolbarPanels_var->add(id, name);\n\n// Uses optional arguments.\nreturnValue = toolbarPanels_var->add(id, name, positionID, isBefore);"
+      },
+      "return_type": "ToolbarPanel",
+      "return_description": "Returns the newly created panel or null in the case the creation failed.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The unique id for this panel. The id must be unique with respect to all of the panels."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The displayed name of this panel. This is the name visible in the user interface."
+        },
+        {
+          "name": "positionID",
+          "type": "string",
+          "description": "Specifies the id of the panel to position this panel relative to. Not setting this value indicates that the panel will be created at the end of all other panels. The isBefore parameter specifies whether to place the panel before or after this panel.   This is an optional argument whose default value is \"\"."
+        },
+        {
+          "name": "isBefore",
+          "type": "boolean",
+          "description": "Specifies whether to place the panel before or after the panel specified by the positionID argument. This argument is ignored is positionID is not specified   This is an optional argument whose default value is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Customizing the UI using the API Sample",
+          "description": "Demonstrates how to work with tabs, panels, and command in the user interface. The full source for C++ and Python samples can be downloaded. This is especially useful for getting the resource files."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "classType": {
+      "id": "ToolbarPanels_classType",
+      "title": "ToolbarPanels.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ToolbarPanels.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ToolbarPanels",
+      "syntax": {
+        "python": "returnValue = adsk.core.ToolbarPanels.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::ToolbarPanels::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "ToolbarPanels_item",
+      "title": "ToolbarPanels.item Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ToolbarPanels.h",
+      "description": "Returns the specified toolbar panel using an index into the collection. When iterating by index, the panels are returned in the same order as they are shown in the user interface.",
+      "parent_class": "ToolbarPanels",
+      "syntax": {
+        "python": "returnValue = toolbarPanels_var.item(index)",
+        "cpp": "#include \n\nreturnValue = toolbarPanels_var->item(index);"
+      },
+      "return_type": "ToolbarPanel",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Write user interface to a file API Sample",
+          "description": "Writes out the full structure of the Fusion user interface. This information is useful when editing the user-interface, as discussed in the usre manual topic User-Interface Customization with Fusion's API"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "itemById": {
+      "id": "ToolbarPanels_itemById",
+      "title": "ToolbarPanels.itemById Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ToolbarPanels.h",
+      "description": "Returns the ToolbarPanel at the specified ID.",
+      "parent_class": "ToolbarPanels",
+      "syntax": {
+        "python": "returnValue = toolbarPanels_var.itemById(id)",
+        "cpp": "#include \n\nreturnValue = toolbarPanels_var->itemById(id);"
+      },
+      "return_type": "ToolbarPanel",
+      "return_description": "Returns the ToolbarPanel of the specified id or null no panel has the specified id.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The Id of the panel within the collection to return."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Palette Sample",
+          "description": "Demonstrates how to create a palette, how to dock and snap palettes and how Fusion communicates with the palette HTML. The sample is an add-in.\u00a0To use it, create a new Python add-in and replace the code with the code below. You also need to create an html file using the name and code below. The html file needs to be in the same folder as the py file.\n\tWhen you load the add-in, you'll see two new commands under the ADD-INS panel of the TOOLS tab. The \"Show Custom Palette\" command will cause the custom palette to be displayed. It will remain displayed until you click its Close button. Clicking the \"Click to send info to Fusion\" button on the palette, will send information to your add-in, which uses the API to display that information in a message box. Running the \"Send Info to HTML\" command to send data to the javascript running in the palette, which uses it to update the content of a paragraph.\n\npalette.html"
+        },
+        {
+          "name": "Customizing the UI using the API Sample",
+          "description": "Demonstrates how to work with tabs, panels, and command in the user interface. The full source for C++ and Python samples can be downloaded. This is especially useful for getting the resource files."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "ToolbarPanels_count",
+      "title": "ToolbarPanels.count Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ToolbarPanels.h",
+      "description": "Gets the number of ToolbarPanels.",
+      "parent_class": "ToolbarPanels",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = toolbarPanels_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = toolbarPanels_var->count();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Write user interface to a file API Sample",
+          "description": "Writes out the full structure of the Fusion user interface. This information is useful when editing the user-interface, as discussed in the usre manual topic User-Interface Customization with Fusion's API"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "ToolbarPanels_isValid",
+      "title": "ToolbarPanels.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ToolbarPanels.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ToolbarPanels",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = toolbarPanels_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = toolbarPanels_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "ToolbarPanels_objectType",
+      "title": "ToolbarPanels.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ToolbarPanels.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ToolbarPanels",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = toolbarPanels_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = toolbarPanels_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

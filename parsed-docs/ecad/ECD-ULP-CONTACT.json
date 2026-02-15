@@ -1,0 +1,39 @@
+{
+  "id": "ECD-ULP-CONTACT",
+  "title": "UL_CONTACT",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "name",
+      "type": "string (CONTACT_NAME_LENGTH)"
+    },
+    {
+      "name": "pad",
+      "type": "UL_PAD"
+    },
+    {
+      "name": "signal",
+      "type": "string"
+    },
+    {
+      "name": "smd",
+      "type": "UL_SMD"
+    },
+    {
+      "name": "x, y",
+      "type": "int (center point, see note)"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "polyshapes()",
+      "type": "UL_POLYSHAPE (of arbitrary pad shapes)"
+    },
+    {
+      "name": "wires()",
+      "type": "UL_WIRE (of arbitrary pad shapes)"
+    }
+  ],
+  "content": "- \n \n \n\n \n \n# UL_CONTACT\n\n## Data members\n\n| | |\n| --- | --- |\n| name | string (CONTACT_NAME_LENGTH) |\n| pad | UL_PAD |\n| signal | string |\n| smd | UL_SMD |\n| x, y | int (center point, see note) |\n\n## Loop members\n\n| | |\n| --- | --- |\n| polyshapes() | UL_POLYSHAPE (of arbitrary pad shapes) |\n| wires() | UL_WIRE (of arbitrary pad shapes) |\n\nSee also UL_FOOTPRINT, UL_PAD, UL_SMD, UL_CONTACTREF, UL_PINREF\n\n## Constants\n\n| | |\n| --- | --- |\n| CONTACT_NAME_LENGTH | max. recommended length of a contact name (used in formatted output only) |\n\n## Notes\n\nThe *signal* data member returns the signal this contact is connected to (only available in a board context).\n\nThe coordinates (x, y) of the contact depend on the context in which it is called:\n\nIf the contact is derived from a UL_LIBRARY context, the coordinates of the contact will be the same as defined in the package drawing.\n\n- In all other cases, they will have the actual values from the board.\n\n## Example\n\n```\nlibrary(L) {\n L.footprints(FPT) {\n FPT.contacts(C) {\n printf(\"Contact: '%s', (%f %f)\\n\",\n C.name, u2mm(C.x), u2mm(C.y));\n }\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

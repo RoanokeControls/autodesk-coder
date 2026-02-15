@@ -1,0 +1,249 @@
+{
+  "id": "VolumetricModel",
+  "title": "VolumetricModel Object",
+  "type": "class",
+  "namespace": "adsk::volume",
+  "header_file": "Volume/Volumetric/VolumetricModel.h",
+  "description": "The main volumetric graph object. It has a parent component and is defined in this parent component's space. It also contains the primary and cell graphs.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createSampler",
+      "description": "Creates a VolumetricSampler object that can be used to sample the volumetric model."
+    },
+    {
+      "name": "getGraph",
+      "description": "Returns a graph from the volumetric model."
+    },
+    {
+      "name": "registerCustomSDFCallback",
+      "description": "Handling for custom Signed Distance Field callback events. These can be registered by the API client, they will provide a string ID and a handler object that implements the abstract methods. To use the callback, a GeometryGraphNodeProperty's customSDFCallbackID should be set to the same string ID.   Register a custom Signed Distance Field callback handler with a given ID."
+    },
+    {
+      "name": "removeCustomSDFCallback",
+      "description": "De-register the Signed Distance Field callback handler with the given ID."
+    }
+  ],
+  "properties": [
+    {
+      "name": "boundaryBody",
+      "description": "Get or set the main boundary body for this volumetric model. The volumetric model is bound by the axis aligned bounding box and will only be rendered within this body."
+    },
+    {
+      "name": "isLightBulbOn",
+      "description": "Is the light bulb / eye (as displayed in the browser) controlling the model's visibility on."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent Component."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Volumetric Custom Feature API Sample",
+      "description": "Demonstrates how to create a Volumetric Custom Feature using the API for graph creation.\n\nTo run the sample script, have a document open in Fusion\u2019s DESIGN workspace. This script will create a component with a box by sketching then extruding that sketch. It will then use that box as a boundary body and create a Volumetric Custom Feature.\n\nThe script will the create a gyroid lattice using the Volumetric Model API with the appropriate Graphs, Nodes and Connections for a minimal example. Finally, the script will convert that Volumetric Model to Mesh using the API and the VolumetricModelToMeshFeature."
+    }
+  ],
+  "version": "Introduced in version May 2025",
+  "property_details": {
+    "boundaryBody": {
+      "id": "VolumetricModel_boundaryBody",
+      "title": "VolumetricModel.boundaryBody Property",
+      "type": "property",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/VolumetricModel.h",
+      "description": "Get or set the main boundary body for this volumetric model. The volumetric model is bound by the axis aligned bounding box and will only be rendered within this body.",
+      "parent_class": "VolumetricModel",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModel_var.boundaryBody",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = volumetricModel_var->boundaryBody();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "isLightBulbOn": {
+      "id": "VolumetricModel_isLightBulbOn",
+      "title": "VolumetricModel.isLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/VolumetricModel.h",
+      "description": "Is the light bulb / eye (as displayed in the browser) controlling the model's visibility on.",
+      "parent_class": "VolumetricModel",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModel_var.isLightBulbOn\n\n# Set the value of the property.\nvolumetricModel_var.isLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = volumetricModel_var->isLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = volumetricModel_var->isLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "isValid": {
+      "id": "VolumetricModel_isValid",
+      "title": "VolumetricModel.isValid Property",
+      "type": "property",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/VolumetricModel.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "VolumetricModel",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModel_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = volumetricModel_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "objectType": {
+      "id": "VolumetricModel_objectType",
+      "title": "VolumetricModel.objectType Property",
+      "type": "property",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/VolumetricModel.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "VolumetricModel",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModel_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = volumetricModel_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "parentComponent": {
+      "id": "VolumetricModel_parentComponent",
+      "title": "VolumetricModel.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/VolumetricModel.h",
+      "description": "Returns the parent Component.",
+      "parent_class": "VolumetricModel",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModel_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = volumetricModel_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "VolumetricModel_classType",
+      "title": "VolumetricModel.classType Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/VolumetricModel.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "VolumetricModel",
+      "syntax": {
+        "python": "returnValue = adsk.volume.VolumetricModel.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::volume::VolumetricModel::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version May 2025"
+    },
+    "createSampler": {
+      "id": "VolumetricModel_createSampler",
+      "title": "VolumetricModel.createSampler Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/VolumetricModel.h",
+      "description": "Creates a VolumetricSampler object that can be used to sample the volumetric model.",
+      "parent_class": "VolumetricModel",
+      "syntax": {
+        "python": "returnValue = volumetricModel_var.createSampler()",
+        "cpp": "#include \n\nreturnValue = volumetricModel_var->createSampler();"
+      },
+      "return_type": "VolumetricSampler",
+      "return_description": "Returns a VolumetricSampler object that will sample this VolumetricModel.",
+      "version": "Introduced in version May 2025"
+    },
+    "getGraph": {
+      "id": "VolumetricModel_getGraph",
+      "title": "VolumetricModel.getGraph Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/VolumetricModel.h",
+      "description": "Returns a graph from the volumetric model.",
+      "parent_class": "VolumetricModel",
+      "syntax": {
+        "python": "returnValue = volumetricModel_var.getGraph(graphType)",
+        "cpp": "#include \n\nreturnValue = volumetricModel_var->getGraph(graphType);"
+      },
+      "parameters": [
+        {
+          "name": "graphType",
+          "type": "GraphTypes",
+          "description": "Which kind of graph to return."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Volumetric Custom Feature API Sample",
+          "description": "Demonstrates how to create a Volumetric Custom Feature using the API for graph creation.\n\nTo run the sample script, have a document open in Fusion\u2019s DESIGN workspace. This script will create a component with a box by sketching then extruding that sketch. It will then use that box as a boundary body and create a Volumetric Custom Feature.\n\nThe script will the create a gyroid lattice using the Volumetric Model API with the appropriate Graphs, Nodes and Connections for a minimal example. Finally, the script will convert that Volumetric Model to Mesh using the API and the VolumetricModelToMeshFeature."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "registerCustomSDFCallback": {
+      "id": "VolumetricModel_registerCustomSDFCallback",
+      "title": "VolumetricModel.registerCustomSDFCallback Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/VolumetricModel.h",
+      "description": "Handling for custom Signed Distance Field callback events. These can be registered by the API client, they will provide a string ID and a handler object that implements the abstract methods. To use the callback, a GeometryGraphNodeProperty's customSDFCallbackID should be set to the same string ID. Register a custom Signed Distance Field callback handler with a given ID.",
+      "parent_class": "VolumetricModel",
+      "syntax": {
+        "python": "returnValue = volumetricModel_var.registerCustomSDFCallback(id, callback)",
+        "cpp": "#include \n\nreturnValue = volumetricModel_var->registerCustomSDFCallback(id, callback);"
+      },
+      "return_type": "boolean",
+      "return_description": "True if registered successfully. False otherwise.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The ID to be used in a GeometryGraphNodeProperty's customSDFCallbackID."
+        },
+        {
+          "name": "callback",
+          "type": "CustomSDFCallbackEventHandler",
+          "description": "The callback object implemented by the client."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "removeCustomSDFCallback": {
+      "id": "VolumetricModel_removeCustomSDFCallback",
+      "title": "VolumetricModel.removeCustomSDFCallback Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/VolumetricModel.h",
+      "description": "De-register the Signed Distance Field callback handler with the given ID.",
+      "parent_class": "VolumetricModel",
+      "syntax": {
+        "python": "returnValue = volumetricModel_var.removeCustomSDFCallback(id)",
+        "cpp": "#include \n\nreturnValue = volumetricModel_var->removeCustomSDFCallback(id);"
+      },
+      "return_type": "boolean",
+      "return_description": "True if removed successfully. False otherwise.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The ID used in registerCustomSDFCallback()"
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    }
+  }
+}

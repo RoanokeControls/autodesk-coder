@@ -1,0 +1,213 @@
+{
+  "id": "Decals",
+  "title": "Decals Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Image/Decals.h",
+  "description": "Provides access to the Decals in a component and provides the functionality to add new Decals.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new decal. Use the createInput method to first create an input object and set the available options. Then, pass that input object to the add method to create the decal."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a new DecalInput object. A DecalInput object is the logical equivalent to the Decal command dialog by providing access to all the decal options. Passing in the DecalInput object to the add method is the equivalent of clicking the OK button on the dialog to create the decal."
+    },
+    {
+      "name": "item",
+      "description": "Returns the specified Decal object using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns the specified decal using the name of the decal."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of decals in the component."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version September 2024",
+  "method_details": {
+    "add": {
+      "id": "Decals_add",
+      "title": "Decals.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decals.h",
+      "description": "Creates a new decal. Use the createInput method to first create an input object and set the available options. Then, pass that input object to the add method to create the decal.",
+      "parent_class": "Decals",
+      "syntax": {
+        "python": "returnValue = decals_var.add(input)",
+        "cpp": "#include \n\nreturnValue = decals_var->add(input);"
+      },
+      "return_type": "Decal",
+      "return_description": "Returns the newly created Decal object.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "DecalInput",
+          "description": "The DecalInput object that defines the required information needed to create a new decal.   A DecalInput object is the logical equivalent to the Decal command dialog by providing access to all the decal options. Passing in the DecalInput object to the add method is the equivalent of clicking the OK button on the dialog to create the decal."
+        }
+      ],
+      "version": "Introduced in version September 2024"
+    },
+    "classType": {
+      "id": "Decals_classType",
+      "title": "Decals.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decals.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Decals",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.Decals.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::Decals::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2024"
+    },
+    "createInput": {
+      "id": "Decals_createInput",
+      "title": "Decals.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decals.h",
+      "description": "Creates a new DecalInput object. A DecalInput object is the logical equivalent to the Decal command dialog by providing access to all the decal options. Passing in the DecalInput object to the add method is the equivalent of clicking the OK button on the dialog to create the decal.",
+      "parent_class": "Decals",
+      "syntax": {
+        "python": "returnValue = decals_var.createInput(imageFilename, faces, point)",
+        "cpp": "#include \n\nreturnValue = decals_var->createInput(imageFilename, faces, point);"
+      },
+      "return_type": "DecalInput",
+      "return_description": "Returns a DecalInput object or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "imageFilename",
+          "type": "string",
+          "description": "The full filename to the image to use for the decal. PNG, JPEG, and TIFF files are supported."
+        },
+        {
+          "name": "faces",
+          "type": "BRepFace[]",
+          "description": "Specifies the faces the decal will be associated with. Typically, this will be an array containing a single face. If the isChainFaces property on the input is true, only a single face is needed, and the rest of the faces in the body will automatically be used. If the isChainFaces property is false, this defines a subset of faces in the body to which the decal will be applied.   If multiple faces are provided, the first face in the array is used to position and orient the decal. The position and orientation are relative to the first face. Any additional faces should connect directly or indirectly through other connected faces to the first face."
+        },
+        {
+          "name": "point",
+          "type": "Point3D",
+          "description": "Specifies a point on the first face that defines the center position of the decal."
+        }
+      ],
+      "version": "Introduced in version September 2024"
+    },
+    "item": {
+      "id": "Decals_item",
+      "title": "Decals.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decals.h",
+      "description": "Returns the specified Decal object using an index into the collection.",
+      "parent_class": "Decals",
+      "syntax": {
+        "python": "returnValue = decals_var.item(index)",
+        "cpp": "#include \n\nreturnValue = decals_var->item(index);"
+      },
+      "return_type": "Decal",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version September 2024"
+    },
+    "itemByName": {
+      "id": "Decals_itemByName",
+      "title": "Decals.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decals.h",
+      "description": "Returns the specified decal using the name of the decal.",
+      "parent_class": "Decals",
+      "syntax": {
+        "python": "returnValue = decals_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = decals_var->itemByName(name);"
+      },
+      "return_type": "Decal",
+      "return_description": "Returns the specified Decal object, if it exists. Otherwise it returns null.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the decal as seen in the browser and timeline."
+        }
+      ],
+      "version": "Introduced in version September 2024"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "Decals_count",
+      "title": "Decals.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decals.h",
+      "description": "Returns the number of decals in the component.",
+      "parent_class": "Decals",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decals_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = decals_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "isValid": {
+      "id": "Decals_isValid",
+      "title": "Decals.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decals.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Decals",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decals_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = decals_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "objectType": {
+      "id": "Decals_objectType",
+      "title": "Decals.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decals.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Decals",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decals_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = decals_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    }
+  }
+}

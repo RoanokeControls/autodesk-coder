@@ -1,0 +1,287 @@
+{
+  "id": "FilletEdgeSets",
+  "title": "FilletEdgeSets Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/FilletEdgeSets.h",
+  "description": "Collection that provides access to all of the existing fillet edge sets associated with a fillet feature.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "addAsymmetricRadiusEdgeSet",
+      "description": "Adds an asymmetric fillet edge set to the fillet feature.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "addChordLengthEdgeSet",
+      "description": "Adds a set of edges with a chord length to this fillet feature.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "addConstantRadiusEdgeSet",
+      "description": "Adds a set of edges with a constant radius to this fillet feature.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "addVariableRadiusEdgeSet",
+      "description": "Adds a single edge or set of tangent edges along with variable radius information to this fillet feature.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified fillet edge set using an index into the collection."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of fillet edge sets in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "method_details": {
+    "addAsymmetricRadiusEdgeSet": {
+      "id": "FilletEdgeSets_addAsymmetricRadiusEdgeSet",
+      "title": "FilletEdgeSets.addAsymmetricRadiusEdgeSet Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSets.h",
+      "description": "Adds an asymmetric fillet edge set to the fillet feature. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "FilletEdgeSets",
+      "syntax": {
+        "python": "returnValue = filletEdgeSets_var.addAsymmetricRadiusEdgeSet(entities, offsetOne, offsetTwo, isTangentChain)",
+        "cpp": "#include \n\nreturnValue = filletEdgeSets_var->addAsymmetricRadiusEdgeSet(entities, offsetOne, offsetTwo, isTangentChain);"
+      },
+      "return_type": "AsymmetricFilletEdgeSet",
+      "return_description": "Returns the newly created AsymmetricFilletEdgeSet.",
+      "parameters": [
+        {
+          "name": "entities",
+          "type": "ObjectCollection",
+          "description": "An ObjectCollection containing the BRepEdge, BRepFace, and Feature objects to be filleted. If the isTangentChain argument is true additional edges or faces may also get filleted if they are tangentially connected to any of the input edges or faces."
+        },
+        {
+          "name": "offsetOne",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset distance of the fillet in the first direction. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "offsetTwo",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset distance of the fillet in the second direction. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "isTangentChain",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not edges or faces that are tangentially connected to the input edges or faces will also be filleted."
+        }
+      ],
+      "version": "Introduced in version November 2025"
+    },
+    "addChordLengthEdgeSet": {
+      "id": "FilletEdgeSets_addChordLengthEdgeSet",
+      "title": "FilletEdgeSets.addChordLengthEdgeSet Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSets.h",
+      "description": "Adds a set of edges with a chord length to this fillet feature. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "FilletEdgeSets",
+      "syntax": {
+        "python": "returnValue = filletEdgeSets_var.addChordLengthEdgeSet(entities, chordLength, isTangentChain)",
+        "cpp": "#include \n\nreturnValue = filletEdgeSets_var->addChordLengthEdgeSet(entities, chordLength, isTangentChain);"
+      },
+      "return_type": "ChordLengthFilletEdgeSet",
+      "return_description": "Returns the newly created FilletEdgeSet.",
+      "parameters": [
+        {
+          "name": "entities",
+          "type": "ObjectCollection",
+          "description": "An ObjectCollection containing the BRepEdge, BRepFace, and Feature objects to be filleted. If the isTangentChain argument is true additional edges or faces may also get filleted if they are tangentially connected to any of the input edges or faces."
+        },
+        {
+          "name": "chordLength",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the chord length of the fillet. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "isTangentChain",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not edges that are tangentially connected to the input edges (if any) will also be filleted."
+        }
+      ],
+      "version": "Introduced in version November 2022"
+    },
+    "addConstantRadiusEdgeSet": {
+      "id": "FilletEdgeSets_addConstantRadiusEdgeSet",
+      "title": "FilletEdgeSets.addConstantRadiusEdgeSet Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSets.h",
+      "description": "Adds a set of edges with a constant radius to this fillet feature. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "FilletEdgeSets",
+      "syntax": {
+        "python": "returnValue = filletEdgeSets_var.addConstantRadiusEdgeSet(entities, radius, isTangentChain)",
+        "cpp": "#include \n\nreturnValue = filletEdgeSets_var->addConstantRadiusEdgeSet(entities, radius, isTangentChain);"
+      },
+      "return_type": "ConstantRadiusFilletEdgeSet",
+      "return_description": "Returns the newly created FilletEdgeSet.",
+      "parameters": [
+        {
+          "name": "entities",
+          "type": "ObjectCollection",
+          "description": "An ObjectCollection containing the BRepEdge, BRepFace, and Feature objects to be filleted. If the isTangentChain argument is true additional edges or faces may also get filleted if they are tangentially connected to any of the input edges or faces."
+        },
+        {
+          "name": "radius",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the radius of the fillet. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "isTangentChain",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not edges that are tangentially connected to the input edges (if any) will also be filleted."
+        }
+      ],
+      "version": "Introduced in version November 2022"
+    },
+    "addVariableRadiusEdgeSet": {
+      "id": "FilletEdgeSets_addVariableRadiusEdgeSet",
+      "title": "FilletEdgeSets.addVariableRadiusEdgeSet Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSets.h",
+      "description": "Adds a single edge or set of tangent edges along with variable radius information to this fillet feature. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "FilletEdgeSets",
+      "syntax": {
+        "python": "returnValue = filletEdgeSets_var.addVariableRadiusEdgeSet(tangentEdges, startRadius, endRadius, positions, radii, isTangentChain)",
+        "cpp": "#include \n\nreturnValue = filletEdgeSets_var->addVariableRadiusEdgeSet(tangentEdges, startRadius, endRadius, positions, radii, isTangentChain);"
+      },
+      "return_type": "VariableRadiusFilletEdgeSet",
+      "return_description": "Returns the newly created FilletEdgeSet.",
+      "parameters": [
+        {
+          "name": "tangentEdges",
+          "type": "ObjectCollection",
+          "description": "An object collection containing a single edge or multiple edges. Multiple edges must be tangentially connected and added to the collection in their connected order. If a single edge is input, you can use the isTangentChain argument to automatically find any tangentially connected edges."
+        },
+        {
+          "name": "startRadius",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the starting radius of the fillet. If a single edge is being filleted, the start radius is at the start end of the edge. If multiple tangent edges are being filleted the start radius is the open end of the first edge in the collection.   If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "endRadius",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the ending radius of the fillet. If a single edge is being filleted, the end radius is at the end of the edge. If multiple tangent edges are being filleted the end radius is the open end of the last edge in the collection. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "positions",
+          "type": "ValueInput[]",
+          "description": "An array of ValueInput objects that defines the positions of any additional radii along the edge(s). The value must be between 0 and 1 and defines the percentage along the curve where a radius is defined. The value is unitless. This array must have the same number of values as the array passed in for the radii argument."
+        },
+        {
+          "name": "radii",
+          "type": "ValueInput[]",
+          "description": "An array of ValueInput objects that define the radii at positions along the edge(s). This array must have the same number of values as the array passed in for the positions argument. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\"). If no units are specified it will be interpreted using the current default units for length."
+        },
+        {
+          "name": "isTangentChain",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not edges that are tangentially connected to the single input edge will also be filleted."
+        }
+      ],
+      "version": "Introduced in version November 2022"
+    },
+    "classType": {
+      "id": "FilletEdgeSets_classType",
+      "title": "FilletEdgeSets.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSets.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "FilletEdgeSets",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.FilletEdgeSets.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::FilletEdgeSets::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version November 2014"
+    },
+    "item": {
+      "id": "FilletEdgeSets_item",
+      "title": "FilletEdgeSets.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSets.h",
+      "description": "Function that returns the specified fillet edge set using an index into the collection.",
+      "parent_class": "FilletEdgeSets",
+      "syntax": {
+        "python": "returnValue = filletEdgeSets_var.item(index)",
+        "cpp": "#include \n\nreturnValue = filletEdgeSets_var->item(index);"
+      },
+      "return_type": "FilletEdgeSet",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ]
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "FilletEdgeSets_count",
+      "title": "FilletEdgeSets.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSets.h",
+      "description": "The number of fillet edge sets in the collection.",
+      "parent_class": "FilletEdgeSets",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = filletEdgeSets_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = filletEdgeSets_var->count();"
+      },
+      "property_value": "Samples"
+    },
+    "isValid": {
+      "id": "FilletEdgeSets_isValid",
+      "title": "FilletEdgeSets.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSets.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "FilletEdgeSets",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = filletEdgeSets_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = filletEdgeSets_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "objectType": {
+      "id": "FilletEdgeSets_objectType",
+      "title": "FilletEdgeSets.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSets.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "FilletEdgeSets",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = filletEdgeSets_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = filletEdgeSets_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    }
+  }
+}

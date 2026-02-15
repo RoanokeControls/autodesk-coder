@@ -1,0 +1,216 @@
+{
+  "id": "ListItem",
+  "title": "ListItem Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/ListItem.h",
+  "description": "Represents a single item in a check box list or a drop-down command input.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this item from the list. In cases where there is the concept of active item in the list, like with a DropDownCommandInput, this method will fail if the item you're attempting to delete is currently active. You need to make another item active first, and then you can delete the item."
+    }
+  ],
+  "properties": [
+    {
+      "name": "icon",
+      "description": "Gets or sets the location for the icon file used for this item in the list. This is the path to a directory that contains the image files associated with this item. This is only valid when this is a standard list or button row and is ignored for check box lists, radio control lists, and radio button groups."
+    },
+    {
+      "name": "index",
+      "description": "Gets the index position within the list of this item."
+    },
+    {
+      "name": "isSelected",
+      "description": "Gets or sets whether this item is selected. If the item is being displayed as a check box, this controls whether it is checked or not. If it's a drop-down list or button row it controls whether this is the single selected item. Setting a drop-down list, button row item, or radio button from a group to be selected will unselect the currently selected item. For a standard list, this will get or set the single item currently selected. For a separator, setting this property is ignored and it will always return false."
+    },
+    {
+      "name": "isSeparator",
+      "description": "Gets if this control is a separator."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "name",
+      "description": "Gets or sets the name of this item as displayed in the list. If this control is a separator (isSeparator is true) or it's a button row, setting this property is ignored and getting it will return an empty string."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentList",
+      "description": "Gets the parent CheckBoxListControlDefinition or object."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Command Inputs API Sample",
+      "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.  You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+    }
+  ],
+  "version": "Introduced in version January 2015",
+  "method_details": {
+    "classType": {
+      "id": "ListItem_classType",
+      "title": "ListItem.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItem.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ListItem",
+      "syntax": {
+        "python": "returnValue = adsk.core.ListItem.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::ListItem::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2015"
+    },
+    "deleteMe": {
+      "id": "ListItem_deleteMe",
+      "title": "ListItem.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItem.h",
+      "description": "Deletes this item from the list. In cases where there is the concept of active item in the list, like with a DropDownCommandInput, this method will fail if the item you're attempting to delete is currently active. You need to make another item active first, and then you can delete the item.",
+      "parent_class": "ListItem",
+      "syntax": {
+        "python": "returnValue = listItem_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = listItem_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version January 2015"
+    }
+  },
+  "property_details": {
+    "icon": {
+      "id": "ListItem_icon",
+      "title": "ListItem.icon Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItem.h",
+      "description": "Gets or sets the location for the icon file used for this item in the list. This is the path to a directory that contains the image files associated with this item. This is only valid when this is a standard list or button row and is ignored for check box lists, radio control lists, and radio button groups.",
+      "parent_class": "ListItem",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = listItem_var.icon\n\n# Set the value of the property.\nlistItem_var.icon = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = listItem_var->icon();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = listItem_var->icon(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "index": {
+      "id": "ListItem_index",
+      "title": "ListItem.index Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItem.h",
+      "description": "Gets the index position within the list of this item.",
+      "parent_class": "ListItem",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = listItem_var.index",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = listItem_var->index();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isSelected": {
+      "id": "ListItem_isSelected",
+      "title": "ListItem.isSelected Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItem.h",
+      "description": "Gets or sets whether this item is selected. If the item is being displayed as a check box, this controls whether it is checked or not. If it's a drop-down list or button row it controls whether this is the single selected item. Setting a drop-down list, button row item, or radio button from a group to be selected will unselect the currently selected item. For a standard list, this will get or set the single item currently selected. For a separator, setting this property is ignored and it will always return false.",
+      "parent_class": "ListItem",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = listItem_var.isSelected\n\n# Set the value of the property.\nlistItem_var.isSelected = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = listItem_var->isSelected();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = listItem_var->isSelected(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isSeparator": {
+      "id": "ListItem_isSeparator",
+      "title": "ListItem.isSeparator Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItem.h",
+      "description": "Gets if this control is a separator.",
+      "parent_class": "ListItem",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = listItem_var.isSeparator",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = listItem_var->isSeparator();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isValid": {
+      "id": "ListItem_isValid",
+      "title": "ListItem.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItem.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ListItem",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = listItem_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = listItem_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "name": {
+      "id": "ListItem_name",
+      "title": "ListItem.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItem.h",
+      "description": "Gets or sets the name of this item as displayed in the list. If this control is a separator (isSeparator is true) or it's a button row, setting this property is ignored and getting it will return an empty string.",
+      "parent_class": "ListItem",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = listItem_var.name\n\n# Set the value of the property.\nlistItem_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = listItem_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = listItem_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "objectType": {
+      "id": "ListItem_objectType",
+      "title": "ListItem.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItem.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ListItem",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = listItem_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = listItem_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "parentList": {
+      "id": "ListItem_parentList",
+      "title": "ListItem.parentList Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItem.h",
+      "description": "Gets the parent CheckBoxListControlDefinition or object.",
+      "parent_class": "ListItem",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = listItem_var.parentList",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = listItem_var->parentList();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    }
+  }
+}

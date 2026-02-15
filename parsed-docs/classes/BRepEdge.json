@@ -1,0 +1,508 @@
+{
+  "id": "BRepEdge",
+  "title": "BRepEdge Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/BRep/BRepEdge.h",
+  "description": "Represents a one-dimensional topological element that can be used to bound a BRepFace A BRepEdge uses a single, connected and bounded subset of a curve for it geometry.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this BRepEdge object is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly. but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "body",
+      "description": "Returns the parent body of the edge."
+    },
+    {
+      "name": "boundingBox",
+      "description": "Returns the bounding box of this edge."
+    },
+    {
+      "name": "coEdges",
+      "description": "Returns the BRepCoEdges on the edge."
+    },
+    {
+      "name": "endVertex",
+      "description": "Returns the BRepVertex that bounds its high parameter end."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the BRepEdge object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same edge.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.   This is only valid for edges that exist in the design, (the isTemporary property is false)."
+    },
+    {
+      "name": "evaluator",
+      "description": "Returns CurveEvaluator3D for evaluation."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the BRepFaces that are associated with this edge through its BRepCoEdges."
+    },
+    {
+      "name": "geometry",
+      "description": "Returns the underlying curve geometry of the edge."
+    },
+    {
+      "name": "isDegenerate",
+      "description": "Returns if the edge's geometry is degenerate. For example, the apex of a cone is a degenerate edge."
+    },
+    {
+      "name": "isParamReversed",
+      "description": "Returns if the parametric direction of this edge is reversed from the parametric direction of the underlying curve obtained from the geometry property. An edge's parametric direction is from the start vertex to the end vertex. But the underlying curve geometry may have the opposite parameterization. This property indicates if the parameterization order of the evaluator obtained from this edge is reversed from the order of the geometry curve's evaluator."
+    },
+    {
+      "name": "isTolerant",
+      "description": "Returns if the edge is tolerant. The tolerance used is available from the tolerance property."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "length",
+      "description": "Returns the length of the edge in centimeters."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "pointOnEdge",
+      "description": "Returns a sample point guaranteed to lie on the edge's curve, within its boundaries, and not on a vertex (unless this is a degenerate edge)."
+    },
+    {
+      "name": "shell",
+      "description": "Returns the parent shell of the edge."
+    },
+    {
+      "name": "startVertex",
+      "description": "Returns the BRepVertex that bounds its low parameter end."
+    },
+    {
+      "name": "tangentiallyConnectedEdges",
+      "description": "Returns a collection of edges that includes all of the edges tangentially connected to this edge. The result includes this edge. The edges are in the collection in their connected order."
+    },
+    {
+      "name": "tempId",
+      "description": "Returns the temporary ID of this edge. This ID is only good while the document remains open and as long as the owning BRepBody is not modified in any way. The findByTempId method of the BRepBody will return the entity in the body with the given ID."
+    },
+    {
+      "name": "tolerance",
+      "description": "Returns the tolerance used by a tolerant edge. This value is only useful when isTolerant is true."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Patch Feature API Sample",
+      "description": "Demonstrates creating a new patch feature."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "property_details": {
+    "assemblyContext": {
+      "id": "BRepEdge_assemblyContext",
+      "title": "BRepEdge.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this BRepEdge object is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly. but is already the native object.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepEdge_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "attributes": {
+      "id": "BRepEdge_attributes",
+      "title": "BRepEdge.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepEdge_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "body": {
+      "id": "BRepEdge_body",
+      "title": "BRepEdge.body Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns the parent body of the edge.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.body",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepEdge_var->body();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "boundingBox": {
+      "id": "BRepEdge_boundingBox",
+      "title": "BRepEdge.boundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns the bounding box of this edge.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.boundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepEdge_var->boundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "coEdges": {
+      "id": "BRepEdge_coEdges",
+      "title": "BRepEdge.coEdges Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns the BRepCoEdges on the edge.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.coEdges",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepEdge_var->coEdges();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "endVertex": {
+      "id": "BRepEdge_endVertex",
+      "title": "BRepEdge.endVertex Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns the BRepVertex that bounds its high parameter end.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.endVertex",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepEdge_var->endVertex();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "entityToken": {
+      "id": "BRepEdge_entityToken",
+      "title": "BRepEdge.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns a token for the BRepEdge object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same edge. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them. This is only valid for edges that exist in the design, (the isTemporary property is false).",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = bRepEdge_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "evaluator": {
+      "id": "BRepEdge_evaluator",
+      "title": "BRepEdge.evaluator Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns CurveEvaluator3D for evaluation.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.evaluator",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepEdge_var->evaluator();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "faces": {
+      "id": "BRepEdge_faces",
+      "title": "BRepEdge.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns the BRepFaces that are associated with this edge through its BRepCoEdges.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepEdge_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "geometry": {
+      "id": "BRepEdge_geometry",
+      "title": "BRepEdge.geometry Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns the underlying curve geometry of the edge.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.geometry",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepEdge_var->geometry();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isDegenerate": {
+      "id": "BRepEdge_isDegenerate",
+      "title": "BRepEdge.isDegenerate Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns if the edge's geometry is degenerate. For example, the apex of a cone is a degenerate edge.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.isDegenerate",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bRepEdge_var->isDegenerate();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isParamReversed": {
+      "id": "BRepEdge_isParamReversed",
+      "title": "BRepEdge.isParamReversed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns if the parametric direction of this edge is reversed from the parametric direction of the underlying curve obtained from the geometry property. An edge's parametric direction is from the start vertex to the end vertex. But the underlying curve geometry may have the opposite parameterization. This property indicates if the parameterization order of the evaluator obtained from this edge is reversed from the order of the geometry curve's evaluator.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.isParamReversed",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bRepEdge_var->isParamReversed();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isTolerant": {
+      "id": "BRepEdge_isTolerant",
+      "title": "BRepEdge.isTolerant Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns if the edge is tolerant. The tolerance used is available from the tolerance property.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.isTolerant",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bRepEdge_var->isTolerant();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "BRepEdge_isValid",
+      "title": "BRepEdge.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bRepEdge_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "length": {
+      "id": "BRepEdge_length",
+      "title": "BRepEdge.length Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns the length of the edge in centimeters.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.length",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = bRepEdge_var->length();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "nativeObject": {
+      "id": "BRepEdge_nativeObject",
+      "title": "BRepEdge.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "The NativeObject is the object outside the context of an assembly. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepEdge_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "BRepEdge_objectType",
+      "title": "BRepEdge.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = bRepEdge_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "pointOnEdge": {
+      "id": "BRepEdge_pointOnEdge",
+      "title": "BRepEdge.pointOnEdge Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns a sample point guaranteed to lie on the edge's curve, within its boundaries, and not on a vertex (unless this is a degenerate edge).",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.pointOnEdge",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepEdge_var->pointOnEdge();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "shell": {
+      "id": "BRepEdge_shell",
+      "title": "BRepEdge.shell Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns the parent shell of the edge.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.shell",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepEdge_var->shell();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "startVertex": {
+      "id": "BRepEdge_startVertex",
+      "title": "BRepEdge.startVertex Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns the BRepVertex that bounds its low parameter end.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.startVertex",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepEdge_var->startVertex();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "tangentiallyConnectedEdges": {
+      "id": "BRepEdge_tangentiallyConnectedEdges",
+      "title": "BRepEdge.tangentiallyConnectedEdges Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns a collection of edges that includes all of the edges tangentially connected to this edge. The result includes this edge. The edges are in the collection in their connected order.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.tangentiallyConnectedEdges",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepEdge_var->tangentiallyConnectedEdges();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "tempId": {
+      "id": "BRepEdge_tempId",
+      "title": "BRepEdge.tempId Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns the temporary ID of this edge. This ID is only good while the document remains open and as long as the owning BRepBody is not modified in any way. The findByTempId method of the BRepBody will return the entity in the body with the given ID.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.tempId",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = bRepEdge_var->tempId();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "tolerance": {
+      "id": "BRepEdge_tolerance",
+      "title": "BRepEdge.tolerance Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns the tolerance used by a tolerant edge. This value is only useful when isTolerant is true.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepEdge_var.tolerance",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = bRepEdge_var->tolerance();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "BRepEdge_classType",
+      "title": "BRepEdge.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.BRepEdge.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::BRepEdge::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "createForAssemblyContext": {
+      "id": "BRepEdge_createForAssemblyContext",
+      "title": "BRepEdge.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepEdge.h",
+      "description": "Returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "BRepEdge",
+      "syntax": {
+        "python": "returnValue = bRepEdge_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = bRepEdge_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "BRepEdge",
+      "return_description": "Returns the new BrepEdge proxy or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context for the created proxy."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

@@ -1,0 +1,258 @@
+{
+  "id": "ConstructionPlanes",
+  "title": "ConstructionPlanes Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Construction/ConstructionPlanes.h",
+  "description": "Provides access to the construction planes within a component and provides methods to create new construction planes.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates and adds a new ConstructionPlane using the creation parameters in the ConstructionPlaneInput.   If the ConstructionPlaneInput was defined using the setByPlane method then the add will only work in the direct modeling model and will fail in the parametric modeling mode."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Create a ConstructionPlaneInput object that is in turn used to create a ConstructionPlane."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified construction plane using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns the specified construction plane using the name of the construction plane as it is displayed in the browser."
+    }
+  ],
+  "properties": [
+    {
+      "name": "component",
+      "description": "Returns the component that owns this collection."
+    },
+    {
+      "name": "count",
+      "description": "Returns the number of construction planes in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Construction Plane API Sample",
+      "description": "Demonstrates creating construction plane by different ways."
+    },
+    {
+      "name": "Loft Feature API Sample",
+      "description": "Demonstrates creating a new loft feature."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "add": {
+      "id": "ConstructionPlanes_add",
+      "title": "ConstructionPlanes.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlanes.h",
+      "description": "Creates and adds a new ConstructionPlane using the creation parameters in the ConstructionPlaneInput. If the ConstructionPlaneInput was defined using the setByPlane method then the add will only work in the direct modeling model and will fail in the parametric modeling mode.",
+      "parent_class": "ConstructionPlanes",
+      "syntax": {
+        "python": "returnValue = constructionPlanes_var.add(input)",
+        "cpp": "#include \n\nreturnValue = constructionPlanes_var->add(input);"
+      },
+      "return_type": "ConstructionPlane",
+      "return_description": "Returns the newly created construction plane or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "ConstructionPlaneInput",
+          "description": "A ConstructionPlaneInput object"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Plane API Sample",
+          "description": "Demonstrates creating construction plane by different ways."
+        },
+        {
+          "name": "Loft Feature API Sample",
+          "description": "Demonstrates creating a new loft feature."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "classType": {
+      "id": "ConstructionPlanes_classType",
+      "title": "ConstructionPlanes.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlanes.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ConstructionPlanes",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ConstructionPlanes.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ConstructionPlanes::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "createInput": {
+      "id": "ConstructionPlanes_createInput",
+      "title": "ConstructionPlanes.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlanes.h",
+      "description": "Create a ConstructionPlaneInput object that is in turn used to create a ConstructionPlane.",
+      "parent_class": "ConstructionPlanes",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = constructionPlanes_var.createInput()\n\n# Uses optional arguments.\nreturnValue = constructionPlanes_var.createInput(occurrenceForCreation)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = constructionPlanes_var->createInput();\n\n// Uses optional arguments.\nreturnValue = constructionPlanes_var->createInput(occurrenceForCreation);"
+      },
+      "return_type": "ConstructionPlaneInput",
+      "return_description": "Returns a ConstructionPlaneInput object",
+      "parameters": [
+        {
+          "name": "occurrenceForCreation",
+          "type": "Occurrence",
+          "description": "A creation occurrence is needed if the input is in another component AND the construction plane is not in the root component. The occurrenceForCreation is analogous to the active occurrence in the UI.   This is an optional argument whose default value is null."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Plane API Sample",
+          "description": "Demonstrates creating construction plane by different ways."
+        },
+        {
+          "name": "Loft Feature API Sample",
+          "description": "Demonstrates creating a new loft feature."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "ConstructionPlanes_item",
+      "title": "ConstructionPlanes.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlanes.h",
+      "description": "Function that returns the specified construction plane using an index into the collection.",
+      "parent_class": "ConstructionPlanes",
+      "syntax": {
+        "python": "returnValue = constructionPlanes_var.item(index)",
+        "cpp": "#include \n\nreturnValue = constructionPlanes_var->item(index);"
+      },
+      "return_type": "ConstructionPlane",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "itemByName": {
+      "id": "ConstructionPlanes_itemByName",
+      "title": "ConstructionPlanes.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlanes.h",
+      "description": "Returns the specified construction plane using the name of the construction plane as it is displayed in the browser.",
+      "parent_class": "ConstructionPlanes",
+      "syntax": {
+        "python": "returnValue = constructionPlanes_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = constructionPlanes_var->itemByName(name);"
+      },
+      "return_type": "ConstructionPlane",
+      "return_description": "Returns the specified item or null if an invalid name was specified.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the construction plane as it is displayed in the browser"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "component": {
+      "id": "ConstructionPlanes_component",
+      "title": "ConstructionPlanes.component Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlanes.h",
+      "description": "Returns the component that owns this collection.",
+      "parent_class": "ConstructionPlanes",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlanes_var.component",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPlanes_var->component();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "count": {
+      "id": "ConstructionPlanes_count",
+      "title": "ConstructionPlanes.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlanes.h",
+      "description": "Returns the number of construction planes in the collection.",
+      "parent_class": "ConstructionPlanes",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlanes_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = constructionPlanes_var->count();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Delete Empty Components",
+          "description": "Deletes empty components from the active design."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "ConstructionPlanes_isValid",
+      "title": "ConstructionPlanes.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlanes.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ConstructionPlanes",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlanes_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = constructionPlanes_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "ConstructionPlanes_objectType",
+      "title": "ConstructionPlanes.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlanes.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ConstructionPlanes",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlanes_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = constructionPlanes_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

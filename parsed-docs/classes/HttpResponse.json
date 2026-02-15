@@ -1,0 +1,261 @@
+{
+  "id": "HttpResponse",
+  "title": "HttpResponse Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/HttpResponse.h",
+  "description": "An object that provides the data associated with an HTTP response.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "getHeader",
+      "description": "Gets the value of a header."
+    },
+    {
+      "name": "hasHeader",
+      "description": "Gets if the response has a header with the given name. This is useful to distinguish between the case where a header is not set and the case where a header is set to an empty string."
+    },
+    {
+      "name": "headers",
+      "description": "Get the response headers."
+    }
+  ],
+  "properties": [
+    {
+      "name": "data",
+      "description": "Gets the response body data."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "request",
+      "description": "Gets the request that generated this response."
+    },
+    {
+      "name": "statusCode",
+      "description": "Gets the status code of the response."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Gets all properties using GraphQL",
+      "description": "Fetches bulk component properties of the root component and from occurrences via single GraphQL query."
+    },
+    {
+      "name": "Get part number using GraphQL",
+      "description": "Fetches part number of root component and from occurrences via GQL query."
+    },
+    {
+      "name": "Set part number using GraphQL",
+      "description": "Sets part number of root component and from occurrences via GQL query."
+    }
+  ],
+  "version": "Introduced in version January 2024",
+  "method_details": {
+    "classType": {
+      "id": "HttpResponse_classType",
+      "title": "HttpResponse.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpResponse.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "HttpResponse",
+      "syntax": {
+        "python": "returnValue = adsk.core.HttpResponse.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::HttpResponse::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2024"
+    },
+    "getHeader": {
+      "id": "HttpResponse_getHeader",
+      "title": "HttpResponse.getHeader Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpResponse.h",
+      "description": "Gets the value of a header.",
+      "parent_class": "HttpResponse",
+      "syntax": {
+        "python": "returnValue = httpResponse_var.getHeader(name)",
+        "cpp": "#include \n\nreturnValue = httpResponse_var->getHeader(name);"
+      },
+      "return_type": "string",
+      "return_description": "Returns the value of the header, or empty if the header was not found. You can use the hasHeader method to determine if the header exists before getting it. This is especially useful in the case where the header exists but has an empty string value.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The case insensitive name of the header."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "hasHeader": {
+      "id": "HttpResponse_hasHeader",
+      "title": "HttpResponse.hasHeader Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpResponse.h",
+      "description": "Gets if the response has a header with the given name. This is useful to distinguish between the case where a header is not set and the case where a header is set to an empty string.",
+      "parent_class": "HttpResponse",
+      "syntax": {
+        "python": "returnValue = httpResponse_var.hasHeader(name)",
+        "cpp": "#include \n\nreturnValue = httpResponse_var->hasHeader(name);"
+      },
+      "return_type": "boolean",
+      "return_description": "True if a header with this name was set in the response.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The case insensitive name of the header."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "headers": {
+      "id": "HttpResponse_headers",
+      "title": "HttpResponse.headers Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpResponse.h",
+      "description": "Get the response headers.",
+      "parent_class": "HttpResponse",
+      "syntax": {
+        "python": "(returnValue, names, values) = httpResponse_var.headers()",
+        "cpp": "#include headers(names, values);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true on success or false on error.",
+      "parameters": [
+        {
+          "name": "names",
+          "type": "string[]",
+          "description": "An array of all the header key names."
+        },
+        {
+          "name": "values",
+          "type": "string[]",
+          "description": "An array of all the header values."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    }
+  },
+  "property_details": {
+    "data": {
+      "id": "HttpResponse_data",
+      "title": "HttpResponse.data Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpResponse.h",
+      "description": "Gets the response body data.",
+      "parent_class": "HttpResponse",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = httpResponse_var.data",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = httpResponse_var->data();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Gets all properties using GraphQL",
+          "description": "Fetches bulk component properties of the root component and from occurrences via single GraphQL query."
+        },
+        {
+          "name": "Get part number using GraphQL",
+          "description": "Fetches part number of root component and from occurrences via GQL query."
+        },
+        {
+          "name": "Set part number using GraphQL",
+          "description": "Sets part number of root component and from occurrences via GQL query."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "isValid": {
+      "id": "HttpResponse_isValid",
+      "title": "HttpResponse.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpResponse.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "HttpResponse",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = httpResponse_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = httpResponse_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "objectType": {
+      "id": "HttpResponse_objectType",
+      "title": "HttpResponse.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpResponse.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "HttpResponse",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = httpResponse_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = httpResponse_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "request": {
+      "id": "HttpResponse_request",
+      "title": "HttpResponse.request Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpResponse.h",
+      "description": "Gets the request that generated this response.",
+      "parent_class": "HttpResponse",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = httpResponse_var.request",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = httpResponse_var->request();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "statusCode": {
+      "id": "HttpResponse_statusCode",
+      "title": "HttpResponse.statusCode Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpResponse.h",
+      "description": "Gets the status code of the response.",
+      "parent_class": "HttpResponse",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = httpResponse_var.statusCode",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = httpResponse_var->statusCode();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Gets all properties using GraphQL",
+          "description": "Fetches bulk component properties of the root component and from occurrences via single GraphQL query."
+        },
+        {
+          "name": "Get part number using GraphQL",
+          "description": "Fetches part number of root component and from occurrences via GQL query."
+        },
+        {
+          "name": "Set part number using GraphQL",
+          "description": "Sets part number of root component and from occurrences via GQL query."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    }
+  }
+}

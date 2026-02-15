@@ -1,0 +1,602 @@
+{
+  "id": "SketchLines",
+  "title": "SketchLines Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Sketch/SketchLines.h",
+  "description": "The collection of lines in a sketch. This provides access to the existing lines and supports the methods to create new lines.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "addAngleChamfer",
+      "description": "Creates a chamfer between two sketch lines. In the case where the two input lines cross each other creating an \"X\" shape, this results in four quadrants where the chamfer can be placed. The point arguments are used to define which of the four quadrants the chamfer should be created in. The two points define which side of the two lines should be kept and the other end will be trimmed by the chamfer. The easiest way to use this is to use the end points of the lines on the side you want to keep. In the case where the lines don't intersect or connect at the end points, there is only one valid quadrant for the chamfer so the points are ignored."
+    },
+    {
+      "name": "addByMidpoint",
+      "description": "Creates a sketch line where the first point is the midpoint and the second point is one endpoint. The system automatically calculates the other endpoint to create a line where the first point is exactly at the midpoint."
+    },
+    {
+      "name": "addByTwoPoints",
+      "description": "Creates a sketch line between the two input points. The input points can be either existing SketchPoints or Point3D objects. If a SketchPoint is used the new line will be based on that sketch point and update if the sketch point is modified."
+    },
+    {
+      "name": "addCenterPointRectangle",
+      "description": "Creates four sketch lines representing a rectangle where the first point represents the center of the rectangle. The second point is the corner of the rectangle and can be either an existing SketchPoint or Point3D object. The four sketch lines are returned."
+    },
+    {
+      "name": "addDistanceChamfer",
+      "description": "Creates a chamfer between two sketch lines. In the case where the two input lines cross each other creating an \"X\" shape, this results in four quadrants where the chamfer can be placed. The point arguments are used to define which of the four quadrants the chamfer should be created in. The two points define which side of the two lines should be kept and the other end will be trimmed by the chamfer. The easiest way to use this is to use the end points of the lines on the side you want to keep. In the case where the lines don't intersect or connect at the end points, there is only one valid quadrant for the chamfer so the points are ignored."
+    },
+    {
+      "name": "addEdgePolygon",
+      "description": "Creates a polygon where two points specify an edge of the polygon. By specifying an edge, the size and position of the polygon is also defined."
+    },
+    {
+      "name": "addScribedPolygon",
+      "description": "Creates either an inscribed or circumscribed n-sided polygon."
+    },
+    {
+      "name": "addThreePointRectangle",
+      "description": "Creates four sketch lines representing a rectangle where the first two points are the base corners of the rectangle and the third point defines the height."
+    },
+    {
+      "name": "addTwoPointRectangle",
+      "description": "Creates four sketch lines representing a rectangle where the two points are the opposing corners of the rectangle. The input points can be either existing SketchPoints or Point3D objects. If a SketchPoint is used the new lines will be based on that sketch point and update if the sketch point is modified."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified sketch line using an index into the collection."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of lines in the sketch."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "API Sample that demonstrates creating sketch lines in various ways.",
+      "description": "Demonstrates several ways to create sketch lines, including as the result of creating a rectangle."
+    },
+    {
+      "name": "Simple Revolve Feature Sample",
+      "description": "Creates a new revolve feature, resulting in a new component."
+    },
+    {
+      "name": "SketchLines.addAngleChamfer",
+      "description": "Demonstrates the SketchLines.addAngleChamfer method."
+    },
+    {
+      "name": "SketchLines.addByTwoPoints",
+      "description": "Demonstrates the SketchLines.addByTwoPoints method."
+    },
+    {
+      "name": "SketchLines.addCenterPointRectangle",
+      "description": "Demonstrates the SketchLines.addCenterPointRectangle method."
+    },
+    {
+      "name": "SketchLines.addDistanceChamfer",
+      "description": "Demonstrates the SketchLines.addDistanceChamfer method."
+    },
+    {
+      "name": "SketchLines.addThreePointRectangle",
+      "description": "Demonstrates the SketchLines.addThreePointRectangle method."
+    },
+    {
+      "name": "SketchLines.addTwoPointRectangle",
+      "description": "Demonstrates the SketchLines.addTwoPointRectangle method."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "addAngleChamfer": {
+      "id": "SketchLines_addAngleChamfer",
+      "title": "SketchLines.addAngleChamfer Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchLines.h",
+      "description": "Creates a chamfer between two sketch lines. In the case where the two input lines cross each other creating an \"X\" shape, this results in four quadrants where the chamfer can be placed. The point arguments are used to define which of the four quadrants the chamfer should be created in. The two points define which side of the two lines should be kept and the other end will be trimmed by the chamfer. The easiest way to use this is to use the end points of the lines on the side you want to keep. In the case where the lines don't intersect or connect at the end points, there is only one valid quadrant for the chamfer so the points are ignored.",
+      "parent_class": "SketchLines",
+      "syntax": {
+        "python": "returnValue = sketchLines_var.addAngleChamfer(firstLine, firstLinePoint, secondLine, secondLinePoint, distance, angle)",
+        "cpp": "#include \n\nreturnValue = sketchLines_var->addAngleChamfer(firstLine, firstLinePoint, secondLine, secondLinePoint, distance, angle);"
+      },
+      "return_type": "SketchLine",
+      "return_description": "Returns the newly created SketchLine object that represents the chamfer or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "firstLine",
+          "type": "SketchLine",
+          "description": "The first line you want to chamfer."
+        },
+        {
+          "name": "firstLinePoint",
+          "type": "Point3D",
+          "description": "A point on the first line that is on the side of the intersection with the second line that you want to keep."
+        },
+        {
+          "name": "secondLine",
+          "type": "SketchLine",
+          "description": "The second line you want to chamfer."
+        },
+        {
+          "name": "secondLinePoint",
+          "type": "Point3D",
+          "description": "A point on the second line that is on the side of the intersection with the first line that you want to keep."
+        },
+        {
+          "name": "distance",
+          "type": "double",
+          "description": "Defines the distance of the start point of the chamfer from the intersection point of the two lines along the first line. The distance is defined in centimeters."
+        },
+        {
+          "name": "angle",
+          "type": "double",
+          "description": "Defines the angle of the chamfer as measured from the first line. The angle is defined in radians."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Sketch Chamfer API Sample",
+          "description": "Demonstrates creating a new sketch point."
+        },
+        {
+          "name": "SketchLines.addAngleChamfer",
+          "description": "Demonstrates the SketchLines.addAngleChamfer method."
+        }
+      ],
+      "version": "Introduced in version March 2021"
+    },
+    "addByMidpoint": {
+      "id": "SketchLines_addByMidpoint",
+      "title": "SketchLines.addByMidpoint Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchLines.h",
+      "description": "Creates a sketch line where the first point is the midpoint and the second point is one endpoint. The system automatically calculates the other endpoint to create a line where the first point is exactly at the midpoint.",
+      "parent_class": "SketchLines",
+      "syntax": {
+        "python": "returnValue = sketchLines_var.addByMidpoint(midPoint, secondPoint)",
+        "cpp": "#include \n\nreturnValue = sketchLines_var->addByMidpoint(midPoint, secondPoint);"
+      },
+      "return_type": "SketchLine",
+      "return_description": "Returns the newly created SketchLine object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "midPoint",
+          "type": "Base",
+          "description": "The midpoint of the line. It can be a SketchPoint or Point3D object."
+        },
+        {
+          "name": "secondPoint",
+          "type": "Base",
+          "description": "One endpoint of the line. It can be a SketchPoint or Point3D object. The other endpoint will be calculated automatically."
+        }
+      ],
+      "version": "Introduced in version January 2026"
+    },
+    "addByTwoPoints": {
+      "id": "SketchLines_addByTwoPoints",
+      "title": "SketchLines.addByTwoPoints Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchLines.h",
+      "description": "Creates a sketch line between the two input points. The input points can be either existing SketchPoints or Point3D objects. If a SketchPoint is used the new line will be based on that sketch point and update if the sketch point is modified.",
+      "parent_class": "SketchLines",
+      "syntax": {
+        "python": "returnValue = sketchLines_var.addByTwoPoints(startPoint, endPoint)",
+        "cpp": "#include \n\nreturnValue = sketchLines_var->addByTwoPoints(startPoint, endPoint);"
+      },
+      "return_type": "SketchLine",
+      "return_description": "Returns the newly created SketchLine object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "startPoint",
+          "type": "Base",
+          "description": "The start point of the line. It can be a SketchPoint or Point3D object."
+        },
+        {
+          "name": "endPoint",
+          "type": "Base",
+          "description": "The end point of the line. It can be a SketchPoint or Point3D object."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "API Sample that demonstrates creating sketch lines in various ways.",
+          "description": "Demonstrates several ways to create sketch lines, including as the result of creating a rectangle."
+        },
+        {
+          "name": "Simple Revolve Feature Sample",
+          "description": "Creates a new revolve feature, resulting in a new component."
+        },
+        {
+          "name": "SketchArcs.addFillet",
+          "description": "Demonstrates the SketchArcs.addFillet method."
+        },
+        {
+          "name": "SketchCircles.addByThreeTangents",
+          "description": "Demonstrates the SketchCircles.addByThreeTangets method."
+        },
+        {
+          "name": "SketchCircles.addByTwoTangents",
+          "description": "Demonstrates the SketchCircles.addByTwoTangets method."
+        },
+        {
+          "name": "SketchLines.addAngleChamfer",
+          "description": "Demonstrates the SketchLines.addAngleChamfer method."
+        },
+        {
+          "name": "SketchLines.addByTwoPoints",
+          "description": "Demonstrates the SketchLines.addByTwoPoints method."
+        },
+        {
+          "name": "SketchLines.addDistanceChamfer",
+          "description": "Demonstrates the SketchLines.addDistanceChamfer method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addCenterPointRectangle": {
+      "id": "SketchLines_addCenterPointRectangle",
+      "title": "SketchLines.addCenterPointRectangle Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchLines.h",
+      "description": "Creates four sketch lines representing a rectangle where the first point represents the center of the rectangle. The second point is the corner of the rectangle and can be either an existing SketchPoint or Point3D object. The four sketch lines are returned.",
+      "parent_class": "SketchLines",
+      "syntax": {
+        "python": "returnValue = sketchLines_var.addCenterPointRectangle(centerPoint, cornerPoint)",
+        "cpp": "#include \n\nreturnValue = sketchLines_var->addCenterPointRectangle(centerPoint, cornerPoint);"
+      },
+      "return_type": "SketchLineList",
+      "return_description": "Returns the four new sketch lines or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "centerPoint",
+          "type": "Point3D",
+          "description": "The center point of the rectangle"
+        },
+        {
+          "name": "cornerPoint",
+          "type": "Base",
+          "description": "The corner of the rectangle. It can be a SketchPoint or Point3D object."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "API Sample that demonstrates creating sketch lines in various ways.",
+          "description": "Demonstrates several ways to create sketch lines, including as the result of creating a rectangle."
+        },
+        {
+          "name": "SketchLines.addCenterPointRectangle",
+          "description": "Demonstrates the SketchLines.addCenterPointRectangle method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addDistanceChamfer": {
+      "id": "SketchLines_addDistanceChamfer",
+      "title": "SketchLines.addDistanceChamfer Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchLines.h",
+      "description": "Creates a chamfer between two sketch lines. In the case where the two input lines cross each other creating an \"X\" shape, this results in four quadrants where the chamfer can be placed. The point arguments are used to define which of the four quadrants the chamfer should be created in. The two points define which side of the two lines should be kept and the other end will be trimmed by the chamfer. The easiest way to use this is to use the end points of the lines on the side you want to keep. In the case where the lines don't intersect or connect at the end points, there is only one valid quadrant for the chamfer so the points are ignored.",
+      "parent_class": "SketchLines",
+      "syntax": {
+        "python": "returnValue = sketchLines_var.addDistanceChamfer(firstLine, firstLinePoint, secondLine, secondLinePoint, distanceOne, distanceTwo)",
+        "cpp": "#include \n\nreturnValue = sketchLines_var->addDistanceChamfer(firstLine, firstLinePoint, secondLine, secondLinePoint, distanceOne, distanceTwo);"
+      },
+      "return_type": "SketchLine",
+      "return_description": "Returns the newly created SketchLine object that represents the chamfer or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "firstLine",
+          "type": "SketchLine",
+          "description": "The first line you want to chamfer."
+        },
+        {
+          "name": "firstLinePoint",
+          "type": "Point3D",
+          "description": "A point on the first line that is on the side of the intersection with the second line that you want to keep."
+        },
+        {
+          "name": "secondLine",
+          "type": "SketchLine",
+          "description": "The second line you want to chamfer."
+        },
+        {
+          "name": "secondLinePoint",
+          "type": "Point3D",
+          "description": "A point on the second line that is on the side of the intersection with the first line that you want to keep."
+        },
+        {
+          "name": "distanceOne",
+          "type": "double",
+          "description": "Defines the distance of the start point of the chamfer line from the intersection point of the two lines along the first line. The distance is defined in centimeters."
+        },
+        {
+          "name": "distanceTwo",
+          "type": "double",
+          "description": "Defines the distance of the start point of the chamfer line from the intersection point of the two lines along the second line. The distance is defined in centimeters."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Sketch Chamfer API Sample",
+          "description": "Demonstrates creating a new sketch point."
+        },
+        {
+          "name": "SketchLines.addDistanceChamfer",
+          "description": "Demonstrates the SketchLines.addDistanceChamfer method."
+        }
+      ],
+      "version": "Introduced in version March 2021"
+    },
+    "addEdgePolygon": {
+      "id": "SketchLines_addEdgePolygon",
+      "title": "SketchLines.addEdgePolygon Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchLines.h",
+      "description": "Creates a polygon where two points specify an edge of the polygon. By specifying an edge, the size and position of the polygon is also defined.",
+      "parent_class": "SketchLines",
+      "syntax": {
+        "python": "returnValue = sketchLines_var.addEdgePolygon(pointOne, pointTwo, isRight, edgeCount)",
+        "cpp": "#include \n\nreturnValue = sketchLines_var->addEdgePolygon(pointOne, pointTwo, isRight, edgeCount);"
+      },
+      "return_type": "SketchLineList",
+      "return_description": "Returns a list of the sketch lines that were created to represent the polygon or null in the case of bad input.",
+      "parameters": [
+        {
+          "name": "pointOne",
+          "type": "Base",
+          "description": "The first point of the edge."
+        },
+        {
+          "name": "pointTwo",
+          "type": "Base",
+          "description": "The second point of the edge."
+        },
+        {
+          "name": "isRight",
+          "type": "boolean",
+          "description": "After defining points one and two, a polygon can be created on either side of the line defined by the two points. This argument specifies which side of the line the polygon will be created on. If this is true, the polygon will be created to the right of the line from the perspective of looking from point one to point two. If false, it will be to the left of the line."
+        },
+        {
+          "name": "edgeCount",
+          "type": "integer",
+          "description": "The number of edges in the resulting polygon."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "addScribedPolygon": {
+      "id": "SketchLines_addScribedPolygon",
+      "title": "SketchLines.addScribedPolygon Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchLines.h",
+      "description": "Creates either an inscribed or circumscribed n-sided polygon.",
+      "parent_class": "SketchLines",
+      "syntax": {
+        "python": "returnValue = sketchLines_var.addScribedPolygon(centerPoint, edgeCount, angle, radius, isInscribed)",
+        "cpp": "#include \n\nreturnValue = sketchLines_var->addScribedPolygon(centerPoint, edgeCount, angle, radius, isInscribed);"
+      },
+      "return_type": "SketchLineList",
+      "return_description": "Returns a list of the sketch lines that were created to represent the polygon or null in the case of bad input.",
+      "parameters": [
+        {
+          "name": "centerPoint",
+          "type": "Base",
+          "description": "Either an existing SketchPoint or a Point3D object that defines the center point of the polygon. If a SketchPoint object is provided the point will continue to control the center of the polygon."
+        },
+        {
+          "name": "edgeCount",
+          "type": "integer",
+          "description": "The number of edges in the resulting polygon."
+        },
+        {
+          "name": "angle",
+          "type": "double",
+          "description": "Controls the rotation of the polygon around the center point. For a circumscribed polygon, this defines where the center of one of the edges will be positioned. For an inscribed polygon, this defines where one of the corners of the polygon will be positioned."
+        },
+        {
+          "name": "radius",
+          "type": "double",
+          "description": "The radius of the circle in centimeters that the polygon goes to, either outside (circumscribed) or inside (inscribed) the circle."
+        },
+        {
+          "name": "isInscribed",
+          "type": "boolean",
+          "description": "Specifies if a circumscribed or inscribed polygon should be created."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "addThreePointRectangle": {
+      "id": "SketchLines_addThreePointRectangle",
+      "title": "SketchLines.addThreePointRectangle Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchLines.h",
+      "description": "Creates four sketch lines representing a rectangle where the first two points are the base corners of the rectangle and the third point defines the height.",
+      "parent_class": "SketchLines",
+      "syntax": {
+        "python": "returnValue = sketchLines_var.addThreePointRectangle(pointOne, pointTwo, pointThree)",
+        "cpp": "#include \n\nreturnValue = sketchLines_var->addThreePointRectangle(pointOne, pointTwo, pointThree);"
+      },
+      "return_type": "SketchLineList",
+      "return_description": "Returns the four new sketch lines or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "pointOne",
+          "type": "Base",
+          "description": "The first corner of the rectangle. It can be a SketchPoint or Point3D object."
+        },
+        {
+          "name": "pointTwo",
+          "type": "Base",
+          "description": "The first corner of the rectangle. It can be a SketchPoint or Point3D object."
+        },
+        {
+          "name": "pointThree",
+          "type": "Point3D",
+          "description": "The first corner of the rectangle. a Point3D object defining the height of the rectangle."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "API Sample that demonstrates creating sketch lines in various ways.",
+          "description": "Demonstrates several ways to create sketch lines, including as the result of creating a rectangle."
+        },
+        {
+          "name": "SketchLines.addThreePointRectangle",
+          "description": "Demonstrates the SketchLines.addThreePointRectangle method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addTwoPointRectangle": {
+      "id": "SketchLines_addTwoPointRectangle",
+      "title": "SketchLines.addTwoPointRectangle Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchLines.h",
+      "description": "Creates four sketch lines representing a rectangle where the two points are the opposing corners of the rectangle. The input points can be either existing SketchPoints or Point3D objects. If a SketchPoint is used the new lines will be based on that sketch point and update if the sketch point is modified.",
+      "parent_class": "SketchLines",
+      "syntax": {
+        "python": "returnValue = sketchLines_var.addTwoPointRectangle(pointOne, pointTwo)",
+        "cpp": "#include \n\nreturnValue = sketchLines_var->addTwoPointRectangle(pointOne, pointTwo);"
+      },
+      "return_type": "SketchLineList",
+      "return_description": "Returns the four new sketch lines or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "pointOne",
+          "type": "Base",
+          "description": "The first corner of the rectangle. It can be a SketchPoint or Point3D object."
+        },
+        {
+          "name": "pointTwo",
+          "type": "Base",
+          "description": "The second corner of the rectangle. It can be a SketchPoint or Point3D object."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "API Sample that demonstrates creating sketch lines in various ways.",
+          "description": "Demonstrates several ways to create sketch lines, including as the result of creating a rectangle."
+        },
+        {
+          "name": "Sketch Chamfer API Sample",
+          "description": "Demonstrates creating a new sketch point."
+        },
+        {
+          "name": "SketchLines.addTwoPointRectangle",
+          "description": "Demonstrates the SketchLines.addTwoPointRectangle method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "classType": {
+      "id": "SketchLines_classType",
+      "title": "SketchLines.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchLines.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SketchLines",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.SketchLines.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::SketchLines::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "SketchLines_item",
+      "title": "SketchLines.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchLines.h",
+      "description": "Function that returns the specified sketch line using an index into the collection.",
+      "parent_class": "SketchLines",
+      "syntax": {
+        "python": "returnValue = sketchLines_var.item(index)",
+        "cpp": "#include \n\nreturnValue = sketchLines_var->item(index);"
+      },
+      "return_type": "SketchLine",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "SketchLines_count",
+      "title": "SketchLines.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchLines.h",
+      "description": "Returns the number of lines in the sketch.",
+      "parent_class": "SketchLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchLines_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = sketchLines_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "SketchLines_isValid",
+      "title": "SketchLines.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchLines.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SketchLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchLines_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchLines_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "SketchLines_objectType",
+      "title": "SketchLines.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchLines.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SketchLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchLines_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchLines_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

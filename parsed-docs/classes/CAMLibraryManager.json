@@ -1,0 +1,373 @@
+{
+  "id": "CAMLibraryManager",
+  "title": "CAMLibraryManager Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/Global/CAMLibraryManager.h",
+  "description": "CAMLibraryManager provides access to properties related to various libraries in the Fusion Manufacture workspace, such as the post library and machine library.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    }
+  ],
+  "properties": [
+    {
+      "name": "fusion360MachineFolder",
+      "description": "**RETIRED** Gets the absolute path to the folder containing Fusion machines. Fusion machines appear in the machine library under the Fusion tab."
+    },
+    {
+      "name": "fusion360PostFolder",
+      "description": "**RETIRED** Gets the absolute path to the folder containing Fusion posts. Fusion posts appear in the post library under the Fusion tab."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "localMachineFolder",
+      "description": "**RETIRED** Gets the absolute path to the folder containing local machines. Local Machines appear in machine library under the local tab."
+    },
+    {
+      "name": "localPostFolder",
+      "description": "**RETIRED** Gets the absolute path to the folder containing local posts. Local posts appear in post library under the local tab."
+    },
+    {
+      "name": "machineLibrary",
+      "description": "The MachineLibrary provides access to machines."
+    },
+    {
+      "name": "networkMachineFolder",
+      "description": "Gets the absolute path to the folder containing network machines. Network machines appear in the machine library under the network tab."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "postLibrary",
+      "description": "The PostLibrary provides access to postConfigurations."
+    },
+    {
+      "name": "printSettingLibrary",
+      "description": "The PrintSettingLibrary provides access to print settings."
+    },
+    {
+      "name": "stockMaterialLibrary",
+      "description": "The StockMaterialLibrary provides access to stock materials. You can only get a valid StockMaterialLibrary when you have access to Stock Materials private preview feature and enable the feature flag."
+    },
+    {
+      "name": "templateLibrary",
+      "description": "The CAMTemplateLibrary provides access to templates"
+    },
+    {
+      "name": "toolLibraries",
+      "description": "The ToolLibraries provides access to tools."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Additive Manufacturing FFF API Sample",
+      "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+    },
+    {
+      "name": "Additive Manufacturing MJF API Sample",
+      "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+    },
+    {
+      "name": "Additive Manufacturing SLA API Sample",
+      "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+    },
+    {
+      "name": "Hole and Pocket Recognition API Sample",
+      "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+    },
+    {
+      "name": "Manufacturing Workflow API Sample",
+      "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+    },
+    {
+      "name": "Turning Workflow API Sample",
+      "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "method_details": {
+    "classType": {
+      "id": "CAMLibraryManager_classType",
+      "title": "CAMLibraryManager.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibraryManager.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CAMLibraryManager",
+      "syntax": {
+        "python": "returnValue = adsk.cam.CAMLibraryManager.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::CAMLibraryManager::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    }
+  },
+  "property_details": {
+    "fusion360MachineFolder": {
+      "id": "CAMLibraryManager_fusion360MachineFolder",
+      "title": "CAMLibraryManager.fusion360MachineFolder Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibraryManager.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets the absolute path to the folder containing Fusion machines. Fusion machines appear in the machine library under the Fusion tab. Remarks",
+      "parent_class": "CAMLibraryManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMLibraryManager_var.fusion360MachineFolder",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMLibraryManager_var->fusion360MachineFolder();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "fusion360PostFolder": {
+      "id": "CAMLibraryManager_fusion360PostFolder",
+      "title": "CAMLibraryManager.fusion360PostFolder Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibraryManager.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets the absolute path to the folder containing Fusion posts. Fusion posts appear in the post library under the Fusion tab. Remarks",
+      "parent_class": "CAMLibraryManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMLibraryManager_var.fusion360PostFolder",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMLibraryManager_var->fusion360PostFolder();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "CAMLibraryManager_isValid",
+      "title": "CAMLibraryManager.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibraryManager.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CAMLibraryManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMLibraryManager_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMLibraryManager_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "localMachineFolder": {
+      "id": "CAMLibraryManager_localMachineFolder",
+      "title": "CAMLibraryManager.localMachineFolder Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibraryManager.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets the absolute path to the folder containing local machines. Local Machines appear in machine library under the local tab. Remarks",
+      "parent_class": "CAMLibraryManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMLibraryManager_var.localMachineFolder",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMLibraryManager_var->localMachineFolder();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "localPostFolder": {
+      "id": "CAMLibraryManager_localPostFolder",
+      "title": "CAMLibraryManager.localPostFolder Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibraryManager.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets the absolute path to the folder containing local posts. Local posts appear in post library under the local tab. Remarks",
+      "parent_class": "CAMLibraryManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMLibraryManager_var.localPostFolder",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMLibraryManager_var->localPostFolder();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "machineLibrary": {
+      "id": "CAMLibraryManager_machineLibrary",
+      "title": "CAMLibraryManager.machineLibrary Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibraryManager.h",
+      "description": "The MachineLibrary provides access to machines.",
+      "parent_class": "CAMLibraryManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMLibraryManager_var.machineLibrary",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAMLibraryManager_var->machineLibrary();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Additive Manufacturing FFF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+        },
+        {
+          "name": "Additive Manufacturing MJF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+        },
+        {
+          "name": "Additive Manufacturing SLA API Sample",
+          "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "networkMachineFolder": {
+      "id": "CAMLibraryManager_networkMachineFolder",
+      "title": "CAMLibraryManager.networkMachineFolder Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibraryManager.h",
+      "description": "Gets the absolute path to the folder containing network machines. Network machines appear in the machine library under the network tab.",
+      "parent_class": "CAMLibraryManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMLibraryManager_var.networkMachineFolder",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMLibraryManager_var->networkMachineFolder();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "CAMLibraryManager_objectType",
+      "title": "CAMLibraryManager.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibraryManager.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CAMLibraryManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMLibraryManager_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMLibraryManager_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "postLibrary": {
+      "id": "CAMLibraryManager_postLibrary",
+      "title": "CAMLibraryManager.postLibrary Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibraryManager.h",
+      "description": "The PostLibrary provides access to postConfigurations.",
+      "parent_class": "CAMLibraryManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMLibraryManager_var.postLibrary",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAMLibraryManager_var->postLibrary();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        },
+        {
+          "name": "Turning Workflow API Sample",
+          "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "printSettingLibrary": {
+      "id": "CAMLibraryManager_printSettingLibrary",
+      "title": "CAMLibraryManager.printSettingLibrary Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibraryManager.h",
+      "description": "The PrintSettingLibrary provides access to print settings.",
+      "parent_class": "CAMLibraryManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMLibraryManager_var.printSettingLibrary",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAMLibraryManager_var->printSettingLibrary();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Additive Manufacturing FFF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+        },
+        {
+          "name": "Additive Manufacturing MJF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+        },
+        {
+          "name": "Additive Manufacturing SLA API Sample",
+          "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "stockMaterialLibrary": {
+      "id": "CAMLibraryManager_stockMaterialLibrary",
+      "title": "CAMLibraryManager.stockMaterialLibrary Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibraryManager.h",
+      "description": "The StockMaterialLibrary provides access to stock materials. You can only get a valid StockMaterialLibrary when you have access to Stock Materials private preview feature and enable the feature flag.",
+      "parent_class": "CAMLibraryManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMLibraryManager_var.stockMaterialLibrary",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAMLibraryManager_var->stockMaterialLibrary();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "templateLibrary": {
+      "id": "CAMLibraryManager_templateLibrary",
+      "title": "CAMLibraryManager.templateLibrary Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibraryManager.h",
+      "description": "The CAMTemplateLibrary provides access to templates",
+      "parent_class": "CAMLibraryManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMLibraryManager_var.templateLibrary",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAMLibraryManager_var->templateLibrary();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Additive Manufacturing MJF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+        },
+        {
+          "name": "Additive Manufacturing SLA API Sample",
+          "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "toolLibraries": {
+      "id": "CAMLibraryManager_toolLibraries",
+      "title": "CAMLibraryManager.toolLibraries Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibraryManager.h",
+      "description": "The ToolLibraries provides access to tools.",
+      "parent_class": "CAMLibraryManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMLibraryManager_var.toolLibraries",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAMLibraryManager_var->toolLibraries();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        },
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        },
+        {
+          "name": "Turning Workflow API Sample",
+          "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

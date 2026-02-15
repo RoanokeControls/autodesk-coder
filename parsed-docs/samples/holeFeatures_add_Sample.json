@@ -1,0 +1,12 @@
+{
+  "id": "holeFeatures_add_Sample",
+  "title": "holeFeatures.add",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the holeFeatures.add method using the createSimpleInput method. To use this sample, have a design open with a box. Select the face for the hole and two edges to define the position of the hole.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_holeFeatures_add(rootComp: adsk.fusion.Design.rootComponent):\n    # Have the face and edges selected.\n    face: adsk.fusion.BRepFace = _ui.selectEntity('Select a face', 'Faces').entity\n    edge1: adsk.fusion.BRepEdge = _ui.selectEntity('Select edge 1', 'Edges').entity\n    edge2: adsk.fusion.BRepEdge = _ui.selectEntity('Select edge 2', 'Edges').entity\n\n    # Define the needed inputs.\n    holeDiam = adsk.core.ValueInput.createByString('20 mm')\n    holeDepth = adsk.core.ValueInput.createByReal(5)\n    offset1 = adsk.core.ValueInput.createByReal(4)\n    offset2 = adsk.core.ValueInput.createByReal(6)\n\n    holeFeatures: adsk.fusion.HoleFeatures = rootComp.features.holeFeatures\n\n    # Define as a plain hole.\n    input = holeFeatures.createSimpleInput(holeDiam)\n    input.setDistanceExtent(holeDepth)\n    facePoint = face.pointOnFace\n    input.setPositionByPlaneAndOffsets(face, facePoint, edge1, offset1, edge2, offset2)\n    holeFeature = holeFeatures.add(input)"
+  }
+}

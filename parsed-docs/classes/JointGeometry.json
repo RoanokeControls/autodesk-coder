@@ -1,0 +1,866 @@
+{
+  "id": "JointGeometry",
+  "title": "JointGeometry Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Components/JointGeometry.h",
+  "description": "A transient object used to define and query the geometric input of a joint and the resulting coordinate system it defines. New JointGeometry objects are created using its various static create methods and are then used as input to the Joints.createInput method.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createByBetweenTwoPlanes",
+      "description": "Creates a new transient JointGeometry object based on a plane bisecting the two input planes."
+    },
+    {
+      "name": "createByCurve",
+      "description": "Creates a new transient JointGeometry object using a BRepEdge or SketchCurve as input. A JointGeometry object can be used to create a joint or joint origin."
+    },
+    {
+      "name": "createByCylinderOrConeFace",
+      "description": "Creates a new transient JointGeometry object based on a cylinder or cone BRepFace object."
+    },
+    {
+      "name": "createByNonPlanarFace",
+      "description": "Creates a new transient JointGeometry object based on a non-planar analytical BRepFace object. This is limited to cylinders, cones, spheres, and tori. A JointGeometry object can be used to create a joint or joint origin."
+    },
+    {
+      "name": "createByPlanarFace",
+      "description": "Creates a new transient JointGeometry object based on a planar BRepFace object. A JointGeometry object can be used to create a joint or joint origin."
+    },
+    {
+      "name": "createByPoint",
+      "description": "Creates a new transient JointGeometry object using a ConstructionPoint, SketchPoint or BRepVertex as input. A JointGeometry object can be used to create a joint or joint origin."
+    },
+    {
+      "name": "createByProfile",
+      "description": "Creates a new transient JointGeometry object based on a planar BRepFace object. A JointGeometry object can be used to create a joint or joint origin."
+    },
+    {
+      "name": "createBySphereFace",
+      "description": "Creates a new transient JointGeometry object based on a sphere BRepFace object."
+    },
+    {
+      "name": "createBySplineFace",
+      "description": "Creates a new transient JointGeometry object based on a spline BRepFace object."
+    },
+    {
+      "name": "createByTangentFaceEdge",
+      "description": "Creates a new transient JointGeometry object based on a BRepFace object as well as a BRepEdge object which is on the BRepFace."
+    },
+    {
+      "name": "createByTorusFace",
+      "description": "Creates a new transient JointGeometry object based on a torus BRepFace object."
+    },
+    {
+      "name": "createByTwoEdgeIntersection",
+      "description": "Creates a new transient JointGeometry object that is positioned at the intersection of the two input linear BRepEdge objects."
+    }
+  ],
+  "properties": [
+    {
+      "name": "entityOne",
+      "description": "The first entity that's defining this joint geometry. This can be various types of geometry depending on how this joint geometry is defined. The geometryType property indicates how this joint geometry is defined a provides a clue about the type of geometry to expect back from this property."
+    },
+    {
+      "name": "entityTwo",
+      "description": "This is the second entity that defines this joint geometry. This isn't used for all joint geometry types and will return null in the cases where it's not used. A second geometry is used in the case where the geometryType property returns JointProfileGeometry, JointPlanarBRepFaceGeometry, JointBetweenTwoFacesGeometry or JointByTwoEdgeIntersectionGeometry."
+    },
+    {
+      "name": "geometryType",
+      "description": "Returns the type of geometry this JointGeometry object represents."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "keyPointType",
+      "description": "Returns the keypoint type this JointGeometry is using."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "origin",
+      "description": "Returns the origin point that's been calculated for this joint geometry."
+    },
+    {
+      "name": "planeOne",
+      "description": "Returns the first plane for joint geometry that is defined between two planes. Returns null in all other cases."
+    },
+    {
+      "name": "planeTwo",
+      "description": "Returns the second plane for joint geometry that is defined between two planes. Returns null in all other cases."
+    },
+    {
+      "name": "primaryAxisVector",
+      "description": "Returns the direction of the primary axis that's been calculated for this joint geometry. Conceptually, this is the Z-axis of the computed coordinate system."
+    },
+    {
+      "name": "secondaryAxisVector",
+      "description": "Returns the direction of the secondary axis that's been calculated for this joint geometry. Conceptually, this is the X-axis of the computed coordinate system."
+    },
+    {
+      "name": "tangentFaceParamOne",
+      "description": "Returns the first tangent face parameter."
+    },
+    {
+      "name": "tangentFaceParamTwo",
+      "description": "Returns the second tangent face parameter."
+    },
+    {
+      "name": "tangentFaceType",
+      "description": "Returns the tangent face type this JointGeometry is using."
+    },
+    {
+      "name": "thirdAxisVector",
+      "description": "Returns the direction of the third axis that's been calculated for this joint geometry. Conceptually, this is the Y-axis of the computed coordinate system."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "BallJointMotion API Sample",
+      "description": "Demonstrates creating a joint with ball joint motion"
+    },
+    {
+      "name": "CylindricalJointMotion API Sample",
+      "description": "Demonstrates creating a joint with cylindrical joint motion."
+    },
+    {
+      "name": "Joint Origin Between Two Faces Sample",
+      "description": "Demonstrates creating a new Joint Origin between two planes."
+    },
+    {
+      "name": "Joint Origin Sample",
+      "description": "Demonstrates creating a new Joint Origin."
+    },
+    {
+      "name": "Joint API Sample",
+      "description": "Demonstrates creating a new joint."
+    },
+    {
+      "name": "Pin Slot Joint Motion API Sample",
+      "description": "Demonstrates creating a joint with pin slot joint motion"
+    },
+    {
+      "name": "Planar Joint Motion API Sample",
+      "description": "Demonstrates creating a joint with planar joint motion"
+    },
+    {
+      "name": "RevoluteJointMotion API Sample",
+      "description": "Demonstrates creating a joint with revolute joint motion."
+    },
+    {
+      "name": "SliderJointMotion API Sample",
+      "description": "Demonstrates creating a joint with slider joint motion."
+    }
+  ],
+  "version": "Introduced in version July 2015",
+  "method_details": {
+    "classType": {
+      "id": "JointGeometry_classType",
+      "title": "JointGeometry.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.JointGeometry.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::JointGeometry::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version July 2015"
+    },
+    "createByBetweenTwoPlanes": {
+      "id": "JointGeometry_createByBetweenTwoPlanes",
+      "title": "JointGeometry.createByBetweenTwoPlanes Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Creates a new transient JointGeometry object based on a plane bisecting the two input planes.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.JointGeometry.createByBetweenTwoPlanes(planeOne, planeTwo, entityOne, entityTwo, keyPointType)",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::JointGeometry::createByBetweenTwoPlanes(planeOne, planeTwo, entityOne, entityTwo, keyPointType);"
+      },
+      "return_type": "JointGeometry",
+      "return_description": "Returns the transient JointGeometry object that can be used to create a joint or joint origin or null in case of a failure.",
+      "parameters": [
+        {
+          "name": "planeOne",
+          "type": "Base",
+          "description": "The first planar entity that the joint origin will be created between. This can be a planar BRepFace or a ConstructionPlane object."
+        },
+        {
+          "name": "planeTwo",
+          "type": "Base",
+          "description": "The second planar entity that the joint origin will be created between. This can be a planar BRepFace or a ConstructionPlane object."
+        },
+        {
+          "name": "entityOne",
+          "type": "Base",
+          "description": "Specifies the entity that is used to define the keypoint. This can be many types of geometry including edges, planar and non-planar faces, profiles, and sketch geometry."
+        },
+        {
+          "name": "entityTwo",
+          "type": "Base",
+          "description": "If the entityOne argument is a planar BRepFace or a Profile, then this argument specifies either an edge on the face or a sketch curve on the profile. For a planar face this argument is optional in the case where the keyPointType argument is CenterKeyPoint indicating the center of area of the face is to be used."
+        },
+        {
+          "name": "keyPointType",
+          "type": "JointKeyPointTypes",
+          "description": "Specifies the position on the keyPointGeometry where the keypoint will be defined. This keypoint is then projected onto the plane to define the position of the joint geometry.   The values that are valid for this argument depend on the type of geometry specified for the geometry and edgeOrCurve arguments.   If the geometry argument is a planar face and the edgeOrCurve argument is an open BRepEdge object then this can be StartKeyPoint, MiddleKeyPoint, or EndKeyPoint. If the geometry argument is a planar face and the edgeOrCurve argument is a closed BRepEdge object (i.e. circles), it must be CenterKeyPoint. If the geometry argument is a planar face and the edgeOrCurve argument is null, then this must be CenterKeyPoint indicating the center of area of the face.   If the geometry argument is a non-planar face (cylinder, cone, sphere, or torus) this can be StartKeyPoint, MiddleKeyPoint, or EndKeyPoint for cylinders and cones but must be CenterKeyPoint for spheres and tori. The edgeOrCurve argument is ignored in this case.   If the geometry argument is a profile and the edgeOrCurve argument is null this can be CenterKeyPoint indicating the center of area of the profile. If the geometry argument is a profile and the edgeOrCurve argument is an open sketch curve on the profile then this can be StartKeyPoint, MiddleKeyPoint, or EndKeyPoint. If the geometry argument is a profile and the edgeOrCurve argument is a closed sketch curve (i.e. circles), it must be CenterKeyPoint."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Joint Origin Between Two Faces Sample",
+          "description": "Demonstrates creating a new Joint Origin between two planes."
+        }
+      ],
+      "version": "Introduced in version January 2016"
+    },
+    "createByCurve": {
+      "id": "JointGeometry_createByCurve",
+      "title": "JointGeometry.createByCurve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Creates a new transient JointGeometry object using a BRepEdge or SketchCurve as input. A JointGeometry object can be used to create a joint or joint origin.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.JointGeometry.createByCurve(curve, keyPointType)",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::JointGeometry::createByCurve(curve, keyPointType);"
+      },
+      "return_type": "JointGeometry",
+      "return_description": "Returns the transient JointGeometry object that can be used to create a joint or joint origin or null in case of a failure.",
+      "parameters": [
+        {
+          "name": "curve",
+          "type": "Base",
+          "description": "Input BRepEdge or SketchCurve."
+        },
+        {
+          "name": "keyPointType",
+          "type": "JointKeyPointTypes",
+          "description": "The position on the curve where to position the joint coordinate system. For any open curves the valid types are StartKeyPoint, MiddleKeyPoint, CenterKeyPoint and EndKeyPoint. For circular and elliptical shaped curves the option is CenterKeyPoint. For closed spline curves either StartKeyPoint or EndKeyPoint can be used and the result is the same."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "BallJointMotion API Sample",
+          "description": "Demonstrates creating a joint with ball joint motion"
+        },
+        {
+          "name": "CylindricalJointMotion API Sample",
+          "description": "Demonstrates creating a joint with cylindrical joint motion."
+        },
+        {
+          "name": "Joint API Sample",
+          "description": "Demonstrates creating a new joint."
+        },
+        {
+          "name": "Pin Slot Joint Motion API Sample",
+          "description": "Demonstrates creating a joint with pin slot joint motion"
+        },
+        {
+          "name": "Planar Joint Motion API Sample",
+          "description": "Demonstrates creating a joint with planar joint motion"
+        },
+        {
+          "name": "SliderJointMotion API Sample",
+          "description": "Demonstrates creating a joint with slider joint motion."
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    },
+    "createByCylinderOrConeFace": {
+      "id": "JointGeometry_createByCylinderOrConeFace",
+      "title": "JointGeometry.createByCylinderOrConeFace Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Creates a new transient JointGeometry object based on a cylinder or cone BRepFace object.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.JointGeometry.createByCylinderOrConeFace(face, angle, height)",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::JointGeometry::createByCylinderOrConeFace(face, angle, height);"
+      },
+      "return_type": "JointGeometry",
+      "return_description": "Returns the transient JointGeometry object that can be used to create a joint or joint origin or null in the case of a failure.",
+      "parameters": [
+        {
+          "name": "face",
+          "type": "BRepFace",
+          "description": "The cylindrical or conical BRepFace object."
+        },
+        {
+          "name": "angle",
+          "type": "JointQuadrantAngleTypes",
+          "description": "Specifies the angle relative to the parameterization of the input face. The zero, or start angle, is where the v parameter of the cylinder is zero. This can be determined by using the getPointAtParameter method of the SurfaceEvaluator object obtained from the evaluator property of the BRepFace object. The possible values can be StartJointQuadrantAngleType, QuarterJointQuadrantAngleType, MiddleJointQuadrantAngleType or ThirdQuarterJointQuadrantAngleType."
+        },
+        {
+          "name": "height",
+          "type": "JointKeyPointTypes",
+          "description": "Specifies the vertical position relative to the bottom of the cylinder at the given angle. The possible values can be StartKeyPoint, MiddleKeyPoint or EndKeyPoint."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "createByNonPlanarFace": {
+      "id": "JointGeometry_createByNonPlanarFace",
+      "title": "JointGeometry.createByNonPlanarFace Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Creates a new transient JointGeometry object based on a non-planar analytical BRepFace object. This is limited to cylinders, cones, spheres, and tori. A JointGeometry object can be used to create a joint or joint origin.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.JointGeometry.createByNonPlanarFace(face, keyPointType)",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::JointGeometry::createByNonPlanarFace(face, keyPointType);"
+      },
+      "return_type": "JointGeometry",
+      "return_description": "Returns the transient JointGeometry object that can be used to create a joint or joint origin or null in case of a failure.",
+      "parameters": [
+        {
+          "name": "face",
+          "type": "BRepFace",
+          "description": "The cylindrical, conical, spherical, or toroidal BRepFace object."
+        },
+        {
+          "name": "keyPointType",
+          "type": "JointKeyPointTypes",
+          "description": "Specifies the position relative to the input face where the joint keypoint will be located. For cylinders and cones this can be StartKeyPoint, MiddleKeyPoint, or EndKeyPoint. For spheres and tori this must be CenterKeyPoint."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "RevoluteJointMotion API Sample",
+          "description": "Demonstrates creating a joint with revolute joint motion."
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    },
+    "createByPlanarFace": {
+      "id": "JointGeometry_createByPlanarFace",
+      "title": "JointGeometry.createByPlanarFace Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Creates a new transient JointGeometry object based on a planar BRepFace object. A JointGeometry object can be used to create a joint or joint origin.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.JointGeometry.createByPlanarFace(face, edge, keyPointType)",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::JointGeometry::createByPlanarFace(face, edge, keyPointType);"
+      },
+      "return_type": "JointGeometry",
+      "return_description": "Returns the transient JointGeometry object that can be used to create a joint or joint origin or null in case of a failure.",
+      "parameters": [
+        {
+          "name": "face",
+          "type": "BRepFace",
+          "description": "The planar BRepFace object"
+        },
+        {
+          "name": "edge",
+          "type": "BRepEdge",
+          "description": "A BRepEdge edge object that is one of the edges of the specified face. This argument can be null in the case where the keyPointType is CenterKeypoint indicating the center of the face is to be used. When an edge is used, the keyPointType specifies the position along the edge for the keypoint."
+        },
+        {
+          "name": "keyPointType",
+          "type": "JointKeyPointTypes",
+          "description": "Specifies the position along the edge where the joint keypoint will be located. For open edges this can be StartKeyPoint, MiddleKeyPoint, or EndKeyPoint. For closed edges (i.e. circles), it must be CenterKeyPoint. When no edge is specified, it must be CenterKeyPoint indicating the center of area of the face is to be used."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Joint Origin Sample",
+          "description": "Demonstrates creating a new Joint Origin."
+        },
+        {
+          "name": "Joint API Sample",
+          "description": "Demonstrates creating a new joint."
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    },
+    "createByPoint": {
+      "id": "JointGeometry_createByPoint",
+      "title": "JointGeometry.createByPoint Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Creates a new transient JointGeometry object using a ConstructionPoint, SketchPoint or BRepVertex as input. A JointGeometry object can be used to create a joint or joint origin.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.JointGeometry.createByPoint(point)",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::JointGeometry::createByPoint(point);"
+      },
+      "return_type": "JointGeometry",
+      "return_description": "Returns the transient JointGeometry object that can be used to create a joint or joint origin or null in case of a failure.",
+      "parameters": [
+        {
+          "name": "point",
+          "type": "Base",
+          "description": "The ConstructionPoint, SketchPoint or BRepVertex object."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "BallJointMotion API Sample",
+          "description": "Demonstrates creating a joint with ball joint motion"
+        },
+        {
+          "name": "CylindricalJointMotion API Sample",
+          "description": "Demonstrates creating a joint with cylindrical joint motion."
+        },
+        {
+          "name": "Pin Slot Joint Motion API Sample",
+          "description": "Demonstrates creating a joint with pin slot joint motion"
+        },
+        {
+          "name": "Planar Joint Motion API Sample",
+          "description": "Demonstrates creating a joint with planar joint motion"
+        },
+        {
+          "name": "SliderJointMotion API Sample",
+          "description": "Demonstrates creating a joint with slider joint motion."
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    },
+    "createByProfile": {
+      "id": "JointGeometry_createByProfile",
+      "title": "JointGeometry.createByProfile Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Creates a new transient JointGeometry object based on a planar BRepFace object. A JointGeometry object can be used to create a joint or joint origin.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.JointGeometry.createByProfile(profile, sketchCurve, keyPointType)",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::JointGeometry::createByProfile(profile, sketchCurve, keyPointType);"
+      },
+      "return_type": "JointGeometry",
+      "return_description": "Returns the transient JointGeometry object that can be used to create a joint or joint origin or null in case of a failure.",
+      "parameters": [
+        {
+          "name": "profile",
+          "type": "Profile",
+          "description": "The Profile object."
+        },
+        {
+          "name": "sketchCurve",
+          "type": "SketchCurve",
+          "description": "A sketch curve that is part of the input profile. This argument can be null in the case where the keyPointType is CenterKeypoint indicating the center of the profile is to be used. When a curve is used, the keyPointType specifies the position along the curve for the keypoint."
+        },
+        {
+          "name": "keyPointType",
+          "type": "JointKeyPointTypes",
+          "description": "Specifies the position along the curve where the joint keypoint will be located. For open curves (lines, arcs, elliptical arcs, and open splines) this can be StartKeyPoint, MiddleKeyPoint, or EndKeyPoint. For closed analytic (circles and ellipses), it must be CenterKeyPoint. When no curve is specified, it must be CenterKeyPoint indicating the center of area of the profile is to be used."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "RevoluteJointMotion API Sample",
+          "description": "Demonstrates creating a joint with revolute joint motion."
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    },
+    "createBySphereFace": {
+      "id": "JointGeometry_createBySphereFace",
+      "title": "JointGeometry.createBySphereFace Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Creates a new transient JointGeometry object based on a sphere BRepFace object.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.JointGeometry.createBySphereFace(face, azimuthAngle, polarAngle)",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::JointGeometry::createBySphereFace(face, azimuthAngle, polarAngle);"
+      },
+      "return_type": "JointGeometry",
+      "return_description": "Returns the transient JointGeometry object that can be used to create a joint or joint origin or null in the case of a failure.",
+      "parameters": [
+        {
+          "name": "face",
+          "type": "BRepFace",
+          "description": "The sphere BRepFace object."
+        },
+        {
+          "name": "azimuthAngle",
+          "type": "JointQuadrantAngleTypes",
+          "description": "Specifies the azimuth angle relative to the v parameterization of the input face. The zero, or start angle, is where the v parameter of the sphere is zero. This can be determined by using the getPointAtParameter method of the SurfaceEvaluator object obtained from the evaluator property of the BRepFace object. The possible values can be StartJointQuadrantAngleType, QuarterJointQuadrantAngleType, MiddleJointQuadrantAngleType or ThirdQuarterJointQuadrantAngleType."
+        },
+        {
+          "name": "polarAngle",
+          "type": "JointKeyPointTypes",
+          "description": "Specifies the polar angle relative to the u parameterization of the input face. The zero, or start angle, is where the u parameter of the sphere is zero. This can be determined by using the getPointAtParameter method of the SurfaceEvaluator object obtained from the evaluator property of the BRepFace object. The possible values can be StartKeyPoint for the north pole, MiddleKeyPoint for points on the equator, or EndKeyPoint for the south pole."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "createBySplineFace": {
+      "id": "JointGeometry_createBySplineFace",
+      "title": "JointGeometry.createBySplineFace Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Creates a new transient JointGeometry object based on a spline BRepFace object.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.JointGeometry.createBySplineFace(face, paramU, paramV)",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::JointGeometry::createBySplineFace(face, paramU, paramV);"
+      },
+      "return_type": "JointGeometry",
+      "return_description": "Returns the transient JointGeometry object that can be used to create a joint or joint origin or null in the case of a failure.",
+      "parameters": [
+        {
+          "name": "face",
+          "type": "BRepFace",
+          "description": "The spline BRepFace object."
+        },
+        {
+          "name": "paramU",
+          "type": "JointKeyPointTypes",
+          "description": "Specifies the u parameter of the input spline face where the joint keypoint will be located. The possible values can be StartKeyPoint, MiddleKeyPoint or EndKeyPoint."
+        },
+        {
+          "name": "paramV",
+          "type": "JointKeyPointTypes",
+          "description": "Specifies the v parameter of the input spline face where the joint keypoint will be located. The possible values can be StartKeyPoint, MiddleKeyPoint or EndKeyPoint."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "createByTangentFaceEdge": {
+      "id": "JointGeometry_createByTangentFaceEdge",
+      "title": "JointGeometry.createByTangentFaceEdge Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Creates a new transient JointGeometry object based on a BRepFace object as well as a BRepEdge object which is on the BRepFace.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.JointGeometry.createByTangentFaceEdge(face, edge, edgePointType)",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::JointGeometry::createByTangentFaceEdge(face, edge, edgePointType);"
+      },
+      "return_type": "JointGeometry",
+      "return_description": "Returns the transient JointGeometry object that can be used to create a joint or joint origin or null in the case of a failure.",
+      "parameters": [
+        {
+          "name": "face",
+          "type": "BRepFace",
+          "description": "The cylindrical, conical, spherical, toroidal or spline BRepFace object."
+        },
+        {
+          "name": "edge",
+          "type": "BRepEdge",
+          "description": "A BRepEdge object that is one of the edges on the selected face."
+        },
+        {
+          "name": "edgePointType",
+          "type": "JointTangentFaceEdgePointTypes",
+          "description": "Specifies the position along the edge where the joint keypoint will be located. The possible values depend on whether the edge is closed or not. For closed edge, the possible values can be StartJointTangentFaceEdgePointType, QuarterJointTangentFaceEdgePointType, MiddleJointTangentFaceEdgePointType or ThirdQuarterJointTangentFaceEdgePointType. For open edge, the possible values can be StartJointTangentFaceEdgePointType, MiddleJointTangentFaceEdgePointType, or EndJointTangentFaceEdgePointType."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "createByTorusFace": {
+      "id": "JointGeometry_createByTorusFace",
+      "title": "JointGeometry.createByTorusFace Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Creates a new transient JointGeometry object based on a torus BRepFace object.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.JointGeometry.createByTorusFace(face, azimuthAngle, sectionAngle)",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::JointGeometry::createByTorusFace(face, azimuthAngle, sectionAngle);"
+      },
+      "return_type": "JointGeometry",
+      "return_description": "Returns the transient JointGeometry object that can be used to create a joint or joint origin or null in the case of a failure.",
+      "parameters": [
+        {
+          "name": "face",
+          "type": "BRepFace",
+          "description": "The torus BRepFace object."
+        },
+        {
+          "name": "azimuthAngle",
+          "type": "JointQuadrantAngleTypes",
+          "description": "Specifies the azimuth angle relative to the v parameterization of the input face. The zero, or start angle, is where the v parameter of the sphere is zero. This can be determined by using the getPointAtParameter method of the SurfaceEvaluator object obtained from the evaluator property of the BRepFace object. The possible values can be StartJointQuadrantAngleType, QuarterJointQuadrantAngleType, MiddleJointQuadrantAngleType or ThirdQuarterJointQuadrantAngleType."
+        },
+        {
+          "name": "sectionAngle",
+          "type": "JointQuadrantAngleTypes",
+          "description": "Specifies the angle relative to the start point of the section circle at give azimuth angle. The possible values can be StartJointQuadrantAngleType, QuarterJointQuadrantAngleType, MiddleJointQuadrantAngleType or ThirdQuarterJointQuadrantAngleType."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "createByTwoEdgeIntersection": {
+      "id": "JointGeometry_createByTwoEdgeIntersection",
+      "title": "JointGeometry.createByTwoEdgeIntersection Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Creates a new transient JointGeometry object that is positioned at the intersection of the two input linear BRepEdge objects.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.JointGeometry.createByTwoEdgeIntersection(edgeOne, edgeTwo)",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::JointGeometry::createByTwoEdgeIntersection(edgeOne, edgeTwo);"
+      },
+      "return_type": "JointGeometry",
+      "return_description": "Returns the transient JointGeometry object that can be used to create a joint or joint origin or null in case of a failure.",
+      "parameters": [
+        {
+          "name": "edgeOne",
+          "type": "BRepEdge",
+          "description": "The first linear BRepEdge object."
+        },
+        {
+          "name": "edgeTwo",
+          "type": "BRepEdge",
+          "description": "The second linear BRepEdge object. This edge must exist either on the same body as edgeOne or on a body in the same component as edgeOne. edgeOne and edgeTwo must also both lie on the same plane and must intersect, they cannot be parallel."
+        }
+      ],
+      "version": "Introduced in version September 2022"
+    }
+  },
+  "property_details": {
+    "entityOne": {
+      "id": "JointGeometry_entityOne",
+      "title": "JointGeometry.entityOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "The first entity that's defining this joint geometry. This can be various types of geometry depending on how this joint geometry is defined. The geometryType property indicates how this joint geometry is defined a provides a clue about the type of geometry to expect back from this property.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointGeometry_var.entityOne",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointGeometry_var->entityOne();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "entityTwo": {
+      "id": "JointGeometry_entityTwo",
+      "title": "JointGeometry.entityTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "This is the second entity that defines this joint geometry. This isn't used for all joint geometry types and will return null in the cases where it's not used. A second geometry is used in the case where the geometryType property returns JointProfileGeometry, JointPlanarBRepFaceGeometry, JointBetweenTwoFacesGeometry or JointByTwoEdgeIntersectionGeometry.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointGeometry_var.entityTwo",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointGeometry_var->entityTwo();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "geometryType": {
+      "id": "JointGeometry_geometryType",
+      "title": "JointGeometry.geometryType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Returns the type of geometry this JointGeometry object represents.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointGeometry_var.geometryType",
+        "cpp": "#include \n\n// Get the value of the property.\nJointGeometryTypes propertyValue = jointGeometry_var->geometryType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "isValid": {
+      "id": "JointGeometry_isValid",
+      "title": "JointGeometry.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointGeometry_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = jointGeometry_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "keyPointType": {
+      "id": "JointGeometry_keyPointType",
+      "title": "JointGeometry.keyPointType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Returns the keypoint type this JointGeometry is using.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointGeometry_var.keyPointType",
+        "cpp": "#include \n\n// Get the value of the property.\nJointKeyPointTypes propertyValue = jointGeometry_var->keyPointType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "objectType": {
+      "id": "JointGeometry_objectType",
+      "title": "JointGeometry.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointGeometry_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = jointGeometry_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "origin": {
+      "id": "JointGeometry_origin",
+      "title": "JointGeometry.origin Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Returns the origin point that's been calculated for this joint geometry.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointGeometry_var.origin",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointGeometry_var->origin();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "planeOne": {
+      "id": "JointGeometry_planeOne",
+      "title": "JointGeometry.planeOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Returns the first plane for joint geometry that is defined between two planes. Returns null in all other cases.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointGeometry_var.planeOne",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointGeometry_var->planeOne();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "planeTwo": {
+      "id": "JointGeometry_planeTwo",
+      "title": "JointGeometry.planeTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Returns the second plane for joint geometry that is defined between two planes. Returns null in all other cases.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointGeometry_var.planeTwo",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointGeometry_var->planeTwo();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "primaryAxisVector": {
+      "id": "JointGeometry_primaryAxisVector",
+      "title": "JointGeometry.primaryAxisVector Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Returns the direction of the primary axis that's been calculated for this joint geometry. Conceptually, this is the Z-axis of the computed coordinate system.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointGeometry_var.primaryAxisVector",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointGeometry_var->primaryAxisVector();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "secondaryAxisVector": {
+      "id": "JointGeometry_secondaryAxisVector",
+      "title": "JointGeometry.secondaryAxisVector Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Returns the direction of the secondary axis that's been calculated for this joint geometry. Conceptually, this is the X-axis of the computed coordinate system.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointGeometry_var.secondaryAxisVector",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointGeometry_var->secondaryAxisVector();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "tangentFaceParamOne": {
+      "id": "JointGeometry_tangentFaceParamOne",
+      "title": "JointGeometry.tangentFaceParamOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Returns the first tangent face parameter.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointGeometry_var.tangentFaceParamOne",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = jointGeometry_var->tangentFaceParamOne();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "tangentFaceParamTwo": {
+      "id": "JointGeometry_tangentFaceParamTwo",
+      "title": "JointGeometry.tangentFaceParamTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Returns the second tangent face parameter.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointGeometry_var.tangentFaceParamTwo",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = jointGeometry_var->tangentFaceParamTwo();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "tangentFaceType": {
+      "id": "JointGeometry_tangentFaceType",
+      "title": "JointGeometry.tangentFaceType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Returns the tangent face type this JointGeometry is using.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointGeometry_var.tangentFaceType",
+        "cpp": "#include \n\n// Get the value of the property.\nJointTangentFaceTypes propertyValue = jointGeometry_var->tangentFaceType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "thirdAxisVector": {
+      "id": "JointGeometry_thirdAxisVector",
+      "title": "JointGeometry.thirdAxisVector Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointGeometry.h",
+      "description": "Returns the direction of the third axis that's been calculated for this joint geometry. Conceptually, this is the Y-axis of the computed coordinate system.",
+      "parent_class": "JointGeometry",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointGeometry_var.thirdAxisVector",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointGeometry_var->thirdAxisVector();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    }
+  }
+}

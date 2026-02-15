@@ -1,0 +1,239 @@
+{
+  "id": "SilhouetteSplitFeatures",
+  "title": "SilhouetteSplitFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/SilhouetteSplitFeatures.h",
+  "description": "Collection that provides access to all of the existing Silhouette Split features in a component and supports the ability to create new Silhouette Split features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new silhouette split feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a SilhouetteSplitFeatureInput object. Use properties and methods on this object to define the silhouette split you want to create and then use the Add method, passing in the SilhouetteSplitFeatureInput object."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified silhouette split feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified silhouette split feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of Silhouette Split features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Silhouette Split Feature API Sample",
+      "description": "Demonstrates creating a new silhouette split feature."
+    }
+  ],
+  "version": "Introduced in version June 2015",
+  "method_details": {
+    "add": {
+      "id": "SilhouetteSplitFeatures_add",
+      "title": "SilhouetteSplitFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SilhouetteSplitFeatures.h",
+      "description": "Creates a new silhouette split feature.",
+      "parent_class": "SilhouetteSplitFeatures",
+      "syntax": {
+        "python": "returnValue = silhouetteSplitFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = silhouetteSplitFeatures_var->add(input);"
+      },
+      "return_type": "SilhouetteSplitFeature",
+      "return_description": "Returns the newly created SilhouetteSplitFeature object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "SilhouetteSplitFeatureInput",
+          "description": "A SilhouetteSplitFeatureInput object that defines the desired silhouette split feature. Use the createInput method to create a new SilhouetteSplitFeatureInput object and then use methods on it (the SilhouetteSplitFeatureInput object) to define the silhouette split."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "silhouetteSplitFeatures.add",
+          "description": "Demonstrates the silhouetteSplitFeatures.add method. The Silhouette Split feature is limited in the bodies it will split. The simplest body to get a valid result is to create a sphere and split it."
+        },
+        {
+          "name": "Silhouette Split Feature API Sample",
+          "description": "Demonstrates creating a new silhouette split feature."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "classType": {
+      "id": "SilhouetteSplitFeatures_classType",
+      "title": "SilhouetteSplitFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SilhouetteSplitFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SilhouetteSplitFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.SilhouetteSplitFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::SilhouetteSplitFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version June 2015"
+    },
+    "createInput": {
+      "id": "SilhouetteSplitFeatures_createInput",
+      "title": "SilhouetteSplitFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SilhouetteSplitFeatures.h",
+      "description": "Creates a SilhouetteSplitFeatureInput object. Use properties and methods on this object to define the silhouette split you want to create and then use the Add method, passing in the SilhouetteSplitFeatureInput object.",
+      "parent_class": "SilhouetteSplitFeatures",
+      "syntax": {
+        "python": "returnValue = silhouetteSplitFeatures_var.createInput(viewDirection, targetBody, operation)",
+        "cpp": "#include \n\nreturnValue = silhouetteSplitFeatures_var->createInput(viewDirection, targetBody, operation);"
+      },
+      "return_type": "SilhouetteSplitFeatureInput",
+      "return_description": "Returns the newly created SilhouetteSplitFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "viewDirection",
+          "type": "Base",
+          "description": "A construction axis, linear BRepEdge, planar BRepFace or a construction plane that defines the view direction where the silhouette is calculated."
+        },
+        {
+          "name": "targetBody",
+          "type": "BRepBody",
+          "description": "Input the single solid body to split"
+        },
+        {
+          "name": "operation",
+          "type": "SilhouetteSplitOperations",
+          "description": "The type of silhouette split operation to perform."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "silhouetteSplitFeatures.add",
+          "description": "Demonstrates the silhouetteSplitFeatures.add method. The Silhouette Split feature is limited in the bodies it will split. The simplest body to get a valid result is to create a sphere and split it."
+        },
+        {
+          "name": "Silhouette Split Feature API Sample",
+          "description": "Demonstrates creating a new silhouette split feature."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "item": {
+      "id": "SilhouetteSplitFeatures_item",
+      "title": "SilhouetteSplitFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SilhouetteSplitFeatures.h",
+      "description": "Function that returns the specified silhouette split feature using an index into the collection.",
+      "parent_class": "SilhouetteSplitFeatures",
+      "syntax": {
+        "python": "returnValue = silhouetteSplitFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = silhouetteSplitFeatures_var->item(index);"
+      },
+      "return_type": "SilhouetteSplitFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "itemByName": {
+      "id": "SilhouetteSplitFeatures_itemByName",
+      "title": "SilhouetteSplitFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SilhouetteSplitFeatures.h",
+      "description": "Function that returns the specified silhouette split feature using the name of the feature.",
+      "parent_class": "SilhouetteSplitFeatures",
+      "syntax": {
+        "python": "returnValue = silhouetteSplitFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = silhouetteSplitFeatures_var->itemByName(name);"
+      },
+      "return_type": "SilhouetteSplitFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "SilhouetteSplitFeatures_count",
+      "title": "SilhouetteSplitFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SilhouetteSplitFeatures.h",
+      "description": "The number of Silhouette Split features in the collection.",
+      "parent_class": "SilhouetteSplitFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = silhouetteSplitFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = silhouetteSplitFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isValid": {
+      "id": "SilhouetteSplitFeatures_isValid",
+      "title": "SilhouetteSplitFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SilhouetteSplitFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SilhouetteSplitFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = silhouetteSplitFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = silhouetteSplitFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "objectType": {
+      "id": "SilhouetteSplitFeatures_objectType",
+      "title": "SilhouetteSplitFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SilhouetteSplitFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SilhouetteSplitFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = silhouetteSplitFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = silhouetteSplitFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    }
+  }
+}

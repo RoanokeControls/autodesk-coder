@@ -1,0 +1,197 @@
+{
+  "id": "Products",
+  "title": "Products Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/Products.h",
+  "description": "The Products object provides access to all of the products that exist in the document.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified product using an index into the collection."
+    },
+    {
+      "name": "itemByProductType",
+      "description": "Returns the specified product, if it exists within this document."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of products within the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Gets all properties using GraphQL",
+      "description": "Fetches bulk component properties of the root component and from occurrences via single GraphQL query."
+    },
+    {
+      "name": "Generate Toolpaths API Sample",
+      "description": "Demonstrates generating the toolpaths in the active document."
+    },
+    {
+      "name": "Post Toolpaths API Sample",
+      "description": "Demonstrates posting toolpaths in the active document."
+    },
+    {
+      "name": "Save and Insert File API Sample",
+      "description": "Demonstrates creating save a new file and then inserting it into a design. To use this sample, have a design open that has been saved and run the script. It will create a new design that contains a cylinder, save it to the same folder the active design was saved to, and then insert it into the active design."
+    },
+    {
+      "name": "Set part number using GraphQL",
+      "description": "Sets part number of root component and from occurrences via GQL query."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "classType": {
+      "id": "Products_classType",
+      "title": "Products.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Products.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Products",
+      "syntax": {
+        "python": "returnValue = adsk.core.Products.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Products::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "Products_item",
+      "title": "Products.item Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Products.h",
+      "description": "Function that returns the specified product using an index into the collection.",
+      "parent_class": "Products",
+      "syntax": {
+        "python": "returnValue = products_var.item(index)",
+        "cpp": "#include \n\nreturnValue = products_var->item(index);"
+      },
+      "return_type": "Product",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "itemByProductType": {
+      "id": "Products_itemByProductType",
+      "title": "Products.itemByProductType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Products.h",
+      "description": "Returns the specified product, if it exists within this document.",
+      "parent_class": "Products",
+      "syntax": {
+        "python": "returnValue = products_var.itemByProductType(productType)",
+        "cpp": "#include \n\nreturnValue = products_var->itemByProductType(productType);"
+      },
+      "return_type": "Product",
+      "return_description": "Returns the specified item or null if the specified productType does not exist within this document.",
+      "parameters": [
+        {
+          "name": "productType",
+          "type": "string",
+          "description": "The product type string. For example, to get the product that represents the design data you use \"DesignProductType\" or to get the product that represent the CAM data you use \"CAMProductType\".   A complete list of available products can be obtained by using the Application.supportedProductTypes property."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Additive Manufacturing MJF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+        },
+        {
+          "name": "Gets all properties using GraphQL",
+          "description": "Fetches bulk component properties of the root component and from occurrences via single GraphQL query."
+        },
+        {
+          "name": "Generate Toolpaths API Sample",
+          "description": "Demonstrates generating the toolpaths in the active document."
+        },
+        {
+          "name": "Post Toolpaths API Sample",
+          "description": "Demonstrates posting toolpaths in the active document."
+        },
+        {
+          "name": "Save and Insert File API Sample",
+          "description": "Demonstrates creating save a new file and then inserting it into a design. To use this sample, have a design open that has been saved and run the script. It will create a new design that contains a cylinder, save it to the same folder the active design was saved to, and then insert it into the active design."
+        },
+        {
+          "name": "Set part number using GraphQL",
+          "description": "Sets part number of root component and from occurrences via GQL query."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "Products_count",
+      "title": "Products.count Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Products.h",
+      "description": "Returns the number of products within the collection.",
+      "parent_class": "Products",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = products_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = products_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "Products_isValid",
+      "title": "Products.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Products.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Products",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = products_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = products_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "Products_objectType",
+      "title": "Products.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Products.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Products",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = products_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = products_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

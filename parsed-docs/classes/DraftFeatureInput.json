@@ -1,0 +1,314 @@
+{
+  "id": "DraftFeatureInput",
+  "title": "DraftFeatureInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/DraftFeatureInput.h",
+  "description": "This class defines the methods and properties that pertain to the definition of a draft feature.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "setSingleAngle",
+      "description": "Defines the draft to be defined so that a single angle is used for all drafts. If the isSymmetric is true then the faces are split along the parting plane and drafted independently using the same angle."
+    },
+    {
+      "name": "setTwoAngles",
+      "description": "Defines both angles to use when the surfaces are split along the draft plane or parting line and the faces on each side of the plane are drafted independently."
+    }
+  ],
+  "properties": [
+    {
+      "name": "angleOne",
+      "description": "Gets the first, or the only angle in the case of a single angle definition."
+    },
+    {
+      "name": "angleTwo",
+      "description": "Gets the second angle. This can be null in the case where a single angle definition is used."
+    },
+    {
+      "name": "inputFaces",
+      "description": "Gets and sets the input faces. If IsTangentChain is true, all the faces that are tangentially connected to the input faces (if any) will also be included."
+    },
+    {
+      "name": "isDirectionFlipped",
+      "description": "Gets and sets if the direction of the draft is flipped. This defaults to false."
+    },
+    {
+      "name": "isSymmetric",
+      "description": "Gets if the draft is symmetric from the draft plane. This only applies in the case where two angles have been specified and should be ignored otherwise."
+    },
+    {
+      "name": "isTangentChain",
+      "description": "Gets and sets if any faces that are tangentially connected to any of the input faces will also be included in setting InputEntities. It defaults to true."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "plane",
+      "description": "Gets and sets the plane that defines the direction in which the draft is applied. This is also referred to as the pull direction. This can be defined using either a planar BRepFace or a ConstructionPlane."
+    },
+    {
+      "name": "targetBaseFeature",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature.   Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Draft Feature API Sample",
+      "description": "Demonstrates creating a new draft feature."
+    }
+  ],
+  "version": "Introduced in version January 2015",
+  "property_details": {
+    "angleOne": {
+      "id": "DraftFeatureInput_angleOne",
+      "title": "DraftFeatureInput.angleOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatureInput.h",
+      "description": "Gets the first, or the only angle in the case of a single angle definition.",
+      "parent_class": "DraftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = draftFeatureInput_var.angleOne",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = draftFeatureInput_var->angleOne();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "angleTwo": {
+      "id": "DraftFeatureInput_angleTwo",
+      "title": "DraftFeatureInput.angleTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatureInput.h",
+      "description": "Gets the second angle. This can be null in the case where a single angle definition is used.",
+      "parent_class": "DraftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = draftFeatureInput_var.angleTwo",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = draftFeatureInput_var->angleTwo();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "inputFaces": {
+      "id": "DraftFeatureInput_inputFaces",
+      "title": "DraftFeatureInput.inputFaces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatureInput.h",
+      "description": "Gets and sets the input faces. If IsTangentChain is true, all the faces that are tangentially connected to the input faces (if any) will also be included.",
+      "parent_class": "DraftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = draftFeatureInput_var.inputFaces\n\n# Set the value of the property.\ndraftFeatureInput_var.inputFaces = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = draftFeatureInput_var->inputFaces();\n\n// Set the value of the property, where value_var is a BRepFace.\nbool returnValue = draftFeatureInput_var->inputFaces(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isDirectionFlipped": {
+      "id": "DraftFeatureInput_isDirectionFlipped",
+      "title": "DraftFeatureInput.isDirectionFlipped Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatureInput.h",
+      "description": "Gets and sets if the direction of the draft is flipped. This defaults to false.",
+      "parent_class": "DraftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = draftFeatureInput_var.isDirectionFlipped\n\n# Set the value of the property.\ndraftFeatureInput_var.isDirectionFlipped = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = draftFeatureInput_var->isDirectionFlipped();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = draftFeatureInput_var->isDirectionFlipped(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Draft Feature API Sample",
+          "description": "Demonstrates creating a new draft feature."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "isSymmetric": {
+      "id": "DraftFeatureInput_isSymmetric",
+      "title": "DraftFeatureInput.isSymmetric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatureInput.h",
+      "description": "Gets if the draft is symmetric from the draft plane. This only applies in the case where two angles have been specified and should be ignored otherwise.",
+      "parent_class": "DraftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = draftFeatureInput_var.isSymmetric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = draftFeatureInput_var->isSymmetric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isTangentChain": {
+      "id": "DraftFeatureInput_isTangentChain",
+      "title": "DraftFeatureInput.isTangentChain Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatureInput.h",
+      "description": "Gets and sets if any faces that are tangentially connected to any of the input faces will also be included in setting InputEntities. It defaults to true.",
+      "parent_class": "DraftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = draftFeatureInput_var.isTangentChain\n\n# Set the value of the property.\ndraftFeatureInput_var.isTangentChain = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = draftFeatureInput_var->isTangentChain();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = draftFeatureInput_var->isTangentChain(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isValid": {
+      "id": "DraftFeatureInput_isValid",
+      "title": "DraftFeatureInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatureInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "DraftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = draftFeatureInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = draftFeatureInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "objectType": {
+      "id": "DraftFeatureInput_objectType",
+      "title": "DraftFeatureInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatureInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "DraftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = draftFeatureInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = draftFeatureInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "plane": {
+      "id": "DraftFeatureInput_plane",
+      "title": "DraftFeatureInput.plane Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatureInput.h",
+      "description": "Gets and sets the plane that defines the direction in which the draft is applied. This is also referred to as the pull direction. This can be defined using either a planar BRepFace or a ConstructionPlane.",
+      "parent_class": "DraftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = draftFeatureInput_var.plane\n\n# Set the value of the property.\ndraftFeatureInput_var.plane = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = draftFeatureInput_var->plane();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = draftFeatureInput_var->plane(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "targetBaseFeature": {
+      "id": "DraftFeatureInput_targetBaseFeature",
+      "title": "DraftFeatureInput.targetBaseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatureInput.h",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature. Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it.",
+      "parent_class": "DraftFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = draftFeatureInput_var.targetBaseFeature\n\n# Set the value of the property.\ndraftFeatureInput_var.targetBaseFeature = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = draftFeatureInput_var->targetBaseFeature();\n\n// Set the value of the property, where value_var is a BaseFeature.\nbool returnValue = draftFeatureInput_var->targetBaseFeature(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "DraftFeatureInput_classType",
+      "title": "DraftFeatureInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatureInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "DraftFeatureInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.DraftFeatureInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::DraftFeatureInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2015"
+    },
+    "setSingleAngle": {
+      "id": "DraftFeatureInput_setSingleAngle",
+      "title": "DraftFeatureInput.setSingleAngle Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatureInput.h",
+      "description": "Defines the draft to be defined so that a single angle is used for all drafts. If the isSymmetric is true then the faces are split along the parting plane and drafted independently using the same angle.",
+      "parent_class": "DraftFeatureInput",
+      "syntax": {
+        "python": "returnValue = draftFeatureInput_var.setSingleAngle(isSymmetric, angle)",
+        "cpp": "#include \n\nreturnValue = draftFeatureInput_var->setSingleAngle(isSymmetric, angle);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful",
+      "parameters": [
+        {
+          "name": "isSymmetric",
+          "type": "boolean",
+          "description": "Set to true if the faces are to be split along the plane or parting line and drafted symmetrically. This will have the side effect of setting the isSymmetric property to the same value."
+        },
+        {
+          "name": "angle",
+          "type": "ValueInput",
+          "description": "The ValueInput object that defines the angle of the draft. This can be a positive or negative value which will affect the direction of the draft along with the isDirectionFlipped property."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "draftFeatures.add",
+          "description": "Demonstrates the draftFeatures.add method. To use this sample, have a design open that contains at least one body. When you run the sample, you will be prompted to select the face to draft. Because the pull direction is using the base X-Y plane, you need to select a face that is not parallel to the X-Y plane."
+        },
+        {
+          "name": "Draft Feature API Sample",
+          "description": "Demonstrates creating a new draft feature."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "setTwoAngles": {
+      "id": "DraftFeatureInput_setTwoAngles",
+      "title": "DraftFeatureInput.setTwoAngles Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatureInput.h",
+      "description": "Defines both angles to use when the surfaces are split along the draft plane or parting line and the faces on each side of the plane are drafted independently.",
+      "parent_class": "DraftFeatureInput",
+      "syntax": {
+        "python": "returnValue = draftFeatureInput_var.setTwoAngles(angleOne, angleTwo)",
+        "cpp": "#include \n\nreturnValue = draftFeatureInput_var->setTwoAngles(angleOne, angleTwo);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful",
+      "parameters": [
+        {
+          "name": "angleOne",
+          "type": "ValueInput",
+          "description": "The ValueInput object that defines the angle for the faces on the first side of the draft plane or parting line."
+        },
+        {
+          "name": "angleTwo",
+          "type": "ValueInput",
+          "description": "The ValueInput object that defines the angle for the faces on the second side of the draft plane or parting line."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    }
+  }
+}

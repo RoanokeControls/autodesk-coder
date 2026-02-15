@@ -1,0 +1,12 @@
+{
+  "id": "GeometricConstraints_addSmooth_Sample",
+  "title": "GeometricConstraints.addSmooth",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrate the GeometricConstraints.addSmooth method.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_GeometricConstraints_addSmooth(sketch: adsk.fusion.Sketch):\n    # Create a sketch arc.\n    arc = sketch.sketchCurves.sketchArcs.addByCenterStartSweep(adsk.core.Point3D.create(5, 5, 0),\n                                                               adsk.core.Point3D.create(15, 0, 0),\n                                                               -135.0)\n\n    # Create a spline that's connected to the end point of the arc.\n    points = adsk.core.ObjectCollection.create()\n    points.add(arc.endSketchPoint)\n    points.add(adsk.core.Point3D.create(10, 8, 0))\n    points.add(adsk.core.Point3D.create(5, 6, 0))\n    points.add(adsk.core.Point3D.create(0, 8, 0))\n    spline = sketch.sketchCurves.sketchFittedSplines.add(points)\n    \n    # Create the smooth constraint between the arc and the spline.\n    constraints = sketch.geometricConstraints\n    smoothConstraint = constraints.addSmooth(arc, spline)"
+  }
+}

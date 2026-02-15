@@ -1,0 +1,349 @@
+{
+  "id": "DocumentToolLibrary",
+  "title": "DocumentToolLibrary Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/Tools/DocumentToolLibrary.h",
+  "description": "DocumentToolLibrary provides access to tools used by the document. It supports adding, updating and deleting tools in the document tool library.",
+  "parent_class": "ToolLibrary",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Inserts a Tool at the end of the ToolLibrary."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createEmpty",
+      "description": "Creates an empty ToolLibrary."
+    },
+    {
+      "name": "createFromJson",
+      "description": "Creates a ToolLibrary by given JSON-string. Raises an error if the given JSON is invalid."
+    },
+    {
+      "name": "createQuery",
+      "description": "Creates a new ToolQuery that is used to query the library for tools matching the query."
+    },
+    {
+      "name": "item",
+      "description": "Get Tool by index in ToolLibrary."
+    },
+    {
+      "name": "operationsByTool",
+      "description": "Returns all operations that use the given tool. The tool must exist in the document tool library. Raises an error if the tool is not in the document."
+    },
+    {
+      "name": "remove",
+      "description": "Remove Tool by index from ToolLibrary."
+    },
+    {
+      "name": "toJson",
+      "description": "Generate and return JSON string that contains all tools of that list."
+    },
+    {
+      "name": "toolsBySetupOrFolder",
+      "description": "Returns all tools used in a given setup or folder. Given setup or folder must belong to the document of the DocumentToolLibrary. Raises an error if given operation is not in the document."
+    },
+    {
+      "name": "update",
+      "description": "Update the given tool in the document tool library. The update applies all changes to the tool in the document tool library and therefore on all operations that use the tool. Will error if the tool does not exist in the document tool library."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of tools in the ToolLibrary."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "method_details": {
+    "add": {
+      "id": "DocumentToolLibrary_add",
+      "title": "DocumentToolLibrary.add Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/DocumentToolLibrary.h",
+      "description": "Inserts a Tool at the end of the ToolLibrary.",
+      "parent_class": "DocumentToolLibrary",
+      "syntax": {
+        "python": "returnValue = documentToolLibrary_var.add(tool)",
+        "cpp": "#include \n\nreturnValue = documentToolLibrary_var->add(tool);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true for successful insertion, false otherwise",
+      "parameters": [
+        {
+          "name": "tool",
+          "type": "Tool",
+          "description": "The Tool that should be added."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "classType": {
+      "id": "DocumentToolLibrary_classType",
+      "title": "DocumentToolLibrary.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/DocumentToolLibrary.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "DocumentToolLibrary",
+      "syntax": {
+        "python": "returnValue = adsk.cam.DocumentToolLibrary.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::DocumentToolLibrary::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    },
+    "createEmpty": {
+      "id": "DocumentToolLibrary_createEmpty",
+      "title": "DocumentToolLibrary.createEmpty Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/DocumentToolLibrary.h",
+      "description": "Creates an empty ToolLibrary.",
+      "parent_class": "DocumentToolLibrary",
+      "syntax": {
+        "python": "returnValue = adsk.cam.DocumentToolLibrary.createEmpty()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::DocumentToolLibrary::createEmpty();"
+      },
+      "return_type": "ToolLibrary",
+      "return_description": "Returns the newly created ToolLibrary.",
+      "version": "Introduced in version April 2023"
+    },
+    "createFromJson": {
+      "id": "DocumentToolLibrary_createFromJson",
+      "title": "DocumentToolLibrary.createFromJson Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/DocumentToolLibrary.h",
+      "description": "Creates a ToolLibrary by given JSON-string. Raises an error if the given JSON is invalid.",
+      "parent_class": "DocumentToolLibrary",
+      "syntax": {
+        "python": "returnValue = adsk.cam.DocumentToolLibrary.createFromJson(json)",
+        "cpp": "#include \n\nreturnValue = adsk::cam::DocumentToolLibrary::createFromJson(json);"
+      },
+      "return_type": "ToolLibrary",
+      "return_description": "Returns the newly created ToolLibrary.",
+      "parameters": [
+        {
+          "name": "json",
+          "type": "string",
+          "description": "The JSON contains all tools that should be added to the new ToolLibrary"
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "createQuery": {
+      "id": "DocumentToolLibrary_createQuery",
+      "title": "DocumentToolLibrary.createQuery Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/DocumentToolLibrary.h",
+      "description": "Creates a new ToolQuery that is used to query the library for tools matching the query.",
+      "parent_class": "DocumentToolLibrary",
+      "syntax": {
+        "python": "returnValue = documentToolLibrary_var.createQuery()",
+        "cpp": "#include \n\nreturnValue = documentToolLibrary_var->createQuery();"
+      },
+      "return_type": "ToolQuery",
+      "return_description": "Returns a new ToolQuery. The query is predefined by given parameter.",
+      "version": "Introduced in version April 2023"
+    },
+    "item": {
+      "id": "DocumentToolLibrary_item",
+      "title": "DocumentToolLibrary.item Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/DocumentToolLibrary.h",
+      "description": "Get Tool by index in ToolLibrary.",
+      "parent_class": "DocumentToolLibrary",
+      "syntax": {
+        "python": "returnValue = documentToolLibrary_var.item(index)",
+        "cpp": "#include \n\nreturnValue = documentToolLibrary_var->item(index);"
+      },
+      "return_type": "Tool",
+      "return_description": "Returns the Tool in the ToolLibrary by given index.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "Index of the Tool in the ToolLibrary."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "operationsByTool": {
+      "id": "DocumentToolLibrary_operationsByTool",
+      "title": "DocumentToolLibrary.operationsByTool Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/DocumentToolLibrary.h",
+      "description": "Returns all operations that use the given tool. The tool must exist in the document tool library. Raises an error if the tool is not in the document.",
+      "parent_class": "DocumentToolLibrary",
+      "syntax": {
+        "python": "returnValue = documentToolLibrary_var.operationsByTool(tool)",
+        "cpp": "#include \n\nreturnValue = documentToolLibrary_var->operationsByTool(tool);"
+      },
+      "return_type": "Operation[]",
+      "return_description": "Returns operations using a specific tool.",
+      "parameters": [
+        {
+          "name": "tool",
+          "type": "Tool",
+          "description": "The tool to search for in operations. The tool must exist in the document."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "remove": {
+      "id": "DocumentToolLibrary_remove",
+      "title": "DocumentToolLibrary.remove Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/DocumentToolLibrary.h",
+      "description": "Remove Tool by index from ToolLibrary.",
+      "parent_class": "DocumentToolLibrary",
+      "syntax": {
+        "python": "returnValue = documentToolLibrary_var.remove(index)",
+        "cpp": "#include \n\nreturnValue = documentToolLibrary_var->remove(index);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true for successful deletion, false otherwise",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "Index of the Tool in the ToolLibrary that should be removed."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "toJson": {
+      "id": "DocumentToolLibrary_toJson",
+      "title": "DocumentToolLibrary.toJson Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/DocumentToolLibrary.h",
+      "description": "Generate and return JSON string that contains all tools of that list.",
+      "parent_class": "DocumentToolLibrary",
+      "syntax": {
+        "python": "returnValue = documentToolLibrary_var.toJson()",
+        "cpp": "#include \n\nreturnValue = documentToolLibrary_var->toJson();"
+      },
+      "return_type": "string",
+      "return_description": "Returns JSON string that contains all tools of that list.",
+      "version": "Introduced in version April 2023"
+    },
+    "toolsBySetupOrFolder": {
+      "id": "DocumentToolLibrary_toolsBySetupOrFolder",
+      "title": "DocumentToolLibrary.toolsBySetupOrFolder Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/DocumentToolLibrary.h",
+      "description": "Returns all tools used in a given setup or folder. Given setup or folder must belong to the document of the DocumentToolLibrary. Raises an error if given operation is not in the document.",
+      "parent_class": "DocumentToolLibrary",
+      "syntax": {
+        "python": "returnValue = documentToolLibrary_var.toolsBySetupOrFolder(setupOrFolder)",
+        "cpp": "#include \n\nreturnValue = documentToolLibrary_var->toolsBySetupOrFolder(setupOrFolder);"
+      },
+      "return_type": "Tool[]",
+      "return_description": "Returns tools used by a specific setup or folder.",
+      "parameters": [
+        {
+          "name": "setupOrFolder",
+          "type": "OperationBase",
+          "description": "The setup or folder to get tools from. Must belong to the document."
+        }
+      ],
+      "version": "Introduced in version July 2023"
+    },
+    "update": {
+      "id": "DocumentToolLibrary_update",
+      "title": "DocumentToolLibrary.update Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/DocumentToolLibrary.h",
+      "description": "Update the given tool in the document tool library. The update applies all changes to the tool in the document tool library and therefore on all operations that use the tool. Will error if the tool does not exist in the document tool library.",
+      "parent_class": "DocumentToolLibrary",
+      "syntax": {
+        "python": "returnValue = documentToolLibrary_var.update(tool, updateFeedAndSpeed)",
+        "cpp": "#include \n\nreturnValue = documentToolLibrary_var->update(tool, updateFeedAndSpeed);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the update was successful.",
+      "parameters": [
+        {
+          "name": "tool",
+          "type": "Tool",
+          "description": "The tool that should be updated."
+        },
+        {
+          "name": "updateFeedAndSpeed",
+          "type": "boolean",
+          "description": "Setting updateFeedAndSpeed to true will override the feed and speed parameters of operations within the document which use the given tool."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "DocumentToolLibrary_count",
+      "title": "DocumentToolLibrary.count Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/DocumentToolLibrary.h",
+      "description": "The number of tools in the ToolLibrary.",
+      "parent_class": "DocumentToolLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = documentToolLibrary_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = documentToolLibrary_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "DocumentToolLibrary_isValid",
+      "title": "DocumentToolLibrary.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/DocumentToolLibrary.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "DocumentToolLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = documentToolLibrary_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = documentToolLibrary_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "DocumentToolLibrary_objectType",
+      "title": "DocumentToolLibrary.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/DocumentToolLibrary.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "DocumentToolLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = documentToolLibrary_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = documentToolLibrary_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

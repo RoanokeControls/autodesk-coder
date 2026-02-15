@@ -1,0 +1,344 @@
+{
+  "id": "CurveSelections",
+  "title": "CurveSelections Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/GeometrySelections/CurveSelections.h",
+  "description": "Collection for all curve selections to be passed to a CadContours2DParameterValue object. This is a read-only container. It returns the curve selections associated with the parent parameter value object, but does not write to it. To apply changes done to the collection and the selections it contains, CadContours2DParameterValue.applyCurveSelections() needs to be called.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "clear",
+      "description": "Clears all entries."
+    },
+    {
+      "name": "createNewChainSelection",
+      "description": "Creates a new chain selection and adds it to the end of the collection."
+    },
+    {
+      "name": "createNewFaceContourSelection",
+      "description": "Creates a new face contour selection and adds it to the end of the collection."
+    },
+    {
+      "name": "createNewPocketRecognitionSelection",
+      "description": "Creates a new pocket recognition selection and adds it to the end of the collection."
+    },
+    {
+      "name": "createNewPocketSelection",
+      "description": "Creates a new pocket selection and adds it to the end of the collection."
+    },
+    {
+      "name": "createNewSilhouetteSelection",
+      "description": "Creates a new silhouette selection and adds it to the end of the collection."
+    },
+    {
+      "name": "createNewSketchSelection",
+      "description": "Creates a new sketch selection and adds it to the end of the collection."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified curve selection object using an index into the collection."
+    },
+    {
+      "name": "remove",
+      "description": "Function that removes the specified curve selection object using an index in the collection."
+    },
+    {
+      "name": "removeByObject",
+      "description": "Function that removes the specified curve selection object from the collection."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of items in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Hole and Pocket Recognition API Sample",
+      "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+    },
+    {
+      "name": "Manufacturing Workflow API Sample",
+      "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "method_details": {
+    "classType": {
+      "id": "CurveSelections_classType",
+      "title": "CurveSelections.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/CurveSelections.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CurveSelections",
+      "syntax": {
+        "python": "returnValue = adsk.cam.CurveSelections.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::CurveSelections::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    },
+    "clear": {
+      "id": "CurveSelections_clear",
+      "title": "CurveSelections.clear Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/CurveSelections.h",
+      "description": "Clears all entries.",
+      "parent_class": "CurveSelections",
+      "syntax": {
+        "python": "returnValue = curveSelections_var.clear()",
+        "cpp": "#include \n\nreturnValue = curveSelections_var->clear();"
+      },
+      "version": "Introduced in version April 2023"
+    },
+    "createNewChainSelection": {
+      "id": "CurveSelections_createNewChainSelection",
+      "title": "CurveSelections.createNewChainSelection Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/CurveSelections.h",
+      "description": "Creates a new chain selection and adds it to the end of the collection.",
+      "parent_class": "CurveSelections",
+      "syntax": {
+        "python": "returnValue = curveSelections_var.createNewChainSelection()",
+        "cpp": "#include \n\nreturnValue = curveSelections_var->createNewChainSelection();"
+      },
+      "return_type": "ChainSelection",
+      "return_description": "Returns newly created ChainSelection.",
+      "related_samples": [
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        },
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "createNewFaceContourSelection": {
+      "id": "CurveSelections_createNewFaceContourSelection",
+      "title": "CurveSelections.createNewFaceContourSelection Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/CurveSelections.h",
+      "description": "Creates a new face contour selection and adds it to the end of the collection.",
+      "parent_class": "CurveSelections",
+      "syntax": {
+        "python": "returnValue = curveSelections_var.createNewFaceContourSelection()",
+        "cpp": "#include \n\nreturnValue = curveSelections_var->createNewFaceContourSelection();"
+      },
+      "return_type": "FaceContourSelection",
+      "return_description": "Returns newly created FaceContourSelection.",
+      "version": "Introduced in version April 2023"
+    },
+    "createNewPocketRecognitionSelection": {
+      "id": "CurveSelections_createNewPocketRecognitionSelection",
+      "title": "CurveSelections.createNewPocketRecognitionSelection Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/CurveSelections.h",
+      "description": "Creates a new pocket recognition selection and adds it to the end of the collection.",
+      "parent_class": "CurveSelections",
+      "syntax": {
+        "python": "returnValue = curveSelections_var.createNewPocketRecognitionSelection()",
+        "cpp": "#include \n\nreturnValue = curveSelections_var->createNewPocketRecognitionSelection();"
+      },
+      "related_samples": [
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        }
+      ],
+      "version": "Introduced in version July 2023"
+    },
+    "createNewPocketSelection": {
+      "id": "CurveSelections_createNewPocketSelection",
+      "title": "CurveSelections.createNewPocketSelection Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/CurveSelections.h",
+      "description": "Creates a new pocket selection and adds it to the end of the collection.",
+      "parent_class": "CurveSelections",
+      "syntax": {
+        "python": "returnValue = curveSelections_var.createNewPocketSelection()",
+        "cpp": "#include \n\nreturnValue = curveSelections_var->createNewPocketSelection();"
+      },
+      "return_type": "PocketSelection",
+      "return_description": "Returns newly created PocketSelection.",
+      "version": "Introduced in version April 2023"
+    },
+    "createNewSilhouetteSelection": {
+      "id": "CurveSelections_createNewSilhouetteSelection",
+      "title": "CurveSelections.createNewSilhouetteSelection Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/CurveSelections.h",
+      "description": "Creates a new silhouette selection and adds it to the end of the collection.",
+      "parent_class": "CurveSelections",
+      "syntax": {
+        "python": "returnValue = curveSelections_var.createNewSilhouetteSelection()",
+        "cpp": "#include \n\nreturnValue = curveSelections_var->createNewSilhouetteSelection();"
+      },
+      "return_type": "SilhouetteSelection",
+      "return_description": "Returns newly created SilhouetteSelection.",
+      "related_samples": [
+        {
+          "name": "Wood Routing Workflow Sample",
+          "description": "This script demonstrates routing wood panels.When running the sample, it assumes you have an open design containing one or more \"panels\" oriented flat in the X-Y plane. The script creates a setup and a 2D contour operation with tabs to route the panels from a standard sheet."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "createNewSketchSelection": {
+      "id": "CurveSelections_createNewSketchSelection",
+      "title": "CurveSelections.createNewSketchSelection Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/CurveSelections.h",
+      "description": "Creates a new sketch selection and adds it to the end of the collection.",
+      "parent_class": "CurveSelections",
+      "syntax": {
+        "python": "returnValue = curveSelections_var.createNewSketchSelection()",
+        "cpp": "#include \n\nreturnValue = curveSelections_var->createNewSketchSelection();"
+      },
+      "related_samples": [
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        }
+      ],
+      "version": "Introduced in version July 2023"
+    },
+    "item": {
+      "id": "CurveSelections_item",
+      "title": "CurveSelections.item Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/CurveSelections.h",
+      "description": "Function that returns the specified curve selection object using an index into the collection.",
+      "parent_class": "CurveSelections",
+      "syntax": {
+        "python": "returnValue = curveSelections_var.item(index)",
+        "cpp": "#include \n\nreturnValue = curveSelections_var->item(index);"
+      },
+      "return_type": "CurveSelection",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return.\u00a0The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "remove": {
+      "id": "CurveSelections_remove",
+      "title": "CurveSelections.remove Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/CurveSelections.h",
+      "description": "Function that removes the specified curve selection object using an index in the collection.",
+      "parent_class": "CurveSelections",
+      "syntax": {
+        "python": "returnValue = curveSelections_var.remove(index)",
+        "cpp": "#include \n\nreturnValue = curveSelections_var->remove(index);"
+      },
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to remove.\u00a0The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version March 2024"
+    },
+    "removeByObject": {
+      "id": "CurveSelections_removeByObject",
+      "title": "CurveSelections.removeByObject Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/CurveSelections.h",
+      "description": "Function that removes the specified curve selection object from the collection.",
+      "parent_class": "CurveSelections",
+      "syntax": {
+        "python": "returnValue = curveSelections_var.removeByObject(selection)",
+        "cpp": "#include \n\nreturnValue = curveSelections_var->removeByObject(selection);"
+      },
+      "parameters": [
+        {
+          "name": "selection",
+          "type": "CurveSelection",
+          "description": "The item within the collection to remove.\u00a0Throws an exception if the curve selection is not part of the given selection."
+        }
+      ],
+      "version": "Introduced in version March 2024"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "CurveSelections_count",
+      "title": "CurveSelections.count Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/CurveSelections.h",
+      "description": "The number of items in the collection.",
+      "parent_class": "CurveSelections",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = curveSelections_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = curveSelections_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "CurveSelections_isValid",
+      "title": "CurveSelections.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/CurveSelections.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CurveSelections",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = curveSelections_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = curveSelections_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "CurveSelections_objectType",
+      "title": "CurveSelections.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/CurveSelections.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CurveSelections",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = curveSelections_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = curveSelections_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

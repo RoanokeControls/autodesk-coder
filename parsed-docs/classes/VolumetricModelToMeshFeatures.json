@@ -1,0 +1,215 @@
+{
+  "id": "VolumetricModelToMeshFeatures",
+  "title": "VolumetricModelToMeshFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/VolumetricModelToMeshFeatures.h",
+  "description": "Collection that provides access to all of the existing volumetric model to mesh features in a component and supports the ability to create new Volumetric Model To Mesh features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Add a new volumetric model to mesh feature. To create a new volumetric model to mesh feature use the createInput function to create a new input object and use the methods and proprties on that object to define the required input for an volumetric model to mesh feature. Once the information is defined on the input object you can pass it to the Add method to create the Volumetric Model to Mesh."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Create a new VolumetricModelToMeshFeatureInput object."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified item using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns the item with the specified name."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Volumetric Custom Feature API Sample",
+      "description": "Demonstrates how to create a Volumetric Custom Feature using the API for graph creation.\n\nTo run the sample script, have a document open in Fusion\u2019s DESIGN workspace. This script will create a component with a box by sketching then extruding that sketch. It will then use that box as a boundary body and create a Volumetric Custom Feature.\n\nThe script will the create a gyroid lattice using the Volumetric Model API with the appropriate Graphs, Nodes and Connections for a minimal example. Finally, the script will convert that Volumetric Model to Mesh using the API and the VolumetricModelToMeshFeature."
+    }
+  ],
+  "version": "Introduced in version May 2025",
+  "method_details": {
+    "add": {
+      "id": "VolumetricModelToMeshFeatures_add",
+      "title": "VolumetricModelToMeshFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeatures.h",
+      "description": "Add a new volumetric model to mesh feature. To create a new volumetric model to mesh feature use the createInput function to create a new input object and use the methods and proprties on that object to define the required input for an volumetric model to mesh feature. Once the information is defined on the input object you can pass it to the Add method to create the Volumetric Model to Mesh.",
+      "parent_class": "VolumetricModelToMeshFeatures",
+      "syntax": {
+        "python": "returnValue = volumetricModelToMeshFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = volumetricModelToMeshFeatures_var->add(input);"
+      },
+      "return_type": "VolumetricModelToMeshFeature",
+      "return_description": "The newly added volumetric model to mesh feature.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "VolumetricModelToMeshFeatureInput",
+          "description": "The input object for creating a volumetric model to mesh feature."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "classType": {
+      "id": "VolumetricModelToMeshFeatures_classType",
+      "title": "VolumetricModelToMeshFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "VolumetricModelToMeshFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.VolumetricModelToMeshFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::VolumetricModelToMeshFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version May 2025"
+    },
+    "createInput": {
+      "id": "VolumetricModelToMeshFeatures_createInput",
+      "title": "VolumetricModelToMeshFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeatures.h",
+      "description": "Create a new VolumetricModelToMeshFeatureInput object.",
+      "parent_class": "VolumetricModelToMeshFeatures",
+      "syntax": {
+        "python": "returnValue = volumetricModelToMeshFeatures_var.createInput(volumetricModel)",
+        "cpp": "#include \n\nreturnValue = volumetricModelToMeshFeatures_var->createInput(volumetricModel);"
+      },
+      "return_type": "VolumetricModelToMeshFeatureInput",
+      "return_description": "Returns the newly created VolumetricModelToMeshFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "volumetricModel",
+          "type": "Base",
+          "description": "The volumetric model to be converted to a mesh. Must have the same parent component as the VolumetricModelToMeshFeatures. This property is typed as core.Base because the adsk.fusion library does not reference the volume library where the VolumetricModel object is defined. At runtime, this property will return a VolumetricModel object."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Volumetric Custom Feature API Sample",
+          "description": "Demonstrates how to create a Volumetric Custom Feature using the API for graph creation.\n\nTo run the sample script, have a document open in Fusion\u2019s DESIGN workspace. This script will create a component with a box by sketching then extruding that sketch. It will then use that box as a boundary body and create a Volumetric Custom Feature.\n\nThe script will the create a gyroid lattice using the Volumetric Model API with the appropriate Graphs, Nodes and Connections for a minimal example. Finally, the script will convert that Volumetric Model to Mesh using the API and the VolumetricModelToMeshFeature."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "item": {
+      "id": "VolumetricModelToMeshFeatures_item",
+      "title": "VolumetricModelToMeshFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeatures.h",
+      "description": "Function that returns the specified item using an index into the collection.",
+      "parent_class": "VolumetricModelToMeshFeatures",
+      "syntax": {
+        "python": "returnValue = volumetricModelToMeshFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = volumetricModelToMeshFeatures_var->item(index);"
+      },
+      "return_type": "VolumetricModelToMeshFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "itemByName": {
+      "id": "VolumetricModelToMeshFeatures_itemByName",
+      "title": "VolumetricModelToMeshFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeatures.h",
+      "description": "Returns the item with the specified name.",
+      "parent_class": "VolumetricModelToMeshFeatures",
+      "syntax": {
+        "python": "returnValue = volumetricModelToMeshFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = volumetricModelToMeshFeatures_var->itemByName(name);"
+      },
+      "return_type": "VolumetricModelToMeshFeature",
+      "return_description": "Returns the specified item or null in the case where there is no item with the specified name.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the item."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "VolumetricModelToMeshFeatures_count",
+      "title": "VolumetricModelToMeshFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeatures.h",
+      "description": "The number of features in the collection.",
+      "parent_class": "VolumetricModelToMeshFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = volumetricModelToMeshFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "isValid": {
+      "id": "VolumetricModelToMeshFeatures_isValid",
+      "title": "VolumetricModelToMeshFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "VolumetricModelToMeshFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = volumetricModelToMeshFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "objectType": {
+      "id": "VolumetricModelToMeshFeatures_objectType",
+      "title": "VolumetricModelToMeshFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VolumetricModelToMeshFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "VolumetricModelToMeshFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = volumetricModelToMeshFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = volumetricModelToMeshFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    }
+  }
+}

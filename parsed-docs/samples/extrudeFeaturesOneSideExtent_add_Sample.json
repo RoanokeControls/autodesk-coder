@@ -1,0 +1,12 @@
+{
+  "id": "extrudeFeaturesOneSideExtent_add_Sample",
+  "title": "extrudeFeatures.add using setOneSideExtent",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the extrudeFeatures.add method using the setOneSideExtent method. To use this sample have a design open that contains a sketch with a profile. When you run the script you will be prompted to select the profile that will be used to create the extrusion.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_extrudeFeaturesOneSideExtent_add(rootComp: adsk.fusion.Design.rootComponent):\n    # Have profile selected.\n    profile = _ui.selectEntity('Select a profile', 'Profiles').entity\n\n    # Define the required input.\n    operation = adsk.fusion.FeatureOperations.NewBodyFeatureOperation\n    extrudeFeatures = rootComp.features.extrudeFeatures\n    input: adsk.fusion.ExtrudeFeatureInput = extrudeFeatures.createInput(profile, operation)\n\n    distance = adsk.core.ValueInput.createByString('30 mm')\n    distanceExtent = adsk.fusion.DistanceExtentDefinition.create(distance)\n    direction = adsk.fusion.ExtentDirections.PositiveExtentDirection\n    input.setOneSideExtent(distanceExtent, direction)\n\n    # Create the feature.\n    extrudeFeature = extrudeFeatures.add(input)"
+  }
+}

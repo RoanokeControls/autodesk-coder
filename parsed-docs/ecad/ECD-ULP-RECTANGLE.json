@@ -1,0 +1,26 @@
+{
+  "id": "ECD-ULP-RECTANGLE",
+  "title": "UL_RECTANGLE",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "angle",
+      "type": "real (0.0...359.9)"
+    },
+    {
+      "name": "layer",
+      "type": "int"
+    },
+    {
+      "name": "x1, y1",
+      "type": "int (lower left corner)"
+    },
+    {
+      "name": "x2, y2",
+      "type": "int (upper right corner)"
+    }
+  ],
+  "loop_members": [],
+  "content": "# UL_RECTANGLE\n\n## Data members\n\n| | |\n| --- | --- |\n| angle | real (0.0...359.9) |\n| layer | int |\n| x1, y1 | int (lower left corner) |\n| x2, y2 | int (upper right corner) |\n\nSee also UL_BOARD, UL_FOOTPRINT, UL_SHEET, UL_SYMBOL\n\nThe coordinates (x1 y1) and (x2 y2) are always referring to the initial orientation of the rectangle regardless of the angle.\n\n*angle* defines how many degrees the rectangle is rotated counterclockwise around its center. The center coordinates are given by (x1+x2)/2 and (y1+y2)/2.\n\n## Example\n\n```\nboard(B) {\n B.rectangles(R) {\n printf(\"Rectangle: (%f %f), (%f %f)\\n\",\n u2mm(R.x1), u2mm(R.y1), u2mm(R.x2), u2mm(R.y2));\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

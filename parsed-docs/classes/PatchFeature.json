@@ -1,0 +1,665 @@
+{
+  "id": "PatchFeature",
+  "title": "PatchFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/PatchFeature.h",
+  "description": "An object that represents an existing patch feature in a design.",
+  "parent_class": "Feature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e., a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    },
+    {
+      "name": "getContinuity",
+      "description": "Gets the continuity used for each edge in the boundary.   To call this method, you need to position the timeline marker immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setContinuity",
+      "description": "Sets the continuity to use for each edge in the boundary. The arrays for the arguments correspond to B-Rep edges in the boundary. You can use the getContinuity method to get the list of edges to know their order. This order applies to the arrays provided for the arguments."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "boundaryCurve",
+      "description": "Returns an ObjectCollection that contains all of the sketch curves or B-Rep edges that defines the closed outer boundary of the patch feature.   When setting this property, the input can be a sketch profile, a single sketch curve, a single B-Rep edge, or an ObjectCollection of sketch curves and B-Rep edges.   If a single open sketch curve or B-Rep edge is input, Fusion will automatically find connected sketch curves or B-Rep edges to define a closed loop.   If an ObjectCollection of sketch curves or B-Rep edges is input, they must define a closed shape.   To get or set this property, you need to position the timeline marker immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "continuity",
+      "description": "**RETIRED** Gets and sets the type of surface continuity used when creating the patch face. This value is only used when BRepEdges are input and defines the continuity of how the patch face connects to the face adjacent to each of the input edges.   To set this property, you need to position the timeline marker immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "groupContinuity",
+      "description": "Gets and sets the type of surface continuity to use for all edges when the isGroupEdges property is true. The continuity is used to determine how the patch connects to any B-Rep edges in the boundary. It is ignored for any sketch curves in the boundary. The property defaults to ConnectedSurfaceContinuityType. The value of this property is ignored if the isGroupEdges property is false.   To get or set this property, you need to position the timeline marker immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "groupIsContinuityDirectionFlipped",
+      "description": "Gets and sets the continuity direction for all edges when the isGroupEdges property is true. It is ignored for any sketch curves in the boundary. The property defaults to false. The value of this property is ignored if the isGroupEdges property is false.   To get or set this property, you need to position the timeline marker immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "groupWeight",
+      "description": "Gets and sets the weight to use for all edges when the isGroupEdges property is true. It is ignored for any sketch curves in the boundary. The property defaults to 0.5. The value of this property is ignored if the isGroupEdges property is false.   To get or set this property, you need to position the timeline marker immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "interiorRailsAndPoints",
+      "description": "Gets and sets any interior curves or points the patch should fit through. Valid entities include object collections of connected curves, paths, sketch curves, sketch points, B-Rep edges, and construction points.   When getting this property, the returned ObjectCollection can contain individual edges, sketch curves, sketch points, construction points, vertices, and ObjectCollection objects that represent a group of the curves and points listed above.   Can be set to null to remove any interior rails and points from the patch.   To get or set this property, you need to position the timeline marker immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isGroupEdges",
+      "description": "Gets and sets if the edges in the boundary curve are treated as a group , and they all use the same continuity. If this property is True (which is the default), the continuity for all edges is controlled by the continuity property. If this property is false; the continuity is set for each edge using the setContinuity method.   When this property is set to true, the continuity and weight of the first edge will be used for all edges. When set to false, each edge will initially have the same continuity and weight. This property is typically set to false by calling the setContinuity method, which has the side effect of changing this to false.   To get or set this property, you need to position the timeline marker immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "operation",
+      "description": "Gets the type of operation performed by the patch feature."
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Patch Feature API Sample",
+      "description": "Demonstrates creating a new patch feature."
+    }
+  ],
+  "version": "Introduced in version September 2015",
+  "property_details": {
+    "assemblyContext": {
+      "id": "PatchFeature_assemblyContext",
+      "title": "PatchFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = patchFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "attributes": {
+      "id": "PatchFeature_attributes",
+      "title": "PatchFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = patchFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "baseFeature": {
+      "id": "PatchFeature_baseFeature",
+      "title": "PatchFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = patchFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "bodies": {
+      "id": "PatchFeature_bodies",
+      "title": "PatchFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = patchFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "boundaryCurve": {
+      "id": "PatchFeature_boundaryCurve",
+      "title": "PatchFeature.boundaryCurve Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Returns an ObjectCollection that contains all of the sketch curves or B-Rep edges that defines the closed outer boundary of the patch feature. When setting this property, the input can be a sketch profile, a single sketch curve, a single B-Rep edge, or an ObjectCollection of sketch curves and B-Rep edges. If a single open sketch curve or B-Rep edge is input, Fusion will automatically find connected sketch curves or B-Rep edges to define a closed loop. If an ObjectCollection of sketch curves or B-Rep edges is input, they must define a closed shape. To get or set this property, you need to position the timeline marker immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.boundaryCurve\n\n# Set the value of the property.\npatchFeature_var.boundaryCurve = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = patchFeature_var->boundaryCurve();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = patchFeature_var->boundaryCurve(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "continuity": {
+      "id": "PatchFeature_continuity",
+      "title": "PatchFeature.continuity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets and sets the type of surface continuity used when creating the patch face. This value is only used when BRepEdges are input and defines the continuity of how the patch face connects to the face adjacent to each of the input edges. To set this property, you need to position the timeline marker immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True) Remarks",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.continuity\n\n# Set the value of the property.\npatchFeature_var.continuity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nSurfaceContinuityTypes propertyValue = patchFeature_var->continuity();\n\n// Set the value of the property, where value_var is a SurfaceContinuityTypes.\nbool returnValue = patchFeature_var->continuity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "entityToken": {
+      "id": "PatchFeature_entityToken",
+      "title": "PatchFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = patchFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "errorOrWarningMessage": {
+      "id": "PatchFeature_errorOrWarningMessage",
+      "title": "PatchFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = patchFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "faces": {
+      "id": "PatchFeature_faces",
+      "title": "PatchFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = patchFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "groupContinuity": {
+      "id": "PatchFeature_groupContinuity",
+      "title": "PatchFeature.groupContinuity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Gets and sets the type of surface continuity to use for all edges when the isGroupEdges property is true. The continuity is used to determine how the patch connects to any B-Rep edges in the boundary. It is ignored for any sketch curves in the boundary. The property defaults to ConnectedSurfaceContinuityType. The value of this property is ignored if the isGroupEdges property is false. To get or set this property, you need to position the timeline marker immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.groupContinuity\n\n# Set the value of the property.\npatchFeature_var.groupContinuity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nSurfaceContinuityTypes propertyValue = patchFeature_var->groupContinuity();\n\n// Set the value of the property, where value_var is a SurfaceContinuityTypes.\nbool returnValue = patchFeature_var->groupContinuity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "groupIsContinuityDirectionFlipped": {
+      "id": "PatchFeature_groupIsContinuityDirectionFlipped",
+      "title": "PatchFeature.groupIsContinuityDirectionFlipped Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Gets and sets the continuity direction for all edges when the isGroupEdges property is true. It is ignored for any sketch curves in the boundary. The property defaults to false. The value of this property is ignored if the isGroupEdges property is false. To get or set this property, you need to position the timeline marker immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.groupIsContinuityDirectionFlipped\n\n# Set the value of the property.\npatchFeature_var.groupIsContinuityDirectionFlipped = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = patchFeature_var->groupIsContinuityDirectionFlipped();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = patchFeature_var->groupIsContinuityDirectionFlipped(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "groupWeight": {
+      "id": "PatchFeature_groupWeight",
+      "title": "PatchFeature.groupWeight Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Gets and sets the weight to use for all edges when the isGroupEdges property is true. It is ignored for any sketch curves in the boundary. The property defaults to 0.5. The value of this property is ignored if the isGroupEdges property is false. To get or set this property, you need to position the timeline marker immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.groupWeight\n\n# Set the value of the property.\npatchFeature_var.groupWeight = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = patchFeature_var->groupWeight();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = patchFeature_var->groupWeight(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "healthState": {
+      "id": "PatchFeature_healthState",
+      "title": "PatchFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = patchFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "interiorRailsAndPoints": {
+      "id": "PatchFeature_interiorRailsAndPoints",
+      "title": "PatchFeature.interiorRailsAndPoints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Gets and sets any interior curves or points the patch should fit through. Valid entities include object collections of connected curves, paths, sketch curves, sketch points, B-Rep edges, and construction points. When getting this property, the returned ObjectCollection can contain individual edges, sketch curves, sketch points, construction points, vertices, and ObjectCollection objects that represent a group of the curves and points listed above. Can be set to null to remove any interior rails and points from the patch. To get or set this property, you need to position the timeline marker immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.interiorRailsAndPoints\n\n# Set the value of the property.\npatchFeature_var.interiorRailsAndPoints = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = patchFeature_var->interiorRailsAndPoints();\n\n// Set the value of the property, where value_var is an ObjectCollection.\nbool returnValue = patchFeature_var->interiorRailsAndPoints(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "isGroupEdges": {
+      "id": "PatchFeature_isGroupEdges",
+      "title": "PatchFeature.isGroupEdges Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Gets and sets if the edges in the boundary curve are treated as a group , and they all use the same continuity. If this property is True (which is the default), the continuity for all edges is controlled by the continuity property. If this property is false; the continuity is set for each edge using the setContinuity method. When this property is set to true, the continuity and weight of the first edge will be used for all edges. When set to false, each edge will initially have the same continuity and weight. This property is typically set to false by calling the setContinuity method, which has the side effect of changing this to false. To get or set this property, you need to position the timeline marker immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.isGroupEdges\n\n# Set the value of the property.\npatchFeature_var.isGroupEdges = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = patchFeature_var->isGroupEdges();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = patchFeature_var->isGroupEdges(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "isParametric": {
+      "id": "PatchFeature_isParametric",
+      "title": "PatchFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = patchFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "isSuppressed": {
+      "id": "PatchFeature_isSuppressed",
+      "title": "PatchFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.isSuppressed\n\n# Set the value of the property.\npatchFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = patchFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = patchFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "isValid": {
+      "id": "PatchFeature_isValid",
+      "title": "PatchFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = patchFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "linkedFeatures": {
+      "id": "PatchFeature_linkedFeatures",
+      "title": "PatchFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = patchFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "name": {
+      "id": "PatchFeature_name",
+      "title": "PatchFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.name\n\n# Set the value of the property.\npatchFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = patchFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = patchFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "nativeObject": {
+      "id": "PatchFeature_nativeObject",
+      "title": "PatchFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = patchFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "objectType": {
+      "id": "PatchFeature_objectType",
+      "title": "PatchFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = patchFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "operation": {
+      "id": "PatchFeature_operation",
+      "title": "PatchFeature.operation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Gets the type of operation performed by the patch feature.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.operation",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureOperations propertyValue = patchFeature_var->operation();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "parentComponent": {
+      "id": "PatchFeature_parentComponent",
+      "title": "PatchFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = patchFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "timelineObject": {
+      "id": "PatchFeature_timelineObject",
+      "title": "PatchFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = patchFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = patchFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "PatchFeature_classType",
+      "title": "PatchFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.PatchFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::PatchFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2015"
+    },
+    "createForAssemblyContext": {
+      "id": "PatchFeature_createForAssemblyContext",
+      "title": "PatchFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e., a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "returnValue = patchFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = patchFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "PatchFeature",
+      "return_description": "Returns the proxy object or null if this is not the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy."
+        }
+      ],
+      "version": "Introduced in version July 2016"
+    },
+    "deleteMe": {
+      "id": "PatchFeature_deleteMe",
+      "title": "PatchFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "returnValue = patchFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = patchFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version September 2015"
+    },
+    "dissolve": {
+      "id": "PatchFeature_dissolve",
+      "title": "PatchFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "returnValue = patchFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = patchFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version September 2015"
+    },
+    "getContinuity": {
+      "id": "PatchFeature_getContinuity",
+      "title": "PatchFeature.getContinuity Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Gets the continuity used for each edge in the boundary. To call this method, you need to position the timeline marker immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "(returnValue, edges, continuity, weight, isContinuityDirectionFlipped) = patchFeature_var.getContinuity()",
+        "cpp": "#include getContinuity(edges, continuity, weight, isContinuityDirectionFlipped);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "edges",
+          "type": "BRepEdge[]",
+          "description": "Output array containing all of the BRepEdge objects in the boundary."
+        },
+        {
+          "name": "continuity",
+          "type": "integer[]",
+          "description": "Output array the same size as the edges array that defines the continuity to apply to the edge in the same index in the edges array. The values are obtained from the SurfaceContinuityTypes enum and passed in as an integers."
+        },
+        {
+          "name": "weight",
+          "type": "double[]",
+          "description": "Output array the same size as the edges array that defines the weight applied to the edge in the same index in the edges array. If the continuity of an edge is ConnectedSurfaceContinuityType, the weight value should be ignored."
+        },
+        {
+          "name": "isContinuityDirectionFlipped",
+          "type": "boolean[]",
+          "description": "Output array the same size as the edges array that defines which of the two faces the edge connects to is used in computing the continuity direction. If the continuity is ConnectedSurfaceContinuityType or the edge is an open edge and only connected to a single face, the value should be ignored.   If false, the face associated with the first co-edge returned by the edge is used."
+        }
+      ],
+      "version": "Introduced in version November 2022"
+    },
+    "setContinuity": {
+      "id": "PatchFeature_setContinuity",
+      "title": "PatchFeature.setContinuity Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PatchFeature.h",
+      "description": "Sets the continuity to use for each edge in the boundary. The arrays for the arguments correspond to B-Rep edges in the boundary. You can use the getContinuity method to get the list of edges to know their order. This order applies to the arrays provided for the arguments.",
+      "parent_class": "PatchFeature",
+      "syntax": {
+        "python": "returnValue = patchFeature_var.setContinuity(continuity, weight, isContinuityDirectionFlipped)",
+        "cpp": "#include \n\nreturnValue = patchFeature_var->setContinuity(continuity, weight, isContinuityDirectionFlipped);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "continuity",
+          "type": "integer[]",
+          "description": "An array whose size of the number of B-Rep edges in the boundary. You can use the getContinuity method to get the list of edges, so you know the number and order of the edges. The continuity array defines the type of continuity to apply to the edge at the same index. The values are obtained from the SurfaceContinuityTypes enum and passed in as an integer."
+        },
+        {
+          "name": "weight",
+          "type": "double[]",
+          "description": "An array whose size is the number of B-Rep edges in the boundary. You can use the getContinuity method to get the list of edges, so you know the number and order of the edges. The weight array defines the weight to apply to the edge at the same index. If the continuity of an edge is ConnectedSurfaceContinuityType, the weight value is ignored."
+        },
+        {
+          "name": "isContinuityDirectionFlipped",
+          "type": "boolean[]",
+          "description": "An array whose size is the number of B-Rep edges in the boundary. You can use the getContinuity method to get the list of edges, so you know the number and order of the edges. The isContinuityDirectionFlipped array defines which of the two faces the edge connects to and is used in computing the continuity direction. If the continuity is ConnectedSurfaceContinuityType, or the edge is an open edge and only connected to a single face, the value is ignored.   If false, the face associated with the first co-edge returned by the edge is used."
+        }
+      ],
+      "version": "Introduced in version November 2022"
+    }
+  }
+}

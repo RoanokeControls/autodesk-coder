@@ -1,0 +1,496 @@
+{
+  "id": "SceneSettings",
+  "title": "SceneSettings Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Render/SceneSettings.h",
+  "description": "Provides access to all the settings that control how the scene is rendered.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "restoreDefaults",
+      "description": "Changes all of the scene settings to the default values."
+    },
+    {
+      "name": "saveAsDefaults",
+      "description": "Saves all of the scene settings as the default settings for this Design."
+    }
+  ],
+  "properties": [
+    {
+      "name": "aspectRatio",
+      "description": "Gets and sets the aspect ratio of the rendered image. This is not the resolution, but only the aspect ratio. To define a custom aspect ratio set this property to CustomRenderAspectRatio and use the aspectRatioHeight and aspectRatioWidth properties to define any aspect ratio.   This is used for in-canvas render to allow you to use a different aspect ratio than what is implicitly defined by the size of the active viewport.   If this is set to CustomRenderAspectRatio, use the aspectRatioHeight and aspectRatioWidth to define the aspect ratio."
+    },
+    {
+      "name": "aspectRatioHeight",
+      "description": "Gets and sets the height of the aspect ratio of the rendered image. This is not the resolution, but only the aspect ratio. For example specifying the width and height of 4:3 is equivalent to setting 20:15. It's only the ratio of the numbers that matters.   The resolution is determined by the screen resolution when rendering in-canvas or is specified when rendering locally or using the cloud. When setting this property the aspectRatio property is automatically set to CustomRenderAspectRatio."
+    },
+    {
+      "name": "aspectRatioWidth",
+      "description": "Gets and sets the width of the aspect ratio of the rendered image. This is not the resolution, but only the aspect ratio. For example specifying the width and height of 4:3 is equivalent to setting 20:15. It's only the ratio of the numbers that matters.   The resolution is determined by the screen resolution when rendering in-canvas or is specified when rendering locally or using the cloud. When setting this property the aspectRatio property is automatically set to CustomRenderAspectRatio."
+    },
+    {
+      "name": "backgroundEnvironment",
+      "description": "Gets and sets the environment to use for the background. The available environments can be accessed through the RenderManager.renderEnvironments property.   Getting this property is only valid when the backgroundType property returns EnvironmentRenderSceneBackgroundType. Setting this property will automatically set the background type to EnvironmentRenderSceneBackgroundType."
+    },
+    {
+      "name": "backgroundSolidColor",
+      "description": "Gets and sets the background color. When this property is set, it defines the background to be a solid color. The opacity component of the color is ignored.   Getting this property is only valid when the backgroundType property returns SolidColorRenderSceneBackgroundType. Setting this property will automatically set the background type to SolidColorRenderSceneBackgroundType."
+    },
+    {
+      "name": "backgroundType",
+      "description": "Specifies the current type of background being used to render the scene. To change the background type use either the backgroundEnvironment or the backgroundSolidColor to set the environment or color."
+    },
+    {
+      "name": "brightness",
+      "description": "Gets and sets the brightness or luminance of the scene. This must be a value between 0 and 100,000 and is in lux units."
+    },
+    {
+      "name": "cameraExposure",
+      "description": "Gets and sets if the exposure of the camera as specified using the \"Exposure Value\" (EV). Valid values are between -15.0 and 25.0, inclusive."
+    },
+    {
+      "name": "cameraFocalLength",
+      "description": "Gets and sets the focal length of the camera, specified in millimeters. Changing the perspective angle of the camera associated with the active viewport will also change the focal length. Focal length and perspective angle are two different ways to control the same setting."
+    },
+    {
+      "name": "cameraType",
+      "description": "Gets and sets the type of camera to use when rendering the scene."
+    },
+    {
+      "name": "centerOfFocus",
+      "description": "When the isDepthofFieldEnabled property is true, this point is used as the center of focus. All objects that are the same distance from the camera as this point will be in focus. Any geometry that is closer or further away from the camera than this point will appear more out of focus.   Setting this property has the side effect of setting the isDepthOfField property to true. If the isDepthOfFieldEnabled property is false, the value of this property is ignored."
+    },
+    {
+      "name": "depthOfFieldBlur",
+      "description": "Specify the amount of blur to apply to objects outside the center of focus. This must be a value between 0.001 and 2.000 inclusive. The depth of field is defined by using the centerOfFocus property to set the depth where the model is in focus.   Setting this property has the side effect of setting the isDepthOfField property to true. If the isDepthOfFieldEnabled property is false, the value of this property is ignored."
+    },
+    {
+      "name": "groundOffset",
+      "description": "Gets and sets the distance of the ground from the bottom of the model. A value of 0 is at the bottom of the model and a positive value moves the plane up and negative down. The value is in centimeters.   If the isGroundFlattened property is true, and a texture is being applied to the ground, the groundPosition property can be used to change both the offset and location of the texture on the ground. The lightAngle property controls the orientation of the texture."
+    },
+    {
+      "name": "groundPosition",
+      "description": "Gets and sets the origin of the projection of the environment onto the textured ground plane. This lets you position the environment relative to the model. This is only used when the isGroundFlattened property is true.   If the isGroundFlattened property is true, and a texture is being applied to the ground, the groundPosition property can be used to change both the offset and location of the texture on the ground. The lightAngle property controls the orientation of the texture."
+    },
+    {
+      "name": "groundRoughness",
+      "description": "Gets and sets the roughness of the ground which controls the sharpness of the reflection. This is only used when the isGroundReflections property is true. This is a value between 0 and 1, where 0 is smooth and 1 is rough."
+    },
+    {
+      "name": "isDepthOfFieldEnabled",
+      "description": "Gets and sets if the depth of field option is enabled. When setting this to true, use the centerOfFocus and depthOfFieldBlur properties to specify how the depth of field is defined."
+    },
+    {
+      "name": "isGroundDisplayed",
+      "description": "Gets and sets if the ground plane is displayed. The plane allows shadows on the ground and reflections if the isGroundReflections property is true."
+    },
+    {
+      "name": "isGroundFlattened",
+      "description": "Gets and sets if the ground plane is \"textured\" where the environment image is mapped as a texture."
+    },
+    {
+      "name": "isGroundReflections",
+      "description": "Gets and sets if objects are reflected on the ground plane."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "lightAngle",
+      "description": "Specifies the rotation of the lighting. The angle is specified in Radians.   When the isGroundFlattened property is true, this also controls the angle of the texture that is applied to the ground. When the background is an environment, this controls the rotation of the environment relative to the model."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version May 2023",
+  "property_details": {
+    "aspectRatio": {
+      "id": "SceneSettings_aspectRatio",
+      "title": "SceneSettings.aspectRatio Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Gets and sets the aspect ratio of the rendered image. This is not the resolution, but only the aspect ratio. To define a custom aspect ratio set this property to CustomRenderAspectRatio and use the aspectRatioHeight and aspectRatioWidth properties to define any aspect ratio. This is used for in-canvas render to allow you to use a different aspect ratio than what is implicitly defined by the size of the active viewport. If this is set to CustomRenderAspectRatio, use the aspectRatioHeight and aspectRatioWidth to define the aspect ratio.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.aspectRatio\n\n# Set the value of the property.\nsceneSettings_var.aspectRatio = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nRenderAspectRatios propertyValue = sceneSettings_var->aspectRatio();\n\n// Set the value of the property, where value_var is a RenderAspectRatios.\nbool returnValue = sceneSettings_var->aspectRatio(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "aspectRatioHeight": {
+      "id": "SceneSettings_aspectRatioHeight",
+      "title": "SceneSettings.aspectRatioHeight Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Gets and sets the height of the aspect ratio of the rendered image. This is not the resolution, but only the aspect ratio. For example specifying the width and height of 4:3 is equivalent to setting 20:15. It's only the ratio of the numbers that matters. The resolution is determined by the screen resolution when rendering in-canvas or is specified when rendering locally or using the cloud. When setting this property the aspectRatio property is automatically set to CustomRenderAspectRatio.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.aspectRatioHeight\n\n# Set the value of the property.\nsceneSettings_var.aspectRatioHeight = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = sceneSettings_var->aspectRatioHeight();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = sceneSettings_var->aspectRatioHeight(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "aspectRatioWidth": {
+      "id": "SceneSettings_aspectRatioWidth",
+      "title": "SceneSettings.aspectRatioWidth Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Gets and sets the width of the aspect ratio of the rendered image. This is not the resolution, but only the aspect ratio. For example specifying the width and height of 4:3 is equivalent to setting 20:15. It's only the ratio of the numbers that matters. The resolution is determined by the screen resolution when rendering in-canvas or is specified when rendering locally or using the cloud. When setting this property the aspectRatio property is automatically set to CustomRenderAspectRatio.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.aspectRatioWidth\n\n# Set the value of the property.\nsceneSettings_var.aspectRatioWidth = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = sceneSettings_var->aspectRatioWidth();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = sceneSettings_var->aspectRatioWidth(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "backgroundEnvironment": {
+      "id": "SceneSettings_backgroundEnvironment",
+      "title": "SceneSettings.backgroundEnvironment Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Gets and sets the environment to use for the background. The available environments can be accessed through the RenderManager.renderEnvironments property. Getting this property is only valid when the backgroundType property returns EnvironmentRenderSceneBackgroundType. Setting this property will automatically set the background type to EnvironmentRenderSceneBackgroundType.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.backgroundEnvironment\n\n# Set the value of the property.\nsceneSettings_var.backgroundEnvironment = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sceneSettings_var->backgroundEnvironment();\n\n// Set the value of the property, where value_var is a RenderEnvironment.\nbool returnValue = sceneSettings_var->backgroundEnvironment(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "backgroundSolidColor": {
+      "id": "SceneSettings_backgroundSolidColor",
+      "title": "SceneSettings.backgroundSolidColor Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Gets and sets the background color. When this property is set, it defines the background to be a solid color. The opacity component of the color is ignored. Getting this property is only valid when the backgroundType property returns SolidColorRenderSceneBackgroundType. Setting this property will automatically set the background type to SolidColorRenderSceneBackgroundType.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.backgroundSolidColor\n\n# Set the value of the property.\nsceneSettings_var.backgroundSolidColor = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sceneSettings_var->backgroundSolidColor();\n\n// Set the value of the property, where value_var is a Color.\nbool returnValue = sceneSettings_var->backgroundSolidColor(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "backgroundType": {
+      "id": "SceneSettings_backgroundType",
+      "title": "SceneSettings.backgroundType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Specifies the current type of background being used to render the scene. To change the background type use either the backgroundEnvironment or the backgroundSolidColor to set the environment or color.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.backgroundType",
+        "cpp": "#include \n\n// Get the value of the property.\nRenderSceneBackgroundTypes propertyValue = sceneSettings_var->backgroundType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "brightness": {
+      "id": "SceneSettings_brightness",
+      "title": "SceneSettings.brightness Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Gets and sets the brightness or luminance of the scene. This must be a value between 0 and 100,000 and is in lux units.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.brightness\n\n# Set the value of the property.\nsceneSettings_var.brightness = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sceneSettings_var->brightness();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sceneSettings_var->brightness(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "cameraExposure": {
+      "id": "SceneSettings_cameraExposure",
+      "title": "SceneSettings.cameraExposure Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Gets and sets if the exposure of the camera as specified using the \"Exposure Value\" (EV). Valid values are between -15.0 and 25.0, inclusive.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.cameraExposure\n\n# Set the value of the property.\nsceneSettings_var.cameraExposure = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sceneSettings_var->cameraExposure();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sceneSettings_var->cameraExposure(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "cameraFocalLength": {
+      "id": "SceneSettings_cameraFocalLength",
+      "title": "SceneSettings.cameraFocalLength Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Gets and sets the focal length of the camera, specified in millimeters. Changing the perspective angle of the camera associated with the active viewport will also change the focal length. Focal length and perspective angle are two different ways to control the same setting.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.cameraFocalLength\n\n# Set the value of the property.\nsceneSettings_var.cameraFocalLength = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sceneSettings_var->cameraFocalLength();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sceneSettings_var->cameraFocalLength(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "cameraType": {
+      "id": "SceneSettings_cameraType",
+      "title": "SceneSettings.cameraType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Gets and sets the type of camera to use when rendering the scene.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.cameraType\n\n# Set the value of the property.\nsceneSettings_var.cameraType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nCameraTypes propertyValue = sceneSettings_var->cameraType();\n\n// Set the value of the property, where value_var is a CameraTypes.\nbool returnValue = sceneSettings_var->cameraType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "centerOfFocus": {
+      "id": "SceneSettings_centerOfFocus",
+      "title": "SceneSettings.centerOfFocus Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "When the isDepthofFieldEnabled property is true, this point is used as the center of focus. All objects that are the same distance from the camera as this point will be in focus. Any geometry that is closer or further away from the camera than this point will appear more out of focus. Setting this property has the side effect of setting the isDepthOfField property to true. If the isDepthOfFieldEnabled property is false, the value of this property is ignored.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.centerOfFocus\n\n# Set the value of the property.\nsceneSettings_var.centerOfFocus = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sceneSettings_var->centerOfFocus();\n\n// Set the value of the property, where value_var is a Point3D.\nbool returnValue = sceneSettings_var->centerOfFocus(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "depthOfFieldBlur": {
+      "id": "SceneSettings_depthOfFieldBlur",
+      "title": "SceneSettings.depthOfFieldBlur Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Specify the amount of blur to apply to objects outside the center of focus. This must be a value between 0.001 and 2.000 inclusive. The depth of field is defined by using the centerOfFocus property to set the depth where the model is in focus. Setting this property has the side effect of setting the isDepthOfField property to true. If the isDepthOfFieldEnabled property is false, the value of this property is ignored.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.depthOfFieldBlur\n\n# Set the value of the property.\nsceneSettings_var.depthOfFieldBlur = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sceneSettings_var->depthOfFieldBlur();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sceneSettings_var->depthOfFieldBlur(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "groundOffset": {
+      "id": "SceneSettings_groundOffset",
+      "title": "SceneSettings.groundOffset Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Gets and sets the distance of the ground from the bottom of the model. A value of 0 is at the bottom of the model and a positive value moves the plane up and negative down. The value is in centimeters. If the isGroundFlattened property is true, and a texture is being applied to the ground, the groundPosition property can be used to change both the offset and location of the texture on the ground. The lightAngle property controls the orientation of the texture.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.groundOffset\n\n# Set the value of the property.\nsceneSettings_var.groundOffset = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sceneSettings_var->groundOffset();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sceneSettings_var->groundOffset(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "groundPosition": {
+      "id": "SceneSettings_groundPosition",
+      "title": "SceneSettings.groundPosition Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Gets and sets the origin of the projection of the environment onto the textured ground plane. This lets you position the environment relative to the model. This is only used when the isGroundFlattened property is true. If the isGroundFlattened property is true, and a texture is being applied to the ground, the groundPosition property can be used to change both the offset and location of the texture on the ground. The lightAngle property controls the orientation of the texture.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.groundPosition\n\n# Set the value of the property.\nsceneSettings_var.groundPosition = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sceneSettings_var->groundPosition();\n\n// Set the value of the property, where value_var is a Point3D.\nbool returnValue = sceneSettings_var->groundPosition(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "groundRoughness": {
+      "id": "SceneSettings_groundRoughness",
+      "title": "SceneSettings.groundRoughness Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Gets and sets the roughness of the ground which controls the sharpness of the reflection. This is only used when the isGroundReflections property is true. This is a value between 0 and 1, where 0 is smooth and 1 is rough.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.groundRoughness\n\n# Set the value of the property.\nsceneSettings_var.groundRoughness = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sceneSettings_var->groundRoughness();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sceneSettings_var->groundRoughness(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "isDepthOfFieldEnabled": {
+      "id": "SceneSettings_isDepthOfFieldEnabled",
+      "title": "SceneSettings.isDepthOfFieldEnabled Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Gets and sets if the depth of field option is enabled. When setting this to true, use the centerOfFocus and depthOfFieldBlur properties to specify how the depth of field is defined.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.isDepthOfFieldEnabled\n\n# Set the value of the property.\nsceneSettings_var.isDepthOfFieldEnabled = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sceneSettings_var->isDepthOfFieldEnabled();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sceneSettings_var->isDepthOfFieldEnabled(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "isGroundDisplayed": {
+      "id": "SceneSettings_isGroundDisplayed",
+      "title": "SceneSettings.isGroundDisplayed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Gets and sets if the ground plane is displayed. The plane allows shadows on the ground and reflections if the isGroundReflections property is true.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.isGroundDisplayed\n\n# Set the value of the property.\nsceneSettings_var.isGroundDisplayed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sceneSettings_var->isGroundDisplayed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sceneSettings_var->isGroundDisplayed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "isGroundFlattened": {
+      "id": "SceneSettings_isGroundFlattened",
+      "title": "SceneSettings.isGroundFlattened Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Gets and sets if the ground plane is \"textured\" where the environment image is mapped as a texture.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.isGroundFlattened\n\n# Set the value of the property.\nsceneSettings_var.isGroundFlattened = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sceneSettings_var->isGroundFlattened();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sceneSettings_var->isGroundFlattened(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "isGroundReflections": {
+      "id": "SceneSettings_isGroundReflections",
+      "title": "SceneSettings.isGroundReflections Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Gets and sets if objects are reflected on the ground plane.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.isGroundReflections\n\n# Set the value of the property.\nsceneSettings_var.isGroundReflections = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sceneSettings_var->isGroundReflections();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sceneSettings_var->isGroundReflections(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "isValid": {
+      "id": "SceneSettings_isValid",
+      "title": "SceneSettings.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sceneSettings_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "lightAngle": {
+      "id": "SceneSettings_lightAngle",
+      "title": "SceneSettings.lightAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Specifies the rotation of the lighting. The angle is specified in Radians. When the isGroundFlattened property is true, this also controls the angle of the texture that is applied to the ground. When the background is an environment, this controls the rotation of the environment relative to the model.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.lightAngle\n\n# Set the value of the property.\nsceneSettings_var.lightAngle = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sceneSettings_var->lightAngle();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sceneSettings_var->lightAngle(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "objectType": {
+      "id": "SceneSettings_objectType",
+      "title": "SceneSettings.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sceneSettings_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sceneSettings_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "SceneSettings_classType",
+      "title": "SceneSettings.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.SceneSettings.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::SceneSettings::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version May 2023"
+    },
+    "restoreDefaults": {
+      "id": "SceneSettings_restoreDefaults",
+      "title": "SceneSettings.restoreDefaults Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Changes all of the scene settings to the default values.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "returnValue = sceneSettings_var.restoreDefaults()",
+        "cpp": "#include \n\nreturnValue = sceneSettings_var->restoreDefaults();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting to the default settings was successful.",
+      "version": "Introduced in version May 2023"
+    },
+    "saveAsDefaults": {
+      "id": "SceneSettings_saveAsDefaults",
+      "title": "SceneSettings.saveAsDefaults Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/SceneSettings.h",
+      "description": "Saves all of the scene settings as the default settings for this Design.",
+      "parent_class": "SceneSettings",
+      "syntax": {
+        "python": "returnValue = sceneSettings_var.saveAsDefaults()",
+        "cpp": "#include \n\nreturnValue = sceneSettings_var->saveAsDefaults();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if saving the defaults was successful.",
+      "version": "Introduced in version May 2023"
+    }
+  }
+}

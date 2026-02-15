@@ -1,0 +1,703 @@
+{
+  "id": "MoveFeature",
+  "title": "MoveFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/MoveFeature.h",
+  "description": "Object that represents an existing move feature in a design.",
+  "parent_class": "Feature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    },
+    {
+      "name": "redefineAsFreeMove",
+      "description": "Redefines the move feature to be described by an arbitrary translation and orientation which is defined using a transformation matrix.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "redefineAsPointToPoint",
+      "description": "Redefines the move feature to be a translation from one point to another.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "redefineAsPointToPosition",
+      "description": "Redefines a move feature to be described by a point and an offset. The distances define offsets in the X, Y, and Z directions in either design or component space. To not move the input entities at all the offset distances should be set to the current location of the point in either design or component space. Adding or subtracting to those values will then move the entities that distance. It's best to experiment with the command interactively to understand the behavior.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "redefineAsRotate",
+      "description": "Redefines the move feature to be described by an axis and rotation angle.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "redefineAsTranslateAlongEntity",
+      "description": "Redefines the move feature to be a translation along a specified entity.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "redefineAsTranslateXYZ",
+      "description": "Redefines the move feature to be described by a translation in X, Y, and Z.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "definition",
+      "description": "Returns the MoveFeatureDefinition object which provides access to the information that specifies how this MoveFeature is defined."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "inputEntities",
+      "description": "Gets and sets the entities to move. This is done by using an ObjectCollection containing the objects to move. For a parametric model, the collection can contain BRepBody or BRepFace objects but not a combination of both.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    },
+    {
+      "name": "transform",
+      "description": "**RETIRED** Gets and sets the move transform of the input bodies or faces.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Move Feature API Sample",
+      "description": "Demonstrates creating a new move feature."
+    }
+  ],
+  "version": "Introduced in version March 2015",
+  "property_details": {
+    "assemblyContext": {
+      "id": "MoveFeature_assemblyContext",
+      "title": "MoveFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = moveFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "attributes": {
+      "id": "MoveFeature_attributes",
+      "title": "MoveFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = moveFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "baseFeature": {
+      "id": "MoveFeature_baseFeature",
+      "title": "MoveFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = moveFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "bodies": {
+      "id": "MoveFeature_bodies",
+      "title": "MoveFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = moveFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "definition": {
+      "id": "MoveFeature_definition",
+      "title": "MoveFeature.definition Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Returns the MoveFeatureDefinition object which provides access to the information that specifies how this MoveFeature is defined.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.definition",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = moveFeature_var->definition();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2023"
+    },
+    "entityToken": {
+      "id": "MoveFeature_entityToken",
+      "title": "MoveFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = moveFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "errorOrWarningMessage": {
+      "id": "MoveFeature_errorOrWarningMessage",
+      "title": "MoveFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = moveFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "faces": {
+      "id": "MoveFeature_faces",
+      "title": "MoveFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = moveFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "healthState": {
+      "id": "MoveFeature_healthState",
+      "title": "MoveFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = moveFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "inputEntities": {
+      "id": "MoveFeature_inputEntities",
+      "title": "MoveFeature.inputEntities Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Gets and sets the entities to move. This is done by using an ObjectCollection containing the objects to move. For a parametric model, the collection can contain BRepBody or BRepFace objects but not a combination of both. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.inputEntities\n\n# Set the value of the property.\nmoveFeature_var.inputEntities = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = moveFeature_var->inputEntities();\n\n// Set the value of the property, where value_var is an ObjectCollection.\nbool returnValue = moveFeature_var->inputEntities(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "isParametric": {
+      "id": "MoveFeature_isParametric",
+      "title": "MoveFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = moveFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "isSuppressed": {
+      "id": "MoveFeature_isSuppressed",
+      "title": "MoveFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.isSuppressed\n\n# Set the value of the property.\nmoveFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = moveFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = moveFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "isValid": {
+      "id": "MoveFeature_isValid",
+      "title": "MoveFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = moveFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "linkedFeatures": {
+      "id": "MoveFeature_linkedFeatures",
+      "title": "MoveFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = moveFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "name": {
+      "id": "MoveFeature_name",
+      "title": "MoveFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.name\n\n# Set the value of the property.\nmoveFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = moveFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = moveFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "nativeObject": {
+      "id": "MoveFeature_nativeObject",
+      "title": "MoveFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = moveFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "objectType": {
+      "id": "MoveFeature_objectType",
+      "title": "MoveFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = moveFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "parentComponent": {
+      "id": "MoveFeature_parentComponent",
+      "title": "MoveFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = moveFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "timelineObject": {
+      "id": "MoveFeature_timelineObject",
+      "title": "MoveFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = moveFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "transform": {
+      "id": "MoveFeature_transform",
+      "title": "MoveFeature.transform Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets and sets the move transform of the input bodies or faces. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True) Remarks",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeature_var.transform\n\n# Set the value of the property.\nmoveFeature_var.transform = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = moveFeature_var->transform();\n\n// Set the value of the property, where value_var is a Matrix3D.\nbool returnValue = moveFeature_var->transform(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "MoveFeature_classType",
+      "title": "MoveFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.MoveFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::MoveFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version March 2015"
+    },
+    "createForAssemblyContext": {
+      "id": "MoveFeature_createForAssemblyContext",
+      "title": "MoveFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "returnValue = moveFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = moveFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "MoveFeature",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    },
+    "deleteMe": {
+      "id": "MoveFeature_deleteMe",
+      "title": "MoveFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "returnValue = moveFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = moveFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version March 2015"
+    },
+    "dissolve": {
+      "id": "MoveFeature_dissolve",
+      "title": "MoveFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "returnValue = moveFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = moveFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version March 2015"
+    },
+    "redefineAsFreeMove": {
+      "id": "MoveFeature_redefineAsFreeMove",
+      "title": "MoveFeature.redefineAsFreeMove Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Redefines the move feature to be described by an arbitrary translation and orientation which is defined using a transformation matrix. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "returnValue = moveFeature_var.redefineAsFreeMove(transform)",
+        "cpp": "#include \n\nreturnValue = moveFeature_var->redefineAsFreeMove(transform);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the re-definition is successful.",
+      "parameters": [
+        {
+          "name": "transform",
+          "type": "Matrix3D",
+          "description": "The transformation matrix that defines the transform to apply. The matrix must be an orthogonal matrix; that is the axes are perpendicular to each other and there isn't any scaling or mirroring defined."
+        }
+      ],
+      "version": "Introduced in version January 2023"
+    },
+    "redefineAsPointToPoint": {
+      "id": "MoveFeature_redefineAsPointToPoint",
+      "title": "MoveFeature.redefineAsPointToPoint Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Redefines the move feature to be a translation from one point to another. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "returnValue = moveFeature_var.redefineAsPointToPoint(originPoint, targetPoint)",
+        "cpp": "#include \n\nreturnValue = moveFeature_var->redefineAsPointToPoint(originPoint, targetPoint);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the redefinition is successful.",
+      "parameters": [
+        {
+          "name": "originPoint",
+          "type": "Base",
+          "description": "The first point that defines the start position of the move."
+        },
+        {
+          "name": "targetPoint",
+          "type": "Base",
+          "description": "The second point that defines the direction and distance of the move."
+        }
+      ],
+      "version": "Introduced in version January 2023"
+    },
+    "redefineAsPointToPosition": {
+      "id": "MoveFeature_redefineAsPointToPosition",
+      "title": "MoveFeature.redefineAsPointToPosition Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Redefines a move feature to be described by a point and an offset. The distances define offsets in the X, Y, and Z directions in either design or component space. To not move the input entities at all the offset distances should be set to the current location of the point in either design or component space. Adding or subtracting to those values will then move the entities that distance. It's best to experiment with the command interactively to understand the behavior. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "returnValue = moveFeature_var.redefineAsPointToPosition(point, xDistance, yDistance, zDistance, isDesignSpace)",
+        "cpp": "#include \n\nreturnValue = moveFeature_var->redefineAsPointToPosition(point, xDistance, yDistance, zDistance, isDesignSpace);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the redefinition is successful.",
+      "parameters": [
+        {
+          "name": "point",
+          "type": "Base",
+          "description": "An entity that defines a point in space. This can be a sketch point, a construction point, or a BRepVertex."
+        },
+        {
+          "name": "xDistance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset in the X direction. If the ValueInput is created using a real value, the distance is in centimeters. If it's defined using a string, the default document units will be used."
+        },
+        {
+          "name": "yDistance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset in the Y direction. If the ValueInput is created using a real value, the distance is in centimeters. If it's defined using a string, the default document units will be used."
+        },
+        {
+          "name": "zDistance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset in the Z direction. If the ValueInput is created using a real value, the distance is in centimeters. If it's defined using a string, the default document units will be used."
+        },
+        {
+          "name": "isDesignSpace",
+          "type": "boolean",
+          "description": "Defines if the translation is defined with respect to the design or component space. Design space is the same as the root component space."
+        }
+      ],
+      "version": "Introduced in version January 2023"
+    },
+    "redefineAsRotate": {
+      "id": "MoveFeature_redefineAsRotate",
+      "title": "MoveFeature.redefineAsRotate Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Redefines the move feature to be described by an axis and rotation angle. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "returnValue = moveFeature_var.redefineAsRotate(axisEntity, angle)",
+        "cpp": "#include \n\nreturnValue = moveFeature_var->redefineAsRotate(axisEntity, angle);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the redefinition is successful.",
+      "parameters": [
+        {
+          "name": "axisEntity",
+          "type": "Base",
+          "description": "A linear entity that defines the axis of rotation. This can be a linear BRepEdge, ConstructionAxis, or a SketchLine. The natural direction of the entity defines a right-hand rule for the rotation direction."
+        },
+        {
+          "name": "angle",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the rotation angle. If the ValueInput is created using a real value, the angle is in radians. If it's defined using a string, the default document units will be used."
+        }
+      ],
+      "version": "Introduced in version January 2023"
+    },
+    "redefineAsTranslateAlongEntity": {
+      "id": "MoveFeature_redefineAsTranslateAlongEntity",
+      "title": "MoveFeature.redefineAsTranslateAlongEntity Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Redefines the move feature to be a translation along a specified entity. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "returnValue = moveFeature_var.redefineAsTranslateAlongEntity(linearEntity, distance)",
+        "cpp": "#include \n\nreturnValue = moveFeature_var->redefineAsTranslateAlongEntity(linearEntity, distance);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the redefinition is successful.",
+      "parameters": [
+        {
+          "name": "linearEntity",
+          "type": "Base",
+          "description": "A linear entity that defines the direction of the move. This can be a linear BRepEdge, ConstructionAxis, or a SketchLine. The entity defines the direction, not the distance. The natural direction of the entity defines the translation direction."
+        },
+        {
+          "name": "distance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset distance. If the ValueInput is created using a real value, the distance is in centimeters. If it's defined using a string, the default document units will be used."
+        }
+      ],
+      "version": "Introduced in version January 2023"
+    },
+    "redefineAsTranslateXYZ": {
+      "id": "MoveFeature_redefineAsTranslateXYZ",
+      "title": "MoveFeature.redefineAsTranslateXYZ Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeature.h",
+      "description": "Redefines the move feature to be described by a translation in X, Y, and Z. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "MoveFeature",
+      "syntax": {
+        "python": "returnValue = moveFeature_var.redefineAsTranslateXYZ(xDistance, yDistance, zDistance, isDesignSpace)",
+        "cpp": "#include \n\nreturnValue = moveFeature_var->redefineAsTranslateXYZ(xDistance, yDistance, zDistance, isDesignSpace);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the re-definition is successful.",
+      "parameters": [
+        {
+          "name": "xDistance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset in the X direction. If the ValueInput is created using a real value, the distance is in centimeters. If it's defined using a string, the default document units will be used."
+        },
+        {
+          "name": "yDistance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset in the Y direction. If the ValueInput is created using a real value, the distance is in centimeters. If it's defined using a string, the default document units will be used."
+        },
+        {
+          "name": "zDistance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset in the Z direction. If the ValueInput is created using a real value, the distance is in centimeters. If it's defined using a string, the default document units will be used."
+        },
+        {
+          "name": "isDesignSpace",
+          "type": "boolean",
+          "description": "Defines if the translation is defined with respect to the design or component space. Design space is the same as the root component space."
+        }
+      ],
+      "version": "Introduced in version January 2023"
+    }
+  }
+}

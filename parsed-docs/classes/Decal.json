@@ -1,0 +1,449 @@
+{
+  "id": "Decal",
+  "title": "Decal Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Image/Decal.h",
+  "description": "Represents a Decal within a component.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the decal from the component."
+    },
+    {
+      "name": "redefine",
+      "description": "Redefines the position, orientation, and how the decal is applied to the body.   To call this method, you need to position the timeline marker to immediately before this decal. This can be accomplished using the following code: thisDecal.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "saveImage",
+      "description": "Saves the image associated with the decal to the specified file. This is useful in cases where the original image file is no longer available but you need the image for some other purpose."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "deriveFeature",
+      "description": "Returns the DeriveFeature if this decal is derived from another design. This property returns null if the decal is not derived from another design (i.e. isDerived property returns false)."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Decal object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same Decal.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "faces",
+      "description": "Gets the faces the decal is associated with. Typically, this is an array containing a single face. If the isChainFaces property is true, this will return the primary face. If the isChainFaces property is false, the decal is limited to the faces in this list.   If multiple faces have been provided, the first face in the list is the primary face, which is used to position and orient the decal.   To set the faces, use the redefine method."
+    },
+    {
+      "name": "imageFilename",
+      "description": "Gets and sets the filename of the image used for the decal. When getting this property, the filename returned is the file that was used when the decal was initially created. it's possible the file may no longer exist.   When setting this property, it is the full filename to the image to use for the decal. PNG, JPEG, and TIFF files are supported."
+    },
+    {
+      "name": "isChainFaces",
+      "description": "Returns if the decal is limited to a specified set of faces or wraps onto all faces in the body. If this property is True, a single face has been specified and the decal can wrap onto other faces of the body. If False, the decal is limited to the set of specified faces.   To change this setting, use the redefine method."
+    },
+    {
+      "name": "isDerived",
+      "description": "Returns if this decal is derived from another design. If true, the canvas cannot be deleted. You should not attempt to make any edits to the derived decal. Any edits made to this derived decal will be lost when the derive updates."
+    },
+    {
+      "name": "isLightBulbOn",
+      "description": "Gets and sets if the light bulb of this decal as displayed in the browser is on or off.   A decal will only be visible if the light bulb is switched on. However, the light bulb can be on and the decal still invisible if the visibility of a higher level occurrence has its light bulb off or if the light bulb for the Decals folder is off to turn off all decals in a component."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Returns if the decal is currently visible in the graphics window. The isLightBulbOn property of the decal controls if the decal should be displayed or not, but even when true, the decal may not be visible because the occurrence that references the component may not be visible. It's also possible to turn off the visibility of all the decals in a component. This property takes all of that into account when reporting if the decal is visible or not."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name of the decal. This is the name seen in the browser and timeline."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "opacity",
+      "description": "Gets and sets the opacity of the decal where 0 is completely transparent and 1.0 is completely opaque. Setting this property to a value outside the range of 0-1 will result in the value being set to the closest valid value.   Defaults to 1.0 when the input is created."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with the creation of this decal."
+    },
+    {
+      "name": "transform",
+      "description": "Gets the transform of the decal. The returned matrix defines the position, rotation, scaling, and flipping. This is done by providing a 3D matrix which defines a 3D coordinate system in model space. The origin of the matrix defines the center of the decal and must lie somewhere on the first face. The normal of the face defines the Z axis of the matrix and the X and Y axes define the orientation of the decal and must be both perpendicular to the Z axis and to each other. Reversing the direction of the X or Y axis will flip the decal in that direction. The magnitude of the X and Y axes controls the scale and the scale can be non-uniform, meaning the length of the X and Y vectors do not need to be the same.   To set the transform, use the redefine method."
+    }
+  ],
+  "version": "Introduced in version September 2024",
+  "property_details": {
+    "assemblyContext": {
+      "id": "Decal_assemblyContext",
+      "title": "Decal.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decal_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = decal_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "deriveFeature": {
+      "id": "Decal_deriveFeature",
+      "title": "Decal.deriveFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Returns the DeriveFeature if this decal is derived from another design. This property returns null if the decal is not derived from another design (i.e. isDerived property returns false).",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decal_var.deriveFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = decal_var->deriveFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "entityToken": {
+      "id": "Decal_entityToken",
+      "title": "Decal.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Returns a token for the Decal object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same Decal. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decal_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = decal_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "faces": {
+      "id": "Decal_faces",
+      "title": "Decal.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Gets the faces the decal is associated with. Typically, this is an array containing a single face. If the isChainFaces property is true, this will return the primary face. If the isChainFaces property is false, the decal is limited to the faces in this list. If multiple faces have been provided, the first face in the list is the primary face, which is used to position and orient the decal. To set the faces, use the redefine method.",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decal_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = decal_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "imageFilename": {
+      "id": "Decal_imageFilename",
+      "title": "Decal.imageFilename Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Gets and sets the filename of the image used for the decal. When getting this property, the filename returned is the file that was used when the decal was initially created. it's possible the file may no longer exist. When setting this property, it is the full filename to the image to use for the decal. PNG, JPEG, and TIFF files are supported.",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decal_var.imageFilename\n\n# Set the value of the property.\ndecal_var.imageFilename = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = decal_var->imageFilename();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = decal_var->imageFilename(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "isChainFaces": {
+      "id": "Decal_isChainFaces",
+      "title": "Decal.isChainFaces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Returns if the decal is limited to a specified set of faces or wraps onto all faces in the body. If this property is True, a single face has been specified and the decal can wrap onto other faces of the body. If False, the decal is limited to the set of specified faces. To change this setting, use the redefine method.",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decal_var.isChainFaces",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = decal_var->isChainFaces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "isDerived": {
+      "id": "Decal_isDerived",
+      "title": "Decal.isDerived Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Returns if this decal is derived from another design. If true, the canvas cannot be deleted. You should not attempt to make any edits to the derived decal. Any edits made to this derived decal will be lost when the derive updates.",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decal_var.isDerived",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = decal_var->isDerived();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "isLightBulbOn": {
+      "id": "Decal_isLightBulbOn",
+      "title": "Decal.isLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Gets and sets if the light bulb of this decal as displayed in the browser is on or off. A decal will only be visible if the light bulb is switched on. However, the light bulb can be on and the decal still invisible if the visibility of a higher level occurrence has its light bulb off or if the light bulb for the Decals folder is off to turn off all decals in a component.",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decal_var.isLightBulbOn\n\n# Set the value of the property.\ndecal_var.isLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = decal_var->isLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = decal_var->isLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "isValid": {
+      "id": "Decal_isValid",
+      "title": "Decal.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decal_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = decal_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "isVisible": {
+      "id": "Decal_isVisible",
+      "title": "Decal.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Returns if the decal is currently visible in the graphics window. The isLightBulbOn property of the decal controls if the decal should be displayed or not, but even when true, the decal may not be visible because the occurrence that references the component may not be visible. It's also possible to turn off the visibility of all the decals in a component. This property takes all of that into account when reporting if the decal is visible or not.",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decal_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = decal_var->isVisible();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "name": {
+      "id": "Decal_name",
+      "title": "Decal.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Gets and sets the name of the decal. This is the name seen in the browser and timeline.",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decal_var.name\n\n# Set the value of the property.\ndecal_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = decal_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = decal_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "nativeObject": {
+      "id": "Decal_nativeObject",
+      "title": "Decal.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decal_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = decal_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "objectType": {
+      "id": "Decal_objectType",
+      "title": "Decal.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decal_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = decal_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "opacity": {
+      "id": "Decal_opacity",
+      "title": "Decal.opacity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Gets and sets the opacity of the decal where 0 is completely transparent and 1.0 is completely opaque. Setting this property to a value outside the range of 0-1 will result in the value being set to the closest valid value. Defaults to 1.0 when the input is created.",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decal_var.opacity\n\n# Set the value of the property.\ndecal_var.opacity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = decal_var->opacity();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = decal_var->opacity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "timelineObject": {
+      "id": "Decal_timelineObject",
+      "title": "Decal.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Returns the timeline object associated with the creation of this decal.",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decal_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = decal_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "transform": {
+      "id": "Decal_transform",
+      "title": "Decal.transform Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Gets the transform of the decal. The returned matrix defines the position, rotation, scaling, and flipping. This is done by providing a 3D matrix which defines a 3D coordinate system in model space. The origin of the matrix defines the center of the decal and must lie somewhere on the first face. The normal of the face defines the Z axis of the matrix and the X and Y axes define the orientation of the decal and must be both perpendicular to the Z axis and to each other. Reversing the direction of the X or Y axis will flip the decal in that direction. The magnitude of the X and Y axes controls the scale and the scale can be non-uniform, meaning the length of the X and Y vectors do not need to be the same. To set the transform, use the redefine method.",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decal_var.transform",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = decal_var->transform();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "Decal_classType",
+      "title": "Decal.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.Decal.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::Decal::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2024"
+    },
+    "createForAssemblyContext": {
+      "id": "Decal_createForAssemblyContext",
+      "title": "Decal.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "returnValue = decal_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = decal_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "Decal",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version September 2024"
+    },
+    "deleteMe": {
+      "id": "Decal_deleteMe",
+      "title": "Decal.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Deletes the decal from the component.",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "returnValue = decal_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = decal_var->deleteMe();"
+      },
+      "version": "Introduced in version September 2024"
+    },
+    "redefine": {
+      "id": "Decal_redefine",
+      "title": "Decal.redefine Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Redefines the position, orientation, and how the decal is applied to the body. To call this method, you need to position the timeline marker to immediately before this decal. This can be accomplished using the following code: thisDecal.timelineObject.rollTo(True)",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "returnValue = decal_var.redefine(position, faces, isChainFaces)",
+        "cpp": "#include \n\nreturnValue = decal_var->redefine(position, faces, isChainFaces);"
+      },
+      "parameters": [
+        {
+          "name": "position",
+          "type": "Matrix3D",
+          "description": "Defines the position, rotation, scaling, and flipping of the decal. The input 3D matrix defines a 3D coordinate system in model space. The origin of the matrix defines the center of the decal and must lie somewhere on the first face. The Z-axis of the matrix should be the same as the normal of the face at the origin. The X and Y axes define the orientation of the decal and must be both perpendicular to the Z axis and each other. Reversing the direction of the X or Y axis will flip the decal in that direction. The magnitude of the X and Y axes controls the scale, and the scale can be non-uniform, meaning the length of the X and Y vectors do not need to be the same."
+        },
+        {
+          "name": "faces",
+          "type": "BRepFace[]",
+          "description": "Defines the face where the decal will be placed. The first face in the array is the primary face, which is where the position point must be on. If the isChainFaces argument is true, only the primary face is needed and it will be used to define the position and orientation of the decal and the decal can wrap onto all the faces of the body. If the isChainFaces argument is false, the decal can only be applied to the specified faces with the first face in the array being used as the primary face."
+        },
+        {
+          "name": "isChainFaces",
+          "type": "boolean",
+          "description": "If true, only one face is needed and the decal wraps onto all the faces of the body. If false, the decal can only be applied to the specified faces with the first face being used to calculate the position and orientation."
+        }
+      ],
+      "version": "Introduced in version September 2024"
+    },
+    "saveImage": {
+      "id": "Decal_saveImage",
+      "title": "Decal.saveImage Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Decal.h",
+      "description": "Saves the image associated with the decal to the specified file. This is useful in cases where the original image file is no longer available but you need the image for some other purpose.",
+      "parent_class": "Decal",
+      "syntax": {
+        "python": "returnValue = decal_var.saveImage(filename)",
+        "cpp": "#include \n\nreturnValue = decal_var->saveImage(filename);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if writing the file was successful.",
+      "parameters": [
+        {
+          "name": "filename",
+          "type": "string",
+          "description": "The full filename of the image to save, including the extension of the file, which controls what format the image file will be. If file extension is other than png, jpg or tiff, then by default png extension will be added to the filename. This method will fail if a file with the specified filename already exists. If you want to overwrite the file, you'll need to delete it first before calling this method."
+        }
+      ],
+      "version": "Introduced in version September 2024"
+    }
+  }
+}

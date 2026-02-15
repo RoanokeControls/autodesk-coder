@@ -1,0 +1,212 @@
+{
+  "id": "CustomFeatureDefinition",
+  "title": "CustomFeatureDefinition Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/CustomFeatureDefinition.h",
+  "description": "The CustomFeatureDefinition object defines a specific type of custom feature. It contains the settings that apply to all custom features of that type and is used when creating new custom features of that type. It also supports the events used to handle changes to custom features of that type.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "create",
+      "description": "A static function that creates a new CustomFeatureDefinition object. The creation of a CustomFeatureDefinition object is required to be able to create new custom features and for existing custom features to behave correctly. The CustomFeatureDefinition object defines all of the information that is common for all custom features of a particular type. For example, it defines the icon and the default name. The CustomFeatureDefinition object also supports the events that used to react to an existing feature being edited or re-computed.   The custom feature definition should be created when your add-in is initially loaded to notify Fusion that the add-in that supports that custom feature type is available."
+    }
+  ],
+  "properties": [
+    {
+      "name": "defaultName",
+      "description": "Gets and sets the default name of the feature. Fusion will use this name and append a number to each feature instance as it's created. For example, if this is \"Dovetail\" the first custom feature created will be named \"Dovetail1\" and the second will be \"Dovetail2\".   If you want to localize this name you can use the Application.Preferences.generalPreferences.userLanguage property to determine what language the user has chosen and use the corresponding name for that language."
+    },
+    {
+      "name": "editCommandId",
+      "description": "Gets and sets which command will be invoked when the feature is edited. This is the id of the CommandDefinition object that you have created to do the edit of the feature."
+    },
+    {
+      "name": "iconFolder",
+      "description": "Gets and sets the folder that contains the images that are used for the icon in the timeline for this custom feature. The folder should contain the image files named 16x16.png and 32x32.png which should be images that are 16 and 32 pixels square."
+    },
+    {
+      "name": "id",
+      "description": "Gets the unique ID used for this type of custom feature."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "events": [
+    {
+      "name": "customFeatureCompute",
+      "description": "The customFeatureCompute event fires when Fusion is computing the timeline and reaches the custom feature. The event is fired if any of the dependencies of the custom feature have changed. You can modify the results of your custom feature based on the dependencies."
+    }
+  ],
+  "version": "Introduced in version January 2021",
+  "method_details": {
+    "classType": {
+      "id": "CustomFeatureDefinition_classType",
+      "title": "CustomFeatureDefinition.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureDefinition.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CustomFeatureDefinition",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.CustomFeatureDefinition.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::CustomFeatureDefinition::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2021"
+    },
+    "create": {
+      "id": "CustomFeatureDefinition_create",
+      "title": "CustomFeatureDefinition.create Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureDefinition.h",
+      "description": "A static function that creates a new CustomFeatureDefinition object. The creation of a CustomFeatureDefinition object is required to be able to create new custom features and for existing custom features to behave correctly. The CustomFeatureDefinition object defines all of the information that is common for all custom features of a particular type. For example, it defines the icon and the default name. The CustomFeatureDefinition object also supports the events that used to react to an existing feature being edited or re-computed. The custom feature definition should be created when your add-in is initially loaded to notify Fusion that the add-in that supports that custom feature type is available.",
+      "parent_class": "CustomFeatureDefinition",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.CustomFeatureDefinition.create(id, defaultName, iconFolder)",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::CustomFeatureDefinition::create(id, defaultName, iconFolder);"
+      },
+      "return_type": "CustomFeatureDefinition",
+      "return_description": "Returns the newly created CustomFeatureDefinition or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The unique ID for custom features of a particular type. Care must be taken to ensure that this is unique and you must be consistent in its use once you've chosen an ID. A good practice to help ensure unique naming is to use the name of your company in combination with the name of the feature, such as \"CompanyName.FeatureName\". For example, \"WoodTools4U.Dovetail\"."
+        },
+        {
+          "name": "defaultName",
+          "type": "string",
+          "description": "The default name of the feature. Fusion will use this name and append a number to each feature instance as it's created. For example, if this is \"Dovetail\" the first custom feature created will be named \"Dovetail1\" and the second will be \"Dovetail2\".   If you want to localize this name you can use the Application.Preferences.generalPreferences.userLanguage property to determine what language the user has chosen and use the corresponding name for that language."
+        },
+        {
+          "name": "iconFolder",
+          "type": "string",
+          "description": "The folder that contains the image files that will be used for the icon for this feature in the timeline. This can be a full path or a relative path where it will be relative to the add-in file. The folder should contain the image files named 16x16.png and 32x32.png which should be images that are 16 and 32 pixels square."
+        }
+      ],
+      "version": "Introduced in version January 2021"
+    }
+  },
+  "event_details": {
+    "customFeatureCompute": {
+      "id": "CustomFeatureDefinition_customFeatureCompute",
+      "title": "CustomFeatureDefinition.customFeatureCompute Event",
+      "type": "event",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureDefinition.h",
+      "description": "The customFeatureCompute event fires when Fusion is computing the timeline and reaches the custom feature. The event is fired if any of the dependencies of the custom feature have changed. You can modify the results of your custom feature based on the dependencies.",
+      "parent_class": "CustomFeatureDefinition",
+      "syntax": {
+        "python": "# Event handler for the customFeatureCompute event.\nclass MyCustomFeatureComputeHandler(adsk.fusion.CustomFeatureEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.fusion.CustomFeatureEventArgs):\n        # Code to react to the event.\n        app.log('In MyCustomFeatureComputeHandler event handler.')",
+        "cpp": "// \"customFeatureDefinition_var\" is a variable referencing a CustomFeatureDefinition object.\n// Connect the handler function to the event.\nPtr customFeatureComputeEvent = customFeatureDefinition_var->customFeatureCompute();\nif (!customFeatureComputeEvent)\n    return;\n\nbool isOk = customFeatureComputeEvent->add(&_customFeatureCompute);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    }
+  },
+  "property_details": {
+    "defaultName": {
+      "id": "CustomFeatureDefinition_defaultName",
+      "title": "CustomFeatureDefinition.defaultName Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureDefinition.h",
+      "description": "Gets and sets the default name of the feature. Fusion will use this name and append a number to each feature instance as it's created. For example, if this is \"Dovetail\" the first custom feature created will be named \"Dovetail1\" and the second will be \"Dovetail2\". If you want to localize this name you can use the Application.Preferences.generalPreferences.userLanguage property to determine what language the user has chosen and use the corresponding name for that language.",
+      "parent_class": "CustomFeatureDefinition",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureDefinition_var.defaultName\n\n# Set the value of the property.\ncustomFeatureDefinition_var.defaultName = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeatureDefinition_var->defaultName();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = customFeatureDefinition_var->defaultName(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "editCommandId": {
+      "id": "CustomFeatureDefinition_editCommandId",
+      "title": "CustomFeatureDefinition.editCommandId Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureDefinition.h",
+      "description": "Gets and sets which command will be invoked when the feature is edited. This is the id of the CommandDefinition object that you have created to do the edit of the feature.",
+      "parent_class": "CustomFeatureDefinition",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureDefinition_var.editCommandId\n\n# Set the value of the property.\ncustomFeatureDefinition_var.editCommandId = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeatureDefinition_var->editCommandId();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = customFeatureDefinition_var->editCommandId(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "iconFolder": {
+      "id": "CustomFeatureDefinition_iconFolder",
+      "title": "CustomFeatureDefinition.iconFolder Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureDefinition.h",
+      "description": "Gets and sets the folder that contains the images that are used for the icon in the timeline for this custom feature. The folder should contain the image files named 16x16.png and 32x32.png which should be images that are 16 and 32 pixels square.",
+      "parent_class": "CustomFeatureDefinition",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureDefinition_var.iconFolder\n\n# Set the value of the property.\ncustomFeatureDefinition_var.iconFolder = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeatureDefinition_var->iconFolder();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = customFeatureDefinition_var->iconFolder(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "id": {
+      "id": "CustomFeatureDefinition_id",
+      "title": "CustomFeatureDefinition.id Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureDefinition.h",
+      "description": "Gets the unique ID used for this type of custom feature.",
+      "parent_class": "CustomFeatureDefinition",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureDefinition_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeatureDefinition_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "isValid": {
+      "id": "CustomFeatureDefinition_isValid",
+      "title": "CustomFeatureDefinition.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureDefinition.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CustomFeatureDefinition",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureDefinition_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customFeatureDefinition_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "objectType": {
+      "id": "CustomFeatureDefinition_objectType",
+      "title": "CustomFeatureDefinition.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureDefinition.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CustomFeatureDefinition",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureDefinition_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeatureDefinition_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    }
+  }
+}

@@ -1,0 +1,312 @@
+{
+  "id": "FilletEdgeSetInputs",
+  "title": "FilletEdgeSetInputs Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/FilletEdgeSetInputs.h",
+  "description": "Collection of edge sets associated with the input object that will be used to create the new fillet feature. Use the various add methods on this object to add new edge sets to the input object.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "addAsymmetricRadiusEdgeSet",
+      "description": "Adds an asymmetric fillet edge set to the fillet feature input. Some settings are initialized with a default value and can be set by modifying properties on the returned AsymmetricFilletEdgeSetInput object."
+    },
+    {
+      "name": "addChordLengthEdgeSet",
+      "description": "Adds a set of edges to be filleted with a chord length fillet to the fillet feature input. Some settings are initialized with a default value and can be set by modifying properties on the returned ChordLengthFilletEdgeSetInput object."
+    },
+    {
+      "name": "addConstantRadiusEdgeSet",
+      "description": "Adds a constant radius fillet edge set to the fillet feature input. Some settings are initialized with a default value and can be set by modifying properties on the returned ConstantRadiusFilletEdgeSetInput object."
+    },
+    {
+      "name": "addVariableRadiusEdgeSet",
+      "description": "Adds a single edge or set of tangent edges to the fillet feature input. Some settings are initialized with a default value and can be set by modifying properties on the returned VariableRadiusFilletEdgeSetInput object."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified fillet edge set input using an index into the collection."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of fillet edge set input objects in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "filletFeatures.add",
+      "description": "Demonstrates the filletFeatures.add method."
+    },
+    {
+      "name": "Fillet Feature API Sample",
+      "description": "Demonstrates creating fillets using the various types of fillets. Create a new design and add a box that is at least 2 cm on each side. The script creates a constant radius, variable radius and chord length fillets. After creating each one, it deletes it and then creates the next. To see any of the fillets that were deleted, undo to get the fillet back."
+    }
+  ],
+  "version": "Introduced in version November 2022",
+  "method_details": {
+    "addAsymmetricRadiusEdgeSet": {
+      "id": "FilletEdgeSetInputs_addAsymmetricRadiusEdgeSet",
+      "title": "FilletEdgeSetInputs.addAsymmetricRadiusEdgeSet Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSetInputs.h",
+      "description": "Adds an asymmetric fillet edge set to the fillet feature input. Some settings are initialized with a default value and can be set by modifying properties on the returned AsymmetricFilletEdgeSetInput object.",
+      "parent_class": "FilletEdgeSetInputs",
+      "syntax": {
+        "python": "returnValue = filletEdgeSetInputs_var.addAsymmetricRadiusEdgeSet(entities, offsetOne, offsetTwo, isTangentChain)",
+        "cpp": "#include \n\nreturnValue = filletEdgeSetInputs_var->addAsymmetricRadiusEdgeSet(entities, offsetOne, offsetTwo, isTangentChain);"
+      },
+      "return_type": "AsymmetricFilletEdgeSetInput",
+      "return_description": "Returns the newly created AsymmetricFilletEdgeSetInput. This object provides access to additional settings.",
+      "parameters": [
+        {
+          "name": "entities",
+          "type": "ObjectCollection",
+          "description": "An ObjectCollection containing the BRepEdge, BRepFace, and Feature objects to be filleted. If the isTangentChain argument is true additional edges or faces may also get filleted if they are tangentially connected to any of the input edges or faces."
+        },
+        {
+          "name": "offsetOne",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset of the fillet in the first direction. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "offsetTwo",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the offset of the fillet in the second direction. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "isTangentChain",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not edges or faces that are tangentially connected to the input edges or faces will also be filleted."
+        }
+      ],
+      "version": "Introduced in version November 2025"
+    },
+    "addChordLengthEdgeSet": {
+      "id": "FilletEdgeSetInputs_addChordLengthEdgeSet",
+      "title": "FilletEdgeSetInputs.addChordLengthEdgeSet Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSetInputs.h",
+      "description": "Adds a set of edges to be filleted with a chord length fillet to the fillet feature input. Some settings are initialized with a default value and can be set by modifying properties on the returned ChordLengthFilletEdgeSetInput object.",
+      "parent_class": "FilletEdgeSetInputs",
+      "syntax": {
+        "python": "returnValue = filletEdgeSetInputs_var.addChordLengthEdgeSet(entities, chordLength, isTangentChain)",
+        "cpp": "#include \n\nreturnValue = filletEdgeSetInputs_var->addChordLengthEdgeSet(entities, chordLength, isTangentChain);"
+      },
+      "return_type": "ChordLengthFilletEdgeSetInput",
+      "return_description": "Returns the newly created ChordLengthFilletEdgeSetInput. This object provides access to additional settings.",
+      "parameters": [
+        {
+          "name": "entities",
+          "type": "ObjectCollection",
+          "description": "An ObjectCollection containing the BRepEdge, BRepFace, and Feature objects to be filleted. If the isTangentChain argument is true additional edges or faces may also get filleted if they are tangentially connected to any of the input edges or faces."
+        },
+        {
+          "name": "chordLength",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the chord length of the fillet. If the ValueInput uses a real value then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current document units for length."
+        },
+        {
+          "name": "isTangentChain",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not edges or faces that are tangentially connected to the input edges or faces (if any) will also be filleted."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Fillet Feature API Sample",
+          "description": "Demonstrates creating fillets using the various types of fillets. Create a new design and add a box that is at least 2 cm on each side. The script creates a constant radius, variable radius and chord length fillets. After creating each one, it deletes it and then creates the next. To see any of the fillets that were deleted, undo to get the fillet back."
+        }
+      ],
+      "version": "Introduced in version November 2022"
+    },
+    "addConstantRadiusEdgeSet": {
+      "id": "FilletEdgeSetInputs_addConstantRadiusEdgeSet",
+      "title": "FilletEdgeSetInputs.addConstantRadiusEdgeSet Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSetInputs.h",
+      "description": "Adds a constant radius fillet edge set to the fillet feature input. Some settings are initialized with a default value and can be set by modifying properties on the returned ConstantRadiusFilletEdgeSetInput object.",
+      "parent_class": "FilletEdgeSetInputs",
+      "syntax": {
+        "python": "returnValue = filletEdgeSetInputs_var.addConstantRadiusEdgeSet(entities, radius, isTangentChain)",
+        "cpp": "#include \n\nreturnValue = filletEdgeSetInputs_var->addConstantRadiusEdgeSet(entities, radius, isTangentChain);"
+      },
+      "return_type": "ConstantRadiusFilletEdgeSetInput",
+      "return_description": "Returns the newly created ConstantRadiusFilletEdgeSetInput. This object provides access to additional settings.",
+      "parameters": [
+        {
+          "name": "entities",
+          "type": "ObjectCollection",
+          "description": "An ObjectCollection containing the BRepEdge, BRepFace, and Feature objects to be filleted. If the isTangentChain argument is true additional edges or faces may also get filleted if they are tangentially connected to any of the input edges or faces."
+        },
+        {
+          "name": "radius",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the radius of the fillet. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "isTangentChain",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not edges that are tangentially connected to the input edges (if any) will also be filleted."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "filletFeatures.add",
+          "description": "Demonstrates the filletFeatures.add method."
+        },
+        {
+          "name": "Fillet Feature API Sample",
+          "description": "Demonstrates creating fillets using the various types of fillets. Create a new design and add a box that is at least 2 cm on each side. The script creates a constant radius, variable radius and chord length fillets. After creating each one, it deletes it and then creates the next. To see any of the fillets that were deleted, undo to get the fillet back."
+        }
+      ],
+      "version": "Introduced in version November 2022"
+    },
+    "addVariableRadiusEdgeSet": {
+      "id": "FilletEdgeSetInputs_addVariableRadiusEdgeSet",
+      "title": "FilletEdgeSetInputs.addVariableRadiusEdgeSet Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSetInputs.h",
+      "description": "Adds a single edge or set of tangent edges to the fillet feature input. Some settings are initialized with a default value and can be set by modifying properties on the returned VariableRadiusFilletEdgeSetInput object.",
+      "parent_class": "FilletEdgeSetInputs",
+      "syntax": {
+        "python": "returnValue = filletEdgeSetInputs_var.addVariableRadiusEdgeSet(tangentEdges, startRadius, endRadius, isTangentChain)",
+        "cpp": "#include \n\nreturnValue = filletEdgeSetInputs_var->addVariableRadiusEdgeSet(tangentEdges, startRadius, endRadius, isTangentChain);"
+      },
+      "return_type": "VariableRadiusFilletEdgeSetInput",
+      "return_description": "Returns the newly created VariableRadiusFilletEdgeSetInput. This object provides access to additional settings.",
+      "parameters": [
+        {
+          "name": "tangentEdges",
+          "type": "ObjectCollection",
+          "description": "An object collection containing a single edge or multiple edges. Multiple edges must be tangentially connected and added to the collection in their connected order. If a single edge is input, you can use the isTangentChain argument to automatically find any tangentially connected edges."
+        },
+        {
+          "name": "startRadius",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the starting radius of the fillet. If a single edge is being filleted, the start radius is at the start end of the edge. If multiple tangent edges are being filleted the start radius is the start end of the first edge in the collection.   If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "endRadius",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the ending radius of the fillet. If a single edge is being filleted, the end radius is at the end of the edge. If multiple tangent edges are being filleted the end radius is the open end of the last edge in the collection.   If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "isTangentChain",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not edges that are tangentially connected to the single input edge will also be filleted."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Fillet Feature API Sample",
+          "description": "Demonstrates creating fillets using the various types of fillets. Create a new design and add a box that is at least 2 cm on each side. The script creates a constant radius, variable radius and chord length fillets. After creating each one, it deletes it and then creates the next. To see any of the fillets that were deleted, undo to get the fillet back."
+        }
+      ],
+      "version": "Introduced in version November 2022"
+    },
+    "classType": {
+      "id": "FilletEdgeSetInputs_classType",
+      "title": "FilletEdgeSetInputs.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSetInputs.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "FilletEdgeSetInputs",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.FilletEdgeSetInputs.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::FilletEdgeSetInputs::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version November 2022"
+    },
+    "item": {
+      "id": "FilletEdgeSetInputs_item",
+      "title": "FilletEdgeSetInputs.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSetInputs.h",
+      "description": "Function that returns the specified fillet edge set input using an index into the collection.",
+      "parent_class": "FilletEdgeSetInputs",
+      "syntax": {
+        "python": "returnValue = filletEdgeSetInputs_var.item(index)",
+        "cpp": "#include \n\nreturnValue = filletEdgeSetInputs_var->item(index);"
+      },
+      "return_type": "FilletEdgeSetInput",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0. The edge sets are returned in the same order they were created in."
+        }
+      ],
+      "version": "Introduced in version November 2022"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "FilletEdgeSetInputs_count",
+      "title": "FilletEdgeSetInputs.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSetInputs.h",
+      "description": "The number of fillet edge set input objects in the collection.",
+      "parent_class": "FilletEdgeSetInputs",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = filletEdgeSetInputs_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = filletEdgeSetInputs_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "isValid": {
+      "id": "FilletEdgeSetInputs_isValid",
+      "title": "FilletEdgeSetInputs.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSetInputs.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "FilletEdgeSetInputs",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = filletEdgeSetInputs_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = filletEdgeSetInputs_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "objectType": {
+      "id": "FilletEdgeSetInputs_objectType",
+      "title": "FilletEdgeSetInputs.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/FilletEdgeSetInputs.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "FilletEdgeSetInputs",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = filletEdgeSetInputs_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = filletEdgeSetInputs_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    }
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "id": "DecalInput",
+  "title": "DecalInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Image/DecalInput.h",
+  "description": "The DecalInput object is used to define the various options when creating a new decal. It's created using the Decals.createInput method and is used by the Decals.add method to create a Decal.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    }
+  ],
+  "properties": [
+    {
+      "name": "faces",
+      "description": "Gets and sets the faces the decal will be associated with. Typically, this will be an array containing a single face and the isChainFaces property on the input will be true. The position and orientation of the decal is based on this face and the decal can wrap onto other faces in the body.   If the isChainFace property is false, the decal will only be applied to the provided faces where the first face is used to calculate the position and orientation of the decal."
+    },
+    {
+      "name": "imageFilename",
+      "description": "Gets and sets the filename of the image used for the decal.   When setting this property, it is the full filename to the image to use for the decal. PNG, JPG, and TIFF files are supported."
+    },
+    {
+      "name": "isChainFaces",
+      "description": "Controls if the decal will wrap onto the faces that connect to the face the decal is placed on. When this is true, the list of faces should contain only one face.   Defaults to true when the input is created."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "opacity",
+      "description": "Gets and sets the opacity of the decal where 0 is completely transparent and 1.0 is completely opaque. Setting this property to a value outside the range of 0-1 will result in the value being set to the closest valid value.   Defaults to 1.0 when the input is created."
+    },
+    {
+      "name": "targetBaseFeature",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature.   Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it."
+    },
+    {
+      "name": "transform",
+      "description": "Gets and sets the transform of the decal. This controls the position, rotation, scaling, and flipping. This is done by providing a 3D matrix that defines a 3D coordinate system in model space. The origin of the matrix defines the center of the decal and must lie somewhere on the first face. The Z-axis of the matrix should be the same as the normal of the face at the origin. The X and Y axes define the orientation of the decal and must be both perpendicular to the Z and each other. Reversing the direction of the X or Y axis will flip the decal in that direction. The magnitude of the X and Y axes controls the scale, and the scale can be non-uniform, meaning the length of the X and Y vectors do not need to be the same."
+    }
+  ],
+  "version": "Introduced in version September 2024",
+  "method_details": {
+    "classType": {
+      "id": "DecalInput_classType",
+      "title": "DecalInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/DecalInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "DecalInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.DecalInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::DecalInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2024"
+    }
+  },
+  "property_details": {
+    "faces": {
+      "id": "DecalInput_faces",
+      "title": "DecalInput.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/DecalInput.h",
+      "description": "Gets and sets the faces the decal will be associated with. Typically, this will be an array containing a single face and the isChainFaces property on the input will be true. The position and orientation of the decal is based on this face and the decal can wrap onto other faces in the body. If the isChainFace property is false, the decal will only be applied to the provided faces where the first face is used to calculate the position and orientation of the decal.",
+      "parent_class": "DecalInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decalInput_var.faces\n\n# Set the value of the property.\ndecalInput_var.faces = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = decalInput_var->faces();\n\n// Set the value of the property, where value_var is a BRepFace.\nbool returnValue = decalInput_var->faces(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "imageFilename": {
+      "id": "DecalInput_imageFilename",
+      "title": "DecalInput.imageFilename Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/DecalInput.h",
+      "description": "Gets and sets the filename of the image used for the decal. When setting this property, it is the full filename to the image to use for the decal. PNG, JPG, and TIFF files are supported.",
+      "parent_class": "DecalInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decalInput_var.imageFilename\n\n# Set the value of the property.\ndecalInput_var.imageFilename = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = decalInput_var->imageFilename();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = decalInput_var->imageFilename(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "isChainFaces": {
+      "id": "DecalInput_isChainFaces",
+      "title": "DecalInput.isChainFaces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/DecalInput.h",
+      "description": "Controls if the decal will wrap onto the faces that connect to the face the decal is placed on. When this is true, the list of faces should contain only one face. Defaults to true when the input is created.",
+      "parent_class": "DecalInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decalInput_var.isChainFaces\n\n# Set the value of the property.\ndecalInput_var.isChainFaces = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = decalInput_var->isChainFaces();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = decalInput_var->isChainFaces(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "isValid": {
+      "id": "DecalInput_isValid",
+      "title": "DecalInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/DecalInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "DecalInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decalInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = decalInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "objectType": {
+      "id": "DecalInput_objectType",
+      "title": "DecalInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/DecalInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "DecalInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decalInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = decalInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "opacity": {
+      "id": "DecalInput_opacity",
+      "title": "DecalInput.opacity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/DecalInput.h",
+      "description": "Gets and sets the opacity of the decal where 0 is completely transparent and 1.0 is completely opaque. Setting this property to a value outside the range of 0-1 will result in the value being set to the closest valid value. Defaults to 1.0 when the input is created.",
+      "parent_class": "DecalInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decalInput_var.opacity\n\n# Set the value of the property.\ndecalInput_var.opacity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = decalInput_var->opacity();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = decalInput_var->opacity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "targetBaseFeature": {
+      "id": "DecalInput_targetBaseFeature",
+      "title": "DecalInput.targetBaseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/DecalInput.h",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature. Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it.",
+      "parent_class": "DecalInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decalInput_var.targetBaseFeature\n\n# Set the value of the property.\ndecalInput_var.targetBaseFeature = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = decalInput_var->targetBaseFeature();\n\n// Set the value of the property, where value_var is a BaseFeature.\nbool returnValue = decalInput_var->targetBaseFeature(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "transform": {
+      "id": "DecalInput_transform",
+      "title": "DecalInput.transform Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/DecalInput.h",
+      "description": "Gets and sets the transform of the decal. This controls the position, rotation, scaling, and flipping. This is done by providing a 3D matrix that defines a 3D coordinate system in model space. The origin of the matrix defines the center of the decal and must lie somewhere on the first face. The Z-axis of the matrix should be the same as the normal of the face at the origin. The X and Y axes define the orientation of the decal and must be both perpendicular to the Z and each other. Reversing the direction of the X or Y axis will flip the decal in that direction. The magnitude of the X and Y axes controls the scale, and the scale can be non-uniform, meaning the length of the X and Y vectors do not need to be the same.",
+      "parent_class": "DecalInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = decalInput_var.transform\n\n# Set the value of the property.\ndecalInput_var.transform = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = decalInput_var->transform();\n\n// Set the value of the property, where value_var is a Matrix3D.\nbool returnValue = decalInput_var->transform(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    }
+  }
+}

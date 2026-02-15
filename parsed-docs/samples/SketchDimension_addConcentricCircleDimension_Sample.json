@@ -1,0 +1,12 @@
+{
+  "id": "SketchDimension_addConcentricCircleDimension_Sample",
+  "title": "SketchDimensions.addConcentricCicleDimension",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the SketchDimension.addConcentricCircleDimension method.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_Dimension_addConcentricCircleDimension(sketch: adsk.fusion.Sketch):\n    pointOne = adsk.core.Point3D.create(0,0,0)\n    pointTwo = adsk.core.Point3D.create(10,10,0)\n    pointThree = adsk.core.Point3D.create(-5,-5,0)\n    pointFour = adsk.core.Point3D.create(-10,-10,0)\n    \n    # Create the circles and text point for parameters\n    circleOne = sketch.sketchCurves.sketchCircles.addByTwoPoints(pointOne, pointTwo)\n    circleTwo = sketch.sketchCurves.sketchCircles.addByTwoPoints(pointThree, pointFour) \n    textPoint = adsk.core.Point3D.create(-2,-2,0)\n\n    # Create the concentric circle\n    dim = sketch.sketchDimensions\n    concentricCircleDimension = dim.addConcentricCircleDimension(circleOne, circleTwo, textPoint)"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "id": "ECD-ULP-FOOTPRINT",
+  "title": "UL_FOOTPRINT",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "area",
+      "type": "UL_AREA"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "headline",
+      "type": "string"
+    },
+    {
+      "name": "library",
+      "type": "string"
+    },
+    {
+      "name": "libraryurn",
+      "type": "string (see note)"
+    },
+    {
+      "name": "libraryversion",
+      "type": "int (see note)"
+    },
+    {
+      "name": "locallymodified",
+      "type": "int (see note)"
+    },
+    {
+      "name": "librarylocallymodified",
+      "type": "int (see note)"
+    },
+    {
+      "name": "name",
+      "type": "string (PACKAGE_NAME_LENGTH)"
+    },
+    {
+      "name": "urn",
+      "type": "string (see note)"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "circles()",
+      "type": "UL_CIRCLE"
+    },
+    {
+      "name": "contacts()",
+      "type": "UL_CONTACT"
+    },
+    {
+      "name": "dimensions()",
+      "type": "UL_DIMENSION"
+    },
+    {
+      "name": "frames()",
+      "type": "UL_FRAME"
+    },
+    {
+      "name": "holes()",
+      "type": "UL_HOLE"
+    },
+    {
+      "name": "polycutouts()",
+      "type": "UL_POLYCUTOUT"
+    },
+    {
+      "name": "polyshapes()",
+      "type": "UL_POLYSHAPE (see note)"
+    },
+    {
+      "name": "rectangles()",
+      "type": "UL_RECTANGLE"
+    },
+    {
+      "name": "texts()",
+      "type": "UL_TEXT (see note)"
+    },
+    {
+      "name": "wires()",
+      "type": "UL_WIRE (see note)"
+    }
+  ],
+  "content": "# UL_FOOTPRINT\n\n## Data members\n\n| | |\n| --- | --- |\n| area | UL_AREA |\n| description | string |\n| headline | string |\n| library | string |\n| libraryurn | string (see note) |\n| libraryversion | int (see note) |\n| locallymodified | int (see note) |\n| librarylocallymodified | int (see note) |\n| name | string (PACKAGE_NAME_LENGTH) |\n| urn | string (see note) |\n\n## Loop members\n\n| | |\n| --- | --- |\n| circles() | UL_CIRCLE |\n| contacts() | UL_CONTACT |\n| dimensions() | UL_DIMENSION |\n| frames() | UL_FRAME |\n| holes() | UL_HOLE |\n| polycutouts() | UL_POLYCUTOUT |\n| polyshapes() | UL_POLYSHAPE (see note) |\n| rectangles() | UL_RECTANGLE |\n| texts() | UL_TEXT (see note) |\n| wires() | UL_WIRE (see note) |\n\nSee also UL_DEVICE, UL_ELEMENT, UL_LIBRARY, UL_PACKAGE3D\n\n## Constants\n\n| | |\n| --- | --- |\n| PACKAGE_NAME_LENGTH | max. recommended length of a package name (used in formatted output only) |\n\n## Note\n\nThe UL_FOOTPRINT object is new as of EAGLE 9.1. For backwards compatibility with previous EAGLE versions, UL_PACKAGE is available as an alias.\n\nThe *description* member returns the complete descriptive text as defined with the DESCRIPTION command, while the headline member returns only the first line of the description, without any HTML tags. When using the description text keep in mind that it may contain newline characters ('\\n').\n\nIf the UL_FOOTPRINT is derived from a UL_ELEMENT, the texts() member only loops through the non-detached texts of that element.\n\nIf the UL_FOOTPRINT is derived from a UL_ELEMENT, polygon shapes and wires belonging to contacts with arbitrary pad shapes are available through the loop members polygons() and wires() of this contact.\n\nThe *urn* contains a unique identifier for this footprint, of the form `urn:adsk.eagle:footprint:123/4`, where the portion after the / is the version of the footprint. To get the base URN (without version), use *urnbase()*; to get the version, use *urnversion()*.\n\nThe *libraryurn* and *libraryversion* are only applicable if this UL_FOOTPRINT comes from a managed library. If not, libraryurn will be the empty string and libraryversion will be -1.\n\nThe *locallymodified* member will be 0, if this UL_FOOTPRINT doesn't have local modifications, or 1, if this UL_FOOTPRINT has local modifications.\nThe *librarylocallymodified* member will be 0 (if this UL_FOOTPRINT doesn't come from a locally-modified library) or 1 (if this UL_FOOTPRINT comes from a locally-modified library).\n\n## Example\n\n```\nlibrary(L) {\n L.footprints(FPT) {\n printf(\"Footprint: %s\\n\", FPT.name);\n FPT.contacts(C) {\n if (C.pad)\n printf(\"\\tPad: %s, (%f %f)\\n\",\n C.name, u2mm(C.pad.x), u2mm(C.pad.y));\n else if (C.smd)\n printf(\"\\tSmd: %s, (%f %f)\\n\",\n C.name, u2mm(C.smd.x), u2mm(C.smd.y));\n }\n }\n }\nboard(B) {\n B.elements(E) {\n printf(\"Element: %s, Footprint: %s\\n\", E.name, E.footprint.name);\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

@@ -1,0 +1,254 @@
+{
+  "id": "ChamferFeatures",
+  "title": "ChamferFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/ChamferFeatures.h",
+  "description": "Collection that provides access to all of the existing chamfer features in a component and supports the ability to create new chamfer features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new chamfer feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "**RETIRED** Creates a ChamferFeatureInput object. Use properties and methods on this object to define the chamfer you want to create and then use the Add method, passing in the ChamferFeatureInput object."
+    },
+    {
+      "name": "createInput2",
+      "description": "Creates a ChamferFeatureInput object. Use properties and methods on this object to define the chamfer you want to create and then use the Add method, passing in the ChamferFeatureInput object."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified chamfer feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified chamfer feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of chamfer features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Equal Distance Chamfer Feature API Sample",
+      "description": "Creates an equal distance chamfer on the selected edge. If there are tangent contiguous edges that will also be included in the chamfer."
+    }
+  ],
+  "version": "Introduced in version November 2014",
+  "method_details": {
+    "add": {
+      "id": "ChamferFeatures_add",
+      "title": "ChamferFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatures.h",
+      "description": "Creates a new chamfer feature.",
+      "parent_class": "ChamferFeatures",
+      "syntax": {
+        "python": "returnValue = chamferFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = chamferFeatures_var->add(input);"
+      },
+      "return_type": "ChamferFeature",
+      "return_description": "Returns the newly created ChamferFeature object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "ChamferFeatureInput",
+          "description": "A ChamferFeatureInput object that defines the desired chamfer. Use the createInput method to create a new ChamferFeatureInput object and then use methods on it (the ChamferFeatureInput object) to define the chamfer."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "chamferFeatures.add",
+          "description": "Demonstrates the chamferFeatures.add method. To use this sample have a part open that contains a body. When you run the script, you will be prompted to select an edge to chamfer."
+        },
+        {
+          "name": "Equal Distance Chamfer Feature API Sample",
+          "description": "Creates an equal distance chamfer on the selected edge. If there are tangent contiguous edges that will also be included in the chamfer."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "classType": {
+      "id": "ChamferFeatures_classType",
+      "title": "ChamferFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ChamferFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ChamferFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ChamferFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version November 2014"
+    },
+    "createInput": {
+      "id": "ChamferFeatures_createInput",
+      "title": "ChamferFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatures.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Creates a ChamferFeatureInput object. Use properties and methods on this object to define the chamfer you want to create and then use the Add method, passing in the ChamferFeatureInput object.",
+      "parent_class": "ChamferFeatures",
+      "syntax": {
+        "python": "returnValue = chamferFeatures_var.createInput(edges, isTangentChain)",
+        "cpp": "#include \n\nreturnValue = chamferFeatures_var->createInput(edges, isTangentChain);"
+      },
+      "return_type": "ChamferFeatureInput",
+      "return_description": "Returns the newly created ChamferFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "edges",
+          "type": "ObjectCollection",
+          "description": "The collection of edges that will be chamfered."
+        },
+        {
+          "name": "isTangentChain",
+          "type": "boolean",
+          "description": "Boolean indicating if all edges that are tangentially connected to any of the input edges should be included in the chamfer or not."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "createInput2": {
+      "id": "ChamferFeatures_createInput2",
+      "title": "ChamferFeatures.createInput2 Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatures.h",
+      "description": "Creates a ChamferFeatureInput object. Use properties and methods on this object to define the chamfer you want to create and then use the Add method, passing in the ChamferFeatureInput object.",
+      "parent_class": "ChamferFeatures",
+      "syntax": {
+        "python": "returnValue = chamferFeatures_var.createInput2()",
+        "cpp": "#include \n\nreturnValue = chamferFeatures_var->createInput2();"
+      },
+      "return_type": "ChamferFeatureInput",
+      "return_description": "Returns the newly created ChamferFeatureInput object or null if the creation failed.",
+      "related_samples": [
+        {
+          "name": "chamferFeatures.add",
+          "description": "Demonstrates the chamferFeatures.add method. To use this sample have a part open that contains a body. When you run the script, you will be prompted to select an edge to chamfer."
+        },
+        {
+          "name": "Equal Distance Chamfer Feature API Sample",
+          "description": "Creates an equal distance chamfer on the selected edge. If there are tangent contiguous edges that will also be included in the chamfer."
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    },
+    "item": {
+      "id": "ChamferFeatures_item",
+      "title": "ChamferFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatures.h",
+      "description": "Function that returns the specified chamfer feature using an index into the collection.",
+      "parent_class": "ChamferFeatures",
+      "syntax": {
+        "python": "returnValue = chamferFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = chamferFeatures_var->item(index);"
+      },
+      "return_type": "ChamferFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "itemByName": {
+      "id": "ChamferFeatures_itemByName",
+      "title": "ChamferFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatures.h",
+      "description": "Function that returns the specified chamfer feature using the name of the feature.",
+      "parent_class": "ChamferFeatures",
+      "syntax": {
+        "python": "returnValue = chamferFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = chamferFeatures_var->itemByName(name);"
+      },
+      "return_type": "ChamferFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "ChamferFeatures_count",
+      "title": "ChamferFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatures.h",
+      "description": "The number of chamfer features in the collection.",
+      "parent_class": "ChamferFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = chamferFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isValid": {
+      "id": "ChamferFeatures_isValid",
+      "title": "ChamferFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ChamferFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = chamferFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "objectType": {
+      "id": "ChamferFeatures_objectType",
+      "title": "ChamferFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ChamferFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = chamferFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    }
+  }
+}

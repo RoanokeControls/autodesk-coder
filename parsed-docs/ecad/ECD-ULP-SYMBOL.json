@@ -1,0 +1,83 @@
+{
+  "id": "ECD-ULP-SYMBOL",
+  "title": "UL_SYMBOL",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "area",
+      "type": "UL_AREA"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "headline",
+      "type": "string"
+    },
+    {
+      "name": "library",
+      "type": "string"
+    },
+    {
+      "name": "libraryurn",
+      "type": "string (see note)"
+    },
+    {
+      "name": "libraryversion",
+      "type": "int (see note)"
+    },
+    {
+      "name": "locallymodified",
+      "type": "int (see note)"
+    },
+    {
+      "name": "librarylocallymodified",
+      "type": "int (see note)"
+    },
+    {
+      "name": "name",
+      "type": "string (SYMBOL_NAME_LENGTH)"
+    },
+    {
+      "name": "urn",
+      "type": "string (see note)"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "circles()",
+      "type": "UL_CIRCLE"
+    },
+    {
+      "name": "dimensions()",
+      "type": "UL_DIMENSION"
+    },
+    {
+      "name": "frames()",
+      "type": "UL_FRAME"
+    },
+    {
+      "name": "rectangles()",
+      "type": "UL_RECTANGLE"
+    },
+    {
+      "name": "pins()",
+      "type": "UL_PIN"
+    },
+    {
+      "name": "polyshapes()",
+      "type": "UL_POLYSHAPE"
+    },
+    {
+      "name": "texts()",
+      "type": "UL_TEXT (see note)"
+    },
+    {
+      "name": "wires()",
+      "type": "UL_WIRE"
+    }
+  ],
+  "content": "# UL_SYMBOL\n\n## Data members\n\n| | |\n| --- | --- |\n| area | UL_AREA |\n| description | string |\n| headline | string |\n| library | string |\n| libraryurn | string (see note) |\n| libraryversion | int (see note) |\n| locallymodified | int (see note) |\n| librarylocallymodified | int (see note) |\n| name | string (SYMBOL_NAME_LENGTH) |\n| urn | string (see note) |\n\n## Loop members\n\n| | |\n| --- | --- |\n| circles() | UL_CIRCLE |\n| dimensions() | UL_DIMENSION |\n| frames() | UL_FRAME |\n| rectangles() | UL_RECTANGLE |\n| pins() | UL_PIN |\n| polyshapes() | UL_POLYSHAPE |\n| texts() | UL_TEXT (see note) |\n| wires() | UL_WIRE |\n\nSee also UL_GATE, UL_LIBRARY\n\n## Constants\n\n| | |\n| --- | --- |\n| SYMBOL_NAME_LENGTH | max. recommended length of a symbol name (used in formatted output only) |\n\n## Note\n\nIf the UL_SYMBOL is derived from a UL_INSTANCE, the texts() member only loops through the non-detached texts of that instance.\nThe *urn* contains a unique identifier for this symbol, of the form `urn:adsk.eagle:symbol:123/4`, where the portion after the / is the version of the symbol. To get the base URN (without version), use urnbase(); to get the version, use urnversion().\n\nThe *libraryurn* and *libraryversion* are only applicable if this UL_SYMBOL comes from a managed library. If not, libraryurn will be the empty string and libraryversion will be -1.\n\nThe *locallymodified* member will be 0, if this UL_SYMBOL doesn't have local modifications, or 1, if this UL_SYMBOL has local modifications.\nThe *librarylocallymodified* member will be 0 (if this UL_SYMBOL doesn't come from a locally-modified library) or 1 (if this UL_SYMBOL comes from a locally-modified library).\n\n## Example\n\n```\nlibrary(L) {\n L.symbols(S) printf(\"Sym: %s\\n\", S.name);\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

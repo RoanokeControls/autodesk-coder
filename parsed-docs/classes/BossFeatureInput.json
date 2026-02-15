@@ -1,0 +1,286 @@
+{
+  "id": "BossFeatureInput",
+  "title": "BossFeatureInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Plastic/BossFeatureInput.h",
+  "description": "This class defines the methods and properties that pertain to the definition of a boss feature or a boss connection",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createSideInput",
+      "description": "Creates a new BossFeatureSideInput object that is used to specify the input for boss feature side. This object can be set to side1 or side2. Side1 is meant to be side where screw head engages with the boss and Side2 is meant to be a side where screw thread engages with the part or metal inserts."
+    },
+    {
+      "name": "setPositionBySketchPoints",
+      "description": "Defines the position and orientation of the boss feature using a sketch point(s)."
+    }
+  ],
+  "properties": [
+    {
+      "name": "creationOccurrence",
+      "description": "In order for geometry to be transformed correctly, an Occurrence for creation needs to be specified when the boss feature is created based on geometry (e.g. point) in another component AND (the boss) is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI A value of null indicates that everything is in the context of a single component. The occurrence provided sets scope for detection of target participant bodies."
+    },
+    {
+      "name": "isDefaultDirection",
+      "description": "Get or set if the boss feature (or boss connection) goes in the default direction or is reversed."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "offset",
+      "description": "Get or set offset of the parting face from the selected position point."
+    },
+    {
+      "name": "participantBodies",
+      "description": "Gets and sets the list of bodies that will participate in the boss feature. If body provided does not intersect with direction vector at proposed position points it will be ignored. If more bodies intersect at given position point only the closest body will be accepted. Boss feature works with solid bodies only. If this property has not been set (or is empty) closest visible bodies will be detected automatically based on proposed positions and orientation."
+    },
+    {
+      "name": "side1",
+      "description": "Gets or sets inputs for top side of the boss feature connection. It is the side where screw head engages with the boss. Default Side1 direction is considered direction of Z-axis of the parent sketch for selected position point."
+    },
+    {
+      "name": "side2",
+      "description": "Gets or sets inputs for bottom side of the boss feature connection. It is the side where screw thread engages with the part or metal insert. Default Side2 direction is considered opposite to the direction Z-axis of the parent sketch for selected position point."
+    },
+    {
+      "name": "targetBaseFeature",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature.   Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Boss Feature Sample",
+      "description": "Demonstrates creating a new boss feature"
+    }
+  ],
+  "version": "Introduced in version October 2022",
+  "method_details": {
+    "classType": {
+      "id": "BossFeatureInput_classType",
+      "title": "BossFeatureInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeatureInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "BossFeatureInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.BossFeatureInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::BossFeatureInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version October 2022"
+    },
+    "createSideInput": {
+      "id": "BossFeatureInput_createSideInput",
+      "title": "BossFeatureInput.createSideInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeatureInput.h",
+      "description": "Creates a new BossFeatureSideInput object that is used to specify the input for boss feature side. This object can be set to side1 or side2. Side1 is meant to be side where screw head engages with the boss and Side2 is meant to be a side where screw thread engages with the part or metal inserts.",
+      "parent_class": "BossFeatureInput",
+      "syntax": {
+        "python": "returnValue = bossFeatureInput_var.createSideInput()",
+        "cpp": "#include \n\nreturnValue = bossFeatureInput_var->createSideInput();"
+      },
+      "return_type": "BossFeatureSideInput",
+      "return_description": "Returns BossFeatureSideInput if successful.",
+      "related_samples": [
+        {
+          "name": "Boss Feature Sample",
+          "description": "Demonstrates creating a new boss feature"
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    },
+    "setPositionBySketchPoints": {
+      "id": "BossFeatureInput_setPositionBySketchPoints",
+      "title": "BossFeatureInput.setPositionBySketchPoints Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeatureInput.h",
+      "description": "Defines the position and orientation of the boss feature using a sketch point(s).",
+      "parent_class": "BossFeatureInput",
+      "syntax": {
+        "python": "returnValue = bossFeatureInput_var.setPositionBySketchPoints(pointOrPoints)",
+        "cpp": "#include \n\nreturnValue = bossFeatureInput_var->setPositionBySketchPoints(pointOrPoints);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "pointOrPoints",
+          "type": "Base",
+          "description": "The sketch point or ObjectCollection of sketch points that defines the position(s) for boss mating location. The orientation of the boss feature is inferred from the normal (Z-axis) of the point's parent sketch. The natural direction (or direction of the screw) will be opposite the normal of the sketch. If multiple sketch points are provided all must belong to the same sketch. Participant bodies will be inferred from closest visible bodies unless specified explicitly."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Boss Feature Sample",
+          "description": "Demonstrates creating a new boss feature"
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    }
+  },
+  "property_details": {
+    "creationOccurrence": {
+      "id": "BossFeatureInput_creationOccurrence",
+      "title": "BossFeatureInput.creationOccurrence Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeatureInput.h",
+      "description": "In order for geometry to be transformed correctly, an Occurrence for creation needs to be specified when the boss feature is created based on geometry (e.g. point) in another component AND (the boss) is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI A value of null indicates that everything is in the context of a single component. The occurrence provided sets scope for detection of target participant bodies.",
+      "parent_class": "BossFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeatureInput_var.creationOccurrence\n\n# Set the value of the property.\nbossFeatureInput_var.creationOccurrence = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeatureInput_var->creationOccurrence();\n\n// Set the value of the property, where value_var is an Occurrence.\nbool returnValue = bossFeatureInput_var->creationOccurrence(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isDefaultDirection": {
+      "id": "BossFeatureInput_isDefaultDirection",
+      "title": "BossFeatureInput.isDefaultDirection Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeatureInput.h",
+      "description": "Get or set if the boss feature (or boss connection) goes in the default direction or is reversed.",
+      "parent_class": "BossFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeatureInput_var.isDefaultDirection\n\n# Set the value of the property.\nbossFeatureInput_var.isDefaultDirection = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bossFeatureInput_var->isDefaultDirection();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = bossFeatureInput_var->isDefaultDirection(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isValid": {
+      "id": "BossFeatureInput_isValid",
+      "title": "BossFeatureInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeatureInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "BossFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeatureInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bossFeatureInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "objectType": {
+      "id": "BossFeatureInput_objectType",
+      "title": "BossFeatureInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeatureInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "BossFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeatureInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = bossFeatureInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "offset": {
+      "id": "BossFeatureInput_offset",
+      "title": "BossFeatureInput.offset Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeatureInput.h",
+      "description": "Get or set offset of the parting face from the selected position point.",
+      "parent_class": "BossFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeatureInput_var.offset\n\n# Set the value of the property.\nbossFeatureInput_var.offset = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeatureInput_var->offset();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = bossFeatureInput_var->offset(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "participantBodies": {
+      "id": "BossFeatureInput_participantBodies",
+      "title": "BossFeatureInput.participantBodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeatureInput.h",
+      "description": "Gets and sets the list of bodies that will participate in the boss feature. If body provided does not intersect with direction vector at proposed position points it will be ignored. If more bodies intersect at given position point only the closest body will be accepted. Boss feature works with solid bodies only. If this property has not been set (or is empty) closest visible bodies will be detected automatically based on proposed positions and orientation.",
+      "parent_class": "BossFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeatureInput_var.participantBodies\n\n# Set the value of the property.\nbossFeatureInput_var.participantBodies = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = bossFeatureInput_var->participantBodies();\n\n// Set the value of the property, where value_var is a BRepBody.\nbool returnValue = bossFeatureInput_var->participantBodies(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "side1": {
+      "id": "BossFeatureInput_side1",
+      "title": "BossFeatureInput.side1 Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeatureInput.h",
+      "description": "Gets or sets inputs for top side of the boss feature connection. It is the side where screw head engages with the boss. Default Side1 direction is considered direction of Z-axis of the parent sketch for selected position point.",
+      "parent_class": "BossFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeatureInput_var.side1\n\n# Set the value of the property.\nbossFeatureInput_var.side1 = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeatureInput_var->side1();\n\n// Set the value of the property, where value_var is a BossFeatureSideInput.\nbool returnValue = bossFeatureInput_var->side1(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Boss Feature Sample",
+          "description": "Demonstrates creating a new boss feature"
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    },
+    "side2": {
+      "id": "BossFeatureInput_side2",
+      "title": "BossFeatureInput.side2 Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeatureInput.h",
+      "description": "Gets or sets inputs for bottom side of the boss feature connection. It is the side where screw thread engages with the part or metal insert. Default Side2 direction is considered opposite to the direction Z-axis of the parent sketch for selected position point.",
+      "parent_class": "BossFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeatureInput_var.side2\n\n# Set the value of the property.\nbossFeatureInput_var.side2 = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeatureInput_var->side2();\n\n// Set the value of the property, where value_var is a BossFeatureSideInput.\nbool returnValue = bossFeatureInput_var->side2(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Boss Feature Sample",
+          "description": "Demonstrates creating a new boss feature"
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    },
+    "targetBaseFeature": {
+      "id": "BossFeatureInput_targetBaseFeature",
+      "title": "BossFeatureInput.targetBaseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeatureInput.h",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature. Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it.",
+      "parent_class": "BossFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeatureInput_var.targetBaseFeature\n\n# Set the value of the property.\nbossFeatureInput_var.targetBaseFeature = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeatureInput_var->targetBaseFeature();\n\n// Set the value of the property, where value_var is a BaseFeature.\nbool returnValue = bossFeatureInput_var->targetBaseFeature(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    }
+  }
+}

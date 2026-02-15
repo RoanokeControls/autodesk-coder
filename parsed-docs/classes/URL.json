@@ -1,0 +1,273 @@
+{
+  "id": "URL",
+  "title": "URL Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/URL.h",
+  "description": "A URL object provides useful and easy-to-use methods for creating, modifying, and analyzing URLs.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "create",
+      "description": "Create a new URL by given string."
+    },
+    {
+      "name": "join",
+      "description": "Join this URL with the given path and return the resulting URL. The operation does not alter the current URL. Join inserts a slash '/' to properly extend the path, so that \"http://foo\".join(\"bar\") will return \"http://foo/bar\", not \"http://foobar\"."
+    },
+    {
+      "name": "toString",
+      "description": "Get the entire URL as string."
+    }
+  ],
+  "properties": [
+    {
+      "name": "isURLValid",
+      "description": "Check whether the URL is valid. Ensures that the URL is formatted with a protocol followed by a path which can be empty. The check is independent of the existence of the resource the URL may point to."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "leafName",
+      "description": "Get the leaf name of the URL, which is the section behind the last '/'."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parent",
+      "description": "Get the parent URL, represented by the section before the last '/'."
+    },
+    {
+      "name": "pathName",
+      "description": "Get the path name of the URL, including the last '/' of the protocol followed by the path of the URL."
+    },
+    {
+      "name": "protocol",
+      "description": "Get the protocol scheme of the URL, including the final ':'."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Hole and Pocket Recognition API Sample",
+      "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+    },
+    {
+      "name": "Manufacturing Workflow API Sample",
+      "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+    },
+    {
+      "name": "Turning Workflow API Sample",
+      "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "method_details": {
+    "classType": {
+      "id": "URL_classType",
+      "title": "URL.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/URL.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "URL",
+      "syntax": {
+        "python": "returnValue = adsk.core.URL.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::URL::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    },
+    "create": {
+      "id": "URL_create",
+      "title": "URL.create Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/URL.h",
+      "description": "Create a new URL by given string.",
+      "parent_class": "URL",
+      "syntax": {
+        "python": "returnValue = adsk.core.URL.create(url)",
+        "cpp": "#include \n\nreturnValue = adsk::core::URL::create(url);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the new URL object.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "The string is used to define the URL."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        },
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        },
+        {
+          "name": "Turning Workflow API Sample",
+          "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "join": {
+      "id": "URL_join",
+      "title": "URL.join Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/URL.h",
+      "description": "Join this URL with the given path and return the resulting URL. The operation does not alter the current URL. Join inserts a slash '/' to properly extend the path, so that \"http://foo\".join(\"bar\") will return \"http://foo/bar\", not \"http://foobar\".",
+      "parent_class": "URL",
+      "syntax": {
+        "python": "returnValue = uRL_var.join(path)",
+        "cpp": "#include \n\nreturnValue = uRL_var->join(path);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the joined URL.",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "The path to join to this URL."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "toString": {
+      "id": "URL_toString",
+      "title": "URL.toString Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/URL.h",
+      "description": "Get the entire URL as string.",
+      "parent_class": "URL",
+      "syntax": {
+        "python": "returnValue = uRL_var.toString()",
+        "cpp": "#include \n\nreturnValue = uRL_var->toString();"
+      },
+      "return_type": "string",
+      "return_description": "Returns the entire URL as string.",
+      "version": "Introduced in version April 2023"
+    }
+  },
+  "property_details": {
+    "isURLValid": {
+      "id": "URL_isURLValid",
+      "title": "URL.isURLValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/URL.h",
+      "description": "Check whether the URL is valid. Ensures that the URL is formatted with a protocol followed by a path which can be empty. The check is independent of the existence of the resource the URL may point to.",
+      "parent_class": "URL",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = uRL_var.isURLValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = uRL_var->isURLValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "URL_isValid",
+      "title": "URL.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/URL.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "URL",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = uRL_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = uRL_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "leafName": {
+      "id": "URL_leafName",
+      "title": "URL.leafName Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/URL.h",
+      "description": "Get the leaf name of the URL, which is the section behind the last '/'.",
+      "parent_class": "URL",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = uRL_var.leafName",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = uRL_var->leafName();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "URL_objectType",
+      "title": "URL.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/URL.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "URL",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = uRL_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = uRL_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "parent": {
+      "id": "URL_parent",
+      "title": "URL.parent Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/URL.h",
+      "description": "Get the parent URL, represented by the section before the last '/'.",
+      "parent_class": "URL",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = uRL_var.parent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = uRL_var->parent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "pathName": {
+      "id": "URL_pathName",
+      "title": "URL.pathName Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/URL.h",
+      "description": "Get the path name of the URL, including the last '/' of the protocol followed by the path of the URL.",
+      "parent_class": "URL",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = uRL_var.pathName",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = uRL_var->pathName();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "protocol": {
+      "id": "URL_protocol",
+      "title": "URL.protocol Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/URL.h",
+      "description": "Get the protocol scheme of the URL, including the final ':'.",
+      "parent_class": "URL",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = uRL_var.protocol",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = uRL_var->protocol();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

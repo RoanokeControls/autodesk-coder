@@ -1,0 +1,578 @@
+{
+  "id": "CustomGraphicsText",
+  "title": "CustomGraphicsText Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+  "description": "Represents text drawn in the graphics window. The default position of the text is at (0,0,0) and orientation is the text lying on the x-y plane. To reposition and reorient the text you can use the transformation property.",
+  "parent_class": "CustomGraphicsEntity",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the entity from the custom graphics group."
+    },
+    {
+      "name": "getOpacity",
+      "description": "Gets the opacity of the graphics entity."
+    },
+    {
+      "name": "setOpacity",
+      "description": "Sets the opacity of the graphics entity. By default, when a new entity is it is completely opaque and does not override the opacity defined by the material."
+    }
+  ],
+  "properties": [
+    {
+      "name": "billBoarding",
+      "description": "Gets and sets the billboarding behavior of this custom graphics entity. To define billboarding you can set this property using a CustomGraphicsBillBoard objects that you statically create using the create method of the CustomGraphicsBillBoard class. To remove billboarding from this entity you can set this property to null.   Billboarding is used to specify that the orientation of custom graphics is defined relative to the screen instead of model space. This is commonly used for legends and symbols that you want to always face the user, even as the camera is rotated."
+    },
+    {
+      "name": "boundingBox",
+      "description": "Returns a box oriented parallel to the world x-y-x axes that contains the graphics entity. Depending on whether the graphics are drawn in model space or screen space this will return the bounding box in either centimeters (model) or pixels (screen). In the case where it returns the bounding box in pixel space, the Z coordinates of the box will be 0 and can be ignored."
+    },
+    {
+      "name": "color",
+      "description": "Gets and sets the current color definition for this entity. The color of custom graphics can be defined in many ways; solid color, simple material, and appearance."
+    },
+    {
+      "name": "cullMode",
+      "description": "Gets and sets the culling model to use when rendering the entity. Culling is used when the entity contains a mesh or B-Rep faces and defines which sides of the mesh or face are rendered. This is primarily used for a watertight mesh or solid B-Rep so that the \"inside\" of the faces is not rendered since it's never visible to the user.   When a new graphics entity is created its default cull mode is CustomGraphicsCullBack which will optimize the rendering of \"solid\" meshes so the inside is not rendered."
+    },
+    {
+      "name": "depthPriority",
+      "description": "Gets and sets the depth priority associated with the graphics entity. The depth priority defines how one graphics entity will be drawn with respect to another entity. This is useful when there are entities that lie in the same space so it's ambiguous which should be drawn on the other. For example, if you draw a curve on a planar mesh and want the curve to be completely visible. You can set the depth priority of the curve to be greater than the mesh so it will be drawn after the mesh and will remain visible.   When a new graphics entity is created it's default depth priority is 0."
+    },
+    {
+      "name": "font",
+      "description": "Gets and sets the font used to display the text. This is the default font and applies to all of text unless there is a font override defined within the text."
+    },
+    {
+      "name": "formattedText",
+      "description": "Gets and sets the formatted text definition. This is the full string, including the formatting information, that's used to define the displayed text."
+    },
+    {
+      "name": "height",
+      "description": "The actual height of the text in centimeters. This is useful when you want to position several GraphicsText objects together."
+    },
+    {
+      "name": "id",
+      "description": "An id you can specify for the entity. By default, all new graphics entities do not have an id and this property will return an empty string. But in cases where entities will be selected, assigning an id can make understanding what was selected much easier."
+    },
+    {
+      "name": "isBold",
+      "description": "Specifies that the text displays using a bold style. This is the default bold style and applies to all of text unless there is a style override defined within the text."
+    },
+    {
+      "name": "isItalic",
+      "description": "Specifies that the text displays using an italic style. This is the default italic style and applies to all of text unless there is a style override defined within the text."
+    },
+    {
+      "name": "isSelectable",
+      "description": "Gets and sets if the graphics entity is selectable within the graphics window. By default, when a new entity is created it is selectable."
+    },
+    {
+      "name": "isStrikeThrough",
+      "description": "Specifies that the text displays using a strike through style. This is the default strike through style and applies to all of text unless there is a style override defined within the text."
+    },
+    {
+      "name": "isUnderline",
+      "description": "Specifies that the text displays using an underline style. This is the default underline style and applies to all of text unless there is a style override defined within the text."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets and sets if the graphics entity is visible in the graphics window. By default, when a new entity is created it is visible."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name displayed when this entity is selected. If no name has been set, \"Custom Graphics\" will be displayed."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parent",
+      "description": "Returns the parent Component for a top-level group or the CustomGraphicsGroup object for graphics entities and child groups."
+    },
+    {
+      "name": "size",
+      "description": "Gets and sets the size of the text in centimeters. This is the default size and applies to all of text unless there is a size override defined within the text."
+    },
+    {
+      "name": "transform",
+      "description": "Gets and sets the transform associated with the graphics entity. When a new graphics entity is created its default transform is an identity matrix which results in the graphics entity being displayed in model space using the original coordinate data used to define the entity."
+    },
+    {
+      "name": "viewPlacement",
+      "description": "Gets and sets the graphics view placement being applied to this graphics entity. A CustomGraphicsViewPlacement object can be created using the static create method of the class. When assigned to a graphics entity the position of the graphics is defined relative to the view in 2D view space (pixels) rather than in 3D model space (centimeters)."
+    },
+    {
+      "name": "viewScale",
+      "description": "Gets and sets the graphics view scale being applied to this graphics entity. A CustomGraphicsViewScale object can be created using the static create method of the class. When assigned to a graphics entity the size of the graphics entity is defined in view space (pixels) instead of model space (centimeters)."
+    },
+    {
+      "name": "width",
+      "description": "The actual width of the text in centimeters. This is useful when you want to position several GraphicsText objects together."
+    }
+  ],
+  "version": "Introduced in version September 2017",
+  "property_details": {
+    "billBoarding": {
+      "id": "CustomGraphicsText_billBoarding",
+      "title": "CustomGraphicsText.billBoarding Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Gets and sets the billboarding behavior of this custom graphics entity. To define billboarding you can set this property using a CustomGraphicsBillBoard objects that you statically create using the create method of the CustomGraphicsBillBoard class. To remove billboarding from this entity you can set this property to null. Billboarding is used to specify that the orientation of custom graphics is defined relative to the screen instead of model space. This is commonly used for legends and symbols that you want to always face the user, even as the camera is rotated.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.billBoarding\n\n# Set the value of the property.\ncustomGraphicsText_var.billBoarding = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsText_var->billBoarding();\n\n// Set the value of the property, where value_var is a CustomGraphicsBillBoard.\nbool returnValue = customGraphicsText_var->billBoarding(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "boundingBox": {
+      "id": "CustomGraphicsText_boundingBox",
+      "title": "CustomGraphicsText.boundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Returns a box oriented parallel to the world x-y-x axes that contains the graphics entity. Depending on whether the graphics are drawn in model space or screen space this will return the bounding box in either centimeters (model) or pixels (screen). In the case where it returns the bounding box in pixel space, the Z coordinates of the box will be 0 and can be ignored.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.boundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsText_var->boundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "color": {
+      "id": "CustomGraphicsText_color",
+      "title": "CustomGraphicsText.color Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Gets and sets the current color definition for this entity. The color of custom graphics can be defined in many ways; solid color, simple material, and appearance.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.color\n\n# Set the value of the property.\ncustomGraphicsText_var.color = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsText_var->color();\n\n// Set the value of the property, where value_var is a CustomGraphicsColorEffect.\nbool returnValue = customGraphicsText_var->color(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "cullMode": {
+      "id": "CustomGraphicsText_cullMode",
+      "title": "CustomGraphicsText.cullMode Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Gets and sets the culling model to use when rendering the entity. Culling is used when the entity contains a mesh or B-Rep faces and defines which sides of the mesh or face are rendered. This is primarily used for a watertight mesh or solid B-Rep so that the \"inside\" of the faces is not rendered since it's never visible to the user. When a new graphics entity is created its default cull mode is CustomGraphicsCullBack which will optimize the rendering of \"solid\" meshes so the inside is not rendered.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.cullMode\n\n# Set the value of the property.\ncustomGraphicsText_var.cullMode = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nCustomGraphicsCullModes propertyValue = customGraphicsText_var->cullMode();\n\n// Set the value of the property, where value_var is a CustomGraphicsCullModes.\nbool returnValue = customGraphicsText_var->cullMode(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "depthPriority": {
+      "id": "CustomGraphicsText_depthPriority",
+      "title": "CustomGraphicsText.depthPriority Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Gets and sets the depth priority associated with the graphics entity. The depth priority defines how one graphics entity will be drawn with respect to another entity. This is useful when there are entities that lie in the same space so it's ambiguous which should be drawn on the other. For example, if you draw a curve on a planar mesh and want the curve to be completely visible. You can set the depth priority of the curve to be greater than the mesh so it will be drawn after the mesh and will remain visible. When a new graphics entity is created it's default depth priority is 0.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.depthPriority\n\n# Set the value of the property.\ncustomGraphicsText_var.depthPriority = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = customGraphicsText_var->depthPriority();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = customGraphicsText_var->depthPriority(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "font": {
+      "id": "CustomGraphicsText_font",
+      "title": "CustomGraphicsText.font Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Gets and sets the font used to display the text. This is the default font and applies to all of text unless there is a font override defined within the text.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.font\n\n# Set the value of the property.\ncustomGraphicsText_var.font = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customGraphicsText_var->font();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = customGraphicsText_var->font(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2019"
+    },
+    "formattedText": {
+      "id": "CustomGraphicsText_formattedText",
+      "title": "CustomGraphicsText.formattedText Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Gets and sets the formatted text definition. This is the full string, including the formatting information, that's used to define the displayed text.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.formattedText\n\n# Set the value of the property.\ncustomGraphicsText_var.formattedText = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customGraphicsText_var->formattedText();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = customGraphicsText_var->formattedText(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2019"
+    },
+    "height": {
+      "id": "CustomGraphicsText_height",
+      "title": "CustomGraphicsText.height Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "The actual height of the text in centimeters. This is useful when you want to position several GraphicsText objects together.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.height",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = customGraphicsText_var->height();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2019"
+    },
+    "id": {
+      "id": "CustomGraphicsText_id",
+      "title": "CustomGraphicsText.id Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "An id you can specify for the entity. By default, all new graphics entities do not have an id and this property will return an empty string. But in cases where entities will be selected, assigning an id can make understanding what was selected much easier.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.id\n\n# Set the value of the property.\ncustomGraphicsText_var.id = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customGraphicsText_var->id();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = customGraphicsText_var->id(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "isBold": {
+      "id": "CustomGraphicsText_isBold",
+      "title": "CustomGraphicsText.isBold Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Specifies that the text displays using a bold style. This is the default bold style and applies to all of text unless there is a style override defined within the text.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.isBold\n\n# Set the value of the property.\ncustomGraphicsText_var.isBold = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customGraphicsText_var->isBold();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = customGraphicsText_var->isBold(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2019"
+    },
+    "isItalic": {
+      "id": "CustomGraphicsText_isItalic",
+      "title": "CustomGraphicsText.isItalic Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Specifies that the text displays using an italic style. This is the default italic style and applies to all of text unless there is a style override defined within the text.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.isItalic\n\n# Set the value of the property.\ncustomGraphicsText_var.isItalic = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customGraphicsText_var->isItalic();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = customGraphicsText_var->isItalic(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2019"
+    },
+    "isSelectable": {
+      "id": "CustomGraphicsText_isSelectable",
+      "title": "CustomGraphicsText.isSelectable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Gets and sets if the graphics entity is selectable within the graphics window. By default, when a new entity is created it is selectable.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.isSelectable\n\n# Set the value of the property.\ncustomGraphicsText_var.isSelectable = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customGraphicsText_var->isSelectable();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = customGraphicsText_var->isSelectable(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "isStrikeThrough": {
+      "id": "CustomGraphicsText_isStrikeThrough",
+      "title": "CustomGraphicsText.isStrikeThrough Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Specifies that the text displays using a strike through style. This is the default strike through style and applies to all of text unless there is a style override defined within the text.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.isStrikeThrough\n\n# Set the value of the property.\ncustomGraphicsText_var.isStrikeThrough = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customGraphicsText_var->isStrikeThrough();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = customGraphicsText_var->isStrikeThrough(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2019"
+    },
+    "isUnderline": {
+      "id": "CustomGraphicsText_isUnderline",
+      "title": "CustomGraphicsText.isUnderline Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Specifies that the text displays using an underline style. This is the default underline style and applies to all of text unless there is a style override defined within the text.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.isUnderline\n\n# Set the value of the property.\ncustomGraphicsText_var.isUnderline = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customGraphicsText_var->isUnderline();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = customGraphicsText_var->isUnderline(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2019"
+    },
+    "isValid": {
+      "id": "CustomGraphicsText_isValid",
+      "title": "CustomGraphicsText.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customGraphicsText_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "isVisible": {
+      "id": "CustomGraphicsText_isVisible",
+      "title": "CustomGraphicsText.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Gets and sets if the graphics entity is visible in the graphics window. By default, when a new entity is created it is visible.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.isVisible\n\n# Set the value of the property.\ncustomGraphicsText_var.isVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customGraphicsText_var->isVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = customGraphicsText_var->isVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "name": {
+      "id": "CustomGraphicsText_name",
+      "title": "CustomGraphicsText.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Gets and sets the name displayed when this entity is selected. If no name has been set, \"Custom Graphics\" will be displayed.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.name\n\n# Set the value of the property.\ncustomGraphicsText_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customGraphicsText_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = customGraphicsText_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "objectType": {
+      "id": "CustomGraphicsText_objectType",
+      "title": "CustomGraphicsText.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customGraphicsText_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "parent": {
+      "id": "CustomGraphicsText_parent",
+      "title": "CustomGraphicsText.parent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Returns the parent Component for a top-level group or the CustomGraphicsGroup object for graphics entities and child groups.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.parent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsText_var->parent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "size": {
+      "id": "CustomGraphicsText_size",
+      "title": "CustomGraphicsText.size Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Gets and sets the size of the text in centimeters. This is the default size and applies to all of text unless there is a size override defined within the text.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.size\n\n# Set the value of the property.\ncustomGraphicsText_var.size = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = customGraphicsText_var->size();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = customGraphicsText_var->size(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2019"
+    },
+    "transform": {
+      "id": "CustomGraphicsText_transform",
+      "title": "CustomGraphicsText.transform Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Gets and sets the transform associated with the graphics entity. When a new graphics entity is created its default transform is an identity matrix which results in the graphics entity being displayed in model space using the original coordinate data used to define the entity.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.transform\n\n# Set the value of the property.\ncustomGraphicsText_var.transform = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsText_var->transform();\n\n// Set the value of the property, where value_var is a Matrix3D.\nbool returnValue = customGraphicsText_var->transform(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "viewPlacement": {
+      "id": "CustomGraphicsText_viewPlacement",
+      "title": "CustomGraphicsText.viewPlacement Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Gets and sets the graphics view placement being applied to this graphics entity. A CustomGraphicsViewPlacement object can be created using the static create method of the class. When assigned to a graphics entity the position of the graphics is defined relative to the view in 2D view space (pixels) rather than in 3D model space (centimeters).",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.viewPlacement\n\n# Set the value of the property.\ncustomGraphicsText_var.viewPlacement = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsText_var->viewPlacement();\n\n// Set the value of the property, where value_var is a CustomGraphicsViewPlacement.\nbool returnValue = customGraphicsText_var->viewPlacement(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "viewScale": {
+      "id": "CustomGraphicsText_viewScale",
+      "title": "CustomGraphicsText.viewScale Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Gets and sets the graphics view scale being applied to this graphics entity. A CustomGraphicsViewScale object can be created using the static create method of the class. When assigned to a graphics entity the size of the graphics entity is defined in view space (pixels) instead of model space (centimeters).",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.viewScale\n\n# Set the value of the property.\ncustomGraphicsText_var.viewScale = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsText_var->viewScale();\n\n// Set the value of the property, where value_var is a CustomGraphicsViewScale.\nbool returnValue = customGraphicsText_var->viewScale(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "width": {
+      "id": "CustomGraphicsText_width",
+      "title": "CustomGraphicsText.width Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "The actual width of the text in centimeters. This is useful when you want to position several GraphicsText objects together.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsText_var.width",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = customGraphicsText_var->width();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2019"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "CustomGraphicsText_classType",
+      "title": "CustomGraphicsText.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.CustomGraphicsText.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::CustomGraphicsText::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2017"
+    },
+    "deleteMe": {
+      "id": "CustomGraphicsText_deleteMe",
+      "title": "CustomGraphicsText.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Deletes the entity from the custom graphics group.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "returnValue = customGraphicsText_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = customGraphicsText_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the deletion was successful.",
+      "version": "Introduced in version September 2017"
+    },
+    "getOpacity": {
+      "id": "CustomGraphicsText_getOpacity",
+      "title": "CustomGraphicsText.getOpacity Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Gets the opacity of the graphics entity.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "(returnValue, opacity, isOverride) = customGraphicsText_var.getOpacity()",
+        "cpp": "#include getOpacity(opacity, isOverride);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if getting the opacity information was successful.",
+      "parameters": [
+        {
+          "name": "opacity",
+          "type": "double",
+          "description": "The opacity value where 1.0 is completely opaque and 0.0 is completely transparent."
+        },
+        {
+          "name": "isOverride",
+          "type": "boolean",
+          "description": "Indicates if this entities opacity will override the opacity defined by the material. If true, it will override the material opacity and if false the opacity values will accumulate."
+        }
+      ],
+      "version": "Introduced in version September 2017"
+    },
+    "setOpacity": {
+      "id": "CustomGraphicsText_setOpacity",
+      "title": "CustomGraphicsText.setOpacity Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsText.h",
+      "description": "Sets the opacity of the graphics entity. By default, when a new entity is it is completely opaque and does not override the opacity defined by the material.",
+      "parent_class": "CustomGraphicsText",
+      "syntax": {
+        "python": "returnValue = customGraphicsText_var.setOpacity(opacity, isOverride)",
+        "cpp": "#include \n\nreturnValue = customGraphicsText_var->setOpacity(opacity, isOverride);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting the opacity information was successful.",
+      "parameters": [
+        {
+          "name": "opacity",
+          "type": "double",
+          "description": "The opacity value where 1.0 is completely opaque and 0.0 is completely transparent."
+        },
+        {
+          "name": "isOverride",
+          "type": "boolean",
+          "description": "Indicates if this entities opacity will override the opacity defined by the material. If true, it will override the material opacity and if false the opacity values will accumulate."
+        }
+      ],
+      "version": "Introduced in version September 2017"
+    }
+  }
+}

@@ -1,0 +1,594 @@
+{
+  "id": "AngleValueCommandInput",
+  "title": "AngleValueCommandInput Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+  "description": "Represents a command input that gets an angle from the user. This displays an entry in the command dialog where the user can enter a value and also displays a manipulator in the graphics window to allow them to graphically set the value. The input box is displayed in the dialog when the isVisible property of the command input is true. The manipulator is displayed in the graphics when both the isVisible and isEnabled properties are true.",
+  "parent_class": "CommandInput",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this Command input."
+    },
+    {
+      "name": "setManipulator",
+      "description": "Defines the position and orientation of the manipulator. The manipulator is only visible when both the isVisible and isEnabled properties are true. If those properties are true and the setManipulator has not been called, the manipulator will be displayed in a default location (0,0,0) using default directions; x direction (1,0,0) and y direction (0,1,0). Because of that the input is typically set to be invisible and/or disabled and then enabled once enough input has been specified that you can display the manipulator in the desired location."
+    }
+  ],
+  "properties": [
+    {
+      "name": "commandInputs",
+      "description": "Gets the CommandInputs class of the parent, which can be a Command, GroupCommandInput or TabCommandInput."
+    },
+    {
+      "name": "expression",
+      "description": "Gets or sets the expression displayed in the input field. This can contain equations and references to parameters but must result in a valid angle expression. If units are not specified as part of the expression, the default user units of degrees are used."
+    },
+    {
+      "name": "hasMaximumValue",
+      "description": "Gets and sets if there is a maximum value for this command input. When setting this property, it is only valid to set it to False to remove the maximum value. Setting the maximumValue property will result in this property being set to True."
+    },
+    {
+      "name": "hasMinimumValue",
+      "description": "Gets and sets if there is a minimum value for this command input. When setting this property, it is only valid to set it to False to remove the minimum value. Setting the minimumValue property will result in this property being set to True."
+    },
+    {
+      "name": "id",
+      "description": "Gets the unique identifier for this input in the command's CommandInputs."
+    },
+    {
+      "name": "isEnabled",
+      "description": "Gets or sets if this input is currently enabled or disabled for user interaction.   Currently, the isEnabled property does not disable SelectionCommandInput objects but instead has the same effect as the SelectionCommandInput.hasFocus property."
+    },
+    {
+      "name": "isFullWidth",
+      "description": "Gets or sets if this input fills the entire width of the dialog. If true, the name is ignored and the input control will fill the entire width of the command dialog. The default value for this property in a new command input if false, or not to fill the width. This property does not apply to GroupCommandInputs or TabCommandInputs."
+    },
+    {
+      "name": "isMaximumValueInclusive",
+      "description": "Gets and sets if the value of the input includes the maximum value or is up to the maximum value. For example, if the maximum value is the value of pi (180 degrees) and this property is True, the maximum value can be pi. If this is False, the minimum value must be less than pi. When the maximum value is first defined using the maximumValue property, this property is set to True. The value returned by this property is only meaningful when the hasMaximumValue property returns True."
+    },
+    {
+      "name": "isMinimumValueInclusive",
+      "description": "Gets and sets if the value of the input includes the minimum value or is up to the minimum value. For example, if the minimum value is zero and this property is True, the minimum value can be zero. If this is False, the minimum value must be greater than zero. When the minimum value is first defined using the minimumValue property, this property is set to True. The value returned by this property is only meaningful when the hasMinimumValue property returns True."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isValidExpression",
+      "description": "Returns true if the current expression is valid and can be evaluated. If this is false, the value returned should be ignored because there currently is not a valid value."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets or sets if this input will be visible to the user.   Setting a SelectionCommandInput to be invisible will clear any selections it currently has."
+    },
+    {
+      "name": "manipulatorOrigin",
+      "description": "Gets the origin point of the manipulator in the model space of the root component. To set the origin use the setManipulator method."
+    },
+    {
+      "name": "manipulatorXDirection",
+      "description": "Gets the X direction of the manipulator in the model space of the root component. The X direction is the 0 angle direction. This direction, along with the Y direction vector define the plane that the manipulator is displayed on.   To set the direction use the setManipulator method."
+    },
+    {
+      "name": "manipulatorYDirection",
+      "description": "Gets the Y direction of the manipulator in the model space of the root component. The X and Y direction vectors define the plane that the manipulator is displayed on.   To set the direction use the setManipulator method."
+    },
+    {
+      "name": "maximumValue",
+      "description": "Gets and sets maximum value, if any, that the value can be. The value is in radians. When getting this property you should first check the hasMaximumValue property to see if this property applies. Also, the isMaximumValueInclusive indicates if the minimum includes this value or will be up to this value.   Setting this value will change the isMaximumValueInclusive to True and the hasMaximumValue property to True if hasMaximumValue is currently False, otherwise it will just update the value."
+    },
+    {
+      "name": "minimumValue",
+      "description": "Gets and sets minimum value, if any, that the value can be. The value is in radians. When getting this property you should first check the hasMinimumValue property to see if this property applies. Also, the isMinimumValueInclusive indicates if the minimum includes this value or will be up to this value.   Setting this value will change the isMinimumValueInclusive to True and the hasMinimumValue property to True if hasMinimumValue is currently False, otherwise it will just update the value."
+    },
+    {
+      "name": "name",
+      "description": "Gets the user visible name of this input."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentCommand",
+      "description": "Gets the parent Command."
+    },
+    {
+      "name": "parentCommandInput",
+      "description": "Gets the parent CommandInput if this commandInput is the child of a TabCommandInput or GroupCommandInput. Returns null if there is no parent."
+    },
+    {
+      "name": "toolClipFilename",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text."
+    },
+    {
+      "name": "tooltip",
+      "description": "Gets or sets the base tooltip string. This is always shown for commands. If the tooltip description and/or tool clip are also specified then the tooltip will progressively display more information as the user hovers the mouse over the control."
+    },
+    {
+      "name": "tooltipDescription",
+      "description": "Gets or sets additional text to display progressively along with the tooltip. The text for the description can contain some basic HTML formatting tags to format the tags. For example the br tag can be used to create multiple paragraphs. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text."
+    },
+    {
+      "name": "value",
+      "description": "Gets and sets the current value of the command input. The value is in radians but will be displayed to the user in degrees. Setting this value can fail if the input value is not within the minimum and maximum value range.   The isValidExpression property should be checked before using the value within the command because if the expression can't be evaluated there isn't a valid value. Fusion won't allow the execution of a command that contains ValueCommandInput object with invalid expressions so you can dependably use the value in the execute event of the command."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Command Inputs API Sample",
+      "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.  You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+    }
+  ],
+  "version": "Introduced in version January 2017",
+  "method_details": {
+    "classType": {
+      "id": "AngleValueCommandInput_classType",
+      "title": "AngleValueCommandInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "returnValue = adsk.core.AngleValueCommandInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::AngleValueCommandInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2017"
+    },
+    "deleteMe": {
+      "id": "AngleValueCommandInput_deleteMe",
+      "title": "AngleValueCommandInput.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Deletes this Command input.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "returnValue = angleValueCommandInput_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = angleValueCommandInput_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version August 2020"
+    },
+    "setManipulator": {
+      "id": "AngleValueCommandInput_setManipulator",
+      "title": "AngleValueCommandInput.setManipulator Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Defines the position and orientation of the manipulator. The manipulator is only visible when both the isVisible and isEnabled properties are true. If those properties are true and the setManipulator has not been called, the manipulator will be displayed in a default location (0,0,0) using default directions; x direction (1,0,0) and y direction (0,1,0). Because of that the input is typically set to be invisible and/or disabled and then enabled once enough input has been specified that you can display the manipulator in the desired location.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "returnValue = angleValueCommandInput_var.setManipulator(origin, xDirection, yDirection)",
+        "cpp": "#include \n\nreturnValue = angleValueCommandInput_var->setManipulator(origin, xDirection, yDirection);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "origin",
+          "type": "Point3D",
+          "description": "Defines the center position of the manipulator in root component space."
+        },
+        {
+          "name": "xDirection",
+          "type": "Vector3D",
+          "description": "Defines the X direction of the manipulator in root component space. The X direction is the 0 angle direction. This direction, along with the Y direction vector define the plane that the manipulator is displayed on."
+        },
+        {
+          "name": "yDirection",
+          "type": "Vector3D",
+          "description": "Defines the Y direction of the manipulator in root component space. The X and Y direction vectors define the plane the manipulator is displayed one. When the manipulator is rotated from the xDirection vector towards the yDirection vector that is the positive direction."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Command Inputs API Sample",
+          "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.\u00a0You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+        }
+      ],
+      "version": "Introduced in version January 2017"
+    }
+  },
+  "property_details": {
+    "commandInputs": {
+      "id": "AngleValueCommandInput_commandInputs",
+      "title": "AngleValueCommandInput.commandInputs Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets the CommandInputs class of the parent, which can be a Command, GroupCommandInput or TabCommandInput.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.commandInputs",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = angleValueCommandInput_var->commandInputs();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "expression": {
+      "id": "AngleValueCommandInput_expression",
+      "title": "AngleValueCommandInput.expression Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets or sets the expression displayed in the input field. This can contain equations and references to parameters but must result in a valid angle expression. If units are not specified as part of the expression, the default user units of degrees are used.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.expression\n\n# Set the value of the property.\nangleValueCommandInput_var.expression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = angleValueCommandInput_var->expression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = angleValueCommandInput_var->expression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "hasMaximumValue": {
+      "id": "AngleValueCommandInput_hasMaximumValue",
+      "title": "AngleValueCommandInput.hasMaximumValue Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets and sets if there is a maximum value for this command input. When setting this property, it is only valid to set it to False to remove the maximum value. Setting the maximumValue property will result in this property being set to True.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.hasMaximumValue\n\n# Set the value of the property.\nangleValueCommandInput_var.hasMaximumValue = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = angleValueCommandInput_var->hasMaximumValue();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = angleValueCommandInput_var->hasMaximumValue(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Command Inputs API Sample",
+          "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.\u00a0You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+        }
+      ],
+      "version": "Introduced in version January 2017"
+    },
+    "hasMinimumValue": {
+      "id": "AngleValueCommandInput_hasMinimumValue",
+      "title": "AngleValueCommandInput.hasMinimumValue Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets and sets if there is a minimum value for this command input. When setting this property, it is only valid to set it to False to remove the minimum value. Setting the minimumValue property will result in this property being set to True.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.hasMinimumValue\n\n# Set the value of the property.\nangleValueCommandInput_var.hasMinimumValue = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = angleValueCommandInput_var->hasMinimumValue();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = angleValueCommandInput_var->hasMinimumValue(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Command Inputs API Sample",
+          "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.\u00a0You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+        }
+      ],
+      "version": "Introduced in version January 2017"
+    },
+    "id": {
+      "id": "AngleValueCommandInput_id",
+      "title": "AngleValueCommandInput.id Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets the unique identifier for this input in the command's CommandInputs.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = angleValueCommandInput_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "isEnabled": {
+      "id": "AngleValueCommandInput_isEnabled",
+      "title": "AngleValueCommandInput.isEnabled Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets or sets if this input is currently enabled or disabled for user interaction. Currently, the isEnabled property does not disable SelectionCommandInput objects but instead has the same effect as the SelectionCommandInput.hasFocus property.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.isEnabled\n\n# Set the value of the property.\nangleValueCommandInput_var.isEnabled = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = angleValueCommandInput_var->isEnabled();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = angleValueCommandInput_var->isEnabled(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "isFullWidth": {
+      "id": "AngleValueCommandInput_isFullWidth",
+      "title": "AngleValueCommandInput.isFullWidth Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets or sets if this input fills the entire width of the dialog. If true, the name is ignored and the input control will fill the entire width of the command dialog. The default value for this property in a new command input if false, or not to fill the width. This property does not apply to GroupCommandInputs or TabCommandInputs.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.isFullWidth\n\n# Set the value of the property.\nangleValueCommandInput_var.isFullWidth = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = angleValueCommandInput_var->isFullWidth();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = angleValueCommandInput_var->isFullWidth(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "isMaximumValueInclusive": {
+      "id": "AngleValueCommandInput_isMaximumValueInclusive",
+      "title": "AngleValueCommandInput.isMaximumValueInclusive Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets and sets if the value of the input includes the maximum value or is up to the maximum value. For example, if the maximum value is the value of pi (180 degrees) and this property is True, the maximum value can be pi. If this is False, the minimum value must be less than pi. When the maximum value is first defined using the maximumValue property, this property is set to True. The value returned by this property is only meaningful when the hasMaximumValue property returns True.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.isMaximumValueInclusive\n\n# Set the value of the property.\nangleValueCommandInput_var.isMaximumValueInclusive = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = angleValueCommandInput_var->isMaximumValueInclusive();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = angleValueCommandInput_var->isMaximumValueInclusive(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "isMinimumValueInclusive": {
+      "id": "AngleValueCommandInput_isMinimumValueInclusive",
+      "title": "AngleValueCommandInput.isMinimumValueInclusive Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets and sets if the value of the input includes the minimum value or is up to the minimum value. For example, if the minimum value is zero and this property is True, the minimum value can be zero. If this is False, the minimum value must be greater than zero. When the minimum value is first defined using the minimumValue property, this property is set to True. The value returned by this property is only meaningful when the hasMinimumValue property returns True.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.isMinimumValueInclusive\n\n# Set the value of the property.\nangleValueCommandInput_var.isMinimumValueInclusive = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = angleValueCommandInput_var->isMinimumValueInclusive();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = angleValueCommandInput_var->isMinimumValueInclusive(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "isValid": {
+      "id": "AngleValueCommandInput_isValid",
+      "title": "AngleValueCommandInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = angleValueCommandInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "isValidExpression": {
+      "id": "AngleValueCommandInput_isValidExpression",
+      "title": "AngleValueCommandInput.isValidExpression Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Returns true if the current expression is valid and can be evaluated. If this is false, the value returned should be ignored because there currently is not a valid value.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.isValidExpression",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = angleValueCommandInput_var->isValidExpression();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "isVisible": {
+      "id": "AngleValueCommandInput_isVisible",
+      "title": "AngleValueCommandInput.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets or sets if this input will be visible to the user. Setting a SelectionCommandInput to be invisible will clear any selections it currently has.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.isVisible\n\n# Set the value of the property.\nangleValueCommandInput_var.isVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = angleValueCommandInput_var->isVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = angleValueCommandInput_var->isVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "manipulatorOrigin": {
+      "id": "AngleValueCommandInput_manipulatorOrigin",
+      "title": "AngleValueCommandInput.manipulatorOrigin Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets the origin point of the manipulator in the model space of the root component. To set the origin use the setManipulator method.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.manipulatorOrigin",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = angleValueCommandInput_var->manipulatorOrigin();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "manipulatorXDirection": {
+      "id": "AngleValueCommandInput_manipulatorXDirection",
+      "title": "AngleValueCommandInput.manipulatorXDirection Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets the X direction of the manipulator in the model space of the root component. The X direction is the 0 angle direction. This direction, along with the Y direction vector define the plane that the manipulator is displayed on. To set the direction use the setManipulator method.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.manipulatorXDirection",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = angleValueCommandInput_var->manipulatorXDirection();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "manipulatorYDirection": {
+      "id": "AngleValueCommandInput_manipulatorYDirection",
+      "title": "AngleValueCommandInput.manipulatorYDirection Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets the Y direction of the manipulator in the model space of the root component. The X and Y direction vectors define the plane that the manipulator is displayed on. To set the direction use the setManipulator method.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.manipulatorYDirection",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = angleValueCommandInput_var->manipulatorYDirection();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "maximumValue": {
+      "id": "AngleValueCommandInput_maximumValue",
+      "title": "AngleValueCommandInput.maximumValue Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets and sets maximum value, if any, that the value can be. The value is in radians. When getting this property you should first check the hasMaximumValue property to see if this property applies. Also, the isMaximumValueInclusive indicates if the minimum includes this value or will be up to this value. Setting this value will change the isMaximumValueInclusive to True and the hasMaximumValue property to True if hasMaximumValue is currently False, otherwise it will just update the value.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.maximumValue\n\n# Set the value of the property.\nangleValueCommandInput_var.maximumValue = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = angleValueCommandInput_var->maximumValue();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = angleValueCommandInput_var->maximumValue(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "minimumValue": {
+      "id": "AngleValueCommandInput_minimumValue",
+      "title": "AngleValueCommandInput.minimumValue Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets and sets minimum value, if any, that the value can be. The value is in radians. When getting this property you should first check the hasMinimumValue property to see if this property applies. Also, the isMinimumValueInclusive indicates if the minimum includes this value or will be up to this value. Setting this value will change the isMinimumValueInclusive to True and the hasMinimumValue property to True if hasMinimumValue is currently False, otherwise it will just update the value.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.minimumValue\n\n# Set the value of the property.\nangleValueCommandInput_var.minimumValue = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = angleValueCommandInput_var->minimumValue();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = angleValueCommandInput_var->minimumValue(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "name": {
+      "id": "AngleValueCommandInput_name",
+      "title": "AngleValueCommandInput.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets the user visible name of this input.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.name",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = angleValueCommandInput_var->name();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "objectType": {
+      "id": "AngleValueCommandInput_objectType",
+      "title": "AngleValueCommandInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = angleValueCommandInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "parentCommand": {
+      "id": "AngleValueCommandInput_parentCommand",
+      "title": "AngleValueCommandInput.parentCommand Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets the parent Command.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.parentCommand",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = angleValueCommandInput_var->parentCommand();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "parentCommandInput": {
+      "id": "AngleValueCommandInput_parentCommandInput",
+      "title": "AngleValueCommandInput.parentCommandInput Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets the parent CommandInput if this commandInput is the child of a TabCommandInput or GroupCommandInput. Returns null if there is no parent.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.parentCommandInput",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = angleValueCommandInput_var->parentCommandInput();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "toolClipFilename": {
+      "id": "AngleValueCommandInput_toolClipFilename",
+      "title": "AngleValueCommandInput.toolClipFilename Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.toolClipFilename\n\n# Set the value of the property.\nangleValueCommandInput_var.toolClipFilename = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = angleValueCommandInput_var->toolClipFilename();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = angleValueCommandInput_var->toolClipFilename(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "tooltip": {
+      "id": "AngleValueCommandInput_tooltip",
+      "title": "AngleValueCommandInput.tooltip Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets or sets the base tooltip string. This is always shown for commands. If the tooltip description and/or tool clip are also specified then the tooltip will progressively display more information as the user hovers the mouse over the control.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.tooltip\n\n# Set the value of the property.\nangleValueCommandInput_var.tooltip = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = angleValueCommandInput_var->tooltip();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = angleValueCommandInput_var->tooltip(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "tooltipDescription": {
+      "id": "AngleValueCommandInput_tooltipDescription",
+      "title": "AngleValueCommandInput.tooltipDescription Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets or sets additional text to display progressively along with the tooltip. The text for the description can contain some basic HTML formatting tags to format the tags. For example the br tag can be used to create multiple paragraphs. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.tooltipDescription\n\n# Set the value of the property.\nangleValueCommandInput_var.tooltipDescription = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = angleValueCommandInput_var->tooltipDescription();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = angleValueCommandInput_var->tooltipDescription(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "value": {
+      "id": "AngleValueCommandInput_value",
+      "title": "AngleValueCommandInput.value Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/AngleValueCommandInput.h",
+      "description": "Gets and sets the current value of the command input. The value is in radians but will be displayed to the user in degrees. Setting this value can fail if the input value is not within the minimum and maximum value range. The isValidExpression property should be checked before using the value within the command because if the expression can't be evaluated there isn't a valid value. Fusion won't allow the execution of a command that contains ValueCommandInput object with invalid expressions so you can dependably use the value in the execute event of the command.",
+      "parent_class": "AngleValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = angleValueCommandInput_var.value\n\n# Set the value of the property.\nangleValueCommandInput_var.value = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = angleValueCommandInput_var->value();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = angleValueCommandInput_var->value(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    }
+  }
+}

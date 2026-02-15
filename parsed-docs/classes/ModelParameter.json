@@ -1,0 +1,419 @@
+{
+  "id": "ModelParameter",
+  "title": "ModelParameter Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Fusion/ModelParameter.h",
+  "description": "Represents a Model Parameter.",
+  "parent_class": "Parameter",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this ModelParameter. As a general rule, model parameters cannot be deleted because features depend on them. However, there are uncommon workflows where a parameter no longer has any dependents and is not automatically deleted. You can use the isDeletable property to see if the parameter is in this state and can successfully be deleted."
+    }
+  ],
+  "properties": [
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "comment",
+      "description": "The comment associated with this parameter"
+    },
+    {
+      "name": "component",
+      "description": "Returns the Component containing the ModelParameter."
+    },
+    {
+      "name": "createdBy",
+      "description": "Returns the object that created this parameter. For example, a feature, a sketch dimension, or a construction plane."
+    },
+    {
+      "name": "dependencyParameters",
+      "description": "Returns a list of parameters that this parameter is dependent on."
+    },
+    {
+      "name": "dependentParameters",
+      "description": "Returns a list of parameters that are dependent on this parameter as a result of this parameter being referenced in their equation."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Parameter object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same parameter.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "expression",
+      "description": "Gets and sets the expression used to calculate the value of the parameter. This is the equivalent of the \"Expression\" column in the Parameters dialog. Numeric parameters can be defined by a simple expression like \"6.25\", which will be interpreted based on whatever the default units are for the document. For example, if the units are set to millimeters, the value will be 6.25 mm; if the units are inches, it will be 6.25 inches. The expression can also contain the units so \"6.25 in\" will always be evaluated as inches regardless of the document units.   An expression can also contain references to other parameters and use equations. For example, the expression \"Length / 2\" is valid for a numeric parameter as long as there is a numeric parameter named \"Length\". Expressions can also be used for text parameters, such as concatenating two other text parameters. For example, if there are two existing text parameters named text1 and text2, the expression for another text parameter can be \"text1 + text2\". More complex equations can also be used with text parameters like \"if (Length < 20 mm; 'Short'; 'Long')\" where \"Length\" is a numeric parameter. The resulting string can be obtained using the textValue property."
+    },
+    {
+      "name": "isDeletable",
+      "description": "Gets if this parameter can be deleted. Parameters that have dependents cannot be deleted, and model parameters typically cannot be deleted. However, there is the possibility in uncommon workflows where a model parameter no longer has any dependents, and it was not automatically deleted. In this case, this property will return true, and the deleteMe method can delete the parameter."
+    },
+    {
+      "name": "isFavorite",
+      "description": "Gets and sets whether this parameter is included in the Favorites list in the parameters dialog"
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "modelParameters",
+      "description": "Returns the Collection containing the ModelParameter."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name of the parameter. Setting the name can fail if the name is not unique with respect to all other parameters in the design."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "role",
+      "description": "This property identifies what the parameter is used for. For an extrude, it could be \"Depth\", for a work plane it could be \"Offset\"."
+    },
+    {
+      "name": "textValue",
+      "description": "Gets and sets the value of the parameter when it is a text parameter. This can be determined by checking the valueType property. Setting this value will cause the current expression to be overwritten. If the parameter is not a text parameter, the value of this property should be ignored and setting will fail."
+    },
+    {
+      "name": "unit",
+      "description": "The unit type associated with this parameter. An empty string is returned for parameters that don't have a unit type."
+    },
+    {
+      "name": "value",
+      "description": "Gets and sets the real value (a double) of the parameter in database units. Setting this property will set/reset the expression value for this parameter.   This property is only valid for numeric parameters and will fail for text parameters. You can determine the value type of the parameter by using the valueType property. Use the textValue property to get and set the value of text parameters."
+    },
+    {
+      "name": "valueType",
+      "description": "Returns the type of value this parameter is. For a numeric parameter, you can get the value using the value property. For a text parameter, you can get the value using the textValue property."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "property_details": {
+    "attributes": {
+      "id": "ModelParameter_attributes",
+      "title": "ModelParameter.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = modelParameter_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "comment": {
+      "id": "ModelParameter_comment",
+      "title": "ModelParameter.comment Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "The comment associated with this parameter",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.comment\n\n# Set the value of the property.\nmodelParameter_var.comment = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = modelParameter_var->comment();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = modelParameter_var->comment(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "component": {
+      "id": "ModelParameter_component",
+      "title": "ModelParameter.component Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "Returns the Component containing the ModelParameter.",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.component",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = modelParameter_var->component();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "createdBy": {
+      "id": "ModelParameter_createdBy",
+      "title": "ModelParameter.createdBy Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "Returns the object that created this parameter. For example, a feature, a sketch dimension, or a construction plane.",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.createdBy",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = modelParameter_var->createdBy();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "dependencyParameters": {
+      "id": "ModelParameter_dependencyParameters",
+      "title": "ModelParameter.dependencyParameters Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "Returns a list of parameters that this parameter is dependent on.",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.dependencyParameters",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = modelParameter_var->dependencyParameters();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "dependentParameters": {
+      "id": "ModelParameter_dependentParameters",
+      "title": "ModelParameter.dependentParameters Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "Returns a list of parameters that are dependent on this parameter as a result of this parameter being referenced in their equation.",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.dependentParameters",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = modelParameter_var->dependentParameters();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "entityToken": {
+      "id": "ModelParameter_entityToken",
+      "title": "ModelParameter.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "Returns a token for the Parameter object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same parameter. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = modelParameter_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "expression": {
+      "id": "ModelParameter_expression",
+      "title": "ModelParameter.expression Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "Gets and sets the expression used to calculate the value of the parameter. This is the equivalent of the \"Expression\" column in the Parameters dialog. Numeric parameters can be defined by a simple expression like \"6.25\", which will be interpreted based on whatever the default units are for the document. For example, if the units are set to millimeters, the value will be 6.25 mm; if the units are inches, it will be 6.25 inches. The expression can also contain the units so \"6.25 in\" will always be evaluated as inches regardless of the document units. An expression can also contain references to other parameters and use equations. For example, the expression \"Length / 2\" is valid for a numeric parameter as long as there is a numeric parameter named \"Length\". Expressions can also be used for text parameters, such as concatenating two other text parameters. For example, if there are two existing text parameters named text1 and text2, the expression for another text parameter can be \"text1 + text2\". More complex equations can also be used with text parameters like \"if (Length < 20 mm; 'Short'; 'Long')\" where \"Length\" is a numeric parameter. The resulting string can be obtained using the textValue property.",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.expression\n\n# Set the value of the property.\nmodelParameter_var.expression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = modelParameter_var->expression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = modelParameter_var->expression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isDeletable": {
+      "id": "ModelParameter_isDeletable",
+      "title": "ModelParameter.isDeletable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "Gets if this parameter can be deleted. Parameters that have dependents cannot be deleted, and model parameters typically cannot be deleted. However, there is the possibility in uncommon workflows where a model parameter no longer has any dependents, and it was not automatically deleted. In this case, this property will return true, and the deleteMe method can delete the parameter.",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.isDeletable",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = modelParameter_var->isDeletable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "isFavorite": {
+      "id": "ModelParameter_isFavorite",
+      "title": "ModelParameter.isFavorite Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "Gets and sets whether this parameter is included in the Favorites list in the parameters dialog",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.isFavorite\n\n# Set the value of the property.\nmodelParameter_var.isFavorite = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = modelParameter_var->isFavorite();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = modelParameter_var->isFavorite(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "ModelParameter_isValid",
+      "title": "ModelParameter.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = modelParameter_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "modelParameters": {
+      "id": "ModelParameter_modelParameters",
+      "title": "ModelParameter.modelParameters Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "Returns the Collection containing the ModelParameter.",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.modelParameters",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = modelParameter_var->modelParameters();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "name": {
+      "id": "ModelParameter_name",
+      "title": "ModelParameter.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "Gets and sets the name of the parameter. Setting the name can fail if the name is not unique with respect to all other parameters in the design.",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.name\n\n# Set the value of the property.\nmodelParameter_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = modelParameter_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = modelParameter_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "ModelParameter_objectType",
+      "title": "ModelParameter.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = modelParameter_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "role": {
+      "id": "ModelParameter_role",
+      "title": "ModelParameter.role Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "This property identifies what the parameter is used for. For an extrude, it could be \"Depth\", for a work plane it could be \"Offset\".",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.role",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = modelParameter_var->role();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "textValue": {
+      "id": "ModelParameter_textValue",
+      "title": "ModelParameter.textValue Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "Gets and sets the value of the parameter when it is a text parameter. This can be determined by checking the valueType property. Setting this value will cause the current expression to be overwritten. If the parameter is not a text parameter, the value of this property should be ignored and setting will fail.",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.textValue\n\n# Set the value of the property.\nmodelParameter_var.textValue = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = modelParameter_var->textValue();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = modelParameter_var->textValue(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "unit": {
+      "id": "ModelParameter_unit",
+      "title": "ModelParameter.unit Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "The unit type associated with this parameter. An empty string is returned for parameters that don't have a unit type.",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.unit",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = modelParameter_var->unit();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "value": {
+      "id": "ModelParameter_value",
+      "title": "ModelParameter.value Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "Gets and sets the real value (a double) of the parameter in database units. Setting this property will set/reset the expression value for this parameter. This property is only valid for numeric parameters and will fail for text parameters. You can determine the value type of the parameter by using the valueType property. Use the textValue property to get and set the value of text parameters.",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.value\n\n# Set the value of the property.\nmodelParameter_var.value = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = modelParameter_var->value();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = modelParameter_var->value(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "valueType": {
+      "id": "ModelParameter_valueType",
+      "title": "ModelParameter.valueType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "Returns the type of value this parameter is. For a numeric parameter, you can get the value using the value property. For a text parameter, you can get the value using the textValue property.",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = modelParameter_var.valueType",
+        "cpp": "#include \n\n// Get the value of the property.\nParameterValueTypes propertyValue = modelParameter_var->valueType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "ModelParameter_classType",
+      "title": "ModelParameter.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ModelParameter.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ModelParameter::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "deleteMe": {
+      "id": "ModelParameter_deleteMe",
+      "title": "ModelParameter.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ModelParameter.h",
+      "description": "Deletes this ModelParameter. As a general rule, model parameters cannot be deleted because features depend on them. However, there are uncommon workflows where a parameter no longer has any dependents and is not automatically deleted. You can use the isDeletable property to see if the parameter is in this state and can successfully be deleted.",
+      "parent_class": "ModelParameter",
+      "syntax": {
+        "python": "returnValue = modelParameter_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = modelParameter_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version May 2025"
+    }
+  }
+}

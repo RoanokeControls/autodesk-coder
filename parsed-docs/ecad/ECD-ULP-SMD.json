@@ -1,0 +1,42 @@
+{
+  "id": "ECD-ULP-SMD",
+  "title": "UL_SMD",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "angle",
+      "type": "real (0.0...359.9)"
+    },
+    {
+      "name": "dx[layer], dy[layer]",
+      "type": "int (size)"
+    },
+    {
+      "name": "flags",
+      "type": "int (SMD_FLAG_...)"
+    },
+    {
+      "name": "layer",
+      "type": "int (see note)"
+    },
+    {
+      "name": "name",
+      "type": "string (SMD_NAME_LENGTH)"
+    },
+    {
+      "name": "roundness",
+      "type": "int (see note)"
+    },
+    {
+      "name": "signal",
+      "type": "string"
+    },
+    {
+      "name": "x, y",
+      "type": "int (center point, see note)"
+    }
+  ],
+  "loop_members": [],
+  "content": "- \n \n \n\n \n \n# UL_SMD\n\n## Data members\n\n| | |\n| --- | --- |\n| angle | real (0.0...359.9) |\n| dx[layer], dy[layer] | int (size) |\n| flags | int (SMD_FLAG_...) |\n| layer | int (see note) |\n| name | string (SMD_NAME_LENGTH) |\n| roundness | int (see note) |\n| signal | string |\n| x, y | int (center point, see note) |\n\nSee also UL_FOOTPRINT, UL_CONTACT, UL_PAD\n\n## Constants\n\n| | |\n| --- | --- |\n| SMD_FLAG_STOP | generate stop mask |\n| SMD_FLAG_THERMALS | generate thermals |\n| SMD_FLAG_CREAM | generate cream mask |\n| SMD_NAME_LENGTH | max. recommended length of an smd name (same as CONTACT_NAME_LENGTH) |\n\n## Note\n\nThe parameters of the smd depend on the context in which it is accessed:\n\nif the smd is derived from a UL_LIBRARY context, the coordinates (x, y), angle, layer and roundness of the smd will be the same as defined in the footprint drawing.\n\n- in all other cases, they will have the actual values from the board.\n\nIf the dx and dy data members are called with an optional layer index, the data for that layer is returned according to the Design Rules. Valid layers are LAYER_TOP, LAYER_TSTOP and LAYER_TCREAM for an smd in the Top layer, and LAYER_BOTTOM, LAYER_BSTOP and LAYER_BCREAM for an smd in the Bottom layer, respectively.\n\n*angle* defines how many degrees the smd is rotated counterclockwise around its center.\n\nThe value returned by flags must be masked with the SMD_FLAG_... constants to determine the individual flag settings, as in\n\n```\nif (smd.flags & SMD_FLAG_STOP) {\n ...\n }\n```\n\nNote that if your ULP just wants to draw the objects, you don't need to check these flags explicitly. The dx[] and dy[] members will return the proper data; for instance, if SMD_FLAG_STOP is set, dx[LAYER_TSTOP] will return 0, which should result in nothing being drawn in that layer. The flags member is mainly for ULPs that want to create script files that create library objects.\n\n## Example\n\n```\nlibrary(L) {\n L.footprints(FPT) {\n FPT.contacts(C) {\n if (C.smd)\n printf(\"Smd: '%s', (%f %f), dx=%f, dy=%f\\n\",\n C.name, u2mm(C.smd.x), u2mm(C.smd.y), u2mm(C.smd.dx), u2mm(C.smd.dy));\n }\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

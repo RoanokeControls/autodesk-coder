@@ -1,0 +1,38 @@
+{
+  "id": "ECD-ULP-PACKAGE3D",
+  "title": "UL_PACKAGE3D",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "headline",
+      "type": "string"
+    },
+    {
+      "name": "library",
+      "type": "string"
+    },
+    {
+      "name": "libraryurn",
+      "type": "string (see note)"
+    },
+    {
+      "name": "libraryversion",
+      "type": "int (see note)"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "urn",
+      "type": "string (see note)"
+    }
+  ],
+  "loop_members": [],
+  "content": "# UL_PACKAGE3D\n\n## Data members\n\n| | |\n| --- | --- |\n| description | string |\n| headline | string |\n| library | string |\n| libraryurn | string (see note) |\n| libraryversion | int (see note) |\n| name | string |\n| urn | string (see note) |\n\nSee also UL_DEVICE, UL_ELEMENT, UL_LIBRARY, UL_FOOTPRINT\n\n## Note\n\nThe *description* member returns the complete descriptive text, while the *headline* member returns only the first line of the description, without any HTML tags. When using the description text keep in mind that it may contain newline characters ('\\n').\n\nThe urn contains a unique identifier for this 3D package, of the form `urn:adsk.eagle:package:123/4`, where the portion after the / is the version of the 3D package. To get the base URN (without version), use *urnbase()*; to get the version, use *urnversion()*.\n\nThe *libraryurn* and *libraryversion* are only applicable if this UL_PACKAGE3D comes from a managed library. If not, libraryurn will be the empty string and libraryversion will be -1.\n\n## Example\n\n```\nlibrary(L) {\n L.packages3d(P3D) {\n printf(\"3D Package: %s (%s, Version %d)\\n\", P3D.name, urnbase(P3D.urn), urnversion(P3D.urn));\n }\n }\nboard(B) {\n B.elements(E) {\n printf(\"Element: %s\", E.name);\n if (E.package3d) printf(\", 3D Package: %s (%s, Version %d)\\n\", E.package3d.name, urnbase(E.package3d.urn), urnversion(E.package3d.urn));\n else printf(\"\\n\");\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

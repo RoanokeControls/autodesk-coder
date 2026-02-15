@@ -1,0 +1,272 @@
+{
+  "id": "CommandControl",
+  "title": "CommandControl Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/CommandControl.h",
+  "description": "Represents a button, check box, or radio control list in a panel, toolbar, or drop-down.",
+  "parent_class": "ToolbarControl",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the ToolbarControl"
+    },
+    {
+      "name": "promote",
+      "description": "Promote the command to the parent panel and optionally position it relative to an already- promoted control."
+    }
+  ],
+  "properties": [
+    {
+      "name": "commandDefinition",
+      "description": "Gets the command definition associated with this button. The command definition defines all of the resource information used to display this button and receives the event when the button is clicked."
+    },
+    {
+      "name": "id",
+      "description": "Gets the unique ID of this control. The ID is unique with respect to the other controls within the same panel, toolbar, or drop-down control."
+    },
+    {
+      "name": "index",
+      "description": "Gets the position of this control within the list of controls within the panel, toolbar, or drop-down control."
+    },
+    {
+      "name": "isPromoted",
+      "description": "Gets or sets if this command has been promoted to the parent panel. This property is ignored in the case where this control isn't in a panel.   The promote method provides more options over how the control is promoted."
+    },
+    {
+      "name": "isPromotedByDefault",
+      "description": "Gets or sets if this command is a default command in the panel. This defines the default state of the panel if the UI is reset. This property is ignored in the case where this control isn't in a panel.   The promote method provides more options over how the control is promoted."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets or sets if this control is currently visible."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parent",
+      "description": "Gets the Parent object. When associated with a toolbar (right or left QAT or the NavBar) this returns the parent Toolbar object. When associated with a panel it returns the parent ToolbarPanel object. When associated with a control (DropDownControl) it returns the parent control."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "classType": {
+      "id": "CommandControl_classType",
+      "title": "CommandControl.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CommandControl.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CommandControl",
+      "syntax": {
+        "python": "returnValue = adsk.core.CommandControl.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::CommandControl::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "deleteMe": {
+      "id": "CommandControl_deleteMe",
+      "title": "CommandControl.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CommandControl.h",
+      "description": "Deletes the ToolbarControl",
+      "parent_class": "CommandControl",
+      "syntax": {
+        "python": "returnValue = commandControl_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = commandControl_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a boolean indicating if the deletion was successful.",
+      "version": "Introduced in version August 2014"
+    },
+    "promote": {
+      "id": "CommandControl_promote",
+      "title": "CommandControl.promote Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CommandControl.h",
+      "description": "Promote the command to the parent panel and optionally position it relative to an already- promoted control.",
+      "parent_class": "CommandControl",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = commandControl_var.promote()\n\n# Uses optional arguments.\nreturnValue = commandControl_var.promote(byDefault, positionID, isBefore)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = commandControl_var->promote();\n\n// Uses optional arguments.\nreturnValue = commandControl_var->promote(byDefault, positionID, isBefore);"
+      },
+      "return_type": "boolean",
+      "return_description": "True if this control was successfully promoted or was already promoted. False if promotion failed, which may happen if the control is not in a panel.",
+      "parameters": [
+        {
+          "name": "byDefault",
+          "type": "boolean",
+          "description": "If true, then the control will be promoted in the panel by default if the UI is reset. If false, then the promotion is cleared on reset.   This is an optional argument whose default value is False."
+        },
+        {
+          "name": "positionID",
+          "type": "string",
+          "description": "If provided, then when this control is promoted, it will be positioned in the panel relative to the already-promoted control with this ID.   This is an optional argument whose default value is \"\"."
+        },
+        {
+          "name": "isBefore",
+          "type": "boolean",
+          "description": "If a positionID is provided, then this specifies whether the promoted control is placed before or after the control referenced by the positionID parameter.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    }
+  },
+  "property_details": {
+    "commandDefinition": {
+      "id": "CommandControl_commandDefinition",
+      "title": "CommandControl.commandDefinition Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CommandControl.h",
+      "description": "Gets the command definition associated with this button. The command definition defines all of the resource information used to display this button and receives the event when the button is clicked.",
+      "parent_class": "CommandControl",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = commandControl_var.commandDefinition",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = commandControl_var->commandDefinition();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "id": {
+      "id": "CommandControl_id",
+      "title": "CommandControl.id Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CommandControl.h",
+      "description": "Gets the unique ID of this control. The ID is unique with respect to the other controls within the same panel, toolbar, or drop-down control.",
+      "parent_class": "CommandControl",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = commandControl_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = commandControl_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "index": {
+      "id": "CommandControl_index",
+      "title": "CommandControl.index Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CommandControl.h",
+      "description": "Gets the position of this control within the list of controls within the panel, toolbar, or drop-down control.",
+      "parent_class": "CommandControl",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = commandControl_var.index",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = commandControl_var->index();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isPromoted": {
+      "id": "CommandControl_isPromoted",
+      "title": "CommandControl.isPromoted Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CommandControl.h",
+      "description": "Gets or sets if this command has been promoted to the parent panel. This property is ignored in the case where this control isn't in a panel. The promote method provides more options over how the control is promoted.",
+      "parent_class": "CommandControl",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = commandControl_var.isPromoted\n\n# Set the value of the property.\ncommandControl_var.isPromoted = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = commandControl_var->isPromoted();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = commandControl_var->isPromoted(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Customizing the UI using the API Sample",
+          "description": "Demonstrates how to work with tabs, panels, and command in the user interface. The full source for C++ and Python samples can be downloaded. This is especially useful for getting the resource files."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isPromotedByDefault": {
+      "id": "CommandControl_isPromotedByDefault",
+      "title": "CommandControl.isPromotedByDefault Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CommandControl.h",
+      "description": "Gets or sets if this command is a default command in the panel. This defines the default state of the panel if the UI is reset. This property is ignored in the case where this control isn't in a panel. The promote method provides more options over how the control is promoted.",
+      "parent_class": "CommandControl",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = commandControl_var.isPromotedByDefault\n\n# Set the value of the property.\ncommandControl_var.isPromotedByDefault = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = commandControl_var->isPromotedByDefault();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = commandControl_var->isPromotedByDefault(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "CommandControl_isValid",
+      "title": "CommandControl.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CommandControl.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CommandControl",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = commandControl_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = commandControl_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isVisible": {
+      "id": "CommandControl_isVisible",
+      "title": "CommandControl.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CommandControl.h",
+      "description": "Gets or sets if this control is currently visible.",
+      "parent_class": "CommandControl",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = commandControl_var.isVisible\n\n# Set the value of the property.\ncommandControl_var.isVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = commandControl_var->isVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = commandControl_var->isVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "CommandControl_objectType",
+      "title": "CommandControl.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CommandControl.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CommandControl",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = commandControl_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = commandControl_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "parent": {
+      "id": "CommandControl_parent",
+      "title": "CommandControl.parent Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/CommandControl.h",
+      "description": "Gets the Parent object. When associated with a toolbar (right or left QAT or the NavBar) this returns the parent Toolbar object. When associated with a panel it returns the parent ToolbarPanel object. When associated with a control (DropDownControl) it returns the parent control.",
+      "parent_class": "CommandControl",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = commandControl_var.parent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = commandControl_var->parent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

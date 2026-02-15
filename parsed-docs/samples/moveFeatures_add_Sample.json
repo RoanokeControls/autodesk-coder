@@ -1,0 +1,12 @@
+{
+  "id": "moveFeatures_add_Sample",
+  "title": "moveFeatures.add",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the moveFeatures.add method.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_moveFeatures_add(rootComp: adsk.fusion.Design.rootComponent):\n    # Have the body to move selected.\n    selection = _ui.selectEntity('Select a body', 'Bodies').entity\n    bodies = adsk.core.ObjectCollection.create()\n    bodies.add(selection)\n\n    # Define a matrix that will move the body 10 cm in the Y direction.\n    vector = adsk.core.Vector3D.create(0.0, 10.0, 0.0)\n    transform = adsk.core.Matrix3D.create()\n    transform.translation = vector\n\n    moveFeatures = rootComp.features.moveFeatures\n    input = moveFeatures.createInput2(bodies, transform)\n    input.defineAsFreeMove(transform)\n    moveFeature = moveFeatures.add(input)"
+  }
+}

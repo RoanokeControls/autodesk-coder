@@ -1,0 +1,12 @@
+{
+  "id": "chamferFeatures_add_Sample",
+  "title": "chamferFeatures.add",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the chamferFeatures.add method. To use this sample have a part open that contains a body. When you run the script, you will be prompted to select an edge to chamfer.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_chamferFeatures_add(rootComp: adsk.fusion.Design.rootComponent):\n    selection = _ui.selectEntity('Select edge to chamfer', 'Edges')\n    edge : adsk.fusion.BRepEdge = selection.entity\n    edgeCollection = adsk.core.ObjectCollection.create()\n    edgeCollection.add(edge)\n\n    chamfers = rootComp.features.chamferFeatures\n    input = chamfers.createInput2()\n    offset = adsk.core.ValueInput.createByReal(1)\n    input.chamferEdgeSets.addEqualDistanceChamferEdgeSet(edgeCollection, offset, True)\n\n    # Create the chamfer\n    chamfer = chamfers.add(input)"
+  }
+}

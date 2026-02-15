@@ -1,0 +1,1316 @@
+{
+  "id": "Design",
+  "title": "Design Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Fusion/Design.h",
+  "description": "Object that represents an open Fusion design. This derives from the Product base class and adds the Fusion functionality specific to a Design.",
+  "parent_class": "Product",
+  "methods": [
+    {
+      "name": "activateRootComponent",
+      "description": "Makes the root component the active component in the user interface. This is the same as enabling the radio button next to the root component in the browser."
+    },
+    {
+      "name": "analyzeInterference",
+      "description": "Calculates the interference between the input bodies and/or occurrences."
+    },
+    {
+      "name": "areaProperties",
+      "description": "Returns the AreaProperties object that has properties for getting the area, perimeter, centroid, etc for a collection of 2D sketch profiles and/or planar surfaces that all lie on the same plane."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "computeAll",
+      "description": "Forces a recompute of the entire design. This is the equivalent of the \"Compute All\" command."
+    },
+    {
+      "name": "createConfiguredDesign",
+      "description": "Converts this design into a configured design. The returned ConfigurationTable has a single row and no columns. You can use it to add columns and rows to define the configuration."
+    },
+    {
+      "name": "createInterferenceInput",
+      "description": "Creates an InterferenceInput object. This object collects the entities and options that are used when calculating interference. To analyze interference you first create an InterferenceInput supplying the entities and set any other settings and then provide this object as input to the analyzeInterference method."
+    },
+    {
+      "name": "deleteEntities",
+      "description": "Deletes the specified set of entities that are associated with this product."
+    },
+    {
+      "name": "findAttributes",
+      "description": "Find attributes attached to objects in this product that match the group and or attribute name. This does not find attributes attached directly to the Product or Document objects but finds the attributes attached to entities within the product.   The search string for both the groupName and attributeName arguments can be either an absolute name value, or a regular expression. With an absolute name, the search string must match the entire groupName or attributeName, including case. An empty string will match everything. For example if you have an attribute group named \"MyStuff\" that contains the attribute \"Length1\", using the search string \"MyStuff\" as the group name and \"Length1\" as the attribute name will find the attributes with those names. Searching for \"MyStuff\" as the group name and \"\" as the attribute name will find all attributes that have \"MyStuff\" as the group name.   Regular expressions provide a more flexible way of searching. To use a regular expression, prefix the input string for the groupName or attributeName arguments with \"re:\". The regular expression much match the entire group or attribute name. For example if you have a group that contains attributes named \"Length1\", \"Length2\", \"Width1\", and \"Width2\" and want to find any of the length attributes you can use a regular expression using the string \"re:Length.*\". For more information on attributes see the Attributes topic in the user manual."
+    },
+    {
+      "name": "findEntityByToken",
+      "description": "Returns the entities associated with the provided token. The return is an array of entities. In most cases an array containing a single entity will be returned but there are cases where more than one entity can be returned. An example of this is where a token is obtained from a face and subsequent modeling operations cause the face to be split into two or more pieces. All of the faces that represent the original face will be returned with the first face being the most logical match to the original face."
+    },
+    {
+      "name": "modifyParameters",
+      "description": "Modifies the values of many parameters all at once. Changing them all at once is more efficient than modifying them one at a time."
+    },
+    {
+      "name": "physicalProperties",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc for a collection of 3D solid objects."
+    },
+    {
+      "name": "setGroundPlaneOffset",
+      "description": "Sets the offset of the ground plane. If the isAdpativeGroundPlane property is true, setting the offset will change isAdaptiveGroundPlane to false. The offset value is an offset relative to the current position of the ground plane.   One example of how this method can be used is to set the isAdaptiveGroundPlane property to true, which will position the ground plane at the bottom of the part. By doing this, you know the current position of the ground plane. Then calling this method with a value of -2.0 will reposition the ground plane 2 cm below the part. If you called this method again with a value of -1.0 the ground plane will be moved an additional 1 cm away from the geometry, since this is defining an offset relative to the current position."
+    }
+  ],
+  "properties": [
+    {
+      "name": "activeComponent",
+      "description": "Returns the component that is current being edited. This can return the root component or another component within the design."
+    },
+    {
+      "name": "activeEditObject",
+      "description": "Returns the current edit target as seen in the user interface. This edit target is defined as the container object that will be added to if something is created. For example, a component can be an edit target so that when new bodies are created they are added to that component. A sketch can also be an edit target."
+    },
+    {
+      "name": "activeOccurrence",
+      "description": "Returns the occurrence that is currently activated, if any. This can return null in the case where no occurrence is activated and the root component is active."
+    },
+    {
+      "name": "allComponents",
+      "description": "Returns the Components collection that provides access to existing components in a design."
+    },
+    {
+      "name": "allParameters",
+      "description": "Returns a read only list of all parameters in the design. This includes the user parameters and model parameters from all components in this design. The parameters from Externally Referenced components are NOT included because they are in actuality, separate designs."
+    },
+    {
+      "name": "analyses",
+      "description": "Gets the collection of design analyses associated with this design."
+    },
+    {
+      "name": "appearances",
+      "description": "Returns the appearances contained in this document."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this product."
+    },
+    {
+      "name": "configurationRowId",
+      "description": "Returns the ID of the row that defines this configuration. Use the isConfiguration property to determine if this Design is a configuration or not. If this is not a configuration, this property returns an empty string."
+    },
+    {
+      "name": "configurationTopTable",
+      "description": "If this design is a configured design or a configuration, this property returns the associated ConfigurationTopTable object. If this is not a configured design or configuration, this property returns null."
+    },
+    {
+      "name": "contactSets",
+      "description": "Returns the contact sets associated with this design."
+    },
+    {
+      "name": "derivedParameters",
+      "description": "Returns a read only list of all parameters that are derived into the design. This includes the user parameters and model parameters from all derives in this design."
+    },
+    {
+      "name": "designIntent",
+      "description": "Gets and sets the use intent of this design. Changing the design intent from one type to another is not supported in all cases. For example, if an assembly contains any external or internal components it cannot be converted to a part."
+    },
+    {
+      "name": "designPlasticRules",
+      "description": "Gets the collection of plastic rules in the design."
+    },
+    {
+      "name": "designSheetMetalRules",
+      "description": "Gets the collection of sheet metal rules in the design."
+    },
+    {
+      "name": "designType",
+      "description": "Gets and sets the current design type (DirectDesignType or ParametricDesignType) Changing an existing design from ParametricDesignType to DirectDesignType will result in the timeline and all design history being removed and further operations will not be captured in the timeline."
+    },
+    {
+      "name": "exportManager",
+      "description": "Returns the ExportManager for this design. You use the ExportManager to export the current design in various formats."
+    },
+    {
+      "name": "fusionUnitsManager",
+      "description": "Returns a specialized UnitsManager that can set the default length units and work with parameters."
+    },
+    {
+      "name": "isAdaptiveGroundPlane",
+      "description": "Gets and sets if the position of the ground plane for this design is adaptive. If true, the ground plane will automatically move to be just below the model. The orientation of the ground plane is always normal to the \"up\" direction as defined by the view cube."
+    },
+    {
+      "name": "isConfiguration",
+      "description": "Gets if this design is a configuration. If this returns true, the configurationRowId can be used to get the row used to define this configuration. Also, when this is true, the design is essentially read-only and edits are either blocked from taking place or cannot be saved."
+    },
+    {
+      "name": "isConfiguredDesign",
+      "description": "Gets if this design is a configured design. A configured design contains a configuration table. Use the configurationTable property to get the associated table."
+    },
+    {
+      "name": "isContactAnalysisEnabled",
+      "description": "Gets and sets whether contact analysis is enabled for all components. This is the equivalent of the \"Disable Contact / Enable Contact\" command. If this if True then any contact analysis defined (either all or contact sets) is enabled. if False, then no contact analysis is performed."
+    },
+    {
+      "name": "isContactSetAnalysis",
+      "description": "Gets and sets whether contact analysis is done using contact sets or between all bodies, independent of any contact sets. If True and the isContactAnalysisEnabled property is True then contact analysis is performed using contact sets. If False and isContactAnalysisEnabled is True, then contact analysis is performed between all bodies. If isContactAnalysisEnabled is False then no contact analysis is performed."
+    },
+    {
+      "name": "isModelingInAssemblyEnabled",
+      "description": "If this design is an assembly, this property gets and sets if the modeling functionality is enabled. If this design is a part or hybrid design, the value of this property should be ignored."
+    },
+    {
+      "name": "isRootComponentActive",
+      "description": "Gets whether the root component is the active edit target in the user interface. This is the same as checking the state of the radio button next to the root component in the browser. To activate the root component use the ActivateRootComponent method."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "libraryPlasticRules",
+      "description": "Gets the collection of plastic rules in the plastic rule library."
+    },
+    {
+      "name": "librarySheetMetalRules",
+      "description": "Gets the collection of sheet metal rules in the sheet metal rule library."
+    },
+    {
+      "name": "materials",
+      "description": "Returns the materials contained in this document."
+    },
+    {
+      "name": "namedViews",
+      "description": "Returns the NamedViews object associated with this product. The NamedViews collection provides access to the named views defined in this product and supports the creation of new named views."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "objectVisibility",
+      "description": "Returns the ObjectVisibility object associated with this design which controls which objects are displayed in the graphics window. This is the equivalent of the \"Object Visibility\" settings in the Display Settings drop-down in the navigation toolbar at the bottom of the Fusion graphics window."
+    },
+    {
+      "name": "parentDocument",
+      "description": "Returns the parent Document object."
+    },
+    {
+      "name": "productType",
+      "description": "Returns the product type name of this product. A list of all of the possible product types can be obtained by using the Application.supportedProductTypes property."
+    },
+    {
+      "name": "renderManager",
+      "description": "Returns the RenderManager object associated with this design. Using the RenderManager you can access the same functionality that is available in the Render workspace."
+    },
+    {
+      "name": "rootComponent",
+      "description": "Returns the root Component."
+    },
+    {
+      "name": "rootDataComponent",
+      "description": "Get the root DataComponent in this design. This is only available for top level designs."
+    },
+    {
+      "name": "selectionSets",
+      "description": "Returns the SelectionSets object associated with this product. If the product does not support selection sets, null is returned. The SelectionSets object is used to create and access existing selection sets."
+    },
+    {
+      "name": "snapshots",
+      "description": "Returns the Snapshots object associated with this design which provides access to the existing snapshots and the creation of new snapshots."
+    },
+    {
+      "name": "timeline",
+      "description": "Returns the timeline associated with this design."
+    },
+    {
+      "name": "unitsManager",
+      "description": "Returns the UnitsManager object associated with this product."
+    },
+    {
+      "name": "userParameters",
+      "description": "Returns the collection of User Parameters in a design"
+    },
+    {
+      "name": "workspaces",
+      "description": "Returns the workspaces associated with this product."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Analyze Interference API Sample",
+      "description": "Demonstrates analyzing the interference between components. This uses a direct modeling design because the ability to create bodies that represent the interference volume is only supported in a direct modeling design."
+    },
+    {
+      "name": "Loft Feature API Sample",
+      "description": "Demonstrates creating a new loft feature."
+    },
+    {
+      "name": "Simple Extrusion Sample",
+      "description": "Creates a new extrusion feature, resulting in a new component."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "activateRootComponent": {
+      "id": "Design_activateRootComponent",
+      "title": "Design.activateRootComponent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Makes the root component the active component in the user interface. This is the same as enabling the radio button next to the root component in the browser.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "returnValue = design_var.activateRootComponent()",
+        "cpp": "#include \n\nreturnValue = design_var->activateRootComponent();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the activation was successful.",
+      "version": "Introduced in version June 2015"
+    },
+    "analyzeInterference": {
+      "id": "Design_analyzeInterference",
+      "title": "Design.analyzeInterference Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Calculates the interference between the input bodies and/or occurrences.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "returnValue = design_var.analyzeInterference(input)",
+        "cpp": "#include \n\nreturnValue = design_var->analyzeInterference(input);"
+      },
+      "return_type": "InterferenceResults",
+      "return_description": "Returns an InterferenceResults object that can be used to examine the interference results.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "InterferenceInput",
+          "description": "An InterferenceInput that defines all of the necessary input needed to calculate the interference. An InterferenceInput object is created using the createInterferenceInput method."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Analyze Interference API Sample",
+          "description": "Demonstrates analyzing the interference between components. This uses a direct modeling design because the ability to create bodies that represent the interference volume is only supported in a direct modeling design."
+        },
+        {
+          "name": "Interference API Sample",
+          "description": "Demonstrates Interference APIs."
+        }
+      ],
+      "version": "Introduced in version November 2015"
+    },
+    "areaProperties": {
+      "id": "Design_areaProperties",
+      "title": "Design.areaProperties Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the AreaProperties object that has properties for getting the area, perimeter, centroid, etc for a collection of 2D sketch profiles and/or planar surfaces that all lie on the same plane.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = design_var.areaProperties(inputs)\n\n# Uses optional arguments.\nreturnValue = design_var.areaProperties(inputs, accuracy)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = design_var->areaProperties(inputs);\n\n// Uses optional arguments.\nreturnValue = design_var->areaProperties(inputs, accuracy);"
+      },
+      "return_type": "AreaProperties",
+      "return_description": "Returns an AreaProperties object that can be used to examine the area results.",
+      "parameters": [
+        {
+          "name": "inputs",
+          "type": "ObjectCollection",
+          "description": "A collection of one or more 2D sketch profile and/or planar surface input objects to perform the calculations on. Supported input object types are 2D closed sketch profiles and planar surfaces. Object must all lie on the same plane. Calculation results reflect the sums of the input objects (i.e. total area of multiple sketch profiles)"
+        },
+        {
+          "name": "accuracy",
+          "type": "CalculationAccuracy",
+          "description": "Specifies the desired level of computational accuracy of the property calculations. The default value of 'LowCalculationAccuracy' returns results within a +/- 1% error margin.   This is an optional argument whose default value is CalculationAccuracy.LowCalculationAccuracy."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "API Sample for AreaProperties",
+          "description": "Demonstrates how to use AreaProperties"
+        }
+      ],
+      "version": "Introduced in version March 2016"
+    },
+    "classType": {
+      "id": "Design_classType",
+      "title": "Design.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.Design.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::Design::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "computeAll": {
+      "id": "Design_computeAll",
+      "title": "Design.computeAll Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Forces a recompute of the entire design. This is the equivalent of the \"Compute All\" command.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "returnValue = design_var.computeAll()",
+        "cpp": "#include \n\nreturnValue = design_var->computeAll();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the compute completed. This doesn't indicate if all the items in the timeline successfully computed or not. You need to check the health state of each item in the timeline to determine if everything successfully computed or not.",
+      "version": "Introduced in version December 2020"
+    },
+    "createConfiguredDesign": {
+      "id": "Design_createConfiguredDesign",
+      "title": "Design.createConfiguredDesign Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Converts this design into a configured design. The returned ConfigurationTable has a single row and no columns. You can use it to add columns and rows to define the configuration.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "returnValue = design_var.createConfiguredDesign()",
+        "cpp": "#include \n\nreturnValue = design_var->createConfiguredDesign();"
+      },
+      "return_type": "ConfigurationTopTable",
+      "return_description": "Returns the ConfigurationTable that defines the configurations for this design.",
+      "version": "Introduced in version January 2024"
+    },
+    "createInterferenceInput": {
+      "id": "Design_createInterferenceInput",
+      "title": "Design.createInterferenceInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Creates an InterferenceInput object. This object collects the entities and options that are used when calculating interference. To analyze interference you first create an InterferenceInput supplying the entities and set any other settings and then provide this object as input to the analyzeInterference method.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "returnValue = design_var.createInterferenceInput(entities)",
+        "cpp": "#include \n\nreturnValue = design_var->createInterferenceInput(entities);"
+      },
+      "return_type": "InterferenceInput",
+      "return_description": "Returns an InterferenceInput object which you can use to set any other interference settings and then use as input to the analyzeInterference method to calculate the interference. Returns null if the creation failed.",
+      "parameters": [
+        {
+          "name": "entities",
+          "type": "ObjectCollection",
+          "description": "An ObjectCollection containing the BRepBody and/or Occurrence entities that will be used in the interference calculation. All entities must be in the context of the root component of the top-level design."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Analyze Interference API Sample",
+          "description": "Demonstrates analyzing the interference between components. This uses a direct modeling design because the ability to create bodies that represent the interference volume is only supported in a direct modeling design."
+        },
+        {
+          "name": "Interference API Sample",
+          "description": "Demonstrates Interference APIs."
+        }
+      ],
+      "version": "Introduced in version November 2015"
+    },
+    "deleteEntities": {
+      "id": "Design_deleteEntities",
+      "title": "Design.deleteEntities Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Deletes the specified set of entities that are associated with this product.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "returnValue = design_var.deleteEntities(entities)",
+        "cpp": "#include \n\nreturnValue = design_var->deleteEntities(entities);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns True if any of the entities provided in the list were deleted. If entities were specified that can't be deleted or aren't owned by this product, they are ignored.",
+      "parameters": [
+        {
+          "name": "entities",
+          "type": "ObjectCollection",
+          "description": "An ObjectCollection containing the list of entities to delete."
+        }
+      ],
+      "version": "Introduced in version January 2017"
+    },
+    "findAttributes": {
+      "id": "Design_findAttributes",
+      "title": "Design.findAttributes Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Find attributes attached to objects in this product that match the group and or attribute name. This does not find attributes attached directly to the Product or Document objects but finds the attributes attached to entities within the product. The search string for both the groupName and attributeName arguments can be either an absolute name value, or a regular expression. With an absolute name, the search string must match the entire groupName or attributeName, including case. An empty string will match everything. For example if you have an attribute group named \"MyStuff\" that contains the attribute \"Length1\", using the search string \"MyStuff\" as the group name and \"Length1\" as the attribute name will find the attributes with those names. Searching for \"MyStuff\" as the group name and \"\" as the attribute name will find all attributes that have \"MyStuff\" as the group name. Regular expressions provide a more flexible way of searching. To use a regular expression, prefix the input string for the groupName or attributeName arguments with \"re:\". The regular expression much match the entire group or attribute name. For example if you have a group that contains attributes named \"Length1\", \"Length2\", \"Width1\", and \"Width2\" and want to find any of the length attributes you can use a regular expression using the string \"re:Length.*\". For more information on attributes see the Attributes topic in the user manual.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "returnValue = design_var.findAttributes(groupName, attributeName)",
+        "cpp": "#include \n\nreturnValue = design_var->findAttributes(groupName, attributeName);"
+      },
+      "return_type": "Attribute[]",
+      "return_description": "An array of Attribute objects that were found. An empty array is returned if no attributes were found.",
+      "parameters": [
+        {
+          "name": "groupName",
+          "type": "string",
+          "description": "The search string for the group name. See above for more details."
+        },
+        {
+          "name": "attributeName",
+          "type": "string",
+          "description": "The search string for the attribute name. See above for more details."
+        }
+      ],
+      "version": "Introduced in version May 2016"
+    },
+    "findEntityByToken": {
+      "id": "Design_findEntityByToken",
+      "title": "Design.findEntityByToken Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the entities associated with the provided token. The return is an array of entities. In most cases an array containing a single entity will be returned but there are cases where more than one entity can be returned. An example of this is where a token is obtained from a face and subsequent modeling operations cause the face to be split into two or more pieces. All of the faces that represent the original face will be returned with the first face being the most logical match to the original face.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "returnValue = design_var.findEntityByToken(entityToken)",
+        "cpp": "#include \n\nreturnValue = design_var->findEntityByToken(entityToken);"
+      },
+      "return_type": "Base[]",
+      "return_description": "Returns an array of entities associated with the provided token, or an empty array in the case where there are no matches.",
+      "parameters": [
+        {
+          "name": "entityToken",
+          "type": "string",
+          "description": "The input entity token you want to find the matching entity for."
+        }
+      ],
+      "version": "Introduced in version September 2020"
+    },
+    "modifyParameters": {
+      "id": "Design_modifyParameters",
+      "title": "Design.modifyParameters Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Modifies the values of many parameters all at once. Changing them all at once is more efficient than modifying them one at a time.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "returnValue = design_var.modifyParameters(parameters, values)",
+        "cpp": "#include \n\nreturnValue = design_var->modifyParameters(parameters, values);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting all of the parameters was successful. Setting multiple parameters is either all or none. If it fails to set any parameters, none of them are updated, and the method will return false.",
+      "parameters": [
+        {
+          "name": "parameters",
+          "type": "Parameter[]",
+          "description": "An array of UserParameter and ModelParameter objects that you want to change the value. The parameters must all exist within the Design object you're calling this method from. They can be in any component but must be local components owned by the Design."
+        },
+        {
+          "name": "values",
+          "type": "ValueInput[]",
+          "description": "An array of ValueInput objects that defines the new value for each parameter defined by the \"parameters\" argument. This array must be the same size as the array used for the \"parameters\" argument, and the items in the arrays are used in the order they exist within the arrays. For example, the parameter at index 0 will use the value at index 0.   If you use the createByString method to create the ValueInput, the expression of the parameter will be edited, and the effect is the same as interactively editing the expression.When you set the expression, you can include units, references to other parameters, and math operators and functions.For example, \"(Length / 3) * cos(Angle)\" is a valid expression for a distance parameter if the parameters \"Length\" and \"Angle\" already exist.   If you use the createByReal method, the value is assigned directly and is always in the internal units for the unit type associated with the parameter.For example, if the parameter is a length, the value will ALWAYS be used as centimeters. If the parameter is an angle, the value will ALWAYS be used as radians.This is because the default design unit types for length are ignored, and internal units are ALWAYS used."
+        }
+      ],
+      "version": "Introduced in version September 2022"
+    },
+    "physicalProperties": {
+      "id": "Design_physicalProperties",
+      "title": "Design.physicalProperties Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc for a collection of 3D solid objects.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = design_var.physicalProperties(inputs)\n\n# Uses optional arguments.\nreturnValue = design_var.physicalProperties(inputs, accuracy)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = design_var->physicalProperties(inputs);\n\n// Uses optional arguments.\nreturnValue = design_var->physicalProperties(inputs, accuracy);"
+      },
+      "parameters": [
+        {
+          "name": "inputs",
+          "type": "ObjectCollection",
+          "description": "A collection of one or more 3D solid input objects to perform the calculations on. Supported input object types are Components, Occurrences and BRepBodies. Calculation results reflect the sums of the input objects (i.e. total volume of multiple bodies)"
+        },
+        {
+          "name": "accuracy",
+          "type": "CalculationAccuracy",
+          "description": "Specifies the desired level of computational accuracy of the property calculations. The default value of 'LowCalculationAccuracy' returns results within a +/- 1% error margin.   This is an optional argument whose default value is CalculationAccuracy.LowCalculationAccuracy."
+        }
+      ],
+      "version": "Introduced in version May 2016"
+    },
+    "setGroundPlaneOffset": {
+      "id": "Design_setGroundPlaneOffset",
+      "title": "Design.setGroundPlaneOffset Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Sets the offset of the ground plane. If the isAdpativeGroundPlane property is true, setting the offset will change isAdaptiveGroundPlane to false. The offset value is an offset relative to the current position of the ground plane. One example of how this method can be used is to set the isAdaptiveGroundPlane property to true, which will position the ground plane at the bottom of the part. By doing this, you know the current position of the ground plane. Then calling this method with a value of -2.0 will reposition the ground plane 2 cm below the part. If you called this method again with a value of -1.0 the ground plane will be moved an additional 1 cm away from the geometry, since this is defining an offset relative to the current position.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "returnValue = design_var.setGroundPlaneOffset(offset)",
+        "cpp": "#include \n\nreturnValue = design_var->setGroundPlaneOffset(offset);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting the offset was successful.",
+      "parameters": [
+        {
+          "name": "offset",
+          "type": "double",
+          "description": "Defines the relative offset based on the current position of the ground plane. The offset is in centimeters, and a positive value will move it towards the design geometry and a negative value away from the geometry."
+        }
+      ],
+      "version": "Introduced in version November 2025"
+    }
+  },
+  "property_details": {
+    "activeComponent": {
+      "id": "Design_activeComponent",
+      "title": "Design.activeComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the component that is current being edited. This can return the root component or another component within the design.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.activeComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->activeComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "activeEditObject": {
+      "id": "Design_activeEditObject",
+      "title": "Design.activeEditObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the current edit target as seen in the user interface. This edit target is defined as the container object that will be added to if something is created. For example, a component can be an edit target so that when new bodies are created they are added to that component. A sketch can also be an edit target.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.activeEditObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->activeEditObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "activeOccurrence": {
+      "id": "Design_activeOccurrence",
+      "title": "Design.activeOccurrence Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the occurrence that is currently activated, if any. This can return null in the case where no occurrence is activated and the root component is active.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.activeOccurrence",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->activeOccurrence();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "allComponents": {
+      "id": "Design_allComponents",
+      "title": "Design.allComponents Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the Components collection that provides access to existing components in a design.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.allComponents",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->allComponents();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "allParameters": {
+      "id": "Design_allParameters",
+      "title": "Design.allParameters Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns a read only list of all parameters in the design. This includes the user parameters and model parameters from all components in this design. The parameters from Externally Referenced components are NOT included because they are in actuality, separate designs.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.allParameters",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->allParameters();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Create Animation API Sample",
+          "description": "Creates a series of images of a design where a parameter is being changed. The series of images can be used to create an animation using other software. To run this sample, have a part open that contains a parameter named \"Length\". The parameter should be able to be successfully modified from 10 to 15 centimeters. Run the sample and choose or create a directory for the output. After running you should have a folder full of images that are snapshots of each parameter value."
+        },
+        {
+          "name": "Rendering Sample",
+          "description": "Demonstrates using the Rendering capabilities in the API. This starts a series of local renderings to generate a series of frames, where the camera is repositioned and a parameter is modified for each frame to create a dynamic animation. To use the sample, have a design open that contains a parameter named \"Length\". It can be a user or model parameter. The sample will modify this parameter from a value of 0.1 cm to 15 cm, but you can change these values by editing the values of the paramStartVal and paramEndVal variables on lines 90 and 91 of the sample. It expects a folder named \"C:\\Temp\\RenderSample\" to exist, and will fail if it doesn't. The rendered frames will be written to that folder.An example rendering is shown below where this file was used. The parameter is modifying a move feature which results in changing the shape of an extrusion. The parameter could be driving anything and you could modify the code to edit more than one parameter. The result of this sample is a folder containing all of the rendered frames. You can process these to create an animation. The sample animation was created using GIMP."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "analyses": {
+      "id": "Design_analyses",
+      "title": "Design.analyses Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Gets the collection of design analyses associated with this design.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.analyses",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->analyses();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2023"
+    },
+    "appearances": {
+      "id": "Design_appearances",
+      "title": "Design.appearances Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the appearances contained in this document.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.appearances",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->appearances();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Material API Sample",
+          "description": "Demonstrates using materials and appearance using the API.\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code. The sample also used an external appearance library which you can get here. Copy that to any location on your computer and edit the path in the script. When running the script, have a design open that contains a body in the root component."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "attributes": {
+      "id": "Design_attributes",
+      "title": "Design.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the collection of attributes associated with this product.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "configurationRowId": {
+      "id": "Design_configurationRowId",
+      "title": "Design.configurationRowId Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the ID of the row that defines this configuration. Use the isConfiguration property to determine if this Design is a configuration or not. If this is not a configuration, this property returns an empty string.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.configurationRowId",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = design_var->configurationRowId();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "configurationTopTable": {
+      "id": "Design_configurationTopTable",
+      "title": "Design.configurationTopTable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "If this design is a configured design or a configuration, this property returns the associated ConfigurationTopTable object. If this is not a configured design or configuration, this property returns null.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.configurationTopTable",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->configurationTopTable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "contactSets": {
+      "id": "Design_contactSets",
+      "title": "Design.contactSets Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the contact sets associated with this design.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.contactSets",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->contactSets();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "SliderJointMotion API Sample",
+          "description": "Demonstrates creating a joint with slider joint motion."
+        }
+      ],
+      "version": "Introduced in version September 2016"
+    },
+    "derivedParameters": {
+      "id": "Design_derivedParameters",
+      "title": "Design.derivedParameters Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns a read only list of all parameters that are derived into the design. This includes the user parameters and model parameters from all derives in this design.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.derivedParameters",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = design_var->derivedParameters();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "designIntent": {
+      "id": "Design_designIntent",
+      "title": "Design.designIntent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Gets and sets the use intent of this design. Changing the design intent from one type to another is not supported in all cases. For example, if an assembly contains any external or internal components it cannot be converted to a part.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.designIntent\n\n# Set the value of the property.\ndesign_var.designIntent = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nDesignIntentTypes propertyValue = design_var->designIntent();\n\n// Set the value of the property, where value_var is a DesignIntentTypes.\nbool returnValue = design_var->designIntent(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "designPlasticRules": {
+      "id": "Design_designPlasticRules",
+      "title": "Design.designPlasticRules Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Gets the collection of plastic rules in the design.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.designPlasticRules",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->designPlasticRules();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "designSheetMetalRules": {
+      "id": "Design_designSheetMetalRules",
+      "title": "Design.designSheetMetalRules Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Gets the collection of sheet metal rules in the design.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.designSheetMetalRules",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->designSheetMetalRules();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "designType": {
+      "id": "Design_designType",
+      "title": "Design.designType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Gets and sets the current design type (DirectDesignType or ParametricDesignType) Changing an existing design from ParametricDesignType to DirectDesignType will result in the timeline and all design history being removed and further operations will not be captured in the timeline.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.designType\n\n# Set the value of the property.\ndesign_var.designType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nDesignTypes propertyValue = design_var->designType();\n\n// Set the value of the property, where value_var is a DesignTypes.\nbool returnValue = design_var->designType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "exportManager": {
+      "id": "Design_exportManager",
+      "title": "Design.exportManager Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the ExportManager for this design. You use the ExportManager to export the current design in various formats.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.exportManager",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->exportManager();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Export to other formats API Sample",
+          "description": "Demonstrates exporting the active design to IGES, STEP, SAT, SMT, F3D and STL formats. To run this sample, have a design open and run the script. It will write out the translated files to a temp directory, which will it show in a message box."
+        },
+        {
+          "name": "Set parameters from a csv file and export to STEP",
+          "description": "Reads data from a .csv file and sets user parameters in the model and then exports the model to STEP. When setting parameters be aware that this sample is setting user parameters. It's also possible to set model parameters but that's not demonstrated here. Also when accessing parameters, it is case sensitive so the names you use in your program much exactly match the names in the model."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "fusionUnitsManager": {
+      "id": "Design_fusionUnitsManager",
+      "title": "Design.fusionUnitsManager Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns a specialized UnitsManager that can set the default length units and work with parameters.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.fusionUnitsManager",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->fusionUnitsManager();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isAdaptiveGroundPlane": {
+      "id": "Design_isAdaptiveGroundPlane",
+      "title": "Design.isAdaptiveGroundPlane Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Gets and sets if the position of the ground plane for this design is adaptive. If true, the ground plane will automatically move to be just below the model. The orientation of the ground plane is always normal to the \"up\" direction as defined by the view cube.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.isAdaptiveGroundPlane\n\n# Set the value of the property.\ndesign_var.isAdaptiveGroundPlane = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = design_var->isAdaptiveGroundPlane();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = design_var->isAdaptiveGroundPlane(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2025"
+    },
+    "isConfiguration": {
+      "id": "Design_isConfiguration",
+      "title": "Design.isConfiguration Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Gets if this design is a configuration. If this returns true, the configurationRowId can be used to get the row used to define this configuration. Also, when this is true, the design is essentially read-only and edits are either blocked from taking place or cannot be saved.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.isConfiguration",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = design_var->isConfiguration();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "isConfiguredDesign": {
+      "id": "Design_isConfiguredDesign",
+      "title": "Design.isConfiguredDesign Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Gets if this design is a configured design. A configured design contains a configuration table. Use the configurationTable property to get the associated table.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.isConfiguredDesign",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = design_var->isConfiguredDesign();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "isContactAnalysisEnabled": {
+      "id": "Design_isContactAnalysisEnabled",
+      "title": "Design.isContactAnalysisEnabled Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Gets and sets whether contact analysis is enabled for all components. This is the equivalent of the \"Disable Contact / Enable Contact\" command. If this if True then any contact analysis defined (either all or contact sets) is enabled. if False, then no contact analysis is performed.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.isContactAnalysisEnabled\n\n# Set the value of the property.\ndesign_var.isContactAnalysisEnabled = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = design_var->isContactAnalysisEnabled();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = design_var->isContactAnalysisEnabled(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "SliderJointMotion API Sample",
+          "description": "Demonstrates creating a joint with slider joint motion."
+        }
+      ],
+      "version": "Introduced in version September 2016"
+    },
+    "isContactSetAnalysis": {
+      "id": "Design_isContactSetAnalysis",
+      "title": "Design.isContactSetAnalysis Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Gets and sets whether contact analysis is done using contact sets or between all bodies, independent of any contact sets. If True and the isContactAnalysisEnabled property is True then contact analysis is performed using contact sets. If False and isContactAnalysisEnabled is True, then contact analysis is performed between all bodies. If isContactAnalysisEnabled is False then no contact analysis is performed.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.isContactSetAnalysis\n\n# Set the value of the property.\ndesign_var.isContactSetAnalysis = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = design_var->isContactSetAnalysis();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = design_var->isContactSetAnalysis(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "SliderJointMotion API Sample",
+          "description": "Demonstrates creating a joint with slider joint motion."
+        }
+      ],
+      "version": "Introduced in version September 2016"
+    },
+    "isModelingInAssemblyEnabled": {
+      "id": "Design_isModelingInAssemblyEnabled",
+      "title": "Design.isModelingInAssemblyEnabled Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "If this design is an assembly, this property gets and sets if the modeling functionality is enabled. If this design is a part or hybrid design, the value of this property should be ignored.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.isModelingInAssemblyEnabled\n\n# Set the value of the property.\ndesign_var.isModelingInAssemblyEnabled = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = design_var->isModelingInAssemblyEnabled();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = design_var->isModelingInAssemblyEnabled(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "isRootComponentActive": {
+      "id": "Design_isRootComponentActive",
+      "title": "Design.isRootComponentActive Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Gets whether the root component is the active edit target in the user interface. This is the same as checking the state of the radio button next to the root component in the browser. To activate the root component use the ActivateRootComponent method.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.isRootComponentActive",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = design_var->isRootComponentActive();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isValid": {
+      "id": "Design_isValid",
+      "title": "Design.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = design_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "libraryPlasticRules": {
+      "id": "Design_libraryPlasticRules",
+      "title": "Design.libraryPlasticRules Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Gets the collection of plastic rules in the plastic rule library.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.libraryPlasticRules",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->libraryPlasticRules();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "librarySheetMetalRules": {
+      "id": "Design_librarySheetMetalRules",
+      "title": "Design.librarySheetMetalRules Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Gets the collection of sheet metal rules in the sheet metal rule library.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.librarySheetMetalRules",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->librarySheetMetalRules();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "materials": {
+      "id": "Design_materials",
+      "title": "Design.materials Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the materials contained in this document.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.materials",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->materials();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "namedViews": {
+      "id": "Design_namedViews",
+      "title": "Design.namedViews Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the NamedViews object associated with this product. The NamedViews collection provides access to the named views defined in this product and supports the creation of new named views.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.namedViews",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->namedViews();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "objectType": {
+      "id": "Design_objectType",
+      "title": "Design.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = design_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectVisibility": {
+      "id": "Design_objectVisibility",
+      "title": "Design.objectVisibility Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the ObjectVisibility object associated with this design which controls which objects are displayed in the graphics window. This is the equivalent of the \"Object Visibility\" settings in the Display Settings drop-down in the navigation toolbar at the bottom of the Fusion graphics window.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.objectVisibility",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->objectVisibility();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2025"
+    },
+    "parentDocument": {
+      "id": "Design_parentDocument",
+      "title": "Design.parentDocument Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the parent Document object.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.parentDocument",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->parentDocument();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "productType": {
+      "id": "Design_productType",
+      "title": "Design.productType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the product type name of this product. A list of all of the possible product types can be obtained by using the Application.supportedProductTypes property.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.productType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = design_var->productType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "renderManager": {
+      "id": "Design_renderManager",
+      "title": "Design.renderManager Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the RenderManager object associated with this design. Using the RenderManager you can access the same functionality that is available in the Render workspace.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.renderManager",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->renderManager();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Rendering Sample",
+          "description": "Demonstrates using the Rendering capabilities in the API. This starts a series of local renderings to generate a series of frames, where the camera is repositioned and a parameter is modified for each frame to create a dynamic animation. To use the sample, have a design open that contains a parameter named \"Length\". It can be a user or model parameter. The sample will modify this parameter from a value of 0.1 cm to 15 cm, but you can change these values by editing the values of the paramStartVal and paramEndVal variables on lines 90 and 91 of the sample. It expects a folder named \"C:\\Temp\\RenderSample\" to exist, and will fail if it doesn't. The rendered frames will be written to that folder.An example rendering is shown below where this file was used. The parameter is modifying a move feature which results in changing the shape of an extrusion. The parameter could be driving anything and you could modify the code to edit more than one parameter. The result of this sample is a folder containing all of the rendered frames. You can process these to create an animation. The sample animation was created using GIMP."
+        }
+      ],
+      "version": "Introduced in version May 2023"
+    },
+    "rootComponent": {
+      "id": "Design_rootComponent",
+      "title": "Design.rootComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the root Component.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.rootComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->rootComponent();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Loft Feature API Sample",
+          "description": "Demonstrates creating a new loft feature."
+        },
+        {
+          "name": "Simple Extrusion Sample",
+          "description": "Creates a new extrusion feature, resulting in a new component."
+        },
+        {
+          "name": "Simple Revolve Feature Sample",
+          "description": "Creates a new revolve feature, resulting in a new component."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "rootDataComponent": {
+      "id": "Design_rootDataComponent",
+      "title": "Design.rootDataComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Get the root DataComponent in this design. This is only available for top level designs.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.rootDataComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->rootDataComponent();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Gets all properties using GraphQL",
+          "description": "Fetches bulk component properties of the root component and from occurrences via single GraphQL query."
+        },
+        {
+          "name": "Get part number using GraphQL",
+          "description": "Fetches part number of root component and from occurrences via GQL query."
+        },
+        {
+          "name": "Set part number using GraphQL",
+          "description": "Sets part number of root component and from occurrences via GQL query."
+        }
+      ],
+      "version": "Introduced in version July 2025"
+    },
+    "selectionSets": {
+      "id": "Design_selectionSets",
+      "title": "Design.selectionSets Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the SelectionSets object associated with this product. If the product does not support selection sets, null is returned. The SelectionSets object is used to create and access existing selection sets.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.selectionSets",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->selectionSets();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "snapshots": {
+      "id": "Design_snapshots",
+      "title": "Design.snapshots Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the Snapshots object associated with this design which provides access to the existing snapshots and the creation of new snapshots.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.snapshots",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->snapshots();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "timeline": {
+      "id": "Design_timeline",
+      "title": "Design.timeline Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the timeline associated with this design.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.timeline",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->timeline();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Extrude Feature API Sample",
+          "description": "Demonstrates creating a new extrude feature."
+        },
+        {
+          "name": "Fillet Feature Edit API Sample",
+          "description": "Demonstrates editing a fillet feature. To successfully run this sample you can use this Ruled Surface Feature API Sample"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "unitsManager": {
+      "id": "Design_unitsManager",
+      "title": "Design.unitsManager Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the UnitsManager object associated with this product.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.unitsManager",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->unitsManager();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Use inputBox to get value and evaluateExpression to validate it",
+          "description": "Uses the UserInterface.inputBox function to get a string from the user and then validates that the strinng entered is a valid expression by using the UnitsManager.evaluateExpression function."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "userParameters": {
+      "id": "Design_userParameters",
+      "title": "Design.userParameters Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the collection of User Parameters in a design",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.userParameters",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->userParameters();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Set parameters from a csv file and export to STEP",
+          "description": "Reads data from a .csv file and sets user parameters in the model and then exports the model to STEP. When setting parameters be aware that this sample is setting user parameters. It's also possible to set model parameters but that's not demonstrated here. Also when accessing parameters, it is case sensitive so the names you use in your program much exactly match the names in the model."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "workspaces": {
+      "id": "Design_workspaces",
+      "title": "Design.workspaces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Design.h",
+      "description": "Returns the workspaces associated with this product.",
+      "parent_class": "Design",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = design_var.workspaces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = design_var->workspaces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

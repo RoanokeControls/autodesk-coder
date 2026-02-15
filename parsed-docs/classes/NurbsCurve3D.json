@@ -1,0 +1,583 @@
+{
+  "id": "NurbsCurve3D",
+  "title": "NurbsCurve3D Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Geometry/NurbsCurve3D.h",
+  "description": "Transient 3D NURBS curve. A transient NURBS curve is not displayed or saved in a document. Transient 3D NURBS curves are used as a wrapper to work with raw 3D NURBS curve information. They are created statically using one of the create methods of the NurbsCurve3D class.",
+  "parent_class": "Curve3D",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "copy",
+      "description": "Creates and returns an independent copy of this NurbsCurve3D object."
+    },
+    {
+      "name": "createNonRational",
+      "description": "Creates a transient 3D NURBS non-rational b-spline object."
+    },
+    {
+      "name": "createRational",
+      "description": "Creates a transient 3D NURBS rational b-spline object."
+    },
+    {
+      "name": "extract",
+      "description": "Defines a new NURBS curve that is the subset of this NURBS curve in the parameter range of [startParam, endParam]"
+    },
+    {
+      "name": "getData",
+      "description": "Gets the data that defines a transient 3D NURBS rational b-spline object."
+    },
+    {
+      "name": "merge",
+      "description": "Define a new NURBS curve that is the result of combining this NURBS curve with another NURBS curve."
+    },
+    {
+      "name": "reverse",
+      "description": "Reverses the orientation of the curve so the start and end points are swapped. The shape of the curve remains unchanged. This is especially useful to prepare the curves to use with the merge method."
+    },
+    {
+      "name": "set",
+      "description": "Sets the data that defines a transient 3D NURBS rational b-spline object."
+    },
+    {
+      "name": "transformBy",
+      "description": "Transforms this curve in 3D space."
+    }
+  ],
+  "properties": [
+    {
+      "name": "controlPointCount",
+      "description": "Gets the number of control points that define the curve."
+    },
+    {
+      "name": "controlPoints",
+      "description": "Returns an array of Point3D objects that define the control points of the curve."
+    },
+    {
+      "name": "curveType",
+      "description": "Returns the type of geometry this curve represents."
+    },
+    {
+      "name": "degree",
+      "description": "Returns the degree of the curve."
+    },
+    {
+      "name": "evaluator",
+      "description": "Returns an evaluator object that lets you perform additional evaluations on the curve."
+    },
+    {
+      "name": "isClosed",
+      "description": "Gets if the curve is closed."
+    },
+    {
+      "name": "isPeriodic",
+      "description": "Gets if the curve is periodic."
+    },
+    {
+      "name": "isRational",
+      "description": "Gets if the curve is rational or non-rational type."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "knotCount",
+      "description": "Returns the knot count of the curve."
+    },
+    {
+      "name": "knots",
+      "description": "Returns an array of numbers that define the knot vector of the curve."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "classType": {
+      "id": "NurbsCurve3D_classType",
+      "title": "NurbsCurve3D.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "returnValue = adsk.core.NurbsCurve3D.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::NurbsCurve3D::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "copy": {
+      "id": "NurbsCurve3D_copy",
+      "title": "NurbsCurve3D.copy Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Creates and returns an independent copy of this NurbsCurve3D object.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "returnValue = nurbsCurve3D_var.copy()",
+        "cpp": "#include \n\nreturnValue = nurbsCurve3D_var->copy();"
+      },
+      "return_type": "NurbsCurve3D",
+      "return_description": "Returns an independent copy of this NurbsCurve3D.",
+      "version": "Introduced in version August 2014"
+    },
+    "createNonRational": {
+      "id": "NurbsCurve3D_createNonRational",
+      "title": "NurbsCurve3D.createNonRational Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Creates a transient 3D NURBS non-rational b-spline object.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "returnValue = adsk.core.NurbsCurve3D.createNonRational(controlPoints, degree, knots, isPeriodic)",
+        "cpp": "#include \n\nreturnValue = adsk::core::NurbsCurve3D::createNonRational(controlPoints, degree, knots, isPeriodic);"
+      },
+      "return_type": "NurbsCurve3D",
+      "return_description": "Returns the new NurbsCurve3D object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "controlPoints",
+          "type": "Point3D[]",
+          "description": "An array of control point that define the path of the spline."
+        },
+        {
+          "name": "degree",
+          "type": "integer",
+          "description": "The degree of curvature of the spline."
+        },
+        {
+          "name": "knots",
+          "type": "double[]",
+          "description": "An array of numbers that define the knot vector of the spline. The knots is an array of (>=degree + N + 1) numbers, where N is the number of control points."
+        },
+        {
+          "name": "isPeriodic",
+          "type": "boolean",
+          "description": "A bool specifying if the spline is to be Periodic. A periodic spline has a start point and end point that meet forming a closed loop."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "createRational": {
+      "id": "NurbsCurve3D_createRational",
+      "title": "NurbsCurve3D.createRational Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Creates a transient 3D NURBS rational b-spline object.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "returnValue = adsk.core.NurbsCurve3D.createRational(controlPoints, degree, knots, weights, isPeriodic)",
+        "cpp": "#include \n\nreturnValue = adsk::core::NurbsCurve3D::createRational(controlPoints, degree, knots, weights, isPeriodic);"
+      },
+      "return_type": "NurbsCurve3D",
+      "return_description": "Returns the new NurbsCurve3D object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "controlPoints",
+          "type": "Point3D[]",
+          "description": "An array of control point that define the path of the spline."
+        },
+        {
+          "name": "degree",
+          "type": "integer",
+          "description": "The degree of curvature of the spline."
+        },
+        {
+          "name": "knots",
+          "type": "double[]",
+          "description": "An array of numbers that define the knot vector of the spline. The knots is an array of (>=degree + N + 1) numbers, where N is the number of control points."
+        },
+        {
+          "name": "weights",
+          "type": "double[]",
+          "description": "An array of numbers that define the weight at each control point."
+        },
+        {
+          "name": "isPeriodic",
+          "type": "boolean",
+          "description": "A bool specifying if the spline is to be Periodic. A periodic curve has a start point and end point that meet (with curvature continuity) forming a closed loop."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "extract": {
+      "id": "NurbsCurve3D_extract",
+      "title": "NurbsCurve3D.extract Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Defines a new NURBS curve that is the subset of this NURBS curve in the parameter range of [startParam, endParam]",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "returnValue = nurbsCurve3D_var.extract(startParam, endParam)",
+        "cpp": "#include \n\nreturnValue = nurbsCurve3D_var->extract(startParam, endParam);"
+      },
+      "return_type": "NurbsCurve3D",
+      "return_description": "Returns a new NurbsCurve3D object.",
+      "parameters": [
+        {
+          "name": "startParam",
+          "type": "double",
+          "description": "The parameter position that defines the start of the subset."
+        },
+        {
+          "name": "endParam",
+          "type": "double",
+          "description": "The parameter position that defines the end of the subset."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getData": {
+      "id": "NurbsCurve3D_getData",
+      "title": "NurbsCurve3D.getData Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Gets the data that defines a transient 3D NURBS rational b-spline object.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "(returnValue, controlPoints, degree, knots, isRational, weights, isPeriodic) = nurbsCurve3D_var.getData()",
+        "cpp": "#include getData(controlPoints, degree, knots, isRational, weights, isPeriodic);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "controlPoints",
+          "type": "Point3D[]",
+          "description": "The output array of control point that define the path of the spline."
+        },
+        {
+          "name": "degree",
+          "type": "integer",
+          "description": "The output degree of curvature of the spline."
+        },
+        {
+          "name": "knots",
+          "type": "double[]",
+          "description": "The output array of numbers that define the knot vector of the spline."
+        },
+        {
+          "name": "isRational",
+          "type": "boolean",
+          "description": "The output value indicating if the spline is rational. A rational spline will have a weight value for each control point."
+        },
+        {
+          "name": "weights",
+          "type": "double[]",
+          "description": "The output array of numbers that define the weights for the spline."
+        },
+        {
+          "name": "isPeriodic",
+          "type": "boolean",
+          "description": "The output value indicating if the spline is Periodic. A periodic curve has a start point and end point that meet (with curvature continuity) forming a closed loop."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "merge": {
+      "id": "NurbsCurve3D_merge",
+      "title": "NurbsCurve3D.merge Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Define a new NURBS curve that is the result of combining this NURBS curve with another NURBS curve.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "returnValue = nurbsCurve3D_var.merge(nurbsCurve)",
+        "cpp": "#include \n\nreturnValue = nurbsCurve3D_var->merge(nurbsCurve);"
+      },
+      "return_type": "NurbsCurve3D",
+      "return_description": "Returns a new NurbsCurve3D object.",
+      "parameters": [
+        {
+          "name": "nurbsCurve",
+          "type": "NurbsCurve3D",
+          "description": "The NURBS curve to combine with."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "reverse": {
+      "id": "NurbsCurve3D_reverse",
+      "title": "NurbsCurve3D.reverse Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Reverses the orientation of the curve so the start and end points are swapped. The shape of the curve remains unchanged. This is especially useful to prepare the curves to use with the merge method.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "returnValue = nurbsCurve3D_var.reverse()",
+        "cpp": "#include \n\nreturnValue = nurbsCurve3D_var->reverse();"
+      },
+      "version": "Introduced in version October 2022"
+    },
+    "set": {
+      "id": "NurbsCurve3D_set",
+      "title": "NurbsCurve3D.set Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Sets the data that defines a transient 3D NURBS rational b-spline object.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "returnValue = nurbsCurve3D_var.set(controlPoints, degree, knots, isRational, weights, isPeriodic)",
+        "cpp": "#include \n\nreturnValue = nurbsCurve3D_var->set(controlPoints, degree, knots, isRational, weights, isPeriodic);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "controlPoints",
+          "type": "Point3D[]",
+          "description": "The array of control point that define the path of the spline."
+        },
+        {
+          "name": "degree",
+          "type": "integer",
+          "description": "The degree of curvature of the spline."
+        },
+        {
+          "name": "knots",
+          "type": "double[]",
+          "description": "An array of numbers that define the knot vector of the spline."
+        },
+        {
+          "name": "isRational",
+          "type": "boolean",
+          "description": "A bool value indicating if the spline is rational. A rational spline must have a weight value for each control point."
+        },
+        {
+          "name": "weights",
+          "type": "double[]",
+          "description": "An array of numbers that define the weights for the spline."
+        },
+        {
+          "name": "isPeriodic",
+          "type": "boolean",
+          "description": "A bool indicating if the spline is Periodic. A periodic curve has a start point and end point that meet (with curvature continuity) forming a closed loop."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "transformBy": {
+      "id": "NurbsCurve3D_transformBy",
+      "title": "NurbsCurve3D.transformBy Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Transforms this curve in 3D space.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "returnValue = nurbsCurve3D_var.transformBy(matrix)",
+        "cpp": "#include \n\nreturnValue = nurbsCurve3D_var->transformBy(matrix);"
+      },
+      "return_type": "boolean",
+      "return_description": "Return true if the transform was successful.",
+      "parameters": [
+        {
+          "name": "matrix",
+          "type": "Matrix3D",
+          "description": "A 3D matrix that defines the transform to apply to the curve."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "controlPointCount": {
+      "id": "NurbsCurve3D_controlPointCount",
+      "title": "NurbsCurve3D.controlPointCount Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Gets the number of control points that define the curve.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsCurve3D_var.controlPointCount",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = nurbsCurve3D_var->controlPointCount();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "controlPoints": {
+      "id": "NurbsCurve3D_controlPoints",
+      "title": "NurbsCurve3D.controlPoints Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Returns an array of Point3D objects that define the control points of the curve.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsCurve3D_var.controlPoints",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = nurbsCurve3D_var->controlPoints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "curveType": {
+      "id": "NurbsCurve3D_curveType",
+      "title": "NurbsCurve3D.curveType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Returns the type of geometry this curve represents.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsCurve3D_var.curveType",
+        "cpp": "#include \n\n// Get the value of the property.\nCurve3DTypes propertyValue = nurbsCurve3D_var->curveType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "degree": {
+      "id": "NurbsCurve3D_degree",
+      "title": "NurbsCurve3D.degree Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Returns the degree of the curve.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsCurve3D_var.degree",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = nurbsCurve3D_var->degree();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "evaluator": {
+      "id": "NurbsCurve3D_evaluator",
+      "title": "NurbsCurve3D.evaluator Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Returns an evaluator object that lets you perform additional evaluations on the curve.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsCurve3D_var.evaluator",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = nurbsCurve3D_var->evaluator();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isClosed": {
+      "id": "NurbsCurve3D_isClosed",
+      "title": "NurbsCurve3D.isClosed Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Gets if the curve is closed.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsCurve3D_var.isClosed",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = nurbsCurve3D_var->isClosed();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isPeriodic": {
+      "id": "NurbsCurve3D_isPeriodic",
+      "title": "NurbsCurve3D.isPeriodic Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Gets if the curve is periodic.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsCurve3D_var.isPeriodic",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = nurbsCurve3D_var->isPeriodic();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isRational": {
+      "id": "NurbsCurve3D_isRational",
+      "title": "NurbsCurve3D.isRational Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Gets if the curve is rational or non-rational type.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsCurve3D_var.isRational",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = nurbsCurve3D_var->isRational();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "NurbsCurve3D_isValid",
+      "title": "NurbsCurve3D.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsCurve3D_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = nurbsCurve3D_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "knotCount": {
+      "id": "NurbsCurve3D_knotCount",
+      "title": "NurbsCurve3D.knotCount Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Returns the knot count of the curve.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsCurve3D_var.knotCount",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = nurbsCurve3D_var->knotCount();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "knots": {
+      "id": "NurbsCurve3D_knots",
+      "title": "NurbsCurve3D.knots Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "Returns an array of numbers that define the knot vector of the curve.",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsCurve3D_var.knots",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector propertyValue = nurbsCurve3D_var->knots();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "NurbsCurve3D_objectType",
+      "title": "NurbsCurve3D.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsCurve3D.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "NurbsCurve3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsCurve3D_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = nurbsCurve3D_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

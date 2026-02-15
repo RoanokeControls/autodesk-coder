@@ -1,0 +1,83 @@
+{
+  "id": "ECD-ULP-ERROR",
+  "title": "UL_ERROR",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "area",
+      "type": "UL_AREA"
+    },
+    {
+      "name": "area2",
+      "type": "UL_AREA (see note)"
+    },
+    {
+      "name": "code",
+      "type": "int (identification number)"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "layer",
+      "type": "int"
+    },
+    {
+      "name": "modulename",
+      "type": "string"
+    },
+    {
+      "name": "s1",
+      "type": "string (see note)"
+    },
+    {
+      "name": "s2",
+      "type": "string"
+    },
+    {
+      "name": "s3",
+      "type": "string"
+    },
+    {
+      "name": "s4",
+      "type": "string"
+    },
+    {
+      "name": "s5",
+      "type": "string"
+    },
+    {
+      "name": "s6",
+      "type": "string"
+    },
+    {
+      "name": "sheet",
+      "type": "int (sheet number)"
+    },
+    {
+      "name": "signature",
+      "type": "string (signature string)"
+    },
+    {
+      "name": "state",
+      "type": "int (ERROR_STATE_...)"
+    },
+    {
+      "name": "type",
+      "type": "int (ERROR_TYPE_...)"
+    },
+    {
+      "name": "x, y",
+      "type": "int (center point)"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "contours()",
+      "type": "UL_WIRE (see note)"
+    }
+  ],
+  "content": "# UL_ERROR\n\n## Data members\n\n| | |\n| --- | --- |\n| area | UL_AREA |\n| area2 | UL_AREA (see note) |\n| code | int (identification number) |\n| description | string |\n| layer | int |\n| modulename | string |\n| s1 | string (see note) |\n| s2 | string |\n| s3 | string |\n| s4 | string |\n| s5 | string |\n| s6 | string |\n| sheet | int (sheet number) |\n| signature | string (signature string) |\n| state | int (ERROR_STATE_...) |\n| type | int (ERROR_TYPE_...) |\n| x, y | int (center point) |\n\n## Loop members\n\n| | |\n| --- | --- |\n| contours() | UL_WIRE (see note) |\n\nSee also UL_BOARD, UL_SCHEMATIC\n\n## Constants\n\n| | |\n| --- | --- |\n| ERROR_STATE_ACTIVE | error has not yet been approved or processed |\n| ERROR_STATE_APPROVED | error has been approved |\n| ERROR_STATE_PROCESSED | error has been processed |\n| ERROR_TYPE_NONE | no error |\n| ERROR_TYPE_WARNING | warning |\n| ERROR_TYPE_ERROR | error |\n| ERROR_TYPE_CONSISTENCY | consistency error |\n\n## Notes\n\nA UL_ERROR is an abstract object which gives informations about ERC/DRC errors.\n\nThe members *layer* and *contours()* are only available in UL_BOARD context and the members *area2*, *modulename*, *s1...s6* and *sheet* are only available in UL_SCHEMATIC context.\n\nThe member *area2* is a second area, only available on some ERC errors and refers to the corresponding area in the board. The members *s1...s6* are string values, which for ERC errors, contain specific informations like names.\n\nThe *contours()* loop member loops through the contour wires of the DRC error polygon.\n\n## Example\n\n```\nstring s1;\nstring ErrLst[];\nint ErrCnt = 0;\nstring ErrLstHeader;\nif (board) board(B) {\n ErrLstHeader = \"Code\\tState\\tDescription\\tLayer\\tSignature\";\n if (B.checked) {\n B.errors(ER) {\n if (ER.state == ERROR_STATE_ACTIVE) {\n sprintf(s1, \"%d\\t%d\\t%s\\t%d\\t%s\", ER.code, ER.state, ER.description, ER.layer, ER.signature);\n ErrLst[ErrCnt++] = s1;\n }\n }\n }\n}\nif (schematic) schematic(SCH) {\n ErrLstHeader = \"Code\\tState\\tDescription\\tSheet\\tModule\\ts1\\ts2\\ts3\\ts4\\ts5\\ts6\";\n if (SCH.checked) {\n SCH.errors(ER) {\n if (ER.state == ERROR_STATE_ACTIVE) {\n sprintf(s1, \"%d\\t%d\\t%s\\t%d\\t%s\\t%s\\t%s\\t%s\\t%s\\t%s\\t%s\", ER.code, ER.state, ER.description, ER.sheet, ER.modulename, ER.s1, ER.s2, ER.s3, ER.s4, ER.s5, ER.s6);\n ErrLst[ErrCnt++] = s1;\n }\n }\n }\n}\ndlgDialog(\"Errors\") {\n int sel = -1;\n dlgListView(ErrLstHeader, ErrLst, sel);\n dlgPushButton(\"+OK\") dlgAccept();\n};\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

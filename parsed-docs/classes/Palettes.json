@@ -1,0 +1,367 @@
+{
+  "id": "Palettes",
+  "title": "Palettes Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/Palettes.h",
+  "description": "Provides access to a set of palettes, which are docked or floating windows that display HTML.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new Palette."
+    },
+    {
+      "name": "add2",
+      "description": "Creates a new Palette."
+    },
+    {
+      "name": "addTransparent",
+      "description": "Creates a new transparent Palette."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Returns the specified palette using an index into the collection."
+    },
+    {
+      "name": "itemById",
+      "description": "Returns the palette at the specified ID."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Gets the number of Palettes."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Palette Sample",
+      "description": "Demonstrates how to create a palette, how to dock and snap palettes and how Fusion communicates with the palette HTML. The sample is an add-in.  To use it, create a new Python add-in and replace the code with the code below. You also need to create an html file using the name and code below. The html file needs to be in the same folder as the py file.\n\tWhen you load the add-in, you'll see two new commands under the ADD-INS panel of the TOOLS tab. The \"Show Custom Palette\" command will cause the custom palette to be displayed. It will remain displayed until you click its Close button. Clicking the \"Click to send info to Fusion\" button on the palette, will send information to your add-in, which uses the API to display that information in a message box. Running the \"Send Info to HTML\" command to send data to the javascript running in the palette, which uses it to update the content of a paragraph.\n\npalette.html"
+    }
+  ],
+  "version": "Introduced in version March 2017",
+  "method_details": {
+    "add": {
+      "id": "Palettes_add",
+      "title": "Palettes.add Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palettes.h",
+      "description": "Creates a new Palette.",
+      "parent_class": "Palettes",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = palettes_var.add(id, name, htmlFileURL, isVisible, showCloseButton, isResizable)\n\n# Uses optional arguments.\nreturnValue = palettes_var.add(id, name, htmlFileURL, isVisible, showCloseButton, isResizable, width, height, useNewWebBrowser)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = palettes_var->add(id, name, htmlFileURL, isVisible, showCloseButton, isResizable);\n\n// Uses optional arguments.\nreturnValue = palettes_var->add(id, name, htmlFileURL, isVisible, showCloseButton, isResizable, width, height, useNewWebBrowser);"
+      },
+      "return_type": "Palette",
+      "return_description": "Returns the newly created palette or null in the case the creation failed.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The unique id for this palette. The id must be unique with respect to all of the palettes."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The displayed name of this palette. This is the name visible in the user interface."
+        },
+        {
+          "name": "htmlFileURL",
+          "type": "string",
+          "description": "Specifies the URL to the HTML file that will be displayed in the palette. This can be a local file or on the web."
+        },
+        {
+          "name": "isVisible",
+          "type": "boolean",
+          "description": "Specifies if the palette is initially visible or not. It's useful to create it invisibly, change other desired properties and then use the isVisible property to finally make it visible to the user."
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "description": "Specifies if a \"Close\" button should be displayed on the palette to allow the user to easily close it."
+        },
+        {
+          "name": "isResizable",
+          "type": "boolean",
+          "description": "Specifies if the palette can be resized by the user or not."
+        },
+        {
+          "name": "width",
+          "type": "integer",
+          "description": "Specifies the width of the palette in pixels. If no width is specified a default width will be used.   This is an optional argument whose default value is 200."
+        },
+        {
+          "name": "height",
+          "type": "integer",
+          "description": "Specifies the height of the palette in pixels. If no height is specified a default height will be used.   This is an optional argument whose default value is 200."
+        },
+        {
+          "name": "useNewWebBrowser",
+          "type": "boolean",
+          "description": "Specifies if you want to use the old or new web browser. A palette is essentially a dialog that hosts a web browser. To support this type of functionality, Fusion has used CEF (Chromium Embedded Framework). Fusion is in the process of switching to the Qt Web Browser wherever an embedded browser is needed in the product. As this transition occurs, Fusion is supporting both web browsers. This argument is optional and defaults to False, which means the palette will behave as before and use the CEF browser. Setting the argument to True will cause the palette to use the new QT Web Browser.   When Fusion completes the transition to the QT Web Browser, support for the CEF browser will be removed from Fusion, and you will always get a QT Web Browser regardless of how the argument is set. Because of this, it is highly recommended you set this argument to true to use the new browser because when support for the CEF browser is removed you will automatically be forced to use the QT Web Browser.   This argument is no longer used because the new QT Web Browser is always used regardless of this parameter's value.   This is an optional argument whose default value is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Palette Sample",
+          "description": "Demonstrates how to create a palette, how to dock and snap palettes and how Fusion communicates with the palette HTML. The sample is an add-in.\u00a0To use it, create a new Python add-in and replace the code with the code below. You also need to create an html file using the name and code below. The html file needs to be in the same folder as the py file.\n\tWhen you load the add-in, you'll see two new commands under the ADD-INS panel of the TOOLS tab. The \"Show Custom Palette\" command will cause the custom palette to be displayed. It will remain displayed until you click its Close button. Clicking the \"Click to send info to Fusion\" button on the palette, will send information to your add-in, which uses the API to display that information in a message box. Running the \"Send Info to HTML\" command to send data to the javascript running in the palette, which uses it to update the content of a paragraph.\n\npalette.html"
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    },
+    "add2": {
+      "id": "Palettes_add2",
+      "title": "Palettes.add2 Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palettes.h",
+      "description": "Creates a new Palette.",
+      "parent_class": "Palettes",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = palettes_var.add2(id, name, htmlFileURL, isVisible, showCloseButton, isResizable)\n\n# Uses optional arguments.\nreturnValue = palettes_var.add2(id, name, htmlFileURL, isVisible, showCloseButton, isResizable, width, height)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = palettes_var->add2(id, name, htmlFileURL, isVisible, showCloseButton, isResizable);\n\n// Uses optional arguments.\nreturnValue = palettes_var->add2(id, name, htmlFileURL, isVisible, showCloseButton, isResizable, width, height);"
+      },
+      "return_type": "Palette",
+      "return_description": "Returns the newly created palette or null in the case the creation failed.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The unique id for this palette. The id must be unique with respect to all of the palettes."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The displayed name of this palette. This is the name visible in the user interface."
+        },
+        {
+          "name": "htmlFileURL",
+          "type": "string",
+          "description": "Specifies the URL to the HTML file that will be displayed in the palette. This can be a local file or a URL on the web where the HTML will be read. To avoid reading a file, this can also be the full HTML definition as a string.   If you are providing the HTML content as a string, it should begin with the  element. Any references made in the HTML should be to URL's and not local files since the local path is ambiguous."
+        },
+        {
+          "name": "isVisible",
+          "type": "boolean",
+          "description": "Specifies if the palette is initially visible or not. It's useful to create it invisibly, change other desired properties and then use the isVisible property to finally make it visible to the user."
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "description": "Specifies if a \"Close\" button should be displayed on the palette to allow the user to easily close it."
+        },
+        {
+          "name": "isResizable",
+          "type": "boolean",
+          "description": "Specifies if the palette can be resized by the user or not."
+        },
+        {
+          "name": "width",
+          "type": "integer",
+          "description": "Specifies the width of the palette in pixels. If no width is specified a default width will be used.   This is an optional argument whose default value is 200."
+        },
+        {
+          "name": "height",
+          "type": "integer",
+          "description": "Specifies the height of the palette in pixels. If no height is specified a default height will be used.   This is an optional argument whose default value is 200."
+        }
+      ],
+      "version": "Introduced in version March 2022"
+    },
+    "addTransparent": {
+      "id": "Palettes_addTransparent",
+      "title": "Palettes.addTransparent Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palettes.h",
+      "description": "Creates a new transparent Palette.",
+      "parent_class": "Palettes",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = palettes_var.addTransparent(id, name, htmlFileURL, isVisible, showCloseButton, isResizable)\n\n# Uses optional arguments.\nreturnValue = palettes_var.addTransparent(id, name, htmlFileURL, isVisible, showCloseButton, isResizable, isOpaqueWhenUndocked, width, height)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = palettes_var->addTransparent(id, name, htmlFileURL, isVisible, showCloseButton, isResizable);\n\n// Uses optional arguments.\nreturnValue = palettes_var->addTransparent(id, name, htmlFileURL, isVisible, showCloseButton, isResizable, isOpaqueWhenUndocked, width, height);"
+      },
+      "return_type": "Palette",
+      "return_description": "Returns the newly created palette or null in the case the creation failed.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The unique id for this palette. The id must be unique with respect to all of the palettes."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The displayed name of this palette. This is the name visible in the user interface."
+        },
+        {
+          "name": "htmlFileURL",
+          "type": "string",
+          "description": "Specifies the URL to the HTML file that will be displayed in the palette. This can be a local file or on the web."
+        },
+        {
+          "name": "isVisible",
+          "type": "boolean",
+          "description": "Specifies if the palette is initially visible or not. It's useful to create it invisibly, change other desired properties and then use the isVisible property to finally make it visible to the user."
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "description": "Specifies if a \"Close\" button should be displayed on the palette to allow the user to easily close it."
+        },
+        {
+          "name": "isResizable",
+          "type": "boolean",
+          "description": "Specifies if the palette can be resized by the user or not."
+        },
+        {
+          "name": "isOpaqueWhenUndocked",
+          "type": "boolean",
+          "description": "Specifies if the palette will be transparent when docked and opaque when undocked.   This is an optional argument whose default value is False."
+        },
+        {
+          "name": "width",
+          "type": "integer",
+          "description": "Specifies the width of the palette in pixels. If no width is specified a default width will be used.   This is an optional argument whose default value is 200."
+        },
+        {
+          "name": "height",
+          "type": "integer",
+          "description": "Specifies the height of the palette in pixels. If no height is specified a default height will be used.   This is an optional argument whose default value is 200."
+        }
+      ],
+      "version": "Introduced in version March 2024"
+    },
+    "classType": {
+      "id": "Palettes_classType",
+      "title": "Palettes.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palettes.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Palettes",
+      "syntax": {
+        "python": "returnValue = adsk.core.Palettes.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Palettes::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version March 2017"
+    },
+    "item": {
+      "id": "Palettes_item",
+      "title": "Palettes.item Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palettes.h",
+      "description": "Returns the specified palette using an index into the collection.",
+      "parent_class": "Palettes",
+      "syntax": {
+        "python": "returnValue = palettes_var.item(index)",
+        "cpp": "#include \n\nreturnValue = palettes_var->item(index);"
+      },
+      "return_type": "Palette",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    },
+    "itemById": {
+      "id": "Palettes_itemById",
+      "title": "Palettes.itemById Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palettes.h",
+      "description": "Returns the palette at the specified ID.",
+      "parent_class": "Palettes",
+      "syntax": {
+        "python": "returnValue = palettes_var.itemById(id)",
+        "cpp": "#include \n\nreturnValue = palettes_var->itemById(id);"
+      },
+      "return_type": "Palette",
+      "return_description": "Returns the palette of the specified id or null if no palette has the specified id.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The Id of the palette within the collection to return."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Palette Sample",
+          "description": "Demonstrates how to create a palette, how to dock and snap palettes and how Fusion communicates with the palette HTML. The sample is an add-in.\u00a0To use it, create a new Python add-in and replace the code with the code below. You also need to create an html file using the name and code below. The html file needs to be in the same folder as the py file.\n\tWhen you load the add-in, you'll see two new commands under the ADD-INS panel of the TOOLS tab. The \"Show Custom Palette\" command will cause the custom palette to be displayed. It will remain displayed until you click its Close button. Clicking the \"Click to send info to Fusion\" button on the palette, will send information to your add-in, which uses the API to display that information in a message box. Running the \"Send Info to HTML\" command to send data to the javascript running in the palette, which uses it to update the content of a paragraph.\n\npalette.html"
+        },
+        {
+          "name": "Customizing the UI using the API Sample",
+          "description": "Demonstrates how to work with tabs, panels, and command in the user interface. The full source for C++ and Python samples can be downloaded. This is especially useful for getting the resource files."
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "Palettes_count",
+      "title": "Palettes.count Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palettes.h",
+      "description": "Gets the number of Palettes.",
+      "parent_class": "Palettes",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = palettes_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = palettes_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    },
+    "isValid": {
+      "id": "Palettes_isValid",
+      "title": "Palettes.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palettes.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Palettes",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = palettes_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = palettes_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    },
+    "objectType": {
+      "id": "Palettes_objectType",
+      "title": "Palettes.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palettes.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Palettes",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = palettes_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = palettes_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    }
+  }
+}

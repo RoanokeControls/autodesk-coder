@@ -1,0 +1,302 @@
+{
+  "id": "Profile",
+  "title": "Profile Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Sketch/Profile.h",
+  "description": "Represents a profile in a sketch. Profiles are automatically computed by Fusion and represent closed areas within the sketch.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "areaProperties",
+      "description": "Calculates the area properties for the profile."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence. Returns null if this isn't the NativeObject."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly. but is already the native object."
+    },
+    {
+      "name": "boundingBox",
+      "description": "Returns the 3D bounding box of the profile in sketch space."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Profile object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same profile.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "face",
+      "description": "Returns a temporary BRepFace object that is the same shape as the profile. The geometry of the returned face is defined in the 3D space of the parent sketch of the profile.   This can be useful when wanting to use a profile in conjunction with the TemporaryBRepManager object to create B-Rep objects."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentSketch",
+      "description": "Returns the parent sketch of the profile."
+    },
+    {
+      "name": "plane",
+      "description": "Returns the plane the profile is defined in. Profiles are always planar and exist within a single plane."
+    },
+    {
+      "name": "profileLoops",
+      "description": "The loops or closed areas within this profile. There is always a single outer loop but there can be zero to many inner loops defining voids in the profile."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Loft Feature API Sample",
+      "description": "Demonstrates creating a new loft feature."
+    },
+    {
+      "name": "Patch Feature API Sample",
+      "description": "Demonstrates creating a new patch feature."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "areaProperties": {
+      "id": "Profile_areaProperties",
+      "title": "Profile.areaProperties Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Profile.h",
+      "description": "Calculates the area properties for the profile.",
+      "parent_class": "Profile",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = profile_var.areaProperties()\n\n# Uses optional arguments.\nreturnValue = profile_var.areaProperties(accuracy)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = profile_var->areaProperties();\n\n// Uses optional arguments.\nreturnValue = profile_var->areaProperties(accuracy);"
+      },
+      "return_type": "AreaProperties",
+      "return_description": "Returns the AreaProperties object that has properties for getting the area, perimeter, centroid, etc of this profile.",
+      "parameters": [
+        {
+          "name": "accuracy",
+          "type": "CalculationAccuracy",
+          "description": "Specifies the desired level of computational accuracy of the property calculations. The default value of 'LowCalculationAccuracy' returns results within a +/- 1% error margin.   This is an optional argument whose default value is CalculationAccuracy.LowCalculationAccuracy."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "API Sample for AreaProperties",
+          "description": "Demonstrates how to use AreaProperties"
+        },
+        {
+          "name": "Patch Feature API Sample",
+          "description": "Demonstrates creating a new patch feature."
+        }
+      ],
+      "version": "Introduced in version March 2016"
+    },
+    "classType": {
+      "id": "Profile_classType",
+      "title": "Profile.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Profile.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Profile",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.Profile.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::Profile::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "createForAssemblyContext": {
+      "id": "Profile_createForAssemblyContext",
+      "title": "Profile.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Profile.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence. Returns null if this isn't the NativeObject.",
+      "parent_class": "Profile",
+      "syntax": {
+        "python": "returnValue = profile_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = profile_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "Profile",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "assemblyContext": {
+      "id": "Profile_assemblyContext",
+      "title": "Profile.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Profile.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly. but is already the native object.",
+      "parent_class": "Profile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = profile_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = profile_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "boundingBox": {
+      "id": "Profile_boundingBox",
+      "title": "Profile.boundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Profile.h",
+      "description": "Returns the 3D bounding box of the profile in sketch space.",
+      "parent_class": "Profile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = profile_var.boundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = profile_var->boundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "entityToken": {
+      "id": "Profile_entityToken",
+      "title": "Profile.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Profile.h",
+      "description": "Returns a token for the Profile object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same profile. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "Profile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = profile_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = profile_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "face": {
+      "id": "Profile_face",
+      "title": "Profile.face Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Profile.h",
+      "description": "Returns a temporary BRepFace object that is the same shape as the profile. The geometry of the returned face is defined in the 3D space of the parent sketch of the profile. This can be useful when wanting to use a profile in conjunction with the TemporaryBRepManager object to create B-Rep objects.",
+      "parent_class": "Profile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = profile_var.face",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = profile_var->face();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "isValid": {
+      "id": "Profile_isValid",
+      "title": "Profile.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Profile.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Profile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = profile_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = profile_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "nativeObject": {
+      "id": "Profile_nativeObject",
+      "title": "Profile.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Profile.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "Profile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = profile_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = profile_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "Profile_objectType",
+      "title": "Profile.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Profile.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Profile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = profile_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = profile_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "parentSketch": {
+      "id": "Profile_parentSketch",
+      "title": "Profile.parentSketch Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Profile.h",
+      "description": "Returns the parent sketch of the profile.",
+      "parent_class": "Profile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = profile_var.parentSketch",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = profile_var->parentSketch();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "plane": {
+      "id": "Profile_plane",
+      "title": "Profile.plane Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Profile.h",
+      "description": "Returns the plane the profile is defined in. Profiles are always planar and exist within a single plane.",
+      "parent_class": "Profile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = profile_var.plane",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = profile_var->plane();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "profileLoops": {
+      "id": "Profile_profileLoops",
+      "title": "Profile.profileLoops Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Profile.h",
+      "description": "The loops or closed areas within this profile. There is always a single outer loop but there can be zero to many inner loops defining voids in the profile.",
+      "parent_class": "Profile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = profile_var.profileLoops",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = profile_var->profileLoops();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

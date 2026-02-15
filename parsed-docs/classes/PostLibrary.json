@@ -1,0 +1,486 @@
+{
+  "id": "PostLibrary",
+  "title": "PostLibrary Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/Post/PostLibrary.h",
+  "description": "The PostLibrary provides access to post configurations. Using this object you can import post configurations and get existing post configurations using either a URL or query to find specific post configurations.",
+  "parent_class": "CAMLibrary",
+  "methods": [
+    {
+      "name": "childAssetURLs",
+      "description": "Get all assets under given URL."
+    },
+    {
+      "name": "childFolderURLs",
+      "description": "Get all library folders under given URL."
+    },
+    {
+      "name": "childPostConfigurations",
+      "description": "Get all posts by the given parent folder URL. Returns null, if the URL does not exist."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createFolder",
+      "description": "Create a new folder in the library. Create the folder under given parent URL with given folder name. Add counting suffix, in case a folder with given name already exists. Throw an error if given URL does not point to a valid folder or the URL is read-only. Also throws an error if given folder name is empty."
+    },
+    {
+      "name": "createQuery",
+      "description": "Creates a new PostConfigurationQuery that is used to query the library for post configurations matching the query."
+    },
+    {
+      "name": "deleteAsset",
+      "description": "Delete asset by URL from the library. Throw an error if given URL does not point to a valid asset or the URL is read-only."
+    },
+    {
+      "name": "deleteFolder",
+      "description": "Delete folder by URL from the library. Any content of the folder will also be deleted. Throw an error if given URL does not point to a valid folder or the URL is read-only."
+    },
+    {
+      "name": "displayName",
+      "description": "Get the localized display name for a given URL. The URL must point to a folder."
+    },
+    {
+      "name": "doesPathExist",
+      "description": "Checks if the given URL points to an existing folder or asset in the library."
+    },
+    {
+      "name": "importPostConfiguration",
+      "description": "Import a given post configuration at a specific location. The post configuration will be stored in the library. Throws an error, if the given URL is read-only."
+    },
+    {
+      "name": "postConfigurationAtURL",
+      "description": "Get a specific post configuration by the given URL. Returns null, if the URL does not exist."
+    },
+    {
+      "name": "urlByLocation",
+      "description": "Get the URL for a given LibraryLocations."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assetTypeName",
+      "description": "Get the name of the asset type which can be accessed by the library."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Manufacturing Workflow API Sample",
+      "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+    },
+    {
+      "name": "Turning Workflow API Sample",
+      "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "property_details": {
+    "assetTypeName": {
+      "id": "PostLibrary_assetTypeName",
+      "title": "PostLibrary.assetTypeName Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Post/PostLibrary.h",
+      "description": "Get the name of the asset type which can be accessed by the library.",
+      "parent_class": "PostLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = postLibrary_var.assetTypeName",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = postLibrary_var->assetTypeName();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "PostLibrary_isValid",
+      "title": "PostLibrary.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Post/PostLibrary.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "PostLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = postLibrary_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = postLibrary_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "PostLibrary_objectType",
+      "title": "PostLibrary.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Post/PostLibrary.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "PostLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = postLibrary_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = postLibrary_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  },
+  "method_details": {
+    "childAssetURLs": {
+      "id": "PostLibrary_childAssetURLs",
+      "title": "PostLibrary.childAssetURLs Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Post/PostLibrary.h",
+      "description": "Get all assets under given URL.",
+      "parent_class": "PostLibrary",
+      "syntax": {
+        "python": "returnValue = postLibrary_var.childAssetURLs(url)",
+        "cpp": "#include \n\nreturnValue = postLibrary_var->childAssetURLs(url);"
+      },
+      "return_type": "URL[]",
+      "return_description": "Returns list of asset URLs at given location.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the parent folder."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "childFolderURLs": {
+      "id": "PostLibrary_childFolderURLs",
+      "title": "PostLibrary.childFolderURLs Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Post/PostLibrary.h",
+      "description": "Get all library folders under given URL.",
+      "parent_class": "PostLibrary",
+      "syntax": {
+        "python": "returnValue = postLibrary_var.childFolderURLs(url)",
+        "cpp": "#include \n\nreturnValue = postLibrary_var->childFolderURLs(url);"
+      },
+      "return_type": "URL[]",
+      "return_description": "Returns list of folder URLs at given location.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the parent folder."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "childPostConfigurations": {
+      "id": "PostLibrary_childPostConfigurations",
+      "title": "PostLibrary.childPostConfigurations Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Post/PostLibrary.h",
+      "description": "Get all posts by the given parent folder URL. Returns null, if the URL does not exist.",
+      "parent_class": "PostLibrary",
+      "syntax": {
+        "python": "returnValue = postLibrary_var.childPostConfigurations(url)",
+        "cpp": "#include \n\nreturnValue = postLibrary_var->childPostConfigurations(url);"
+      },
+      "return_type": "PostConfiguration[]",
+      "return_description": "Returns all children posts for a valid URL, returns null otherwise.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL of the folder to get post configurations from."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "classType": {
+      "id": "PostLibrary_classType",
+      "title": "PostLibrary.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Post/PostLibrary.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "PostLibrary",
+      "syntax": {
+        "python": "returnValue = adsk.cam.PostLibrary.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::PostLibrary::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    },
+    "createFolder": {
+      "id": "PostLibrary_createFolder",
+      "title": "PostLibrary.createFolder Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Post/PostLibrary.h",
+      "description": "Create a new folder in the library. Create the folder under given parent URL with given folder name. Add counting suffix, in case a folder with given name already exists. Throw an error if given URL does not point to a valid folder or the URL is read-only. Also throws an error if given folder name is empty.",
+      "parent_class": "PostLibrary",
+      "syntax": {
+        "python": "returnValue = postLibrary_var.createFolder(parentUrl, folderName)",
+        "cpp": "#include \n\nreturnValue = postLibrary_var->createFolder(parentUrl, folderName);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL to the newly created folder",
+      "parameters": [
+        {
+          "name": "parentUrl",
+          "type": "URL",
+          "description": "The parent URL for the folder to be created."
+        },
+        {
+          "name": "folderName",
+          "type": "string",
+          "description": "Name of the new folder to be created. Must not be empty."
+        }
+      ],
+      "version": "Introduced in version May 2023"
+    },
+    "createQuery": {
+      "id": "PostLibrary_createQuery",
+      "title": "PostLibrary.createQuery Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Post/PostLibrary.h",
+      "description": "Creates a new PostConfigurationQuery that is used to query the library for post configurations matching the query.",
+      "parent_class": "PostLibrary",
+      "syntax": {
+        "python": "returnValue = postLibrary_var.createQuery(location)",
+        "cpp": "#include \n\nreturnValue = postLibrary_var->createQuery(location);"
+      },
+      "return_type": "PostConfigurationQuery",
+      "return_description": "Returns a new PostConfigurationQuery. The query is predefined by given parameter.",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "LibraryLocations",
+          "description": "The location specifies the LibraryLocations where to search for in the post library."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Basic Milling Workflow Sample",
+          "description": "Demonstrates the creation of a basic milling workflow from scriptDemonstrates creating a setup, searching tool library to retrieve a tool, create a couple of machining operations and a NC program, ready for post processing.Use the 2D Strategies model from the Fusion CAM Samples folder as your CAD model."
+        },
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        },
+        {
+          "name": "Turning Workflow API Sample",
+          "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "deleteAsset": {
+      "id": "PostLibrary_deleteAsset",
+      "title": "PostLibrary.deleteAsset Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Post/PostLibrary.h",
+      "description": "Delete asset by URL from the library. Throw an error if given URL does not point to a valid asset or the URL is read-only.",
+      "parent_class": "PostLibrary",
+      "syntax": {
+        "python": "returnValue = postLibrary_var.deleteAsset(url)",
+        "cpp": "#include \n\nreturnValue = postLibrary_var->deleteAsset(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if asset was deleted successfully, false otherwise",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the asset that should be removed."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "deleteFolder": {
+      "id": "PostLibrary_deleteFolder",
+      "title": "PostLibrary.deleteFolder Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Post/PostLibrary.h",
+      "description": "Delete folder by URL from the library. Any content of the folder will also be deleted. Throw an error if given URL does not point to a valid folder or the URL is read-only.",
+      "parent_class": "PostLibrary",
+      "syntax": {
+        "python": "returnValue = postLibrary_var.deleteFolder(url)",
+        "cpp": "#include \n\nreturnValue = postLibrary_var->deleteFolder(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if folder was deleted successfully, false otherwise",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the folder that should be removed."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "displayName": {
+      "id": "PostLibrary_displayName",
+      "title": "PostLibrary.displayName Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Post/PostLibrary.h",
+      "description": "Get the localized display name for a given URL. The URL must point to a folder.",
+      "parent_class": "PostLibrary",
+      "syntax": {
+        "python": "returnValue = postLibrary_var.displayName(url)",
+        "cpp": "#include \n\nreturnValue = postLibrary_var->displayName(url);"
+      },
+      "return_type": "string",
+      "return_description": "Returns localized display name for the folder. Returns empty string for invalid URL.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL that defines the path to a folder."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "doesPathExist": {
+      "id": "PostLibrary_doesPathExist",
+      "title": "PostLibrary.doesPathExist Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Post/PostLibrary.h",
+      "description": "Checks if the given URL points to an existing folder or asset in the library.",
+      "parent_class": "PostLibrary",
+      "syntax": {
+        "python": "returnValue = postLibrary_var.doesPathExist(url)",
+        "cpp": "#include \n\nreturnValue = postLibrary_var->doesPathExist(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the URL points to an existing folder or asset, false otherwise.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to be checked."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    },
+    "importPostConfiguration": {
+      "id": "PostLibrary_importPostConfiguration",
+      "title": "PostLibrary.importPostConfiguration Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Post/PostLibrary.h",
+      "description": "Import a given post configuration at a specific location. The post configuration will be stored in the library. Throws an error, if the given URL is read-only.",
+      "parent_class": "PostLibrary",
+      "syntax": {
+        "python": "returnValue = postLibrary_var.importPostConfiguration(postConfig, destinationUrl, postName)",
+        "cpp": "#include \n\nreturnValue = postLibrary_var->importPostConfiguration(postConfig, destinationUrl, postName);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL of the newly imported post configuration, or null if the import failed.",
+      "parameters": [
+        {
+          "name": "postConfig",
+          "type": "PostConfiguration",
+          "description": "The post configuration that should be imported."
+        },
+        {
+          "name": "destinationUrl",
+          "type": "URL",
+          "description": "The URL to the folder where to save the post configuration."
+        },
+        {
+          "name": "postName",
+          "type": "string",
+          "description": "The name of the post configuration that should be created due to the import. The name can be extended if the name already exists at given location to ensure a unique name."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Basic Milling Workflow Sample",
+          "description": "Demonstrates the creation of a basic milling workflow from scriptDemonstrates creating a setup, searching tool library to retrieve a tool, create a couple of machining operations and a NC program, ready for post processing.Use the 2D Strategies model from the Fusion CAM Samples folder as your CAD model."
+        },
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        },
+        {
+          "name": "Turning Workflow API Sample",
+          "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "postConfigurationAtURL": {
+      "id": "PostLibrary_postConfigurationAtURL",
+      "title": "PostLibrary.postConfigurationAtURL Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Post/PostLibrary.h",
+      "description": "Get a specific post configuration by the given URL. Returns null, if the URL does not exist.",
+      "parent_class": "PostLibrary",
+      "syntax": {
+        "python": "returnValue = postLibrary_var.postConfigurationAtURL(url)",
+        "cpp": "#include \n\nreturnValue = postLibrary_var->postConfigurationAtURL(url);"
+      },
+      "return_type": "PostConfiguration",
+      "return_description": "Returns the post configuration for a valid URL, returns null otherwise.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the post configuration to be loaded."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Basic Milling Workflow Sample",
+          "description": "Demonstrates the creation of a basic milling workflow from scriptDemonstrates creating a setup, searching tool library to retrieve a tool, create a couple of machining operations and a NC program, ready for post processing.Use the 2D Strategies model from the Fusion CAM Samples folder as your CAD model."
+        },
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        },
+        {
+          "name": "Turning Workflow API Sample",
+          "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "urlByLocation": {
+      "id": "PostLibrary_urlByLocation",
+      "title": "PostLibrary.urlByLocation Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Post/PostLibrary.h",
+      "description": "Get the URL for a given LibraryLocations.",
+      "parent_class": "PostLibrary",
+      "syntax": {
+        "python": "returnValue = postLibrary_var.urlByLocation(location)",
+        "cpp": "#include \n\nreturnValue = postLibrary_var->urlByLocation(location);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL for given location.",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "LibraryLocations",
+          "description": "The LibraryLocations to be converted into an URL."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "RemoveFeatureSample_Sample",
+  "title": "Remove Feature",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates creating a new remove feature.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "#Author-\n#Description-\nimport adsk.core, adsk.fusion, traceback\n\ndef run(context):\n    ui = None\n    try:\n        app = adsk.core.Application.get()\n        ui  = app.userInterface\n\n        # Create a document.\n        doc = app.documents.add(adsk.core.DocumentTypes.FusionDesignDocumentType)\n\n        product = app.activeProduct\n        design = adsk.fusion.Design.cast(product)\n\n        # Get the root component of the active design.\n        rootComp = design.rootComponent\n        \n        # Get remove features\n        features = rootComp.features\n        removeFeatures = features.removeFeatures\n\n        # Create sketch circle on the xz plane.\n        sketches = rootComp.sketches\n        sketch = sketches.add(rootComp.xZConstructionPlane)\n        sketchCircles = sketch.sketchCurves.sketchCircles\n        centerPoint = adsk.core.Point3D.create(0, 0, 0)\n        sketchCircles.addByCenterRadius(centerPoint, 10)\n\n        # Create a collection of entities for extrude\n        entities0 = adsk.core.ObjectCollection.create()\n        entities0.add(sketch.profiles.item(0))\n\n        # Create a cylinder with ExtrudeFeature using the profile above.\n        extrudeFeats = features.extrudeFeatures\n        extrudeFeatureInput = extrudeFeats.createInput(entities0, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)\n        extrudeFeatureInput.isSolid = True\n        extrudeFeatureInput.setDistanceExtent(False, adsk.core.ValueInput.createByReal(2.5))\n        extrudeFeature = extrudeFeats.add(extrudeFeatureInput)\n        \n        # Get created body\n        body = extrudeFeature.bodies[0]\n        \n        # Create remove feature\n        removeFeat = removeFeatures.add(body)\n        \n        # Create an occurrence\n        occs = rootComp.occurrences\n        occ = occs.addNewComponent(adsk.core.Matrix3D.create())\n        \n        # Create remove feature\n        removeFeat2 = removeFeatures.add(occ)\n        \n    except:\n        if ui:\n            ui.messageBox('Failed:\\n{}'.format(traceback.format_exc()))"
+  }
+}

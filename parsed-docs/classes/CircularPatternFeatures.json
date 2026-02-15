@@ -1,0 +1,234 @@
+{
+  "id": "CircularPatternFeatures",
+  "title": "CircularPatternFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/CircularPatternFeatures.h",
+  "description": "Collection that provides access to all of the existing circular pattern features in a component and supports the ability to create new circular pattern features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new circular pattern feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a CircularPatternFeatureInput object. Use properties and methods on this object to define the circular pattern you want to create and then use the Add method, passing in the CircularPatternFeatureInput object."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified circular pattern feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified circular pattern feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of circular pattern features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "CircularPattern Feature API Sample",
+      "description": "Demonstrates creating a new circular pattern feature."
+    }
+  ],
+  "version": "Introduced in version November 2014",
+  "method_details": {
+    "add": {
+      "id": "CircularPatternFeatures_add",
+      "title": "CircularPatternFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeatures.h",
+      "description": "Creates a new circular pattern feature.",
+      "parent_class": "CircularPatternFeatures",
+      "syntax": {
+        "python": "returnValue = circularPatternFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = circularPatternFeatures_var->add(input);"
+      },
+      "return_type": "CircularPatternFeature",
+      "return_description": "Returns the newly created CircularPatternFeature object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "CircularPatternFeatureInput",
+          "description": "A CircularPatternFeatureInput object that defines the desired circular pattern. Use the createInput method to create a new CircularPatternFeatureInput object and then use methods on it (the CircularPatternFeatureInput object) to define the circular pattern."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "circularPatternFeatures.add",
+          "description": "Demonstrates the circularPatternFeatures.add method. To use the sample have a design open that contains at least one body. When you run the script, it will prompt you to select a body, which will be patterned around the base Y-axis."
+        },
+        {
+          "name": "CircularPattern Feature API Sample",
+          "description": "Demonstrates creating a new circular pattern feature."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "classType": {
+      "id": "CircularPatternFeatures_classType",
+      "title": "CircularPatternFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CircularPatternFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.CircularPatternFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::CircularPatternFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version November 2014"
+    },
+    "createInput": {
+      "id": "CircularPatternFeatures_createInput",
+      "title": "CircularPatternFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeatures.h",
+      "description": "Creates a CircularPatternFeatureInput object. Use properties and methods on this object to define the circular pattern you want to create and then use the Add method, passing in the CircularPatternFeatureInput object.",
+      "parent_class": "CircularPatternFeatures",
+      "syntax": {
+        "python": "returnValue = circularPatternFeatures_var.createInput(inputEntities, axis)",
+        "cpp": "#include \n\nreturnValue = circularPatternFeatures_var->createInput(inputEntities, axis);"
+      },
+      "return_type": "CircularPatternFeatureInput",
+      "return_description": "Returns the newly created CircularPatternFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "inputEntities",
+          "type": "ObjectCollection",
+          "description": "The collection can contain faces, features, bodies or occurrences. All of the entities must be of a single type. For example, it can't contain features and occurrences but only features or occurrences."
+        },
+        {
+          "name": "axis",
+          "type": "Base",
+          "description": "Input linear entity or the entity has axis that defines axis of circular pattern. This can be a sketch line, linear edge, construction axis, an edge/sketch curve that defines an axis (circle, etc.) or a face that defines an axis (cylinder, cone, torus, etc.)."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "circularPatternFeatures.add",
+          "description": "Demonstrates the circularPatternFeatures.add method. To use the sample have a design open that contains at least one body. When you run the script, it will prompt you to select a body, which will be patterned around the base Y-axis."
+        },
+        {
+          "name": "CircularPattern Feature API Sample",
+          "description": "Demonstrates creating a new circular pattern feature."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "item": {
+      "id": "CircularPatternFeatures_item",
+      "title": "CircularPatternFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeatures.h",
+      "description": "Function that returns the specified circular pattern feature using an index into the collection.",
+      "parent_class": "CircularPatternFeatures",
+      "syntax": {
+        "python": "returnValue = circularPatternFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = circularPatternFeatures_var->item(index);"
+      },
+      "return_type": "CircularPatternFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "itemByName": {
+      "id": "CircularPatternFeatures_itemByName",
+      "title": "CircularPatternFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeatures.h",
+      "description": "Function that returns the specified circular pattern feature using the name of the feature.",
+      "parent_class": "CircularPatternFeatures",
+      "syntax": {
+        "python": "returnValue = circularPatternFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = circularPatternFeatures_var->itemByName(name);"
+      },
+      "return_type": "CircularPatternFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "CircularPatternFeatures_count",
+      "title": "CircularPatternFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeatures.h",
+      "description": "The number of circular pattern features in the collection.",
+      "parent_class": "CircularPatternFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = circularPatternFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isValid": {
+      "id": "CircularPatternFeatures_isValid",
+      "title": "CircularPatternFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CircularPatternFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = circularPatternFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "objectType": {
+      "id": "CircularPatternFeatures_objectType",
+      "title": "CircularPatternFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CircularPatternFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CircularPatternFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = circularPatternFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = circularPatternFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    }
+  }
+}

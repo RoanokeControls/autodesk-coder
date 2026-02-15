@@ -1,0 +1,342 @@
+{
+  "id": "DerivedParameter",
+  "title": "DerivedParameter Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Fusion/DerivedParameter.h",
+  "description": "Represents a parameter that is derived from another design.",
+  "parent_class": "Parameter",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    }
+  ],
+  "properties": [
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "comment",
+      "description": "The comment associated with this parameter"
+    },
+    {
+      "name": "dependencyParameters",
+      "description": "Returns a list of parameters that this parameter is dependent on."
+    },
+    {
+      "name": "dependentParameters",
+      "description": "Returns a list of parameters that are dependent on this parameter as a result of this parameter being referenced in their equation."
+    },
+    {
+      "name": "deriveFeature",
+      "description": "Returns the DeriveFeature that derives this parameter from another design."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Parameter object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same parameter.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "expression",
+      "description": "Gets and sets the expression used to calculate the value of the parameter. This is the equivalent of the \"Expression\" column in the Parameters dialog. Numeric parameters can be defined by a simple expression like \"6.25\", which will be interpreted based on whatever the default units are for the document. For example, if the units are set to millimeters, the value will be 6.25 mm; if the units are inches, it will be 6.25 inches. The expression can also contain the units so \"6.25 in\" will always be evaluated as inches regardless of the document units.   An expression can also contain references to other parameters and use equations. For example, the expression \"Length / 2\" is valid for a numeric parameter as long as there is a numeric parameter named \"Length\". Expressions can also be used for text parameters, such as concatenating two other text parameters. For example, if there are two existing text parameters named text1 and text2, the expression for another text parameter can be \"text1 + text2\". More complex equations can also be used with text parameters like \"if (Length < 20 mm; 'Short'; 'Long')\" where \"Length\" is a numeric parameter. The resulting string can be obtained using the textValue property."
+    },
+    {
+      "name": "isDeletable",
+      "description": "Gets if this parameter can be deleted. Parameters that have dependents cannot be deleted, and model parameters typically cannot be deleted. However, there is the possibility in uncommon workflows where a model parameter no longer has any dependents, and it was not automatically deleted. In this case, this property will return true, and the deleteMe method can delete the parameter."
+    },
+    {
+      "name": "isFavorite",
+      "description": "Gets and sets whether this parameter is included in the Favorites list in the parameters dialog"
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name of the parameter. Setting the name can fail if the name is not unique with respect to all other parameters in the design."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "textValue",
+      "description": "Gets and sets the value of the parameter when it is a text parameter. This can be determined by checking the valueType property. Setting this value will cause the current expression to be overwritten. If the parameter is not a text parameter, the value of this property should be ignored and setting will fail."
+    },
+    {
+      "name": "unit",
+      "description": "The unit type associated with this parameter. An empty string is returned for parameters that don't have a unit type."
+    },
+    {
+      "name": "value",
+      "description": "Gets and sets the real value (a double) of the parameter in database units. Setting this property will set/reset the expression value for this parameter.   This property is only valid for numeric parameters and will fail for text parameters. You can determine the value type of the parameter by using the valueType property. Use the textValue property to get and set the value of text parameters."
+    },
+    {
+      "name": "valueType",
+      "description": "Returns the type of value this parameter is. For a numeric parameter, you can get the value using the value property. For a text parameter, you can get the value using the textValue property."
+    }
+  ],
+  "version": "Introduced in version January 2026",
+  "property_details": {
+    "attributes": {
+      "id": "DerivedParameter_attributes",
+      "title": "DerivedParameter.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/DerivedParameter.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "DerivedParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = derivedParameter_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = derivedParameter_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "comment": {
+      "id": "DerivedParameter_comment",
+      "title": "DerivedParameter.comment Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/DerivedParameter.h",
+      "description": "The comment associated with this parameter",
+      "parent_class": "DerivedParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = derivedParameter_var.comment\n\n# Set the value of the property.\nderivedParameter_var.comment = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = derivedParameter_var->comment();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = derivedParameter_var->comment(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "dependencyParameters": {
+      "id": "DerivedParameter_dependencyParameters",
+      "title": "DerivedParameter.dependencyParameters Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/DerivedParameter.h",
+      "description": "Returns a list of parameters that this parameter is dependent on.",
+      "parent_class": "DerivedParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = derivedParameter_var.dependencyParameters",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = derivedParameter_var->dependencyParameters();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "dependentParameters": {
+      "id": "DerivedParameter_dependentParameters",
+      "title": "DerivedParameter.dependentParameters Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/DerivedParameter.h",
+      "description": "Returns a list of parameters that are dependent on this parameter as a result of this parameter being referenced in their equation.",
+      "parent_class": "DerivedParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = derivedParameter_var.dependentParameters",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = derivedParameter_var->dependentParameters();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "deriveFeature": {
+      "id": "DerivedParameter_deriveFeature",
+      "title": "DerivedParameter.deriveFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/DerivedParameter.h",
+      "description": "Returns the DeriveFeature that derives this parameter from another design.",
+      "parent_class": "DerivedParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = derivedParameter_var.deriveFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = derivedParameter_var->deriveFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "entityToken": {
+      "id": "DerivedParameter_entityToken",
+      "title": "DerivedParameter.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/DerivedParameter.h",
+      "description": "Returns a token for the Parameter object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same parameter. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "DerivedParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = derivedParameter_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = derivedParameter_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "expression": {
+      "id": "DerivedParameter_expression",
+      "title": "DerivedParameter.expression Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/DerivedParameter.h",
+      "description": "Gets and sets the expression used to calculate the value of the parameter. This is the equivalent of the \"Expression\" column in the Parameters dialog. Numeric parameters can be defined by a simple expression like \"6.25\", which will be interpreted based on whatever the default units are for the document. For example, if the units are set to millimeters, the value will be 6.25 mm; if the units are inches, it will be 6.25 inches. The expression can also contain the units so \"6.25 in\" will always be evaluated as inches regardless of the document units. An expression can also contain references to other parameters and use equations. For example, the expression \"Length / 2\" is valid for a numeric parameter as long as there is a numeric parameter named \"Length\". Expressions can also be used for text parameters, such as concatenating two other text parameters. For example, if there are two existing text parameters named text1 and text2, the expression for another text parameter can be \"text1 + text2\". More complex equations can also be used with text parameters like \"if (Length < 20 mm; 'Short'; 'Long')\" where \"Length\" is a numeric parameter. The resulting string can be obtained using the textValue property.",
+      "parent_class": "DerivedParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = derivedParameter_var.expression\n\n# Set the value of the property.\nderivedParameter_var.expression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = derivedParameter_var->expression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = derivedParameter_var->expression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "isDeletable": {
+      "id": "DerivedParameter_isDeletable",
+      "title": "DerivedParameter.isDeletable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/DerivedParameter.h",
+      "description": "Gets if this parameter can be deleted. Parameters that have dependents cannot be deleted, and model parameters typically cannot be deleted. However, there is the possibility in uncommon workflows where a model parameter no longer has any dependents, and it was not automatically deleted. In this case, this property will return true, and the deleteMe method can delete the parameter.",
+      "parent_class": "DerivedParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = derivedParameter_var.isDeletable",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = derivedParameter_var->isDeletable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "isFavorite": {
+      "id": "DerivedParameter_isFavorite",
+      "title": "DerivedParameter.isFavorite Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/DerivedParameter.h",
+      "description": "Gets and sets whether this parameter is included in the Favorites list in the parameters dialog",
+      "parent_class": "DerivedParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = derivedParameter_var.isFavorite\n\n# Set the value of the property.\nderivedParameter_var.isFavorite = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = derivedParameter_var->isFavorite();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = derivedParameter_var->isFavorite(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "isValid": {
+      "id": "DerivedParameter_isValid",
+      "title": "DerivedParameter.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/DerivedParameter.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "DerivedParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = derivedParameter_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = derivedParameter_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "name": {
+      "id": "DerivedParameter_name",
+      "title": "DerivedParameter.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/DerivedParameter.h",
+      "description": "Gets and sets the name of the parameter. Setting the name can fail if the name is not unique with respect to all other parameters in the design.",
+      "parent_class": "DerivedParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = derivedParameter_var.name\n\n# Set the value of the property.\nderivedParameter_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = derivedParameter_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = derivedParameter_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "objectType": {
+      "id": "DerivedParameter_objectType",
+      "title": "DerivedParameter.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/DerivedParameter.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "DerivedParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = derivedParameter_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = derivedParameter_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "textValue": {
+      "id": "DerivedParameter_textValue",
+      "title": "DerivedParameter.textValue Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/DerivedParameter.h",
+      "description": "Gets and sets the value of the parameter when it is a text parameter. This can be determined by checking the valueType property. Setting this value will cause the current expression to be overwritten. If the parameter is not a text parameter, the value of this property should be ignored and setting will fail.",
+      "parent_class": "DerivedParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = derivedParameter_var.textValue\n\n# Set the value of the property.\nderivedParameter_var.textValue = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = derivedParameter_var->textValue();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = derivedParameter_var->textValue(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "unit": {
+      "id": "DerivedParameter_unit",
+      "title": "DerivedParameter.unit Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/DerivedParameter.h",
+      "description": "The unit type associated with this parameter. An empty string is returned for parameters that don't have a unit type.",
+      "parent_class": "DerivedParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = derivedParameter_var.unit",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = derivedParameter_var->unit();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "value": {
+      "id": "DerivedParameter_value",
+      "title": "DerivedParameter.value Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/DerivedParameter.h",
+      "description": "Gets and sets the real value (a double) of the parameter in database units. Setting this property will set/reset the expression value for this parameter. This property is only valid for numeric parameters and will fail for text parameters. You can determine the value type of the parameter by using the valueType property. Use the textValue property to get and set the value of text parameters.",
+      "parent_class": "DerivedParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = derivedParameter_var.value\n\n# Set the value of the property.\nderivedParameter_var.value = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = derivedParameter_var->value();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = derivedParameter_var->value(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "valueType": {
+      "id": "DerivedParameter_valueType",
+      "title": "DerivedParameter.valueType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/DerivedParameter.h",
+      "description": "Returns the type of value this parameter is. For a numeric parameter, you can get the value using the value property. For a text parameter, you can get the value using the textValue property.",
+      "parent_class": "DerivedParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = derivedParameter_var.valueType",
+        "cpp": "#include \n\n// Get the value of the property.\nParameterValueTypes propertyValue = derivedParameter_var->valueType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "DerivedParameter_classType",
+      "title": "DerivedParameter.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/DerivedParameter.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "DerivedParameter",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.DerivedParameter.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::DerivedParameter::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2026"
+    }
+  }
+}

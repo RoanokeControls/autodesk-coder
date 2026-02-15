@@ -1,0 +1,700 @@
+{
+  "id": "AsBuiltJoint",
+  "title": "AsBuiltJoint Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Components/AsBuiltJoint.h",
+  "description": "Represent an as-built joint.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this as-built joint."
+    },
+    {
+      "name": "setAsBallJointMotion",
+      "description": "Redefines the relationship between the two joint geometries as a ball joint.   To use this method, you need to position the timeline marker to immediately before this as-built joint. This can be accomplished using the following code: thisAsBuiltJoint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setAsCylindricalJointMotion",
+      "description": "Redefines the relationship between the two joint geometries as a cylindrical joint.   To use this method, you need to position the timeline marker to immediately before this as-built joint. This can be accomplished using the following code: thisAsBuiltJoint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setAsPinSlotJointMotion",
+      "description": "Redefines the relationship between the two joint geometries as a pin-slot joint.   To use this method, you need to position the timeline marker to immediately before this as-built joint. This can be accomplished using the following code: thisAsBuiltJoint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setAsPlanarJointMotion",
+      "description": "Redefines the relationship between the two joint geometries as a planar joint.   To use this method, you need to position the timeline marker to immediately before this as-built joint. This can be accomplished using the following code: thisAsBuiltJoint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setAsRevoluteJointMotion",
+      "description": "Redefines the relationship between the two joint geometries as a revolute joint.   To use this method, you need to position the timeline marker to immediately before this as-built joint. This can be accomplished using the following code: thisAsBuiltJoint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setAsRigidJointMotion",
+      "description": "Redefines the relationship between the two joint geometries as a rigid joint.   To use this method, you need to position the timeline marker to immediately before this as-built joint. This can be accomplished using the following code: thisAsBuiltJoint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setAsSliderJointMotion",
+      "description": "Redefines the relationship between the two joint geometries as a slider joint.   To use this method, you need to position the timeline marker to immediately before this as-built joint. This can be accomplished using the following code: thisAsBuiltJoint.timelineObject.rollTo(True)"
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this as-built joint."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the AsBuiltJoint object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same as-built joint.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "geometry",
+      "description": "Specifies the position of the joint. Getting this property will return null and setting it will be ignored in the case where the joint motion is rigid.   To set this property, you need to position the timeline marker to immediately before this as-built joint. This can be accomplished using the following code: thisAsBuiltJoint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isLightBulbOn",
+      "description": "Gets and sets if the light bulb of this as-built joint as displayed in the browser is on or off. A joint will only be visible if the light bulb is switched on. However, the light bulb can be on and the joint still invisible if a higher level occurrence in the assembly context is not visible because its light bulb is off or the joints folder is light bulb is off."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this as-built joint is suppressed."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets whether the as-built joint is visible. To change the visibility see the isLightBulbOn property. This property is affected by the assembly context."
+    },
+    {
+      "name": "jointMotion",
+      "description": "Returns a JointMotion object that defines the motion relationship between the two geometries."
+    },
+    {
+      "name": "motionLinks",
+      "description": "Returns the MotionLink objects that this joint is involved in."
+    },
+    {
+      "name": "name",
+      "description": "The name of the as-built joint as it is displayed in the timeline and the browser. The name can be changed."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "occurrenceOne",
+      "description": "Specifies the first of two occurrences the joint is between."
+    },
+    {
+      "name": "occurrenceTwo",
+      "description": "Specifies the second of two occurrences the joint is between."
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this AsBuiltJoint."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this as-built joint."
+    },
+    {
+      "name": "transform",
+      "description": "Returns the position and orientation of the joint geometry associated with this as-built joint. This is returned as a 3D matrix which provides the origin and the X, Y, and Z axis vectors of the coordinate system.   This property is especially useful in cases where the JointGeometry cannot be obtained. This can happen when the model has been modified in a way where the geometry used to create the joint is no longer available."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "As-Built Joint Sample",
+      "description": "Demonstrates creating a new As-Built Joint."
+    }
+  ],
+  "version": "Introduced in version September 2015",
+  "property_details": {
+    "assemblyContext": {
+      "id": "AsBuiltJoint_assemblyContext",
+      "title": "AsBuiltJoint.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = asBuiltJoint_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "attributes": {
+      "id": "AsBuiltJoint_attributes",
+      "title": "AsBuiltJoint.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Returns the collection of attributes associated with this as-built joint.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = asBuiltJoint_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "entityToken": {
+      "id": "AsBuiltJoint_entityToken",
+      "title": "AsBuiltJoint.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Returns a token for the AsBuiltJoint object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same as-built joint. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = asBuiltJoint_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "geometry": {
+      "id": "AsBuiltJoint_geometry",
+      "title": "AsBuiltJoint.geometry Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Specifies the position of the joint. Getting this property will return null and setting it will be ignored in the case where the joint motion is rigid. To set this property, you need to position the timeline marker to immediately before this as-built joint. This can be accomplished using the following code: thisAsBuiltJoint.timelineObject.rollTo(True)",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.geometry\n\n# Set the value of the property.\nasBuiltJoint_var.geometry = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = asBuiltJoint_var->geometry();\n\n// Set the value of the property, where value_var is a JointGeometry.\nbool returnValue = asBuiltJoint_var->geometry(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "isLightBulbOn": {
+      "id": "AsBuiltJoint_isLightBulbOn",
+      "title": "AsBuiltJoint.isLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Gets and sets if the light bulb of this as-built joint as displayed in the browser is on or off. A joint will only be visible if the light bulb is switched on. However, the light bulb can be on and the joint still invisible if a higher level occurrence in the assembly context is not visible because its light bulb is off or the joints folder is light bulb is off.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.isLightBulbOn\n\n# Set the value of the property.\nasBuiltJoint_var.isLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = asBuiltJoint_var->isLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = asBuiltJoint_var->isLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isSuppressed": {
+      "id": "AsBuiltJoint_isSuppressed",
+      "title": "AsBuiltJoint.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Gets and sets if this as-built joint is suppressed.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.isSuppressed\n\n# Set the value of the property.\nasBuiltJoint_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = asBuiltJoint_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = asBuiltJoint_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isValid": {
+      "id": "AsBuiltJoint_isValid",
+      "title": "AsBuiltJoint.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = asBuiltJoint_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "isVisible": {
+      "id": "AsBuiltJoint_isVisible",
+      "title": "AsBuiltJoint.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Gets whether the as-built joint is visible. To change the visibility see the isLightBulbOn property. This property is affected by the assembly context.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = asBuiltJoint_var->isVisible();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "jointMotion": {
+      "id": "AsBuiltJoint_jointMotion",
+      "title": "AsBuiltJoint.jointMotion Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Returns a JointMotion object that defines the motion relationship between the two geometries.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.jointMotion",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = asBuiltJoint_var->jointMotion();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "motionLinks": {
+      "id": "AsBuiltJoint_motionLinks",
+      "title": "AsBuiltJoint.motionLinks Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Returns the MotionLink objects that this joint is involved in.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.motionLinks",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = asBuiltJoint_var->motionLinks();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2025"
+    },
+    "name": {
+      "id": "AsBuiltJoint_name",
+      "title": "AsBuiltJoint.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "The name of the as-built joint as it is displayed in the timeline and the browser. The name can be changed.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.name\n\n# Set the value of the property.\nasBuiltJoint_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = asBuiltJoint_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = asBuiltJoint_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "nativeObject": {
+      "id": "AsBuiltJoint_nativeObject",
+      "title": "AsBuiltJoint.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = asBuiltJoint_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "objectType": {
+      "id": "AsBuiltJoint_objectType",
+      "title": "AsBuiltJoint.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = asBuiltJoint_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "occurrenceOne": {
+      "id": "AsBuiltJoint_occurrenceOne",
+      "title": "AsBuiltJoint.occurrenceOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Specifies the first of two occurrences the joint is between.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.occurrenceOne",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = asBuiltJoint_var->occurrenceOne();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "occurrenceTwo": {
+      "id": "AsBuiltJoint_occurrenceTwo",
+      "title": "AsBuiltJoint.occurrenceTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Specifies the second of two occurrences the joint is between.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.occurrenceTwo",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = asBuiltJoint_var->occurrenceTwo();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "parentComponent": {
+      "id": "AsBuiltJoint_parentComponent",
+      "title": "AsBuiltJoint.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Returns the parent component that owns this AsBuiltJoint.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = asBuiltJoint_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "timelineObject": {
+      "id": "AsBuiltJoint_timelineObject",
+      "title": "AsBuiltJoint.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Returns the timeline object associated with this as-built joint.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = asBuiltJoint_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "transform": {
+      "id": "AsBuiltJoint_transform",
+      "title": "AsBuiltJoint.transform Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Returns the position and orientation of the joint geometry associated with this as-built joint. This is returned as a 3D matrix which provides the origin and the X, Y, and Z axis vectors of the coordinate system. This property is especially useful in cases where the JointGeometry cannot be obtained. This can happen when the model has been modified in a way where the geometry used to create the joint is no longer available.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoint_var.transform",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = asBuiltJoint_var->transform();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2024"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "AsBuiltJoint_classType",
+      "title": "AsBuiltJoint.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.AsBuiltJoint.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::AsBuiltJoint::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2015"
+    },
+    "createForAssemblyContext": {
+      "id": "AsBuiltJoint_createForAssemblyContext",
+      "title": "AsBuiltJoint.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "returnValue = asBuiltJoint_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = asBuiltJoint_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "AsBuiltJoint",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "deleteMe": {
+      "id": "AsBuiltJoint_deleteMe",
+      "title": "AsBuiltJoint.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Deletes this as-built joint.",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "returnValue = asBuiltJoint_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = asBuiltJoint_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version September 2015"
+    },
+    "setAsBallJointMotion": {
+      "id": "AsBuiltJoint_setAsBallJointMotion",
+      "title": "AsBuiltJoint.setAsBallJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Redefines the relationship between the two joint geometries as a ball joint. To use this method, you need to position the timeline marker to immediately before this as-built joint. This can be accomplished using the following code: thisAsBuiltJoint.timelineObject.rollTo(True)",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = asBuiltJoint_var.setAsBallJointMotion(pitchDirection, yawDirection)\n\n# Uses optional arguments.\nreturnValue = asBuiltJoint_var.setAsBallJointMotion(pitchDirection, yawDirection, geometry, customPitchDirection, customYawDirection)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = asBuiltJoint_var->setAsBallJointMotion(pitchDirection, yawDirection);\n\n// Uses optional arguments.\nreturnValue = asBuiltJoint_var->setAsBallJointMotion(pitchDirection, yawDirection, geometry, customPitchDirection, customYawDirection);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "pitchDirection",
+          "type": "JointDirections",
+          "description": "Defines the direction the pitch angle is measured from. This can be ZAxisJointDirection or CustomJointDirection. If CustomJointDirection is specified then you must also provide a value for the customPitchDirection argument."
+        },
+        {
+          "name": "yawDirection",
+          "type": "JointDirections",
+          "description": "Defines the direction the yaw is measured from. This can be XAxisJointDirection or CustomJointDirection. If CustomJointDirection is specified then you must also provide a value for the customYawDirection argument."
+        },
+        {
+          "name": "geometry",
+          "type": "JointGeometry",
+          "description": "Redefines the joint geometry. If not provided, the existing geometry is used. This argument is required if the current joint motion is rigid.   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "customPitchDirection",
+          "type": "Base",
+          "description": "If the pitchDirection argument is customPitchDirection this argument is used to define the direction the pitch angel is measured from. This can be several types of entities that can define a direction.   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "customYawDirection",
+          "type": "Base",
+          "description": "If the yawDirection argument is customPitchDirection this argument is used to define the direction the yaw angel is measured from. This can be several types of entities that can define a direction.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "setAsCylindricalJointMotion": {
+      "id": "AsBuiltJoint_setAsCylindricalJointMotion",
+      "title": "AsBuiltJoint.setAsCylindricalJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Redefines the relationship between the two joint geometries as a cylindrical joint. To use this method, you need to position the timeline marker to immediately before this as-built joint. This can be accomplished using the following code: thisAsBuiltJoint.timelineObject.rollTo(True)",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = asBuiltJoint_var.setAsCylindricalJointMotion(rotationAxis)\n\n# Uses optional arguments.\nreturnValue = asBuiltJoint_var.setAsCylindricalJointMotion(rotationAxis, geometry, customRotationAxisEntity)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = asBuiltJoint_var->setAsCylindricalJointMotion(rotationAxis);\n\n// Uses optional arguments.\nreturnValue = asBuiltJoint_var->setAsCylindricalJointMotion(rotationAxis, geometry, customRotationAxisEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "rotationAxis",
+          "type": "JointDirections",
+          "description": "Specifies which axis the rotation is around. If this is set to CustomJointDirection then the customRotationAxisEntity argument must also be provided."
+        },
+        {
+          "name": "geometry",
+          "type": "JointGeometry",
+          "description": "Redefines the joint geometry. If not provided, the existing geometry is used. This argument is required if the current joint motion is rigid.   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "customRotationAxisEntity",
+          "type": "Base",
+          "description": "If the rotationAxis is customAxisEntity this argument is used to specify the entity that defines the custom axis of rotation. This can be several types of entities that an axis can be derived from.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "setAsPinSlotJointMotion": {
+      "id": "AsBuiltJoint_setAsPinSlotJointMotion",
+      "title": "AsBuiltJoint.setAsPinSlotJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Redefines the relationship between the two joint geometries as a pin-slot joint. To use this method, you need to position the timeline marker to immediately before this as-built joint. This can be accomplished using the following code: thisAsBuiltJoint.timelineObject.rollTo(True)",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = asBuiltJoint_var.setAsPinSlotJointMotion(rotationAxis, slideDirection)\n\n# Uses optional arguments.\nreturnValue = asBuiltJoint_var.setAsPinSlotJointMotion(rotationAxis, slideDirection, geometry, customRotationAxisEntity, customSlideDirectionEntity)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = asBuiltJoint_var->setAsPinSlotJointMotion(rotationAxis, slideDirection);\n\n// Uses optional arguments.\nreturnValue = asBuiltJoint_var->setAsPinSlotJointMotion(rotationAxis, slideDirection, geometry, customRotationAxisEntity, customSlideDirectionEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "rotationAxis",
+          "type": "JointDirections",
+          "description": "Specifies which axis the rotation is around. If this is set to CustomJointDirection then the customRotationAxisEntity argument must also be provided."
+        },
+        {
+          "name": "slideDirection",
+          "type": "JointDirections",
+          "description": "Specifies which axis the slide direction is along. If this is set to CustomJointDirection then the customSlideDirectionEntity argument must also be provided."
+        },
+        {
+          "name": "geometry",
+          "type": "JointGeometry",
+          "description": "Redefines the joint geometry. If not provided, the existing geometry is used. This argument is required if the current joint motion is rigid.   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "customRotationAxisEntity",
+          "type": "Base",
+          "description": "If the rotationAxis is customAxisEntity this argument is used to specify the entity that defines the custom axis of rotation. This can be several types of entities that an axis can be derived   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "customSlideDirectionEntity",
+          "type": "Base",
+          "description": "If the slideDirection is CustomJointDirection this argument is used to specify the entity that defines the custom slide direction. This can be several types of entities that can define a direction.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "setAsPlanarJointMotion": {
+      "id": "AsBuiltJoint_setAsPlanarJointMotion",
+      "title": "AsBuiltJoint.setAsPlanarJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Redefines the relationship between the two joint geometries as a planar joint. To use this method, you need to position the timeline marker to immediately before this as-built joint. This can be accomplished using the following code: thisAsBuiltJoint.timelineObject.rollTo(True)",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = asBuiltJoint_var.setAsPlanarJointMotion(normalDirection)\n\n# Uses optional arguments.\nreturnValue = asBuiltJoint_var.setAsPlanarJointMotion(normalDirection, geometry, customNormalDirectionEntity, customPrimarySlideDirection)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = asBuiltJoint_var->setAsPlanarJointMotion(normalDirection);\n\n// Uses optional arguments.\nreturnValue = asBuiltJoint_var->setAsPlanarJointMotion(normalDirection, geometry, customNormalDirectionEntity, customPrimarySlideDirection);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "normalDirection",
+          "type": "JointDirections",
+          "description": "Defines the direction of the normal of the single degree of rotation. This can be set to XAxisJointDirection, YAxisJointDirection, ZAxisJointDirection, or CustomJointDirection. If set to CustomJointDirection then the customNormalDirectionEntity argument must also be provided."
+        },
+        {
+          "name": "geometry",
+          "type": "JointGeometry",
+          "description": "Redefines the joint geometry. If not provided, the existing geometry is used. This argument is required if the current joint motion is rigid.   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "customNormalDirectionEntity",
+          "type": "Base",
+          "description": "If the normalDirection is CustomJointDirection this argument is used to specify the entity that defines the direction of the normal. This can be several types of entities that can define a direction.   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "customPrimarySlideDirection",
+          "type": "Base",
+          "description": "This arguments defines the direction of the primary slide direction. A default primary slide direction is automatically chosen and will be used if this argument is not provided or is null. The secondary slide direction is automatically inferred from the normal and primary slide directions.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "setAsRevoluteJointMotion": {
+      "id": "AsBuiltJoint_setAsRevoluteJointMotion",
+      "title": "AsBuiltJoint.setAsRevoluteJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Redefines the relationship between the two joint geometries as a revolute joint. To use this method, you need to position the timeline marker to immediately before this as-built joint. This can be accomplished using the following code: thisAsBuiltJoint.timelineObject.rollTo(True)",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = asBuiltJoint_var.setAsRevoluteJointMotion(rotationAxis)\n\n# Uses optional arguments.\nreturnValue = asBuiltJoint_var.setAsRevoluteJointMotion(rotationAxis, geometry, customRotationAxisEntity)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = asBuiltJoint_var->setAsRevoluteJointMotion(rotationAxis);\n\n// Uses optional arguments.\nreturnValue = asBuiltJoint_var->setAsRevoluteJointMotion(rotationAxis, geometry, customRotationAxisEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "rotationAxis",
+          "type": "JointDirections",
+          "description": "Specifies which axis the rotation is around. If this is set to CustomJointDirection then the customRotationAxisEntity argument must also be provided."
+        },
+        {
+          "name": "geometry",
+          "type": "JointGeometry",
+          "description": "Redefines the joint geometry. If not provided, the existing geometry is used. This argument is required if the current joint motion is rigid.   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "customRotationAxisEntity",
+          "type": "Base",
+          "description": "If the rotationAxis is customAxisEntity this argument is used to specify the entity that defines the custom axis of rotation. This can be several types of entities that an axis can be derived from.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "setAsRigidJointMotion": {
+      "id": "AsBuiltJoint_setAsRigidJointMotion",
+      "title": "AsBuiltJoint.setAsRigidJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Redefines the relationship between the two joint geometries as a rigid joint. To use this method, you need to position the timeline marker to immediately before this as-built joint. This can be accomplished using the following code: thisAsBuiltJoint.timelineObject.rollTo(True)",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "returnValue = asBuiltJoint_var.setAsRigidJointMotion()",
+        "cpp": "#include \n\nreturnValue = asBuiltJoint_var->setAsRigidJointMotion();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "version": "Introduced in version September 2015"
+    },
+    "setAsSliderJointMotion": {
+      "id": "AsBuiltJoint_setAsSliderJointMotion",
+      "title": "AsBuiltJoint.setAsSliderJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoint.h",
+      "description": "Redefines the relationship between the two joint geometries as a slider joint. To use this method, you need to position the timeline marker to immediately before this as-built joint. This can be accomplished using the following code: thisAsBuiltJoint.timelineObject.rollTo(True)",
+      "parent_class": "AsBuiltJoint",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = asBuiltJoint_var.setAsSliderJointMotion(sliderDirection)\n\n# Uses optional arguments.\nreturnValue = asBuiltJoint_var.setAsSliderJointMotion(sliderDirection, geometry, customSliderDirectionEntity)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = asBuiltJoint_var->setAsSliderJointMotion(sliderDirection);\n\n// Uses optional arguments.\nreturnValue = asBuiltJoint_var->setAsSliderJointMotion(sliderDirection, geometry, customSliderDirectionEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "sliderDirection",
+          "type": "JointDirections",
+          "description": "Specifies which axis the slide direction is along. If this is set to CustomJointDirection then the customSliderDirectionEntity argument must also be provided."
+        },
+        {
+          "name": "geometry",
+          "type": "JointGeometry",
+          "description": "Redefines the joint geometry. If not provided, the existing geometry is used. This argument is required if the current joint motion is rigid.   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "customSliderDirectionEntity",
+          "type": "Base",
+          "description": "If the sliderDirection is CustomJointDirection this argument is used to specify the entity that defines the custom slider direction. This can be several types of entities that can define a direction.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  }
+}

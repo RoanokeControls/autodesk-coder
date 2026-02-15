@@ -1,0 +1,208 @@
+{
+  "id": "Canvases",
+  "title": "Canvases Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Image/Canvases.h",
+  "description": "Provides access to the Canvases in a component and provides the functionality to add new Canvases.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new canvas. Use the createInput method to first create an input object and set the available options. Then, pass that input object to the add method to create the canvas."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a new CanvasInput object. A CanvasInput object is the logical equivalent to the command dialog when creating a canvas. It provides access to the various options when creating a canvas. Calling the add method and passing in the CanvasInput is the equivalent to clicking the OK button on the dialog to create the canvas."
+    },
+    {
+      "name": "item",
+      "description": "Returns the specified canvas using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns the specified canvas using the name of the canvas."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of canvases in the component."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version May 2023",
+  "method_details": {
+    "add": {
+      "id": "Canvases_add",
+      "title": "Canvases.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvases.h",
+      "description": "Creates a new canvas. Use the createInput method to first create an input object and set the available options. Then, pass that input object to the add method to create the canvas.",
+      "parent_class": "Canvases",
+      "syntax": {
+        "python": "returnValue = canvases_var.add(input)",
+        "cpp": "#include \n\nreturnValue = canvases_var->add(input);"
+      },
+      "return_type": "Canvas",
+      "return_description": "Returns the newly created Canvas object.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "CanvasInput",
+          "description": "The CanvasInput object that defines the required information needed to create a new canvas. A CanvasInput object is the logical equivalent to the command dialog when creating a canvas. It provides access to the various options when creating a canvas. Calling the add method and passing in the CanvasInput is the equivalent to clicking the OK button on the dialog to create the canvas."
+        }
+      ],
+      "version": "Introduced in version May 2023"
+    },
+    "classType": {
+      "id": "Canvases_classType",
+      "title": "Canvases.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvases.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Canvases",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.Canvases.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::Canvases::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version May 2023"
+    },
+    "createInput": {
+      "id": "Canvases_createInput",
+      "title": "Canvases.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvases.h",
+      "description": "Creates a new CanvasInput object. A CanvasInput object is the logical equivalent to the command dialog when creating a canvas. It provides access to the various options when creating a canvas. Calling the add method and passing in the CanvasInput is the equivalent to clicking the OK button on the dialog to create the canvas.",
+      "parent_class": "Canvases",
+      "syntax": {
+        "python": "returnValue = canvases_var.createInput(imageFilename, planarEntity)",
+        "cpp": "#include \n\nreturnValue = canvases_var->createInput(imageFilename, planarEntity);"
+      },
+      "return_type": "CanvasInput",
+      "return_description": "Returns a CanvasInput object or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "imageFilename",
+          "type": "string",
+          "description": "The full filename to the image to use for the canvas. PNG, JPEG, and TIFF files are supported."
+        },
+        {
+          "name": "planarEntity",
+          "type": "Base",
+          "description": "A planar BRepFace or a Construction plane to create the canvas on. If the canvas is being created in a base feature or in a direct modeling design, this can be a Plane object."
+        }
+      ],
+      "version": "Introduced in version May 2023"
+    },
+    "item": {
+      "id": "Canvases_item",
+      "title": "Canvases.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvases.h",
+      "description": "Returns the specified canvas using an index into the collection.",
+      "parent_class": "Canvases",
+      "syntax": {
+        "python": "returnValue = canvases_var.item(index)",
+        "cpp": "#include \n\nreturnValue = canvases_var->item(index);"
+      },
+      "return_type": "Canvas",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version May 2023"
+    },
+    "itemByName": {
+      "id": "Canvases_itemByName",
+      "title": "Canvases.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvases.h",
+      "description": "Returns the specified canvas using the name of the canvas.",
+      "parent_class": "Canvases",
+      "syntax": {
+        "python": "returnValue = canvases_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = canvases_var->itemByName(name);"
+      },
+      "return_type": "Canvas",
+      "return_description": "Returns the specified Canvas, if it exists. Otherwise it returns null.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the canvas as seen in the browser and timeline."
+        }
+      ],
+      "version": "Introduced in version May 2023"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "Canvases_count",
+      "title": "Canvases.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvases.h",
+      "description": "Returns the number of canvases in the component.",
+      "parent_class": "Canvases",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvases_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = canvases_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "isValid": {
+      "id": "Canvases_isValid",
+      "title": "Canvases.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvases.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Canvases",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvases_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = canvases_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "objectType": {
+      "id": "Canvases_objectType",
+      "title": "Canvases.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Image/Canvases.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Canvases",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = canvases_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = canvases_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    }
+  }
+}

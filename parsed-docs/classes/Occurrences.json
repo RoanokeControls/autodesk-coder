@@ -1,0 +1,415 @@
+{
+  "id": "Occurrences",
+  "title": "Occurrences Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Components/Occurrences.h",
+  "description": "Provides access to occurrences within a component and provides methods to create new occurrences.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "addByInsert",
+      "description": "Method that inserts an existing file."
+    },
+    {
+      "name": "addExistingComponent",
+      "description": "Method that creates a new occurrence using an existing component. This is the equivalent of copying and pasting an occurrence in the user interface."
+    },
+    {
+      "name": "addFromConfiguration",
+      "description": "Method that inserts a configuration from a configured design. The insert will fail if the configured design being used is not from the same project as the file it is being inserted into."
+    },
+    {
+      "name": "addNewComponent",
+      "description": "Method that creates a new component and an occurrence that references it."
+    },
+    {
+      "name": "addNewComponentCopy",
+      "description": "Method that creates a new occurrence by creating a new component that is a copy of an existing component. This is the equivalent of copying and using the \"Paste New\" command in the user interface. This is different from the addExistingComponent in that it's not a new instance to the existing component but a new component is created that has it's own definition (sketches, features, etc.) and a new occurrence instance is created to reference this new component."
+    },
+    {
+      "name": "addNewExternalComponent",
+      "description": "Method that creates a new occurrence by creating a new external component (X-Ref) that is not saved yet. This is similar to the \"New Component\" command in the UI when creating an external component, where you specify a name and location but the component is created in-memory without being saved immediately. This allows programs to create and populate an external component without needing to save it first, and makes undo possible. The component will be saved automatically when the parent assembly is saved."
+    },
+    {
+      "name": "asArray",
+      "description": "Get the current list of all occurrences. The occurrences are returned in the same order as they appear in the browser."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified occurrence using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns the specified occurrence using the name of the occurrence."
+    }
+  ],
+  "properties": [
+    {
+      "name": "asList",
+      "description": "Returns the contents of this collection as an OccurrencesList object. This is useful when writing a function that traverses an assembly."
+    },
+    {
+      "name": "count",
+      "description": "Returns the number of occurrences in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Assembly traversal using recursion API Sample",
+      "description": "Traverses the entire structure of the currently open assemlby using a recursive function and displays the result in a message box. This will match the occurrence structure seen in the browser."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "addByInsert": {
+      "id": "Occurrences_addByInsert",
+      "title": "Occurrences.addByInsert Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrences.h",
+      "description": "Method that inserts an existing file.",
+      "parent_class": "Occurrences",
+      "syntax": {
+        "python": "returnValue = occurrences_var.addByInsert(dataFile, transform, isReferencedComponent)",
+        "cpp": "#include \n\nreturnValue = occurrences_var->addByInsert(dataFile, transform, isReferencedComponent);"
+      },
+      "return_type": "Occurrence",
+      "return_description": "Returns the newly created occurrence or null if the insert failed. Insert will fail if the dataFile being inserted is not from the same project as the document  it is being inserted into while isReferencedComponent is True.",
+      "parameters": [
+        {
+          "name": "dataFile",
+          "type": "DataFile",
+          "description": "The dataFile to insert."
+        },
+        {
+          "name": "transform",
+          "type": "Matrix3D",
+          "description": "A transform that defines the location for the new occurrence."
+        },
+        {
+          "name": "isReferencedComponent",
+          "type": "boolean",
+          "description": "Indicates if the insert is to be an external reference or embedded within this document. This method will fail if the dataFile being inserted is not from the same project as the document it is being inserted into while isReferencedComponent is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Save and Insert File API Sample",
+          "description": "Demonstrates creating save a new file and then inserting it into a design. To use this sample, have a design open that has been saved and run the script. It will create a new design that contains a cylinder, save it to the same folder the active design was saved to, and then insert it into the active design."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "addExistingComponent": {
+      "id": "Occurrences_addExistingComponent",
+      "title": "Occurrences.addExistingComponent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrences.h",
+      "description": "Method that creates a new occurrence using an existing component. This is the equivalent of copying and pasting an occurrence in the user interface.",
+      "parent_class": "Occurrences",
+      "syntax": {
+        "python": "returnValue = occurrences_var.addExistingComponent(component, transform)",
+        "cpp": "#include \n\nreturnValue = occurrences_var->addExistingComponent(component, transform);"
+      },
+      "return_type": "Occurrence",
+      "return_description": "Returns the newly created occurrence or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "component",
+          "type": "Component",
+          "description": "The existing component to create a new occurrence of."
+        },
+        {
+          "name": "transform",
+          "type": "Matrix3D",
+          "description": "A transform that defines the location for the new occurrence"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Component Sample",
+          "description": "Component related functions"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addFromConfiguration": {
+      "id": "Occurrences_addFromConfiguration",
+      "title": "Occurrences.addFromConfiguration Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrences.h",
+      "description": "Method that inserts a configuration from a configured design. The insert will fail if the configured design being used is not from the same project as the file it is being inserted into.",
+      "parent_class": "Occurrences",
+      "syntax": {
+        "python": "returnValue = occurrences_var.addFromConfiguration(configurationRow, transform)",
+        "cpp": "#include \n\nreturnValue = occurrences_var->addFromConfiguration(configurationRow, transform);"
+      },
+      "return_type": "Occurrence",
+      "return_description": "Returns the newly created occurrence or null if the add failed.",
+      "parameters": [
+        {
+          "name": "configurationRow",
+          "type": "ConfigurationRow",
+          "description": "The row that specifies which configuration to use."
+        },
+        {
+          "name": "transform",
+          "type": "Matrix3D",
+          "description": "A transform that defines the location for the new occurrence."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "addNewComponent": {
+      "id": "Occurrences_addNewComponent",
+      "title": "Occurrences.addNewComponent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrences.h",
+      "description": "Method that creates a new component and an occurrence that references it.",
+      "parent_class": "Occurrences",
+      "syntax": {
+        "python": "returnValue = occurrences_var.addNewComponent(transform)",
+        "cpp": "#include \n\nreturnValue = occurrences_var->addNewComponent(transform);"
+      },
+      "return_type": "Occurrence",
+      "return_description": "Returns the newly created occurrence or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "transform",
+          "type": "Matrix3D",
+          "description": "A transform that defines the location for the new occurrence."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Component Sample",
+          "description": "Component related functions"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addNewComponentCopy": {
+      "id": "Occurrences_addNewComponentCopy",
+      "title": "Occurrences.addNewComponentCopy Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrences.h",
+      "description": "Method that creates a new occurrence by creating a new component that is a copy of an existing component. This is the equivalent of copying and using the \"Paste New\" command in the user interface. This is different from the addExistingComponent in that it's not a new instance to the existing component but a new component is created that has it's own definition (sketches, features, etc.) and a new occurrence instance is created to reference this new component.",
+      "parent_class": "Occurrences",
+      "syntax": {
+        "python": "returnValue = occurrences_var.addNewComponentCopy(component, transform)",
+        "cpp": "#include \n\nreturnValue = occurrences_var->addNewComponentCopy(component, transform);"
+      },
+      "return_type": "Occurrence",
+      "return_description": "Returns the newly created occurrence or null if the creation failed. The newly created component can be obtained by using the component property of the returned Occurrence.",
+      "parameters": [
+        {
+          "name": "component",
+          "type": "Component",
+          "description": "The existing component to create a copy of."
+        },
+        {
+          "name": "transform",
+          "type": "Matrix3D",
+          "description": "A transform that defines the location for the new occurrence"
+        }
+      ],
+      "version": "Introduced in version September 2022"
+    },
+    "addNewExternalComponent": {
+      "id": "Occurrences_addNewExternalComponent",
+      "title": "Occurrences.addNewExternalComponent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrences.h",
+      "description": "Method that creates a new occurrence by creating a new external component (X-Ref) that is not saved yet. This is similar to the \"New Component\" command in the UI when creating an external component, where you specify a name and location but the component is created in-memory without being saved immediately. This allows programs to create and populate an external component without needing to save it first, and makes undo possible. The component will be saved automatically when the parent assembly is saved.",
+      "parent_class": "Occurrences",
+      "syntax": {
+        "python": "returnValue = occurrences_var.addNewExternalComponent(componentName, targetFolder, transform)",
+        "cpp": "#include \n\nreturnValue = occurrences_var->addNewExternalComponent(componentName, targetFolder, transform);"
+      },
+      "return_type": "Occurrence",
+      "return_description": "Returns the newly created occurrence or null if the creation failed. The component referenced by the occurrence can be edited but is not saved until the parent assembly is saved.",
+      "parameters": [
+        {
+          "name": "componentName",
+          "type": "string",
+          "description": "The name for the new external component."
+        },
+        {
+          "name": "targetFolder",
+          "type": "DataFolder",
+          "description": "The DataFolder where the component will be saved when the parent assembly is saved."
+        },
+        {
+          "name": "transform",
+          "type": "Matrix3D",
+          "description": "A transform that defines the location for the new occurrence."
+        }
+      ],
+      "version": "Introduced in version January 2026"
+    },
+    "asArray": {
+      "id": "Occurrences_asArray",
+      "title": "Occurrences.asArray Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrences.h",
+      "description": "Get the current list of all occurrences. The occurrences are returned in the same order as they appear in the browser.",
+      "parent_class": "Occurrences",
+      "syntax": {
+        "python": "returnValue = occurrences_var.asArray()",
+        "cpp": "#include \n\nreturnValue = occurrences_var->asArray();"
+      },
+      "return_type": "Occurrence[]",
+      "return_description": "Returns the current list of all occurrences.",
+      "version": "Introduced in version November 2021"
+    },
+    "classType": {
+      "id": "Occurrences_classType",
+      "title": "Occurrences.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrences.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Occurrences",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.Occurrences.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::Occurrences::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "Occurrences_item",
+      "title": "Occurrences.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrences.h",
+      "description": "Function that returns the specified occurrence using an index into the collection.",
+      "parent_class": "Occurrences",
+      "syntax": {
+        "python": "returnValue = occurrences_var.item(index)",
+        "cpp": "#include \n\nreturnValue = occurrences_var->item(index);"
+      },
+      "return_type": "Occurrence",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "itemByName": {
+      "id": "Occurrences_itemByName",
+      "title": "Occurrences.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrences.h",
+      "description": "Returns the specified occurrence using the name of the occurrence.",
+      "parent_class": "Occurrences",
+      "syntax": {
+        "python": "returnValue = occurrences_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = occurrences_var->itemByName(name);"
+      },
+      "return_type": "Occurrence",
+      "return_description": "Returns the occurrence or null if an invalid name was specified",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the occurrence to return."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "asList": {
+      "id": "Occurrences_asList",
+      "title": "Occurrences.asList Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrences.h",
+      "description": "Returns the contents of this collection as an OccurrencesList object. This is useful when writing a function that traverses an assembly.",
+      "parent_class": "Occurrences",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrences_var.asList",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = occurrences_var->asList();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Assembly traversal using recursion API Sample",
+          "description": "Traverses the entire structure of the currently open assemlby using a recursive function and displays the result in a message box. This will match the occurrence structure seen in the browser."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "count": {
+      "id": "Occurrences_count",
+      "title": "Occurrences.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrences.h",
+      "description": "Returns the number of occurrences in the collection.",
+      "parent_class": "Occurrences",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrences_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = occurrences_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "Occurrences_isValid",
+      "title": "Occurrences.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrences.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Occurrences",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrences_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = occurrences_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "Occurrences_objectType",
+      "title": "Occurrences.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Occurrences.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Occurrences",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = occurrences_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = occurrences_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

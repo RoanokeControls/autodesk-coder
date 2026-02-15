@@ -1,0 +1,554 @@
+{
+  "id": "DrawingDocument",
+  "title": "DrawingDocument Object",
+  "type": "class",
+  "namespace": "adsk::drawing",
+  "header_file": "Drawing/Drawing/DrawingDocument.h",
+  "description": "Object that represents a Fusion 360 drawing document.",
+  "parent_class": "Document",
+  "methods": [
+    {
+      "name": "activate",
+      "description": "Causes this document to become the active document in the user interface."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "close",
+      "description": "Closes this document."
+    },
+    {
+      "name": "save",
+      "description": "Saves a version of the current document. You must use the SaveAs method the first time a document is saved. You can determine if a document has been saved by checking the value of the isSaved property."
+    },
+    {
+      "name": "saveAs",
+      "description": "Performs a Save As on this document. This saves the currently open document to the specified location and this document becomes the saved document. If this is a new document that has never been saved you must use the SaveAs method in order to specify the location and name. You can determine if the document has been saved by checking the value of the isSaved property."
+    },
+    {
+      "name": "saveDataVersion",
+      "description": "Creates a version on a dirty document by implictly saving it first. This method is not applicable when saving a document for the first time. In that case, you must use the Document.saveAs method. You can determine if a document has been saved by checking the value of the isSaved property."
+    },
+    {
+      "name": "saveMilestone",
+      "description": "Saves the document as a new milestone. This method is not applicable when saving a document for the first time. In that case, you must use the SaveAs method. You can determine if a document has been saved by checking the value of the isSaved property."
+    },
+    {
+      "name": "updateAllReferences",
+      "description": "Updates all out of date external references. This is equivalent to clicking the \"Out of Date\" button in the Quick Access Toolbar to update all out of date external references."
+    }
+  ],
+  "properties": [
+    {
+      "name": "allDocumentReferences",
+      "description": "Returns a collection containing all of the documents referenced directly by this document and those referenced by all sub-assemblies."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this document."
+    },
+    {
+      "name": "creationId",
+      "description": "Returns the creation ID of this document. When a new document is created, Fusion assigns it a creation ID that will remain constant for the life of the document. The ID that is assigned is unique. However, it's possible that more than one document can have the same ID. This happens in the case where a document is copied. In this case a new document is created but an existing document is copied. It's only when a new document is created that a creation ID is generated and assigned.   Using this ID can be useful in cases where the save of a new document is started and you can use this ID to match the completion of the save operation on the cloud to the original document."
+    },
+    {
+      "name": "dataFile",
+      "description": "Gets the DataFile that represents this document in A360."
+    },
+    {
+      "name": "documentReferences",
+      "description": "Returns a collection containing the documents directly referenced by this document."
+    },
+    {
+      "name": "drawing",
+      "description": "Returns the Drawing product object associated with this drawing document."
+    },
+    {
+      "name": "isActive",
+      "description": "Gets if this document is the active document in the user interface."
+    },
+    {
+      "name": "isModified",
+      "description": "Property that indicates if the document has been modified since it was last saved."
+    },
+    {
+      "name": "isSaved",
+      "description": "Property that indicates if this document has been saved or not. The initial save of a document requires that the name and location be specified and requires the saveAs method to be used. If the document has been saved then the save method can be used to save changes made."
+    },
+    {
+      "name": "isUpToDate",
+      "description": "Indicates if any external references in the assembly are out of date. This is the API equivalent to the \"Out of Date\" notification displayed in the Quick Access Toolbar."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets if a currently open document is open as visible."
+    },
+    {
+      "name": "name",
+      "description": "This property gets and sets the name of the document. You can only set the name of a document before the document is saved for the first time. You can use the isSaved property to determine this. If the document has not been saved and the name is changed, the specified name will be the default name shown in the Save dialog, which the user can modify before saving the document.   If the file has been saved, this property behaves as read-only. Setting the name will fail because the name is controlled by the DataFile associated with this document. However, you can edit the name of the DataFile, which you can obtain by using the dataFile property of the document."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parent",
+      "description": "Returns the parent Application object."
+    },
+    {
+      "name": "products",
+      "description": "Returns the products associated with this document."
+    },
+    {
+      "name": "version",
+      "description": "Returns the Fusion version this document was last saved with."
+    }
+  ],
+  "version": "Introduced in version December 2020",
+  "method_details": {
+    "activate": {
+      "id": "DrawingDocument_activate",
+      "title": "DrawingDocument.activate Method",
+      "type": "method",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Causes this document to become the active document in the user interface.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "returnValue = drawingDocument_var.activate()",
+        "cpp": "#include \n\nreturnValue = drawingDocument_var->activate();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the activation was successful.",
+      "version": "Introduced in version December 2020"
+    },
+    "classType": {
+      "id": "DrawingDocument_classType",
+      "title": "DrawingDocument.classType Method",
+      "type": "method",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "returnValue = adsk.drawing.DrawingDocument.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::drawing::DrawingDocument::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version December 2020"
+    },
+    "close": {
+      "id": "DrawingDocument_close",
+      "title": "DrawingDocument.close Method",
+      "type": "method",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Closes this document. Remarks",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "returnValue = drawingDocument_var.close(saveChanges)",
+        "cpp": "#include \n\nreturnValue = drawingDocument_var->close(saveChanges);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if closing the document was successful.",
+      "parameters": [
+        {
+          "name": "saveChanges",
+          "type": "boolean",
+          "description": "This argument defines what the behavior of the close is when the document has been modified. If the document hasn't been modified then this argument is ignored and the document is closed. If the document has been modified and this argument is false then Fusion will close the document and lose any changes. If the document has been modified and this argument is true then it will prompt the user if they want to save the changes or not, just the same as if the user was to interactively close the document."
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    },
+    "save": {
+      "id": "DrawingDocument_save",
+      "title": "DrawingDocument.save Method",
+      "type": "method",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Saves a version of the current document. You must use the SaveAs method the first time a document is saved. You can determine if a document has been saved by checking the value of the isSaved property. Remarks",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "returnValue = drawingDocument_var.save(description)",
+        "cpp": "#include \n\nreturnValue = drawingDocument_var->save(description);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if saving the document was successful.",
+      "parameters": [
+        {
+          "name": "description",
+          "type": "string",
+          "description": "The version description for this document"
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    },
+    "saveAs": {
+      "id": "DrawingDocument_saveAs",
+      "title": "DrawingDocument.saveAs Method",
+      "type": "method",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Performs a Save As on this document. This saves the currently open document to the specified location and this document becomes the saved document. If this is a new document that has never been saved you must use the SaveAs method in order to specify the location and name. You can determine if the document has been saved by checking the value of the isSaved property. Remarks",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "returnValue = drawingDocument_var.saveAs(name, dataFolder, description, tag)",
+        "cpp": "#include \n\nreturnValue = drawingDocument_var->saveAs(name, dataFolder, description, tag);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the save as was successful.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name to use for this document. If this is an empty string, Fusion will use the default name assigned when the document was created."
+        },
+        {
+          "name": "dataFolder",
+          "type": "DataFolder",
+          "description": "The data folder to save this document to."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "The description string of the document. This can be an empty string."
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "description": "The tag string of the document. This can be an empty string."
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    },
+    "saveDataVersion": {
+      "id": "DrawingDocument_saveDataVersion",
+      "title": "DrawingDocument.saveDataVersion Method",
+      "type": "method",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Creates a version on a dirty document by implictly saving it first. This method is not applicable when saving a document for the first time. In that case, you must use the Document.saveAs method. You can determine if a document has been saved by checking the value of the isSaved property.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "returnValue = drawingDocument_var.saveDataVersion(versionDescription)",
+        "cpp": "#include \n\nreturnValue = drawingDocument_var->saveDataVersion(versionDescription);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if saving the document with data version was successful.",
+      "parameters": [
+        {
+          "name": "versionDescription",
+          "type": "string",
+          "description": "The description associated with the data version."
+        }
+      ],
+      "version": "Introduced in version November 2025"
+    },
+    "saveMilestone": {
+      "id": "DrawingDocument_saveMilestone",
+      "title": "DrawingDocument.saveMilestone Method",
+      "type": "method",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Saves the document as a new milestone. This method is not applicable when saving a document for the first time. In that case, you must use the SaveAs method. You can determine if a document has been saved by checking the value of the isSaved property. Remarks",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "returnValue = drawingDocument_var.saveMilestone(milestoneName, versionDescription)",
+        "cpp": "#include \n\nreturnValue = drawingDocument_var->saveMilestone(milestoneName, versionDescription);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if saving the document as a milestone was successful.",
+      "parameters": [
+        {
+          "name": "milestoneName",
+          "type": "string",
+          "description": "The name of the milestone as seen in the data panel and Fusion web client. If an empty string is provided a default name will be used."
+        },
+        {
+          "name": "versionDescription",
+          "type": "string",
+          "description": "The description associated with the version. If an empty string is provided, a default description will be used."
+        }
+      ],
+      "version": "Introduced in version March 2024"
+    },
+    "updateAllReferences": {
+      "id": "DrawingDocument_updateAllReferences",
+      "title": "DrawingDocument.updateAllReferences Method",
+      "type": "method",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Updates all out of date external references. This is equivalent to clicking the \"Out of Date\" button in the Quick Access Toolbar to update all out of date external references.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "returnValue = drawingDocument_var.updateAllReferences()",
+        "cpp": "#include \n\nreturnValue = drawingDocument_var->updateAllReferences();"
+      },
+      "version": "Introduced in version September 2022"
+    }
+  },
+  "property_details": {
+    "allDocumentReferences": {
+      "id": "DrawingDocument_allDocumentReferences",
+      "title": "DrawingDocument.allDocumentReferences Property",
+      "type": "property",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Returns a collection containing all of the documents referenced directly by this document and those referenced by all sub-assemblies.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = drawingDocument_var.allDocumentReferences",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = drawingDocument_var->allDocumentReferences();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "attributes": {
+      "id": "DrawingDocument_attributes",
+      "title": "DrawingDocument.attributes Property",
+      "type": "property",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Returns the collection of attributes associated with this document.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = drawingDocument_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = drawingDocument_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "creationId": {
+      "id": "DrawingDocument_creationId",
+      "title": "DrawingDocument.creationId Property",
+      "type": "property",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Returns the creation ID of this document. When a new document is created, Fusion assigns it a creation ID that will remain constant for the life of the document. The ID that is assigned is unique. However, it's possible that more than one document can have the same ID. This happens in the case where a document is copied. In this case a new document is created but an existing document is copied. It's only when a new document is created that a creation ID is generated and assigned. Using this ID can be useful in cases where the save of a new document is started and you can use this ID to match the completion of the save operation on the cloud to the original document.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = drawingDocument_var.creationId",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = drawingDocument_var->creationId();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2022"
+    },
+    "dataFile": {
+      "id": "DrawingDocument_dataFile",
+      "title": "DrawingDocument.dataFile Property",
+      "type": "property",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Gets the DataFile that represents this document in A360.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = drawingDocument_var.dataFile",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = drawingDocument_var->dataFile();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "documentReferences": {
+      "id": "DrawingDocument_documentReferences",
+      "title": "DrawingDocument.documentReferences Property",
+      "type": "property",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Returns a collection containing the documents directly referenced by this document.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = drawingDocument_var.documentReferences",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = drawingDocument_var->documentReferences();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "drawing": {
+      "id": "DrawingDocument_drawing",
+      "title": "DrawingDocument.drawing Property",
+      "type": "property",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Returns the Drawing product object associated with this drawing document.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = drawingDocument_var.drawing",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = drawingDocument_var->drawing();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "isActive": {
+      "id": "DrawingDocument_isActive",
+      "title": "DrawingDocument.isActive Property",
+      "type": "property",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Gets if this document is the active document in the user interface.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = drawingDocument_var.isActive",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = drawingDocument_var->isActive();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "isModified": {
+      "id": "DrawingDocument_isModified",
+      "title": "DrawingDocument.isModified Property",
+      "type": "property",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Property that indicates if the document has been modified since it was last saved.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = drawingDocument_var.isModified",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = drawingDocument_var->isModified();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "isSaved": {
+      "id": "DrawingDocument_isSaved",
+      "title": "DrawingDocument.isSaved Property",
+      "type": "property",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Property that indicates if this document has been saved or not. The initial save of a document requires that the name and location be specified and requires the saveAs method to be used. If the document has been saved then the save method can be used to save changes made.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = drawingDocument_var.isSaved",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = drawingDocument_var->isSaved();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "isUpToDate": {
+      "id": "DrawingDocument_isUpToDate",
+      "title": "DrawingDocument.isUpToDate Property",
+      "type": "property",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Indicates if any external references in the assembly are out of date. This is the API equivalent to the \"Out of Date\" notification displayed in the Quick Access Toolbar.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = drawingDocument_var.isUpToDate",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = drawingDocument_var->isUpToDate();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "isValid": {
+      "id": "DrawingDocument_isValid",
+      "title": "DrawingDocument.isValid Property",
+      "type": "property",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = drawingDocument_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = drawingDocument_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "isVisible": {
+      "id": "DrawingDocument_isVisible",
+      "title": "DrawingDocument.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Gets if a currently open document is open as visible.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = drawingDocument_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = drawingDocument_var->isVisible();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "name": {
+      "id": "DrawingDocument_name",
+      "title": "DrawingDocument.name Property",
+      "type": "property",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "This property gets and sets the name of the document. You can only set the name of a document before the document is saved for the first time. You can use the isSaved property to determine this. If the document has not been saved and the name is changed, the specified name will be the default name shown in the Save dialog, which the user can modify before saving the document. If the file has been saved, this property behaves as read-only. Setting the name will fail because the name is controlled by the DataFile associated with this document. However, you can edit the name of the DataFile, which you can obtain by using the dataFile property of the document.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = drawingDocument_var.name\n\n# Set the value of the property.\ndrawingDocument_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = drawingDocument_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = drawingDocument_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "objectType": {
+      "id": "DrawingDocument_objectType",
+      "title": "DrawingDocument.objectType Property",
+      "type": "property",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = drawingDocument_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = drawingDocument_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "parent": {
+      "id": "DrawingDocument_parent",
+      "title": "DrawingDocument.parent Property",
+      "type": "property",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Returns the parent Application object.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = drawingDocument_var.parent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = drawingDocument_var->parent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "products": {
+      "id": "DrawingDocument_products",
+      "title": "DrawingDocument.products Property",
+      "type": "property",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Returns the products associated with this document.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = drawingDocument_var.products",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = drawingDocument_var->products();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "version": {
+      "id": "DrawingDocument_version",
+      "title": "DrawingDocument.version Property",
+      "type": "property",
+      "namespace": "adsk::drawing",
+      "header_file": "Drawing/Drawing/DrawingDocument.h",
+      "description": "Returns the Fusion version this document was last saved with.",
+      "parent_class": "DrawingDocument",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = drawingDocument_var.version",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = drawingDocument_var->version();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    }
+  }
+}

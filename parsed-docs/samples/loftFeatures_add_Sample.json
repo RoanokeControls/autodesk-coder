@@ -1,0 +1,12 @@
+{
+  "id": "loftFeatures_add_Sample",
+  "title": "loftFeatures.add",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the loftFeatures.add method.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_loftFeatures_add(rootComp: adsk.fusion.Design.rootComponent):\n    profileOne: adsk.fusion.BRepFaces = _ui.selectEntity('Select a profile or face.', 'Profiles, Faces').entity\n    profileTwo: adsk.fusion.BRepFaces = _ui.selectEntity('Select a profile or face', 'Profiles, Faces').entity\n\n    # Define the needed input.\n    loftFeatures = rootComp.features.loftFeatures\n    input = loftFeatures.createInput(adsk.fusion.FeatureOperations.NewBodyFeatureOperation)\n    loftSections = input.loftSections\n    loftSections.add(profileOne)\n    loftSections.add(profileTwo)\n    input.isSolid = True\n\n    # Create the loft.\n    loftFeature = loftFeatures.add(input)"
+  }
+}

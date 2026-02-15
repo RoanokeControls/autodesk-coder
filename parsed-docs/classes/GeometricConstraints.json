@@ -1,0 +1,1068 @@
+{
+  "id": "GeometricConstraints",
+  "title": "GeometricConstraints Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Sketch/GeometricConstraints.h",
+  "description": "A collection of all of the geometric constraints in a sketch. This object also supports the methods to create new geometric constraints.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "addCircularPattern",
+      "description": "Creates a new circular pattern in the sketch."
+    },
+    {
+      "name": "addCoincident",
+      "description": "Creates a new coincident constraint between two entities. The first argument is a sketch point. The second argument is a sketch curve or point."
+    },
+    {
+      "name": "addCoincidentToSurface",
+      "description": "Creates a new coincident constraint between the sketch point and surface. This forces the point to lie on the surface."
+    },
+    {
+      "name": "addCollinear",
+      "description": "Creates a new collinear constraint between two lines."
+    },
+    {
+      "name": "addConcentric",
+      "description": "Creates a new concentric constraint between two circles, arcs, ellipses, or elliptical arcs."
+    },
+    {
+      "name": "addEqual",
+      "description": "Creates a new equal constraint between two lines, or between arcs and circles."
+    },
+    {
+      "name": "addHorizontal",
+      "description": "Creates a new horizontal constraint on a line."
+    },
+    {
+      "name": "addHorizontalPoints",
+      "description": "Creates a new horizontal constraint between two points."
+    },
+    {
+      "name": "addLineOnPlanarSurface",
+      "description": "Creates a new constraint that forces the sketch line to lie on a planar surface."
+    },
+    {
+      "name": "addLineParallelToPlanarSurface",
+      "description": "Creates a new parallel constraint between a sketch line and a planar surface that will constrain the line to lie on a plane parallel to the specified surface."
+    },
+    {
+      "name": "addMidPoint",
+      "description": "Creates a new midpoint constraint between a point and a curve."
+    },
+    {
+      "name": "addOffset",
+      "description": "**RETIRED** Creates an offset constraint, which results in creating a new set of curves that are an offset of the input curves. The returned offset constraint provides access to the created curves and the parameter controlling the offset.   The offset direction is implied by the flow direction of the provided curves. For example, if two connected lines are offset, the flow direction is from line 1 to line 2. A positive offset value creates the offset curve to the \"right\" of the lines and a negative offset goes to the \"left\". Left and right are evaluated with respect to the geometry. If you are standing on line 1 looking towards line 2 your left and right are the offset left and right. For closed single curves like circles and ellipses their flow direction is always counterclockwise so a positive offset is always to the outsides."
+    },
+    {
+      "name": "addOffset2",
+      "description": "Creates an offset constraint, which results in creating a new set of curves that are an offset of the input curves. The returned offset constraint object provides access to the created curves and the parameter controlling the offset."
+    },
+    {
+      "name": "addParallel",
+      "description": "Creates a new parallel constraint between two lines."
+    },
+    {
+      "name": "addPerpendicular",
+      "description": "Creates a new perpendicular constraint between two lines."
+    },
+    {
+      "name": "addPerpendicularToSurface",
+      "description": "Creates a new perpendicular constraint that forces the sketch curve to be perpendicular to the specified surface. Line and spline curves are supported."
+    },
+    {
+      "name": "addPolygon",
+      "description": "Creates a polygon constraint on existing lines in the sketch."
+    },
+    {
+      "name": "addRectangularPattern",
+      "description": "Creates a new rectangular pattern in the sketch."
+    },
+    {
+      "name": "addSmooth",
+      "description": "Creates a new smooth constraint between two curves. One of the curves must be a spline. The other curve can be a spline or any other type of curve."
+    },
+    {
+      "name": "addSymmetry",
+      "description": "Creates a new symmetry constraint."
+    },
+    {
+      "name": "addTangent",
+      "description": "Creates a new tangent constraint between two curves."
+    },
+    {
+      "name": "addTwoSidesOffset",
+      "description": "Creates two offset constraints, which results in creating two new sets of curves that are an offset of the input curves on each side of the original set of curves. The returned offset constraint objects provide access to the created curves and the parameters controlling the offsets."
+    },
+    {
+      "name": "addVertical",
+      "description": "Creates a new vertical constraint on a line."
+    },
+    {
+      "name": "addVerticalPoints",
+      "description": "Creates a new vertical constraint between two points."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createCircularPatternInput",
+      "description": "Creates a CircularPatternConstraintInput object. Use properties and methods on this object to define the circular pattern you want to create and then use the Add method, passing in the CircularPatternConstraintInput object."
+    },
+    {
+      "name": "createOffsetInput",
+      "description": "Creates an OffsetConstraintInput object. Use properties and methods on this object to define the offset you want to create and then use the addOffset2 method, passing in the OffsetConstraintInput object, to create the offset."
+    },
+    {
+      "name": "createRectangularPatternInput",
+      "description": "Creates a new RectangularPatternConstraintInput object. Use this object to define the various settings associated with a rectangular pattern in a sketch. Once the pattern is defined you can call the addRectangularPattern method and pass in the input object to create the sketch rectangular pattern."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified sketch constraint using an index into the collection."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of constraints in the sketch."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "API Sample that demonstrates creating sketch lines in various ways.",
+      "description": "Demonstrates several ways to create sketch lines, including as the result of creating a rectangle."
+    },
+    {
+      "name": "GeometricConstraints.addConcentric",
+      "description": "Demonstrates the GeometricConstraints.addConcentric method."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "addCircularPattern": {
+      "id": "GeometricConstraints_addCircularPattern",
+      "title": "GeometricConstraints.addCircularPattern Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new circular pattern in the sketch.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addCircularPattern(input)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addCircularPattern(input);"
+      },
+      "return_type": "CircularPatternConstraint",
+      "return_description": "Returns the newly created CircularPatternConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "CircularPatternConstraintInput",
+          "description": "A CircularPatternConstraintInput object that defines the desired circular pattern. Use the createCircularPatternInput method to create a new CircularPatternConstraintInput object and then use methods on it to define the circular pattern."
+        }
+      ],
+      "version": "Introduced in version September 2022"
+    },
+    "addCoincident": {
+      "id": "GeometricConstraints_addCoincident",
+      "title": "GeometricConstraints.addCoincident Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new coincident constraint between two entities. The first argument is a sketch point. The second argument is a sketch curve or point.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addCoincident(point, entity)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addCoincident(point, entity);"
+      },
+      "return_type": "CoincidentConstraint",
+      "return_description": "Returns the newly created CoincidentConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "point",
+          "type": "SketchPoint",
+          "description": "The SketchPoint that will be made coincident."
+        },
+        {
+          "name": "entity",
+          "type": "SketchEntity",
+          "description": "The SketchPoint or sketch curve that the point will be made coincident to."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "GeometricConstraints.addCoincident",
+          "description": "Demonstrates the GeometricConstraints.addCoincident method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addCoincidentToSurface": {
+      "id": "GeometricConstraints_addCoincidentToSurface",
+      "title": "GeometricConstraints.addCoincidentToSurface Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new coincident constraint between the sketch point and surface. This forces the point to lie on the surface.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addCoincidentToSurface(point, surface)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addCoincidentToSurface(point, surface);"
+      },
+      "return_type": "CoincidentToSurfaceConstraint",
+      "return_description": "Returns the newly created CoincidentToSurfaceConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "point",
+          "type": "SketchPoint",
+          "description": "The SketchPoint to constrain to the surface."
+        },
+        {
+          "name": "surface",
+          "type": "Base",
+          "description": "The BRepFace or ConstructionPlane the point will be coincident to."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    },
+    "addCollinear": {
+      "id": "GeometricConstraints_addCollinear",
+      "title": "GeometricConstraints.addCollinear Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new collinear constraint between two lines.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addCollinear(lineOne, lineTwo)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addCollinear(lineOne, lineTwo);"
+      },
+      "return_type": "CollinearConstraint",
+      "return_description": "Returns the newly created CollinearConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "lineOne",
+          "type": "SketchLine",
+          "description": "The first line to create the constraint on."
+        },
+        {
+          "name": "lineTwo",
+          "type": "SketchLine",
+          "description": "The second line to create the constraint on."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "GeometricConstraints.addCollinear",
+          "description": "Demonstrates the GeometricConstraints.addCollinear method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addConcentric": {
+      "id": "GeometricConstraints_addConcentric",
+      "title": "GeometricConstraints.addConcentric Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new concentric constraint between two circles, arcs, ellipses, or elliptical arcs.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addConcentric(entityOne, entityTwo)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addConcentric(entityOne, entityTwo);"
+      },
+      "return_type": "ConcentricConstraint",
+      "return_description": "Returns the newly created ConcentricConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "entityOne",
+          "type": "SketchCurve",
+          "description": "The first circle, arc, ellipse or elliptical arc."
+        },
+        {
+          "name": "entityTwo",
+          "type": "SketchCurve",
+          "description": "The second circle, arc, ellipse or elliptical arc."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "GeometricConstraints.addConcentric",
+          "description": "Demonstrates the GeometricConstraints.addConcentric method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addEqual": {
+      "id": "GeometricConstraints_addEqual",
+      "title": "GeometricConstraints.addEqual Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new equal constraint between two lines, or between arcs and circles.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addEqual(curveOne, curveTwo)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addEqual(curveOne, curveTwo);"
+      },
+      "return_type": "EqualConstraint",
+      "return_description": "Returns the newly created EqualConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "curveOne",
+          "type": "SketchCurve",
+          "description": "The first line, arc, or circle."
+        },
+        {
+          "name": "curveTwo",
+          "type": "SketchCurve",
+          "description": "The second line, arc, or circle."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "GeometricConstraints.addEqual",
+          "description": "Demonstrates the GeometricConstraints.addEqual method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addHorizontal": {
+      "id": "GeometricConstraints_addHorizontal",
+      "title": "GeometricConstraints.addHorizontal Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new horizontal constraint on a line.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addHorizontal(line)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addHorizontal(line);"
+      },
+      "return_type": "HorizontalConstraint",
+      "return_description": "Returns the newly created HorizontalConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "line",
+          "type": "SketchLine",
+          "description": "The line to constrain horizontally."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "API Sample that demonstrates creating sketch lines in various ways.",
+          "description": "Demonstrates several ways to create sketch lines, including as the result of creating a rectangle."
+        },
+        {
+          "name": "GeometricConstraint.addHorizontal",
+          "description": "Demonstrates the GeometricConstraint.addHorizontal method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addHorizontalPoints": {
+      "id": "GeometricConstraints_addHorizontalPoints",
+      "title": "GeometricConstraints.addHorizontalPoints Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new horizontal constraint between two points.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addHorizontalPoints(pointOne, pointTwo)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addHorizontalPoints(pointOne, pointTwo);"
+      },
+      "return_type": "HorizontalPointsConstraint",
+      "return_description": "Returns the newly created HorizontalPointsConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "pointOne",
+          "type": "SketchPoint",
+          "description": "The first SketchPoint to constrain horizontally."
+        },
+        {
+          "name": "pointTwo",
+          "type": "SketchPoint",
+          "description": "The second SketchPoint to constrain horizontally."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "GeometricConstraint.addHorizontalPoints",
+          "description": "Demonstrates the GeometricConstraint.addHorizontalPoints method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addLineOnPlanarSurface": {
+      "id": "GeometricConstraints_addLineOnPlanarSurface",
+      "title": "GeometricConstraints.addLineOnPlanarSurface Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new constraint that forces the sketch line to lie on a planar surface.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addLineOnPlanarSurface(line, planarSurface)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addLineOnPlanarSurface(line, planarSurface);"
+      },
+      "return_type": "LineOnPlanarSurfaceConstraint",
+      "return_description": "Returns the newly created LineOnPlanarSurfaceConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "line",
+          "type": "SketchLine",
+          "description": "The SketchLine to constrain to the surface."
+        },
+        {
+          "name": "planarSurface",
+          "type": "Base",
+          "description": "The planar BRepFace or CosntructionPlane the sketch line will lie on."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    },
+    "addLineParallelToPlanarSurface": {
+      "id": "GeometricConstraints_addLineParallelToPlanarSurface",
+      "title": "GeometricConstraints.addLineParallelToPlanarSurface Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new parallel constraint between a sketch line and a planar surface that will constrain the line to lie on a plane parallel to the specified surface.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addLineParallelToPlanarSurface(line, planarSurface)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addLineParallelToPlanarSurface(line, planarSurface);"
+      },
+      "return_type": "LineParallelToPlanarSurfaceConstraint",
+      "return_description": "Returns the newly created LineParallelToPlanarSurfaceConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "line",
+          "type": "SketchLine",
+          "description": "The SketchLine to constrain to the surface."
+        },
+        {
+          "name": "planarSurface",
+          "type": "Base",
+          "description": "The planar BRepFace or CosntructionPlane the sketch line will be parallel to."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    },
+    "addMidPoint": {
+      "id": "GeometricConstraints_addMidPoint",
+      "title": "GeometricConstraints.addMidPoint Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new midpoint constraint between a point and a curve.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addMidPoint(point, midPointCurve)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addMidPoint(point, midPointCurve);"
+      },
+      "return_type": "MidPointConstraint",
+      "return_description": "Returns the newly created MidPointConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "point",
+          "type": "SketchPoint",
+          "description": "The point to constrain to the midpoint of a curve."
+        },
+        {
+          "name": "midPointCurve",
+          "type": "SketchCurve",
+          "description": "The curve that defines the midpoint to constraint to."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "GeometricConstraint.addMidPont",
+          "description": "Demonstrate the GeometricConstraint.addMidPont method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addOffset": {
+      "id": "GeometricConstraints_addOffset",
+      "title": "GeometricConstraints.addOffset Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Creates an offset constraint, which results in creating a new set of curves that are an offset of the input curves. The returned offset constraint provides access to the created curves and the parameter controlling the offset. The offset direction is implied by the flow direction of the provided curves. For example, if two connected lines are offset, the flow direction is from line 1 to line 2. A positive offset value creates the offset curve to the \"right\" of the lines and a negative offset goes to the \"left\". Left and right are evaluated with respect to the geometry. If you are standing on line 1 looking towards line 2 your left and right are the offset left and right. For closed single curves like circles and ellipses their flow direction is always counterclockwise so a positive offset is always to the outsides. Remarks",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addOffset(curves, offset, basePoint)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addOffset(curves, offset, basePoint);"
+      },
+      "return_type": "OffsetConstraint",
+      "return_description": "The created OffsetConstraint. You can use properties on the constraint to get information about the offset.",
+      "parameters": [
+        {
+          "name": "curves",
+          "type": "SketchCurve[]",
+          "description": "A set of end connected curves. The Sketch.FindConnectedCurves method is a convenient way to get this set of curves."
+        },
+        {
+          "name": "offset",
+          "type": "ValueInput",
+          "description": "The value that defines the offset. This is a ValueInput object so it can be a float value to define the offset in centimeters or it can be a string defining an expression that will be used by the dimension that controls the offset."
+        },
+        {
+          "name": "basePoint",
+          "type": "Point3D",
+          "description": "The location on one of the curves where the offset dimension will be created."
+        }
+      ],
+      "version": "Introduced in version September 2022"
+    },
+    "addOffset2": {
+      "id": "GeometricConstraints_addOffset2",
+      "title": "GeometricConstraints.addOffset2 Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates an offset constraint, which results in creating a new set of curves that are an offset of the input curves. The returned offset constraint object provides access to the created curves and the parameter controlling the offset.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addOffset2(input)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addOffset2(input);"
+      },
+      "return_type": "OffsetConstraint",
+      "return_description": "Returns the newly created OffsetConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "OffsetConstraintInput",
+          "description": "The OffsetConstraintInput object that defines the offset to create."
+        }
+      ],
+      "version": "Introduced in version September 2024"
+    },
+    "addParallel": {
+      "id": "GeometricConstraints_addParallel",
+      "title": "GeometricConstraints.addParallel Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new parallel constraint between two lines.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addParallel(lineOne, lineTwo)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addParallel(lineOne, lineTwo);"
+      },
+      "return_type": "ParallelConstraint",
+      "return_description": "Returns the newly created ParallelConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "lineOne",
+          "type": "SketchLine",
+          "description": "The first SketchLine."
+        },
+        {
+          "name": "lineTwo",
+          "type": "SketchLine",
+          "description": "The second SketchLine."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "GeometricConstraints.addParallel",
+          "description": "Demonstrate the GeometricConstraints.addParallel method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addPerpendicular": {
+      "id": "GeometricConstraints_addPerpendicular",
+      "title": "GeometricConstraints.addPerpendicular Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new perpendicular constraint between two lines.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addPerpendicular(lineOne, lineTwo)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addPerpendicular(lineOne, lineTwo);"
+      },
+      "return_type": "PerpendicularConstraint",
+      "return_description": "Returns the newly created PerpendicularConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "lineOne",
+          "type": "SketchLine",
+          "description": "The first SketchLine."
+        },
+        {
+          "name": "lineTwo",
+          "type": "SketchLine",
+          "description": "The second SketchLine."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "GeometricConstraints.addPerpendicular",
+          "description": "Demonstrates the GeometricConstraints.addPerpendicular method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addPerpendicularToSurface": {
+      "id": "GeometricConstraints_addPerpendicularToSurface",
+      "title": "GeometricConstraints.addPerpendicularToSurface Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new perpendicular constraint that forces the sketch curve to be perpendicular to the specified surface. Line and spline curves are supported.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addPerpendicularToSurface(curve, surface)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addPerpendicularToSurface(curve, surface);"
+      },
+      "return_type": "PerpendicularToSurfaceConstraint",
+      "return_description": "Returns the newly created PerpendicularToSurfaceConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "curve",
+          "type": "SketchCurve",
+          "description": "The SketchCurve to constrain to the surface."
+        },
+        {
+          "name": "surface",
+          "type": "Base",
+          "description": "The BRepFace or ConstructionPlane the line will be perpendicular to."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    },
+    "addPolygon": {
+      "id": "GeometricConstraints_addPolygon",
+      "title": "GeometricConstraints.addPolygon Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a polygon constraint on existing lines in the sketch.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addPolygon(lines)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addPolygon(lines);"
+      },
+      "return_type": "PolygonConstraint",
+      "return_description": "Returns the created PolygonConstraint or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "lines",
+          "type": "SketchLine[]",
+          "description": "An array of existing SketchLine objects in this sketch that define a valid polygon. They must be the same length, connect at their endpoints, have the same angle between them, and define a closed shape. The order of the lines within the array does not matter."
+        }
+      ],
+      "version": "Introduced in version January 2025"
+    },
+    "addRectangularPattern": {
+      "id": "GeometricConstraints_addRectangularPattern",
+      "title": "GeometricConstraints.addRectangularPattern Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new rectangular pattern in the sketch.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addRectangularPattern(input)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addRectangularPattern(input);"
+      },
+      "parameters": [
+        {
+          "name": "input",
+          "type": "RectangularPatternConstraintInput",
+          "description": "A RectangularPatternConstraintInput object that defines all of inputs required to create the desired rectangular pattern. Use the createRectangularPatternInput method to create the input object."
+        }
+      ],
+      "version": "Introduced in version September 2022"
+    },
+    "addSmooth": {
+      "id": "GeometricConstraints_addSmooth",
+      "title": "GeometricConstraints.addSmooth Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new smooth constraint between two curves. One of the curves must be a spline. The other curve can be a spline or any other type of curve.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addSmooth(curveOne, curveTwo)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addSmooth(curveOne, curveTwo);"
+      },
+      "return_type": "SmoothConstraint",
+      "return_description": "Returns the newly created SmoothConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "curveOne",
+          "type": "SketchCurve",
+          "description": "The first curve to be constrained to be smooth to the second curve."
+        },
+        {
+          "name": "curveTwo",
+          "type": "SketchCurve",
+          "description": "The second curve to be constrained to be smooth to the first curve."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "GeometricConstraints.addSmooth",
+          "description": "Demonstrate the GeometricConstraints.addSmooth method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addSymmetry": {
+      "id": "GeometricConstraints_addSymmetry",
+      "title": "GeometricConstraints.addSymmetry Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new symmetry constraint.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addSymmetry(entityOne, entityTwo, symmetryLine)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addSymmetry(entityOne, entityTwo, symmetryLine);"
+      },
+      "return_type": "SymmetryConstraint",
+      "return_description": "Returns the newly created SymmetryConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "entityOne",
+          "type": "SketchEntity",
+          "description": "The first sketch entity to be symmetric."
+        },
+        {
+          "name": "entityTwo",
+          "type": "SketchEntity",
+          "description": "The second sketch entity to be symmetric. It must be the same type as the first entity."
+        },
+        {
+          "name": "symmetryLine",
+          "type": "SketchLine",
+          "description": "The SketchLine that defines the axis of symmetry."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "GeometricConstraints.addSymmetry",
+          "description": "Demonstrates the GeometricConstraints.addSymmetry method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addTangent": {
+      "id": "GeometricConstraints_addTangent",
+      "title": "GeometricConstraints.addTangent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new tangent constraint between two curves.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addTangent(curveOne, curveTwo)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addTangent(curveOne, curveTwo);"
+      },
+      "return_type": "TangentConstraint",
+      "return_description": "Returns the newly created TangentConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "curveOne",
+          "type": "SketchCurve",
+          "description": "The first curve to be tangent."
+        },
+        {
+          "name": "curveTwo",
+          "type": "SketchCurve",
+          "description": "The second curve to be tangent."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Create Circle By 3 Tangents API Sample",
+          "description": "Creates three lines and then draws a circle that is tangent to the lines. It then creates tangent constraints to maintain that relationship."
+        },
+        {
+          "name": "GeometricConstraints.addTangent",
+          "description": "Demonstrates the GeometricConstraints.addTangent method."
+        },
+        {
+          "name": "SketchCircles.addByTwoTangents",
+          "description": "Demonstrates the SketchCircles.addByTwoTangets method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addTwoSidesOffset": {
+      "id": "GeometricConstraints_addTwoSidesOffset",
+      "title": "GeometricConstraints.addTwoSidesOffset Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates two offset constraints, which results in creating two new sets of curves that are an offset of the input curves on each side of the original set of curves. The returned offset constraint objects provide access to the created curves and the parameters controlling the offsets.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addTwoSidesOffset(input, linkOffsets)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addTwoSidesOffset(input, linkOffsets);"
+      },
+      "return_type": "OffsetConstraint[]",
+      "return_description": "Returns an array containing the two OffsetConstraint objects or errors if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "OffsetConstraintInput",
+          "description": "The OffsetConstraintInput object that defines the offset to create. The same definition applies to both offsets that are created."
+        },
+        {
+          "name": "linkOffsets",
+          "type": "boolean",
+          "description": "Defines if the parameter driving the offset of the second side should reference the parameter of the first side. This sets up the parameters so if the first side is edited, the second side will automatically update using the same value. A value of true will create the linked parameter."
+        }
+      ],
+      "version": "Introduced in version September 2024"
+    },
+    "addVertical": {
+      "id": "GeometricConstraints_addVertical",
+      "title": "GeometricConstraints.addVertical Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new vertical constraint on a line.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addVertical(line)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addVertical(line);"
+      },
+      "return_type": "VerticalConstraint",
+      "return_description": "Returns the newly created VerticalConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "line",
+          "type": "SketchLine",
+          "description": "The line to constrain vertically."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "API Sample that demonstrates creating sketch lines in various ways.",
+          "description": "Demonstrates several ways to create sketch lines, including as the result of creating a rectangle."
+        },
+        {
+          "name": "GeometricConstraints.addVertical",
+          "description": "Demonstrates the GeometricConstraints.addVertical method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addVerticalPoints": {
+      "id": "GeometricConstraints_addVerticalPoints",
+      "title": "GeometricConstraints.addVerticalPoints Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new vertical constraint between two points.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.addVerticalPoints(pointOne, pointTwo)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->addVerticalPoints(pointOne, pointTwo);"
+      },
+      "return_type": "VerticalPointsConstraint",
+      "return_description": "Returns the newly created VerticalPointsConstraint object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "pointOne",
+          "type": "SketchPoint",
+          "description": "The first SketchPoint to constrain vertically."
+        },
+        {
+          "name": "pointTwo",
+          "type": "SketchPoint",
+          "description": "The second SketchPoint to constrain vertically."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "classType": {
+      "id": "GeometricConstraints_classType",
+      "title": "GeometricConstraints.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.GeometricConstraints.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::GeometricConstraints::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "createCircularPatternInput": {
+      "id": "GeometricConstraints_createCircularPatternInput",
+      "title": "GeometricConstraints.createCircularPatternInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a CircularPatternConstraintInput object. Use properties and methods on this object to define the circular pattern you want to create and then use the Add method, passing in the CircularPatternConstraintInput object.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.createCircularPatternInput(inputEntities, centerPoint)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->createCircularPatternInput(inputEntities, centerPoint);"
+      },
+      "return_type": "CircularPatternConstraintInput",
+      "return_description": "Returns the newly created CircularPatternConstraintInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "inputEntities",
+          "type": "SketchEntity[]",
+          "description": "An array of sketch entities to be patterned. All of the entities must be from the current sketch."
+        },
+        {
+          "name": "centerPoint",
+          "type": "SketchPoint",
+          "description": "A SketchPoint from the same sketch that defines the center of the pattern."
+        }
+      ],
+      "version": "Introduced in version September 2022"
+    },
+    "createOffsetInput": {
+      "id": "GeometricConstraints_createOffsetInput",
+      "title": "GeometricConstraints.createOffsetInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates an OffsetConstraintInput object. Use properties and methods on this object to define the offset you want to create and then use the addOffset2 method, passing in the OffsetConstraintInput object, to create the offset.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.createOffsetInput(curves, offset)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->createOffsetInput(curves, offset);"
+      },
+      "return_type": "OffsetConstraintInput",
+      "return_description": "Returns an OffsetConstraintInput object or null in the case of invalid input.",
+      "parameters": [
+        {
+          "name": "curves",
+          "type": "SketchCurve[]",
+          "description": "A set of end connected curves. The Sketch.FindConnectedCurves method is a convenient way to get this set of curves."
+        },
+        {
+          "name": "offset",
+          "type": "ValueInput",
+          "description": "The value that defines the offset. This is a ValueInput object so it can be a float value to define the offset in centimeters or it can be a string defining an expression that will be used by the parameter controlling the offset. A positive offset value creates the offset curve to the \"right\" and a negative offset value goes to the \"left\".   The flow direction of the provided curves implies the offset direction. For example, if two connected lines are offset, the flow direction is from line 1 to line 2. Left and right are evaluated relative to the input geometry. If you are standing on line 1 and looking towards line 2, the offset's left side is on your left, and the right side is to your right. Closed single curves like circles and ellipses always have a counterclockwise flow, so a positive offset is always to the outside. For closed splines, the positive direction is based on the spline's parameterization."
+        }
+      ],
+      "version": "Introduced in version September 2024"
+    },
+    "createRectangularPatternInput": {
+      "id": "GeometricConstraints_createRectangularPatternInput",
+      "title": "GeometricConstraints.createRectangularPatternInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Creates a new RectangularPatternConstraintInput object. Use this object to define the various settings associated with a rectangular pattern in a sketch. Once the pattern is defined you can call the addRectangularPattern method and pass in the input object to create the sketch rectangular pattern.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.createRectangularPatternInput(entities, distanceType)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->createRectangularPatternInput(entities, distanceType);"
+      },
+      "return_type": "RectangularPatternConstraintInput",
+      "return_description": "Returns the created RectangularPatternsConstraintInput object or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "entities",
+          "type": "SketchEntity[]",
+          "description": "An array of sketch entities to pattern. These can be sketch points and curves."
+        },
+        {
+          "name": "distanceType",
+          "type": "PatternDistanceType",
+          "description": "Specifies if the distances defined for the pattern define the overall size of the pattern or the distance between the rows and columns."
+        }
+      ],
+      "version": "Introduced in version September 2022"
+    },
+    "item": {
+      "id": "GeometricConstraints_item",
+      "title": "GeometricConstraints.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Function that returns the specified sketch constraint using an index into the collection.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "returnValue = geometricConstraints_var.item(index)",
+        "cpp": "#include \n\nreturnValue = geometricConstraints_var->item(index);"
+      },
+      "return_type": "GeometricConstraint",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "GeometricConstraints_count",
+      "title": "GeometricConstraints.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Returns the number of constraints in the sketch.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = geometricConstraints_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = geometricConstraints_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "GeometricConstraints_isValid",
+      "title": "GeometricConstraints.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = geometricConstraints_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = geometricConstraints_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "GeometricConstraints_objectType",
+      "title": "GeometricConstraints.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/GeometricConstraints.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "GeometricConstraints",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = geometricConstraints_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = geometricConstraints_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

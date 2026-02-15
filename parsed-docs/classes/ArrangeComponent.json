@@ -1,0 +1,332 @@
+{
+  "id": "ArrangeComponent",
+  "title": "ArrangeComponent Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Arrange/ArrangeComponent.h",
+  "description": "Defines a component within an arrangement. This specifies an occurrence along with additional arrangement information. This object is the API equivalent of a single line within the component list shown in the Arrange dialog. This object is used for both the creation of a new Arrange feature and querying and modifying an existing Arrange feature.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this ArrangeComponent from the arrangement."
+    },
+    {
+      "name": "setRotationUsingEdge",
+      "description": "Sets the rotation angle using the specified edge such that the edge is pointing in the zero rotation angle. This is a convenience method to set the rotation angle. The rotation property can be used to accomplish the same result.   This is only valid for 2D True Shape arrangements and will fail for 2D rectangular and 3D arrangements."
+    }
+  ],
+  "properties": [
+    {
+      "name": "isDirectionFlipped",
+      "description": "Specifies if the direction is flipped from it's default direction.   For a component defined by a face the default direction is defined by the selected face and the isGlobalDirectionFaceUp property of the Arrange2DDefinition associated with the parent ArrangeFeature object.   For a component defined by an occurrence, the default direction orients the occurrence such that the largest face points downward.   For a 3D arrange, this property is ignored and the orientation of the part is the same as it exists in the original assembly."
+    },
+    {
+      "name": "isFiller",
+      "description": "Specifies if this component will be used to fill any left over empty space in the available envelopes.   This is only valid for 2D True Shape arrangements and is ignored for 2D rectangular and 3D arrangements."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "occurrence",
+      "description": "Returns the Occurrence associated with this ArrangeComponent. If an Occurrence was used to define this ArrangeComponent, this will return the same thing as the occurrenceOrFace. If a BRepFace was used to define this ArrangeComponent, this will return the Occurrence the face is in. This is a convenience property to make accessing the occurrence simpler."
+    },
+    {
+      "name": "occurrenceOrFace",
+      "description": "The BRepFace or Occurrence that was used to identify this ArrangeComponent."
+    },
+    {
+      "name": "parentArrangeFeature",
+      "description": "Returns the ArrangeFeature this ArrangeComponent is associated with. This property returns null in the case where a feature hasn't been created yet and there is only an ArrangeFeatureInput."
+    },
+    {
+      "name": "priority",
+      "description": "Specifies the nesting priority for this component.   For a 3D arrange, this property is ignored and setting it will fail."
+    },
+    {
+      "name": "quantity",
+      "description": "Specifies the quantity of this component to use in the arrange. This defaults to -1, which indicates that the global quantity is to be used.   For a 3D arrange, this property is ignored and the quantity is always one."
+    },
+    {
+      "name": "rotation",
+      "description": "Gets and sets the rotation angle of this ArrangeComponent. The value is defined in Radians, is relative to the zero direction vector returned by the zeroDirectionVector property, and is in a counterclockwise direction.   This is only valid for 2D True Shape arrangements and is ignored for 2D rectangular and 3D arrangements."
+    },
+    {
+      "name": "rotationType",
+      "description": "Gets and sets the rotation type for this ArrangeComponent. This defaults to use the global rotation type defined for the arrangement.   For a 3D arrange, this property is ignored."
+    },
+    {
+      "name": "upDirection",
+      "description": "Returns a vector that is the up direction of this ArrangeComponent."
+    },
+    {
+      "name": "zeroDirection",
+      "description": "Returns a vector that is the zero degree direction of this ArrangeComponent."
+    }
+  ],
+  "version": "Introduced in version January 2025",
+  "method_details": {
+    "classType": {
+      "id": "ArrangeComponent_classType",
+      "title": "ArrangeComponent.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeComponent.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ArrangeComponent",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ArrangeComponent.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ArrangeComponent::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2025"
+    },
+    "deleteMe": {
+      "id": "ArrangeComponent_deleteMe",
+      "title": "ArrangeComponent.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeComponent.h",
+      "description": "Deletes this ArrangeComponent from the arrangement.",
+      "parent_class": "ArrangeComponent",
+      "syntax": {
+        "python": "returnValue = arrangeComponent_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = arrangeComponent_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the deletion was successful.",
+      "version": "Introduced in version January 2025"
+    },
+    "setRotationUsingEdge": {
+      "id": "ArrangeComponent_setRotationUsingEdge",
+      "title": "ArrangeComponent.setRotationUsingEdge Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeComponent.h",
+      "description": "Sets the rotation angle using the specified edge such that the edge is pointing in the zero rotation angle. This is a convenience method to set the rotation angle. The rotation property can be used to accomplish the same result. This is only valid for 2D True Shape arrangements and will fail for 2D rectangular and 3D arrangements.",
+      "parent_class": "ArrangeComponent",
+      "syntax": {
+        "python": "returnValue = arrangeComponent_var.setRotationUsingEdge(edge)",
+        "cpp": "#include \n\nreturnValue = arrangeComponent_var->setRotationUsingEdge(edge);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "edge",
+          "type": "BRepEdge",
+          "description": "The BRepEdge object being used to define rotation of the component."
+        }
+      ],
+      "version": "Introduced in version January 2025"
+    }
+  },
+  "property_details": {
+    "isDirectionFlipped": {
+      "id": "ArrangeComponent_isDirectionFlipped",
+      "title": "ArrangeComponent.isDirectionFlipped Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeComponent.h",
+      "description": "Specifies if the direction is flipped from it's default direction. For a component defined by a face the default direction is defined by the selected face and the isGlobalDirectionFaceUp property of the Arrange2DDefinition associated with the parent ArrangeFeature object. For a component defined by an occurrence, the default direction orients the occurrence such that the largest face points downward. For a 3D arrange, this property is ignored and the orientation of the part is the same as it exists in the original assembly.",
+      "parent_class": "ArrangeComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeComponent_var.isDirectionFlipped\n\n# Set the value of the property.\narrangeComponent_var.isDirectionFlipped = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = arrangeComponent_var->isDirectionFlipped();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = arrangeComponent_var->isDirectionFlipped(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "isFiller": {
+      "id": "ArrangeComponent_isFiller",
+      "title": "ArrangeComponent.isFiller Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeComponent.h",
+      "description": "Specifies if this component will be used to fill any left over empty space in the available envelopes. This is only valid for 2D True Shape arrangements and is ignored for 2D rectangular and 3D arrangements.",
+      "parent_class": "ArrangeComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeComponent_var.isFiller\n\n# Set the value of the property.\narrangeComponent_var.isFiller = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = arrangeComponent_var->isFiller();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = arrangeComponent_var->isFiller(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "isValid": {
+      "id": "ArrangeComponent_isValid",
+      "title": "ArrangeComponent.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeComponent.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ArrangeComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeComponent_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = arrangeComponent_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "objectType": {
+      "id": "ArrangeComponent_objectType",
+      "title": "ArrangeComponent.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeComponent.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ArrangeComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeComponent_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = arrangeComponent_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "occurrence": {
+      "id": "ArrangeComponent_occurrence",
+      "title": "ArrangeComponent.occurrence Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeComponent.h",
+      "description": "Returns the Occurrence associated with this ArrangeComponent. If an Occurrence was used to define this ArrangeComponent, this will return the same thing as the occurrenceOrFace. If a BRepFace was used to define this ArrangeComponent, this will return the Occurrence the face is in. This is a convenience property to make accessing the occurrence simpler.",
+      "parent_class": "ArrangeComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeComponent_var.occurrence",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = arrangeComponent_var->occurrence();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "occurrenceOrFace": {
+      "id": "ArrangeComponent_occurrenceOrFace",
+      "title": "ArrangeComponent.occurrenceOrFace Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeComponent.h",
+      "description": "The BRepFace or Occurrence that was used to identify this ArrangeComponent.",
+      "parent_class": "ArrangeComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeComponent_var.occurrenceOrFace",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = arrangeComponent_var->occurrenceOrFace();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "parentArrangeFeature": {
+      "id": "ArrangeComponent_parentArrangeFeature",
+      "title": "ArrangeComponent.parentArrangeFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeComponent.h",
+      "description": "Returns the ArrangeFeature this ArrangeComponent is associated with. This property returns null in the case where a feature hasn't been created yet and there is only an ArrangeFeatureInput.",
+      "parent_class": "ArrangeComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeComponent_var.parentArrangeFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = arrangeComponent_var->parentArrangeFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "priority": {
+      "id": "ArrangeComponent_priority",
+      "title": "ArrangeComponent.priority Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeComponent.h",
+      "description": "Specifies the nesting priority for this component. For a 3D arrange, this property is ignored and setting it will fail.",
+      "parent_class": "ArrangeComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeComponent_var.priority\n\n# Set the value of the property.\narrangeComponent_var.priority = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nArrangePriorities propertyValue = arrangeComponent_var->priority();\n\n// Set the value of the property, where value_var is an ArrangePriorities.\nbool returnValue = arrangeComponent_var->priority(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "quantity": {
+      "id": "ArrangeComponent_quantity",
+      "title": "ArrangeComponent.quantity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeComponent.h",
+      "description": "Specifies the quantity of this component to use in the arrange. This defaults to -1, which indicates that the global quantity is to be used. For a 3D arrange, this property is ignored and the quantity is always one.",
+      "parent_class": "ArrangeComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeComponent_var.quantity\n\n# Set the value of the property.\narrangeComponent_var.quantity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = arrangeComponent_var->quantity();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = arrangeComponent_var->quantity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "rotation": {
+      "id": "ArrangeComponent_rotation",
+      "title": "ArrangeComponent.rotation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeComponent.h",
+      "description": "Gets and sets the rotation angle of this ArrangeComponent. The value is defined in Radians, is relative to the zero direction vector returned by the zeroDirectionVector property, and is in a counterclockwise direction. This is only valid for 2D True Shape arrangements and is ignored for 2D rectangular and 3D arrangements.",
+      "parent_class": "ArrangeComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeComponent_var.rotation\n\n# Set the value of the property.\narrangeComponent_var.rotation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = arrangeComponent_var->rotation();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = arrangeComponent_var->rotation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "rotationType": {
+      "id": "ArrangeComponent_rotationType",
+      "title": "ArrangeComponent.rotationType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeComponent.h",
+      "description": "Gets and sets the rotation type for this ArrangeComponent. This defaults to use the global rotation type defined for the arrangement. For a 3D arrange, this property is ignored.",
+      "parent_class": "ArrangeComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeComponent_var.rotationType\n\n# Set the value of the property.\narrangeComponent_var.rotationType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nArrangeRotationTypes propertyValue = arrangeComponent_var->rotationType();\n\n// Set the value of the property, where value_var is an ArrangeRotationTypes.\nbool returnValue = arrangeComponent_var->rotationType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "upDirection": {
+      "id": "ArrangeComponent_upDirection",
+      "title": "ArrangeComponent.upDirection Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeComponent.h",
+      "description": "Returns a vector that is the up direction of this ArrangeComponent.",
+      "parent_class": "ArrangeComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeComponent_var.upDirection",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = arrangeComponent_var->upDirection();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "zeroDirection": {
+      "id": "ArrangeComponent_zeroDirection",
+      "title": "ArrangeComponent.zeroDirection Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Arrange/ArrangeComponent.h",
+      "description": "Returns a vector that is the zero degree direction of this ArrangeComponent.",
+      "parent_class": "ArrangeComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeComponent_var.zeroDirection",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = arrangeComponent_var->zeroDirection();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "sweepFeatures_add_Sample",
+  "title": "sweepFeatures.add",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the sweepFeatures.add method.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_sweepFeatures_add(rootComp: adsk.fusion.Component):\n    profile = _ui.selectEntity('Select a profile.', 'Profiles').entity\n    pathCurve = _ui.selectEntity('Select a path curve', 'SketchCurves').entity\n\n    path = adsk.fusion.Path.create(pathCurve, adsk.fusion.ChainedCurveOptions.tangentChainedCurves)\n\n    sweepFeatures = rootComp.features.sweepFeatures\n    operation = adsk.fusion.FeatureOperations.NewBodyFeatureOperation\n    input = sweepFeatures.createInput(profile, path, operation)\n    input.orientation = adsk.fusion.SweepOrientationTypes.PerpendicularOrientationType\n    sweepFeature = sweepFeatures.add(input)"
+  }
+}

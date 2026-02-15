@@ -1,0 +1,261 @@
+{
+  "id": "MoveFeatures",
+  "title": "MoveFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/MoveFeatures.h",
+  "description": "Collection that provides access to all of the existing move features in a component and supports the ability to create new move features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new move feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "**RETIRED** Creates a MoveFeatureInput object. Use properties and methods on this object to define the move feature you want to create and then use the Add method, passing in the MoveFeatureInput object."
+    },
+    {
+      "name": "createInput2",
+      "description": "Creates a MoveFeatureInput object. Use properties and methods on this object to define how the move is defined and then use the MoveFeatues.add method, passing in the MoveFeatureInput object to create a move feature."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified move feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified move feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of move features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Move Feature API Sample",
+      "description": "Demonstrates creating a new move feature."
+    }
+  ],
+  "version": "Introduced in version March 2015",
+  "method_details": {
+    "add": {
+      "id": "MoveFeatures_add",
+      "title": "MoveFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatures.h",
+      "description": "Creates a new move feature.",
+      "parent_class": "MoveFeatures",
+      "syntax": {
+        "python": "returnValue = moveFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = moveFeatures_var->add(input);"
+      },
+      "return_type": "MoveFeature",
+      "return_description": "Returns the newly created MoveFeature object or null if the creation failed. Returns nothing in the case where the feature is non-parametric.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "MoveFeatureInput",
+          "description": "A MoveFeatureInput object that defines the desired move feature. Use the createInput2 method to create a new MoveFeatureInput object and then use methods on the MoveFeatureInput object to define the move feature."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "moveFeatures.add",
+          "description": "Demonstrates the moveFeatures.add method."
+        },
+        {
+          "name": "Move Feature API Sample",
+          "description": "Demonstrates creating a new move feature."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    },
+    "classType": {
+      "id": "MoveFeatures_classType",
+      "title": "MoveFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "MoveFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.MoveFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::MoveFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version March 2015"
+    },
+    "createInput": {
+      "id": "MoveFeatures_createInput",
+      "title": "MoveFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatures.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Creates a MoveFeatureInput object. Use properties and methods on this object to define the move feature you want to create and then use the Add method, passing in the MoveFeatureInput object. Remarks",
+      "parent_class": "MoveFeatures",
+      "syntax": {
+        "python": "returnValue = moveFeatures_var.createInput(inputEntities, transform)",
+        "cpp": "#include \n\nreturnValue = moveFeatures_var->createInput(inputEntities, transform);"
+      },
+      "return_type": "MoveFeatureInput",
+      "return_description": "Returns the newly created MoveFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "inputEntities",
+          "type": "ObjectCollection",
+          "description": "An ObjectCollection containing the entities to move. This collection can only contain BRepBody objects in parametric modeling. It can be BRep bodies, T-Spline bodies, mesh bodies mixed or faces and features mixed in non-parametric modeling."
+        },
+        {
+          "name": "transform",
+          "type": "Matrix3D",
+          "description": "The transform to apply to the input entities. This can describe a move (translation) or a rotation. The matrix must define an orthogonal transform. That is the axes must be perpendicular to each other and there can't be any scaling or mirroring defined."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    },
+    "createInput2": {
+      "id": "MoveFeatures_createInput2",
+      "title": "MoveFeatures.createInput2 Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatures.h",
+      "description": "Creates a MoveFeatureInput object. Use properties and methods on this object to define how the move is defined and then use the MoveFeatues.add method, passing in the MoveFeatureInput object to create a move feature.",
+      "parent_class": "MoveFeatures",
+      "syntax": {
+        "python": "returnValue = moveFeatures_var.createInput2(inputEntities)",
+        "cpp": "#include \n\nreturnValue = moveFeatures_var->createInput2(inputEntities);"
+      },
+      "return_type": "MoveFeatureInput",
+      "return_description": "Returns the newly created MoveFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "inputEntities",
+          "type": "ObjectCollection",
+          "description": "An ObjectCollection containing the objects to move. For a parametric model, the collection can contain BRepBody or BRepFace objects but not a combination of both."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "moveFeatures.add",
+          "description": "Demonstrates the moveFeatures.add method."
+        },
+        {
+          "name": "Move Feature API Sample",
+          "description": "Demonstrates creating a new move feature."
+        }
+      ],
+      "version": "Introduced in version January 2023"
+    },
+    "item": {
+      "id": "MoveFeatures_item",
+      "title": "MoveFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatures.h",
+      "description": "Function that returns the specified move feature using an index into the collection.",
+      "parent_class": "MoveFeatures",
+      "syntax": {
+        "python": "returnValue = moveFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = moveFeatures_var->item(index);"
+      },
+      "return_type": "MoveFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    },
+    "itemByName": {
+      "id": "MoveFeatures_itemByName",
+      "title": "MoveFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatures.h",
+      "description": "Function that returns the specified move feature using the name of the feature.",
+      "parent_class": "MoveFeatures",
+      "syntax": {
+        "python": "returnValue = moveFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = moveFeatures_var->itemByName(name);"
+      },
+      "return_type": "MoveFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "MoveFeatures_count",
+      "title": "MoveFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatures.h",
+      "description": "The number of move features in the collection.",
+      "parent_class": "MoveFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = moveFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "isValid": {
+      "id": "MoveFeatures_isValid",
+      "title": "MoveFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "MoveFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = moveFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "objectType": {
+      "id": "MoveFeatures_objectType",
+      "title": "MoveFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MoveFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "MoveFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = moveFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = moveFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    }
+  }
+}

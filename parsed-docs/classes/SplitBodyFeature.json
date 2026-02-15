@@ -1,0 +1,523 @@
+{
+  "id": "SplitBodyFeature",
+  "title": "SplitBodyFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/SplitBodyFeature.h",
+  "description": "Object that represents an existing split body feature in a design.",
+  "parent_class": "Feature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    },
+    {
+      "name": "setSplittingTool",
+      "description": "Sets the splitting tool used for the feature.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSplittingToolExtended",
+      "description": "Gets whether or not the splitting tool is to be automatically extended (if possible) so as to completely intersect the bodyToSplit."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "splitBodies",
+      "description": "Gets and sets the input solid or open bodies that are split.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "splittingTool",
+      "description": "Gets the entity that defines the splitting tool. The splitting tool is a single entity that can be either a solid body, open body, plane, sketch curve or face that partially or fully intersects the bodyToSplit.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Split Body Feature API Sample",
+      "description": "Demonstrates creating a new split body feature."
+    }
+  ],
+  "version": "Introduced in version June 2015",
+  "property_details": {
+    "assemblyContext": {
+      "id": "SplitBodyFeature_assemblyContext",
+      "title": "SplitBodyFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = splitBodyFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "attributes": {
+      "id": "SplitBodyFeature_attributes",
+      "title": "SplitBodyFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = splitBodyFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "baseFeature": {
+      "id": "SplitBodyFeature_baseFeature",
+      "title": "SplitBodyFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = splitBodyFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "bodies": {
+      "id": "SplitBodyFeature_bodies",
+      "title": "SplitBodyFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = splitBodyFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "entityToken": {
+      "id": "SplitBodyFeature_entityToken",
+      "title": "SplitBodyFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = splitBodyFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "errorOrWarningMessage": {
+      "id": "SplitBodyFeature_errorOrWarningMessage",
+      "title": "SplitBodyFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = splitBodyFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "faces": {
+      "id": "SplitBodyFeature_faces",
+      "title": "SplitBodyFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = splitBodyFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "healthState": {
+      "id": "SplitBodyFeature_healthState",
+      "title": "SplitBodyFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = splitBodyFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "isParametric": {
+      "id": "SplitBodyFeature_isParametric",
+      "title": "SplitBodyFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = splitBodyFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isSplittingToolExtended": {
+      "id": "SplitBodyFeature_isSplittingToolExtended",
+      "title": "SplitBodyFeature.isSplittingToolExtended Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Gets whether or not the splitting tool is to be automatically extended (if possible) so as to completely intersect the bodyToSplit.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.isSplittingToolExtended",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = splitBodyFeature_var->isSplittingToolExtended();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isSuppressed": {
+      "id": "SplitBodyFeature_isSuppressed",
+      "title": "SplitBodyFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.isSuppressed\n\n# Set the value of the property.\nsplitBodyFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = splitBodyFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = splitBodyFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isValid": {
+      "id": "SplitBodyFeature_isValid",
+      "title": "SplitBodyFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = splitBodyFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "linkedFeatures": {
+      "id": "SplitBodyFeature_linkedFeatures",
+      "title": "SplitBodyFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = splitBodyFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "name": {
+      "id": "SplitBodyFeature_name",
+      "title": "SplitBodyFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.name\n\n# Set the value of the property.\nsplitBodyFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = splitBodyFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = splitBodyFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "nativeObject": {
+      "id": "SplitBodyFeature_nativeObject",
+      "title": "SplitBodyFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = splitBodyFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "objectType": {
+      "id": "SplitBodyFeature_objectType",
+      "title": "SplitBodyFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = splitBodyFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "parentComponent": {
+      "id": "SplitBodyFeature_parentComponent",
+      "title": "SplitBodyFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = splitBodyFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "splitBodies": {
+      "id": "SplitBodyFeature_splitBodies",
+      "title": "SplitBodyFeature.splitBodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Gets and sets the input solid or open bodies that are split. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.splitBodies\n\n# Set the value of the property.\nsplitBodyFeature_var.splitBodies = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = splitBodyFeature_var->splitBodies();\n\n// Set the value of the property, where value_var is an ObjectCollection.\nbool returnValue = splitBodyFeature_var->splitBodies(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "splittingTool": {
+      "id": "SplitBodyFeature_splittingTool",
+      "title": "SplitBodyFeature.splittingTool Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Gets the entity that defines the splitting tool. The splitting tool is a single entity that can be either a solid body, open body, plane, sketch curve or face that partially or fully intersects the bodyToSplit. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.splittingTool",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = splitBodyFeature_var->splittingTool();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "timelineObject": {
+      "id": "SplitBodyFeature_timelineObject",
+      "title": "SplitBodyFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitBodyFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = splitBodyFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "SplitBodyFeature_classType",
+      "title": "SplitBodyFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.SplitBodyFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::SplitBodyFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version June 2015"
+    },
+    "createForAssemblyContext": {
+      "id": "SplitBodyFeature_createForAssemblyContext",
+      "title": "SplitBodyFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "returnValue = splitBodyFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = splitBodyFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "SplitBodyFeature",
+      "return_description": "Returns the proxy object or null if this is not the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "deleteMe": {
+      "id": "SplitBodyFeature_deleteMe",
+      "title": "SplitBodyFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "returnValue = splitBodyFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = splitBodyFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version June 2015"
+    },
+    "dissolve": {
+      "id": "SplitBodyFeature_dissolve",
+      "title": "SplitBodyFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "returnValue = splitBodyFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = splitBodyFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version June 2015"
+    },
+    "setSplittingTool": {
+      "id": "SplitBodyFeature_setSplittingTool",
+      "title": "SplitBodyFeature.setSplittingTool Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitBodyFeature.h",
+      "description": "Sets the splitting tool used for the feature. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "SplitBodyFeature",
+      "syntax": {
+        "python": "returnValue = splitBodyFeature_var.setSplittingTool(splittingTool, isSplittingToolExtended)",
+        "cpp": "#include \n\nreturnValue = splitBodyFeature_var->setSplittingTool(splittingTool, isSplittingToolExtended);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "splittingTool",
+          "type": "Base",
+          "description": "Input entity that defines the splitting tool. The splitting tool is a single entity that can be either a solid body, open body, construction plane, face, or sketch curve that partially or fully intersects the body to split."
+        },
+        {
+          "name": "isSplittingToolExtended",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not the splittingTool is to be automatically extended (if possible) so as to completely intersect the facesToSplit."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "pathPatternFeatures_add_Sample",
+  "title": "pathPatternFeatures.add",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the pathPatternFeatures.add method using a selected body and sketch curve as the path.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_pathPatternFeatures_add(rootComp: adsk.fusion.Component):\n    # Have the body to pattern and path curve selected.\n    body = _ui.selectEntity('Select a body to pattern.', 'Bodies').entity\n    path = adsk.fusion.Path.create(_ui.selectEntity('Select a curve', 'SketchCurves').entity, adsk.fusion.ChainedCurveOptions.tangentChainedCurves)\n\n    # Define the required input.\n    bodies = adsk.core.ObjectCollection.create()\n    bodies.add(body)\n    quantity = adsk.core.ValueInput.createByReal(5)\n    distance = adsk.core.ValueInput.createByReal(10)\n    patternDistance = adsk.fusion.PatternDistanceType.SpacingPatternDistanceType\n    \n    patternFeatures = rootComp.features.pathPatternFeatures\n    input = patternFeatures.createInput(bodies, path, quantity, distance, patternDistance)\n    patternFeature = patternFeatures.add(input)"
+  }
+}

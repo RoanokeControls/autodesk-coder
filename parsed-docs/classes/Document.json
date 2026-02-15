@@ -1,0 +1,571 @@
+{
+  "id": "Document",
+  "title": "Document Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/Document.h",
+  "description": "Object that represents an open document. This is the base class for all document types.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "activate",
+      "description": "Causes this document to become the active document in the user interface."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "close",
+      "description": "Closes this document."
+    },
+    {
+      "name": "save",
+      "description": "Saves a version of the current document. You must use the SaveAs method the first time a document is saved. You can determine if a document has been saved by checking the value of the isSaved property."
+    },
+    {
+      "name": "saveAs",
+      "description": "Performs a Save As on this document. This saves the currently open document to the specified location and this document becomes the saved document. If this is a new document that has never been saved you must use the SaveAs method in order to specify the location and name. You can determine if the document has been saved by checking the value of the isSaved property."
+    },
+    {
+      "name": "saveDataVersion",
+      "description": "Creates a version on a dirty document by implictly saving it first. This method is not applicable when saving a document for the first time. In that case, you must use the Document.saveAs method. You can determine if a document has been saved by checking the value of the isSaved property."
+    },
+    {
+      "name": "saveMilestone",
+      "description": "Saves the document as a new milestone. This method is not applicable when saving a document for the first time. In that case, you must use the SaveAs method. You can determine if a document has been saved by checking the value of the isSaved property."
+    },
+    {
+      "name": "updateAllReferences",
+      "description": "Updates all out of date external references. This is equivalent to clicking the \"Out of Date\" button in the Quick Access Toolbar to update all out of date external references."
+    }
+  ],
+  "properties": [
+    {
+      "name": "allDocumentReferences",
+      "description": "Returns a collection containing all of the documents referenced directly by this document and those referenced by all sub-assemblies."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this document."
+    },
+    {
+      "name": "creationId",
+      "description": "Returns the creation ID of this document. When a new document is created, Fusion assigns it a creation ID that will remain constant for the life of the document. The ID that is assigned is unique. However, it's possible that more than one document can have the same ID. This happens in the case where a document is copied. In this case a new document is created but an existing document is copied. It's only when a new document is created that a creation ID is generated and assigned.   Using this ID can be useful in cases where the save of a new document is started and you can use this ID to match the completion of the save operation on the cloud to the original document."
+    },
+    {
+      "name": "dataFile",
+      "description": "Gets the DataFile that represents this document in A360."
+    },
+    {
+      "name": "documentReferences",
+      "description": "Returns a collection containing the documents directly referenced by this document."
+    },
+    {
+      "name": "isActive",
+      "description": "Gets if this document is the active document in the user interface."
+    },
+    {
+      "name": "isModified",
+      "description": "Property that indicates if the document has been modified since it was last saved."
+    },
+    {
+      "name": "isSaved",
+      "description": "Property that indicates if this document has been saved or not. The initial save of a document requires that the name and location be specified and requires the saveAs method to be used. If the document has been saved then the save method can be used to save changes made."
+    },
+    {
+      "name": "isUpToDate",
+      "description": "Indicates if any external references in the assembly are out of date. This is the API equivalent to the \"Out of Date\" notification displayed in the Quick Access Toolbar."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets if a currently open document is open as visible."
+    },
+    {
+      "name": "name",
+      "description": "This property gets and sets the name of the document. You can only set the name of a document before the document is saved for the first time. You can use the isSaved property to determine this. If the document has not been saved and the name is changed, the specified name will be the default name shown in the Save dialog, which the user can modify before saving the document.   If the file has been saved, this property behaves as read-only. Setting the name will fail because the name is controlled by the DataFile associated with this document. However, you can edit the name of the DataFile, which you can obtain by using the dataFile property of the document."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parent",
+      "description": "Returns the parent Application object."
+    },
+    {
+      "name": "products",
+      "description": "Returns the products associated with this document."
+    },
+    {
+      "name": "version",
+      "description": "Returns the Fusion version this document was last saved with."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Loft Feature API Sample",
+      "description": "Demonstrates creating a new loft feature."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "activate": {
+      "id": "Document_activate",
+      "title": "Document.activate Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Causes this document to become the active document in the user interface.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "returnValue = document_var.activate()",
+        "cpp": "#include \n\nreturnValue = document_var->activate();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the activation was successful.",
+      "version": "Introduced in version August 2014"
+    },
+    "classType": {
+      "id": "Document_classType",
+      "title": "Document.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "returnValue = adsk.core.Document.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Document::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "close": {
+      "id": "Document_close",
+      "title": "Document.close Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Closes this document. Remarks",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "returnValue = document_var.close(saveChanges)",
+        "cpp": "#include \n\nreturnValue = document_var->close(saveChanges);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if closing the document was successful.",
+      "parameters": [
+        {
+          "name": "saveChanges",
+          "type": "boolean",
+          "description": "This argument defines what the behavior of the close is when the document has been modified. If the document hasn't been modified then this argument is ignored and the document is closed. If the document has been modified and this argument is false then Fusion will close the document and lose any changes. If the document has been modified and this argument is true then it will prompt the user if they want to save the changes or not, just the same as if the user was to interactively close the document."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Loft Feature API Sample",
+          "description": "Demonstrates creating a new loft feature."
+        },
+        {
+          "name": "Save and Insert File API Sample",
+          "description": "Demonstrates creating save a new file and then inserting it into a design. To use this sample, have a design open that has been saved and run the script. It will create a new design that contains a cylinder, save it to the same folder the active design was saved to, and then insert it into the active design."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "save": {
+      "id": "Document_save",
+      "title": "Document.save Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Saves a version of the current document. You must use the SaveAs method the first time a document is saved. You can determine if a document has been saved by checking the value of the isSaved property. Remarks",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "returnValue = document_var.save(description)",
+        "cpp": "#include \n\nreturnValue = document_var->save(description);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if saving the document was successful.",
+      "parameters": [
+        {
+          "name": "description",
+          "type": "string",
+          "description": "The version description for this document"
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "saveAs": {
+      "id": "Document_saveAs",
+      "title": "Document.saveAs Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Performs a Save As on this document. This saves the currently open document to the specified location and this document becomes the saved document. If this is a new document that has never been saved you must use the SaveAs method in order to specify the location and name. You can determine if the document has been saved by checking the value of the isSaved property. Remarks",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "returnValue = document_var.saveAs(name, dataFolder, description, tag)",
+        "cpp": "#include \n\nreturnValue = document_var->saveAs(name, dataFolder, description, tag);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the save as was successful.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name to use for this document. If this is an empty string, Fusion will use the default name assigned when the document was created."
+        },
+        {
+          "name": "dataFolder",
+          "type": "DataFolder",
+          "description": "The data folder to save this document to."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "The description string of the document. This can be an empty string."
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "description": "The tag string of the document. This can be an empty string."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Save and Insert File API Sample",
+          "description": "Demonstrates creating save a new file and then inserting it into a design. To use this sample, have a design open that has been saved and run the script. It will create a new design that contains a cylinder, save it to the same folder the active design was saved to, and then insert it into the active design."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    },
+    "saveDataVersion": {
+      "id": "Document_saveDataVersion",
+      "title": "Document.saveDataVersion Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Creates a version on a dirty document by implictly saving it first. This method is not applicable when saving a document for the first time. In that case, you must use the Document.saveAs method. You can determine if a document has been saved by checking the value of the isSaved property.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "returnValue = document_var.saveDataVersion(versionDescription)",
+        "cpp": "#include \n\nreturnValue = document_var->saveDataVersion(versionDescription);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if saving the document with data version was successful.",
+      "parameters": [
+        {
+          "name": "versionDescription",
+          "type": "string",
+          "description": "The description associated with the data version."
+        }
+      ],
+      "version": "Introduced in version November 2025"
+    },
+    "saveMilestone": {
+      "id": "Document_saveMilestone",
+      "title": "Document.saveMilestone Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Saves the document as a new milestone. This method is not applicable when saving a document for the first time. In that case, you must use the SaveAs method. You can determine if a document has been saved by checking the value of the isSaved property. Remarks",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "returnValue = document_var.saveMilestone(milestoneName, versionDescription)",
+        "cpp": "#include \n\nreturnValue = document_var->saveMilestone(milestoneName, versionDescription);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if saving the document as a milestone was successful.",
+      "parameters": [
+        {
+          "name": "milestoneName",
+          "type": "string",
+          "description": "The name of the milestone as seen in the data panel and Fusion web client. If an empty string is provided a default name will be used."
+        },
+        {
+          "name": "versionDescription",
+          "type": "string",
+          "description": "The description associated with the version. If an empty string is provided, a default description will be used."
+        }
+      ],
+      "version": "Introduced in version March 2024"
+    },
+    "updateAllReferences": {
+      "id": "Document_updateAllReferences",
+      "title": "Document.updateAllReferences Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Updates all out of date external references. This is equivalent to clicking the \"Out of Date\" button in the Quick Access Toolbar to update all out of date external references.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "returnValue = document_var.updateAllReferences()",
+        "cpp": "#include \n\nreturnValue = document_var->updateAllReferences();"
+      },
+      "version": "Introduced in version September 2022"
+    }
+  },
+  "property_details": {
+    "allDocumentReferences": {
+      "id": "Document_allDocumentReferences",
+      "title": "Document.allDocumentReferences Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Returns a collection containing all of the documents referenced directly by this document and those referenced by all sub-assemblies.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = document_var.allDocumentReferences",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = document_var->allDocumentReferences();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2017"
+    },
+    "attributes": {
+      "id": "Document_attributes",
+      "title": "Document.attributes Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Returns the collection of attributes associated with this document.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = document_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = document_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "creationId": {
+      "id": "Document_creationId",
+      "title": "Document.creationId Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Returns the creation ID of this document. When a new document is created, Fusion assigns it a creation ID that will remain constant for the life of the document. The ID that is assigned is unique. However, it's possible that more than one document can have the same ID. This happens in the case where a document is copied. In this case a new document is created but an existing document is copied. It's only when a new document is created that a creation ID is generated and assigned. Using this ID can be useful in cases where the save of a new document is started and you can use this ID to match the completion of the save operation on the cloud to the original document.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = document_var.creationId",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = document_var->creationId();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2022"
+    },
+    "dataFile": {
+      "id": "Document_dataFile",
+      "title": "Document.dataFile Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Gets the DataFile that represents this document in A360.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = document_var.dataFile",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = document_var->dataFile();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "documentReferences": {
+      "id": "Document_documentReferences",
+      "title": "Document.documentReferences Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Returns a collection containing the documents directly referenced by this document.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = document_var.documentReferences",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = document_var->documentReferences();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2017"
+    },
+    "isActive": {
+      "id": "Document_isActive",
+      "title": "Document.isActive Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Gets if this document is the active document in the user interface.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = document_var.isActive",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = document_var->isActive();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isModified": {
+      "id": "Document_isModified",
+      "title": "Document.isModified Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Property that indicates if the document has been modified since it was last saved.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = document_var.isModified",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = document_var->isModified();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isSaved": {
+      "id": "Document_isSaved",
+      "title": "Document.isSaved Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Property that indicates if this document has been saved or not. The initial save of a document requires that the name and location be specified and requires the saveAs method to be used. If the document has been saved then the save method can be used to save changes made.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = document_var.isSaved",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = document_var->isSaved();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isUpToDate": {
+      "id": "Document_isUpToDate",
+      "title": "Document.isUpToDate Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Indicates if any external references in the assembly are out of date. This is the API equivalent to the \"Out of Date\" notification displayed in the Quick Access Toolbar.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = document_var.isUpToDate",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = document_var->isUpToDate();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2017"
+    },
+    "isValid": {
+      "id": "Document_isValid",
+      "title": "Document.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = document_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = document_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isVisible": {
+      "id": "Document_isVisible",
+      "title": "Document.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Gets if a currently open document is open as visible.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = document_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = document_var->isVisible();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "name": {
+      "id": "Document_name",
+      "title": "Document.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "This property gets and sets the name of the document. You can only set the name of a document before the document is saved for the first time. You can use the isSaved property to determine this. If the document has not been saved and the name is changed, the specified name will be the default name shown in the Save dialog, which the user can modify before saving the document. If the file has been saved, this property behaves as read-only. Setting the name will fail because the name is controlled by the DataFile associated with this document. However, you can edit the name of the DataFile, which you can obtain by using the dataFile property of the document.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = document_var.name\n\n# Set the value of the property.\ndocument_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = document_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = document_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "Document_objectType",
+      "title": "Document.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = document_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = document_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "parent": {
+      "id": "Document_parent",
+      "title": "Document.parent Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Returns the parent Application object.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = document_var.parent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = document_var->parent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "products": {
+      "id": "Document_products",
+      "title": "Document.products Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Returns the products associated with this document.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = document_var.products",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = document_var->products();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Generate Setup Sheets API Sample",
+          "description": "Demonstrates generating the setup sheets for an existing toolpath.."
+        },
+        {
+          "name": "Generate Toolpaths API Sample",
+          "description": "Demonstrates generating the toolpaths in the active document."
+        },
+        {
+          "name": "Post Toolpaths API Sample",
+          "description": "Demonstrates posting toolpaths in the active document."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "version": {
+      "id": "Document_version",
+      "title": "Document.version Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Document.h",
+      "description": "Returns the Fusion version this document was last saved with.",
+      "parent_class": "Document",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = document_var.version",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = document_var->version();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    }
+  }
+}

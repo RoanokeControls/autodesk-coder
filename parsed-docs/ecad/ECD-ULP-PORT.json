@@ -1,0 +1,47 @@
+{
+  "id": "ECD-ULP-PORT",
+  "title": "UL_PORT",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "border",
+      "type": "int (MODULE_BORDER_...)"
+    },
+    {
+      "name": "bus",
+      "type": "string (see note)"
+    },
+    {
+      "name": "direction",
+      "type": "int (PIN_DIRECTION_... (see note))"
+    },
+    {
+      "name": "name",
+      "type": "string (PORT_NAME_LENGTH)"
+    },
+    {
+      "name": "net",
+      "type": "string (see note)"
+    },
+    {
+      "name": "x, y",
+      "type": "int (connection point)"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "nets()",
+      "type": "UL_NET (see note)"
+    },
+    {
+      "name": "texts()",
+      "type": "UL_TEXT"
+    },
+    {
+      "name": "wires()",
+      "type": "UL_WIRE"
+    }
+  ],
+  "content": "# UL_PORT\n\n## Data members\n\n| | |\n| --- | --- |\n| border | int (MODULE_BORDER_...) |\n| bus | string (see note) |\n| direction | int (PIN_DIRECTION_... (see note)) |\n| name | string (PORT_NAME_LENGTH) |\n| net | string (see note) |\n| x, y | int (connection point) |\n\n## Loop members\n\n| | |\n| --- | --- |\n| nets() | UL_NET (see note) |\n| texts() | UL_TEXT |\n| wires() | UL_WIRE |\n\nSee also UL_MODULE, UL_MODULEINST, UL_PORTREF\n\n## Constants\n\n| | |\n| --- | --- |\n| MODULE_BORDER_BOTTOM | at bottom border of module |\n| MODULE_BORDER_RIGHT | at right border of module |\n| MODULE_BORDER_TOP | at top border of module |\n| MODULE_BORDER_LEFT | at left border of module |\n| PORT_NAME_LENGTH | max. recommended length of a port name (used in formatted output only) |\n\n## Note\n\nThe *direction* values are identical to the PIN_DIRECTION_... values (without PIN_DIRECTION_SUP).\n\nThe *bus* and the *net* data members return the name of the bus or net to which this port is connected to (only available in a UL_MODULEINST context). Additionally the *nets* loop member loops through all available nets of this connection.\n\n## Example\n\n```\nschematic(SCH) {\n SCH.modules(M) {\n M.ports(P) printf(\"Port: %s\\n\", P.name);\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

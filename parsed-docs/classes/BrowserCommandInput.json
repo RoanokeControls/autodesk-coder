@@ -1,0 +1,394 @@
+{
+  "id": "BrowserCommandInput",
+  "title": "BrowserCommandInput Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/BrowserCommandInput.h",
+  "description": "Browser command inputs behave as a browser where you can define HTML to be displayed within the area occupied by the command input.",
+  "parent_class": "CommandInput",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this Command input."
+    },
+    {
+      "name": "sendInfoToHTML",
+      "description": "Sends a string to the JavaScript associated with the loaded HTML."
+    }
+  ],
+  "properties": [
+    {
+      "name": "commandInputs",
+      "description": "Gets the CommandInputs class of the parent, which can be a Command, GroupCommandInput or TabCommandInput."
+    },
+    {
+      "name": "htmlFileURL",
+      "description": "Gets and sets the URL to the HTML file currently being displayed. This can be local or on the web."
+    },
+    {
+      "name": "id",
+      "description": "Gets the unique identifier for this input in the command's CommandInputs."
+    },
+    {
+      "name": "isEnabled",
+      "description": "Gets or sets if this input is currently enabled or disabled for user interaction.   Currently, the isEnabled property does not disable SelectionCommandInput objects but instead has the same effect as the SelectionCommandInput.hasFocus property."
+    },
+    {
+      "name": "isFullWidth",
+      "description": "Gets or sets if this input fills the entire width of the dialog. If true, the name is ignored and the input control will fill the entire width of the command dialog. The default value for this property in a new command input if false, or not to fill the width. This property does not apply to GroupCommandInputs or TabCommandInputs."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets or sets if this input will be visible to the user.   Setting a SelectionCommandInput to be invisible will clear any selections it currently has."
+    },
+    {
+      "name": "maximumHeight",
+      "description": "Gets and sets the maximum height of the browser within the command dialog, in pixels. As the user resizes the dialog, the area taken up by the browser will shrink and grow to fit within the defined space. It will never shrink to be less than the minimum height or expand to be larger than the maximum height. If the content displayed within the browser does not fit within the current area, a scroll bar will appear to allow the user to scroll to see the entire browser content. The default value of zero sets no maximum height, so the browser will expand to the maximum extent available."
+    },
+    {
+      "name": "minimumHeight",
+      "description": "Gets and sets the minimum height of the browser within the command dialog in pixels. As the user resizes the dialog, the area taken up by the browser will shrink and grow to fit within the defined space. It will never shrink to be less than the minimum height or expand to be larger than the maximum height. If the dialog can't fit the browser at the minimum size a scroll bar will appear for the dialog to allow the user to scroll to access all the inputs in the dialog."
+    },
+    {
+      "name": "name",
+      "description": "Gets the user visible name of this input."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentCommand",
+      "description": "Gets the parent Command."
+    },
+    {
+      "name": "parentCommandInput",
+      "description": "Gets the parent CommandInput if this commandInput is the child of a TabCommandInput or GroupCommandInput. Returns null if there is no parent."
+    },
+    {
+      "name": "toolClipFilename",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text."
+    },
+    {
+      "name": "tooltip",
+      "description": "Gets or sets the base tooltip string. This is always shown for commands. If the tooltip description and/or tool clip are also specified then the tooltip will progressively display more information as the user hovers the mouse over the control."
+    },
+    {
+      "name": "tooltipDescription",
+      "description": "Gets or sets additional text to display progressively along with the tooltip. The text for the description can contain some basic HTML formatting tags to format the tags. For example the br tag can be used to create multiple paragraphs. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text."
+    }
+  ],
+  "version": "Introduced in version July 2021",
+  "method_details": {
+    "classType": {
+      "id": "BrowserCommandInput_classType",
+      "title": "BrowserCommandInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "returnValue = adsk.core.BrowserCommandInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::BrowserCommandInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version July 2021"
+    },
+    "deleteMe": {
+      "id": "BrowserCommandInput_deleteMe",
+      "title": "BrowserCommandInput.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Deletes this Command input.",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "returnValue = browserCommandInput_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = browserCommandInput_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version July 2021"
+    },
+    "sendInfoToHTML": {
+      "id": "BrowserCommandInput_sendInfoToHTML",
+      "title": "BrowserCommandInput.sendInfoToHTML Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Sends a string to the JavaScript associated with the loaded HTML. Remarks",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "returnValue = browserCommandInput_var.sendInfoToHTML(action, data)",
+        "cpp": "#include \n\nreturnValue = browserCommandInput_var->sendInfoToHTML(action, data);"
+      },
+      "return_type": "boolean",
+      "return_description": "This API call is asynchronous and true is returned if the send was successful. Any response from the JavaScript response will be returned through the incomingFromHTML event using the data field of the provided HTMLEvent object where the action property is \"response\".",
+      "parameters": [
+        {
+          "name": "action",
+          "type": "string",
+          "description": "The \"action\" string to pass to the JavaScript associated with the HTML. This string can be anything but will typically be JSON formatted information."
+        },
+        {
+          "name": "data",
+          "type": "string",
+          "description": "The \"data\" string to pass to the JavaScript associated with the HTML. This string can be anything but will typically be JSON formatted information."
+        }
+      ],
+      "version": "Introduced in version July 2021"
+    }
+  },
+  "property_details": {
+    "commandInputs": {
+      "id": "BrowserCommandInput_commandInputs",
+      "title": "BrowserCommandInput.commandInputs Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Gets the CommandInputs class of the parent, which can be a Command, GroupCommandInput or TabCommandInput.",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = browserCommandInput_var.commandInputs",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = browserCommandInput_var->commandInputs();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "htmlFileURL": {
+      "id": "BrowserCommandInput_htmlFileURL",
+      "title": "BrowserCommandInput.htmlFileURL Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Gets and sets the URL to the HTML file currently being displayed. This can be local or on the web.",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = browserCommandInput_var.htmlFileURL\n\n# Set the value of the property.\nbrowserCommandInput_var.htmlFileURL = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = browserCommandInput_var->htmlFileURL();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = browserCommandInput_var->htmlFileURL(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "id": {
+      "id": "BrowserCommandInput_id",
+      "title": "BrowserCommandInput.id Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Gets the unique identifier for this input in the command's CommandInputs.",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = browserCommandInput_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = browserCommandInput_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "isEnabled": {
+      "id": "BrowserCommandInput_isEnabled",
+      "title": "BrowserCommandInput.isEnabled Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Gets or sets if this input is currently enabled or disabled for user interaction. Currently, the isEnabled property does not disable SelectionCommandInput objects but instead has the same effect as the SelectionCommandInput.hasFocus property.",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = browserCommandInput_var.isEnabled\n\n# Set the value of the property.\nbrowserCommandInput_var.isEnabled = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = browserCommandInput_var->isEnabled();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = browserCommandInput_var->isEnabled(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "isFullWidth": {
+      "id": "BrowserCommandInput_isFullWidth",
+      "title": "BrowserCommandInput.isFullWidth Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Gets or sets if this input fills the entire width of the dialog. If true, the name is ignored and the input control will fill the entire width of the command dialog. The default value for this property in a new command input if false, or not to fill the width. This property does not apply to GroupCommandInputs or TabCommandInputs.",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = browserCommandInput_var.isFullWidth\n\n# Set the value of the property.\nbrowserCommandInput_var.isFullWidth = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = browserCommandInput_var->isFullWidth();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = browserCommandInput_var->isFullWidth(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "isValid": {
+      "id": "BrowserCommandInput_isValid",
+      "title": "BrowserCommandInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = browserCommandInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = browserCommandInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "isVisible": {
+      "id": "BrowserCommandInput_isVisible",
+      "title": "BrowserCommandInput.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Gets or sets if this input will be visible to the user. Setting a SelectionCommandInput to be invisible will clear any selections it currently has.",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = browserCommandInput_var.isVisible\n\n# Set the value of the property.\nbrowserCommandInput_var.isVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = browserCommandInput_var->isVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = browserCommandInput_var->isVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "maximumHeight": {
+      "id": "BrowserCommandInput_maximumHeight",
+      "title": "BrowserCommandInput.maximumHeight Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Gets and sets the maximum height of the browser within the command dialog, in pixels. As the user resizes the dialog, the area taken up by the browser will shrink and grow to fit within the defined space. It will never shrink to be less than the minimum height or expand to be larger than the maximum height. If the content displayed within the browser does not fit within the current area, a scroll bar will appear to allow the user to scroll to see the entire browser content. The default value of zero sets no maximum height, so the browser will expand to the maximum extent available.",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = browserCommandInput_var.maximumHeight\n\n# Set the value of the property.\nbrowserCommandInput_var.maximumHeight = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = browserCommandInput_var->maximumHeight();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = browserCommandInput_var->maximumHeight(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "minimumHeight": {
+      "id": "BrowserCommandInput_minimumHeight",
+      "title": "BrowserCommandInput.minimumHeight Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Gets and sets the minimum height of the browser within the command dialog in pixels. As the user resizes the dialog, the area taken up by the browser will shrink and grow to fit within the defined space. It will never shrink to be less than the minimum height or expand to be larger than the maximum height. If the dialog can't fit the browser at the minimum size a scroll bar will appear for the dialog to allow the user to scroll to access all the inputs in the dialog.",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = browserCommandInput_var.minimumHeight\n\n# Set the value of the property.\nbrowserCommandInput_var.minimumHeight = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = browserCommandInput_var->minimumHeight();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = browserCommandInput_var->minimumHeight(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "name": {
+      "id": "BrowserCommandInput_name",
+      "title": "BrowserCommandInput.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Gets the user visible name of this input.",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = browserCommandInput_var.name",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = browserCommandInput_var->name();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "objectType": {
+      "id": "BrowserCommandInput_objectType",
+      "title": "BrowserCommandInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = browserCommandInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = browserCommandInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "parentCommand": {
+      "id": "BrowserCommandInput_parentCommand",
+      "title": "BrowserCommandInput.parentCommand Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Gets the parent Command.",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = browserCommandInput_var.parentCommand",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = browserCommandInput_var->parentCommand();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "parentCommandInput": {
+      "id": "BrowserCommandInput_parentCommandInput",
+      "title": "BrowserCommandInput.parentCommandInput Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Gets the parent CommandInput if this commandInput is the child of a TabCommandInput or GroupCommandInput. Returns null if there is no parent.",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = browserCommandInput_var.parentCommandInput",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = browserCommandInput_var->parentCommandInput();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "toolClipFilename": {
+      "id": "BrowserCommandInput_toolClipFilename",
+      "title": "BrowserCommandInput.toolClipFilename Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text.",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = browserCommandInput_var.toolClipFilename\n\n# Set the value of the property.\nbrowserCommandInput_var.toolClipFilename = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = browserCommandInput_var->toolClipFilename();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = browserCommandInput_var->toolClipFilename(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "tooltip": {
+      "id": "BrowserCommandInput_tooltip",
+      "title": "BrowserCommandInput.tooltip Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Gets or sets the base tooltip string. This is always shown for commands. If the tooltip description and/or tool clip are also specified then the tooltip will progressively display more information as the user hovers the mouse over the control.",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = browserCommandInput_var.tooltip\n\n# Set the value of the property.\nbrowserCommandInput_var.tooltip = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = browserCommandInput_var->tooltip();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = browserCommandInput_var->tooltip(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "tooltipDescription": {
+      "id": "BrowserCommandInput_tooltipDescription",
+      "title": "BrowserCommandInput.tooltipDescription Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/BrowserCommandInput.h",
+      "description": "Gets or sets additional text to display progressively along with the tooltip. The text for the description can contain some basic HTML formatting tags to format the tags. For example the br tag can be used to create multiple paragraphs. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text.",
+      "parent_class": "BrowserCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = browserCommandInput_var.tooltipDescription\n\n# Set the value of the property.\nbrowserCommandInput_var.tooltipDescription = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = browserCommandInput_var->tooltipDescription();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = browserCommandInput_var->tooltipDescription(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    }
+  }
+}

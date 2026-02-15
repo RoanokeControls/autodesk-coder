@@ -1,0 +1,12 @@
+{
+  "id": "scaleFeatures_add_Sample",
+  "title": "scaleFeatures.add",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the creation a scale feature.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_scaleFeatures_add(rootComp: adsk.fusion.Component):\n    body = _ui.selectEntity('Select a body', 'Bodies').entity\n    bodies = adsk.core.ObjectCollection.create()\n    bodies.add(body)\n    scalePoint: adsk.fusion.BRepVertex = _ui.selectEntity('Select a vertex as the scale origin.', 'Vertices').entity\n    scaleFactor = adsk.core.ValueInput.createByReal(0.5)\n\n    scaleFeatures = rootComp.features.scaleFeatures\n    input = scaleFeatures.createInput(bodies, scalePoint, scaleFactor)\n    scaleFeature = scaleFeatures.add(input)"
+  }
+}

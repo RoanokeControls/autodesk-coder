@@ -1,0 +1,653 @@
+{
+  "id": "OperationBase",
+  "title": "OperationBase Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/Operations/OperationBase.h",
+  "description": "Base class object representing all operations, folders, patterns and setups.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "copyAfter",
+      "description": "Creates a duplicate of the operation in the tree after the given operation. Throws an exception if a not allowed copy operation is made for example copying a operation out of a setup."
+    },
+    {
+      "name": "copyBefore",
+      "description": "Creates a duplicate of the operation in the tree before the given operation. Throws an exception if a not allowed copy operation is made for example copying a operation out of a setup."
+    },
+    {
+      "name": "copyInto",
+      "description": "Creates a duplicate of the operation into the given container. You can only copy into containers, such as setups or folders. Copied operation will be copied at the end of all operations already in the container. Throws an exception if a not allowed copy operation is made for example copying a setup into a setup."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the operation from the document. In case of a setup or folder, all containing child operations will be deleted as well. Note: Child classes may overwrite this function and throw an exception if the object cannot be deleted."
+    },
+    {
+      "name": "duplicate",
+      "description": "Creates a duplicate of the operation in the tree after the itself."
+    },
+    {
+      "name": "modifyUtility",
+      "description": "Get ModifyUtility for the current operation by given utility type."
+    },
+    {
+      "name": "moveAfter",
+      "description": "Move operation in tree after the given operation. Throws an exception if a not allowed move is made for example moving a operation out of a setup."
+    },
+    {
+      "name": "moveBefore",
+      "description": "Move operation in tree before the given operation. Throws an exception if a not allowed move is made for example moving a operation out of a setup."
+    },
+    {
+      "name": "moveInto",
+      "description": "Move operation in tree into the given container. This only works with setups, patterns and folders. Moved operation will be moved at the end of all operations already in the container. Throws an exception if a not allowed move is made for example moving a setup into a setup."
+    }
+  ],
+  "properties": [
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this object."
+    },
+    {
+      "name": "error",
+      "description": "Returns a message corresponding to any active error associated with the value of this parameter."
+    },
+    {
+      "name": "generatedDataCollection",
+      "description": "Get the generated data associated with a given operation base instance. The type of data depends on the strategy type and might not be available for all strategy types. The available types can be found in GeneratedData.cs"
+    },
+    {
+      "name": "hasError",
+      "description": "Gets if errors were encountered when generating the operation."
+    },
+    {
+      "name": "hasWarning",
+      "description": "Gets if problems were encountered when generating the operation."
+    },
+    {
+      "name": "isLightBulbOn",
+      "description": "Gets if this operation is currently visible in the graphics window. Use the isLightBulbOn to change if the eye icon beside the operation node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children so this property does not indicate if the operation is actually visible, just that it should be visible if all of its parent nodes are also visible. Use the isVisible property to determine if it's actually visible."
+    },
+    {
+      "name": "isOptional",
+      "description": "Gets and sets the \"Optional\" property value of the operation. Gets/sets true if the operation is optional."
+    },
+    {
+      "name": "isProtected",
+      "description": "Gets and sets the \"protected\" property value of the operation. Gets/sets true if the operation is protected."
+    },
+    {
+      "name": "isSelected",
+      "description": "Gets if this operation is selected in the 'Setups' browser."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets the \"Suppressed\" property value of the operation. Gets/sets true if the operation is suppressed."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets if this operation is currently visible in the graphics window. Use the isLightBulbOn to change if the eye icon beside the operation node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children. This property indicates the final result and whether this operation is actually visible or not."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name of the operation as seen in the browser.\u00a0This name is unique as compared to the names of all other operations in the document."
+    },
+    {
+      "name": "notes",
+      "description": "Gets and sets the notes of the operation."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "operationId",
+      "description": "Returns the id of the operation.\u00a0This id is unique as compared to the ids of all other operations in the document. This id will not change when changing the order or parent of the operation. This id will remain valid when the document is saved and reloaded."
+    },
+    {
+      "name": "parameters",
+      "description": "Gets the CAMParameters collection for this operation."
+    },
+    {
+      "name": "parentSetup",
+      "description": "Gets the Setup this operation belongs to."
+    },
+    {
+      "name": "strategy",
+      "description": "Gets the name of the strategy associated with this operation."
+    },
+    {
+      "name": "warning",
+      "description": "Returns a message corresponding to any active warning associated with the value of this parameter."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Manufacturing Workflow API Sample",
+      "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+    }
+  ],
+  "version": "Introduced in version January 2016",
+  "property_details": {
+    "attributes": {
+      "id": "OperationBase_attributes",
+      "title": "OperationBase.attributes Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Returns the collection of attributes associated with this object.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = operationBase_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2021"
+    },
+    "error": {
+      "id": "OperationBase_error",
+      "title": "OperationBase.error Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Returns a message corresponding to any active error associated with the value of this parameter.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.error",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = operationBase_var->error();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "generatedDataCollection": {
+      "id": "OperationBase_generatedDataCollection",
+      "title": "OperationBase.generatedDataCollection Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Get the generated data associated with a given operation base instance. The type of data depends on the strategy type and might not be available for all strategy types. The available types can be found in GeneratedData.cs",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.generatedDataCollection",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = operationBase_var->generatedDataCollection();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "hasError": {
+      "id": "OperationBase_hasError",
+      "title": "OperationBase.hasError Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Gets if errors were encountered when generating the operation.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.hasError",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = operationBase_var->hasError();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "hasWarning": {
+      "id": "OperationBase_hasWarning",
+      "title": "OperationBase.hasWarning Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Gets if problems were encountered when generating the operation.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.hasWarning",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = operationBase_var->hasWarning();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isLightBulbOn": {
+      "id": "OperationBase_isLightBulbOn",
+      "title": "OperationBase.isLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Gets if this operation is currently visible in the graphics window. Use the isLightBulbOn to change if the eye icon beside the operation node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children so this property does not indicate if the operation is actually visible, just that it should be visible if all of its parent nodes are also visible. Use the isVisible property to determine if it's actually visible.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.isLightBulbOn\n\n# Set the value of the property.\noperationBase_var.isLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = operationBase_var->isLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = operationBase_var->isLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "isOptional": {
+      "id": "OperationBase_isOptional",
+      "title": "OperationBase.isOptional Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Gets and sets the \"Optional\" property value of the operation. Gets/sets true if the operation is optional.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.isOptional\n\n# Set the value of the property.\noperationBase_var.isOptional = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = operationBase_var->isOptional();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = operationBase_var->isOptional(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isProtected": {
+      "id": "OperationBase_isProtected",
+      "title": "OperationBase.isProtected Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Gets and sets the \"protected\" property value of the operation. Gets/sets true if the operation is protected.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.isProtected\n\n# Set the value of the property.\noperationBase_var.isProtected = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = operationBase_var->isProtected();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = operationBase_var->isProtected(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isSelected": {
+      "id": "OperationBase_isSelected",
+      "title": "OperationBase.isSelected Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Gets if this operation is selected in the 'Setups' browser.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.isSelected",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = operationBase_var->isSelected();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2020"
+    },
+    "isSuppressed": {
+      "id": "OperationBase_isSuppressed",
+      "title": "OperationBase.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Gets and sets the \"Suppressed\" property value of the operation. Gets/sets true if the operation is suppressed.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.isSuppressed\n\n# Set the value of the property.\noperationBase_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = operationBase_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = operationBase_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isValid": {
+      "id": "OperationBase_isValid",
+      "title": "OperationBase.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = operationBase_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isVisible": {
+      "id": "OperationBase_isVisible",
+      "title": "OperationBase.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Gets if this operation is currently visible in the graphics window. Use the isLightBulbOn to change if the eye icon beside the operation node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children. This property indicates the final result and whether this operation is actually visible or not.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = operationBase_var->isVisible();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "name": {
+      "id": "OperationBase_name",
+      "title": "OperationBase.name Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Gets and sets the name of the operation as seen in the browser.\u00a0This name is unique as compared to the names of all other operations in the document.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.name\n\n# Set the value of the property.\noperationBase_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = operationBase_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = operationBase_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "notes": {
+      "id": "OperationBase_notes",
+      "title": "OperationBase.notes Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Gets and sets the notes of the operation.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.notes\n\n# Set the value of the property.\noperationBase_var.notes = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = operationBase_var->notes();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = operationBase_var->notes(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2020"
+    },
+    "objectType": {
+      "id": "OperationBase_objectType",
+      "title": "OperationBase.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = operationBase_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "operationId": {
+      "id": "OperationBase_operationId",
+      "title": "OperationBase.operationId Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Returns the id of the operation.\u00a0This id is unique as compared to the ids of all other operations in the document. This id will not change when changing the order or parent of the operation. This id will remain valid when the document is saved and reloaded.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.operationId",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = operationBase_var->operationId();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2020"
+    },
+    "parameters": {
+      "id": "OperationBase_parameters",
+      "title": "OperationBase.parameters Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Gets the CAMParameters collection for this operation.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.parameters",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = operationBase_var->parameters();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "parentSetup": {
+      "id": "OperationBase_parentSetup",
+      "title": "OperationBase.parentSetup Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Gets the Setup this operation belongs to.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.parentSetup",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = operationBase_var->parentSetup();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "strategy": {
+      "id": "OperationBase_strategy",
+      "title": "OperationBase.strategy Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Gets the name of the strategy associated with this operation.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.strategy",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = operationBase_var->strategy();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "warning": {
+      "id": "OperationBase_warning",
+      "title": "OperationBase.warning Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Returns a message corresponding to any active warning associated with the value of this parameter.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = operationBase_var.warning",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = operationBase_var->warning();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "OperationBase_classType",
+      "title": "OperationBase.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "returnValue = adsk.cam.OperationBase.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::OperationBase::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2016"
+    },
+    "copyAfter": {
+      "id": "OperationBase_copyAfter",
+      "title": "OperationBase.copyAfter Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Creates a duplicate of the operation in the tree after the given operation. Throws an exception if a not allowed copy operation is made for example copying a operation out of a setup.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "returnValue = operationBase_var.copyAfter(operation)",
+        "cpp": "#include \n\nreturnValue = operationBase_var->copyAfter(operation);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if copy command was successful.",
+      "parameters": [
+        {
+          "name": "operation",
+          "type": "OperationBase",
+          "description": "Operation to copy targeted operation after."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "copyBefore": {
+      "id": "OperationBase_copyBefore",
+      "title": "OperationBase.copyBefore Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Creates a duplicate of the operation in the tree before the given operation. Throws an exception if a not allowed copy operation is made for example copying a operation out of a setup.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "returnValue = operationBase_var.copyBefore(operation)",
+        "cpp": "#include \n\nreturnValue = operationBase_var->copyBefore(operation);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if copy command was successful.",
+      "parameters": [
+        {
+          "name": "operation",
+          "type": "OperationBase",
+          "description": "Operation to copy targeted operation before."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "copyInto": {
+      "id": "OperationBase_copyInto",
+      "title": "OperationBase.copyInto Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Creates a duplicate of the operation into the given container. You can only copy into containers, such as setups or folders. Copied operation will be copied at the end of all operations already in the container. Throws an exception if a not allowed copy operation is made for example copying a setup into a setup.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "returnValue = operationBase_var.copyInto(container)",
+        "cpp": "#include \n\nreturnValue = operationBase_var->copyInto(container);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if copy command was successful.",
+      "parameters": [
+        {
+          "name": "container",
+          "type": "OperationBase",
+          "description": "Container to copy targeted operation into."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "deleteMe": {
+      "id": "OperationBase_deleteMe",
+      "title": "OperationBase.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Deletes the operation from the document. In case of a setup or folder, all containing child operations will be deleted as well. Note: Child classes may overwrite this function and throw an exception if the object cannot be deleted.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "returnValue = operationBase_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = operationBase_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version May 2023"
+    },
+    "duplicate": {
+      "id": "OperationBase_duplicate",
+      "title": "OperationBase.duplicate Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Creates a duplicate of the operation in the tree after the itself.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "returnValue = operationBase_var.duplicate()",
+        "cpp": "#include \n\nreturnValue = operationBase_var->duplicate();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if duplicate command was successful.",
+      "version": "Introduced in version May 2024"
+    },
+    "modifyUtility": {
+      "id": "OperationBase_modifyUtility",
+      "title": "OperationBase.modifyUtility Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Get ModifyUtility for the current operation by given utility type.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "returnValue = operationBase_var.modifyUtility(utility)",
+        "cpp": "#include \n\nreturnValue = operationBase_var->modifyUtility(utility);"
+      },
+      "return_type": "ModifyUtility",
+      "return_description": "Returns ModifyUtility for specific type or null if the type is not compatible with the operation.",
+      "parameters": [
+        {
+          "name": "utility",
+          "type": "ModifyUtilityTypes",
+          "description": "Defines the specific ModifyUtility."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    },
+    "moveAfter": {
+      "id": "OperationBase_moveAfter",
+      "title": "OperationBase.moveAfter Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Move operation in tree after the given operation. Throws an exception if a not allowed move is made for example moving a operation out of a setup.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "returnValue = operationBase_var.moveAfter(operation)",
+        "cpp": "#include \n\nreturnValue = operationBase_var->moveAfter(operation);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if move operation was successful.",
+      "parameters": [
+        {
+          "name": "operation",
+          "type": "OperationBase",
+          "description": "Operation to move targeted operation after."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "moveBefore": {
+      "id": "OperationBase_moveBefore",
+      "title": "OperationBase.moveBefore Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Move operation in tree before the given operation. Throws an exception if a not allowed move is made for example moving a operation out of a setup.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "returnValue = operationBase_var.moveBefore(operation)",
+        "cpp": "#include \n\nreturnValue = operationBase_var->moveBefore(operation);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if move operation was successful.",
+      "parameters": [
+        {
+          "name": "operation",
+          "type": "OperationBase",
+          "description": "Operation to move targeted operation before."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "moveInto": {
+      "id": "OperationBase_moveInto",
+      "title": "OperationBase.moveInto Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Operations/OperationBase.h",
+      "description": "Move operation in tree into the given container. This only works with setups, patterns and folders. Moved operation will be moved at the end of all operations already in the container. Throws an exception if a not allowed move is made for example moving a setup into a setup.",
+      "parent_class": "OperationBase",
+      "syntax": {
+        "python": "returnValue = operationBase_var.moveInto(container)",
+        "cpp": "#include \n\nreturnValue = operationBase_var->moveInto(container);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if move operation was successful.",
+      "parameters": [
+        {
+          "name": "container",
+          "type": "OperationBase",
+          "description": "Container to move targeted operation into."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    }
+  }
+}

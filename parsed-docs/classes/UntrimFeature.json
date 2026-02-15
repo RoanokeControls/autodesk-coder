@@ -1,0 +1,569 @@
+{
+  "id": "UntrimFeature",
+  "title": "UntrimFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/UntrimFeature.h",
+  "description": "Object that represents an existing Untrim feature in a design.",
+  "parent_class": "Feature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    },
+    {
+      "name": "redefineLoops",
+      "description": "Set the loops to be removed."
+    },
+    {
+      "name": "redefineLoopsFromFaces",
+      "description": "Set the loops to be removed from a set of faces."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "extensionDistance",
+      "description": "Gets the ModelParameter that defines the extension distance used to extend external boundaries. This can return null in the case where only internal boundaries have been removed. The value can be edited by using the properties of the returned ModelParameter object."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "facesToUntrim",
+      "description": "Gets the face objects to untrim. Returns null/None in the case where loops are specified instead of faces."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "loopsToUntrim",
+      "description": "Gets the loop objects to untrim. Returns null/None in the case where faces are specified instead of loops"
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    },
+    {
+      "name": "untrimLoopType",
+      "description": "Gets the loop type that was untrimmed. To change the trim type, use one of the redefine methods."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Untrim Feature API Sample",
+      "description": "Demonstrates creating a new untrim feature."
+    }
+  ],
+  "version": "Introduced in version January 2021",
+  "property_details": {
+    "assemblyContext": {
+      "id": "UntrimFeature_assemblyContext",
+      "title": "UntrimFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = untrimFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "attributes": {
+      "id": "UntrimFeature_attributes",
+      "title": "UntrimFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = untrimFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "baseFeature": {
+      "id": "UntrimFeature_baseFeature",
+      "title": "UntrimFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = untrimFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "bodies": {
+      "id": "UntrimFeature_bodies",
+      "title": "UntrimFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = untrimFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "entityToken": {
+      "id": "UntrimFeature_entityToken",
+      "title": "UntrimFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = untrimFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "errorOrWarningMessage": {
+      "id": "UntrimFeature_errorOrWarningMessage",
+      "title": "UntrimFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = untrimFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "extensionDistance": {
+      "id": "UntrimFeature_extensionDistance",
+      "title": "UntrimFeature.extensionDistance Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Gets the ModelParameter that defines the extension distance used to extend external boundaries. This can return null in the case where only internal boundaries have been removed. The value can be edited by using the properties of the returned ModelParameter object.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.extensionDistance",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = untrimFeature_var->extensionDistance();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "faces": {
+      "id": "UntrimFeature_faces",
+      "title": "UntrimFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = untrimFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "facesToUntrim": {
+      "id": "UntrimFeature_facesToUntrim",
+      "title": "UntrimFeature.facesToUntrim Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Gets the face objects to untrim. Returns null/None in the case where loops are specified instead of faces.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.facesToUntrim",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = untrimFeature_var->facesToUntrim();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "healthState": {
+      "id": "UntrimFeature_healthState",
+      "title": "UntrimFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = untrimFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "isParametric": {
+      "id": "UntrimFeature_isParametric",
+      "title": "UntrimFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = untrimFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "isSuppressed": {
+      "id": "UntrimFeature_isSuppressed",
+      "title": "UntrimFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.isSuppressed\n\n# Set the value of the property.\nuntrimFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = untrimFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = untrimFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "isValid": {
+      "id": "UntrimFeature_isValid",
+      "title": "UntrimFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = untrimFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "linkedFeatures": {
+      "id": "UntrimFeature_linkedFeatures",
+      "title": "UntrimFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = untrimFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "loopsToUntrim": {
+      "id": "UntrimFeature_loopsToUntrim",
+      "title": "UntrimFeature.loopsToUntrim Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Gets the loop objects to untrim. Returns null/None in the case where faces are specified instead of loops",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.loopsToUntrim",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = untrimFeature_var->loopsToUntrim();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "name": {
+      "id": "UntrimFeature_name",
+      "title": "UntrimFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.name\n\n# Set the value of the property.\nuntrimFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = untrimFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = untrimFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "nativeObject": {
+      "id": "UntrimFeature_nativeObject",
+      "title": "UntrimFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = untrimFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "objectType": {
+      "id": "UntrimFeature_objectType",
+      "title": "UntrimFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = untrimFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "parentComponent": {
+      "id": "UntrimFeature_parentComponent",
+      "title": "UntrimFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = untrimFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "timelineObject": {
+      "id": "UntrimFeature_timelineObject",
+      "title": "UntrimFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = untrimFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "untrimLoopType": {
+      "id": "UntrimFeature_untrimLoopType",
+      "title": "UntrimFeature.untrimLoopType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Gets the loop type that was untrimmed. To change the trim type, use one of the redefine methods.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeature_var.untrimLoopType",
+        "cpp": "#include \n\n// Get the value of the property.\nUntrimLoopTypes propertyValue = untrimFeature_var->untrimLoopType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "UntrimFeature_classType",
+      "title": "UntrimFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.UntrimFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::UntrimFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2021"
+    },
+    "createForAssemblyContext": {
+      "id": "UntrimFeature_createForAssemblyContext",
+      "title": "UntrimFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "returnValue = untrimFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = untrimFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "UntrimFeature",
+      "return_description": "Returns the proxy object or null if this is not the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version January 2021"
+    },
+    "deleteMe": {
+      "id": "UntrimFeature_deleteMe",
+      "title": "UntrimFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "returnValue = untrimFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = untrimFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version January 2021"
+    },
+    "dissolve": {
+      "id": "UntrimFeature_dissolve",
+      "title": "UntrimFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "returnValue = untrimFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = untrimFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version January 2021"
+    },
+    "redefineLoops": {
+      "id": "UntrimFeature_redefineLoops",
+      "title": "UntrimFeature.redefineLoops Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Set the loops to be removed.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "returnValue = untrimFeature_var.redefineLoops(loops)",
+        "cpp": "#include \n\nreturnValue = untrimFeature_var->redefineLoops(loops);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns whether the operation was successful",
+      "parameters": [
+        {
+          "name": "loops",
+          "type": "BRepLoop[]",
+          "description": "Input the entities that define loops to remove. Only loops that do not have a connected face can be removed (the edges in the loop have a single face) The array can only contain loops from surface bodies, (the isSolid property of the BRepBody returns false)."
+        }
+      ],
+      "version": "Introduced in version January 2021"
+    },
+    "redefineLoopsFromFaces": {
+      "id": "UntrimFeature_redefineLoopsFromFaces",
+      "title": "UntrimFeature.redefineLoopsFromFaces Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeature.h",
+      "description": "Set the loops to be removed from a set of faces.",
+      "parent_class": "UntrimFeature",
+      "syntax": {
+        "python": "returnValue = untrimFeature_var.redefineLoopsFromFaces(faces, untrimLoopType)",
+        "cpp": "#include \n\nreturnValue = untrimFeature_var->redefineLoopsFromFaces(faces, untrimLoopType);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns whether the operation was successful",
+      "parameters": [
+        {
+          "name": "faces",
+          "type": "BRepFace[]",
+          "description": "An array of BRepFace objects that will have the loops of the specified types removed. Only loops that do not have a connected face can be removed (the edges in the loop have a single face). The array can only contain faces from surface bodies, (the isSolid property of the BRepBody returns false)."
+        },
+        {
+          "name": "untrimLoopType",
+          "type": "UntrimLoopTypes",
+          "description": "The loop type to be untrimmed (AllLoopUntrimType, InternalLoopUntrimType, or ExternalLoopUntrimType)."
+        }
+      ],
+      "version": "Introduced in version January 2021"
+    }
+  }
+}

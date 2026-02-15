@@ -1,0 +1,581 @@
+{
+  "id": "Plane",
+  "title": "Plane Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Geometry/Plane.h",
+  "description": "Transient plane. A transient plane is not displayed or saved in a document. Transient planes are used as a wrapper to work with raw plane information. A transient plane has no boundaries or size, but is infinite and is represented by a position, a normal, and an orientation in space. They are created statically using the create method of the Plane class.",
+  "parent_class": "Surface",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "copy",
+      "description": "Creates and returns an independent copy of this Plane object."
+    },
+    {
+      "name": "create",
+      "description": "Creates a transient plane object by specifying an origin and a normal direction."
+    },
+    {
+      "name": "createUsingDirections",
+      "description": "Creates a transient plane object by specifying an origin along with U and V directions."
+    },
+    {
+      "name": "intersectWithCurve",
+      "description": "Intersect this plane with a curve to get the intersection point(s)."
+    },
+    {
+      "name": "intersectWithLine",
+      "description": "Creates a 3D point at the intersection of this plane and a line."
+    },
+    {
+      "name": "intersectWithPlane",
+      "description": "Creates an infinite line at the intersection of this plane with another plane."
+    },
+    {
+      "name": "intersectWithSurface",
+      "description": "Intersect this plane with a surface to get the intersection point(s)."
+    },
+    {
+      "name": "isCoPlanarTo",
+      "description": "Checks if this plane is coplanar with another plane."
+    },
+    {
+      "name": "isParallelToLine",
+      "description": "Checks if this plane is parallel to a line."
+    },
+    {
+      "name": "isParallelToPlane",
+      "description": "Checks if this plane is parallel to another plane."
+    },
+    {
+      "name": "isPerpendicularToLine",
+      "description": "Checks if this plane is perpendicular to a line."
+    },
+    {
+      "name": "isPerpendicularToPlane",
+      "description": "Checks if this plane is perpendicular to another plane."
+    },
+    {
+      "name": "setUVDirections",
+      "description": "Sets the U and V directions of the plane."
+    },
+    {
+      "name": "transformBy",
+      "description": "Updates this surface by transforming it with a given input matrix."
+    }
+  ],
+  "properties": [
+    {
+      "name": "evaluator",
+      "description": "Returns the surface evaluator."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "normal",
+      "description": "Gets and sets the normal of the plane."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "origin",
+      "description": "Gets and sets the origin point of the plane."
+    },
+    {
+      "name": "surfaceType",
+      "description": "Returns the surface type."
+    },
+    {
+      "name": "uDirection",
+      "description": "Gets the U Direction of the plane."
+    },
+    {
+      "name": "vDirection",
+      "description": "Gets the V Direction of the plane."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "classType": {
+      "id": "Plane_classType",
+      "title": "Plane.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "returnValue = adsk.core.Plane.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Plane::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "copy": {
+      "id": "Plane_copy",
+      "title": "Plane.copy Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Creates and returns an independent copy of this Plane object.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "returnValue = plane_var.copy()",
+        "cpp": "#include \n\nreturnValue = plane_var->copy();"
+      },
+      "return_type": "Plane",
+      "return_description": "Returns a new Plane object that is a copy of this Plane object.",
+      "version": "Introduced in version August 2014"
+    },
+    "create": {
+      "id": "Plane_create",
+      "title": "Plane.create Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Creates a transient plane object by specifying an origin and a normal direction.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "returnValue = adsk.core.Plane.create(origin, normal)",
+        "cpp": "#include \n\nreturnValue = adsk::core::Plane::create(origin, normal);"
+      },
+      "return_type": "Plane",
+      "return_description": "Returns the new plane object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "origin",
+          "type": "Point3D",
+          "description": "The origin point of the plane."
+        },
+        {
+          "name": "normal",
+          "type": "Vector3D",
+          "description": "The normal direction of the plane."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "createUsingDirections": {
+      "id": "Plane_createUsingDirections",
+      "title": "Plane.createUsingDirections Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Creates a transient plane object by specifying an origin along with U and V directions.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "returnValue = adsk.core.Plane.createUsingDirections(origin, uDirection, vDirection)",
+        "cpp": "#include \n\nreturnValue = adsk::core::Plane::createUsingDirections(origin, uDirection, vDirection);"
+      },
+      "return_type": "Plane",
+      "return_description": "Returns the new plane object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "origin",
+          "type": "Point3D",
+          "description": "The origin point of the plane."
+        },
+        {
+          "name": "uDirection",
+          "type": "Vector3D",
+          "description": "The U direction for the plane."
+        },
+        {
+          "name": "vDirection",
+          "type": "Vector3D",
+          "description": "The V direction for the plane."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "intersectWithCurve": {
+      "id": "Plane_intersectWithCurve",
+      "title": "Plane.intersectWithCurve Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Intersect this plane with a curve to get the intersection point(s).",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "returnValue = plane_var.intersectWithCurve(curve)",
+        "cpp": "#include \n\nreturnValue = plane_var->intersectWithCurve(curve);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "Returns a collection of the intersection points.",
+      "parameters": [
+        {
+          "name": "curve",
+          "type": "Curve3D",
+          "description": "The intersecting curve. The curve can be a Line3D, InfininteLine3D, Circle3D, Arc3D, EllipticalArc3D, Ellipse3D, or NurbsCurve3D."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "intersectWithLine": {
+      "id": "Plane_intersectWithLine",
+      "title": "Plane.intersectWithLine Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Creates a 3D point at the intersection of this plane and a line.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "returnValue = plane_var.intersectWithLine(line)",
+        "cpp": "#include \n\nreturnValue = plane_var->intersectWithLine(line);"
+      },
+      "return_type": "Point3D",
+      "return_description": "Returns a Point3D object or null if the plane and line do not intersect (are parallel).",
+      "parameters": [
+        {
+          "name": "line",
+          "type": "InfiniteLine3D",
+          "description": "The line to intersect with."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "intersectWithPlane": {
+      "id": "Plane_intersectWithPlane",
+      "title": "Plane.intersectWithPlane Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Creates an infinite line at the intersection of this plane with another plane.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "returnValue = plane_var.intersectWithPlane(plane)",
+        "cpp": "#include \n\nreturnValue = plane_var->intersectWithPlane(plane);"
+      },
+      "return_type": "InfiniteLine3D",
+      "return_description": "Returns an InfiniteLine3D object or null if the planes do not intersect (are parallel).",
+      "parameters": [
+        {
+          "name": "plane",
+          "type": "Plane",
+          "description": "The plane to intersect with."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "intersectWithSurface": {
+      "id": "Plane_intersectWithSurface",
+      "title": "Plane.intersectWithSurface Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Intersect this plane with a surface to get the intersection point(s).",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "returnValue = plane_var.intersectWithSurface(surface)",
+        "cpp": "#include \n\nreturnValue = plane_var->intersectWithSurface(surface);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "Returns a collection of the intersection points.",
+      "parameters": [
+        {
+          "name": "surface",
+          "type": "Surface",
+          "description": "The intersecting surface. The surface can be a Plane, Cone, Cylinder, EllipticalCone, EllipticalCylinder, Sphere, Torus, or a NurbsSurface."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isCoPlanarTo": {
+      "id": "Plane_isCoPlanarTo",
+      "title": "Plane.isCoPlanarTo Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Checks if this plane is coplanar with another plane.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "returnValue = plane_var.isCoPlanarTo(plane)",
+        "cpp": "#include \n\nreturnValue = plane_var->isCoPlanarTo(plane);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the planes are coplanar.",
+      "parameters": [
+        {
+          "name": "plane",
+          "type": "Plane",
+          "description": "The plane to compare with for co-planarity."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isParallelToLine": {
+      "id": "Plane_isParallelToLine",
+      "title": "Plane.isParallelToLine Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Checks if this plane is parallel to a line.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "returnValue = plane_var.isParallelToLine(line)",
+        "cpp": "#include \n\nreturnValue = plane_var->isParallelToLine(line);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the plane and line are parallel.",
+      "parameters": [
+        {
+          "name": "line",
+          "type": "Line3D",
+          "description": "The line to compare with for parallelism."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isParallelToPlane": {
+      "id": "Plane_isParallelToPlane",
+      "title": "Plane.isParallelToPlane Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Checks if this plane is parallel to another plane.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "returnValue = plane_var.isParallelToPlane(plane)",
+        "cpp": "#include \n\nreturnValue = plane_var->isParallelToPlane(plane);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the planes are parallel.",
+      "parameters": [
+        {
+          "name": "plane",
+          "type": "Plane",
+          "description": "The plane to compare with for parallelism."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isPerpendicularToLine": {
+      "id": "Plane_isPerpendicularToLine",
+      "title": "Plane.isPerpendicularToLine Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Checks if this plane is perpendicular to a line.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "returnValue = plane_var.isPerpendicularToLine(line)",
+        "cpp": "#include \n\nreturnValue = plane_var->isPerpendicularToLine(line);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the plane and line are perpendicular.",
+      "parameters": [
+        {
+          "name": "line",
+          "type": "Line3D",
+          "description": "The line to compare with for perpendicularity."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isPerpendicularToPlane": {
+      "id": "Plane_isPerpendicularToPlane",
+      "title": "Plane.isPerpendicularToPlane Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Checks if this plane is perpendicular to another plane.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "returnValue = plane_var.isPerpendicularToPlane(plane)",
+        "cpp": "#include \n\nreturnValue = plane_var->isPerpendicularToPlane(plane);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the planes are perpendicular.",
+      "parameters": [
+        {
+          "name": "plane",
+          "type": "Plane",
+          "description": "The plane to compare with for perpendicularity."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setUVDirections": {
+      "id": "Plane_setUVDirections",
+      "title": "Plane.setUVDirections Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Sets the U and V directions of the plane.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "returnValue = plane_var.setUVDirections(uDirection, vDirection)",
+        "cpp": "#include \n\nreturnValue = plane_var->setUVDirections(uDirection, vDirection);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "uDirection",
+          "type": "Vector3D",
+          "description": "The U direction for the plane."
+        },
+        {
+          "name": "vDirection",
+          "type": "Vector3D",
+          "description": "The V direction for the plane."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "transformBy": {
+      "id": "Plane_transformBy",
+      "title": "Plane.transformBy Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Updates this surface by transforming it with a given input matrix.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "returnValue = plane_var.transformBy(matrix)",
+        "cpp": "#include \n\nreturnValue = plane_var->transformBy(matrix);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the transform was successful.",
+      "parameters": [
+        {
+          "name": "matrix",
+          "type": "Matrix3D",
+          "description": "A 3D matrix that defines the transform to apply to the surface."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "evaluator": {
+      "id": "Plane_evaluator",
+      "title": "Plane.evaluator Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Returns the surface evaluator.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plane_var.evaluator",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = plane_var->evaluator();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "Plane_isValid",
+      "title": "Plane.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plane_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = plane_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "normal": {
+      "id": "Plane_normal",
+      "title": "Plane.normal Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Gets and sets the normal of the plane.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plane_var.normal\n\n# Set the value of the property.\nplane_var.normal = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = plane_var->normal();\n\n// Set the value of the property, where value_var is a Vector3D.\nbool returnValue = plane_var->normal(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "Plane_objectType",
+      "title": "Plane.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plane_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = plane_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "origin": {
+      "id": "Plane_origin",
+      "title": "Plane.origin Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Gets and sets the origin point of the plane.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plane_var.origin\n\n# Set the value of the property.\nplane_var.origin = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = plane_var->origin();\n\n// Set the value of the property, where value_var is a Point3D.\nbool returnValue = plane_var->origin(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "surfaceType": {
+      "id": "Plane_surfaceType",
+      "title": "Plane.surfaceType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Returns the surface type.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plane_var.surfaceType",
+        "cpp": "#include \n\n// Get the value of the property.\nSurfaceTypes propertyValue = plane_var->surfaceType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "uDirection": {
+      "id": "Plane_uDirection",
+      "title": "Plane.uDirection Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Gets the U Direction of the plane.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plane_var.uDirection",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = plane_var->uDirection();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "vDirection": {
+      "id": "Plane_vDirection",
+      "title": "Plane.vDirection Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/Plane.h",
+      "description": "Gets the V Direction of the plane.",
+      "parent_class": "Plane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = plane_var.vDirection",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = plane_var->vDirection();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

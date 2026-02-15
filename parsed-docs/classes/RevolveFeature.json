@@ -1,0 +1,746 @@
+{
+  "id": "RevolveFeature",
+  "title": "RevolveFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/RevolveFeature.h",
+  "description": "Object that represents an existing revolve feature in a design.",
+  "parent_class": "Feature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    },
+    {
+      "name": "setAngleExtent",
+      "description": "Defines the extent of the revolution to be at a defined angle.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setOneSideToExtent",
+      "description": "Changes the extent of the revolve to be from the sketch plane to the specified \"to\" face.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setTwoSideAngleExtent",
+      "description": "Changes the extent of the revolve to be defined as a two sided angle extent.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setTwoSidesToExtent",
+      "description": "Changes the extent of the revolve to be defined as a two sided to extent.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "axis",
+      "description": "Gets and sets the entity used to define the axis of revolution. The axis can be a sketch line, construction axis, linear edge or a face that defines an axis (cylinder, cone, torus, etc.). If it is not in the same plane as the profile, it is projected onto the profile plane.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "endFaces",
+      "description": "Property that returns the set of faces that cap the end of the revolve opposite the start faces. In the case where there aren't any start faces, this property will return null."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "extentDefinition",
+      "description": "Gets the definition object that is defining the extent of the revolve. Modifying the definition object will cause the revolve to recompute. Various types of objects can be returned depending on the type of extent currently defined for the revolve. This property returns nothing in the case where the feature is non-parametric."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isProjectAxis",
+      "description": "Specifies if the axis should be projected on the same plane as the profile sketch plane or not.   Setting this to true will use a projected axis, while setting it to false will keep it in its original location. This is initialized to false so the selected axis will be used in the feature."
+    },
+    {
+      "name": "isSolid",
+      "description": "Indicates if this feature was initially created as a solid or a surface."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "operation",
+      "description": "Gets and sets the type of operation performed by the revolve.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "participantBodies",
+      "description": "Gets and sets the list of bodies that will participate in the feature when the operation is a cut or intersection.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "profile",
+      "description": "Gets and sets the profiles or planar faces used to define the shape of the revolve. This property can return or be set with a single Profile, a single planar face, or an ObjectCollection consisting of multiple profiles and planar faces. When an ObjectCollection is used all of the profiles and faces must be co-planar.   When setting this property of a surface (non-solid) extrusion, you can use the createOpenProfile and createBRepEdgeProfile methods of the Component object to create an open profile.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)   This property returns null in the case where the feature is non-parametric."
+    },
+    {
+      "name": "sideFaces",
+      "description": "Property that returns all of the faces created around the perimeter of the feature."
+    },
+    {
+      "name": "startFaces",
+      "description": "Property that returns the set of faces that cap one end of the revolve and are coincident with the sketch plane. In the case of a symmetric revolve these faces are the ones on the positive normal side of the sketch plane. In the case where there aren't any start faces, this property will return null."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "property_details": {
+    "assemblyContext": {
+      "id": "RevolveFeature_assemblyContext",
+      "title": "RevolveFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = revolveFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "attributes": {
+      "id": "RevolveFeature_attributes",
+      "title": "RevolveFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = revolveFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "axis": {
+      "id": "RevolveFeature_axis",
+      "title": "RevolveFeature.axis Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Gets and sets the entity used to define the axis of revolution. The axis can be a sketch line, construction axis, linear edge or a face that defines an axis (cylinder, cone, torus, etc.). If it is not in the same plane as the profile, it is projected onto the profile plane. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.axis\n\n# Set the value of the property.\nrevolveFeature_var.axis = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = revolveFeature_var->axis();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = revolveFeature_var->axis(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "baseFeature": {
+      "id": "RevolveFeature_baseFeature",
+      "title": "RevolveFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = revolveFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "bodies": {
+      "id": "RevolveFeature_bodies",
+      "title": "RevolveFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = revolveFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "endFaces": {
+      "id": "RevolveFeature_endFaces",
+      "title": "RevolveFeature.endFaces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Property that returns the set of faces that cap the end of the revolve opposite the start faces. In the case where there aren't any start faces, this property will return null.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.endFaces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = revolveFeature_var->endFaces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "entityToken": {
+      "id": "RevolveFeature_entityToken",
+      "title": "RevolveFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = revolveFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "errorOrWarningMessage": {
+      "id": "RevolveFeature_errorOrWarningMessage",
+      "title": "RevolveFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = revolveFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "extentDefinition": {
+      "id": "RevolveFeature_extentDefinition",
+      "title": "RevolveFeature.extentDefinition Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Gets the definition object that is defining the extent of the revolve. Modifying the definition object will cause the revolve to recompute. Various types of objects can be returned depending on the type of extent currently defined for the revolve. This property returns nothing in the case where the feature is non-parametric.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.extentDefinition",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = revolveFeature_var->extentDefinition();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "faces": {
+      "id": "RevolveFeature_faces",
+      "title": "RevolveFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = revolveFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "healthState": {
+      "id": "RevolveFeature_healthState",
+      "title": "RevolveFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = revolveFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "isParametric": {
+      "id": "RevolveFeature_isParametric",
+      "title": "RevolveFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = revolveFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isProjectAxis": {
+      "id": "RevolveFeature_isProjectAxis",
+      "title": "RevolveFeature.isProjectAxis Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Specifies if the axis should be projected on the same plane as the profile sketch plane or not. Setting this to true will use a projected axis, while setting it to false will keep it in its original location. This is initialized to false so the selected axis will be used in the feature.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.isProjectAxis\n\n# Set the value of the property.\nrevolveFeature_var.isProjectAxis = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = revolveFeature_var->isProjectAxis();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = revolveFeature_var->isProjectAxis(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "isSolid": {
+      "id": "RevolveFeature_isSolid",
+      "title": "RevolveFeature.isSolid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Indicates if this feature was initially created as a solid or a surface.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.isSolid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = revolveFeature_var->isSolid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "isSuppressed": {
+      "id": "RevolveFeature_isSuppressed",
+      "title": "RevolveFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.isSuppressed\n\n# Set the value of the property.\nrevolveFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = revolveFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = revolveFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "RevolveFeature_isValid",
+      "title": "RevolveFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = revolveFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "linkedFeatures": {
+      "id": "RevolveFeature_linkedFeatures",
+      "title": "RevolveFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = revolveFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "name": {
+      "id": "RevolveFeature_name",
+      "title": "RevolveFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.name\n\n# Set the value of the property.\nrevolveFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = revolveFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = revolveFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "nativeObject": {
+      "id": "RevolveFeature_nativeObject",
+      "title": "RevolveFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = revolveFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "RevolveFeature_objectType",
+      "title": "RevolveFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = revolveFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "operation": {
+      "id": "RevolveFeature_operation",
+      "title": "RevolveFeature.operation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Gets and sets the type of operation performed by the revolve. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.operation\n\n# Set the value of the property.\nrevolveFeature_var.operation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureOperations propertyValue = revolveFeature_var->operation();\n\n// Set the value of the property, where value_var is a FeatureOperations.\nbool returnValue = revolveFeature_var->operation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "parentComponent": {
+      "id": "RevolveFeature_parentComponent",
+      "title": "RevolveFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = revolveFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "participantBodies": {
+      "id": "RevolveFeature_participantBodies",
+      "title": "RevolveFeature.participantBodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Gets and sets the list of bodies that will participate in the feature when the operation is a cut or intersection. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.participantBodies\n\n# Set the value of the property.\nrevolveFeature_var.participantBodies = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = revolveFeature_var->participantBodies();\n\n// Set the value of the property, where value_var is a BRepBody.\nbool returnValue = revolveFeature_var->participantBodies(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "profile": {
+      "id": "RevolveFeature_profile",
+      "title": "RevolveFeature.profile Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Gets and sets the profiles or planar faces used to define the shape of the revolve. This property can return or be set with a single Profile, a single planar face, or an ObjectCollection consisting of multiple profiles and planar faces. When an ObjectCollection is used all of the profiles and faces must be co-planar. When setting this property of a surface (non-solid) extrusion, you can use the createOpenProfile and createBRepEdgeProfile methods of the Component object to create an open profile. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True) This property returns null in the case where the feature is non-parametric.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.profile\n\n# Set the value of the property.\nrevolveFeature_var.profile = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = revolveFeature_var->profile();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = revolveFeature_var->profile(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "sideFaces": {
+      "id": "RevolveFeature_sideFaces",
+      "title": "RevolveFeature.sideFaces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Property that returns all of the faces created around the perimeter of the feature.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.sideFaces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = revolveFeature_var->sideFaces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "startFaces": {
+      "id": "RevolveFeature_startFaces",
+      "title": "RevolveFeature.startFaces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Property that returns the set of faces that cap one end of the revolve and are coincident with the sketch plane. In the case of a symmetric revolve these faces are the ones on the positive normal side of the sketch plane. In the case where there aren't any start faces, this property will return null.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.startFaces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = revolveFeature_var->startFaces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "timelineObject": {
+      "id": "RevolveFeature_timelineObject",
+      "title": "RevolveFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = revolveFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = revolveFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "RevolveFeature_classType",
+      "title": "RevolveFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.RevolveFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::RevolveFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "createForAssemblyContext": {
+      "id": "RevolveFeature_createForAssemblyContext",
+      "title": "RevolveFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "returnValue = revolveFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = revolveFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "RevolveFeature",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "deleteMe": {
+      "id": "RevolveFeature_deleteMe",
+      "title": "RevolveFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "returnValue = revolveFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = revolveFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version August 2014"
+    },
+    "dissolve": {
+      "id": "RevolveFeature_dissolve",
+      "title": "RevolveFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "returnValue = revolveFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = revolveFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version August 2014"
+    },
+    "setAngleExtent": {
+      "id": "RevolveFeature_setAngleExtent",
+      "title": "RevolveFeature.setAngleExtent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Defines the extent of the revolution to be at a defined angle. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "returnValue = revolveFeature_var.setAngleExtent(isSymmetric, angle)",
+        "cpp": "#include \n\nreturnValue = revolveFeature_var->setAngleExtent(isSymmetric, angle);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful",
+      "parameters": [
+        {
+          "name": "isSymmetric",
+          "type": "boolean",
+          "description": "Boolean that specifies if the extent is symmetric or not."
+        },
+        {
+          "name": "angle",
+          "type": "ValueInput",
+          "description": "ValueInput object that defines the angle. This can be a string or a value. If it's a string it is interpreted using the current document units and can include equations. For example all of the following are valid as long as they result in angle units; \"45\", \"45 deg\", \"a1 / 2\". If a value is input it is interpreted as radians.   If isSymmetric is false a positive or negative angle can be used to control the direction. If isSymmetric is true, the angle is the extent in one direction so the entire angle of the revolution will be twice the specified angle. Use an angle of 360 deg or 2 pi radians to create a full revolve."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setOneSideToExtent": {
+      "id": "RevolveFeature_setOneSideToExtent",
+      "title": "RevolveFeature.setOneSideToExtent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Changes the extent of the revolve to be from the sketch plane to the specified \"to\" face. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = revolveFeature_var.setOneSideToExtent(toEntity)\n\n# Uses optional arguments.\nreturnValue = revolveFeature_var.setOneSideToExtent(toEntity, directionHint)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = revolveFeature_var->setOneSideToExtent(toEntity);\n\n// Uses optional arguments.\nreturnValue = revolveFeature_var->setOneSideToExtent(toEntity, directionHint);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "toEntity",
+          "type": "Base",
+          "description": "The entity that defines the \"to\" extent. The valid types of entities can vary depending on the type of feature this is being used with. For a revolve it can be a BRepBody, BRepFace, BRepVertex, ConstructionPlane, or ConstructionPoint."
+        },
+        {
+          "name": "directionHint",
+          "type": "Vector3D",
+          "description": "Specifies the direction of the revolve.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setTwoSideAngleExtent": {
+      "id": "RevolveFeature_setTwoSideAngleExtent",
+      "title": "RevolveFeature.setTwoSideAngleExtent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Changes the extent of the revolve to be defined as a two sided angle extent. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "returnValue = revolveFeature_var.setTwoSideAngleExtent(angleOne, angleTwo)",
+        "cpp": "#include \n\nreturnValue = revolveFeature_var->setTwoSideAngleExtent(angleOne, angleTwo);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful",
+      "parameters": [
+        {
+          "name": "angleOne",
+          "type": "ValueInput",
+          "description": "ValueInput object that defines the first angle. This can be a string or a value. If it's a string it is interpreted using the current document units and can include equations. For example all of the following are valid as long as they result in angle units; \"45\", \"45 deg\", \"a1 / 2\". If a value is input it is interpreted as radians."
+        },
+        {
+          "name": "angleTwo",
+          "type": "ValueInput",
+          "description": "ValueInput object that defines the second angle. This can be a string or a value. If it's a string it is interpreted using the current document units and can include equations. For example all of the following are valid as long as they result in angle units; \"45\", \"45 deg\", \"a1 / 2\". If a value is input it is interpreted as radians."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setTwoSidesToExtent": {
+      "id": "RevolveFeature_setTwoSidesToExtent",
+      "title": "RevolveFeature.setTwoSidesToExtent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RevolveFeature.h",
+      "description": "Changes the extent of the revolve to be defined as a two sided to extent. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "RevolveFeature",
+      "syntax": {
+        "python": "returnValue = revolveFeature_var.setTwoSidesToExtent(toEntityOne, toEntityTwo)",
+        "cpp": "#include \n\nreturnValue = revolveFeature_var->setTwoSidesToExtent(toEntityOne, toEntityTwo);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful",
+      "parameters": [
+        {
+          "name": "toEntityOne",
+          "type": "Base",
+          "description": "The first entity that defines the \"to\" extent. The valid types of entities can vary depending on the type of feature this is being used with. For a revolve it can be a BRepBody, BRepFace, BRepVertex, ConstructionPlane, or ConstructionPoint."
+        },
+        {
+          "name": "toEntityTwo",
+          "type": "Base",
+          "description": "The second entity that defines the \"to\" extent. The valid types of entities can vary depending on the type of feature this is being used with. For a revolve it can be a BRepBody, BRepFace, BRepVertex, ConstructionPlane, or ConstructionPoint."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "SketchArcs_extend_Sample",
+  "title": "SketchArcs.extend",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the SketchArc.extend method.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_Arcs_extend(sketch: adsk.fusion.Sketch):\n    # Define three points and create an arc along those points\n    startPoint = adsk.core.Point3D.create(0, 0, 0)\n    alongPoint = adsk.core.Point3D.create(5, 3, 0)\n    endPoint = adsk.core.Point3D.create(8, 0, 0)\n    arcs = sketch.sketchCurves.sketchArcs\n    arc = arcs.addByThreePoints(startPoint, alongPoint, endPoint)\n\n    # Create a line to extend the arc to.\n    lineStart = adsk.core.Point3D.create(-2, -3, 0)\n    lineEnd = adsk.core.Point3D.create(10, -3, 0)\n    lines = sketch.sketchCurves.sketchLines\n    line = lines.addByTwoPoints(lineStart, lineEnd)\n\n    # Extend the end point of the arc. \n    extendedCurve = arc.extend(endPoint)"
+  }
+}

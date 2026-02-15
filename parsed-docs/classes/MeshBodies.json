@@ -1,0 +1,201 @@
+{
+  "id": "MeshBodies",
+  "title": "MeshBodies Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/MeshBody/MeshBodies.h",
+  "description": "Provides access to the MeshBodies in the parent Component and supports the creation of new mesh bodies.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new mesh body by importing an STL, OBJ or 3MF file.   Because of a current limitation, if you want to create a mesh body in a parametric model, you must first call the edit method of the base or form feature, use this method to create the mesh body, and then call the finishEdit method of the base or form feature. The base or form feature must be in an \"edit\" state to be able to add any additional items to it."
+    },
+    {
+      "name": "addByTriangleMeshData",
+      "description": "Creates a new mesh body using the mesh description provided."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Provides access to a mesh body within the collection."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of mesh bodies in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "add": {
+      "id": "MeshBodies_add",
+      "title": "MeshBodies.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBodies.h",
+      "description": "Creates a new mesh body by importing an STL, OBJ or 3MF file. Because of a current limitation, if you want to create a mesh body in a parametric model, you must first call the edit method of the base or form feature, use this method to create the mesh body, and then call the finishEdit method of the base or form feature. The base or form feature must be in an \"edit\" state to be able to add any additional items to it.",
+      "parent_class": "MeshBodies",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = meshBodies_var.add(fullFilename, units)\n\n# Uses optional arguments.\nreturnValue = meshBodies_var.add(fullFilename, units, baseOrFormFeature)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = meshBodies_var->add(fullFilename, units);\n\n// Uses optional arguments.\nreturnValue = meshBodies_var->add(fullFilename, units, baseOrFormFeature);"
+      },
+      "return_type": "MeshBodyList",
+      "return_description": "Returns a list of the newly created mesh bodies or null if the creation failed. Multiple bodies can be created in the case where a .obj file that contains multiple bodies was imported. STL files always contain a single body.",
+      "parameters": [
+        {
+          "name": "fullFilename",
+          "type": "string",
+          "description": "The full filename (path and file) of a STL, OBJ or 3MF file."
+        },
+        {
+          "name": "units",
+          "type": "MeshUnits",
+          "description": "The units to use when importing the file."
+        },
+        {
+          "name": "baseOrFormFeature",
+          "type": "Base",
+          "description": "The BaseFeature or FormFeature object that this mesh body will be associated with. This is an optional requirement. It is required in a parametric modeling design but is ignored in a direct modeling design.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addByTriangleMeshData": {
+      "id": "MeshBodies_addByTriangleMeshData",
+      "title": "MeshBodies.addByTriangleMeshData Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBodies.h",
+      "description": "Creates a new mesh body using the mesh description provided.",
+      "parent_class": "MeshBodies",
+      "syntax": {
+        "python": "returnValue = meshBodies_var.addByTriangleMeshData(coordinates, coordinateIndexList, normalVectors, normalIndexList)",
+        "cpp": "#include \n\nreturnValue = meshBodies_var->addByTriangleMeshData(coordinates, coordinateIndexList, normalVectors, normalIndexList);"
+      },
+      "return_type": "MeshBody",
+      "return_description": "Returns the newly created MeshBody object or null in the case of a failure.",
+      "parameters": [
+        {
+          "name": "coordinates",
+          "type": "double[]",
+          "description": "Input array of doubles that defines the X, Y, Z coordinates of each node in the mesh. Each set of three numbers define the coordinates of a node."
+        },
+        {
+          "name": "coordinateIndexList",
+          "type": "integer[]",
+          "description": "An array of integers that represent indices into the coordinates to define the vertices of the triangles. If an empty array is provided, then it's assumed that the first three coordinates defines the first triangle, the next three define the second triangle, and so on."
+        },
+        {
+          "name": "normalVectors",
+          "type": "double[]",
+          "description": "An array of doubles that represent the x, y, z components of the normals at each coordinate. There should be a normal defined for each coordinate. If an empty array is provided for the normal vectors, Fusion will automatically calculate normal vectors that are 90 degrees to the face of the triangle, making it appear flat."
+        },
+        {
+          "name": "normalIndexList",
+          "type": "integer[]",
+          "description": "An array of integers that represent indices into the normal vectors to define the which vector corresponds to which vertex. This should be the same size as the vertex index list. If an empty array is input and normal vectors are provided, it is assumed that the normals match up one-to-one to each coordinate."
+        }
+      ],
+      "version": "Introduced in version April 2019"
+    },
+    "classType": {
+      "id": "MeshBodies_classType",
+      "title": "MeshBodies.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBodies.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "MeshBodies",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.MeshBodies.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::MeshBodies::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "MeshBodies_item",
+      "title": "MeshBodies.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBodies.h",
+      "description": "Provides access to a mesh body within the collection.",
+      "parent_class": "MeshBodies",
+      "syntax": {
+        "python": "returnValue = meshBodies_var.item(index)",
+        "cpp": "#include \n\nreturnValue = meshBodies_var->item(index);"
+      },
+      "return_type": "MeshBody",
+      "return_description": "Returns the specified mesh body or null in the case of a invalid index.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the mesh body to return, where an index of 0 is the first mesh body in the collection."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "MeshBodies_count",
+      "title": "MeshBodies.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBodies.h",
+      "description": "Returns the number of mesh bodies in the collection.",
+      "parent_class": "MeshBodies",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBodies_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = meshBodies_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "MeshBodies_isValid",
+      "title": "MeshBodies.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBodies.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "MeshBodies",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBodies_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = meshBodies_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "MeshBodies_objectType",
+      "title": "MeshBodies.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBodies.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "MeshBodies",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBodies_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = meshBodies_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

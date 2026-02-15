@@ -1,0 +1,1390 @@
+{
+  "id": "Application",
+  "title": "Application Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/Application.h",
+  "description": "The top-level object that represents the Fusion application (all of Fusion). This provides access to the modeler and files.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "executeTextCommand",
+      "description": "Executes the input text command."
+    },
+    {
+      "name": "fireCustomEvent",
+      "description": "Fires a previously registered custom event. This method is used by a worker thread or another add-in to fire an event to the add-in that registered the event and is running in the primary thread.   Firing a custom event does not immediately result in the event handler being called. When a custom event is fired the event is put on the queue and will be handled in the main thread when Fusion is idle."
+    },
+    {
+      "name": "get",
+      "description": "Access to the root Application object."
+    },
+    {
+      "name": "getLastError",
+      "description": "Returns information about the last error that occurred."
+    },
+    {
+      "name": "log",
+      "description": "Logs messages to either the TEXT COMMAND window or the Fusion app log file."
+    },
+    {
+      "name": "registerCustomEvent",
+      "description": "This registers a new CustomEvent which is intended to be primarily used to send an event from a worker thread you've created back to your add-in running in the primary thread. It's also possible that two add-ins could be cooperating and another add-in can fire the event to your add-in."
+    },
+    {
+      "name": "unregisterCustomEvent",
+      "description": "Unregisters an existing CustomEvent."
+    }
+  ],
+  "properties": [
+    {
+      "name": "activeDocument",
+      "description": "Returns the current active document."
+    },
+    {
+      "name": "activeEditObject",
+      "description": "Returns the current edit target as seen in the user interface. This edit target is defined as the container object that will be added to if something is created. For example, a component can be an edit target so that when new bodies are created they are added to that component. A sketch can also be an edit target."
+    },
+    {
+      "name": "activeProduct",
+      "description": "Returns the current active product."
+    },
+    {
+      "name": "activeViewport",
+      "description": "Returns the currently active graphics view."
+    },
+    {
+      "name": "applicationFolders",
+      "description": "Returns the ApplicationFolders object which provides access to the paths of various folders associated with Fusion."
+    },
+    {
+      "name": "currentUser",
+      "description": "Returns the User that is currently logged in."
+    },
+    {
+      "name": "data",
+      "description": "Returns the Data object which provides access the files."
+    },
+    {
+      "name": "documents",
+      "description": "Returns the Documents collection object which supports accessing opened documents, opening existing documents, and creating new documents."
+    },
+    {
+      "name": "favoriteAppearances",
+      "description": "Returns the set of favorite appearances."
+    },
+    {
+      "name": "favoriteMaterials",
+      "description": "Returns the set of favorite materials."
+    },
+    {
+      "name": "fontNames",
+      "description": "Returns the names of all of the fonts that are available in Fusion when creating text."
+    },
+    {
+      "name": "hasActiveJobs",
+      "description": "Gets whether there are any active jobs."
+    },
+    {
+      "name": "importManager",
+      "description": "Returns the ImportManager. You use the ImportManager to import files (of various neutral formats.) into existing components or new document."
+    },
+    {
+      "name": "isComponentColorsDisplayed",
+      "description": "Get and sets if component colors are used when displaying the components within a design. This is the API equivalent of the \"Display Component Colors\" command."
+    },
+    {
+      "name": "isOffLine",
+      "description": "Gets and sets if Fusion is offline or not."
+    },
+    {
+      "name": "isStartupComplete",
+      "description": "Boolean property indicating whether Fusion has completed its initialization. This includes initialization of all the Add-ins loaded at startup."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "lightingEnvironment",
+      "description": "Gets and sets the current lighting environment to use when rendering the graphics."
+    },
+    {
+      "name": "materialLibraries",
+      "description": "Returns the collection of material libraries currently available."
+    },
+    {
+      "name": "measureManager",
+      "description": "Get the MeasureManager object which can be used to perform measurements of geometry."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "pointTolerance",
+      "description": "The modeling tolerance used internally when comparing two points. The value is in centimeters."
+    },
+    {
+      "name": "preferences",
+      "description": "Provides access to all of the application preferences."
+    },
+    {
+      "name": "scripts",
+      "description": "Returns the Scripts object which provides the ability to manage scripts and add-ins."
+    },
+    {
+      "name": "supportedProductTypes",
+      "description": "Returns an array containing the names of the products types currently supported by Fusion. For example, the name returned for Fusion is \"DesignProductType\". These product type names are used to identify specific products in some other API functions such as the productType property on the Workspace and ToolbarPanel objects."
+    },
+    {
+      "name": "userId",
+      "description": "Returns the internal name of the Autodesk account currently logged in. This can be used by applications sold through the Autodesk Exchange Store to verify that the user has in fact purchased the product."
+    },
+    {
+      "name": "userInterface",
+      "description": "Provides access to functionality specific to the user interface."
+    },
+    {
+      "name": "userName",
+      "description": "Returns the user name of the Autodesk account currently logged in."
+    },
+    {
+      "name": "vectorAngleTolerance",
+      "description": "The modeling tolerance used when comparing vector angles. The value is in radians."
+    },
+    {
+      "name": "version",
+      "description": "Returns the current version of the Fusion application."
+    }
+  ],
+  "events": [
+    {
+      "name": "cameraChanged",
+      "description": "The cameraChanged event fires immediately after a change in the camera has been made. Camera changes happen when user changes the view by rotating, zooming in or out, panning, changing from parallel to perspective, or when the extents of the viewport changes.   You can add or remove event handlers from the CameraEvent."
+    },
+    {
+      "name": "dataFileComplete",
+      "description": "The dataFileComplete event fires when a data file upload has completed including any cloud side translations."
+    },
+    {
+      "name": "dataFileCopyComplete",
+      "description": "The dataFileCopyComplete event fires when a data file copy has completed including any PIM Data copy."
+    },
+    {
+      "name": "documentActivated",
+      "description": "The DocumentActivated event fires at the VERY end of a document being activated."
+    },
+    {
+      "name": "documentActivating",
+      "description": "The DocumentActivating event fires at the VERY start of a document being activated."
+    },
+    {
+      "name": "documentClosed",
+      "description": "The DocumentClosed event fires at the VERY end of a document being closed. The Document object is not longer available because it has been closed."
+    },
+    {
+      "name": "documentClosing",
+      "description": "The DocumentClosing event fires at the VERY start of a document being closed. User can set the isSaveCanceled property of DocumentEventArgs to true to cancel the document close."
+    },
+    {
+      "name": "documentCreated",
+      "description": "The DocumentCreated event fires when a new document is created."
+    },
+    {
+      "name": "documentDeactivated",
+      "description": "The DocumentDeactivated event fires at the VERY end of a document being deactivated."
+    },
+    {
+      "name": "documentDeactivating",
+      "description": "The DocumentDeactivating event fires at the VERY start of a document being deactivated."
+    },
+    {
+      "name": "documentOpened",
+      "description": "The DocumentOpened event fires at the VERY end of a document being opened so the Document object is available to be used.   When a document is opened that references other documents, only the top-level document will cause the documentOpened event to be fired. You can access the referenced documents by using the documentReferences property of the Document object."
+    },
+    {
+      "name": "documentOpening",
+      "description": "The DocumentOpening event fires at the VERY start of a document being opened. There is no promise that the document will be opened, hence a documentOpened event may not follow.   When a document is being opened that references other documents, only the top-level document will cause a documentOpening event to be fired."
+    },
+    {
+      "name": "documentSaved",
+      "description": "The DocumentSaved event fires after the save operation has been completed."
+    },
+    {
+      "name": "documentSaving",
+      "description": "The DocumentSaving event fires at the VERY start of a document being saved. You can set the isSaveCanceled property of DocumentEventArgs to true to cancel the document save."
+    },
+    {
+      "name": "insertedFromURL",
+      "description": "The insertedFromURL event fires after the user has clicked a link in a web page that uses the Fusion protocol handler to insert a file as new component and that operation has completed."
+    },
+    {
+      "name": "insertingFromURL",
+      "description": "The insertingFromURL event fires when the user has clicked a link in a web page that uses the Fusion protocol handler to insert a file as new component. This event is fired at the beginning of the request but before Fusion has take any action so that it's still possible to cancel the operation."
+    },
+    {
+      "name": "mfgdmDataReady",
+      "description": "The mfgdmDataReady event fires when the MFGDM data structure for a document has been updated and properties to IDs and structure from the data model is ready."
+    },
+    {
+      "name": "onlineStatusChanged",
+      "description": "The onlineStatusChanged event fires immediately after Fusion goes online or offline. This event fires whether or not the online status was changed deliberately by the user by using the Fusion 'Work Offline' command or because of inadvertent network/Internet connectivity issues. You can get the isOffline property of ApplicationEventArgs to determine whether Fusion has gone Offline or has come back online. The client can add or remove ApplicationEventHandlers from the ApplicationEvent."
+    },
+    {
+      "name": "openedFromURL",
+      "description": "The openedFromURL event fires after the user has clicked a link in a web page that uses the Fusion protocol handler to create a new using an existing file as the initial contents and that operation has completed."
+    },
+    {
+      "name": "openingFromURL",
+      "description": "The openingFromURL event fires when the user has clicked a link in a web page that uses the Fusion protocol handler to create a new file using an existing file as the initial contents. This event is fired at the beginning of the request but before Fusion has take any action so that it's still possible to cancel the operation."
+    },
+    {
+      "name": "startupCompleted",
+      "description": "The startupCompleted event fires after Fusion has completed its initialization. This includes initialization of all the Add-ins loaded at startup. The client can add or remove ApplicationEventHandlers from the ApplicationEvent."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "property_details": {
+    "activeDocument": {
+      "id": "Application_activeDocument",
+      "title": "Application.activeDocument Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns the current active document.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.activeDocument",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = application_var->activeDocument();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Generate Setup Sheets API Sample",
+          "description": "Demonstrates generating the setup sheets for an existing toolpath.."
+        },
+        {
+          "name": "Generate Toolpaths API Sample",
+          "description": "Demonstrates generating the toolpaths in the active document."
+        },
+        {
+          "name": "Post Toolpaths API Sample",
+          "description": "Demonstrates posting toolpaths in the active document."
+        },
+        {
+          "name": "Save and Insert File API Sample",
+          "description": "Demonstrates creating save a new file and then inserting it into a design. To use this sample, have a design open that has been saved and run the script. It will create a new design that contains a cylinder, save it to the same folder the active design was saved to, and then insert it into the active design."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "activeEditObject": {
+      "id": "Application_activeEditObject",
+      "title": "Application.activeEditObject Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns the current edit target as seen in the user interface. This edit target is defined as the container object that will be added to if something is created. For example, a component can be an edit target so that when new bodies are created they are added to that component. A sketch can also be an edit target.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.activeEditObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = application_var->activeEditObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "activeProduct": {
+      "id": "Application_activeProduct",
+      "title": "Application.activeProduct Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns the current active product.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.activeProduct",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = application_var->activeProduct();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Simple Extrusion Sample",
+          "description": "Creates a new extrusion feature, resulting in a new component."
+        },
+        {
+          "name": "Simple Revolve Feature Sample",
+          "description": "Creates a new revolve feature, resulting in a new component."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "activeViewport": {
+      "id": "Application_activeViewport",
+      "title": "Application.activeViewport Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns the currently active graphics view.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.activeViewport",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = application_var->activeViewport();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Create Animation API Sample",
+          "description": "Creates a series of images of a design where a parameter is being changed. The series of images can be used to create an animation using other software. To run this sample, have a part open that contains a parameter named \"Length\". The parameter should be able to be successfully modified from 10 to 15 centimeters. Run the sample and choose or create a directory for the output. After running you should have a folder full of images that are snapshots of each parameter value."
+        },
+        {
+          "name": "Rendering Sample",
+          "description": "Demonstrates using the Rendering capabilities in the API. This starts a series of local renderings to generate a series of frames, where the camera is repositioned and a parameter is modified for each frame to create a dynamic animation. To use the sample, have a design open that contains a parameter named \"Length\". It can be a user or model parameter. The sample will modify this parameter from a value of 0.1 cm to 15 cm, but you can change these values by editing the values of the paramStartVal and paramEndVal variables on lines 90 and 91 of the sample. It expects a folder named \"C:\\Temp\\RenderSample\" to exist, and will fail if it doesn't. The rendered frames will be written to that folder.An example rendering is shown below where this file was used. The parameter is modifying a move feature which results in changing the shape of an extrusion. The parameter could be driving anything and you could modify the code to edit more than one parameter. The result of this sample is a folder containing all of the rendered frames. You can process these to create an animation. The sample animation was created using GIMP."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "applicationFolders": {
+      "id": "Application_applicationFolders",
+      "title": "Application.applicationFolders Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns the ApplicationFolders object which provides access to the paths of various folders associated with Fusion.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.applicationFolders",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = application_var->applicationFolders();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "currentUser": {
+      "id": "Application_currentUser",
+      "title": "Application.currentUser Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns the User that is currently logged in.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.currentUser",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = application_var->currentUser();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "data": {
+      "id": "Application_data",
+      "title": "Application.data Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns the Data object which provides access the files.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.data",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = application_var->data();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "documents": {
+      "id": "Application_documents",
+      "title": "Application.documents Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns the Documents collection object which supports accessing opened documents, opening existing documents, and creating new documents.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.documents",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = application_var->documents();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "favoriteAppearances": {
+      "id": "Application_favoriteAppearances",
+      "title": "Application.favoriteAppearances Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns the set of favorite appearances.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.favoriteAppearances",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = application_var->favoriteAppearances();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "favoriteMaterials": {
+      "id": "Application_favoriteMaterials",
+      "title": "Application.favoriteMaterials Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns the set of favorite materials.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.favoriteMaterials",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = application_var->favoriteMaterials();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "fontNames": {
+      "id": "Application_fontNames",
+      "title": "Application.fontNames Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns the names of all of the fonts that are available in Fusion when creating text.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.fontNames",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector propertyValue = application_var->fontNames();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2023"
+    },
+    "hasActiveJobs": {
+      "id": "Application_hasActiveJobs",
+      "title": "Application.hasActiveJobs Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Gets whether there are any active jobs.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.hasActiveJobs",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = application_var->hasActiveJobs();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2022"
+    },
+    "importManager": {
+      "id": "Application_importManager",
+      "title": "Application.importManager Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns the ImportManager. You use the ImportManager to import files (of various neutral formats.) into existing components or new document.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.importManager",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = application_var->importManager();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "isComponentColorsDisplayed": {
+      "id": "Application_isComponentColorsDisplayed",
+      "title": "Application.isComponentColorsDisplayed Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Get and sets if component colors are used when displaying the components within a design. This is the API equivalent of the \"Display Component Colors\" command.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.isComponentColorsDisplayed\n\n# Set the value of the property.\napplication_var.isComponentColorsDisplayed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = application_var->isComponentColorsDisplayed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = application_var->isComponentColorsDisplayed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2024"
+    },
+    "isOffLine": {
+      "id": "Application_isOffLine",
+      "title": "Application.isOffLine Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Gets and sets if Fusion is offline or not.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.isOffLine\n\n# Set the value of the property.\napplication_var.isOffLine = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = application_var->isOffLine();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = application_var->isOffLine(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2015"
+    },
+    "isStartupComplete": {
+      "id": "Application_isStartupComplete",
+      "title": "Application.isStartupComplete Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Boolean property indicating whether Fusion has completed its initialization. This includes initialization of all the Add-ins loaded at startup.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.isStartupComplete",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = application_var->isStartupComplete();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2015"
+    },
+    "isValid": {
+      "id": "Application_isValid",
+      "title": "Application.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = application_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "lightingEnvironment": {
+      "id": "Application_lightingEnvironment",
+      "title": "Application.lightingEnvironment Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Gets and sets the current lighting environment to use when rendering the graphics.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.lightingEnvironment\n\n# Set the value of the property.\napplication_var.lightingEnvironment = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nLightingEnvironments propertyValue = application_var->lightingEnvironment();\n\n// Set the value of the property, where value_var is a LightingEnvironments.\nbool returnValue = application_var->lightingEnvironment(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2025"
+    },
+    "materialLibraries": {
+      "id": "Application_materialLibraries",
+      "title": "Application.materialLibraries Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns the collection of material libraries currently available.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.materialLibraries",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = application_var->materialLibraries();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Material API Sample",
+          "description": "Demonstrates using materials and appearance using the API.\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code. The sample also used an external appearance library which you can get here. Copy that to any location on your computer and edit the path in the script. When running the script, have a design open that contains a body in the root component."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "measureManager": {
+      "id": "Application_measureManager",
+      "title": "Application.measureManager Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Get the MeasureManager object which can be used to perform measurements of geometry.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.measureManager",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = application_var->measureManager();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2017"
+    },
+    "objectType": {
+      "id": "Application_objectType",
+      "title": "Application.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = application_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "pointTolerance": {
+      "id": "Application_pointTolerance",
+      "title": "Application.pointTolerance Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The modeling tolerance used internally when comparing two points. The value is in centimeters.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.pointTolerance",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = application_var->pointTolerance();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "preferences": {
+      "id": "Application_preferences",
+      "title": "Application.preferences Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Provides access to all of the application preferences.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.preferences",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = application_var->preferences();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "scripts": {
+      "id": "Application_scripts",
+      "title": "Application.scripts Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns the Scripts object which provides the ability to manage scripts and add-ins.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.scripts",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = application_var->scripts();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "supportedProductTypes": {
+      "id": "Application_supportedProductTypes",
+      "title": "Application.supportedProductTypes Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns an array containing the names of the products types currently supported by Fusion. For example, the name returned for Fusion is \"DesignProductType\". These product type names are used to identify specific products in some other API functions such as the productType property on the Workspace and ToolbarPanel objects.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.supportedProductTypes",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector propertyValue = application_var->supportedProductTypes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "userId": {
+      "id": "Application_userId",
+      "title": "Application.userId Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns the internal name of the Autodesk account currently logged in. This can be used by applications sold through the Autodesk Exchange Store to verify that the user has in fact purchased the product.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.userId",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = application_var->userId();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "userInterface": {
+      "id": "Application_userInterface",
+      "title": "Application.userInterface Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Provides access to functionality specific to the user interface.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.userInterface",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = application_var->userInterface();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Write user interface to a file API Sample",
+          "description": "Writes out the full structure of the Fusion user interface. This information is useful when editing the user-interface, as discussed in the usre manual topic User-Interface Customization with Fusion's API"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "userName": {
+      "id": "Application_userName",
+      "title": "Application.userName Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns the user name of the Autodesk account currently logged in.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.userName",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = application_var->userName();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "vectorAngleTolerance": {
+      "id": "Application_vectorAngleTolerance",
+      "title": "Application.vectorAngleTolerance Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The modeling tolerance used when comparing vector angles. The value is in radians.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.vectorAngleTolerance",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = application_var->vectorAngleTolerance();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "version": {
+      "id": "Application_version",
+      "title": "Application.version Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns the current version of the Fusion application.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = application_var.version",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = application_var->version();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    }
+  },
+  "event_details": {
+    "cameraChanged": {
+      "id": "Application_cameraChanged",
+      "title": "Application.cameraChanged Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The cameraChanged event fires immediately after a change in the camera has been made. Camera changes happen when user changes the view by rotating, zooming in or out, panning, changing from parallel to perspective, or when the extents of the viewport changes. You can add or remove event handlers from the CameraEvent.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the cameraChanged event.\nclass MyCameraChangedHandler(adsk.core.CameraEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.CameraEventArgs):\n        # Code to react to the event.\n        app.log('In MyCameraChangedHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr cameraChangedEvent = application_var->cameraChanged();\nif (!cameraChangedEvent)\n    return;\n\nbool isOk = cameraChangedEvent->add(&_cameraChanged);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2017"
+    },
+    "dataFileComplete": {
+      "id": "Application_dataFileComplete",
+      "title": "Application.dataFileComplete Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The dataFileComplete event fires when a data file upload has completed including any cloud side translations.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the dataFileComplete event.\nclass MyDataFileCompleteHandler(adsk.core.DataEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.DataEventArgs):\n        # Code to react to the event.\n        app.log('In MyDataFileCompleteHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr dataFileCompleteEvent = application_var->dataFileComplete();\nif (!dataFileCompleteEvent)\n    return;\n\nbool isOk = dataFileCompleteEvent->add(&_dataFileComplete);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Save and Insert File API Sample",
+          "description": "Demonstrates creating save a new file and then inserting it into a design. To use this sample, have a design open that has been saved and run the script. It will create a new design that contains a cylinder, save it to the same folder the active design was saved to, and then insert it into the active design."
+        }
+      ],
+      "version": "Introduced in version January 2022"
+    },
+    "dataFileCopyComplete": {
+      "id": "Application_dataFileCopyComplete",
+      "title": "Application.dataFileCopyComplete Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The dataFileCopyComplete event fires when a data file copy has completed including any PIM Data copy.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the dataFileCopyComplete event.\nclass MyDataFileCopyCompleteHandler(adsk.core.DataEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.DataEventArgs):\n        # Code to react to the event.\n        app.log('In MyDataFileCopyCompleteHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr dataFileCopyCompleteEvent = application_var->dataFileCopyComplete();\nif (!dataFileCopyCompleteEvent)\n    return;\n\nbool isOk = dataFileCopyCompleteEvent->add(&_dataFileCopyComplete);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "documentActivated": {
+      "id": "Application_documentActivated",
+      "title": "Application.documentActivated Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The DocumentActivated event fires at the VERY end of a document being activated.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the documentActivated event.\nclass MyDocumentActivatedHandler(adsk.core.DocumentEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.DocumentEventArgs):\n        # Code to react to the event.\n        app.log('In MyDocumentActivatedHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr documentActivatedEvent = application_var->documentActivated();\nif (!documentActivatedEvent)\n    return;\n\nbool isOk = documentActivatedEvent->add(&_documentActivated);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Application Event API Sample",
+          "description": "Add-In that demonstrates application events. To use this sample, create a new folder using the name you want to use for the new add-in. Inside the folder, create a new file that is the same name as the folder but has a .py extension. Copy the code below into the .py file. Create another file that is the same name as the folder but has a .manifest extension and copy the JSON data below into that file.\n\t\n{\n\"autodeskProduct\":\t\"Fusion360\",\n\"type\":\t\"addin\",\n\"author\":\t\"\",\n\"description\":\t{\n\t\"\":\t\"\"\n},\n\"supportedOS\":\t\"windows|mac\",\n\"editEnabled\":\ttrue\n}\n\nRun the \"Scripts and Add-Ins\" command and click the green plus button near the top of the dialog. Browse to the location where you created the folder and select the folder. The add-in should now be displayed in the list of add-ins on the \"Add-Ins\" tab of the dialog. Select the add-in and click the \"Run\" button. This will load the add-in and when any of the application events occurr that it is watching for it will report them in the TEXT COMMAND window."
+        }
+      ],
+      "version": "Introduced in version May 2017"
+    },
+    "documentActivating": {
+      "id": "Application_documentActivating",
+      "title": "Application.documentActivating Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The DocumentActivating event fires at the VERY start of a document being activated.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the documentActivating event.\nclass MyDocumentActivatingHandler(adsk.core.DocumentEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.DocumentEventArgs):\n        # Code to react to the event.\n        app.log('In MyDocumentActivatingHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr documentActivatingEvent = application_var->documentActivating();\nif (!documentActivatingEvent)\n    return;\n\nbool isOk = documentActivatingEvent->add(&_documentActivating);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Application Event API Sample",
+          "description": "Add-In that demonstrates application events. To use this sample, create a new folder using the name you want to use for the new add-in. Inside the folder, create a new file that is the same name as the folder but has a .py extension. Copy the code below into the .py file. Create another file that is the same name as the folder but has a .manifest extension and copy the JSON data below into that file.\n\t\n{\n\"autodeskProduct\":\t\"Fusion360\",\n\"type\":\t\"addin\",\n\"author\":\t\"\",\n\"description\":\t{\n\t\"\":\t\"\"\n},\n\"supportedOS\":\t\"windows|mac\",\n\"editEnabled\":\ttrue\n}\n\nRun the \"Scripts and Add-Ins\" command and click the green plus button near the top of the dialog. Browse to the location where you created the folder and select the folder. The add-in should now be displayed in the list of add-ins on the \"Add-Ins\" tab of the dialog. Select the add-in and click the \"Run\" button. This will load the add-in and when any of the application events occurr that it is watching for it will report them in the TEXT COMMAND window."
+        }
+      ],
+      "version": "Introduced in version May 2017"
+    },
+    "documentClosed": {
+      "id": "Application_documentClosed",
+      "title": "Application.documentClosed Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The DocumentClosed event fires at the VERY end of a document being closed. The Document object is not longer available because it has been closed.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the documentClosed event.\nclass MyDocumentClosedHandler(adsk.core.DocumentEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.DocumentEventArgs):\n        # Code to react to the event.\n        app.log('In MyDocumentClosedHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr documentClosedEvent = application_var->documentClosed();\nif (!documentClosedEvent)\n    return;\n\nbool isOk = documentClosedEvent->add(&_documentClosed);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Application Event API Sample",
+          "description": "Add-In that demonstrates application events. To use this sample, create a new folder using the name you want to use for the new add-in. Inside the folder, create a new file that is the same name as the folder but has a .py extension. Copy the code below into the .py file. Create another file that is the same name as the folder but has a .manifest extension and copy the JSON data below into that file.\n\t\n{\n\"autodeskProduct\":\t\"Fusion360\",\n\"type\":\t\"addin\",\n\"author\":\t\"\",\n\"description\":\t{\n\t\"\":\t\"\"\n},\n\"supportedOS\":\t\"windows|mac\",\n\"editEnabled\":\ttrue\n}\n\nRun the \"Scripts and Add-Ins\" command and click the green plus button near the top of the dialog. Browse to the location where you created the folder and select the folder. The add-in should now be displayed in the list of add-ins on the \"Add-Ins\" tab of the dialog. Select the add-in and click the \"Run\" button. This will load the add-in and when any of the application events occurr that it is watching for it will report them in the TEXT COMMAND window."
+        }
+      ],
+      "version": "Introduced in version May 2017"
+    },
+    "documentClosing": {
+      "id": "Application_documentClosing",
+      "title": "Application.documentClosing Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The DocumentClosing event fires at the VERY start of a document being closed. User can set the isSaveCanceled property of DocumentEventArgs to true to cancel the document close.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the documentClosing event.\nclass MyDocumentClosingHandler(adsk.core.DocumentEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.DocumentEventArgs):\n        # Code to react to the event.\n        app.log('In MyDocumentClosingHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr documentClosingEvent = application_var->documentClosing();\nif (!documentClosingEvent)\n    return;\n\nbool isOk = documentClosingEvent->add(&_documentClosing);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Application Event API Sample",
+          "description": "Add-In that demonstrates application events. To use this sample, create a new folder using the name you want to use for the new add-in. Inside the folder, create a new file that is the same name as the folder but has a .py extension. Copy the code below into the .py file. Create another file that is the same name as the folder but has a .manifest extension and copy the JSON data below into that file.\n\t\n{\n\"autodeskProduct\":\t\"Fusion360\",\n\"type\":\t\"addin\",\n\"author\":\t\"\",\n\"description\":\t{\n\t\"\":\t\"\"\n},\n\"supportedOS\":\t\"windows|mac\",\n\"editEnabled\":\ttrue\n}\n\nRun the \"Scripts and Add-Ins\" command and click the green plus button near the top of the dialog. Browse to the location where you created the folder and select the folder. The add-in should now be displayed in the list of add-ins on the \"Add-Ins\" tab of the dialog. Select the add-in and click the \"Run\" button. This will load the add-in and when any of the application events occurr that it is watching for it will report them in the TEXT COMMAND window."
+        }
+      ],
+      "version": "Introduced in version May 2017"
+    },
+    "documentCreated": {
+      "id": "Application_documentCreated",
+      "title": "Application.documentCreated Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The DocumentCreated event fires when a new document is created.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the documentCreated event.\nclass MyDocumentCreatedHandler(adsk.core.DocumentEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.DocumentEventArgs):\n        # Code to react to the event.\n        app.log('In MyDocumentCreatedHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr documentCreatedEvent = application_var->documentCreated();\nif (!documentCreatedEvent)\n    return;\n\nbool isOk = documentCreatedEvent->add(&_documentCreated);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Application Event API Sample",
+          "description": "Add-In that demonstrates application events. To use this sample, create a new folder using the name you want to use for the new add-in. Inside the folder, create a new file that is the same name as the folder but has a .py extension. Copy the code below into the .py file. Create another file that is the same name as the folder but has a .manifest extension and copy the JSON data below into that file.\n\t\n{\n\"autodeskProduct\":\t\"Fusion360\",\n\"type\":\t\"addin\",\n\"author\":\t\"\",\n\"description\":\t{\n\t\"\":\t\"\"\n},\n\"supportedOS\":\t\"windows|mac\",\n\"editEnabled\":\ttrue\n}\n\nRun the \"Scripts and Add-Ins\" command and click the green plus button near the top of the dialog. Browse to the location where you created the folder and select the folder. The add-in should now be displayed in the list of add-ins on the \"Add-Ins\" tab of the dialog. Select the add-in and click the \"Run\" button. This will load the add-in and when any of the application events occurr that it is watching for it will report them in the TEXT COMMAND window."
+        }
+      ],
+      "version": "Introduced in version May 2017"
+    },
+    "documentDeactivated": {
+      "id": "Application_documentDeactivated",
+      "title": "Application.documentDeactivated Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The DocumentDeactivated event fires at the VERY end of a document being deactivated.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the documentDeactivated event.\nclass MyDocumentDeactivatedHandler(adsk.core.DocumentEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.DocumentEventArgs):\n        # Code to react to the event.\n        app.log('In MyDocumentDeactivatedHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr documentDeactivatedEvent = application_var->documentDeactivated();\nif (!documentDeactivatedEvent)\n    return;\n\nbool isOk = documentDeactivatedEvent->add(&_documentDeactivated);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Application Event API Sample",
+          "description": "Add-In that demonstrates application events. To use this sample, create a new folder using the name you want to use for the new add-in. Inside the folder, create a new file that is the same name as the folder but has a .py extension. Copy the code below into the .py file. Create another file that is the same name as the folder but has a .manifest extension and copy the JSON data below into that file.\n\t\n{\n\"autodeskProduct\":\t\"Fusion360\",\n\"type\":\t\"addin\",\n\"author\":\t\"\",\n\"description\":\t{\n\t\"\":\t\"\"\n},\n\"supportedOS\":\t\"windows|mac\",\n\"editEnabled\":\ttrue\n}\n\nRun the \"Scripts and Add-Ins\" command and click the green plus button near the top of the dialog. Browse to the location where you created the folder and select the folder. The add-in should now be displayed in the list of add-ins on the \"Add-Ins\" tab of the dialog. Select the add-in and click the \"Run\" button. This will load the add-in and when any of the application events occurr that it is watching for it will report them in the TEXT COMMAND window."
+        }
+      ],
+      "version": "Introduced in version May 2017"
+    },
+    "documentDeactivating": {
+      "id": "Application_documentDeactivating",
+      "title": "Application.documentDeactivating Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The DocumentDeactivating event fires at the VERY start of a document being deactivated.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the documentDeactivating event.\nclass MyDocumentDeactivatingHandler(adsk.core.DocumentEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.DocumentEventArgs):\n        # Code to react to the event.\n        app.log('In MyDocumentDeactivatingHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr documentDeactivatingEvent = application_var->documentDeactivating();\nif (!documentDeactivatingEvent)\n    return;\n\nbool isOk = documentDeactivatingEvent->add(&_documentDeactivating);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Application Event API Sample",
+          "description": "Add-In that demonstrates application events. To use this sample, create a new folder using the name you want to use for the new add-in. Inside the folder, create a new file that is the same name as the folder but has a .py extension. Copy the code below into the .py file. Create another file that is the same name as the folder but has a .manifest extension and copy the JSON data below into that file.\n\t\n{\n\"autodeskProduct\":\t\"Fusion360\",\n\"type\":\t\"addin\",\n\"author\":\t\"\",\n\"description\":\t{\n\t\"\":\t\"\"\n},\n\"supportedOS\":\t\"windows|mac\",\n\"editEnabled\":\ttrue\n}\n\nRun the \"Scripts and Add-Ins\" command and click the green plus button near the top of the dialog. Browse to the location where you created the folder and select the folder. The add-in should now be displayed in the list of add-ins on the \"Add-Ins\" tab of the dialog. Select the add-in and click the \"Run\" button. This will load the add-in and when any of the application events occurr that it is watching for it will report them in the TEXT COMMAND window."
+        }
+      ],
+      "version": "Introduced in version May 2017"
+    },
+    "documentOpened": {
+      "id": "Application_documentOpened",
+      "title": "Application.documentOpened Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The DocumentOpened event fires at the VERY end of a document being opened so the Document object is available to be used. When a document is opened that references other documents, only the top-level document will cause the documentOpened event to be fired. You can access the referenced documents by using the documentReferences property of the Document object.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the documentOpened event.\nclass MyDocumentOpenedHandler(adsk.core.DocumentEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.DocumentEventArgs):\n        # Code to react to the event.\n        app.log('In MyDocumentOpenedHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr documentOpenedEvent = application_var->documentOpened();\nif (!documentOpenedEvent)\n    return;\n\nbool isOk = documentOpenedEvent->add(&_documentOpened);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "documentOpening": {
+      "id": "Application_documentOpening",
+      "title": "Application.documentOpening Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The DocumentOpening event fires at the VERY start of a document being opened. There is no promise that the document will be opened, hence a documentOpened event may not follow. When a document is being opened that references other documents, only the top-level document will cause a documentOpening event to be fired.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the documentOpening event.\nclass MyDocumentOpeningHandler(adsk.core.DocumentEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.DocumentEventArgs):\n        # Code to react to the event.\n        app.log('In MyDocumentOpeningHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr documentOpeningEvent = application_var->documentOpening();\nif (!documentOpeningEvent)\n    return;\n\nbool isOk = documentOpeningEvent->add(&_documentOpening);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "documentSaved": {
+      "id": "Application_documentSaved",
+      "title": "Application.documentSaved Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The DocumentSaved event fires after the save operation has been completed.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the documentSaved event.\nclass MyDocumentSavedHandler(adsk.core.DocumentEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.DocumentEventArgs):\n        # Code to react to the event.\n        app.log('In MyDocumentSavedHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr documentSavedEvent = application_var->documentSaved();\nif (!documentSavedEvent)\n    return;\n\nbool isOk = documentSavedEvent->add(&_documentSaved);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Application Event API Sample",
+          "description": "Add-In that demonstrates application events. To use this sample, create a new folder using the name you want to use for the new add-in. Inside the folder, create a new file that is the same name as the folder but has a .py extension. Copy the code below into the .py file. Create another file that is the same name as the folder but has a .manifest extension and copy the JSON data below into that file.\n\t\n{\n\"autodeskProduct\":\t\"Fusion360\",\n\"type\":\t\"addin\",\n\"author\":\t\"\",\n\"description\":\t{\n\t\"\":\t\"\"\n},\n\"supportedOS\":\t\"windows|mac\",\n\"editEnabled\":\ttrue\n}\n\nRun the \"Scripts and Add-Ins\" command and click the green plus button near the top of the dialog. Browse to the location where you created the folder and select the folder. The add-in should now be displayed in the list of add-ins on the \"Add-Ins\" tab of the dialog. Select the add-in and click the \"Run\" button. This will load the add-in and when any of the application events occurr that it is watching for it will report them in the TEXT COMMAND window."
+        }
+      ],
+      "version": "Introduced in version May 2017"
+    },
+    "documentSaving": {
+      "id": "Application_documentSaving",
+      "title": "Application.documentSaving Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The DocumentSaving event fires at the VERY start of a document being saved. You can set the isSaveCanceled property of DocumentEventArgs to true to cancel the document save.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the documentSaving event.\nclass MyDocumentSavingHandler(adsk.core.DocumentEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.DocumentEventArgs):\n        # Code to react to the event.\n        app.log('In MyDocumentSavingHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr documentSavingEvent = application_var->documentSaving();\nif (!documentSavingEvent)\n    return;\n\nbool isOk = documentSavingEvent->add(&_documentSaving);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Application Event API Sample",
+          "description": "Add-In that demonstrates application events. To use this sample, create a new folder using the name you want to use for the new add-in. Inside the folder, create a new file that is the same name as the folder but has a .py extension. Copy the code below into the .py file. Create another file that is the same name as the folder but has a .manifest extension and copy the JSON data below into that file.\n\t\n{\n\"autodeskProduct\":\t\"Fusion360\",\n\"type\":\t\"addin\",\n\"author\":\t\"\",\n\"description\":\t{\n\t\"\":\t\"\"\n},\n\"supportedOS\":\t\"windows|mac\",\n\"editEnabled\":\ttrue\n}\n\nRun the \"Scripts and Add-Ins\" command and click the green plus button near the top of the dialog. Browse to the location where you created the folder and select the folder. The add-in should now be displayed in the list of add-ins on the \"Add-Ins\" tab of the dialog. Select the add-in and click the \"Run\" button. This will load the add-in and when any of the application events occurr that it is watching for it will report them in the TEXT COMMAND window."
+        }
+      ],
+      "version": "Introduced in version May 2017"
+    },
+    "insertedFromURL": {
+      "id": "Application_insertedFromURL",
+      "title": "Application.insertedFromURL Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The insertedFromURL event fires after the user has clicked a link in a web page that uses the Fusion protocol handler to insert a file as new component and that operation has completed.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the insertedFromURL event.\nclass MyInsertedFromURLHandler(adsk.core.WebRequestEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.WebRequestEventArgs):\n        # Code to react to the event.\n        app.log('In MyInsertedFromURLHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr insertedFromURLEvent = application_var->insertedFromURL();\nif (!insertedFromURLEvent)\n    return;\n\nbool isOk = insertedFromURLEvent->add(&_insertedFromURL);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "insertingFromURL": {
+      "id": "Application_insertingFromURL",
+      "title": "Application.insertingFromURL Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The insertingFromURL event fires when the user has clicked a link in a web page that uses the Fusion protocol handler to insert a file as new component. This event is fired at the beginning of the request but before Fusion has take any action so that it's still possible to cancel the operation.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the insertingFromURL event.\nclass MyInsertingFromURLHandler(adsk.core.WebRequestEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.WebRequestEventArgs):\n        # Code to react to the event.\n        app.log('In MyInsertingFromURLHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr insertingFromURLEvent = application_var->insertingFromURL();\nif (!insertingFromURLEvent)\n    return;\n\nbool isOk = insertingFromURLEvent->add(&_insertingFromURL);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "mfgdmDataReady": {
+      "id": "Application_mfgdmDataReady",
+      "title": "Application.mfgdmDataReady Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The mfgdmDataReady event fires when the MFGDM data structure for a document has been updated and properties to IDs and structure from the data model is ready.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the mfgdmDataReady event.\nclass MyMfgdmDataReadyHandler(adsk.core.MFGDMDataEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.MFGDMDataEventArgs):\n        # Code to react to the event.\n        app.log('In MyMfgdmDataReadyHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr mfgdmDataReadyEvent = application_var->mfgdmDataReady();\nif (!mfgdmDataReadyEvent)\n    return;\n\nbool isOk = mfgdmDataReadyEvent->add(&_mfgdmDataReady);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Gets all properties using GraphQL",
+          "description": "Fetches bulk component properties of the root component and from occurrences via single GraphQL query."
+        },
+        {
+          "name": "Get part number using GraphQL",
+          "description": "Fetches part number of root component and from occurrences via GQL query."
+        },
+        {
+          "name": "Set part number using GraphQL",
+          "description": "Sets part number of root component and from occurrences via GQL query."
+        }
+      ],
+      "version": "Introduced in version July 2025"
+    },
+    "onlineStatusChanged": {
+      "id": "Application_onlineStatusChanged",
+      "title": "Application.onlineStatusChanged Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The onlineStatusChanged event fires immediately after Fusion goes online or offline. This event fires whether or not the online status was changed deliberately by the user by using the Fusion 'Work Offline' command or because of inadvertent network/Internet connectivity issues. You can get the isOffline property of ApplicationEventArgs to determine whether Fusion has gone Offline or has come back online. The client can add or remove ApplicationEventHandlers from the ApplicationEvent.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the onlineStatusChanged event.\nclass MyOnlineStatusChangedHandler(adsk.core.ApplicationEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.ApplicationEventArgs):\n        # Code to react to the event.\n        app.log('In MyOnlineStatusChangedHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr onlineStatusChangedEvent = application_var->onlineStatusChanged();\nif (!onlineStatusChangedEvent)\n    return;\n\nbool isOk = onlineStatusChangedEvent->add(&_onlineStatusChanged);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Application Event API Sample",
+          "description": "Add-In that demonstrates application events. To use this sample, create a new folder using the name you want to use for the new add-in. Inside the folder, create a new file that is the same name as the folder but has a .py extension. Copy the code below into the .py file. Create another file that is the same name as the folder but has a .manifest extension and copy the JSON data below into that file.\n\t\n{\n\"autodeskProduct\":\t\"Fusion360\",\n\"type\":\t\"addin\",\n\"author\":\t\"\",\n\"description\":\t{\n\t\"\":\t\"\"\n},\n\"supportedOS\":\t\"windows|mac\",\n\"editEnabled\":\ttrue\n}\n\nRun the \"Scripts and Add-Ins\" command and click the green plus button near the top of the dialog. Browse to the location where you created the folder and select the folder. The add-in should now be displayed in the list of add-ins on the \"Add-Ins\" tab of the dialog. Select the add-in and click the \"Run\" button. This will load the add-in and when any of the application events occurr that it is watching for it will report them in the TEXT COMMAND window."
+        }
+      ],
+      "version": "Introduced in version January 2016"
+    },
+    "openedFromURL": {
+      "id": "Application_openedFromURL",
+      "title": "Application.openedFromURL Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The openedFromURL event fires after the user has clicked a link in a web page that uses the Fusion protocol handler to create a new using an existing file as the initial contents and that operation has completed.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the openedFromURL event.\nclass MyOpenedFromURLHandler(adsk.core.WebRequestEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.WebRequestEventArgs):\n        # Code to react to the event.\n        app.log('In MyOpenedFromURLHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr openedFromURLEvent = application_var->openedFromURL();\nif (!openedFromURLEvent)\n    return;\n\nbool isOk = openedFromURLEvent->add(&_openedFromURL);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "openingFromURL": {
+      "id": "Application_openingFromURL",
+      "title": "Application.openingFromURL Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The openingFromURL event fires when the user has clicked a link in a web page that uses the Fusion protocol handler to create a new file using an existing file as the initial contents. This event is fired at the beginning of the request but before Fusion has take any action so that it's still possible to cancel the operation.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the openingFromURL event.\nclass MyOpeningFromURLHandler(adsk.core.WebRequestEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.WebRequestEventArgs):\n        # Code to react to the event.\n        app.log('In MyOpeningFromURLHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr openingFromURLEvent = application_var->openingFromURL();\nif (!openingFromURLEvent)\n    return;\n\nbool isOk = openingFromURLEvent->add(&_openingFromURL);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "startupCompleted": {
+      "id": "Application_startupCompleted",
+      "title": "Application.startupCompleted Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "The startupCompleted event fires after Fusion has completed its initialization. This includes initialization of all the Add-ins loaded at startup. The client can add or remove ApplicationEventHandlers from the ApplicationEvent.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Event handler for the startupCompleted event.\nclass MyStartupCompletedHandler(adsk.core.ApplicationEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.ApplicationEventArgs):\n        # Code to react to the event.\n        app.log('In MyStartupCompletedHandler event handler.')",
+        "cpp": "// \"application_var\" is a variable referencing an Application object.\n// Connect the handler function to the event.\nPtr startupCompletedEvent = application_var->startupCompleted();\nif (!startupCompletedEvent)\n    return;\n\nbool isOk = startupCompletedEvent->add(&_startupCompleted);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Application Event API Sample",
+          "description": "Add-In that demonstrates application events. To use this sample, create a new folder using the name you want to use for the new add-in. Inside the folder, create a new file that is the same name as the folder but has a .py extension. Copy the code below into the .py file. Create another file that is the same name as the folder but has a .manifest extension and copy the JSON data below into that file.\n\t\n{\n\"autodeskProduct\":\t\"Fusion360\",\n\"type\":\t\"addin\",\n\"author\":\t\"\",\n\"description\":\t{\n\t\"\":\t\"\"\n},\n\"supportedOS\":\t\"windows|mac\",\n\"editEnabled\":\ttrue\n}\n\nRun the \"Scripts and Add-Ins\" command and click the green plus button near the top of the dialog. Browse to the location where you created the folder and select the folder. The add-in should now be displayed in the list of add-ins on the \"Add-Ins\" tab of the dialog. Select the add-in and click the \"Run\" button. This will load the add-in and when any of the application events occurr that it is watching for it will report them in the TEXT COMMAND window."
+        }
+      ],
+      "version": "Introduced in version January 2016"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "Application_classType",
+      "title": "Application.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "returnValue = adsk.core.Application.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Application::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "executeTextCommand": {
+      "id": "Application_executeTextCommand",
+      "title": "Application.executeTextCommand Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Executes the input text command.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "returnValue = application_var.executeTextCommand(command)",
+        "cpp": "#include \n\nreturnValue = application_var->executeTextCommand(command);"
+      },
+      "return_type": "string",
+      "return_description": "Returns the result of the input text command.",
+      "parameters": [
+        {
+          "name": "command",
+          "type": "string",
+          "description": "The text command to execute."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Additive Manufacturing FFF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+        },
+        {
+          "name": "Additive Manufacturing SLA API Sample",
+          "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+        }
+      ],
+      "version": "Introduced in version May 2020"
+    },
+    "fireCustomEvent": {
+      "id": "Application_fireCustomEvent",
+      "title": "Application.fireCustomEvent Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Fires a previously registered custom event. This method is used by a worker thread or another add-in to fire an event to the add-in that registered the event and is running in the primary thread. Firing a custom event does not immediately result in the event handler being called. When a custom event is fired the event is put on the queue and will be handled in the main thread when Fusion is idle.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = application_var.fireCustomEvent(eventId)\n\n# Uses optional arguments.\nreturnValue = application_var.fireCustomEvent(eventId, additionalInfo)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = application_var->fireCustomEvent(eventId);\n\n// Uses optional arguments.\nreturnValue = application_var->fireCustomEvent(eventId, additionalInfo);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the event was successfully added to the event queue. A value of true does not indicate that the event was fired and handled but only that it's been put on the primary thread's event queue to be fired when application is idle.",
+      "parameters": [
+        {
+          "name": "eventId",
+          "type": "string",
+          "description": "The ID of the custom event you want to fire."
+        },
+        {
+          "name": "additionalInfo",
+          "type": "string",
+          "description": "Any additional information you want to pass through the event to the add-in in the primary thread.   This is an optional argument whose default value is \"\"."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Custom Event for Command Dialog",
+          "description": "Demonstrates using a custom event to process getting information in the background to display in a command dialog. This is an add-in and should be copied and pasted into an add-in project."
+        },
+        {
+          "name": "Custom Event Sample",
+          "description": "Demonstrates the ability to call into the main thread from a worker thread. This sample is an add-in. To use it, use the Scripts and Add-Ins command to create a new add-in. Delete all of the code in the newly created add-in and replace it with the code below. Have a model open that has a parameter named \"Length\". Load the add-in. The add-in will change the value of the parameter every two seconds using a random value between 1 and 10."
+        },
+        {
+          "name": "Rendering Sample",
+          "description": "Demonstrates using the Rendering capabilities in the API. This starts a series of local renderings to generate a series of frames, where the camera is repositioned and a parameter is modified for each frame to create a dynamic animation. To use the sample, have a design open that contains a parameter named \"Length\". It can be a user or model parameter. The sample will modify this parameter from a value of 0.1 cm to 15 cm, but you can change these values by editing the values of the paramStartVal and paramEndVal variables on lines 90 and 91 of the sample. It expects a folder named \"C:\\Temp\\RenderSample\" to exist, and will fail if it doesn't. The rendered frames will be written to that folder.An example rendering is shown below where this file was used. The parameter is modifying a move feature which results in changing the shape of an extrusion. The parameter could be driving anything and you could modify the code to edit more than one parameter. The result of this sample is a folder containing all of the rendered frames. You can process these to create an animation. The sample animation was created using GIMP."
+        }
+      ],
+      "version": "Introduced in version January 2017"
+    },
+    "get": {
+      "id": "Application_get",
+      "title": "Application.get Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Access to the root Application object.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "returnValue = adsk.core.Application.get()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Application::get();"
+      },
+      "return_type": "Application",
+      "return_description": "Return the root Application object or null if it failed.",
+      "version": "Introduced in version August 2014"
+    },
+    "getLastError": {
+      "id": "Application_getLastError",
+      "title": "Application.getLastError Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Returns information about the last error that occurred.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Uses no optional arguments.\n(returnValue, description) = application_var.getLastError()\n\n# Uses optional arguments.\n(returnValue, description) = application_var.getLastError()",
+        "cpp": "#include getLastError();\n\n// Uses optional arguments.\n// Declare the output arguments.\nstring description;\n\n// Call the function.\nPtr returnValue = application_var->getLastError(description);"
+      },
+      "return_type": "integer",
+      "return_description": "Returns the number of the specific error.",
+      "parameters": [
+        {
+          "name": "description",
+          "type": "string",
+          "description": "A description of the last error in English.   This is an optional argument whose default value is \"\"."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "log": {
+      "id": "Application_log",
+      "title": "Application.log Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Logs messages to either the TEXT COMMAND window or the Fusion app log file.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = adsk.core.Application.log(message)\n\n# Uses optional arguments.\nreturnValue = adsk.core.Application.log(message, level, type)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = adsk::core::Application::log(message);\n\n// Uses optional arguments.\nreturnValue = adsk::core::Application::log(message, level, type);"
+      },
+      "parameters": [
+        {
+          "name": "message",
+          "type": "string",
+          "description": "The message to write to the log."
+        },
+        {
+          "name": "level",
+          "type": "LogLevels",
+          "description": "The log level. Default value is InfoLogLevel. This is only used when the log type is FileLogType where the log message will include the log level.   This is an optional argument whose default value is LogLevels.InfoLogLevel."
+        },
+        {
+          "name": "type",
+          "type": "LogTypes",
+          "description": "The log type. The default value is ConsoleLogType to write the message to the TEXT COMMAND window. When the type is FileLogType, the message is written to Fusion's app log file which is the same file where Fusion writes all of its log messages. You can get the path and filename of the current log file by using the TEXT COMMAND window. In the lower-right corner you can choose \"Txt\", \"Py\", or \"Js\". Choose the \"Txt\" option and type \"paths.get\" in the input field and press return. A list of all of the various paths used by Fusion will be displayed in the TEXT COMMAND window. The line for \"AppLogFilePath\" has the full path to the log file.   This is an optional argument whose default value is LogTypes.ConsoleLogType."
+        }
+      ],
+      "version": "Introduced in version July 2021"
+    },
+    "registerCustomEvent": {
+      "id": "Application_registerCustomEvent",
+      "title": "Application.registerCustomEvent Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "This registers a new CustomEvent which is intended to be primarily used to send an event from a worker thread you've created back to your add-in running in the primary thread. It's also possible that two add-ins could be cooperating and another add-in can fire the event to your add-in.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "returnValue = application_var.registerCustomEvent(eventId)",
+        "cpp": "#include \n\nreturnValue = application_var->registerCustomEvent(eventId);"
+      },
+      "return_type": "CustomEvent",
+      "return_description": "Returns the registered CustomEvent or null in the case of failure, which would typically be because the provided eventId is not unique.",
+      "parameters": [
+        {
+          "name": "eventId",
+          "type": "string",
+          "description": "This serves as the unique ID for this event and is used by the worker thread or other add-in to identify which custom event to fire using the fireCustomEvent method."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Custom Event for Command Dialog",
+          "description": "Demonstrates using a custom event to process getting information in the background to display in a command dialog. This is an add-in and should be copied and pasted into an add-in project."
+        },
+        {
+          "name": "Custom Event Sample",
+          "description": "Demonstrates the ability to call into the main thread from a worker thread. This sample is an add-in. To use it, use the Scripts and Add-Ins command to create a new add-in. Delete all of the code in the newly created add-in and replace it with the code below. Have a model open that has a parameter named \"Length\". Load the add-in. The add-in will change the value of the parameter every two seconds using a random value between 1 and 10."
+        },
+        {
+          "name": "Rendering Sample",
+          "description": "Demonstrates using the Rendering capabilities in the API. This starts a series of local renderings to generate a series of frames, where the camera is repositioned and a parameter is modified for each frame to create a dynamic animation. To use the sample, have a design open that contains a parameter named \"Length\". It can be a user or model parameter. The sample will modify this parameter from a value of 0.1 cm to 15 cm, but you can change these values by editing the values of the paramStartVal and paramEndVal variables on lines 90 and 91 of the sample. It expects a folder named \"C:\\Temp\\RenderSample\" to exist, and will fail if it doesn't. The rendered frames will be written to that folder.An example rendering is shown below where this file was used. The parameter is modifying a move feature which results in changing the shape of an extrusion. The parameter could be driving anything and you could modify the code to edit more than one parameter. The result of this sample is a folder containing all of the rendered frames. You can process these to create an animation. The sample animation was created using GIMP."
+        }
+      ],
+      "version": "Introduced in version January 2017"
+    },
+    "unregisterCustomEvent": {
+      "id": "Application_unregisterCustomEvent",
+      "title": "Application.unregisterCustomEvent Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Application.h",
+      "description": "Unregisters an existing CustomEvent.",
+      "parent_class": "Application",
+      "syntax": {
+        "python": "returnValue = application_var.unregisterCustomEvent(eventId)",
+        "cpp": "#include \n\nreturnValue = application_var->unregisterCustomEvent(eventId);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns True if the unregister succeeded.",
+      "parameters": [
+        {
+          "name": "eventId",
+          "type": "string",
+          "description": "Th unique ID of the custom event you want to unregister."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Custom Event for Command Dialog",
+          "description": "Demonstrates using a custom event to process getting information in the background to display in a command dialog. This is an add-in and should be copied and pasted into an add-in project."
+        },
+        {
+          "name": "Custom Event Sample",
+          "description": "Demonstrates the ability to call into the main thread from a worker thread. This sample is an add-in. To use it, use the Scripts and Add-Ins command to create a new add-in. Delete all of the code in the newly created add-in and replace it with the code below. Have a model open that has a parameter named \"Length\". Load the add-in. The add-in will change the value of the parameter every two seconds using a random value between 1 and 10."
+        }
+      ],
+      "version": "Introduced in version January 2017"
+    }
+  }
+}

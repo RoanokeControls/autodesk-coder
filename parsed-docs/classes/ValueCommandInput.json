@@ -1,0 +1,501 @@
+{
+  "id": "ValueCommandInput",
+  "title": "ValueCommandInput Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/ValueCommandInput.h",
+  "description": "Provides a command input to get a unit based value from the user.",
+  "parent_class": "CommandInput",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this Command input."
+    }
+  ],
+  "properties": [
+    {
+      "name": "commandInputs",
+      "description": "Gets the CommandInputs class of the parent, which can be a Command, GroupCommandInput or TabCommandInput."
+    },
+    {
+      "name": "expression",
+      "description": "Gets or sets the expression displayed in the input field. This can contain equations and references to parameters. It is evaluated using the specified unit type."
+    },
+    {
+      "name": "id",
+      "description": "Gets the unique identifier for this input in the command's CommandInputs."
+    },
+    {
+      "name": "isEnabled",
+      "description": "Gets or sets if this input is currently enabled or disabled for user interaction.   Currently, the isEnabled property does not disable SelectionCommandInput objects but instead has the same effect as the SelectionCommandInput.hasFocus property."
+    },
+    {
+      "name": "isFullWidth",
+      "description": "Gets or sets if this input fills the entire width of the dialog. If true, the name is ignored and the input control will fill the entire width of the command dialog. The default value for this property in a new command input if false, or not to fill the width. This property does not apply to GroupCommandInputs or TabCommandInputs."
+    },
+    {
+      "name": "isMaximumInclusive",
+      "description": "Gets and sets if the maximum value can be equal to the value defined by the maximumValue property or if it must be less than the maximum.   When a new ValueCommandInput is created, this defaults to true."
+    },
+    {
+      "name": "isMaximumLimited",
+      "description": "Gets and sets whether the maximum value has a limit. The maximum limit is set using the maximumValue property, and the isMaximumInclusive property controls whether the maximum includes the maximum value or must be less than the maximum.   When a new ValueCommandInput is created this defaults to false so there is no limit."
+    },
+    {
+      "name": "isMinimumInclusive",
+      "description": "Gets and sets if the minimum value can be equal to the value defined by the minimumValue property or if it must be greater than.   When a new ValueCommandInput is created, this defaults to true."
+    },
+    {
+      "name": "isMinimumLimited",
+      "description": "Gets and sets whether the minimum value has a limit. The minimum limit is set using the minimumValue property, and the isMinimumInclusive property controls whether the minimum includes the minimum value or must be greater than the minimum.   When a new ValueCommandInput is created this defaults to false so there is no limit."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isValidExpression",
+      "description": "Returns true if the current expression is valid and can be evaluated. If this is false, the value returned should be ignored because there currently is not a valid value."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets or sets if this input will be visible to the user.   Setting a SelectionCommandInput to be invisible will clear any selections it currently has."
+    },
+    {
+      "name": "maximumValue",
+      "description": "Gets and sets the maximum value for the input. Setting this value will automatically set the isMaximumLimited property to true, enabling the use of the maximum value. Use the isMaximumInclusive property to control if the maximum can be equal to this value or must be less than the maximum."
+    },
+    {
+      "name": "minimumValue",
+      "description": "Gets and sets the minimum value for the input. Setting this value will automatically set the isMinimumLimited property to true, enabling the use of the minimum value. Use the isMinimumInclusive property to control if the minimum can be equal to this value or must be greater than the minimum."
+    },
+    {
+      "name": "name",
+      "description": "Gets the user visible name of this input."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentCommand",
+      "description": "Gets the parent Command."
+    },
+    {
+      "name": "parentCommandInput",
+      "description": "Gets the parent CommandInput if this commandInput is the child of a TabCommandInput or GroupCommandInput. Returns null if there is no parent."
+    },
+    {
+      "name": "toolClipFilename",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text."
+    },
+    {
+      "name": "tooltip",
+      "description": "Gets or sets the base tooltip string. This is always shown for commands. If the tooltip description and/or tool clip are also specified then the tooltip will progressively display more information as the user hovers the mouse over the control."
+    },
+    {
+      "name": "tooltipDescription",
+      "description": "Gets or sets additional text to display progressively along with the tooltip. The text for the description can contain some basic HTML formatting tags to format the tags. For example the br tag can be used to create multiple paragraphs. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text."
+    },
+    {
+      "name": "unitType",
+      "description": "Gets and sets the unit type that is used when evaluating the user's input."
+    },
+    {
+      "name": "value",
+      "description": "Gets or sets the value associated with this input. The value is always in the database units of the unit type specified. For example, if the unit type is \"inch\" this value is in centimeters since centimeters are the database length unit. When setting the value it is converted into a string using the unit type and displayed in the input box. When getting the value, the current expression string is evaluated and the database value for the unit type is returned."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Command Inputs API Sample",
+      "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.  You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "classType": {
+      "id": "ValueCommandInput_classType",
+      "title": "ValueCommandInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "returnValue = adsk.core.ValueCommandInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::ValueCommandInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "deleteMe": {
+      "id": "ValueCommandInput_deleteMe",
+      "title": "ValueCommandInput.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Deletes this Command input.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "returnValue = valueCommandInput_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = valueCommandInput_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version August 2020"
+    }
+  },
+  "property_details": {
+    "commandInputs": {
+      "id": "ValueCommandInput_commandInputs",
+      "title": "ValueCommandInput.commandInputs Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets the CommandInputs class of the parent, which can be a Command, GroupCommandInput or TabCommandInput.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.commandInputs",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = valueCommandInput_var->commandInputs();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "expression": {
+      "id": "ValueCommandInput_expression",
+      "title": "ValueCommandInput.expression Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets or sets the expression displayed in the input field. This can contain equations and references to parameters. It is evaluated using the specified unit type.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.expression\n\n# Set the value of the property.\nvalueCommandInput_var.expression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = valueCommandInput_var->expression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = valueCommandInput_var->expression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "id": {
+      "id": "ValueCommandInput_id",
+      "title": "ValueCommandInput.id Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets the unique identifier for this input in the command's CommandInputs.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = valueCommandInput_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isEnabled": {
+      "id": "ValueCommandInput_isEnabled",
+      "title": "ValueCommandInput.isEnabled Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets or sets if this input is currently enabled or disabled for user interaction. Currently, the isEnabled property does not disable SelectionCommandInput objects but instead has the same effect as the SelectionCommandInput.hasFocus property.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.isEnabled\n\n# Set the value of the property.\nvalueCommandInput_var.isEnabled = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = valueCommandInput_var->isEnabled();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = valueCommandInput_var->isEnabled(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isFullWidth": {
+      "id": "ValueCommandInput_isFullWidth",
+      "title": "ValueCommandInput.isFullWidth Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets or sets if this input fills the entire width of the dialog. If true, the name is ignored and the input control will fill the entire width of the command dialog. The default value for this property in a new command input if false, or not to fill the width. This property does not apply to GroupCommandInputs or TabCommandInputs.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.isFullWidth\n\n# Set the value of the property.\nvalueCommandInput_var.isFullWidth = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = valueCommandInput_var->isFullWidth();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = valueCommandInput_var->isFullWidth(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isMaximumInclusive": {
+      "id": "ValueCommandInput_isMaximumInclusive",
+      "title": "ValueCommandInput.isMaximumInclusive Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets and sets if the maximum value can be equal to the value defined by the maximumValue property or if it must be less than the maximum. When a new ValueCommandInput is created, this defaults to true.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.isMaximumInclusive\n\n# Set the value of the property.\nvalueCommandInput_var.isMaximumInclusive = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = valueCommandInput_var->isMaximumInclusive();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = valueCommandInput_var->isMaximumInclusive(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "isMaximumLimited": {
+      "id": "ValueCommandInput_isMaximumLimited",
+      "title": "ValueCommandInput.isMaximumLimited Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets and sets whether the maximum value has a limit. The maximum limit is set using the maximumValue property, and the isMaximumInclusive property controls whether the maximum includes the maximum value or must be less than the maximum. When a new ValueCommandInput is created this defaults to false so there is no limit.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.isMaximumLimited\n\n# Set the value of the property.\nvalueCommandInput_var.isMaximumLimited = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = valueCommandInput_var->isMaximumLimited();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = valueCommandInput_var->isMaximumLimited(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "isMinimumInclusive": {
+      "id": "ValueCommandInput_isMinimumInclusive",
+      "title": "ValueCommandInput.isMinimumInclusive Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets and sets if the minimum value can be equal to the value defined by the minimumValue property or if it must be greater than. When a new ValueCommandInput is created, this defaults to true.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.isMinimumInclusive\n\n# Set the value of the property.\nvalueCommandInput_var.isMinimumInclusive = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = valueCommandInput_var->isMinimumInclusive();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = valueCommandInput_var->isMinimumInclusive(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "isMinimumLimited": {
+      "id": "ValueCommandInput_isMinimumLimited",
+      "title": "ValueCommandInput.isMinimumLimited Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets and sets whether the minimum value has a limit. The minimum limit is set using the minimumValue property, and the isMinimumInclusive property controls whether the minimum includes the minimum value or must be greater than the minimum. When a new ValueCommandInput is created this defaults to false so there is no limit.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.isMinimumLimited\n\n# Set the value of the property.\nvalueCommandInput_var.isMinimumLimited = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = valueCommandInput_var->isMinimumLimited();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = valueCommandInput_var->isMinimumLimited(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "isValid": {
+      "id": "ValueCommandInput_isValid",
+      "title": "ValueCommandInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = valueCommandInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValidExpression": {
+      "id": "ValueCommandInput_isValidExpression",
+      "title": "ValueCommandInput.isValidExpression Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Returns true if the current expression is valid and can be evaluated. If this is false, the value returned should be ignored because there currently is not a valid value.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.isValidExpression",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = valueCommandInput_var->isValidExpression();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2016"
+    },
+    "isVisible": {
+      "id": "ValueCommandInput_isVisible",
+      "title": "ValueCommandInput.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets or sets if this input will be visible to the user. Setting a SelectionCommandInput to be invisible will clear any selections it currently has.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.isVisible\n\n# Set the value of the property.\nvalueCommandInput_var.isVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = valueCommandInput_var->isVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = valueCommandInput_var->isVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "maximumValue": {
+      "id": "ValueCommandInput_maximumValue",
+      "title": "ValueCommandInput.maximumValue Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets and sets the maximum value for the input. Setting this value will automatically set the isMaximumLimited property to true, enabling the use of the maximum value. Use the isMaximumInclusive property to control if the maximum can be equal to this value or must be less than the maximum.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.maximumValue\n\n# Set the value of the property.\nvalueCommandInput_var.maximumValue = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = valueCommandInput_var->maximumValue();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = valueCommandInput_var->maximumValue(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "minimumValue": {
+      "id": "ValueCommandInput_minimumValue",
+      "title": "ValueCommandInput.minimumValue Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets and sets the minimum value for the input. Setting this value will automatically set the isMinimumLimited property to true, enabling the use of the minimum value. Use the isMinimumInclusive property to control if the minimum can be equal to this value or must be greater than the minimum.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.minimumValue\n\n# Set the value of the property.\nvalueCommandInput_var.minimumValue = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = valueCommandInput_var->minimumValue();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = valueCommandInput_var->minimumValue(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "name": {
+      "id": "ValueCommandInput_name",
+      "title": "ValueCommandInput.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets the user visible name of this input.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.name",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = valueCommandInput_var->name();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "ValueCommandInput_objectType",
+      "title": "ValueCommandInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = valueCommandInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "parentCommand": {
+      "id": "ValueCommandInput_parentCommand",
+      "title": "ValueCommandInput.parentCommand Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets the parent Command.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.parentCommand",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = valueCommandInput_var->parentCommand();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "parentCommandInput": {
+      "id": "ValueCommandInput_parentCommandInput",
+      "title": "ValueCommandInput.parentCommandInput Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets the parent CommandInput if this commandInput is the child of a TabCommandInput or GroupCommandInput. Returns null if there is no parent.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.parentCommandInput",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = valueCommandInput_var->parentCommandInput();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "toolClipFilename": {
+      "id": "ValueCommandInput_toolClipFilename",
+      "title": "ValueCommandInput.toolClipFilename Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.toolClipFilename\n\n# Set the value of the property.\nvalueCommandInput_var.toolClipFilename = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = valueCommandInput_var->toolClipFilename();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = valueCommandInput_var->toolClipFilename(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "tooltip": {
+      "id": "ValueCommandInput_tooltip",
+      "title": "ValueCommandInput.tooltip Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets or sets the base tooltip string. This is always shown for commands. If the tooltip description and/or tool clip are also specified then the tooltip will progressively display more information as the user hovers the mouse over the control.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.tooltip\n\n# Set the value of the property.\nvalueCommandInput_var.tooltip = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = valueCommandInput_var->tooltip();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = valueCommandInput_var->tooltip(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "tooltipDescription": {
+      "id": "ValueCommandInput_tooltipDescription",
+      "title": "ValueCommandInput.tooltipDescription Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets or sets additional text to display progressively along with the tooltip. The text for the description can contain some basic HTML formatting tags to format the tags. For example the br tag can be used to create multiple paragraphs. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.tooltipDescription\n\n# Set the value of the property.\nvalueCommandInput_var.tooltipDescription = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = valueCommandInput_var->tooltipDescription();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = valueCommandInput_var->tooltipDescription(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "unitType": {
+      "id": "ValueCommandInput_unitType",
+      "title": "ValueCommandInput.unitType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets and sets the unit type that is used when evaluating the user's input.",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.unitType\n\n# Set the value of the property.\nvalueCommandInput_var.unitType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = valueCommandInput_var->unitType();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = valueCommandInput_var->unitType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "value": {
+      "id": "ValueCommandInput_value",
+      "title": "ValueCommandInput.value Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ValueCommandInput.h",
+      "description": "Gets or sets the value associated with this input. The value is always in the database units of the unit type specified. For example, if the unit type is \"inch\" this value is in centimeters since centimeters are the database length unit. When setting the value it is converted into a string using the unit type and displayed in the input box. When getting the value, the current expression string is evaluated and the database value for the unit type is returned. Remarks",
+      "parent_class": "ValueCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueCommandInput_var.value\n\n# Set the value of the property.\nvalueCommandInput_var.value = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = valueCommandInput_var->value();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = valueCommandInput_var->value(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

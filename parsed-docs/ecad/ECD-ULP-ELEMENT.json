@@ -1,0 +1,75 @@
+{
+  "id": "ECD-ULP-ELEMENT",
+  "title": "UL_ELEMENT",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "angle",
+      "type": "real (0.0...359.9)"
+    },
+    {
+      "name": "attribute[]",
+      "type": "string (see note)"
+    },
+    {
+      "name": "column",
+      "type": "string (see note)"
+    },
+    {
+      "name": "locked",
+      "type": "int"
+    },
+    {
+      "name": "mirror",
+      "type": "int"
+    },
+    {
+      "name": "name",
+      "type": "string (ELEMENT_NAME_LENGTH)"
+    },
+    {
+      "name": "footprint",
+      "type": "UL_FOOTPRINT (new as of EAGLE 9.1, see note)"
+    },
+    {
+      "name": "package3d",
+      "type": "UL_PACKAGE3D (see note)"
+    },
+    {
+      "name": "populate",
+      "type": "int (0=do not populate, 1=populate)"
+    },
+    {
+      "name": "row",
+      "type": "string (see note)"
+    },
+    {
+      "name": "smashed",
+      "type": "int (see note)"
+    },
+    {
+      "name": "spin",
+      "type": "int"
+    },
+    {
+      "name": "value",
+      "type": "string (ELEMENT_VALUE_LENGTH)"
+    },
+    {
+      "name": "x, y",
+      "type": "int (origin point)"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "attributes()",
+      "type": "UL_ATTRIBUTE"
+    },
+    {
+      "name": "texts()",
+      "type": "UL_TEXT (see note)"
+    }
+  ],
+  "content": "# UL_ELEMENT\n\n## Data members\n\n| | |\n| --- | --- |\n| angle | real (0.0...359.9) |\n| attribute[] | string (see note) |\n| column | string (see note) |\n| locked | int |\n| mirror | int |\n| name | string (ELEMENT_NAME_LENGTH) |\n| footprint | UL_FOOTPRINT (new as of EAGLE 9.1, see note) |\n| package3d | UL_PACKAGE3D (see note) |\n| populate | int (0=do not populate, 1=populate) |\n| row | string (see note) |\n| smashed | int (see note) |\n| spin | int |\n| value | string (ELEMENT_VALUE_LENGTH) |\n| x, y | int (origin point) |\n\n## Loop members\n\n| | |\n| --- | --- |\n| attributes() | UL_ATTRIBUTE |\n| texts() | UL_TEXT (see note) |\n\nSee also UL_BOARD, UL_CONTACTREF\n\n## Constants\n\n| | |\n| --- | --- |\n| ELEMENT_NAME_LENGTH | max. recommended length of an element name (used in formatted output only) |\n| ELEMENT_VALUE_LENGTH | max. recommended length of an element value (used in formatted output only |\n\n## Notes\n\nThe *attribute[]* member can be used to query a UL_ELEMENT for the value of a given attribute (see the second example below). The returned string is empty if there is no attribute by the given name, or if this attribute is explicitly empty.\n\nThe *texts()* member only loops through those texts of the element that have been detached using REPOSITION, and through the visible texts of any attributes assigned to this element. To process all texts of an element (e.g. when drawing it), you have to loop through the element's own *texts()* member as well as the *texts()* member of the element's footprint.\n\nNote that the *footprint* member is new as of EAGLE 9.1. For backwards compatibility with older versions, *package* is available as an alias.\n\nNot all UL_ELEMENT's have 3D packages. The *package3d* member can be used as a boolean to test whether or not a 3D package is present, e.g. if `(E.package3d)`.\n\n*angle* defines how many degrees the element is rotated counterclockwise around its origin.\n\nThe *column* and *row* members return the column and row location within the frame in the board drawing. If there is no frame in the drawing, or the element is placed outside the frame, a '?' (question mark) is returned.\n\nThe *smashed* member tells whether the element is smashed. This function can also be used to find out whether there is a detached text parameter by giving the name of that parameter in square brackets, as in `smashed[\"VALUE\"]`. This is useful in case you want to select such a text with the MOVE command by doing `MOVE R5>VALUE`. Valid parameter names are \"NAME\" and \"VALUE\", as well as the names of any user defined attributes. They are treated case insensitive, and they may be preceded by a '>' character.\n\n## Examples\n\n```\nboard(B) {\n B.elements(E) {\n printf(\"Element: %s, (%f %f), Footprint=%s\\n\",\n E.name, u2mm(E.x), u2mm(E.y), E.footprint.name);\n }\n }\nboard(B) {\n B.elements(E) {\n if (E.attribute[\"REMARK\"])\n printf(\"%s: %s\\n\", E.name, E.attribute[\"REMARK\"]);\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "revolveFeatures_add_Sample",
+  "title": "revolveFeatures.add",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates creating a revolve feature using an angle extent.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_revolveFeatures_add(rootComp: adsk.fusion.Component):\n    profile = _ui.selectEntity('Select a profile to revolve.', 'Profiles').entity\n    axis = _ui.selectEntity('Select sketch line for axis.', 'SketchLines').entity\n    operation = adsk.fusion.FeatureOperations.NewComponentFeatureOperation\n\n    revolveFeatures = rootComp.features.revolveFeatures\n    input = revolveFeatures.createInput(profile, axis, operation)\n    input.setAngleExtent(False, adsk.core.ValueInput.createByString('90 deg'))\n    revolveFeature = revolveFeatures.add(input)"
+  }
+}

@@ -1,0 +1,354 @@
+{
+  "id": "PlanarJointMotion",
+  "title": "PlanarJointMotion Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Components/PlanarJointMotion.h",
+  "description": "Represents the set of information specific to a planar joint.",
+  "parent_class": "JointMotion",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    }
+  ],
+  "properties": [
+    {
+      "name": "customNormalDirectionEntity",
+      "description": "This property defines a custom normal direction and can be set using various types of entities that can infer a direction. For example, a linear edge, sketch line, planar face, and cylindrical face.This property is only valid in the case where the normalDirection property returns CustomJointDirection. Setting this property will automatically set the normalDirection property to CustomJointDirection.   To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "customPrimarySlideDirectionEntity",
+      "description": "This property can be set using various types of entities that can infer a direction. For example, a linear edge, sketch line, planar face, and cylindrical face. When reading this property, it is only valid in the case where the primarySlideDirection property returns CustomJointDirection. Setting this property will automatically set the primarySlideDirection property to CustomJointDirection. The entity defining the custom direction by be perpendicular to the normal direction.   To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "jointType",
+      "description": "Returns an enum value indicating the type of joint this joint represents."
+    },
+    {
+      "name": "normalDirection",
+      "description": "Gets and sets the direction of the normal of the single degree of rotation. This can be set to XAxisJointDirection, YAxisJointDirection, or ZAxisJointDirection. It can return those three directions and CustomJointDirection. If this returns CustomJointDirection then the customNormalDirectionEntity will return an entity that defines the direction. If there is a custom direction defined and this property is set to one of the three standard axes, the custom direction will be removed and customNormalDirectionEntity will return null."
+    },
+    {
+      "name": "normalDirectionVector",
+      "description": "Returns the direction of the normal direction. This property will return null in the case where the PlanarJointMotion object was obtained from a JointInput object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "primarySlideDirection",
+      "description": "Gets the direction used as the primary direction for the two translational degrees of freedom. The value of this property is automatically set when setting the normalDirection. When reading this value it can return XAxisJointDirection, YAxisJointDirection, ZAxisJointDirection, or CustomJointDirection. If it's CustomJointDirection then the direction the direction can be determined using the primarySlideDirectionVector and the entity controlling the direction can be get and set using the customPrimarySlideDirectionEntity."
+    },
+    {
+      "name": "primarySlideDirectionVector",
+      "description": "Returns the direction of the primary slide direction. This property will return null in the case where the PlanarJointMotion object was obtained from a JointInput object."
+    },
+    {
+      "name": "primarySlideLimits",
+      "description": "Returns a JointLimits object that defines the limits in the primary direction for this joint. Use the functionality of the returned JointLimits object to get, set, and modify the joint limits."
+    },
+    {
+      "name": "primarySlideValue",
+      "description": "Gets and sets the offset value in the primary direction. This is in centimeters. Setting this value is the equivalent of using the Drive Joints command."
+    },
+    {
+      "name": "rotationLimits",
+      "description": "Returns a JointLimits object that defines the limits of rotation for this joint. Use the functionality of the returned JointLimits object to get, set, and modify the joint limits."
+    },
+    {
+      "name": "rotationValue",
+      "description": "Gets and sets the rotation value. This is in radians. Setting this value is the equivalent of using the Drive Joints command."
+    },
+    {
+      "name": "secondarySlideDirectionVector",
+      "description": "Returns the direction of the secondary slide direction. This property will return null in the case where the PlanarJointMotion object was obtained from a JointInput object."
+    },
+    {
+      "name": "secondarySlideLimits",
+      "description": "Returns a JointLimits object that defines the limits in the secondary direction for this joint. Use the functionality of the returned JointLimits object to get, set, and modify the joint limits."
+    },
+    {
+      "name": "secondarySlideValue",
+      "description": "Gets and sets the offset value in the secondary direction. This is in centimeters. Setting this value is the equivalent of using the Drive Joints command."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Planar Joint Motion API Sample",
+      "description": "Demonstrates creating a joint with planar joint motion"
+    }
+  ],
+  "version": "Introduced in version July 2015",
+  "method_details": {
+    "classType": {
+      "id": "PlanarJointMotion_classType",
+      "title": "PlanarJointMotion.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/PlanarJointMotion.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "PlanarJointMotion",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.PlanarJointMotion.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::PlanarJointMotion::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version July 2015"
+    }
+  },
+  "property_details": {
+    "customNormalDirectionEntity": {
+      "id": "PlanarJointMotion_customNormalDirectionEntity",
+      "title": "PlanarJointMotion.customNormalDirectionEntity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/PlanarJointMotion.h",
+      "description": "This property defines a custom normal direction and can be set using various types of entities that can infer a direction. For example, a linear edge, sketch line, planar face, and cylindrical face.This property is only valid in the case where the normalDirection property returns CustomJointDirection. Setting this property will automatically set the normalDirection property to CustomJointDirection. To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)",
+      "parent_class": "PlanarJointMotion",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = planarJointMotion_var.customNormalDirectionEntity\n\n# Set the value of the property.\nplanarJointMotion_var.customNormalDirectionEntity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = planarJointMotion_var->customNormalDirectionEntity();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = planarJointMotion_var->customNormalDirectionEntity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "customPrimarySlideDirectionEntity": {
+      "id": "PlanarJointMotion_customPrimarySlideDirectionEntity",
+      "title": "PlanarJointMotion.customPrimarySlideDirectionEntity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/PlanarJointMotion.h",
+      "description": "This property can be set using various types of entities that can infer a direction. For example, a linear edge, sketch line, planar face, and cylindrical face. When reading this property, it is only valid in the case where the primarySlideDirection property returns CustomJointDirection. Setting this property will automatically set the primarySlideDirection property to CustomJointDirection. The entity defining the custom direction by be perpendicular to the normal direction. To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)",
+      "parent_class": "PlanarJointMotion",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = planarJointMotion_var.customPrimarySlideDirectionEntity\n\n# Set the value of the property.\nplanarJointMotion_var.customPrimarySlideDirectionEntity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = planarJointMotion_var->customPrimarySlideDirectionEntity();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = planarJointMotion_var->customPrimarySlideDirectionEntity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "isValid": {
+      "id": "PlanarJointMotion_isValid",
+      "title": "PlanarJointMotion.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/PlanarJointMotion.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "PlanarJointMotion",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = planarJointMotion_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = planarJointMotion_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "jointType": {
+      "id": "PlanarJointMotion_jointType",
+      "title": "PlanarJointMotion.jointType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/PlanarJointMotion.h",
+      "description": "Returns an enum value indicating the type of joint this joint represents.",
+      "parent_class": "PlanarJointMotion",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = planarJointMotion_var.jointType",
+        "cpp": "#include \n\n// Get the value of the property.\nJointTypes propertyValue = planarJointMotion_var->jointType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "normalDirection": {
+      "id": "PlanarJointMotion_normalDirection",
+      "title": "PlanarJointMotion.normalDirection Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/PlanarJointMotion.h",
+      "description": "Gets and sets the direction of the normal of the single degree of rotation. This can be set to XAxisJointDirection, YAxisJointDirection, or ZAxisJointDirection. It can return those three directions and CustomJointDirection. If this returns CustomJointDirection then the customNormalDirectionEntity will return an entity that defines the direction. If there is a custom direction defined and this property is set to one of the three standard axes, the custom direction will be removed and customNormalDirectionEntity will return null.",
+      "parent_class": "PlanarJointMotion",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = planarJointMotion_var.normalDirection\n\n# Set the value of the property.\nplanarJointMotion_var.normalDirection = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nJointDirections propertyValue = planarJointMotion_var->normalDirection();\n\n// Set the value of the property, where value_var is a JointDirections.\nbool returnValue = planarJointMotion_var->normalDirection(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "normalDirectionVector": {
+      "id": "PlanarJointMotion_normalDirectionVector",
+      "title": "PlanarJointMotion.normalDirectionVector Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/PlanarJointMotion.h",
+      "description": "Returns the direction of the normal direction. This property will return null in the case where the PlanarJointMotion object was obtained from a JointInput object.",
+      "parent_class": "PlanarJointMotion",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = planarJointMotion_var.normalDirectionVector",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = planarJointMotion_var->normalDirectionVector();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "objectType": {
+      "id": "PlanarJointMotion_objectType",
+      "title": "PlanarJointMotion.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/PlanarJointMotion.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "PlanarJointMotion",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = planarJointMotion_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = planarJointMotion_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "primarySlideDirection": {
+      "id": "PlanarJointMotion_primarySlideDirection",
+      "title": "PlanarJointMotion.primarySlideDirection Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/PlanarJointMotion.h",
+      "description": "Gets the direction used as the primary direction for the two translational degrees of freedom. The value of this property is automatically set when setting the normalDirection. When reading this value it can return XAxisJointDirection, YAxisJointDirection, ZAxisJointDirection, or CustomJointDirection. If it's CustomJointDirection then the direction the direction can be determined using the primarySlideDirectionVector and the entity controlling the direction can be get and set using the customPrimarySlideDirectionEntity.",
+      "parent_class": "PlanarJointMotion",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = planarJointMotion_var.primarySlideDirection",
+        "cpp": "#include \n\n// Get the value of the property.\nJointDirections propertyValue = planarJointMotion_var->primarySlideDirection();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "primarySlideDirectionVector": {
+      "id": "PlanarJointMotion_primarySlideDirectionVector",
+      "title": "PlanarJointMotion.primarySlideDirectionVector Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/PlanarJointMotion.h",
+      "description": "Returns the direction of the primary slide direction. This property will return null in the case where the PlanarJointMotion object was obtained from a JointInput object.",
+      "parent_class": "PlanarJointMotion",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = planarJointMotion_var.primarySlideDirectionVector",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = planarJointMotion_var->primarySlideDirectionVector();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "primarySlideLimits": {
+      "id": "PlanarJointMotion_primarySlideLimits",
+      "title": "PlanarJointMotion.primarySlideLimits Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/PlanarJointMotion.h",
+      "description": "Returns a JointLimits object that defines the limits in the primary direction for this joint. Use the functionality of the returned JointLimits object to get, set, and modify the joint limits.",
+      "parent_class": "PlanarJointMotion",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = planarJointMotion_var.primarySlideLimits",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = planarJointMotion_var->primarySlideLimits();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "primarySlideValue": {
+      "id": "PlanarJointMotion_primarySlideValue",
+      "title": "PlanarJointMotion.primarySlideValue Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/PlanarJointMotion.h",
+      "description": "Gets and sets the offset value in the primary direction. This is in centimeters. Setting this value is the equivalent of using the Drive Joints command.",
+      "parent_class": "PlanarJointMotion",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = planarJointMotion_var.primarySlideValue\n\n# Set the value of the property.\nplanarJointMotion_var.primarySlideValue = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = planarJointMotion_var->primarySlideValue();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = planarJointMotion_var->primarySlideValue(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "rotationLimits": {
+      "id": "PlanarJointMotion_rotationLimits",
+      "title": "PlanarJointMotion.rotationLimits Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/PlanarJointMotion.h",
+      "description": "Returns a JointLimits object that defines the limits of rotation for this joint. Use the functionality of the returned JointLimits object to get, set, and modify the joint limits.",
+      "parent_class": "PlanarJointMotion",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = planarJointMotion_var.rotationLimits",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = planarJointMotion_var->rotationLimits();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Planar Joint Motion API Sample",
+          "description": "Demonstrates creating a joint with planar joint motion"
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    },
+    "rotationValue": {
+      "id": "PlanarJointMotion_rotationValue",
+      "title": "PlanarJointMotion.rotationValue Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/PlanarJointMotion.h",
+      "description": "Gets and sets the rotation value. This is in radians. Setting this value is the equivalent of using the Drive Joints command.",
+      "parent_class": "PlanarJointMotion",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = planarJointMotion_var.rotationValue\n\n# Set the value of the property.\nplanarJointMotion_var.rotationValue = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = planarJointMotion_var->rotationValue();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = planarJointMotion_var->rotationValue(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "secondarySlideDirectionVector": {
+      "id": "PlanarJointMotion_secondarySlideDirectionVector",
+      "title": "PlanarJointMotion.secondarySlideDirectionVector Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/PlanarJointMotion.h",
+      "description": "Returns the direction of the secondary slide direction. This property will return null in the case where the PlanarJointMotion object was obtained from a JointInput object.",
+      "parent_class": "PlanarJointMotion",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = planarJointMotion_var.secondarySlideDirectionVector",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = planarJointMotion_var->secondarySlideDirectionVector();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "secondarySlideLimits": {
+      "id": "PlanarJointMotion_secondarySlideLimits",
+      "title": "PlanarJointMotion.secondarySlideLimits Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/PlanarJointMotion.h",
+      "description": "Returns a JointLimits object that defines the limits in the secondary direction for this joint. Use the functionality of the returned JointLimits object to get, set, and modify the joint limits.",
+      "parent_class": "PlanarJointMotion",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = planarJointMotion_var.secondarySlideLimits",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = planarJointMotion_var->secondarySlideLimits();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "secondarySlideValue": {
+      "id": "PlanarJointMotion_secondarySlideValue",
+      "title": "PlanarJointMotion.secondarySlideValue Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/PlanarJointMotion.h",
+      "description": "Gets and sets the offset value in the secondary direction. This is in centimeters. Setting this value is the equivalent of using the Drive Joints command.",
+      "parent_class": "PlanarJointMotion",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = planarJointMotion_var.secondarySlideValue\n\n# Set the value of the property.\nplanarJointMotion_var.secondarySlideValue = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = planarJointMotion_var->secondarySlideValue();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = planarJointMotion_var->secondarySlideValue(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    }
+  }
+}

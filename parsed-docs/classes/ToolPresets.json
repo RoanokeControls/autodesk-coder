@@ -1,0 +1,214 @@
+{
+  "id": "ToolPresets",
+  "title": "ToolPresets Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/Tools/ToolPresets.h",
+  "description": "ToolPresets represents a collection of ToolPreset. It provides access and allows the manipulation like removing and extending the list.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates and inserts a new Preset at the end of the Preset collection of the owning Tool. The new Preset will have the same values as the owning Tool."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Get Preset by index."
+    },
+    {
+      "name": "itemsByName",
+      "description": "Search presets by name. Returns all presets for which the name matches the given pattern. Compare is case insensitive and characters * and ? are used for wild-card matching."
+    },
+    {
+      "name": "remove",
+      "description": "Remove Preset by index from the owning Tool."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of Presets of the owning Tool."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Manufacturing Workflow API Sample",
+      "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "method_details": {
+    "add": {
+      "id": "ToolPresets_add",
+      "title": "ToolPresets.add Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolPresets.h",
+      "description": "Creates and inserts a new Preset at the end of the Preset collection of the owning Tool. The new Preset will have the same values as the owning Tool.",
+      "parent_class": "ToolPresets",
+      "syntax": {
+        "python": "returnValue = toolPresets_var.add()",
+        "cpp": "#include \n\nreturnValue = toolPresets_var->add();"
+      },
+      "return_type": "ToolPreset",
+      "return_description": "Returns the newly created Preset",
+      "related_samples": [
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "classType": {
+      "id": "ToolPresets_classType",
+      "title": "ToolPresets.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolPresets.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ToolPresets",
+      "syntax": {
+        "python": "returnValue = adsk.cam.ToolPresets.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::ToolPresets::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    },
+    "item": {
+      "id": "ToolPresets_item",
+      "title": "ToolPresets.item Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolPresets.h",
+      "description": "Get Preset by index.",
+      "parent_class": "ToolPresets",
+      "syntax": {
+        "python": "returnValue = toolPresets_var.item(index)",
+        "cpp": "#include \n\nreturnValue = toolPresets_var->item(index);"
+      },
+      "return_type": "ToolPreset",
+      "return_description": "Returns Preset at by given index, null otherwise",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "Index of the Preset in the owning Tool that should be returned."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "itemsByName": {
+      "id": "ToolPresets_itemsByName",
+      "title": "ToolPresets.itemsByName Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolPresets.h",
+      "description": "Search presets by name. Returns all presets for which the name matches the given pattern. Compare is case insensitive and characters * and ? are used for wild-card matching.",
+      "parent_class": "ToolPresets",
+      "syntax": {
+        "python": "returnValue = toolPresets_var.itemsByName(name)",
+        "cpp": "#include \n\nreturnValue = toolPresets_var->itemsByName(name);"
+      },
+      "return_type": "ToolPreset[]",
+      "return_description": "Returns all presets with matching name.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Name of the Preset to search for. The string can define a pattern with wild-card matching. '*' represents an arbitrary sequence including the empty sequence and '?' represents one arbitrary character."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "remove": {
+      "id": "ToolPresets_remove",
+      "title": "ToolPresets.remove Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolPresets.h",
+      "description": "Remove Preset by index from the owning Tool.",
+      "parent_class": "ToolPresets",
+      "syntax": {
+        "python": "returnValue = toolPresets_var.remove(index)",
+        "cpp": "#include \n\nreturnValue = toolPresets_var->remove(index);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true for successful deletion, false otherwise",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "Index of the Preset in the Tool that should be removed."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "ToolPresets_count",
+      "title": "ToolPresets.count Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolPresets.h",
+      "description": "The number of Presets of the owning Tool.",
+      "parent_class": "ToolPresets",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = toolPresets_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = toolPresets_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "ToolPresets_isValid",
+      "title": "ToolPresets.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolPresets.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ToolPresets",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = toolPresets_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = toolPresets_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "ToolPresets_objectType",
+      "title": "ToolPresets.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolPresets.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ToolPresets",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = toolPresets_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = toolPresets_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

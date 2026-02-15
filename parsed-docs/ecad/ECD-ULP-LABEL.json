@@ -1,0 +1,43 @@
+{
+  "id": "ECD-ULP-LABEL",
+  "title": "UL_LABEL",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "angle",
+      "type": "real (0.0...359.9)"
+    },
+    {
+      "name": "layer",
+      "type": "int"
+    },
+    {
+      "name": "mirror",
+      "type": "int"
+    },
+    {
+      "name": "spin",
+      "type": "int"
+    },
+    {
+      "name": "text",
+      "type": "UL_TEXT"
+    },
+    {
+      "name": "x, y",
+      "type": "int (origin point)"
+    },
+    {
+      "name": "xref",
+      "type": "int (0=plain, 1=cross-reference)"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "wires()",
+      "type": "UL_WIRE (see note)"
+    }
+  ],
+  "content": "# UL_LABEL\n\n## Data members\n\n| | |\n| --- | --- |\n| angle | real (0.0...359.9) |\n| layer | int |\n| mirror | int |\n| spin | int |\n| text | UL_TEXT |\n| x, y | int (origin point) |\n| xref | int (0=plain, 1=cross-reference) |\n\n## Loop members\n\n| | |\n| --- | --- |\n| wires() | UL_WIRE (see note) |\n\nSee also UL_SEGMENT\n\n## Note\n\nIf *xref* returns a non-zero value, the *wires()* loop member loops through the wires that form the flag of a cross-reference label. Otherwise it is an empty loop.\n\nThe *angle*, *layer*, *mirror* and *spin* members always return the same values as those of the UL_TEXT object returned by the text member. The x and y members of the text return slightly offset values for cross-reference labels (non-zero xref), otherwise they also return the same values as the UL_LABEL.\n\n*xref* is only meaningful for net labels. For bus labels it always returns 0.\n\n## Example\n\n```\nsheet(SH) {\n SH.nets(N) {\n N.segments(S) {\n S.labels(L) {\n printf(\"Label: (%f %f) '%s'\", u2mm(L.x), u2mm(L.y), L.text.value);\n }\n }\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

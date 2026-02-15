@@ -1,0 +1,174 @@
+{
+  "id": "ApplicationEvent",
+  "title": "ApplicationEvent Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/ApplicationEvent.h",
+  "description": "An ApplicationEvent represents a Fusion application related event. For example, startupCompleted or OnlineStatusChanged",
+  "parent_class": "Event",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Add a handler to be notified when the event occurs."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "remove",
+      "description": "Removes a handler from the event."
+    }
+  ],
+  "properties": [
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "name",
+      "description": "The name of the event - e.g. \"DocumentOpening\""
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "sender",
+      "description": "The object that is firing the event. For example, in the case of a command input event this will return the command."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Application Event API Sample",
+      "description": "Add-In that demonstrates application events. To use this sample, create a new folder using the name you want to use for the new add-in. Inside the folder, create a new file that is the same name as the folder but has a .py extension. Copy the code below into the .py file. Create another file that is the same name as the folder but has a .manifest extension and copy the JSON data below into that file.\n\t\n{\n\"autodeskProduct\":\t\"Fusion360\",\n\"type\":\t\"addin\",\n\"author\":\t\"\",\n\"description\":\t{\n\t\"\":\t\"\"\n},\n\"supportedOS\":\t\"windows|mac\",\n\"editEnabled\":\ttrue\n}\n\nRun the \"Scripts and Add-Ins\" command and click the green plus button near the top of the dialog. Browse to the location where you created the folder and select the folder. The add-in should now be displayed in the list of add-ins on the \"Add-Ins\" tab of the dialog. Select the add-in and click the \"Run\" button. This will load the add-in and when any of the application events occurr that it is watching for it will report them in the TEXT COMMAND window."
+    }
+  ],
+  "version": "Introduced in version January 2016",
+  "method_details": {
+    "add": {
+      "id": "ApplicationEvent_add",
+      "title": "ApplicationEvent.add Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ApplicationEvent.h",
+      "description": "Add a handler to be notified when the event occurs.",
+      "parent_class": "ApplicationEvent",
+      "syntax": {
+        "python": "returnValue = applicationEvent_var.add(handler)",
+        "cpp": "#include \n\nreturnValue = applicationEvent_var->add(handler);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the addition of the handler was successful.",
+      "parameters": [
+        {
+          "name": "handler",
+          "type": "ApplicationEventHandler",
+          "description": "The handler object to be called when this event is fired."
+        }
+      ],
+      "version": "Introduced in version January 2016"
+    },
+    "classType": {
+      "id": "ApplicationEvent_classType",
+      "title": "ApplicationEvent.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ApplicationEvent.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ApplicationEvent",
+      "syntax": {
+        "python": "returnValue = adsk.core.ApplicationEvent.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::ApplicationEvent::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2016"
+    },
+    "remove": {
+      "id": "ApplicationEvent_remove",
+      "title": "ApplicationEvent.remove Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ApplicationEvent.h",
+      "description": "Removes a handler from the event.",
+      "parent_class": "ApplicationEvent",
+      "syntax": {
+        "python": "returnValue = applicationEvent_var.remove(handler)",
+        "cpp": "#include \n\nreturnValue = applicationEvent_var->remove(handler);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if removal of the handler was successful.",
+      "parameters": [
+        {
+          "name": "handler",
+          "type": "ApplicationEventHandler",
+          "description": "The handler object to be removed from the event."
+        }
+      ],
+      "version": "Introduced in version January 2016"
+    }
+  },
+  "property_details": {
+    "isValid": {
+      "id": "ApplicationEvent_isValid",
+      "title": "ApplicationEvent.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ApplicationEvent.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ApplicationEvent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = applicationEvent_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = applicationEvent_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "name": {
+      "id": "ApplicationEvent_name",
+      "title": "ApplicationEvent.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ApplicationEvent.h",
+      "description": "The name of the event - e.g. \"DocumentOpening\"",
+      "parent_class": "ApplicationEvent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = applicationEvent_var.name",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = applicationEvent_var->name();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "objectType": {
+      "id": "ApplicationEvent_objectType",
+      "title": "ApplicationEvent.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ApplicationEvent.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ApplicationEvent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = applicationEvent_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = applicationEvent_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "sender": {
+      "id": "ApplicationEvent_sender",
+      "title": "ApplicationEvent.sender Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ApplicationEvent.h",
+      "description": "The object that is firing the event. For example, in the case of a command input event this will return the command.",
+      "parent_class": "ApplicationEvent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = applicationEvent_var.sender",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = applicationEvent_var->sender();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    }
+  }
+}

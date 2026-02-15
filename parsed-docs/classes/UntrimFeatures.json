@@ -1,0 +1,269 @@
+{
+  "id": "UntrimFeatures",
+  "title": "UntrimFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/UntrimFeatures.h",
+  "description": "Collection that provides access to all of the existing Untrim features in a component and supports the ability to create new Untrim features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new Untrim feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInputFromFaces",
+      "description": "Creates an UntrimFeatureInput object that defines the input needed to create an untrim feature. Use the input object to define the input to create the desired feature and then use the Add method, passing in the UntrimFeatureInput object."
+    },
+    {
+      "name": "createInputFromLoops",
+      "description": "Creates an UntrimFeatureInput object that defines the input needed to create an untrim feature. Use the input object to define the input to create the desired feature and then use the Add method, passing in the UntrimFeatureInput object."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified Untrim feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified Untrim feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of Untrim features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Untrim Feature API Sample",
+      "description": "Demonstrates creating a new untrim feature."
+    }
+  ],
+  "version": "Introduced in version January 2021",
+  "method_details": {
+    "add": {
+      "id": "UntrimFeatures_add",
+      "title": "UntrimFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatures.h",
+      "description": "Creates a new Untrim feature.",
+      "parent_class": "UntrimFeatures",
+      "syntax": {
+        "python": "returnValue = untrimFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = untrimFeatures_var->add(input);"
+      },
+      "return_type": "UntrimFeature",
+      "return_description": "Returns the newly created UntrimFeature object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "UntrimFeatureInput",
+          "description": "An UntrimFeatureInput object that defines the desired Untrim feature. Use the createInput method to create a new UntrimFeatureInput object and then use methods on it (the UntrimFeatureInput object) to define the desired options for the Untrim feature."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Untrim Feature API Sample",
+          "description": "Demonstrates creating a new untrim feature."
+        }
+      ],
+      "version": "Introduced in version January 2021"
+    },
+    "classType": {
+      "id": "UntrimFeatures_classType",
+      "title": "UntrimFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "UntrimFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.UntrimFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::UntrimFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2021"
+    },
+    "createInputFromFaces": {
+      "id": "UntrimFeatures_createInputFromFaces",
+      "title": "UntrimFeatures.createInputFromFaces Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatures.h",
+      "description": "Creates an UntrimFeatureInput object that defines the input needed to create an untrim feature. Use the input object to define the input to create the desired feature and then use the Add method, passing in the UntrimFeatureInput object.",
+      "parent_class": "UntrimFeatures",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = untrimFeatures_var.createInputFromFaces(faces, untrimLoopType)\n\n# Uses optional arguments.\nreturnValue = untrimFeatures_var.createInputFromFaces(faces, untrimLoopType, extensionDistance)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = untrimFeatures_var->createInputFromFaces(faces, untrimLoopType);\n\n// Uses optional arguments.\nreturnValue = untrimFeatures_var->createInputFromFaces(faces, untrimLoopType, extensionDistance);"
+      },
+      "return_type": "UntrimFeatureInput",
+      "return_description": "Returns the newly created UntrimFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "faces",
+          "type": "BRepFace[]",
+          "description": "An array of BRepFace objects that will have the loops of the specified type removed. Only loops that do not have a connected face can be removed (the edges in the loop have a single face). The array can only contain faces from surface bodies, (the isSolid property of the BRepBody returns false)."
+        },
+        {
+          "name": "untrimLoopType",
+          "type": "UntrimLoopTypes",
+          "description": "The loop type to be untrimmed (AllLoopUntrimType, InternalLoopUntrimType, or ExternalLoopUntrimType)."
+        },
+        {
+          "name": "extensionDistance",
+          "type": "ValueInput",
+          "description": "If the untrim loop type is AllLoopUntrimType or ExternalLoopUntrimType the untrimmed faces can be extended by a specified distance.   This is an optional argument whose default value is null."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Untrim Feature API Sample",
+          "description": "Demonstrates creating a new untrim feature."
+        }
+      ],
+      "version": "Introduced in version January 2021"
+    },
+    "createInputFromLoops": {
+      "id": "UntrimFeatures_createInputFromLoops",
+      "title": "UntrimFeatures.createInputFromLoops Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatures.h",
+      "description": "Creates an UntrimFeatureInput object that defines the input needed to create an untrim feature. Use the input object to define the input to create the desired feature and then use the Add method, passing in the UntrimFeatureInput object.",
+      "parent_class": "UntrimFeatures",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = untrimFeatures_var.createInputFromLoops(loops)\n\n# Uses optional arguments.\nreturnValue = untrimFeatures_var.createInputFromLoops(loops, extensionDistance)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = untrimFeatures_var->createInputFromLoops(loops);\n\n// Uses optional arguments.\nreturnValue = untrimFeatures_var->createInputFromLoops(loops, extensionDistance);"
+      },
+      "return_type": "UntrimFeatureInput",
+      "return_description": "Returns the newly created UntrimFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "loops",
+          "type": "BRepLoop[]",
+          "description": "Input the entities that define loops to remove. Only loops that do not have a connected face can be removed (the edges in the loop have a single face) The array can only contain loops from surface bodies, (the isSolid property of the BRepBody returns false)."
+        },
+        {
+          "name": "extensionDistance",
+          "type": "ValueInput",
+          "description": "If an external boundary is removed the untrimmed face can be extended by a specified distance.   This is an optional argument whose default value is null."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Untrim Feature API Sample",
+          "description": "Demonstrates creating a new untrim feature."
+        }
+      ],
+      "version": "Introduced in version January 2021"
+    },
+    "item": {
+      "id": "UntrimFeatures_item",
+      "title": "UntrimFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatures.h",
+      "description": "Function that returns the specified Untrim feature using an index into the collection.",
+      "parent_class": "UntrimFeatures",
+      "syntax": {
+        "python": "returnValue = untrimFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = untrimFeatures_var->item(index);"
+      },
+      "return_type": "UntrimFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version January 2021"
+    },
+    "itemByName": {
+      "id": "UntrimFeatures_itemByName",
+      "title": "UntrimFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatures.h",
+      "description": "Function that returns the specified Untrim feature using the name of the feature.",
+      "parent_class": "UntrimFeatures",
+      "syntax": {
+        "python": "returnValue = untrimFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = untrimFeatures_var->itemByName(name);"
+      },
+      "return_type": "UntrimFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version January 2021"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "UntrimFeatures_count",
+      "title": "UntrimFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatures.h",
+      "description": "The number of Untrim features in the collection.",
+      "parent_class": "UntrimFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = untrimFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "isValid": {
+      "id": "UntrimFeatures_isValid",
+      "title": "UntrimFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "UntrimFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = untrimFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "objectType": {
+      "id": "UntrimFeatures_objectType",
+      "title": "UntrimFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "UntrimFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = untrimFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    }
+  }
+}

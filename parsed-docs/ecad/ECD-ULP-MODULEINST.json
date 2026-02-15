@@ -1,0 +1,63 @@
+{
+  "id": "ECD-ULP-MODULEINST",
+  "title": "UL_MODULEINST",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "angle",
+      "type": "real (0, 90, 180 and 270)"
+    },
+    {
+      "name": "column",
+      "type": "string (see note)"
+    },
+    {
+      "name": "mirror",
+      "type": "int"
+    },
+    {
+      "name": "module",
+      "type": "UL_MODULE"
+    },
+    {
+      "name": "modulevariant",
+      "type": "string (selected variantdef of module)"
+    },
+    {
+      "name": "name",
+      "type": "string (INSTANCE_NAME_LENGTH)"
+    },
+    {
+      "name": "offset",
+      "type": "int"
+    },
+    {
+      "name": "row",
+      "type": "string (see note)"
+    },
+    {
+      "name": "sheet",
+      "type": "int (sheet number)"
+    },
+    {
+      "name": "smashed",
+      "type": "int (see note)"
+    },
+    {
+      "name": "x, y",
+      "type": "int (origin point)"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "texts()",
+      "type": "UL_TEXT (see note)"
+    },
+    {
+      "name": "wires()",
+      "type": "UL_WIRE"
+    }
+  ],
+  "content": "# UL_MODULEINST\n\n## Data members\n\n| | |\n| --- | --- |\n| angle | real (0, 90, 180 and 270) |\n| column | string (see note) |\n| mirror | int |\n| module | UL_MODULE |\n| modulevariant | string (selected variantdef of module) |\n| name | string (INSTANCE_NAME_LENGTH) |\n| offset | int |\n| row | string (see note) |\n| sheet | int (sheet number) |\n| smashed | int (see note) |\n| x, y | int (origin point) |\n\n## Loop members\n\n| | |\n| --- | --- |\n| texts() | UL_TEXT (see note) |\n| wires() | UL_WIRE |\n\nSee also UL_PORTREF, UL_VARIANTDEF\n\n## Constants\n\n| | |\n| --- | --- |\n| INSTANCE_NAME_LENGTH | max. recommended length of an instance name (used in formatted output only) |\n\n## Note\n\nThe *texts()* member loops through all texts of the module instance, no matter if smashed or not.\nThe *column* and *row* members return the column and row location within the frame on the sheet on which this instance is invoked. If there is no frame on that sheet, or the instance is placed outside the frame, a '?' (question mark) is returned. These members can only be used in a sheet context.\n\nThe *smashed* member tells whether the instance is smashed. This function can also be used to find out whether there is a detached text parameter by giving the name of that parameter in square brackets, as in smashed[\"NAME\"]. This is useful in case you want to select such a text with the MOVE command by doing MOVE MOD1>NAME.\n\n## Example\n\n```\nschematic(SCH) {\n SCH.sheets(SH) {\n SH.moduleinsts(MI) {\n printf(\"Module instance %s is located on sheet %d\\n\", MI.name, MI.sheet);\n }\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

@@ -1,0 +1,908 @@
+{
+  "id": "CAMPattern",
+  "title": "CAMPattern Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/CAM/CAMPattern.h",
+  "description": "Object that represents a pattern in an existing Setup, Folder or Pattern.",
+  "parent_class": "CAMFolder",
+  "methods": [
+    {
+      "name": "activate",
+      "description": "Sets this object as the default container."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "copyAfter",
+      "description": "Creates a duplicate of the operation in the tree after the given operation. Throws an exception if a not allowed copy operation is made for example copying a operation out of a setup."
+    },
+    {
+      "name": "copyBefore",
+      "description": "Creates a duplicate of the operation in the tree before the given operation. Throws an exception if a not allowed copy operation is made for example copying a operation out of a setup."
+    },
+    {
+      "name": "copyInto",
+      "description": "Creates a duplicate of the operation into the given container. You can only copy into containers, such as setups or folders. Copied operation will be copied at the end of all operations already in the container. Throws an exception if a not allowed copy operation is made for example copying a setup into a setup."
+    },
+    {
+      "name": "createFromCAMTemplate",
+      "description": "**RETIRED** Creates and adds operations, folders or patterns from the specified CAMTemplate to the end of this folder."
+    },
+    {
+      "name": "createFromCAMTemplate2",
+      "description": "Create new operations, folders, or patterns from the specified CAMTemplate. They are added to the end of the parent setup."
+    },
+    {
+      "name": "createFromTemplate",
+      "description": "**RETIRED** Creates and adds operations, folders or patterns from the specified template file to the end of this folder."
+    },
+    {
+      "name": "createFromTemplateXML",
+      "description": "**RETIRED** Creates and adds operations, folders or patterns from the specified template content XML to the end of this folder."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the operation from the document. In case of a setup or folder, all containing child operations will be deleted as well. Note: Child classes may overwrite this function and throw an exception if the object cannot be deleted."
+    },
+    {
+      "name": "duplicate",
+      "description": "Creates a duplicate of the operation in the tree after the itself."
+    },
+    {
+      "name": "modifyUtility",
+      "description": "Get ModifyUtility for the current operation by given utility type."
+    },
+    {
+      "name": "moveAfter",
+      "description": "Move operation in tree after the given operation. Throws an exception if a not allowed move is made for example moving a operation out of a setup."
+    },
+    {
+      "name": "moveBefore",
+      "description": "Move operation in tree before the given operation. Throws an exception if a not allowed move is made for example moving a operation out of a setup."
+    },
+    {
+      "name": "moveInto",
+      "description": "Move operation in tree into the given container. This only works with setups, patterns and folders. Moved operation will be moved at the end of all operations already in the container. Throws an exception if a not allowed move is made for example moving a setup into a setup."
+    }
+  ],
+  "properties": [
+    {
+      "name": "allOperations",
+      "description": "Gets a collection containing all of the operations in this folder. This includes all operations nested in folders and patterns."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this object."
+    },
+    {
+      "name": "children",
+      "description": "Returns a collection containing all of the immediate (top level) child operations, folders and patterns in this folder in the order they appear in the browser."
+    },
+    {
+      "name": "error",
+      "description": "Returns a message corresponding to any active error associated with the value of this parameter."
+    },
+    {
+      "name": "folders",
+      "description": "Returns the Folders collection that provides access to existing folders in this folder."
+    },
+    {
+      "name": "generatedDataCollection",
+      "description": "Get the generated data associated with a given operation base instance. The type of data depends on the strategy type and might not be available for all strategy types. The available types can be found in GeneratedData.cs"
+    },
+    {
+      "name": "hasError",
+      "description": "Gets if errors were encountered when generating the operation."
+    },
+    {
+      "name": "hasWarning",
+      "description": "Gets if problems were encountered when generating the operation."
+    },
+    {
+      "name": "isActive",
+      "description": "Gets if this folder is active."
+    },
+    {
+      "name": "isLightBulbOn",
+      "description": "Gets if this operation is currently visible in the graphics window. Use the isLightBulbOn to change if the eye icon beside the operation node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children so this property does not indicate if the operation is actually visible, just that it should be visible if all of its parent nodes are also visible. Use the isVisible property to determine if it's actually visible."
+    },
+    {
+      "name": "isOptional",
+      "description": "Gets and sets the \"Optional\" property value of the operation. Gets/sets true if the operation is optional."
+    },
+    {
+      "name": "isProtected",
+      "description": "Gets and sets the \"protected\" property value of the operation. Gets/sets true if the operation is protected."
+    },
+    {
+      "name": "isSelected",
+      "description": "Gets if this operation is selected in the 'Setups' browser."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets the \"Suppressed\" property value of the operation. Gets/sets true if the operation is suppressed."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets if this operation is currently visible in the graphics window. Use the isLightBulbOn to change if the eye icon beside the operation node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children. This property indicates the final result and whether this operation is actually visible or not."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name of the operation as seen in the browser.\u00a0This name is unique as compared to the names of all other operations in the document."
+    },
+    {
+      "name": "notes",
+      "description": "Gets and sets the notes of the operation."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "operationId",
+      "description": "Returns the id of the operation.\u00a0This id is unique as compared to the ids of all other operations in the document. This id will not change when changing the order or parent of the operation. This id will remain valid when the document is saved and reloaded."
+    },
+    {
+      "name": "operations",
+      "description": "Returns the Operations collection that provides access to existing individual operations in this folder."
+    },
+    {
+      "name": "parameters",
+      "description": "Gets the CAMParameters collection for this operation."
+    },
+    {
+      "name": "parent",
+      "description": "Returns the parent Setup, Folder or Pattern for this Folder."
+    },
+    {
+      "name": "parentSetup",
+      "description": "Gets the Setup this operation belongs to."
+    },
+    {
+      "name": "patterns",
+      "description": "Returns the Patterns collection that provides access to existing patterns in this folder."
+    },
+    {
+      "name": "strategy",
+      "description": "Gets the name of the strategy associated with this operation."
+    },
+    {
+      "name": "warning",
+      "description": "Returns a message corresponding to any active warning associated with the value of this parameter."
+    }
+  ],
+  "version": "Introduced in version January 2016",
+  "method_details": {
+    "activate": {
+      "id": "CAMPattern_activate",
+      "title": "CAMPattern.activate Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Sets this object as the default container.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "returnValue = cAMPattern_var.activate()",
+        "cpp": "#include \n\nreturnValue = cAMPattern_var->activate();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the activation was successful.",
+      "version": "Introduced in version April 2023"
+    },
+    "classType": {
+      "id": "CAMPattern_classType",
+      "title": "CAMPattern.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "returnValue = adsk.cam.CAMPattern.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::CAMPattern::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2016"
+    },
+    "copyAfter": {
+      "id": "CAMPattern_copyAfter",
+      "title": "CAMPattern.copyAfter Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Creates a duplicate of the operation in the tree after the given operation. Throws an exception if a not allowed copy operation is made for example copying a operation out of a setup.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "returnValue = cAMPattern_var.copyAfter(operation)",
+        "cpp": "#include \n\nreturnValue = cAMPattern_var->copyAfter(operation);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if copy command was successful.",
+      "parameters": [
+        {
+          "name": "operation",
+          "type": "OperationBase",
+          "description": "Operation to copy targeted operation after."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "copyBefore": {
+      "id": "CAMPattern_copyBefore",
+      "title": "CAMPattern.copyBefore Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Creates a duplicate of the operation in the tree before the given operation. Throws an exception if a not allowed copy operation is made for example copying a operation out of a setup.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "returnValue = cAMPattern_var.copyBefore(operation)",
+        "cpp": "#include \n\nreturnValue = cAMPattern_var->copyBefore(operation);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if copy command was successful.",
+      "parameters": [
+        {
+          "name": "operation",
+          "type": "OperationBase",
+          "description": "Operation to copy targeted operation before."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "copyInto": {
+      "id": "CAMPattern_copyInto",
+      "title": "CAMPattern.copyInto Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Creates a duplicate of the operation into the given container. You can only copy into containers, such as setups or folders. Copied operation will be copied at the end of all operations already in the container. Throws an exception if a not allowed copy operation is made for example copying a setup into a setup.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "returnValue = cAMPattern_var.copyInto(container)",
+        "cpp": "#include \n\nreturnValue = cAMPattern_var->copyInto(container);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if copy command was successful.",
+      "parameters": [
+        {
+          "name": "container",
+          "type": "OperationBase",
+          "description": "Container to copy targeted operation into."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "createFromCAMTemplate": {
+      "id": "CAMPattern_createFromCAMTemplate",
+      "title": "CAMPattern.createFromCAMTemplate Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Creates and adds operations, folders or patterns from the specified CAMTemplate to the end of this folder. Remarks",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "returnValue = cAMPattern_var.createFromCAMTemplate(camTemplate)",
+        "cpp": "#include \n\nreturnValue = cAMPattern_var->createFromCAMTemplate(camTemplate);"
+      },
+      "return_type": "OperationBase[]",
+      "return_description": "Returns an array containing all of the operations, folders and patterns created from the template.",
+      "parameters": [
+        {
+          "name": "camTemplate",
+          "type": "CAMTemplate",
+          "description": "The CAMTemplate object to apply"
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "createFromCAMTemplate2": {
+      "id": "CAMPattern_createFromCAMTemplate2",
+      "title": "CAMPattern.createFromCAMTemplate2 Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Create new operations, folders, or patterns from the specified CAMTemplate. They are added to the end of the parent setup.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "returnValue = cAMPattern_var.createFromCAMTemplate2(input)",
+        "cpp": "#include \n\nreturnValue = cAMPattern_var->createFromCAMTemplate2(input);"
+      },
+      "return_type": "OperationBase[]",
+      "return_description": "Returns an array containing all of the operations, folders and patterns created from the template.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "CreateFromCAMTemplateInput",
+          "description": "Input object that contains the template to create from and the generation mode."
+        }
+      ],
+      "version": "Introduced in version October 2023"
+    },
+    "createFromTemplate": {
+      "id": "CAMPattern_createFromTemplate",
+      "title": "CAMPattern.createFromTemplate Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Creates and adds operations, folders or patterns from the specified template file to the end of this folder. Remarks",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "returnValue = cAMPattern_var.createFromTemplate(templateFilePath)",
+        "cpp": "#include \n\nreturnValue = cAMPattern_var->createFromTemplate(templateFilePath);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "Returns the collection containing all of the operations, folders and patterns created from the template file.",
+      "parameters": [
+        {
+          "name": "templateFilePath",
+          "type": "string",
+          "description": "The full path to the template file."
+        }
+      ],
+      "version": "Introduced in version May 2020"
+    },
+    "createFromTemplateXML": {
+      "id": "CAMPattern_createFromTemplateXML",
+      "title": "CAMPattern.createFromTemplateXML Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Creates and adds operations, folders or patterns from the specified template content XML to the end of this folder. Remarks",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "returnValue = cAMPattern_var.createFromTemplateXML(templateXML)",
+        "cpp": "#include \n\nreturnValue = cAMPattern_var->createFromTemplateXML(templateXML);"
+      },
+      "return_type": "OperationBase[]",
+      "return_description": "Returns an array containing all of the operations, folders and patterns created from the template.",
+      "parameters": [
+        {
+          "name": "templateXML",
+          "type": "string",
+          "description": "The full XML content of the template."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "deleteMe": {
+      "id": "CAMPattern_deleteMe",
+      "title": "CAMPattern.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Deletes the operation from the document. In case of a setup or folder, all containing child operations will be deleted as well. Note: Child classes may overwrite this function and throw an exception if the object cannot be deleted.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "returnValue = cAMPattern_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = cAMPattern_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version May 2023"
+    },
+    "duplicate": {
+      "id": "CAMPattern_duplicate",
+      "title": "CAMPattern.duplicate Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Creates a duplicate of the operation in the tree after the itself.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "returnValue = cAMPattern_var.duplicate()",
+        "cpp": "#include \n\nreturnValue = cAMPattern_var->duplicate();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if duplicate command was successful.",
+      "version": "Introduced in version May 2024"
+    },
+    "modifyUtility": {
+      "id": "CAMPattern_modifyUtility",
+      "title": "CAMPattern.modifyUtility Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Get ModifyUtility for the current operation by given utility type.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "returnValue = cAMPattern_var.modifyUtility(utility)",
+        "cpp": "#include \n\nreturnValue = cAMPattern_var->modifyUtility(utility);"
+      },
+      "return_type": "ModifyUtility",
+      "return_description": "Returns ModifyUtility for specific type or null if the type is not compatible with the operation.",
+      "parameters": [
+        {
+          "name": "utility",
+          "type": "ModifyUtilityTypes",
+          "description": "Defines the specific ModifyUtility."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    },
+    "moveAfter": {
+      "id": "CAMPattern_moveAfter",
+      "title": "CAMPattern.moveAfter Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Move operation in tree after the given operation. Throws an exception if a not allowed move is made for example moving a operation out of a setup.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "returnValue = cAMPattern_var.moveAfter(operation)",
+        "cpp": "#include \n\nreturnValue = cAMPattern_var->moveAfter(operation);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if move operation was successful.",
+      "parameters": [
+        {
+          "name": "operation",
+          "type": "OperationBase",
+          "description": "Operation to move targeted operation after."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "moveBefore": {
+      "id": "CAMPattern_moveBefore",
+      "title": "CAMPattern.moveBefore Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Move operation in tree before the given operation. Throws an exception if a not allowed move is made for example moving a operation out of a setup.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "returnValue = cAMPattern_var.moveBefore(operation)",
+        "cpp": "#include \n\nreturnValue = cAMPattern_var->moveBefore(operation);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if move operation was successful.",
+      "parameters": [
+        {
+          "name": "operation",
+          "type": "OperationBase",
+          "description": "Operation to move targeted operation before."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "moveInto": {
+      "id": "CAMPattern_moveInto",
+      "title": "CAMPattern.moveInto Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Move operation in tree into the given container. This only works with setups, patterns and folders. Moved operation will be moved at the end of all operations already in the container. Throws an exception if a not allowed move is made for example moving a setup into a setup.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "returnValue = cAMPattern_var.moveInto(container)",
+        "cpp": "#include \n\nreturnValue = cAMPattern_var->moveInto(container);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if move operation was successful.",
+      "parameters": [
+        {
+          "name": "container",
+          "type": "OperationBase",
+          "description": "Container to move targeted operation into."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    }
+  },
+  "property_details": {
+    "allOperations": {
+      "id": "CAMPattern_allOperations",
+      "title": "CAMPattern.allOperations Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Gets a collection containing all of the operations in this folder. This includes all operations nested in folders and patterns.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.allOperations",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAMPattern_var->allOperations();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "attributes": {
+      "id": "CAMPattern_attributes",
+      "title": "CAMPattern.attributes Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Returns the collection of attributes associated with this object.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAMPattern_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2021"
+    },
+    "children": {
+      "id": "CAMPattern_children",
+      "title": "CAMPattern.children Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Returns a collection containing all of the immediate (top level) child operations, folders and patterns in this folder in the order they appear in the browser.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.children",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAMPattern_var->children();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "error": {
+      "id": "CAMPattern_error",
+      "title": "CAMPattern.error Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Returns a message corresponding to any active error associated with the value of this parameter.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.error",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMPattern_var->error();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "folders": {
+      "id": "CAMPattern_folders",
+      "title": "CAMPattern.folders Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Returns the Folders collection that provides access to existing folders in this folder.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.folders",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAMPattern_var->folders();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "generatedDataCollection": {
+      "id": "CAMPattern_generatedDataCollection",
+      "title": "CAMPattern.generatedDataCollection Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Get the generated data associated with a given operation base instance. The type of data depends on the strategy type and might not be available for all strategy types. The available types can be found in GeneratedData.cs",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.generatedDataCollection",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAMPattern_var->generatedDataCollection();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "hasError": {
+      "id": "CAMPattern_hasError",
+      "title": "CAMPattern.hasError Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Gets if errors were encountered when generating the operation.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.hasError",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMPattern_var->hasError();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "hasWarning": {
+      "id": "CAMPattern_hasWarning",
+      "title": "CAMPattern.hasWarning Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Gets if problems were encountered when generating the operation.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.hasWarning",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMPattern_var->hasWarning();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isActive": {
+      "id": "CAMPattern_isActive",
+      "title": "CAMPattern.isActive Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Gets if this folder is active.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.isActive",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMPattern_var->isActive();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isLightBulbOn": {
+      "id": "CAMPattern_isLightBulbOn",
+      "title": "CAMPattern.isLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Gets if this operation is currently visible in the graphics window. Use the isLightBulbOn to change if the eye icon beside the operation node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children so this property does not indicate if the operation is actually visible, just that it should be visible if all of its parent nodes are also visible. Use the isVisible property to determine if it's actually visible.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.isLightBulbOn\n\n# Set the value of the property.\ncAMPattern_var.isLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMPattern_var->isLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = cAMPattern_var->isLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "isOptional": {
+      "id": "CAMPattern_isOptional",
+      "title": "CAMPattern.isOptional Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Gets and sets the \"Optional\" property value of the operation. Gets/sets true if the operation is optional.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.isOptional\n\n# Set the value of the property.\ncAMPattern_var.isOptional = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMPattern_var->isOptional();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = cAMPattern_var->isOptional(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isProtected": {
+      "id": "CAMPattern_isProtected",
+      "title": "CAMPattern.isProtected Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Gets and sets the \"protected\" property value of the operation. Gets/sets true if the operation is protected.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.isProtected\n\n# Set the value of the property.\ncAMPattern_var.isProtected = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMPattern_var->isProtected();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = cAMPattern_var->isProtected(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isSelected": {
+      "id": "CAMPattern_isSelected",
+      "title": "CAMPattern.isSelected Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Gets if this operation is selected in the 'Setups' browser.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.isSelected",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMPattern_var->isSelected();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2020"
+    },
+    "isSuppressed": {
+      "id": "CAMPattern_isSuppressed",
+      "title": "CAMPattern.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Gets and sets the \"Suppressed\" property value of the operation. Gets/sets true if the operation is suppressed.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.isSuppressed\n\n# Set the value of the property.\ncAMPattern_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMPattern_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = cAMPattern_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isValid": {
+      "id": "CAMPattern_isValid",
+      "title": "CAMPattern.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMPattern_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isVisible": {
+      "id": "CAMPattern_isVisible",
+      "title": "CAMPattern.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Gets if this operation is currently visible in the graphics window. Use the isLightBulbOn to change if the eye icon beside the operation node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children. This property indicates the final result and whether this operation is actually visible or not.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMPattern_var->isVisible();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "name": {
+      "id": "CAMPattern_name",
+      "title": "CAMPattern.name Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Gets and sets the name of the operation as seen in the browser.\u00a0This name is unique as compared to the names of all other operations in the document.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.name\n\n# Set the value of the property.\ncAMPattern_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMPattern_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = cAMPattern_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "notes": {
+      "id": "CAMPattern_notes",
+      "title": "CAMPattern.notes Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Gets and sets the notes of the operation.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.notes\n\n# Set the value of the property.\ncAMPattern_var.notes = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMPattern_var->notes();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = cAMPattern_var->notes(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2020"
+    },
+    "objectType": {
+      "id": "CAMPattern_objectType",
+      "title": "CAMPattern.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMPattern_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "operationId": {
+      "id": "CAMPattern_operationId",
+      "title": "CAMPattern.operationId Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Returns the id of the operation.\u00a0This id is unique as compared to the ids of all other operations in the document. This id will not change when changing the order or parent of the operation. This id will remain valid when the document is saved and reloaded.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.operationId",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = cAMPattern_var->operationId();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2020"
+    },
+    "operations": {
+      "id": "CAMPattern_operations",
+      "title": "CAMPattern.operations Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Returns the Operations collection that provides access to existing individual operations in this folder.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.operations",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAMPattern_var->operations();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "parameters": {
+      "id": "CAMPattern_parameters",
+      "title": "CAMPattern.parameters Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Gets the CAMParameters collection for this operation.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.parameters",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAMPattern_var->parameters();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "parent": {
+      "id": "CAMPattern_parent",
+      "title": "CAMPattern.parent Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Returns the parent Setup, Folder or Pattern for this Folder.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.parent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAMPattern_var->parent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "parentSetup": {
+      "id": "CAMPattern_parentSetup",
+      "title": "CAMPattern.parentSetup Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Gets the Setup this operation belongs to.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.parentSetup",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAMPattern_var->parentSetup();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "patterns": {
+      "id": "CAMPattern_patterns",
+      "title": "CAMPattern.patterns Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Returns the Patterns collection that provides access to existing patterns in this folder.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.patterns",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAMPattern_var->patterns();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "strategy": {
+      "id": "CAMPattern_strategy",
+      "title": "CAMPattern.strategy Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Gets the name of the strategy associated with this operation.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.strategy",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMPattern_var->strategy();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "warning": {
+      "id": "CAMPattern_warning",
+      "title": "CAMPattern.warning Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMPattern.h",
+      "description": "Returns a message corresponding to any active warning associated with the value of this parameter.",
+      "parent_class": "CAMPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMPattern_var.warning",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMPattern_var->warning();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

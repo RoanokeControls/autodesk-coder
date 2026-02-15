@@ -1,0 +1,361 @@
+{
+  "id": "ArrangeSelection",
+  "title": "ArrangeSelection Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+  "description": "Class for arrange selections. Provides access to the selected geometry and its properties.",
+  "parent_class": "GeometrySelection",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    }
+  ],
+  "properties": [
+    {
+      "name": "customQuantity",
+      "description": "Gets and sets the custom quantity. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. The default value for this property is 1. Note: If customQuantity is called, isUsingCustomQuantity will be set to true automatically."
+    },
+    {
+      "name": "customRotationX",
+      "description": "Gets and sets the rotation increments (in degrees) for the x-axis. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. To enable any rotation the parameter \"arrange_rotation_group\" of the operation must be set to true. To disable x-axis rotation for this selection, customRotationX must be set to 0. The default value for this property is 45 degrees. Note: If customRotationX is called, isUsingCustomRotationX will be set to true automatically."
+    },
+    {
+      "name": "customRotationY",
+      "description": "Gets and sets the rotation increments (in degrees) for the y-axis. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. To enable any rotation the parameter \"arrange_rotation_group\" of the operation must be set to true. To disable y-axis rotation for this selection, customRotationY must be set to 0. The default value for this property is 45 degrees. Note: If customRotationY is called, isUsingCustomRotationY will be set to true automatically."
+    },
+    {
+      "name": "customRotationZ",
+      "description": "Gets and sets the rotation increments (in degrees) for the z-axis. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. To enable any rotation the parameter \"arrange_rotation_group\" of the operation must be set to true. To disable z-axis rotation for this selection, customRotationZ must be set to 0. The default value for this property is 45 degrees. Note: If customRotationZ is called, isUsingCustomRotationZ will be set to true automatically."
+    },
+    {
+      "name": "error",
+      "description": "Gets the last warning string encountered after the selection was applied to a parent."
+    },
+    {
+      "name": "hasError",
+      "description": "Gets if errors were encountered when applying the selection to a a parent."
+    },
+    {
+      "name": "hasWarning",
+      "description": "Gets if warnings were encountered when applying the selection to a parent."
+    },
+    {
+      "name": "inputGeometry",
+      "description": "Gets and sets the value of the input geometry. If the value originates from a component instead of an occurrence, or an occurrence outside of the CAM environment, then the subpath is checked against the CAM model tree. For some child classes, this may be the same as the value property, but might also consist of fewer elements. Valid elements depend on the capabilities of the derived class. An exception is thrown if the matching fails or the given entity does not match the expected type."
+    },
+    {
+      "name": "isUsingCustomQuantity",
+      "description": "Gets and sets if custom quantity is used for this element. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. If isUsingCustomQuantity is false, the global quantity of the operation's parameter \"arrange_global_quantity\" is used. The default value for this property false."
+    },
+    {
+      "name": "isUsingCustomRotationX",
+      "description": "Gets and sets if custom rotation is used for the x-axis. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. To enable any rotation the parameter \"arrange_rotation_group\" of the operation must be set to true. If isUsingCustomRotationX is false, the rotation of the operation's parameter \"arrange_rotation_x\" is used. The default value for this property false."
+    },
+    {
+      "name": "isUsingCustomRotationY",
+      "description": "Gets and sets if custom rotation is used for the y-axis. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. To enable any rotation the parameter \"arrange_rotation_group\" of the operation must be set to true. If isUsingCustomRotationY is false, the rotation of the operation's parameter \"arrange_rotation_y\" is used. The default value for this property false."
+    },
+    {
+      "name": "isUsingCustomRotationZ",
+      "description": "Gets and sets if custom rotation is used for the z-axis. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. To enable any rotation the parameter \"arrange_rotation_group\" of the operation must be set to true. If isUsingCustomRotationZ is false, the rotation of the operation's parameter \"arrange_rotation_z\" is used. The default value for this property true."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "priorityType",
+      "description": "Gets and sets the priority value for each element in the selection list. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. The default value for this property is MediumArrangePriorityType."
+    },
+    {
+      "name": "value",
+      "description": "Returns the resulting value of the selection. In general, this returns the input selection, but child classes can override the return value if needed. Refer to the child classes comments for further details. The collection may contain duplicates. For OperationInputs, the return value may not be the same as for Operations, as additional geometry selected by child classes is not evaluated for OperationInputs."
+    },
+    {
+      "name": "warning",
+      "description": "Gets the last warning string encountered after the selection was applied to a parent."
+    }
+  ],
+  "version": "Introduced in version March 2024",
+  "method_details": {
+    "classType": {
+      "id": "ArrangeSelection_classType",
+      "title": "ArrangeSelection.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "returnValue = adsk.cam.ArrangeSelection.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::ArrangeSelection::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version March 2024"
+    }
+  },
+  "property_details": {
+    "customQuantity": {
+      "id": "ArrangeSelection_customQuantity",
+      "title": "ArrangeSelection.customQuantity Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "Gets and sets the custom quantity. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. The default value for this property is 1. Note: If customQuantity is called, isUsingCustomQuantity will be set to true automatically.",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeSelection_var.customQuantity\n\n# Set the value of the property.\narrangeSelection_var.customQuantity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = arrangeSelection_var->customQuantity();\n\n// Set the value of the property, where value_var is a uinteger.\nbool returnValue = arrangeSelection_var->customQuantity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "customRotationX": {
+      "id": "ArrangeSelection_customRotationX",
+      "title": "ArrangeSelection.customRotationX Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "Gets and sets the rotation increments (in degrees) for the x-axis. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. To enable any rotation the parameter \"arrange_rotation_group\" of the operation must be set to true. To disable x-axis rotation for this selection, customRotationX must be set to 0. The default value for this property is 45 degrees. Note: If customRotationX is called, isUsingCustomRotationX will be set to true automatically.",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeSelection_var.customRotationX\n\n# Set the value of the property.\narrangeSelection_var.customRotationX = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = arrangeSelection_var->customRotationX();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = arrangeSelection_var->customRotationX(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "customRotationY": {
+      "id": "ArrangeSelection_customRotationY",
+      "title": "ArrangeSelection.customRotationY Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "Gets and sets the rotation increments (in degrees) for the y-axis. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. To enable any rotation the parameter \"arrange_rotation_group\" of the operation must be set to true. To disable y-axis rotation for this selection, customRotationY must be set to 0. The default value for this property is 45 degrees. Note: If customRotationY is called, isUsingCustomRotationY will be set to true automatically.",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeSelection_var.customRotationY\n\n# Set the value of the property.\narrangeSelection_var.customRotationY = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = arrangeSelection_var->customRotationY();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = arrangeSelection_var->customRotationY(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "customRotationZ": {
+      "id": "ArrangeSelection_customRotationZ",
+      "title": "ArrangeSelection.customRotationZ Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "Gets and sets the rotation increments (in degrees) for the z-axis. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. To enable any rotation the parameter \"arrange_rotation_group\" of the operation must be set to true. To disable z-axis rotation for this selection, customRotationZ must be set to 0. The default value for this property is 45 degrees. Note: If customRotationZ is called, isUsingCustomRotationZ will be set to true automatically.",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeSelection_var.customRotationZ\n\n# Set the value of the property.\narrangeSelection_var.customRotationZ = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = arrangeSelection_var->customRotationZ();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = arrangeSelection_var->customRotationZ(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "error": {
+      "id": "ArrangeSelection_error",
+      "title": "ArrangeSelection.error Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "Gets the last warning string encountered after the selection was applied to a parent.",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeSelection_var.error",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = arrangeSelection_var->error();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "hasError": {
+      "id": "ArrangeSelection_hasError",
+      "title": "ArrangeSelection.hasError Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "Gets if errors were encountered when applying the selection to a a parent.",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeSelection_var.hasError",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = arrangeSelection_var->hasError();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "hasWarning": {
+      "id": "ArrangeSelection_hasWarning",
+      "title": "ArrangeSelection.hasWarning Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "Gets if warnings were encountered when applying the selection to a parent.",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeSelection_var.hasWarning",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = arrangeSelection_var->hasWarning();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "inputGeometry": {
+      "id": "ArrangeSelection_inputGeometry",
+      "title": "ArrangeSelection.inputGeometry Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "Gets and sets the value of the input geometry. If the value originates from a component instead of an occurrence, or an occurrence outside of the CAM environment, then the subpath is checked against the CAM model tree. For some child classes, this may be the same as the value property, but might also consist of fewer elements. Valid elements depend on the capabilities of the derived class. An exception is thrown if the matching fails or the given entity does not match the expected type.",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeSelection_var.inputGeometry\n\n# Set the value of the property.\narrangeSelection_var.inputGeometry = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = arrangeSelection_var->inputGeometry();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = arrangeSelection_var->inputGeometry(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "isUsingCustomQuantity": {
+      "id": "ArrangeSelection_isUsingCustomQuantity",
+      "title": "ArrangeSelection.isUsingCustomQuantity Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "Gets and sets if custom quantity is used for this element. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. If isUsingCustomQuantity is false, the global quantity of the operation's parameter \"arrange_global_quantity\" is used. The default value for this property false.",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeSelection_var.isUsingCustomQuantity\n\n# Set the value of the property.\narrangeSelection_var.isUsingCustomQuantity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = arrangeSelection_var->isUsingCustomQuantity();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = arrangeSelection_var->isUsingCustomQuantity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "isUsingCustomRotationX": {
+      "id": "ArrangeSelection_isUsingCustomRotationX",
+      "title": "ArrangeSelection.isUsingCustomRotationX Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "Gets and sets if custom rotation is used for the x-axis. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. To enable any rotation the parameter \"arrange_rotation_group\" of the operation must be set to true. If isUsingCustomRotationX is false, the rotation of the operation's parameter \"arrange_rotation_x\" is used. The default value for this property false.",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeSelection_var.isUsingCustomRotationX\n\n# Set the value of the property.\narrangeSelection_var.isUsingCustomRotationX = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = arrangeSelection_var->isUsingCustomRotationX();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = arrangeSelection_var->isUsingCustomRotationX(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "isUsingCustomRotationY": {
+      "id": "ArrangeSelection_isUsingCustomRotationY",
+      "title": "ArrangeSelection.isUsingCustomRotationY Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "Gets and sets if custom rotation is used for the y-axis. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. To enable any rotation the parameter \"arrange_rotation_group\" of the operation must be set to true. If isUsingCustomRotationY is false, the rotation of the operation's parameter \"arrange_rotation_y\" is used. The default value for this property false.",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeSelection_var.isUsingCustomRotationY\n\n# Set the value of the property.\narrangeSelection_var.isUsingCustomRotationY = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = arrangeSelection_var->isUsingCustomRotationY();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = arrangeSelection_var->isUsingCustomRotationY(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "isUsingCustomRotationZ": {
+      "id": "ArrangeSelection_isUsingCustomRotationZ",
+      "title": "ArrangeSelection.isUsingCustomRotationZ Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "Gets and sets if custom rotation is used for the z-axis. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. To enable any rotation the parameter \"arrange_rotation_group\" of the operation must be set to true. If isUsingCustomRotationZ is false, the rotation of the operation's parameter \"arrange_rotation_z\" is used. The default value for this property true.",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeSelection_var.isUsingCustomRotationZ\n\n# Set the value of the property.\narrangeSelection_var.isUsingCustomRotationZ = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = arrangeSelection_var->isUsingCustomRotationZ();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = arrangeSelection_var->isUsingCustomRotationZ(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "isValid": {
+      "id": "ArrangeSelection_isValid",
+      "title": "ArrangeSelection.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeSelection_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = arrangeSelection_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "objectType": {
+      "id": "ArrangeSelection_objectType",
+      "title": "ArrangeSelection.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeSelection_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = arrangeSelection_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "priorityType": {
+      "id": "ArrangeSelection_priorityType",
+      "title": "ArrangeSelection.priorityType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "Gets and sets the priority value for each element in the selection list. This function is not available in Fusion for Personal Use. Throws an exception when calling this function in Fusion for Personal Use. The default value for this property is MediumArrangePriorityType.",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeSelection_var.priorityType\n\n# Set the value of the property.\narrangeSelection_var.priorityType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nArrangePriorityTypes propertyValue = arrangeSelection_var->priorityType();\n\n// Set the value of the property, where value_var is an ArrangePriorityTypes.\nbool returnValue = arrangeSelection_var->priorityType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "value": {
+      "id": "ArrangeSelection_value",
+      "title": "ArrangeSelection.value Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "Returns the resulting value of the selection. In general, this returns the input selection, but child classes can override the return value if needed. Refer to the child classes comments for further details. The collection may contain duplicates. For OperationInputs, the return value may not be the same as for Operations, as additional geometry selected by child classes is not evaluated for OperationInputs.",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeSelection_var.value",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = arrangeSelection_var->value();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "warning": {
+      "id": "ArrangeSelection_warning",
+      "title": "ArrangeSelection.warning Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ArrangeSelection.h",
+      "description": "Gets the last warning string encountered after the selection was applied to a parent.",
+      "parent_class": "ArrangeSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = arrangeSelection_var.warning",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = arrangeSelection_var->warning();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    }
+  }
+}

@@ -1,0 +1,662 @@
+{
+  "id": "LoftFeature",
+  "title": "LoftFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/LoftFeature.h",
+  "description": "Object that represents an existing loft feature in a design.",
+  "parent_class": "Feature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "centerLineOrRails",
+      "description": "Returns the single centerline or the set of rails that define the shape of the loft.   This property returns null in the case where the feature is non-parametric."
+    },
+    {
+      "name": "endFace",
+      "description": "Property that returns the face that caps the end of the loft and is coincident with the last section. In the case where the loft isn't capped and there isn't an end face, this property will return null."
+    },
+    {
+      "name": "endLoftEdgeAlignment",
+      "description": "Specifies the end edge alignment option for the loft feature. The default is Free Edges."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "isClosed",
+      "description": "Specifies if the loft closes back on itself. In other words, the first section is also used as the last section."
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSolid",
+      "description": "Indicates if this feature was initially created as a solid or a surface."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isTangentEdgesMerged",
+      "description": "Specifies if the loft will keep or merge tangent edges. These are edges between tangent faces in the resulting loft surface. If true, the faces will be merged so the connecting edge no longer exists"
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "loftSections",
+      "description": "Returns the set of sections that the loft passes through.   This property returns null in the case where the feature is non-parametric."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "operation",
+      "description": "Gets and sets the type of operation performed by the extrusion.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "participantBodies",
+      "description": "Gets and sets the list of bodies that will participate in the feature when the operation is a cut or intersection.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "sideFaces",
+      "description": "Property that returns all of the side faces (i.e. those running through the sections) of the feature."
+    },
+    {
+      "name": "startFace",
+      "description": "Property that returns the face that caps the start of the loft and is coincident with the first section. In the case where the loft isn't capped and there isn't a start face, this property will return null."
+    },
+    {
+      "name": "startLoftEdgeAlignment",
+      "description": "Specifies the start edge alignment option for the loft feature. The default is Free Edges."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Loft Feature API Sample",
+      "description": "Demonstrates creating a new loft feature."
+    }
+  ],
+  "version": "Introduced in version September 2015",
+  "property_details": {
+    "assemblyContext": {
+      "id": "LoftFeature_assemblyContext",
+      "title": "LoftFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "attributes": {
+      "id": "LoftFeature_attributes",
+      "title": "LoftFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "baseFeature": {
+      "id": "LoftFeature_baseFeature",
+      "title": "LoftFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "bodies": {
+      "id": "LoftFeature_bodies",
+      "title": "LoftFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "centerLineOrRails": {
+      "id": "LoftFeature_centerLineOrRails",
+      "title": "LoftFeature.centerLineOrRails Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Returns the single centerline or the set of rails that define the shape of the loft. This property returns null in the case where the feature is non-parametric.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.centerLineOrRails",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeature_var->centerLineOrRails();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "endFace": {
+      "id": "LoftFeature_endFace",
+      "title": "LoftFeature.endFace Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Property that returns the face that caps the end of the loft and is coincident with the last section. In the case where the loft isn't capped and there isn't an end face, this property will return null.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.endFace",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeature_var->endFace();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "endLoftEdgeAlignment": {
+      "id": "LoftFeature_endLoftEdgeAlignment",
+      "title": "LoftFeature.endLoftEdgeAlignment Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Specifies the end edge alignment option for the loft feature. The default is Free Edges.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.endLoftEdgeAlignment\n\n# Set the value of the property.\nloftFeature_var.endLoftEdgeAlignment = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nLoftEdgeAlignments propertyValue = loftFeature_var->endLoftEdgeAlignment();\n\n// Set the value of the property, where value_var is a LoftEdgeAlignments.\nbool returnValue = loftFeature_var->endLoftEdgeAlignment(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "entityToken": {
+      "id": "LoftFeature_entityToken",
+      "title": "LoftFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = loftFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "errorOrWarningMessage": {
+      "id": "LoftFeature_errorOrWarningMessage",
+      "title": "LoftFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = loftFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "faces": {
+      "id": "LoftFeature_faces",
+      "title": "LoftFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "healthState": {
+      "id": "LoftFeature_healthState",
+      "title": "LoftFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = loftFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "isClosed": {
+      "id": "LoftFeature_isClosed",
+      "title": "LoftFeature.isClosed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Specifies if the loft closes back on itself. In other words, the first section is also used as the last section.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.isClosed\n\n# Set the value of the property.\nloftFeature_var.isClosed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = loftFeature_var->isClosed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = loftFeature_var->isClosed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2022"
+    },
+    "isParametric": {
+      "id": "LoftFeature_isParametric",
+      "title": "LoftFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = loftFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "isSolid": {
+      "id": "LoftFeature_isSolid",
+      "title": "LoftFeature.isSolid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Indicates if this feature was initially created as a solid or a surface.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.isSolid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = loftFeature_var->isSolid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "isSuppressed": {
+      "id": "LoftFeature_isSuppressed",
+      "title": "LoftFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.isSuppressed\n\n# Set the value of the property.\nloftFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = loftFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = loftFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "isTangentEdgesMerged": {
+      "id": "LoftFeature_isTangentEdgesMerged",
+      "title": "LoftFeature.isTangentEdgesMerged Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Specifies if the loft will keep or merge tangent edges. These are edges between tangent faces in the resulting loft surface. If true, the faces will be merged so the connecting edge no longer exists",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.isTangentEdgesMerged\n\n# Set the value of the property.\nloftFeature_var.isTangentEdgesMerged = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = loftFeature_var->isTangentEdgesMerged();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = loftFeature_var->isTangentEdgesMerged(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2022"
+    },
+    "isValid": {
+      "id": "LoftFeature_isValid",
+      "title": "LoftFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = loftFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "linkedFeatures": {
+      "id": "LoftFeature_linkedFeatures",
+      "title": "LoftFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "loftSections": {
+      "id": "LoftFeature_loftSections",
+      "title": "LoftFeature.loftSections Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Returns the set of sections that the loft passes through. This property returns null in the case where the feature is non-parametric.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.loftSections",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeature_var->loftSections();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "name": {
+      "id": "LoftFeature_name",
+      "title": "LoftFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.name\n\n# Set the value of the property.\nloftFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = loftFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = loftFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "nativeObject": {
+      "id": "LoftFeature_nativeObject",
+      "title": "LoftFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "objectType": {
+      "id": "LoftFeature_objectType",
+      "title": "LoftFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = loftFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "operation": {
+      "id": "LoftFeature_operation",
+      "title": "LoftFeature.operation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Gets and sets the type of operation performed by the extrusion. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.operation\n\n# Set the value of the property.\nloftFeature_var.operation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureOperations propertyValue = loftFeature_var->operation();\n\n// Set the value of the property, where value_var is a FeatureOperations.\nbool returnValue = loftFeature_var->operation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "parentComponent": {
+      "id": "LoftFeature_parentComponent",
+      "title": "LoftFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "participantBodies": {
+      "id": "LoftFeature_participantBodies",
+      "title": "LoftFeature.participantBodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Gets and sets the list of bodies that will participate in the feature when the operation is a cut or intersection. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.participantBodies\n\n# Set the value of the property.\nloftFeature_var.participantBodies = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = loftFeature_var->participantBodies();\n\n// Set the value of the property, where value_var is a BRepBody.\nbool returnValue = loftFeature_var->participantBodies(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "sideFaces": {
+      "id": "LoftFeature_sideFaces",
+      "title": "LoftFeature.sideFaces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Property that returns all of the side faces (i.e. those running through the sections) of the feature.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.sideFaces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeature_var->sideFaces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "startFace": {
+      "id": "LoftFeature_startFace",
+      "title": "LoftFeature.startFace Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Property that returns the face that caps the start of the loft and is coincident with the first section. In the case where the loft isn't capped and there isn't a start face, this property will return null.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.startFace",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeature_var->startFace();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "startLoftEdgeAlignment": {
+      "id": "LoftFeature_startLoftEdgeAlignment",
+      "title": "LoftFeature.startLoftEdgeAlignment Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Specifies the start edge alignment option for the loft feature. The default is Free Edges.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.startLoftEdgeAlignment\n\n# Set the value of the property.\nloftFeature_var.startLoftEdgeAlignment = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nLoftEdgeAlignments propertyValue = loftFeature_var->startLoftEdgeAlignment();\n\n// Set the value of the property, where value_var is a LoftEdgeAlignments.\nbool returnValue = loftFeature_var->startLoftEdgeAlignment(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "timelineObject": {
+      "id": "LoftFeature_timelineObject",
+      "title": "LoftFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = loftFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = loftFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "LoftFeature_classType",
+      "title": "LoftFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.LoftFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::LoftFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2015"
+    },
+    "createForAssemblyContext": {
+      "id": "LoftFeature_createForAssemblyContext",
+      "title": "LoftFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "returnValue = loftFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = loftFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "LoftFeature",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version August 2016"
+    },
+    "deleteMe": {
+      "id": "LoftFeature_deleteMe",
+      "title": "LoftFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "returnValue = loftFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = loftFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version September 2015"
+    },
+    "dissolve": {
+      "id": "LoftFeature_dissolve",
+      "title": "LoftFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/LoftFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "LoftFeature",
+      "syntax": {
+        "python": "returnValue = loftFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = loftFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version September 2015"
+    }
+  }
+}

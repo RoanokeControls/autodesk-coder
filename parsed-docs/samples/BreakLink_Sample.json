@@ -1,0 +1,13 @@
+{
+  "id": "BreakLink_Sample",
+  "title": "Break Link API Sample",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Iterates over all top-level occurrences and if it's a referenced component, it will break the link.",
+  "parent_class": "",
+  "code_samples": {
+    "cpp": "#include \n#include \n#include \n#include \n#include \n#include \n\nusing namespace adsk::core;\nusing namespace adsk::fusion;\n\nPtr ui;\n\nextern \"C\" XI_EXPORT bool run(const char* context)\n{\n    Ptr app = Application::get();\n    if (!app)\n        return false;\n\n    ui = app->userInterface();\n    if (!ui)\n        return false;\n\n    Ptr design = app->activeProduct();\n    if (!design)\n        return false;\n\n    // Get the root component of the active design\n    Ptr rootComp = design->rootComponent();\n    if (!rootComp)\n        return false;\n\n    // Get the occurrences from the root component.\n    Ptr occurrences = rootComp->occurrences();\n    if (!occurrences)\n        return false;\n\n    // Build an array of occurrences because breaking a link will cause the\n    // collection to be modified and causes a problem iterating over the colection.\n    std::vector> occs;\n    for (int i = 0; i count(); ++i)\n    {\n        if (Ptr occ = occurrences->item(i))\n            occs.push_back(occ);\n    }\n\n    // Iterate through the top-level occurrences to see if any of them are external references.\n    for (Ptr occ : occs)\n    {\n        if (occ->isReferencedComponent())\n        {\n            occ->breakLink();\n        }\n    }\n\n    return true;\n}",
+    "python": "# Author-\n# Description-\nimport adsk.core, adsk.fusion, traceback\n\ndef run(context):\n    ui = None\n    try:\n        app = adsk.core.Application.get()\n        ui = app.userInterface\n\n        product = app.activeProduct\n        design = adsk.fusion.Design.cast(product)\n\n        # Get the root component of the active design.\n        rootComp = design.rootComponent\n\n        # Build a list of occurrences because breaking a link will cause the\n        # collection to be modified and causes a problem iterating over the colection.\n        occs = []\n        for occ in rootComp.occurrences:\n            occs.append(occ)\n\n        # Iterate through the top-level occurrences to see if any of them are external references.\n        occ: adsk.fusion.Occurrence\n        for occ in occs:\n            if occ.isReferencedComponent:\n                occ.breakLink()\n    except:\n        if ui:\n            ui.messageBox('Failed:\\n{}'.format(traceback.format_exc()))"
+  }
+}

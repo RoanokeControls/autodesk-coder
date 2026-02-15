@@ -1,0 +1,1066 @@
+{
+  "id": "DataFile",
+  "title": "DataFile Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Dashboard/DataFile.h",
+  "description": "A data file in a data folder.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "copy",
+      "description": "Copies this DataFile to the specified folder."
+    },
+    {
+      "name": "copyWithInput",
+      "description": "Executes the copy using the information defined by the provided CopyFileInput."
+    },
+    {
+      "name": "createCopyDesignFileInput",
+      "description": "Creates a new CopyDesignFileInput object that is used to create a copy of a DataFile that represents a Fusion design. You set options on the CopyDesignFileInput object to define the behavior of the copy and call the copyWithInput method passing in the input object to create the copy."
+    },
+    {
+      "name": "createCopyFileInput",
+      "description": "Creates a new CopyFileInput object that is used to create a copy of any DataFile."
+    },
+    {
+      "name": "createDataVersion",
+      "description": "Creates a version of this DataFile at tip."
+    },
+    {
+      "name": "createMilestone",
+      "description": "Makes the version this DataFile represents a milestone."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this DataFile. This can fail if this file is referenced by another file or is currently open."
+    },
+    {
+      "name": "download",
+      "description": "Performs a synchronous or asynchronous download of this DataFile. Only DataFiles that represent non-Fusion data can be downloaded. For example, this will work for TXT or XLS files but will fail for F3D files.   When using this in its synchronous mode, Fusion is frozen during the download and the call will not return until the download is complete or has failed. When using this in its asynchronous mode, calling this method will start the download process and the call return before the download is complete. The event on the provided handler will be called notifying you when the download is complete."
+    },
+    {
+      "name": "move",
+      "description": "Moves this DataFile to the specified folder."
+    },
+    {
+      "name": "promote",
+      "description": "Promotes this version to be the latest version. If this is the latest version, nothing happens."
+    },
+    {
+      "name": "refresh",
+      "description": "Refreshes the data associated with a DataFile object to be up to date with the associated cloud data. The DataFile returned by the API reflects the local representation of the DataFile as used by the Data Panel. This is method is only useful in very limited cases and should rarely be used. In most cases the local representation will match the actual data on the cloud. In rare occasions where Fusion was off-line while the cloud processing of DataFile is completed or the DataFile is not in the folder shown in the Data Panel. Getting a DataFileFolder contents forces an update of the local data for all of the data files it contains so they will all be up to date."
+    }
+  ],
+  "properties": [
+    {
+      "name": "childReferences",
+      "description": "Returns a collection of DataFiles that are the children (referenced designs) this datafile references."
+    },
+    {
+      "name": "configurationRowId",
+      "description": "Returns the ID of the row that defines this configuration. Use the isCongiguration property to determine if this Design is a configuration or not. If this is not a configuration, this property returns an empty string."
+    },
+    {
+      "name": "configurationTable",
+      "description": "If this file is a configured design or a configuration, this property returns the associated ConfigTable object. If this is not a configured design or configuration, this property returns null.   This property is typed as core.Base because the adsk.core library does not reference the fusion library where the ConfigurationTable object is defined. At runtime, this property will return a ConfigurationTable object."
+    },
+    {
+      "name": "createdBy",
+      "description": "Returns the User that created this data file."
+    },
+    {
+      "name": "dataObject",
+      "description": "Starts the process to get the raw binary data associated with this DataFile. Because the data exists on the cloud, a DataObjectFuture is returned that you can use to monitor the state of downloading the data and then getting the raw data once it is available.   Only DataFiles that represent non-Fusion data can accessed. For example, this will work for TXT or XLS files but will fail for F3D files."
+    },
+    {
+      "name": "dateCreated",
+      "description": "Returns the date when this data file was created as UNIX epoch time. UNIX epoch time is the number of seconds since January 1, 1970 (midnight UTC/GMT).   In Python you can import the standard time module to work with UNIX epoch time.   In C++ you can use functions in time.h and std::chrono to work with UNIX epoch time."
+    },
+    {
+      "name": "dateModified",
+      "description": "Returns the date when this data file was modified. Most changes to a file result in a new version which means a new DataFile is created and will have a new creation date. There are a few changes, like rename, that modify a DataFile without creating a new version and the date of that change is returned by this property.   The date is returned as UNIX epoch time, which is the number of seconds since January 1, 1970 (midnight UTC/GMT). In Python you can import the standard time module to work with UNIX epoch time. In C++ you can use functions in time.h and std::chrono to work with UNIX epoch time."
+    },
+    {
+      "name": "description",
+      "description": "Gets and sets the description information associated with this item."
+    },
+    {
+      "name": "fileExtension",
+      "description": "Gets the file extension for this data file. The file type can be inferred from this."
+    },
+    {
+      "name": "fusionWebURL",
+      "description": "Returns a URL that can be used to access the Fusion Web interface for this file within a browser. The person using the URL must have an Autodesk account and have authority to access the hub this file is owned by.\n You can also use this URL to directly open the file in Fusion using the Fusion protocol handler as discussed in the Opening Files from a Web Page topic in the API user manual."
+    },
+    {
+      "name": "hasChildReferences",
+      "description": "Gets if this datafile has children, (i.e. a Fusion Design containing referenced components)."
+    },
+    {
+      "name": "hasOutofDateChildReferences",
+      "description": "Gets if this datafile has Children (referenced components) that are out of date (not the latest version)."
+    },
+    {
+      "name": "hasParentReferences",
+      "description": "Gets if this datafile has parents, (i.e. this is a child being referenced in another Fusion design)."
+    },
+    {
+      "name": "id",
+      "description": "Returns the unique ID for this DataFile. This is the same id used in the APS Data Management API for an Item and is in the unencoded form and will look similar to this: \"urn:adsk.wipprod:dm.lineage:hC6k4hndRWaeIVhIjvHu8w\""
+    },
+    {
+      "name": "inUseBy",
+      "description": "Returns the array of users that are currently using (have open for edit) this data file."
+    },
+    {
+      "name": "isComplete",
+      "description": "Returns if the DataFile is fully processed. This is especially useful when a new file is being saved or uploaded. The initial call to save or upload the file returns when the process has started but processing continues on the cloud. This property will return true when all of the processing has been completed and all information related to the Datafile is now available."
+    },
+    {
+      "name": "isConfiguration",
+      "description": "Gets if this file is a configuration of a configuration table. If this returns true, the configurationRowId can be used to get the row used to define this configuration. Also, when this is true, the design is essentially read-only and edits are either blocked from taking place or cannot be saved."
+    },
+    {
+      "name": "isConfiguredDesign",
+      "description": "Gets if this file represents a configured design. This is a design where a configuration table is defined. Use the configurationTable property to get the associated table."
+    },
+    {
+      "name": "isInUse",
+      "description": "Gets if this DataFile is currently in use (opened for edit) by any other user."
+    },
+    {
+      "name": "isMilestone",
+      "description": "Returns if the version this Datafile represents is a milestone. Returns true if it is a milestone."
+    },
+    {
+      "name": "isReadOnly",
+      "description": "Gets if this file is currently read-only or not. A file can be read-only for various reasons. For example, if you are running with a \"Fusion for Personal Use license\" and have not designate the file to be editable or if someone else is editing the file."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "lastUpdatedBy",
+      "description": "Returns the User that last updated this data file"
+    },
+    {
+      "name": "latestVersion",
+      "description": "Returns the latest version of the DataFile. It can return a reference to the same DataFile is this DataFile is the latest version."
+    },
+    {
+      "name": "latestVersionNumber",
+      "description": "Gets the latest version number for this DataFile."
+    },
+    {
+      "name": "milestone",
+      "description": "If the version this DataFile represents is a milestone, a Milestone object will be returned. If it's not a milestone, null is returned."
+    },
+    {
+      "name": "milestones",
+      "description": "Returns a collection of Milestones associated with all versions of this DataFile."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the displayed name of this item."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentFolder",
+      "description": "Returns the parent folder this item is contained within."
+    },
+    {
+      "name": "parentProject",
+      "description": "Returns the parent project that this item is in."
+    },
+    {
+      "name": "parentReferences",
+      "description": "Returns a collection DataFiles collection that are the parents (designs that reference) this datafile."
+    },
+    {
+      "name": "publicLink",
+      "description": "**RETIRED** Returns a short URL of this data file which can be shared with others."
+    },
+    {
+      "name": "sharedLink",
+      "description": "Returns the SharedLink object associated with this DataFile. You can use the SharedLink object to enable a shared link and set its behavior and to get the shared link URL."
+    },
+    {
+      "name": "thumbnail",
+      "description": "Starts the process to get the thumbnail image data associated with this DataFile. Because the data exists on the cloud, a DataObjectFuture is returned that you can use to monitor the state of downloading the thumbnail and then getting the image once it is available.   The data returned is a 256x256 PNG image. For cases where the DataFile does not have an associated thumbnail, the dataObject property of the returned DataObjectFuture will return null and the state property will return 'FailedFutureState'."
+    },
+    {
+      "name": "versionId",
+      "description": "Returns the version ID for this DataFile. This is the same id used in the APS Data Management API for an Item and is in the unencoded form and will look similar to this: \"urn:adsk.wipqa:fs.file:vf.W3syIw1lQAW-5vWObMdYnA?version=2\""
+    },
+    {
+      "name": "versionNumber",
+      "description": "Gets the version number of this DataFile."
+    },
+    {
+      "name": "versions",
+      "description": "Gets the other version of this item."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Avoid Machine Surface Settings API Sample",
+      "description": "This sample script demonstrates how to use Machine/Avoid/Gouge/Fixture functionality.The script starts by opening a sample model from the CAM Samples folder via its URN. The model comprises a curved surface with a through slot, a countersunk hole and a raised, circular and filleted upstand from the surface. The model is supported by two rectangular blocks, themselves mounted on a fixture plate. A setup is included with a single operation running a 3-axis diagonal raster over the model, supports and fixture. The operation machines the fixture, the supporting blocks, the upper surface of the upstand and the area within the slot and hole, something we would like to avoid.The script duplicates the original operation and then proceeds to create a series of MachineAvoidGroups. These are labelled as either Machine in the case of 2 cap surfaces for the slot and hole, Fixture for the fixture plate, Gouge for the supporting blocks and Avoid for the top face of the upstand. Additionally, both AxialOffset and RadialOffset can be specified for the Machine, Avoid and Fixture passes."
+    },
+    {
+      "name": "Create Engravings Selection Sets API Sample",
+      "description": "This sample script demonstrates how to find and machine engravings in the Z+ direction using pocket recognition.The script will first open an example model via its URN. Using pocket recognition, it will identify pockets that may be engravings based on their dimensions.We assume here that an engraving pocket is:Made with a flat bottom face and no fillet.A closed pocket.Have a Z height less than 2 mmWe demonstrate creating selection sets in both design and manufacture workspaces and use one of the selection sets as an operation geometry selection input to generate an engraving operation.The engraving toolpath can be seen by expanding the setup and selecting the operation."
+    },
+    {
+      "name": "Create Setups From Hole Recognition API Sample",
+      "description": "This sample script demonstrates how to create a correctly oriented setup using Hole Recognition functionality.The Fusion Manufacturing Extension is required for Hole Recognition.The script starts by opening a sample model from the CAM Samples folder via its URN. The model comprises a 3 way coupling containing holes in various orientations and mounted on a fixture. A reference setup is created for the model using a simple stock mode and offsets. The Hole Recognition feature of the Fusion Manufacturing Extension creates 5 hole groups containing 11 holes between them. For each unique hole group vector captured, a new setup is created and its orientation transformed to match the vector."
+    },
+    {
+      "name": "Set Vise Origin As Setup WCS Origin API Sample",
+      "description": "This sample script demonstrates how to define our setup WCS origin relative to our vise origin from either a component, a sketch point or a joint origin.The Work Coordinate System is a reference point set in our CAM workspace and on our machine. All machine coordinates are drawn from the WCS. This script demonstrates defining the WCS by each of 4 alternative methods:Setup by default with no origin defined.Setup using vise origin as WCS origin.Setup using a sketch point as WCS origin.Setup using a joint origin as WCS origin."
+    }
+  ],
+  "version": "Introduced in version January 2015",
+  "property_details": {
+    "childReferences": {
+      "id": "DataFile_childReferences",
+      "title": "DataFile.childReferences Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns a collection of DataFiles that are the children (referenced designs) this datafile references.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.childReferences",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFile_var->childReferences();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "configurationRowId": {
+      "id": "DataFile_configurationRowId",
+      "title": "DataFile.configurationRowId Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns the ID of the row that defines this configuration. Use the isCongiguration property to determine if this Design is a configuration or not. If this is not a configuration, this property returns an empty string.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.configurationRowId",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = dataFile_var->configurationRowId();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "configurationTable": {
+      "id": "DataFile_configurationTable",
+      "title": "DataFile.configurationTable Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "If this file is a configured design or a configuration, this property returns the associated ConfigTable object. If this is not a configured design or configuration, this property returns null. This property is typed as core.Base because the adsk.core library does not reference the fusion library where the ConfigurationTable object is defined. At runtime, this property will return a ConfigurationTable object.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.configurationTable",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFile_var->configurationTable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "createdBy": {
+      "id": "DataFile_createdBy",
+      "title": "DataFile.createdBy Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns the User that created this data file.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.createdBy",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFile_var->createdBy();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "dataObject": {
+      "id": "DataFile_dataObject",
+      "title": "DataFile.dataObject Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Starts the process to get the raw binary data associated with this DataFile. Because the data exists on the cloud, a DataObjectFuture is returned that you can use to monitor the state of downloading the data and then getting the raw data once it is available. Only DataFiles that represent non-Fusion data can accessed. For example, this will work for TXT or XLS files but will fail for F3D files.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.dataObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFile_var->dataObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "dateCreated": {
+      "id": "DataFile_dateCreated",
+      "title": "DataFile.dateCreated Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns the date when this data file was created as UNIX epoch time. UNIX epoch time is the number of seconds since January 1, 1970 (midnight UTC/GMT). In Python you can import the standard time module to work with UNIX epoch time. In C++ you can use functions in time.h and std::chrono to work with UNIX epoch time.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.dateCreated",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = dataFile_var->dateCreated();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2020"
+    },
+    "dateModified": {
+      "id": "DataFile_dateModified",
+      "title": "DataFile.dateModified Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns the date when this data file was modified. Most changes to a file result in a new version which means a new DataFile is created and will have a new creation date. There are a few changes, like rename, that modify a DataFile without creating a new version and the date of that change is returned by this property. The date is returned as UNIX epoch time, which is the number of seconds since January 1, 1970 (midnight UTC/GMT). In Python you can import the standard time module to work with UNIX epoch time. In C++ you can use functions in time.h and std::chrono to work with UNIX epoch time.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.dateModified",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = dataFile_var->dateModified();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "description": {
+      "id": "DataFile_description",
+      "title": "DataFile.description Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Gets and sets the description information associated with this item.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.description",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = dataFile_var->description();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "fileExtension": {
+      "id": "DataFile_fileExtension",
+      "title": "DataFile.fileExtension Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Gets the file extension for this data file. The file type can be inferred from this.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.fileExtension",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = dataFile_var->fileExtension();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "fusionWebURL": {
+      "id": "DataFile_fusionWebURL",
+      "title": "DataFile.fusionWebURL Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns a URL that can be used to access the Fusion Web interface for this file within a browser. The person using the URL must have an Autodesk account and have authority to access the hub this file is owned by. You can also use this URL to directly open the file in Fusion using the Fusion protocol handler as discussed in the topic in the API user manual.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.fusionWebURL",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = dataFile_var->fusionWebURL();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "hasChildReferences": {
+      "id": "DataFile_hasChildReferences",
+      "title": "DataFile.hasChildReferences Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Gets if this datafile has children, (i.e. a Fusion Design containing referenced components).",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.hasChildReferences",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = dataFile_var->hasChildReferences();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "hasOutofDateChildReferences": {
+      "id": "DataFile_hasOutofDateChildReferences",
+      "title": "DataFile.hasOutofDateChildReferences Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Gets if this datafile has Children (referenced components) that are out of date (not the latest version).",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.hasOutofDateChildReferences",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = dataFile_var->hasOutofDateChildReferences();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "hasParentReferences": {
+      "id": "DataFile_hasParentReferences",
+      "title": "DataFile.hasParentReferences Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Gets if this datafile has parents, (i.e. this is a child being referenced in another Fusion design).",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.hasParentReferences",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = dataFile_var->hasParentReferences();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "id": {
+      "id": "DataFile_id",
+      "title": "DataFile.id Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns the unique ID for this DataFile. This is the same id used in the APS Data Management API for an Item and is in the unencoded form and will look similar to this: \"urn:adsk.wipprod:dm.lineage:hC6k4hndRWaeIVhIjvHu8w\"",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = dataFile_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "inUseBy": {
+      "id": "DataFile_inUseBy",
+      "title": "DataFile.inUseBy Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns the array of users that are currently using (have open for edit) this data file.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.inUseBy",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = dataFile_var->inUseBy();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "isComplete": {
+      "id": "DataFile_isComplete",
+      "title": "DataFile.isComplete Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns if the DataFile is fully processed. This is especially useful when a new file is being saved or uploaded. The initial call to save or upload the file returns when the process has started but processing continues on the cloud. This property will return true when all of the processing has been completed and all information related to the Datafile is now available.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.isComplete",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = dataFile_var->isComplete();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2022"
+    },
+    "isConfiguration": {
+      "id": "DataFile_isConfiguration",
+      "title": "DataFile.isConfiguration Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Gets if this file is a configuration of a configuration table. If this returns true, the configurationRowId can be used to get the row used to define this configuration. Also, when this is true, the design is essentially read-only and edits are either blocked from taking place or cannot be saved.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.isConfiguration",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = dataFile_var->isConfiguration();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "isConfiguredDesign": {
+      "id": "DataFile_isConfiguredDesign",
+      "title": "DataFile.isConfiguredDesign Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Gets if this file represents a configured design. This is a design where a configuration table is defined. Use the configurationTable property to get the associated table.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.isConfiguredDesign",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = dataFile_var->isConfiguredDesign();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "isInUse": {
+      "id": "DataFile_isInUse",
+      "title": "DataFile.isInUse Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Gets if this DataFile is currently in use (opened for edit) by any other user.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.isInUse",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = dataFile_var->isInUse();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "isMilestone": {
+      "id": "DataFile_isMilestone",
+      "title": "DataFile.isMilestone Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns if the version this Datafile represents is a milestone. Returns true if it is a milestone.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.isMilestone",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = dataFile_var->isMilestone();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "isReadOnly": {
+      "id": "DataFile_isReadOnly",
+      "title": "DataFile.isReadOnly Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Gets if this file is currently read-only or not. A file can be read-only for various reasons. For example, if you are running with a \"Fusion for Personal Use license\" and have not designate the file to be editable or if someone else is editing the file.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.isReadOnly",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = dataFile_var->isReadOnly();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "isValid": {
+      "id": "DataFile_isValid",
+      "title": "DataFile.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = dataFile_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "lastUpdatedBy": {
+      "id": "DataFile_lastUpdatedBy",
+      "title": "DataFile.lastUpdatedBy Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns the User that last updated this data file",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.lastUpdatedBy",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFile_var->lastUpdatedBy();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "latestVersion": {
+      "id": "DataFile_latestVersion",
+      "title": "DataFile.latestVersion Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns the latest version of the DataFile. It can return a reference to the same DataFile is this DataFile is the latest version.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.latestVersion",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFile_var->latestVersion();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "latestVersionNumber": {
+      "id": "DataFile_latestVersionNumber",
+      "title": "DataFile.latestVersionNumber Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Gets the latest version number for this DataFile.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.latestVersionNumber",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = dataFile_var->latestVersionNumber();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "milestone": {
+      "id": "DataFile_milestone",
+      "title": "DataFile.milestone Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "If the version this DataFile represents is a milestone, a Milestone object will be returned. If it's not a milestone, null is returned.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.milestone",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFile_var->milestone();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "milestones": {
+      "id": "DataFile_milestones",
+      "title": "DataFile.milestones Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns a collection of Milestones associated with all versions of this DataFile.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.milestones",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFile_var->milestones();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "name": {
+      "id": "DataFile_name",
+      "title": "DataFile.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Gets and sets the displayed name of this item.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.name\n\n# Set the value of the property.\ndataFile_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = dataFile_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = dataFile_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "objectType": {
+      "id": "DataFile_objectType",
+      "title": "DataFile.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = dataFile_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "parentFolder": {
+      "id": "DataFile_parentFolder",
+      "title": "DataFile.parentFolder Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns the parent folder this item is contained within.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.parentFolder",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFile_var->parentFolder();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "parentProject": {
+      "id": "DataFile_parentProject",
+      "title": "DataFile.parentProject Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns the parent project that this item is in.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.parentProject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFile_var->parentProject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "parentReferences": {
+      "id": "DataFile_parentReferences",
+      "title": "DataFile.parentReferences Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns a collection DataFiles collection that are the parents (designs that reference) this datafile.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.parentReferences",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFile_var->parentReferences();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "publicLink": {
+      "id": "DataFile_publicLink",
+      "title": "DataFile.publicLink Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Returns a short URL of this data file which can be shared with others. Remarks",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.publicLink",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = dataFile_var->publicLink();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2019"
+    },
+    "sharedLink": {
+      "id": "DataFile_sharedLink",
+      "title": "DataFile.sharedLink Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns the SharedLink object associated with this DataFile. You can use the SharedLink object to enable a shared link and set its behavior and to get the shared link URL.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.sharedLink",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFile_var->sharedLink();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2024"
+    },
+    "thumbnail": {
+      "id": "DataFile_thumbnail",
+      "title": "DataFile.thumbnail Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Starts the process to get the thumbnail image data associated with this DataFile. Because the data exists on the cloud, a DataObjectFuture is returned that you can use to monitor the state of downloading the thumbnail and then getting the image once it is available. The data returned is a 256x256 PNG image. For cases where the DataFile does not have an associated thumbnail, the dataObject property of the returned DataObjectFuture will return null and the state property will return 'FailedFutureState'.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.thumbnail",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFile_var->thumbnail();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2025"
+    },
+    "versionId": {
+      "id": "DataFile_versionId",
+      "title": "DataFile.versionId Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Returns the version ID for this DataFile. This is the same id used in the APS Data Management API for an Item and is in the unencoded form and will look similar to this: \"urn:adsk.wipqa:fs.file:vf.W3syIw1lQAW-5vWObMdYnA?version=2\"",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.versionId",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = dataFile_var->versionId();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "versionNumber": {
+      "id": "DataFile_versionNumber",
+      "title": "DataFile.versionNumber Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Gets the version number of this DataFile.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.versionNumber",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = dataFile_var->versionNumber();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "versions": {
+      "id": "DataFile_versions",
+      "title": "DataFile.versions Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Gets the other version of this item.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = dataFile_var.versions",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = dataFile_var->versions();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "DataFile_classType",
+      "title": "DataFile.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "returnValue = adsk.core.DataFile.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::DataFile::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2015"
+    },
+    "copy": {
+      "id": "DataFile_copy",
+      "title": "DataFile.copy Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Copies this DataFile to the specified folder.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "returnValue = dataFile_var.copy(targetFolder)",
+        "cpp": "#include \n\nreturnValue = dataFile_var->copy(targetFolder);"
+      },
+      "return_type": "DataFile",
+      "return_description": "Returns the copied DataFile if the copy was successful.",
+      "parameters": [
+        {
+          "name": "targetFolder",
+          "type": "DataFolder",
+          "description": "The folder to copy this DataFile to."
+        }
+      ],
+      "version": "Introduced in version September 2016"
+    },
+    "copyWithInput": {
+      "id": "DataFile_copyWithInput",
+      "title": "DataFile.copyWithInput Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Executes the copy using the information defined by the provided CopyFileInput.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "returnValue = dataFile_var.copyWithInput(input)",
+        "cpp": "#include \n\nreturnValue = dataFile_var->copyWithInput(input);"
+      },
+      "return_type": "DataFileFuture",
+      "return_description": "The copy process is asynchronous which means that this method will return before the copy process has completed. The returned DataFileFuture object can be used to check on the current state of the copy to determine if it is still copying, is complete, or has failed. If it is complete the new DataFile that was created as a result of the copy can be retrieved through the DataFileFuture object.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "CopyFileInput",
+          "description": "The input object is of CopyFileInput object type, based on which our copy behavior will be defined. A CopyDesignFileInput object is created using the DataFile.createCopyDesignFileInput."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "createCopyDesignFileInput": {
+      "id": "DataFile_createCopyDesignFileInput",
+      "title": "DataFile.createCopyDesignFileInput Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Creates a new CopyDesignFileInput object that is used to create a copy of a DataFile that represents a Fusion design. You set options on the CopyDesignFileInput object to define the behavior of the copy and call the copyWithInput method passing in the input object to create the copy.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "returnValue = dataFile_var.createCopyDesignFileInput(folder)",
+        "cpp": "#include \n\nreturnValue = dataFile_var->createCopyDesignFileInput(folder);"
+      },
+      "return_type": "CopyDesignFileInput",
+      "return_description": "Returns the created CopyDesignFileInput object or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "folder",
+          "type": "DataFolder",
+          "description": "The folder where the copied files will be created."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "createCopyFileInput": {
+      "id": "DataFile_createCopyFileInput",
+      "title": "DataFile.createCopyFileInput Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Creates a new CopyFileInput object that is used to create a copy of any DataFile.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "returnValue = dataFile_var.createCopyFileInput(folder)",
+        "cpp": "#include \n\nreturnValue = dataFile_var->createCopyFileInput(folder);"
+      },
+      "return_type": "CopyFileInput",
+      "return_description": "Returns the created CopyFileInput object or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "folder",
+          "type": "DataFolder",
+          "description": "The folder where the copied file will be created."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "createDataVersion": {
+      "id": "DataFile_createDataVersion",
+      "title": "DataFile.createDataVersion Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Creates a version of this DataFile at tip.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "returnValue = dataFile_var.createDataVersion(versionDescription)",
+        "cpp": "#include \n\nreturnValue = dataFile_var->createDataVersion(versionDescription);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true when Create Version Job is triggered.",
+      "parameters": [
+        {
+          "name": "versionDescription",
+          "type": "string",
+          "description": "The versionDescription is visible in the History Panel."
+        }
+      ],
+      "version": "Introduced in version November 2025"
+    },
+    "createMilestone": {
+      "id": "DataFile_createMilestone",
+      "title": "DataFile.createMilestone Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Makes the version this DataFile represents a milestone.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "returnValue = dataFile_var.createMilestone(milestoneName)",
+        "cpp": "#include \n\nreturnValue = dataFile_var->createMilestone(milestoneName);"
+      },
+      "return_type": "Milestone",
+      "return_description": "Returns the created Milestone object or null in the case of failure. One case of failure is if a milestone already exists for this version.",
+      "parameters": [
+        {
+          "name": "milestoneName",
+          "type": "string",
+          "description": "The name of the milestone as seen in the data panel and Fusion web client. If an empty string is provided, a default name will be used."
+        }
+      ],
+      "version": "Introduced in version March 2024"
+    },
+    "deleteMe": {
+      "id": "DataFile_deleteMe",
+      "title": "DataFile.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Deletes this DataFile. This can fail if this file is referenced by another file or is currently open.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "returnValue = dataFile_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = dataFile_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the deletion was successful.",
+      "version": "Introduced in version September 2016"
+    },
+    "download": {
+      "id": "DataFile_download",
+      "title": "DataFile.download Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Performs a synchronous or asynchronous download of this DataFile. Only DataFiles that represent non-Fusion data can be downloaded. For example, this will work for TXT or XLS files but will fail for F3D files. When using this in its synchronous mode, Fusion is frozen during the download and the call will not return until the download is complete or has failed. When using this in its asynchronous mode, calling this method will start the download process and the call return before the download is complete. The event on the provided handler will be called notifying you when the download is complete.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "returnValue = dataFile_var.download(path, handler)",
+        "cpp": "#include \n\nreturnValue = dataFile_var->download(path, handler);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns True in synchronous mode if successful. Returns True in asynchronous mode if the download was successfully started.",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "The full path and optionally the filename used on the local file system for the file. If the path doesn't exist it will be created. If only a path is specified, the name and file extension associated with the DataFile is used for the filename. You can also specify the full path, including the filename."
+        },
+        {
+          "name": "handler",
+          "type": "DataEventHandler",
+          "description": "If you want to do an asynchronous download, provide the handler object to be called when this operation is complete. To call the method synchronously, set this argument to null/None."
+        }
+      ],
+      "version": "Introduced in version January 2022"
+    },
+    "move": {
+      "id": "DataFile_move",
+      "title": "DataFile.move Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Moves this DataFile to the specified folder.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "returnValue = dataFile_var.move(targetFolder)",
+        "cpp": "#include \n\nreturnValue = dataFile_var->move(targetFolder);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the move was successful.",
+      "parameters": [
+        {
+          "name": "targetFolder",
+          "type": "DataFolder",
+          "description": "The folder to move this DataFile to."
+        }
+      ],
+      "version": "Introduced in version September 2016"
+    },
+    "promote": {
+      "id": "DataFile_promote",
+      "title": "DataFile.promote Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Promotes this version to be the latest version. If this is the latest version, nothing happens.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "returnValue = dataFile_var.promote()",
+        "cpp": "#include \n\nreturnValue = dataFile_var->promote();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "version": "Introduced in version September 2016"
+    },
+    "refresh": {
+      "id": "DataFile_refresh",
+      "title": "DataFile.refresh Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Dashboard/DataFile.h",
+      "description": "Refreshes the data associated with a DataFile object to be up to date with the associated cloud data. The DataFile returned by the API reflects the local representation of the DataFile as used by the Data Panel. This is method is only useful in very limited cases and should rarely be used. In most cases the local representation will match the actual data on the cloud. In rare occasions where Fusion was off-line while the cloud processing of DataFile is completed or the DataFile is not in the folder shown in the Data Panel. Getting a DataFileFolder contents forces an update of the local data for all of the data files it contains so they will all be up to date.",
+      "parent_class": "DataFile",
+      "syntax": {
+        "python": "returnValue = dataFile_var.refresh(handler)",
+        "cpp": "#include \n\nreturnValue = dataFile_var->refresh(handler);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns True in synchronous mode if successful. Returns True in asynchronous mode if the refresh was successfully started.",
+      "parameters": [
+        {
+          "name": "handler",
+          "type": "DataEventHandler",
+          "description": "If you want to do an asynchronous refresh, provide the handler object to be called when this operation is complete. To call the method synchronously, set this argument to null/None."
+        }
+      ],
+      "version": "Introduced in version January 2022"
+    }
+  }
+}

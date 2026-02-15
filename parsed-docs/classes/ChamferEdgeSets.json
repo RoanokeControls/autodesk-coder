@@ -1,0 +1,269 @@
+{
+  "id": "ChamferEdgeSets",
+  "title": "ChamferEdgeSets Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/ChamferEdgeSets.h",
+  "description": "Collection that provides access to all of the existing chamfer edge sets associated with a chamfer feature.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "addDistanceAndAngleChamferEdgeSet",
+      "description": "Adds a set of edges an equal distance offset to this chamfer feature.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "addEqualDistanceChamferEdgeSet",
+      "description": "Adds a set of edges an equal distance offset to this chamfer feature.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "addTwoDistancesChamferEdgeSet",
+      "description": "Adds a set of edges an equal distance offset to this chamfer feature.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified chamfer edge set using an index into the collection."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of chamfer edge sets in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Equal Distance Chamfer Feature API Sample",
+      "description": "Creates an equal distance chamfer on the selected edge. If there are tangent contiguous edges that will also be included in the chamfer."
+    }
+  ],
+  "version": "Introduced in version December 2020",
+  "method_details": {
+    "addDistanceAndAngleChamferEdgeSet": {
+      "id": "ChamferEdgeSets_addDistanceAndAngleChamferEdgeSet",
+      "title": "ChamferEdgeSets.addDistanceAndAngleChamferEdgeSet Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferEdgeSets.h",
+      "description": "Adds a set of edges an equal distance offset to this chamfer feature. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "ChamferEdgeSets",
+      "syntax": {
+        "python": "returnValue = chamferEdgeSets_var.addDistanceAndAngleChamferEdgeSet(edges, distance, angle, isFlipped, isTangentChain)",
+        "cpp": "#include \n\nreturnValue = chamferEdgeSets_var->addDistanceAndAngleChamferEdgeSet(edges, distance, angle, isFlipped, isTangentChain);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the set of edges was successfully added to the ChamferFeatureInput.",
+      "parameters": [
+        {
+          "name": "edges",
+          "type": "ObjectCollection",
+          "description": "An ObjectCollection containing the edges to be chamfered. Edges can be defined by passing in BrepEdge, BRepFace, or Feature objects. If BRepFace or Feature objects are passed in all of the edges associated with those objects will be chamfered. If BRepEdge objects are provided and the isTangentChain argument is true additional edges may also get chamfered if they are tangentially connected to any of the input edges."
+        },
+        {
+          "name": "distance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the distance offset of the chamfer. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "angle",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the angle of the chamfer. If the ValueInput uses a real then it is interpreted as radians. If it is a string then the units can be defined as part of the string (i.e. \"2 rad\") or if no units are specified it is interpreted as degrees."
+        },
+        {
+          "name": "isFlipped",
+          "type": "boolean",
+          "description": "Swaps the directions for distance one and two."
+        },
+        {
+          "name": "isTangentChain",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not edges that are tangentially connected to the input edges (if any) will also be chamfered."
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    },
+    "addEqualDistanceChamferEdgeSet": {
+      "id": "ChamferEdgeSets_addEqualDistanceChamferEdgeSet",
+      "title": "ChamferEdgeSets.addEqualDistanceChamferEdgeSet Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferEdgeSets.h",
+      "description": "Adds a set of edges an equal distance offset to this chamfer feature. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "ChamferEdgeSets",
+      "syntax": {
+        "python": "returnValue = chamferEdgeSets_var.addEqualDistanceChamferEdgeSet(edges, distance, isTangentChain)",
+        "cpp": "#include \n\nreturnValue = chamferEdgeSets_var->addEqualDistanceChamferEdgeSet(edges, distance, isTangentChain);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the set of edges was successfully added to the ChamferFeatureInput.",
+      "parameters": [
+        {
+          "name": "edges",
+          "type": "ObjectCollection",
+          "description": "An ObjectCollection containing the edges to be chamfered. Edges can be defined by passing in BrepEdge, BRepFace, or Feature objects. If BRepFace or Feature objects are passed in all of the edges associated with those objects will be chamfered. If BRepEdge objects are provided and the isTangentChain argument is true additional edges may also get chamfered if they are tangentially connected to any of the input edges."
+        },
+        {
+          "name": "distance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the distance offset of the chamfer. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "isTangentChain",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not edges that are tangentially connected to the input edges (if any) will also be chamfered."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "chamferFeatures.add",
+          "description": "Demonstrates the chamferFeatures.add method. To use this sample have a part open that contains a body. When you run the script, you will be prompted to select an edge to chamfer."
+        },
+        {
+          "name": "Equal Distance Chamfer Feature API Sample",
+          "description": "Creates an equal distance chamfer on the selected edge. If there are tangent contiguous edges that will also be included in the chamfer."
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    },
+    "addTwoDistancesChamferEdgeSet": {
+      "id": "ChamferEdgeSets_addTwoDistancesChamferEdgeSet",
+      "title": "ChamferEdgeSets.addTwoDistancesChamferEdgeSet Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferEdgeSets.h",
+      "description": "Adds a set of edges an equal distance offset to this chamfer feature. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "ChamferEdgeSets",
+      "syntax": {
+        "python": "returnValue = chamferEdgeSets_var.addTwoDistancesChamferEdgeSet(edges, distanceOne, distanceTwo, isFlipped, isTangentChain)",
+        "cpp": "#include \n\nreturnValue = chamferEdgeSets_var->addTwoDistancesChamferEdgeSet(edges, distanceOne, distanceTwo, isFlipped, isTangentChain);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the set of edges was successfully added to the ChamferFeatureInput.",
+      "parameters": [
+        {
+          "name": "edges",
+          "type": "ObjectCollection",
+          "description": "An ObjectCollection containing the edges to be chamfered. Edges can be defined by passing in BrepEdge, BRepFace, or Feature objects. If BRepFace or Feature objects are passed in all of the edges associated with those objects will be chamfered. If BRepEdge objects are provided and the isTangentChain argument is true additional edges may also get chamfered if they are tangentially connected to any of the input edges."
+        },
+        {
+          "name": "distanceOne",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the first distance offset of the chamfer. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "distanceTwo",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the second distance offset of the chamfer. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\") or if no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "isFlipped",
+          "type": "boolean",
+          "description": "Swaps the directions for distance one and two."
+        },
+        {
+          "name": "isTangentChain",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not edges that are tangentially connected to the input edges (if any) will also be chamfered."
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    },
+    "classType": {
+      "id": "ChamferEdgeSets_classType",
+      "title": "ChamferEdgeSets.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferEdgeSets.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ChamferEdgeSets",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ChamferEdgeSets.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ChamferEdgeSets::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version December 2020"
+    },
+    "item": {
+      "id": "ChamferEdgeSets_item",
+      "title": "ChamferEdgeSets.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferEdgeSets.h",
+      "description": "Function that returns the specified chamfer edge set using an index into the collection.",
+      "parent_class": "ChamferEdgeSets",
+      "syntax": {
+        "python": "returnValue = chamferEdgeSets_var.item(index)",
+        "cpp": "#include \n\nreturnValue = chamferEdgeSets_var->item(index);"
+      },
+      "return_type": "ChamferEdgeSet",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "ChamferEdgeSets_count",
+      "title": "ChamferEdgeSets.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferEdgeSets.h",
+      "description": "The number of chamfer edge sets in the collection.",
+      "parent_class": "ChamferEdgeSets",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferEdgeSets_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = chamferEdgeSets_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "isValid": {
+      "id": "ChamferEdgeSets_isValid",
+      "title": "ChamferEdgeSets.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferEdgeSets.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ChamferEdgeSets",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferEdgeSets_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = chamferEdgeSets_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "objectType": {
+      "id": "ChamferEdgeSets_objectType",
+      "title": "ChamferEdgeSets.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferEdgeSets.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ChamferEdgeSets",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferEdgeSets_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = chamferEdgeSets_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    }
+  }
+}

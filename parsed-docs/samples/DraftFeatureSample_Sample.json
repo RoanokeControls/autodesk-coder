@@ -1,0 +1,12 @@
+{
+  "id": "DraftFeatureSample_Sample",
+  "title": "Draft Feature API Sample",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates creating a new draft feature.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "import adsk.core, adsk.fusion, traceback\n\ndef run(context):\n    ui = None\n    try:\n        app = adsk.core.Application.get()\n        ui  = app.userInterface\n\n        # Get active design        \n        product = app.activeProduct\n        design = adsk.fusion.Design.cast(product)\n        \n        # Get root component in this design\n        rootComp = design.rootComponent\n\n        # Get the first face of box\n        face1 = rootComp.bRepBodies.item(0).faces.item(0)\n        \n        # Get all faces which connect to the first face\n        connectedFaces = [];\n        for edge in face1.edges:\n            for face in edge.faces:\n                if face1 != face:\n                    connectedFaces.append(face)\n        \n        # Create draft feature\n        drafts = rootComp.features.draftFeatures\n        draftFeatInput = drafts.createInput(connectedFaces, face1, True)\n        draftFeatInput.isDirectionFlipped = False\n        angle = adsk.core.ValueInput.createByString(\"10 deg\")\n        draftFeatInput.setSingleAngle(True, angle)\n        drafts.add(draftFeatInput)       \n        \n    except:\n        if ui:\n            ui.messageBox('Failed:\\n{}'.format(traceback.format_exc()))"
+  }
+}

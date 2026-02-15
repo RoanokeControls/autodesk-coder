@@ -1,0 +1,431 @@
+{
+  "id": "DirectionCommandInput",
+  "title": "DirectionCommandInput Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/DirectionCommandInput.h",
+  "description": "Represents a command input that gets a direction from the user. This displays a button or a check-box in the command dialog where the user can flip the direction if desired and also displays a manipulator in the graphics window to allow flipping the direction by clicking and dragging on the manipulator.",
+  "parent_class": "CommandInput",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this Command input."
+    },
+    {
+      "name": "setManipulator",
+      "description": "Defines a direction manipulator arrow in the graphics viewport whose direction can be flipped by the toggling the check box, clicking the button or by the user clicking and dragging on the manipulator arrow."
+    }
+  ],
+  "properties": [
+    {
+      "name": "commandInputs",
+      "description": "Gets the CommandInputs class of the parent, which can be a Command, GroupCommandInput or TabCommandInput."
+    },
+    {
+      "name": "id",
+      "description": "Gets the unique identifier for this input in the command's CommandInputs."
+    },
+    {
+      "name": "isDirectionFlipped",
+      "description": "Gets and sets if the direction manipulator displayed is flipped (reversed 180 degrees as compared to the direction defined by the manipulatorDirection property). This is false for a newly created DirectionCommandInput."
+    },
+    {
+      "name": "isEnabled",
+      "description": "Gets or sets if this input is currently enabled or disabled for user interaction.   Currently, the isEnabled property does not disable SelectionCommandInput objects but instead has the same effect as the SelectionCommandInput.hasFocus property."
+    },
+    {
+      "name": "isFullWidth",
+      "description": "Gets or sets if this input fills the entire width of the dialog. If true, the name is ignored and the input control will fill the entire width of the command dialog. The default value for this property in a new command input if false, or not to fill the width. This property does not apply to GroupCommandInputs or TabCommandInputs."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets or sets if this input will be visible to the user.   Setting a SelectionCommandInput to be invisible will clear any selections it currently has."
+    },
+    {
+      "name": "manipulatorDirection",
+      "description": "Gets the direction of the manipulator (arrow) in the model space of the root component. To set the direction use the setManipulator method."
+    },
+    {
+      "name": "manipulatorOrigin",
+      "description": "Gets the origin point of the direction manipulator (arrow) in the model space of the root component. To set the origin use the setManipulator method."
+    },
+    {
+      "name": "name",
+      "description": "Gets the user visible name of this input."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentCommand",
+      "description": "Gets the parent Command."
+    },
+    {
+      "name": "parentCommandInput",
+      "description": "Gets the parent CommandInput if this commandInput is the child of a TabCommandInput or GroupCommandInput. Returns null if there is no parent."
+    },
+    {
+      "name": "resourceFolder",
+      "description": "Gets and sets the folder that contains the icon to display on the button. The input is shown as a check box if the resource folder is set to an empty string. Icons can be defined using either PNG or SVG files. More information about icons can be found in the user manual topic User Interface Customization."
+    },
+    {
+      "name": "toolClipFilename",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text."
+    },
+    {
+      "name": "tooltip",
+      "description": "Gets or sets the base tooltip string. This is always shown for commands. If the tooltip description and/or tool clip are also specified then the tooltip will progressively display more information as the user hovers the mouse over the control."
+    },
+    {
+      "name": "tooltipDescription",
+      "description": "Gets or sets additional text to display progressively along with the tooltip. The text for the description can contain some basic HTML formatting tags to format the tags. For example the br tag can be used to create multiple paragraphs. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Command Inputs API Sample",
+      "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.  You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+    }
+  ],
+  "version": "Introduced in version January 2016",
+  "method_details": {
+    "classType": {
+      "id": "DirectionCommandInput_classType",
+      "title": "DirectionCommandInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "returnValue = adsk.core.DirectionCommandInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::DirectionCommandInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2016"
+    },
+    "deleteMe": {
+      "id": "DirectionCommandInput_deleteMe",
+      "title": "DirectionCommandInput.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Deletes this Command input.",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "returnValue = directionCommandInput_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = directionCommandInput_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version August 2020"
+    },
+    "setManipulator": {
+      "id": "DirectionCommandInput_setManipulator",
+      "title": "DirectionCommandInput.setManipulator Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Defines a direction manipulator arrow in the graphics viewport whose direction can be flipped by the toggling the check box, clicking the button or by the user clicking and dragging on the manipulator arrow.",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "returnValue = directionCommandInput_var.setManipulator(origin, direction)",
+        "cpp": "#include \n\nreturnValue = directionCommandInput_var->setManipulator(origin, direction);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful",
+      "parameters": [
+        {
+          "name": "origin",
+          "type": "Point3D",
+          "description": "The origin point of the direction manipulator (arrow) in the model space of the root component."
+        },
+        {
+          "name": "direction",
+          "type": "Vector3D",
+          "description": "The direction of the manipulator (arrow) in the model space of the root component."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Command Inputs API Sample",
+          "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.\u00a0You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+        }
+      ],
+      "version": "Introduced in version January 2016"
+    }
+  },
+  "property_details": {
+    "commandInputs": {
+      "id": "DirectionCommandInput_commandInputs",
+      "title": "DirectionCommandInput.commandInputs Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Gets the CommandInputs class of the parent, which can be a Command, GroupCommandInput or TabCommandInput.",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = directionCommandInput_var.commandInputs",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = directionCommandInput_var->commandInputs();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "id": {
+      "id": "DirectionCommandInput_id",
+      "title": "DirectionCommandInput.id Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Gets the unique identifier for this input in the command's CommandInputs.",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = directionCommandInput_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = directionCommandInput_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isDirectionFlipped": {
+      "id": "DirectionCommandInput_isDirectionFlipped",
+      "title": "DirectionCommandInput.isDirectionFlipped Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Gets and sets if the direction manipulator displayed is flipped (reversed 180 degrees as compared to the direction defined by the manipulatorDirection property). This is false for a newly created DirectionCommandInput.",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = directionCommandInput_var.isDirectionFlipped\n\n# Set the value of the property.\ndirectionCommandInput_var.isDirectionFlipped = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = directionCommandInput_var->isDirectionFlipped();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = directionCommandInput_var->isDirectionFlipped(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Command Inputs API Sample",
+          "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.\u00a0You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+        }
+      ],
+      "version": "Introduced in version January 2016"
+    },
+    "isEnabled": {
+      "id": "DirectionCommandInput_isEnabled",
+      "title": "DirectionCommandInput.isEnabled Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Gets or sets if this input is currently enabled or disabled for user interaction. Currently, the isEnabled property does not disable SelectionCommandInput objects but instead has the same effect as the SelectionCommandInput.hasFocus property.",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = directionCommandInput_var.isEnabled\n\n# Set the value of the property.\ndirectionCommandInput_var.isEnabled = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = directionCommandInput_var->isEnabled();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = directionCommandInput_var->isEnabled(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isFullWidth": {
+      "id": "DirectionCommandInput_isFullWidth",
+      "title": "DirectionCommandInput.isFullWidth Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Gets or sets if this input fills the entire width of the dialog. If true, the name is ignored and the input control will fill the entire width of the command dialog. The default value for this property in a new command input if false, or not to fill the width. This property does not apply to GroupCommandInputs or TabCommandInputs.",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = directionCommandInput_var.isFullWidth\n\n# Set the value of the property.\ndirectionCommandInput_var.isFullWidth = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = directionCommandInput_var->isFullWidth();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = directionCommandInput_var->isFullWidth(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isValid": {
+      "id": "DirectionCommandInput_isValid",
+      "title": "DirectionCommandInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = directionCommandInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = directionCommandInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isVisible": {
+      "id": "DirectionCommandInput_isVisible",
+      "title": "DirectionCommandInput.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Gets or sets if this input will be visible to the user. Setting a SelectionCommandInput to be invisible will clear any selections it currently has.",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = directionCommandInput_var.isVisible\n\n# Set the value of the property.\ndirectionCommandInput_var.isVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = directionCommandInput_var->isVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = directionCommandInput_var->isVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "manipulatorDirection": {
+      "id": "DirectionCommandInput_manipulatorDirection",
+      "title": "DirectionCommandInput.manipulatorDirection Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Gets the direction of the manipulator (arrow) in the model space of the root component. To set the direction use the setManipulator method.",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = directionCommandInput_var.manipulatorDirection",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = directionCommandInput_var->manipulatorDirection();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "manipulatorOrigin": {
+      "id": "DirectionCommandInput_manipulatorOrigin",
+      "title": "DirectionCommandInput.manipulatorOrigin Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Gets the origin point of the direction manipulator (arrow) in the model space of the root component. To set the origin use the setManipulator method.",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = directionCommandInput_var.manipulatorOrigin",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = directionCommandInput_var->manipulatorOrigin();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "name": {
+      "id": "DirectionCommandInput_name",
+      "title": "DirectionCommandInput.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Gets the user visible name of this input.",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = directionCommandInput_var.name",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = directionCommandInput_var->name();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "objectType": {
+      "id": "DirectionCommandInput_objectType",
+      "title": "DirectionCommandInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = directionCommandInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = directionCommandInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "parentCommand": {
+      "id": "DirectionCommandInput_parentCommand",
+      "title": "DirectionCommandInput.parentCommand Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Gets the parent Command.",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = directionCommandInput_var.parentCommand",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = directionCommandInput_var->parentCommand();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "parentCommandInput": {
+      "id": "DirectionCommandInput_parentCommandInput",
+      "title": "DirectionCommandInput.parentCommandInput Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Gets the parent CommandInput if this commandInput is the child of a TabCommandInput or GroupCommandInput. Returns null if there is no parent.",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = directionCommandInput_var.parentCommandInput",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = directionCommandInput_var->parentCommandInput();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "resourceFolder": {
+      "id": "DirectionCommandInput_resourceFolder",
+      "title": "DirectionCommandInput.resourceFolder Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Gets and sets the folder that contains the icon to display on the button. The input is shown as a check box if the resource folder is set to an empty string. Icons can be defined using either PNG or SVG files. More information about icons can be found in the user manual topic .",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = directionCommandInput_var.resourceFolder\n\n# Set the value of the property.\ndirectionCommandInput_var.resourceFolder = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = directionCommandInput_var->resourceFolder();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = directionCommandInput_var->resourceFolder(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "toolClipFilename": {
+      "id": "DirectionCommandInput_toolClipFilename",
+      "title": "DirectionCommandInput.toolClipFilename Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text.",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = directionCommandInput_var.toolClipFilename\n\n# Set the value of the property.\ndirectionCommandInput_var.toolClipFilename = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = directionCommandInput_var->toolClipFilename();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = directionCommandInput_var->toolClipFilename(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "tooltip": {
+      "id": "DirectionCommandInput_tooltip",
+      "title": "DirectionCommandInput.tooltip Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Gets or sets the base tooltip string. This is always shown for commands. If the tooltip description and/or tool clip are also specified then the tooltip will progressively display more information as the user hovers the mouse over the control.",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = directionCommandInput_var.tooltip\n\n# Set the value of the property.\ndirectionCommandInput_var.tooltip = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = directionCommandInput_var->tooltip();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = directionCommandInput_var->tooltip(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "tooltipDescription": {
+      "id": "DirectionCommandInput_tooltipDescription",
+      "title": "DirectionCommandInput.tooltipDescription Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/DirectionCommandInput.h",
+      "description": "Gets or sets additional text to display progressively along with the tooltip. The text for the description can contain some basic HTML formatting tags to format the tags. For example the br tag can be used to create multiple paragraphs. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text.",
+      "parent_class": "DirectionCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = directionCommandInput_var.tooltipDescription\n\n# Set the value of the property.\ndirectionCommandInput_var.tooltipDescription = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = directionCommandInput_var->tooltipDescription();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = directionCommandInput_var->tooltipDescription(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    }
+  }
+}

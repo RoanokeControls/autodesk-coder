@@ -1,0 +1,501 @@
+{
+  "id": "ToolLibraries",
+  "title": "ToolLibraries Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/Tools/ToolLibraries.h",
+  "description": "The ToolLibraries object provides utilities to access, import and update tool libraries.",
+  "parent_class": "CAMLibrary",
+  "methods": [
+    {
+      "name": "childAssetURLs",
+      "description": "Get all assets under given URL."
+    },
+    {
+      "name": "childFolderURLs",
+      "description": "Get all library folders under given URL."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createFolder",
+      "description": "Create a new folder in the library. Create the folder under given parent URL with given folder name. Add counting suffix, in case a folder with given name already exists. Throw an error if given URL does not point to a valid folder or the URL is read-only. Also throws an error if given folder name is empty."
+    },
+    {
+      "name": "createQuery",
+      "description": "Creates a new ToolQuery that is used to query the library for tools matching the query."
+    },
+    {
+      "name": "deleteAsset",
+      "description": "Delete asset by URL from the library. Throw an error if given URL does not point to a valid asset or the URL is read-only."
+    },
+    {
+      "name": "deleteFolder",
+      "description": "Delete folder by URL from the library. Any content of the folder will also be deleted. Throw an error if given URL does not point to a valid folder or the URL is read-only."
+    },
+    {
+      "name": "displayName",
+      "description": "Get the localized display name for a given URL. The URL must point to a folder."
+    },
+    {
+      "name": "doesPathExist",
+      "description": "Checks if the given URL points to an existing folder or asset in the library."
+    },
+    {
+      "name": "importToolLibrary",
+      "description": "Import a given ToolLibrary from a specific location. The imported ToolLibrary can be accessed through this ToolLibraries object. Throws an error, if the given URL is read-only."
+    },
+    {
+      "name": "toolLibraryAtURL",
+      "description": "Get a specific ToolLibrary by given URL. Returns null, if the URL does not exist."
+    },
+    {
+      "name": "updateToolLibrary",
+      "description": "Update ToolLibrary in ToolLibraries. Overrides the URL by given ToolLibrary. Throws an error if the URL does not already point to an existing ToolLibrary."
+    },
+    {
+      "name": "urlByLocation",
+      "description": "Get the URL for a given LibraryLocations."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assetTypeName",
+      "description": "Get the name of the asset type which can be accessed by the library."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Basic Milling Workflow Sample",
+      "description": "Demonstrates the creation of a basic milling workflow from scriptDemonstrates creating a setup, searching tool library to retrieve a tool, create a couple of machining operations and a NC program, ready for post processing.Use the 2D Strategies model from the Fusion CAM Samples folder as your CAD model."
+    },
+    {
+      "name": "Hole and Pocket Recognition API Sample",
+      "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+    },
+    {
+      "name": "Manufacturing Workflow API Sample",
+      "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+    },
+    {
+      "name": "Turning Workflow API Sample",
+      "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+    },
+    {
+      "name": "Wood Routing Workflow Sample",
+      "description": "This script demonstrates routing wood panels.When running the sample, it assumes you have an open design containing one or more \"panels\" oriented flat in the X-Y plane. The script creates a setup and a 2D contour operation with tabs to route the panels from a standard sheet."
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "property_details": {
+    "assetTypeName": {
+      "id": "ToolLibraries_assetTypeName",
+      "title": "ToolLibraries.assetTypeName Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolLibraries.h",
+      "description": "Get the name of the asset type which can be accessed by the library.",
+      "parent_class": "ToolLibraries",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = toolLibraries_var.assetTypeName",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = toolLibraries_var->assetTypeName();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "ToolLibraries_isValid",
+      "title": "ToolLibraries.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolLibraries.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ToolLibraries",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = toolLibraries_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = toolLibraries_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "ToolLibraries_objectType",
+      "title": "ToolLibraries.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolLibraries.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ToolLibraries",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = toolLibraries_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = toolLibraries_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  },
+  "method_details": {
+    "childAssetURLs": {
+      "id": "ToolLibraries_childAssetURLs",
+      "title": "ToolLibraries.childAssetURLs Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolLibraries.h",
+      "description": "Get all assets under given URL.",
+      "parent_class": "ToolLibraries",
+      "syntax": {
+        "python": "returnValue = toolLibraries_var.childAssetURLs(url)",
+        "cpp": "#include \n\nreturnValue = toolLibraries_var->childAssetURLs(url);"
+      },
+      "return_type": "URL[]",
+      "return_description": "Returns list of asset URLs at given location.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the parent folder."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "childFolderURLs": {
+      "id": "ToolLibraries_childFolderURLs",
+      "title": "ToolLibraries.childFolderURLs Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolLibraries.h",
+      "description": "Get all library folders under given URL.",
+      "parent_class": "ToolLibraries",
+      "syntax": {
+        "python": "returnValue = toolLibraries_var.childFolderURLs(url)",
+        "cpp": "#include \n\nreturnValue = toolLibraries_var->childFolderURLs(url);"
+      },
+      "return_type": "URL[]",
+      "return_description": "Returns list of folder URLs at given location.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the parent folder."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "classType": {
+      "id": "ToolLibraries_classType",
+      "title": "ToolLibraries.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolLibraries.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ToolLibraries",
+      "syntax": {
+        "python": "returnValue = adsk.cam.ToolLibraries.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::ToolLibraries::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    },
+    "createFolder": {
+      "id": "ToolLibraries_createFolder",
+      "title": "ToolLibraries.createFolder Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolLibraries.h",
+      "description": "Create a new folder in the library. Create the folder under given parent URL with given folder name. Add counting suffix, in case a folder with given name already exists. Throw an error if given URL does not point to a valid folder or the URL is read-only. Also throws an error if given folder name is empty.",
+      "parent_class": "ToolLibraries",
+      "syntax": {
+        "python": "returnValue = toolLibraries_var.createFolder(parentUrl, folderName)",
+        "cpp": "#include \n\nreturnValue = toolLibraries_var->createFolder(parentUrl, folderName);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL to the newly created folder",
+      "parameters": [
+        {
+          "name": "parentUrl",
+          "type": "URL",
+          "description": "The parent URL for the folder to be created."
+        },
+        {
+          "name": "folderName",
+          "type": "string",
+          "description": "Name of the new folder to be created. Must not be empty."
+        }
+      ],
+      "version": "Introduced in version May 2023"
+    },
+    "createQuery": {
+      "id": "ToolLibraries_createQuery",
+      "title": "ToolLibraries.createQuery Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolLibraries.h",
+      "description": "Creates a new ToolQuery that is used to query the library for tools matching the query.",
+      "parent_class": "ToolLibraries",
+      "syntax": {
+        "python": "returnValue = toolLibraries_var.createQuery(location)",
+        "cpp": "#include \n\nreturnValue = toolLibraries_var->createQuery(location);"
+      },
+      "return_type": "ToolQuery",
+      "return_description": "Returns a new ToolQuery. The query is predefined by given parameter.",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "LibraryLocations",
+          "description": "The location specifies the LibraryLocations where to search."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "deleteAsset": {
+      "id": "ToolLibraries_deleteAsset",
+      "title": "ToolLibraries.deleteAsset Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolLibraries.h",
+      "description": "Delete asset by URL from the library. Throw an error if given URL does not point to a valid asset or the URL is read-only.",
+      "parent_class": "ToolLibraries",
+      "syntax": {
+        "python": "returnValue = toolLibraries_var.deleteAsset(url)",
+        "cpp": "#include \n\nreturnValue = toolLibraries_var->deleteAsset(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if asset was deleted successfully, false otherwise",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the asset that should be removed."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "deleteFolder": {
+      "id": "ToolLibraries_deleteFolder",
+      "title": "ToolLibraries.deleteFolder Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolLibraries.h",
+      "description": "Delete folder by URL from the library. Any content of the folder will also be deleted. Throw an error if given URL does not point to a valid folder or the URL is read-only.",
+      "parent_class": "ToolLibraries",
+      "syntax": {
+        "python": "returnValue = toolLibraries_var.deleteFolder(url)",
+        "cpp": "#include \n\nreturnValue = toolLibraries_var->deleteFolder(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if folder was deleted successfully, false otherwise",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the folder that should be removed."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "displayName": {
+      "id": "ToolLibraries_displayName",
+      "title": "ToolLibraries.displayName Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolLibraries.h",
+      "description": "Get the localized display name for a given URL. The URL must point to a folder.",
+      "parent_class": "ToolLibraries",
+      "syntax": {
+        "python": "returnValue = toolLibraries_var.displayName(url)",
+        "cpp": "#include \n\nreturnValue = toolLibraries_var->displayName(url);"
+      },
+      "return_type": "string",
+      "return_description": "Returns localized display name for the folder. Returns empty string for invalid URL.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL that defines the path to a folder."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "doesPathExist": {
+      "id": "ToolLibraries_doesPathExist",
+      "title": "ToolLibraries.doesPathExist Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolLibraries.h",
+      "description": "Checks if the given URL points to an existing folder or asset in the library.",
+      "parent_class": "ToolLibraries",
+      "syntax": {
+        "python": "returnValue = toolLibraries_var.doesPathExist(url)",
+        "cpp": "#include \n\nreturnValue = toolLibraries_var->doesPathExist(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the URL points to an existing folder or asset, false otherwise.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to be checked."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    },
+    "importToolLibrary": {
+      "id": "ToolLibraries_importToolLibrary",
+      "title": "ToolLibraries.importToolLibrary Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolLibraries.h",
+      "description": "Import a given ToolLibrary from a specific location. The imported ToolLibrary can be accessed through this ToolLibraries object. Throws an error, if the given URL is read-only.",
+      "parent_class": "ToolLibraries",
+      "syntax": {
+        "python": "returnValue = toolLibraries_var.importToolLibrary(toolLibrary, destinationUrl, libraryName)",
+        "cpp": "#include \n\nreturnValue = toolLibraries_var->importToolLibrary(toolLibrary, destinationUrl, libraryName);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL of the newly imported tool library, or null if the import failed.",
+      "parameters": [
+        {
+          "name": "toolLibrary",
+          "type": "ToolLibrary",
+          "description": "The ToolLibrary that should be imported."
+        },
+        {
+          "name": "destinationUrl",
+          "type": "URL",
+          "description": "The URL to the parent folder where the imported tool library will be saved."
+        },
+        {
+          "name": "libraryName",
+          "type": "string",
+          "description": "The name of the library that should be created due to the import. If the specified name already exists, a number will be added to the name to ensure it is unique."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "toolLibraryAtURL": {
+      "id": "ToolLibraries_toolLibraryAtURL",
+      "title": "ToolLibraries.toolLibraryAtURL Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolLibraries.h",
+      "description": "Get a specific ToolLibrary by given URL. Returns null, if the URL does not exist.",
+      "parent_class": "ToolLibraries",
+      "syntax": {
+        "python": "returnValue = toolLibraries_var.toolLibraryAtURL(url)",
+        "cpp": "#include \n\nreturnValue = toolLibraries_var->toolLibraryAtURL(url);"
+      },
+      "return_type": "ToolLibrary",
+      "return_description": "Returns the ToolLibrary for a valid URL, returns null otherwise.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the ToolLibrary to be loaded."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Basic Milling Workflow Sample",
+          "description": "Demonstrates the creation of a basic milling workflow from scriptDemonstrates creating a setup, searching tool library to retrieve a tool, create a couple of machining operations and a NC program, ready for post processing.Use the 2D Strategies model from the Fusion CAM Samples folder as your CAD model."
+        },
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        },
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        },
+        {
+          "name": "Turning Workflow API Sample",
+          "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        },
+        {
+          "name": "Wood Routing Workflow Sample",
+          "description": "This script demonstrates routing wood panels.When running the sample, it assumes you have an open design containing one or more \"panels\" oriented flat in the X-Y plane. The script creates a setup and a 2D contour operation with tabs to route the panels from a standard sheet."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "updateToolLibrary": {
+      "id": "ToolLibraries_updateToolLibrary",
+      "title": "ToolLibraries.updateToolLibrary Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolLibraries.h",
+      "description": "Update ToolLibrary in ToolLibraries. Overrides the URL by given ToolLibrary. Throws an error if the URL does not already point to an existing ToolLibrary.",
+      "parent_class": "ToolLibraries",
+      "syntax": {
+        "python": "returnValue = toolLibraries_var.updateToolLibrary(url, toolLibrary)",
+        "cpp": "#include \n\nreturnValue = toolLibraries_var->updateToolLibrary(url, toolLibrary);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if asset was updated successfully, false otherwise.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the existing asset in the ToolLibraries that should be updated."
+        },
+        {
+          "name": "toolLibrary",
+          "type": "ToolLibrary",
+          "description": "The ToolLibrary that should be persisted."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "urlByLocation": {
+      "id": "ToolLibraries_urlByLocation",
+      "title": "ToolLibraries.urlByLocation Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Tools/ToolLibraries.h",
+      "description": "Get the URL for a given LibraryLocations.",
+      "parent_class": "ToolLibraries",
+      "syntax": {
+        "python": "returnValue = toolLibraries_var.urlByLocation(location)",
+        "cpp": "#include \n\nreturnValue = toolLibraries_var->urlByLocation(location);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL for given location.",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "LibraryLocations",
+          "description": "The LibraryLocations to be converted into an URL."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

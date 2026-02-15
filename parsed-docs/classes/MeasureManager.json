@@ -1,0 +1,206 @@
+{
+  "id": "MeasureManager",
+  "title": "MeasureManager Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/MeasureManager.h",
+  "description": "The MeasurementManager class provides some generic measurement utilities that can be used for most entity types.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "getOrientedBoundingBox",
+      "description": "Calculates an oriented bounding box for the input geometry. The bounding box is tight fitting to the input geometry and is particularly useful when you want to calculate a bounding box that is not oriented to be parallel to the model x-y-z plane.   The height direction is automatically determined using the length and width directions."
+    },
+    {
+      "name": "measureAngle",
+      "description": "Measures the angle between the input geometry."
+    },
+    {
+      "name": "measureMinimumDistance",
+      "description": "Measures the minimum distance between the two input geometries."
+    }
+  ],
+  "properties": [
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Measure Sample",
+      "description": "Measure related functions"
+    }
+  ],
+  "version": "Introduced in version December 2017",
+  "method_details": {
+    "classType": {
+      "id": "MeasureManager_classType",
+      "title": "MeasureManager.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/MeasureManager.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "MeasureManager",
+      "syntax": {
+        "python": "returnValue = adsk.core.MeasureManager.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::MeasureManager::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version December 2017"
+    },
+    "getOrientedBoundingBox": {
+      "id": "MeasureManager_getOrientedBoundingBox",
+      "title": "MeasureManager.getOrientedBoundingBox Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/MeasureManager.h",
+      "description": "Calculates an oriented bounding box for the input geometry. The bounding box is tight fitting to the input geometry and is particularly useful when you want to calculate a bounding box that is not oriented to be parallel to the model x-y-z plane. The height direction is automatically determined using the length and width directions.",
+      "parent_class": "MeasureManager",
+      "syntax": {
+        "python": "returnValue = measureManager_var.getOrientedBoundingBox(geometry, lengthVector, widthVector)",
+        "cpp": "#include \n\nreturnValue = measureManager_var->getOrientedBoundingBox(geometry, lengthVector, widthVector);"
+      },
+      "return_type": "OrientedBoundingBox3D",
+      "return_description": "Returns an OrientedBoundingBox3D object which provides the information that defines an oriented bounding box.",
+      "parameters": [
+        {
+          "name": "geometry",
+          "type": "Base",
+          "description": "The geometry to calculate the bounding box for. This can be any of the B-Rep related entities."
+        },
+        {
+          "name": "lengthVector",
+          "type": "Vector3D",
+          "description": "The direction the length of the oriented bounding box will be measured in. The magnitude of the vector is ignored and only the direction is used."
+        },
+        {
+          "name": "widthVector",
+          "type": "Vector3D",
+          "description": "The direction the width of the oriented bounding box will be measured in. The magnitude of the vector is ignored and only the direction is used. This must be perpendicular to the length vector."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Measure Sample",
+          "description": "Measure related functions"
+        }
+      ],
+      "version": "Introduced in version December 2017"
+    },
+    "measureAngle": {
+      "id": "MeasureManager_measureAngle",
+      "title": "MeasureManager.measureAngle Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/MeasureManager.h",
+      "description": "Measures the angle between the input geometry.",
+      "parent_class": "MeasureManager",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = measureManager_var.measureAngle(geometryOne, geometryTwo)\n\n# Uses optional arguments.\nreturnValue = measureManager_var.measureAngle(geometryOne, geometryTwo, geometryThree)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = measureManager_var->measureAngle(geometryOne, geometryTwo);\n\n// Uses optional arguments.\nreturnValue = measureManager_var->measureAngle(geometryOne, geometryTwo, geometryThree);"
+      },
+      "return_type": "MeasureResults",
+      "return_description": "A MeasureResults object that contains the angle and the two points on the geometry that the angle that was measured between them in radians.",
+      "parameters": [
+        {
+          "name": "geometryOne",
+          "type": "Base",
+          "description": "The first geometry to measure the angle to. This can be any 3D point geometry (Construction Point, Vertex, SketchPoint, or Point3D), any 3D linear geometry (Construction Axis, linear BRepEdge, SketchLine, Line3D, or InfiniteLine3D), or any planar geometry (Construction Plane, planar BRepFace, or Plane)."
+        },
+        {
+          "name": "geometryTwo",
+          "type": "Base",
+          "description": "The second geometry to measure the angle to. This can be any 3D point geometry (Construction Point, Vertex, SketchPoint, or Point3D), any 3D linear geometry (Construction Axis, linear BRepEdge, SketchLine, Line3D, or InfiniteLine3D), or any planar geometry (Construction Plane, planar BRepFace, or Plane)."
+        },
+        {
+          "name": "geometryThree",
+          "type": "Base",
+          "description": "The optional third geometry to measure the angle to. This is only used when the first two geometries are points and this defines the third point. When three points define a triangle, the apex of the triangle is defined by the second point. A point can be defined by a Construction Point, Vertex, SketchPoint, or Point3D object.   This is an optional argument whose default value is null."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Measure Sample",
+          "description": "Measure related functions"
+        }
+      ],
+      "version": "Introduced in version December 2017"
+    },
+    "measureMinimumDistance": {
+      "id": "MeasureManager_measureMinimumDistance",
+      "title": "MeasureManager.measureMinimumDistance Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/MeasureManager.h",
+      "description": "Measures the minimum distance between the two input geometries.",
+      "parent_class": "MeasureManager",
+      "syntax": {
+        "python": "returnValue = measureManager_var.measureMinimumDistance(geometryOne, geometryTwo)",
+        "cpp": "#include \n\nreturnValue = measureManager_var->measureMinimumDistance(geometryOne, geometryTwo);"
+      },
+      "return_type": "MeasureResults",
+      "return_description": "A MeasureResults object that contains the distance and the two points on the geometry that the distance that was measured between them in centimeters.",
+      "parameters": [
+        {
+          "name": "geometryOne",
+          "type": "Base",
+          "description": "The first geometry to measure from. This can be an Occurrence, BRepBody, BRepFace, BRepEdge, BRepVertex, ConstructionPlane, ConstructionAxis, ConstructionPoint, and any sketch entity. The only temporary geometry supported is the Plane object."
+        },
+        {
+          "name": "geometryTwo",
+          "type": "Base",
+          "description": "The first geometry to measure from. This can be an Occurrence, BRepBody, BRepFace, BRepEdge, BRepVertex, ConstructionPlane, ConstructionAxis, ConstructionPoint, and any sketch entity. The only temporary geometry supported is the Plane object."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Measure Sample",
+          "description": "Measure related functions"
+        }
+      ],
+      "version": "Introduced in version December 2017"
+    }
+  },
+  "property_details": {
+    "isValid": {
+      "id": "MeasureManager_isValid",
+      "title": "MeasureManager.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/MeasureManager.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "MeasureManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = measureManager_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = measureManager_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2017"
+    },
+    "objectType": {
+      "id": "MeasureManager_objectType",
+      "title": "MeasureManager.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/MeasureManager.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "MeasureManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = measureManager_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = measureManager_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2017"
+    }
+  }
+}

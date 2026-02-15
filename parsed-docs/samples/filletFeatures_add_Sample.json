@@ -1,0 +1,12 @@
+{
+  "id": "filletFeatures_add_Sample",
+  "title": "filletFeatures.add",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the filletFeatures.add method.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_filletFeatures_add(rootComp: adsk.fusion.Component):\n    # Have an edge selected.\n    edge = _ui.selectEntity('Select an edge', 'Edges').entity\n    edgesToFillet = adsk.core.ObjectCollection.create()\n\n    # Define the required input.\n    edgesToFillet.add(edge)\n    filletFeatures = rootComp.features.filletFeatures\n    input = filletFeatures.createInput()\n    radius = adsk.core.ValueInput.createByReal(2)\n    isTangentChain = True\n    \n    input.edgeSetInputs.addConstantRadiusEdgeSet(edgesToFillet, radius, isTangentChain)\n\n    # Create the fillet.\n    filletFeature = filletFeatures.add(input)"
+  }
+}

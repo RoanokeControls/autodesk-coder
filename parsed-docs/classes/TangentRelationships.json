@@ -1,0 +1,208 @@
+{
+  "id": "TangentRelationships",
+  "title": "TangentRelationships Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Components/TangentRelationships.h",
+  "description": "The collection of Tangent Relationships in this component. This provides access to all existing tangent relationships and supports the ability to create new tangent relationships.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new tangent relationship between two components."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a TangentRelationshipInput object, which is the API equivalent to the Tangent Relationship command dialog. You use methods and properties on the returned class to set the desired options, similar to providing input in the Tangent Relationship command dialog. Once the settings are defined you call the TangentRelationships.add method passing in the TangentRelationshipInput object to create the actual TangentRelationship."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified tangent relationship using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified tangent relationship using a name."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns number of TangentRelationship objects in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version May 2022",
+  "method_details": {
+    "add": {
+      "id": "TangentRelationships_add",
+      "title": "TangentRelationships.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/TangentRelationships.h",
+      "description": "Creates a new tangent relationship between two components.",
+      "parent_class": "TangentRelationships",
+      "syntax": {
+        "python": "returnValue = tangentRelationships_var.add(input)",
+        "cpp": "#include \n\nreturnValue = tangentRelationships_var->add(input);"
+      },
+      "return_type": "TangentRelationship",
+      "return_description": "Returns the newly created TangentRelationship or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "TangentRelationshipInput",
+          "description": "The TangentRelationshipInput object that defines the geometry and various inputs that fully define a tangent relationship. A TangentRelationshipInput object is created using the TangentRelationships.createInput method."
+        }
+      ],
+      "version": "Introduced in version May 2022"
+    },
+    "classType": {
+      "id": "TangentRelationships_classType",
+      "title": "TangentRelationships.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/TangentRelationships.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "TangentRelationships",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.TangentRelationships.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::TangentRelationships::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version May 2022"
+    },
+    "createInput": {
+      "id": "TangentRelationships_createInput",
+      "title": "TangentRelationships.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/TangentRelationships.h",
+      "description": "Creates a TangentRelationshipInput object, which is the API equivalent to the Tangent Relationship command dialog. You use methods and properties on the returned class to set the desired options, similar to providing input in the Tangent Relationship command dialog. Once the settings are defined you call the TangentRelationships.add method passing in the TangentRelationshipInput object to create the actual TangentRelationship.",
+      "parent_class": "TangentRelationships",
+      "syntax": {
+        "python": "returnValue = tangentRelationships_var.createInput(faceOne, tangentFaces)",
+        "cpp": "#include \n\nreturnValue = tangentRelationships_var->createInput(faceOne, tangentFaces);"
+      },
+      "return_type": "TangentRelationshipInput",
+      "return_description": "Returns the TangentRelationshipInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "faceOne",
+          "type": "BRepFace",
+          "description": "A BRepFace object that will remain tangent to the set of specified tangent faces."
+        },
+        {
+          "name": "tangentFaces",
+          "type": "Base",
+          "description": "A single BRepFace object that is part of the body that faceOne will remain tangent to. All of the faces of the body will be used when computing the tangent relationship."
+        }
+      ],
+      "version": "Introduced in version May 2022"
+    },
+    "item": {
+      "id": "TangentRelationships_item",
+      "title": "TangentRelationships.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/TangentRelationships.h",
+      "description": "Function that returns the specified tangent relationship using an index into the collection.",
+      "parent_class": "TangentRelationships",
+      "syntax": {
+        "python": "returnValue = tangentRelationships_var.item(index)",
+        "cpp": "#include \n\nreturnValue = tangentRelationships_var->item(index);"
+      },
+      "return_type": "TangentRelationship",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version May 2022"
+    },
+    "itemByName": {
+      "id": "TangentRelationships_itemByName",
+      "title": "TangentRelationships.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/TangentRelationships.h",
+      "description": "Function that returns the specified tangent relationship using a name.",
+      "parent_class": "TangentRelationships",
+      "syntax": {
+        "python": "returnValue = tangentRelationships_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = tangentRelationships_var->itemByName(name);"
+      },
+      "return_type": "TangentRelationship",
+      "return_description": "Returns the specified item or null if an invalid name was specified.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the item within the collection to return."
+        }
+      ],
+      "version": "Introduced in version May 2022"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "TangentRelationships_count",
+      "title": "TangentRelationships.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/TangentRelationships.h",
+      "description": "Returns number of TangentRelationship objects in the collection.",
+      "parent_class": "TangentRelationships",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tangentRelationships_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = tangentRelationships_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "isValid": {
+      "id": "TangentRelationships_isValid",
+      "title": "TangentRelationships.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/TangentRelationships.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "TangentRelationships",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tangentRelationships_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = tangentRelationships_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "objectType": {
+      "id": "TangentRelationships_objectType",
+      "title": "TangentRelationships.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/TangentRelationships.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "TangentRelationships",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tangentRelationships_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = tangentRelationships_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    }
+  }
+}

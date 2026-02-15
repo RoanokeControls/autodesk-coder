@@ -1,0 +1,375 @@
+{
+  "id": "GraphNode",
+  "title": "GraphNode Object",
+  "type": "class",
+  "namespace": "adsk::volume",
+  "header_file": "Volume/Volumetric/GraphNode.h",
+  "description": "An individual node within a graph.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the graphNode and all of its connections."
+    },
+    {
+      "name": "getInputPinCount",
+      "description": "How many input pins does this node have."
+    },
+    {
+      "name": "getInputPinName",
+      "description": "The name of this graph node input pin describing its function."
+    },
+    {
+      "name": "getInputPinType",
+      "description": "Get the type of the node input pin."
+    },
+    {
+      "name": "getOutputPinCount",
+      "description": "How many output pins does this node have."
+    },
+    {
+      "name": "getOutputPinName",
+      "description": "The name of this graph node input pin describing its function."
+    },
+    {
+      "name": "getOutputPinType",
+      "description": "Get the type of the node output pin."
+    },
+    {
+      "name": "hasValidProperties",
+      "description": "Check if the graph node properties are valid."
+    },
+    {
+      "name": "isInputPinOptional",
+      "description": "Some input pins can be optional, so they do not need to be connected for the node to work."
+    }
+  ],
+  "properties": [
+    {
+      "name": "description",
+      "description": "A user readable description that explains the function of this node type."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "name",
+      "description": "The name of this graph node as give on creation. Node names for each graph should be unique."
+    },
+    {
+      "name": "nodeType",
+      "description": "Get the string node type that is was created with."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "properties",
+      "description": "Get a collection of all node properties supported by this node."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Volumetric Custom Feature API Sample",
+      "description": "Demonstrates how to create a Volumetric Custom Feature using the API for graph creation.\n\nTo run the sample script, have a document open in Fusion\u2019s DESIGN workspace. This script will create a component with a box by sketching then extruding that sketch. It will then use that box as a boundary body and create a Volumetric Custom Feature.\n\nThe script will the create a gyroid lattice using the Volumetric Model API with the appropriate Graphs, Nodes and Connections for a minimal example. Finally, the script will convert that Volumetric Model to Mesh using the API and the VolumetricModelToMeshFeature."
+    }
+  ],
+  "version": "Introduced in version May 2025",
+  "method_details": {
+    "classType": {
+      "id": "GraphNode_classType",
+      "title": "GraphNode.classType Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/GraphNode.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "GraphNode",
+      "syntax": {
+        "python": "returnValue = adsk.volume.GraphNode.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::volume::GraphNode::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version May 2025"
+    },
+    "deleteMe": {
+      "id": "GraphNode_deleteMe",
+      "title": "GraphNode.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/GraphNode.h",
+      "description": "Deletes the graphNode and all of its connections.",
+      "parent_class": "GraphNode",
+      "syntax": {
+        "python": "returnValue = graphNode_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = graphNode_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true in the case where the deletion was successful. All properties and proery objects of this node will become invalid after this call. Output nodes cannot be deleted.",
+      "version": "Introduced in version May 2025"
+    },
+    "getInputPinCount": {
+      "id": "GraphNode_getInputPinCount",
+      "title": "GraphNode.getInputPinCount Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/GraphNode.h",
+      "description": "How many input pins does this node have.",
+      "parent_class": "GraphNode",
+      "syntax": {
+        "python": "returnValue = graphNode_var.getInputPinCount()",
+        "cpp": "#include \n\nreturnValue = graphNode_var->getInputPinCount();"
+      },
+      "return_type": "uinteger",
+      "return_description": "Pin count.",
+      "version": "Introduced in version May 2025"
+    },
+    "getInputPinName": {
+      "id": "GraphNode_getInputPinName",
+      "title": "GraphNode.getInputPinName Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/GraphNode.h",
+      "description": "The name of this graph node input pin describing its function.",
+      "parent_class": "GraphNode",
+      "syntax": {
+        "python": "returnValue = graphNode_var.getInputPinName(pinIndex)",
+        "cpp": "#include \n\nreturnValue = graphNode_var->getInputPinName(pinIndex);"
+      },
+      "parameters": [
+        {
+          "name": "pinIndex",
+          "type": "uinteger",
+          "description": "Zero based index of the pin to get. Should be less than the pin count."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "getInputPinType": {
+      "id": "GraphNode_getInputPinType",
+      "title": "GraphNode.getInputPinType Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/GraphNode.h",
+      "description": "Get the type of the node input pin.",
+      "parent_class": "GraphNode",
+      "syntax": {
+        "python": "returnValue = graphNode_var.getInputPinType(pinIndex)",
+        "cpp": "#include \n\nreturnValue = graphNode_var->getInputPinType(pinIndex);"
+      },
+      "return_type": "NodePinTypes",
+      "return_description": "The pin type enum.",
+      "parameters": [
+        {
+          "name": "pinIndex",
+          "type": "uinteger",
+          "description": "Zero based index of the pin to get. Should be less than the pin count."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "getOutputPinCount": {
+      "id": "GraphNode_getOutputPinCount",
+      "title": "GraphNode.getOutputPinCount Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/GraphNode.h",
+      "description": "How many output pins does this node have.",
+      "parent_class": "GraphNode",
+      "syntax": {
+        "python": "returnValue = graphNode_var.getOutputPinCount()",
+        "cpp": "#include \n\nreturnValue = graphNode_var->getOutputPinCount();"
+      },
+      "return_type": "uinteger",
+      "return_description": "Pin count.",
+      "version": "Introduced in version May 2025"
+    },
+    "getOutputPinName": {
+      "id": "GraphNode_getOutputPinName",
+      "title": "GraphNode.getOutputPinName Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/GraphNode.h",
+      "description": "The name of this graph node input pin describing its function.",
+      "parent_class": "GraphNode",
+      "syntax": {
+        "python": "returnValue = graphNode_var.getOutputPinName(pinIndex)",
+        "cpp": "#include \n\nreturnValue = graphNode_var->getOutputPinName(pinIndex);"
+      },
+      "parameters": [
+        {
+          "name": "pinIndex",
+          "type": "uinteger",
+          "description": "Zero based index of the pin to get. Should be less than the pin count."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "getOutputPinType": {
+      "id": "GraphNode_getOutputPinType",
+      "title": "GraphNode.getOutputPinType Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/GraphNode.h",
+      "description": "Get the type of the node output pin.",
+      "parent_class": "GraphNode",
+      "syntax": {
+        "python": "returnValue = graphNode_var.getOutputPinType(pinIndex)",
+        "cpp": "#include \n\nreturnValue = graphNode_var->getOutputPinType(pinIndex);"
+      },
+      "return_type": "NodePinTypes",
+      "return_description": "The pin type enum.",
+      "parameters": [
+        {
+          "name": "pinIndex",
+          "type": "uinteger",
+          "description": "Zero based index of the pin to get. Should be less than the pin count."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "hasValidProperties": {
+      "id": "GraphNode_hasValidProperties",
+      "title": "GraphNode.hasValidProperties Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/GraphNode.h",
+      "description": "Check if the graph node properties are valid.",
+      "parent_class": "GraphNode",
+      "syntax": {
+        "python": "returnValue = graphNode_var.hasValidProperties()",
+        "cpp": "#include \n\nreturnValue = graphNode_var->hasValidProperties();"
+      },
+      "return_type": "boolean",
+      "return_description": "True if the node has good inputs for its properties, false otherwise.",
+      "version": "Introduced in version July 2025"
+    },
+    "isInputPinOptional": {
+      "id": "GraphNode_isInputPinOptional",
+      "title": "GraphNode.isInputPinOptional Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/GraphNode.h",
+      "description": "Some input pins can be optional, so they do not need to be connected for the node to work.",
+      "parent_class": "GraphNode",
+      "syntax": {
+        "python": "returnValue = graphNode_var.isInputPinOptional(pinIndex)",
+        "cpp": "#include \n\nreturnValue = graphNode_var->isInputPinOptional(pinIndex);"
+      },
+      "return_type": "boolean",
+      "return_description": "True if pin is optional, false if it is required.",
+      "parameters": [
+        {
+          "name": "pinIndex",
+          "type": "uinteger",
+          "description": "Zero based index of the pin to get. Should be less than the pin count."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    }
+  },
+  "property_details": {
+    "description": {
+      "id": "GraphNode_description",
+      "title": "GraphNode.description Property",
+      "type": "property",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/GraphNode.h",
+      "description": "A user readable description that explains the function of this node type.",
+      "parent_class": "GraphNode",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = graphNode_var.description",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = graphNode_var->description();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "isValid": {
+      "id": "GraphNode_isValid",
+      "title": "GraphNode.isValid Property",
+      "type": "property",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/GraphNode.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "GraphNode",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = graphNode_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = graphNode_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "name": {
+      "id": "GraphNode_name",
+      "title": "GraphNode.name Property",
+      "type": "property",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/GraphNode.h",
+      "description": "The name of this graph node as give on creation. Node names for each graph should be unique.",
+      "parent_class": "GraphNode",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = graphNode_var.name\n\n# Set the value of the property.\ngraphNode_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = graphNode_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = graphNode_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "nodeType": {
+      "id": "GraphNode_nodeType",
+      "title": "GraphNode.nodeType Property",
+      "type": "property",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/GraphNode.h",
+      "description": "Get the string node type that is was created with.",
+      "parent_class": "GraphNode",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = graphNode_var.nodeType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = graphNode_var->nodeType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "objectType": {
+      "id": "GraphNode_objectType",
+      "title": "GraphNode.objectType Property",
+      "type": "property",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/GraphNode.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "GraphNode",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = graphNode_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = graphNode_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "properties": {
+      "id": "GraphNode_properties",
+      "title": "GraphNode.properties Property",
+      "type": "property",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/GraphNode.h",
+      "description": "Get a collection of all node properties supported by this node.",
+      "parent_class": "GraphNode",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = graphNode_var.properties",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = graphNode_var->properties();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Volumetric Custom Feature API Sample",
+          "description": "Demonstrates how to create a Volumetric Custom Feature using the API for graph creation.\n\nTo run the sample script, have a document open in Fusion\u2019s DESIGN workspace. This script will create a component with a box by sketching then extruding that sketch. It will then use that box as a boundary body and create a Volumetric Custom Feature.\n\nThe script will the create a gyroid lattice using the Volumetric Model API with the appropriate Graphs, Nodes and Connections for a minimal example. Finally, the script will convert that Volumetric Model to Mesh using the API and the VolumetricModelToMeshFeature."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "id": "ECD-ULP-PAD",
+  "title": "UL_PAD",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "angle",
+      "type": "real (0.0...359.9)"
+    },
+    {
+      "name": "diameter[layer]",
+      "type": "int"
+    },
+    {
+      "name": "drill",
+      "type": "int"
+    },
+    {
+      "name": "drillsymbol",
+      "type": "int"
+    },
+    {
+      "name": "elongation",
+      "type": "int"
+    },
+    {
+      "name": "flags",
+      "type": "int (PAD_FLAG_...)"
+    },
+    {
+      "name": "name",
+      "type": "string (PAD_NAME_LENGTH)"
+    },
+    {
+      "name": "shape[layer]",
+      "type": "int (PAD_SHAPE_...)"
+    },
+    {
+      "name": "signal",
+      "type": "string"
+    },
+    {
+      "name": "x, y",
+      "type": "int (center point, see note)"
+    }
+  ],
+  "loop_members": [],
+  "content": "- \n \n \n\n \n \n# UL_PAD\n\n## Data members\n\n| | |\n| --- | --- |\n| angle | real (0.0...359.9) |\n| diameter[layer] | int |\n| drill | int |\n| drillsymbol | int |\n| elongation | int |\n| flags | int (PAD_FLAG_...) |\n| name | string (PAD_NAME_LENGTH) |\n| shape[layer] | int (PAD_SHAPE_...) |\n| signal | string |\n| x, y | int (center point, see note) |\n\nSee also UL_FOOTPRINT, UL_CONTACT, UL_SMD\n\n## Constants\n\n| | |\n| --- | --- |\n| PAD_FLAG_STOP | generate stop mask |\n| PAD_FLAG_THERMALS | generate thermals |\n| PAD_FLAG_FIRST | use special \"first pad\" shape |\n| PAD_SHAPE_SQUARE | square |\n| PAD_SHAPE_ROUND | round |\n| PAD_SHAPE_OCTAGON | octagon |\n| PAD_SHAPE_LONG | long |\n| PAD_SHAPE_OFFSET | offset |\n| PAD_NAME_LENGTH | max. recommended length of a pad name (same as CONTACT_NAME_LENGTH) |\n\n## Note\n\nThe parameters of the pad depend on the context in which it is accessed:\n\nif the pad is derived from a UL_LIBRARY context, the coordinates (x, y) and angle will be the same as defined in the footprint drawing\n\n- in all other cases, they will have the actual values from the board\n\nThe *diameter* and *shape* of the pad depend on the layer for which they shall be retrieved, because they may be different in each layer depending on the Design Rules. If one of the layers LAYER_TOP...LAYER_BOTTOM, LAYER_TSTOP or LAYER_BSTOP is given as the index to the diameter or shape data member, the resulting value will be calculated according to the Design Rules. If LAYER_PADS is given, the raw value as defined in the library will be returned.\n\n*drillsymbol* returns the number of the drill symbol that has been assigned to this drill diameter (see the manual for a list of defined drill symbols). A value of 0 means that no symbol has been assigned to this drill diameter.\n\n*angle* defines how many degrees the pad is rotated counterclockwise around its center.\n\n*elongation* is only valid for shapes PAD_SHAPE_LONG and PAD_SHAPE_OFFSET and defines how many percent the long side of such a pad is longer than its small side. This member returns 0 for any other pad shapes.\n\nThe value returned by flags must be masked with the PAD_FLAG_... constants to determine the individual flag settings, as in\n\n```\nif (pad.flags & PAD_FLAG_STOP) {\n ...\n }\n```\n\nNote that if your ULP just wants to draw the objects, you don't need to check these flags explicitly. The *diameter[]* and *shape[]* members will return the proper data; for instance, if PAD_FLAG_STOP is set, diameter[LAYER_TSTOP] will return 0, which should result in nothing being drawn in that layer. The flags member is mainly for ULPs that want to create script files that create library objects.\n\n## Example\n\n```\nlibrary(L) {\n L.footprints(FPT) {\n FPT.contacts(C) {\n if (C.pad)\n printf(\"Pad: '%s', (%f %f), d=%f\\n\",\n C.name, u2mm(C.pad.x), u2mm(C.pad.y), u2mm(C.pad.diameter[LAYER_BOTTOM]));\n }\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

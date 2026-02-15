@@ -1,0 +1,777 @@
+{
+  "id": "TableCommandInput",
+  "title": "TableCommandInput Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/TableCommandInput.h",
+  "description": "Represents a table within a command dialog. The table consists of rows and columns where each cell can contain another command input. The selection and button row command inputs cannot be used within a table. In addition to the rows and columns, each table can optionally have a toolbar of separate command inputs that is shown at the bottom of the table. A table command input can conceptually be compared to an Excel table where you have an infinite number of rows and columns available but use a small portion. As you add inputs to the table, the table will adjust so all used columns are visible. The visible number of rows is controlled by you and if you create more rows than can be displayed a scroll bar becomes available. For an example of this command input, see the loft command which uses it to show the selected profiles and rails.",
+  "parent_class": "CommandInput",
+  "methods": [
+    {
+      "name": "addCommandInput",
+      "description": "Adds a command input to a particular cell in the table. Rows are automatically added to the table to able to contain the command input. The command input can span multiple columns within a row and spanning across multiple rows is not currently supported.   The command input is created in the standard way but when it's added to the table using this method it will be displayed in the table instead of the main area of the dialog."
+    },
+    {
+      "name": "addToolbarCommandInput",
+      "description": "Adds a new command input to the toolbar at the bottom of the table."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "clear",
+      "description": "Removes all rows in the table and the toolbar."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this Command input."
+    },
+    {
+      "name": "deleteRow",
+      "description": "Deletes the specified row. The following rows will be shifted up. The row and the command inputs it contains are deleted. To temporarily hide a row you can set the visibility of all of the command inputs it contains to be invisible. If all inputs are invisible the row will automatically be hidden."
+    },
+    {
+      "name": "getInputAtPosition",
+      "description": "Returns the command input that is in the specified row and column. In the case where a command input spans multiple columns, the same input can be returned from multiple positions."
+    },
+    {
+      "name": "getPosition",
+      "description": "Gets the position of the specified command input within the table."
+    },
+    {
+      "name": "removeInput",
+      "description": "Removes the command input that is at the specified row and column. This doesn't delete the command input from the collection of inputs associated with the command but just removes it from being displayed in the table."
+    }
+  ],
+  "properties": [
+    {
+      "name": "columnRatio",
+      "description": "Gets and sets the width ratio of the columns. This is defined using a string such as \"1:1:1\" where this defines that the first three columns are all the same width. A value of \"2:1\" defines that the first column is twice the width of the second.   If the table has more columns than are defined by this property, they will automatically default to a value of 1. If this property defines the width of more columns than are displayed, the extra definitions are ignored.   You can also specify 0 as a column width and this will have the effect of hiding that column. Setting a column width to 0 does not delete the column or the command inputs but only hides them so they can be turned back on at a later time by resetting the column ratio."
+    },
+    {
+      "name": "columnSpacing",
+      "description": "Gets and sets the spacing between columns. This is defined in pixels. For a newly created table, this property defaults to 1."
+    },
+    {
+      "name": "commandInputs",
+      "description": "Gets the CommandInputs class of the parent, which can be a Command, GroupCommandInput or TabCommandInput."
+    },
+    {
+      "name": "hasGrid",
+      "description": "Gets and sets whether a grid is displayed for the table. For a newly created table, this property defaults to false."
+    },
+    {
+      "name": "id",
+      "description": "Gets the unique identifier for this input in the command's CommandInputs."
+    },
+    {
+      "name": "isEnabled",
+      "description": "Gets or sets if this input is currently enabled or disabled for user interaction.   Currently, the isEnabled property does not disable SelectionCommandInput objects but instead has the same effect as the SelectionCommandInput.hasFocus property."
+    },
+    {
+      "name": "isFullWidth",
+      "description": "Gets or sets if this input fills the entire width of the dialog. If true, the name is ignored and the input control will fill the entire width of the command dialog. The default value for this property in a new command input if false, or not to fill the width. This property does not apply to GroupCommandInputs or TabCommandInputs."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets or sets if this input will be visible to the user.   Setting a SelectionCommandInput to be invisible will clear any selections it currently has."
+    },
+    {
+      "name": "maximumVisibleRows",
+      "description": "Gets and sets the maximum number of rows that can be displayed. As rows are added the visible size of the table will grow to show all rows until this maximum number of rows is reached and then a scroll bar will be displayed to allow the user to access all rows. For a new created table, this property defaults to 4."
+    },
+    {
+      "name": "minimumVisibleRows",
+      "description": "Gets and sets the minimum number of rows displayed. This is the minimum amount of space taken up on the command dialog, even if the table doesn't yet contain any rows. For a newly created table, this property defaults to 2."
+    },
+    {
+      "name": "name",
+      "description": "Gets the user visible name of this input."
+    },
+    {
+      "name": "numberOfColumns",
+      "description": "Returns the current number of visible columns displayed. Setting this property has no effect because the number of columns is automatically inferred by the command inputs that have been added to the table. The table automatically adjusts the number of rows displayed so all inputs can be seen."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentCommand",
+      "description": "Gets the parent Command."
+    },
+    {
+      "name": "parentCommandInput",
+      "description": "Gets the parent CommandInput if this commandInput is the child of a TabCommandInput or GroupCommandInput. Returns null if there is no parent."
+    },
+    {
+      "name": "rowCount",
+      "description": "Returns the number of rows in the table. The actual number of rows in the table is defined by the number of rows that contain command inputs."
+    },
+    {
+      "name": "rowSpacing",
+      "description": "Gets and sets the spacing between rows. This is defined in pixels. For a newly created table, this property defaults to 1."
+    },
+    {
+      "name": "selectedRow",
+      "description": "Gets and sets which row is selected in the user-interface. A value of 0 indicates that the first row is selected. A value of -1 indicates that no row is selected."
+    },
+    {
+      "name": "tablePresentationStyle",
+      "description": "Gets and sets the presentation style the table is currently using for its display."
+    },
+    {
+      "name": "toolClipFilename",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text."
+    },
+    {
+      "name": "tooltip",
+      "description": "Gets or sets the base tooltip string. This is always shown for commands. If the tooltip description and/or tool clip are also specified then the tooltip will progressively display more information as the user hovers the mouse over the control."
+    },
+    {
+      "name": "tooltipDescription",
+      "description": "Gets or sets additional text to display progressively along with the tooltip. The text for the description can contain some basic HTML formatting tags to format the tags. For example the br tag can be used to create multiple paragraphs. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Command Inputs API Sample",
+      "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.  You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+    },
+    {
+      "name": "Custom Event for Command Dialog",
+      "description": "Demonstrates using a custom event to process getting information in the background to display in a command dialog. This is an add-in and should be copied and pasted into an add-in project."
+    }
+  ],
+  "version": "Introduced in version September 2016",
+  "method_details": {
+    "addCommandInput": {
+      "id": "TableCommandInput_addCommandInput",
+      "title": "TableCommandInput.addCommandInput Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Adds a command input to a particular cell in the table. Rows are automatically added to the table to able to contain the command input. The command input can span multiple columns within a row and spanning across multiple rows is not currently supported. The command input is created in the standard way but when it's added to the table using this method it will be displayed in the table instead of the main area of the dialog.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = tableCommandInput_var.addCommandInput(input, row, column)\n\n# Uses optional arguments.\nreturnValue = tableCommandInput_var.addCommandInput(input, row, column, rowSpan, columnSpan)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = tableCommandInput_var->addCommandInput(input, row, column);\n\n// Uses optional arguments.\nreturnValue = tableCommandInput_var->addCommandInput(input, row, column, rowSpan, columnSpan);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the association of the command input to the cell was successful.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "CommandInput",
+          "description": "The command input to associate to a cell. The command input is created in the standard way but when it's added to the table using this method it will be displayed in the table instead of the main area of the dialog."
+        },
+        {
+          "name": "row",
+          "type": "integer",
+          "description": "The row index of the cell where 0 is the first row."
+        },
+        {
+          "name": "column",
+          "type": "integer",
+          "description": "The column index of the cell where 0 is the first column."
+        },
+        {
+          "name": "rowSpan",
+          "type": "integer",
+          "description": "The number of additional rows that this input uses. The default value of 0 indicates that no additional rows are used. Row spanning is not currently supported so this value must always be 0.   This is an optional argument whose default value is 0."
+        },
+        {
+          "name": "columnSpan",
+          "type": "integer",
+          "description": "The number of additional columns that this input uses. The default value of 0 indicates that no additional columns are used.   This is an optional argument whose default value is 0."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Command Inputs API Sample",
+          "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.\u00a0You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+        },
+        {
+          "name": "Custom Event for Command Dialog",
+          "description": "Demonstrates using a custom event to process getting information in the background to display in a command dialog. This is an add-in and should be copied and pasted into an add-in project."
+        }
+      ],
+      "version": "Introduced in version September 2016"
+    },
+    "addToolbarCommandInput": {
+      "id": "TableCommandInput_addToolbarCommandInput",
+      "title": "TableCommandInput.addToolbarCommandInput Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Adds a new command input to the toolbar at the bottom of the table.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "returnValue = tableCommandInput_var.addToolbarCommandInput(input)",
+        "cpp": "#include \n\nreturnValue = tableCommandInput_var->addToolbarCommandInput(input);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the command input was successfully added.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "CommandInput",
+          "description": "Adds a command input to the toolbar at the bottom of the table. The inputs are displayed in the same order that they're added.   The command input is created in the standard way but when it's added to the table using this method it will be displayed in the table instead of the main area of the dialog."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Command Inputs API Sample",
+          "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.\u00a0You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+        }
+      ],
+      "version": "Introduced in version September 2016"
+    },
+    "classType": {
+      "id": "TableCommandInput_classType",
+      "title": "TableCommandInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "returnValue = adsk.core.TableCommandInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::TableCommandInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2016"
+    },
+    "clear": {
+      "id": "TableCommandInput_clear",
+      "title": "TableCommandInput.clear Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Removes all rows in the table and the toolbar.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "returnValue = tableCommandInput_var.clear()",
+        "cpp": "#include \n\nreturnValue = tableCommandInput_var->clear();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "version": "Introduced in version September 2016"
+    },
+    "deleteMe": {
+      "id": "TableCommandInput_deleteMe",
+      "title": "TableCommandInput.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Deletes this Command input.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "returnValue = tableCommandInput_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = tableCommandInput_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version August 2020"
+    },
+    "deleteRow": {
+      "id": "TableCommandInput_deleteRow",
+      "title": "TableCommandInput.deleteRow Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Deletes the specified row. The following rows will be shifted up. The row and the command inputs it contains are deleted. To temporarily hide a row you can set the visibility of all of the command inputs it contains to be invisible. If all inputs are invisible the row will automatically be hidden.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "returnValue = tableCommandInput_var.deleteRow(row)",
+        "cpp": "#include \n\nreturnValue = tableCommandInput_var->deleteRow(row);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "parameters": [
+        {
+          "name": "row",
+          "type": "integer",
+          "description": "The row to delete where valid values are 0 to the number of rows minus 1. A value of 0 will delete the first row. A value greater than the number of rows will delete the last row."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Command Inputs API Sample",
+          "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.\u00a0You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+        }
+      ],
+      "version": "Introduced in version September 2016"
+    },
+    "getInputAtPosition": {
+      "id": "TableCommandInput_getInputAtPosition",
+      "title": "TableCommandInput.getInputAtPosition Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Returns the command input that is in the specified row and column. In the case where a command input spans multiple columns, the same input can be returned from multiple positions.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "returnValue = tableCommandInput_var.getInputAtPosition(row, column)",
+        "cpp": "#include \n\nreturnValue = tableCommandInput_var->getInputAtPosition(row, column);"
+      },
+      "return_type": "CommandInput",
+      "return_description": "Returns the command input that is in the specified row and column. If there isn't a command input in the specified location, null is returned.",
+      "parameters": [
+        {
+          "name": "row",
+          "type": "integer",
+          "description": "The row index to return the command input from where the first row is 0."
+        },
+        {
+          "name": "column",
+          "type": "integer",
+          "description": "The row index to return the command input from where the first row is 0."
+        }
+      ],
+      "version": "Introduced in version November 2016"
+    },
+    "getPosition": {
+      "id": "TableCommandInput_getPosition",
+      "title": "TableCommandInput.getPosition Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets the position of the specified command input within the table.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "(returnValue, row, column, rowSpan, columnSpan) = tableCommandInput_var.getPosition(input)",
+        "cpp": "#include  input;\ninteger row;\ninteger column;\ninteger rowSpan;\ninteger columnSpan;\nboolean returnValue = tableCommandInput_var->getPosition(input, row, column, rowSpan, columnSpan);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the position was successfully returned.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "CommandInput",
+          "description": "The existing command input you want to find the associated cell for."
+        },
+        {
+          "name": "row",
+          "type": "integer",
+          "description": "The returned row index of the cell."
+        },
+        {
+          "name": "column",
+          "type": "integer",
+          "description": "The returned column index of the cell."
+        },
+        {
+          "name": "rowSpan",
+          "type": "integer",
+          "description": "The returned number of additional rows used by the input. A value of 0 indicates that no additional rows are used."
+        },
+        {
+          "name": "columnSpan",
+          "type": "integer",
+          "description": "The returned number of additional columns used by the input. A value of 0 indicates that no additional columns are used."
+        }
+      ],
+      "version": "Introduced in version September 2016"
+    },
+    "removeInput": {
+      "id": "TableCommandInput_removeInput",
+      "title": "TableCommandInput.removeInput Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Removes the command input that is at the specified row and column. This doesn't delete the command input from the collection of inputs associated with the command but just removes it from being displayed in the table.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "returnValue = tableCommandInput_var.removeInput(row, column)",
+        "cpp": "#include \n\nreturnValue = tableCommandInput_var->removeInput(row, column);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the removal was successful.",
+      "parameters": [
+        {
+          "name": "row",
+          "type": "integer",
+          "description": "The row where the command input to be removed is located."
+        },
+        {
+          "name": "column",
+          "type": "integer",
+          "description": "The row where the command input to be removed is located."
+        }
+      ],
+      "version": "Introduced in version September 2016"
+    }
+  },
+  "property_details": {
+    "columnRatio": {
+      "id": "TableCommandInput_columnRatio",
+      "title": "TableCommandInput.columnRatio Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets and sets the width ratio of the columns. This is defined using a string such as \"1:1:1\" where this defines that the first three columns are all the same width. A value of \"2:1\" defines that the first column is twice the width of the second. If the table has more columns than are defined by this property, they will automatically default to a value of 1. If this property defines the width of more columns than are displayed, the extra definitions are ignored. You can also specify 0 as a column width and this will have the effect of hiding that column. Setting a column width to 0 does not delete the column or the command inputs but only hides them so they can be turned back on at a later time by resetting the column ratio.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.columnRatio\n\n# Set the value of the property.\ntableCommandInput_var.columnRatio = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = tableCommandInput_var->columnRatio();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = tableCommandInput_var->columnRatio(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "columnSpacing": {
+      "id": "TableCommandInput_columnSpacing",
+      "title": "TableCommandInput.columnSpacing Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets and sets the spacing between columns. This is defined in pixels. For a newly created table, this property defaults to 1.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.columnSpacing\n\n# Set the value of the property.\ntableCommandInput_var.columnSpacing = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = tableCommandInput_var->columnSpacing();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = tableCommandInput_var->columnSpacing(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "commandInputs": {
+      "id": "TableCommandInput_commandInputs",
+      "title": "TableCommandInput.commandInputs Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets the CommandInputs class of the parent, which can be a Command, GroupCommandInput or TabCommandInput.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.commandInputs",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = tableCommandInput_var->commandInputs();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Command Inputs API Sample",
+          "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.\u00a0You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+        }
+      ],
+      "version": "Introduced in version September 2016"
+    },
+    "hasGrid": {
+      "id": "TableCommandInput_hasGrid",
+      "title": "TableCommandInput.hasGrid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets and sets whether a grid is displayed for the table. For a newly created table, this property defaults to false.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.hasGrid\n\n# Set the value of the property.\ntableCommandInput_var.hasGrid = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = tableCommandInput_var->hasGrid();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = tableCommandInput_var->hasGrid(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "id": {
+      "id": "TableCommandInput_id",
+      "title": "TableCommandInput.id Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets the unique identifier for this input in the command's CommandInputs.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = tableCommandInput_var->id();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Command Inputs API Sample",
+          "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.\u00a0You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+        }
+      ],
+      "version": "Introduced in version September 2016"
+    },
+    "isEnabled": {
+      "id": "TableCommandInput_isEnabled",
+      "title": "TableCommandInput.isEnabled Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets or sets if this input is currently enabled or disabled for user interaction. Currently, the isEnabled property does not disable SelectionCommandInput objects but instead has the same effect as the SelectionCommandInput.hasFocus property.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.isEnabled\n\n# Set the value of the property.\ntableCommandInput_var.isEnabled = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = tableCommandInput_var->isEnabled();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = tableCommandInput_var->isEnabled(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "isFullWidth": {
+      "id": "TableCommandInput_isFullWidth",
+      "title": "TableCommandInput.isFullWidth Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets or sets if this input fills the entire width of the dialog. If true, the name is ignored and the input control will fill the entire width of the command dialog. The default value for this property in a new command input if false, or not to fill the width. This property does not apply to GroupCommandInputs or TabCommandInputs.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.isFullWidth\n\n# Set the value of the property.\ntableCommandInput_var.isFullWidth = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = tableCommandInput_var->isFullWidth();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = tableCommandInput_var->isFullWidth(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "isValid": {
+      "id": "TableCommandInput_isValid",
+      "title": "TableCommandInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = tableCommandInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "isVisible": {
+      "id": "TableCommandInput_isVisible",
+      "title": "TableCommandInput.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets or sets if this input will be visible to the user. Setting a SelectionCommandInput to be invisible will clear any selections it currently has.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.isVisible\n\n# Set the value of the property.\ntableCommandInput_var.isVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = tableCommandInput_var->isVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = tableCommandInput_var->isVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "maximumVisibleRows": {
+      "id": "TableCommandInput_maximumVisibleRows",
+      "title": "TableCommandInput.maximumVisibleRows Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets and sets the maximum number of rows that can be displayed. As rows are added the visible size of the table will grow to show all rows until this maximum number of rows is reached and then a scroll bar will be displayed to allow the user to access all rows. For a new created table, this property defaults to 4.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.maximumVisibleRows\n\n# Set the value of the property.\ntableCommandInput_var.maximumVisibleRows = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = tableCommandInput_var->maximumVisibleRows();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = tableCommandInput_var->maximumVisibleRows(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "minimumVisibleRows": {
+      "id": "TableCommandInput_minimumVisibleRows",
+      "title": "TableCommandInput.minimumVisibleRows Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets and sets the minimum number of rows displayed. This is the minimum amount of space taken up on the command dialog, even if the table doesn't yet contain any rows. For a newly created table, this property defaults to 2.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.minimumVisibleRows\n\n# Set the value of the property.\ntableCommandInput_var.minimumVisibleRows = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = tableCommandInput_var->minimumVisibleRows();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = tableCommandInput_var->minimumVisibleRows(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "name": {
+      "id": "TableCommandInput_name",
+      "title": "TableCommandInput.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets the user visible name of this input.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.name",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = tableCommandInput_var->name();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "numberOfColumns": {
+      "id": "TableCommandInput_numberOfColumns",
+      "title": "TableCommandInput.numberOfColumns Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Returns the current number of visible columns displayed. Setting this property has no effect because the number of columns is automatically inferred by the command inputs that have been added to the table. The table automatically adjusts the number of rows displayed so all inputs can be seen.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.numberOfColumns\n\n# Set the value of the property.\ntableCommandInput_var.numberOfColumns = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = tableCommandInput_var->numberOfColumns();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = tableCommandInput_var->numberOfColumns(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "objectType": {
+      "id": "TableCommandInput_objectType",
+      "title": "TableCommandInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = tableCommandInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "parentCommand": {
+      "id": "TableCommandInput_parentCommand",
+      "title": "TableCommandInput.parentCommand Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets the parent Command.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.parentCommand",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = tableCommandInput_var->parentCommand();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "parentCommandInput": {
+      "id": "TableCommandInput_parentCommandInput",
+      "title": "TableCommandInput.parentCommandInput Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets the parent CommandInput if this commandInput is the child of a TabCommandInput or GroupCommandInput. Returns null if there is no parent.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.parentCommandInput",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = tableCommandInput_var->parentCommandInput();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "rowCount": {
+      "id": "TableCommandInput_rowCount",
+      "title": "TableCommandInput.rowCount Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Returns the number of rows in the table. The actual number of rows in the table is defined by the number of rows that contain command inputs.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.rowCount",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = tableCommandInput_var->rowCount();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "rowSpacing": {
+      "id": "TableCommandInput_rowSpacing",
+      "title": "TableCommandInput.rowSpacing Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets and sets the spacing between rows. This is defined in pixels. For a newly created table, this property defaults to 1.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.rowSpacing\n\n# Set the value of the property.\ntableCommandInput_var.rowSpacing = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = tableCommandInput_var->rowSpacing();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = tableCommandInput_var->rowSpacing(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "selectedRow": {
+      "id": "TableCommandInput_selectedRow",
+      "title": "TableCommandInput.selectedRow Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets and sets which row is selected in the user-interface. A value of 0 indicates that the first row is selected. A value of -1 indicates that no row is selected.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.selectedRow\n\n# Set the value of the property.\ntableCommandInput_var.selectedRow = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = tableCommandInput_var->selectedRow();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = tableCommandInput_var->selectedRow(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Command Inputs API Sample",
+          "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.\u00a0You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+        }
+      ],
+      "version": "Introduced in version September 2016"
+    },
+    "tablePresentationStyle": {
+      "id": "TableCommandInput_tablePresentationStyle",
+      "title": "TableCommandInput.tablePresentationStyle Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets and sets the presentation style the table is currently using for its display.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.tablePresentationStyle\n\n# Set the value of the property.\ntableCommandInput_var.tablePresentationStyle = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nTablePresentationStyles propertyValue = tableCommandInput_var->tablePresentationStyle();\n\n// Set the value of the property, where value_var is a TablePresentationStyles.\nbool returnValue = tableCommandInput_var->tablePresentationStyle(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "toolClipFilename": {
+      "id": "TableCommandInput_toolClipFilename",
+      "title": "TableCommandInput.toolClipFilename Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.toolClipFilename\n\n# Set the value of the property.\ntableCommandInput_var.toolClipFilename = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = tableCommandInput_var->toolClipFilename();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = tableCommandInput_var->toolClipFilename(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "tooltip": {
+      "id": "TableCommandInput_tooltip",
+      "title": "TableCommandInput.tooltip Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets or sets the base tooltip string. This is always shown for commands. If the tooltip description and/or tool clip are also specified then the tooltip will progressively display more information as the user hovers the mouse over the control.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.tooltip\n\n# Set the value of the property.\ntableCommandInput_var.tooltip = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = tableCommandInput_var->tooltip();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = tableCommandInput_var->tooltip(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "tooltipDescription": {
+      "id": "TableCommandInput_tooltipDescription",
+      "title": "TableCommandInput.tooltipDescription Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TableCommandInput.h",
+      "description": "Gets or sets additional text to display progressively along with the tooltip. The text for the description can contain some basic HTML formatting tags to format the tags. For example the br tag can be used to create multiple paragraphs. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text.",
+      "parent_class": "TableCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = tableCommandInput_var.tooltipDescription\n\n# Set the value of the property.\ntableCommandInput_var.tooltipDescription = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = tableCommandInput_var->tooltipDescription();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = tableCommandInput_var->tooltipDescription(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    }
+  }
+}

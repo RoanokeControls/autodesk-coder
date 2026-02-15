@@ -1,0 +1,231 @@
+{
+  "id": "AsBuiltJoints",
+  "title": "AsBuiltJoints Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Components/AsBuiltJoints.h",
+  "description": "The collection of as-built joints in this component. This provides access to all existing as-built joints and supports the ability to create new as-built joints.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new as-built joint."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates an AsBuiltJointInput object which is used to collect all of the information needed to create an as-built joint. This object is equivalent to the as-built joint dialog in the user-interface in that it doesn't represent an actual joint but just the information needed to create an as-built joint. Once this is fully defined the add method can be called, passing this object in to create the actual joint."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified as-built joint using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified as-built joint using a name."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns number of joint origins in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "As-Built Joint Sample",
+      "description": "Demonstrates creating a new As-Built Joint."
+    }
+  ],
+  "version": "Introduced in version September 2015",
+  "method_details": {
+    "add": {
+      "id": "AsBuiltJoints_add",
+      "title": "AsBuiltJoints.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoints.h",
+      "description": "Creates a new as-built joint.",
+      "parent_class": "AsBuiltJoints",
+      "syntax": {
+        "python": "returnValue = asBuiltJoints_var.add(input)",
+        "cpp": "#include \n\nreturnValue = asBuiltJoints_var->add(input);"
+      },
+      "return_type": "AsBuiltJoint",
+      "return_description": "Returns the new AsBuiltJoint object or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "AsBuiltJointInput",
+          "description": "An AsBuiltJointInput object that was created using the AsBuiltJoints.createInput method and then fully defined using the properties and methods on the AsBuiltJointInput object."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "As-Built Joint Sample",
+          "description": "Demonstrates creating a new As-Built Joint."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "classType": {
+      "id": "AsBuiltJoints_classType",
+      "title": "AsBuiltJoints.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoints.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "AsBuiltJoints",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.AsBuiltJoints.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::AsBuiltJoints::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2015"
+    },
+    "createInput": {
+      "id": "AsBuiltJoints_createInput",
+      "title": "AsBuiltJoints.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoints.h",
+      "description": "Creates an AsBuiltJointInput object which is used to collect all of the information needed to create an as-built joint. This object is equivalent to the as-built joint dialog in the user-interface in that it doesn't represent an actual joint but just the information needed to create an as-built joint. Once this is fully defined the add method can be called, passing this object in to create the actual joint.",
+      "parent_class": "AsBuiltJoints",
+      "syntax": {
+        "python": "returnValue = asBuiltJoints_var.createInput(occurrenceOne, occurrenceTwo, geometry)",
+        "cpp": "#include \n\nreturnValue = asBuiltJoints_var->createInput(occurrenceOne, occurrenceTwo, geometry);"
+      },
+      "return_type": "AsBuiltJointInput",
+      "return_description": "Returns the new AsBuiltJointInput object or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "occurrenceOne",
+          "type": "Occurrence",
+          "description": "Specifies the first of two occurrences the joint is between."
+        },
+        {
+          "name": "occurrenceTwo",
+          "type": "Occurrence",
+          "description": "Specifies the second of two occurrences the joint is between."
+        },
+        {
+          "name": "geometry",
+          "type": "JointGeometry",
+          "description": "Specifies the geometry of where the joint will be positioned. If the as-built joint is a rigid joint, this argument should be null because no geometry is needed."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "As-Built Joint Sample",
+          "description": "Demonstrates creating a new As-Built Joint."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "item": {
+      "id": "AsBuiltJoints_item",
+      "title": "AsBuiltJoints.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoints.h",
+      "description": "Function that returns the specified as-built joint using an index into the collection.",
+      "parent_class": "AsBuiltJoints",
+      "syntax": {
+        "python": "returnValue = asBuiltJoints_var.item(index)",
+        "cpp": "#include \n\nreturnValue = asBuiltJoints_var->item(index);"
+      },
+      "return_type": "AsBuiltJoint",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "itemByName": {
+      "id": "AsBuiltJoints_itemByName",
+      "title": "AsBuiltJoints.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoints.h",
+      "description": "Function that returns the specified as-built joint using a name.",
+      "parent_class": "AsBuiltJoints",
+      "syntax": {
+        "python": "returnValue = asBuiltJoints_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = asBuiltJoints_var->itemByName(name);"
+      },
+      "return_type": "AsBuiltJoint",
+      "return_description": "Returns the specified item or null if an invalid name was specified.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the item within the collection to return."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "AsBuiltJoints_count",
+      "title": "AsBuiltJoints.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoints.h",
+      "description": "Returns number of joint origins in the collection.",
+      "parent_class": "AsBuiltJoints",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoints_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = asBuiltJoints_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "isValid": {
+      "id": "AsBuiltJoints_isValid",
+      "title": "AsBuiltJoints.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoints.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "AsBuiltJoints",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoints_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = asBuiltJoints_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "objectType": {
+      "id": "AsBuiltJoints_objectType",
+      "title": "AsBuiltJoints.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJoints.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "AsBuiltJoints",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJoints_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = asBuiltJoints_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    }
+  }
+}

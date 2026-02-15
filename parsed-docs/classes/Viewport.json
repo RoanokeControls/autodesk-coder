@@ -1,0 +1,615 @@
+{
+  "id": "Viewport",
+  "title": "Viewport Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/Viewport.h",
+  "description": "A viewport within Fusion. A viewport is the window where the model is displayed.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "fit",
+      "description": "Forces a camera change so that all of the graphics are visible in the viewport."
+    },
+    {
+      "name": "goHome",
+      "description": "Sets the camera of the viewport to the defined \"home\" position."
+    },
+    {
+      "name": "modelToViewSpace",
+      "description": "A specified point in model space returns the equivalent point in view space."
+    },
+    {
+      "name": "refresh",
+      "description": "Forces the view to refresh. It is sometimes useful to force a refresh to be able to see edits that have been made using the API."
+    },
+    {
+      "name": "resetFront",
+      "description": "Resets the front view to be the default front view orientation."
+    },
+    {
+      "name": "saveAsImageFile",
+      "description": "Saves the current view to the specified image file. The view is re-rendered to the specified size and not just scaled from the existing view. This allows you to generate higher resolution images than you could do with just a screen capture."
+    },
+    {
+      "name": "saveAsImageFileWithOptions",
+      "description": "Saves the current view to the specified image file. The view is re-rendered to the specified size and not just scaled from the existing view. This allows you to generate higher resolution images than you could do with just a screen capture."
+    },
+    {
+      "name": "screenToView",
+      "description": "Converts a 2D screen point into the equivalent viewport coordinate."
+    },
+    {
+      "name": "setCurrentAsFront",
+      "description": "Sets the \"front\" view to be the current view orientation."
+    },
+    {
+      "name": "setCurrentAsHome",
+      "description": "Sets the \"home\" view to be the current view orientation."
+    },
+    {
+      "name": "setCurrentAsTop",
+      "description": "Sets the \"top\" view to be the current view orientation."
+    },
+    {
+      "name": "viewToModelSpace",
+      "description": "A specified point in view space returns the equivalent point in model space. Because view space is 2D and model space is 3D, the depth of the point is returned is somewhat arbitrary along the eye to target point direction."
+    },
+    {
+      "name": "viewToScreen",
+      "description": "Converts a 2D viewPort point into the equivalent screen coordinate."
+    }
+  ],
+  "properties": [
+    {
+      "name": "camera",
+      "description": "Gets and sets the camera associated with the view. The camera returned is a copy of the current camera settings of the view. Editing the properties of the camera will have no affect on the viewport until the camera is assigned back to the viewport."
+    },
+    {
+      "name": "frontEyeDirection",
+      "description": "Returns the direction of the front view as defined by the view cube. This vector defines the direction from the eye to the target for the front view."
+    },
+    {
+      "name": "frontUpDirection",
+      "description": "Returns the up direction of the front view as defined by the view cube."
+    },
+    {
+      "name": "height",
+      "description": "Returns the height of the viewport in pixels."
+    },
+    {
+      "name": "isFullScreen",
+      "description": "Gets and sets if the view is in full screen mode."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "modelToViewSpaceTransform",
+      "description": "Returns a transformation matrix that defines the transform from model to viewport space."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentDocument",
+      "description": "Returns the parent document of this viewport."
+    },
+    {
+      "name": "visualStyle",
+      "description": "Gets and sets the current visual style being used."
+    },
+    {
+      "name": "width",
+      "description": "Returns the width of the viewport in pixels."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "As-Built Joint Sample",
+      "description": "Demonstrates creating a new As-Built Joint."
+    },
+    {
+      "name": "Create Animation API Sample",
+      "description": "Creates a series of images of a design where a parameter is being changed. The series of images can be used to create an animation using other software. To run this sample, have a part open that contains a parameter named \"Length\". The parameter should be able to be successfully modified from 10 to 15 centimeters. Run the sample and choose or create a directory for the output. After running you should have a folder full of images that are snapshots of each parameter value."
+    },
+    {
+      "name": "Joint Origin Sample",
+      "description": "Demonstrates creating a new Joint Origin."
+    },
+    {
+      "name": "Rigid Group API Sample",
+      "description": "Demonstrates creating a new Rigid Group."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "property_details": {
+    "camera": {
+      "id": "Viewport_camera",
+      "title": "Viewport.camera Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Gets and sets the camera associated with the view. The camera returned is a copy of the current camera settings of the view. Editing the properties of the camera will have no affect on the viewport until the camera is assigned back to the viewport.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = viewport_var.camera\n\n# Set the value of the property.\nviewport_var.camera = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = viewport_var->camera();\n\n// Set the value of the property, where value_var is a Camera.\nbool returnValue = viewport_var->camera(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "As-Built Joint Sample",
+          "description": "Demonstrates creating a new As-Built Joint."
+        },
+        {
+          "name": "Joint Origin Sample",
+          "description": "Demonstrates creating a new Joint Origin."
+        },
+        {
+          "name": "Rendering Sample",
+          "description": "Demonstrates using the Rendering capabilities in the API. This starts a series of local renderings to generate a series of frames, where the camera is repositioned and a parameter is modified for each frame to create a dynamic animation. To use the sample, have a design open that contains a parameter named \"Length\". It can be a user or model parameter. The sample will modify this parameter from a value of 0.1 cm to 15 cm, but you can change these values by editing the values of the paramStartVal and paramEndVal variables on lines 90 and 91 of the sample. It expects a folder named \"C:\\Temp\\RenderSample\" to exist, and will fail if it doesn't. The rendered frames will be written to that folder.An example rendering is shown below where this file was used. The parameter is modifying a move feature which results in changing the shape of an extrusion. The parameter could be driving anything and you could modify the code to edit more than one parameter. The result of this sample is a folder containing all of the rendered frames. You can process these to create an animation. The sample animation was created using GIMP."
+        },
+        {
+          "name": "Rigid Group API Sample",
+          "description": "Demonstrates creating a new Rigid Group."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "frontEyeDirection": {
+      "id": "Viewport_frontEyeDirection",
+      "title": "Viewport.frontEyeDirection Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Returns the direction of the front view as defined by the view cube. This vector defines the direction from the eye to the target for the front view.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = viewport_var.frontEyeDirection",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = viewport_var->frontEyeDirection();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "frontUpDirection": {
+      "id": "Viewport_frontUpDirection",
+      "title": "Viewport.frontUpDirection Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Returns the up direction of the front view as defined by the view cube.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = viewport_var.frontUpDirection",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = viewport_var->frontUpDirection();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "height": {
+      "id": "Viewport_height",
+      "title": "Viewport.height Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Returns the height of the viewport in pixels.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = viewport_var.height",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = viewport_var->height();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isFullScreen": {
+      "id": "Viewport_isFullScreen",
+      "title": "Viewport.isFullScreen Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Gets and sets if the view is in full screen mode.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = viewport_var.isFullScreen\n\n# Set the value of the property.\nviewport_var.isFullScreen = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = viewport_var->isFullScreen();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = viewport_var->isFullScreen(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2021"
+    },
+    "isValid": {
+      "id": "Viewport_isValid",
+      "title": "Viewport.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = viewport_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = viewport_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "modelToViewSpaceTransform": {
+      "id": "Viewport_modelToViewSpaceTransform",
+      "title": "Viewport.modelToViewSpaceTransform Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Returns a transformation matrix that defines the transform from model to viewport space.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = viewport_var.modelToViewSpaceTransform",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = viewport_var->modelToViewSpaceTransform();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "objectType": {
+      "id": "Viewport_objectType",
+      "title": "Viewport.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = viewport_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = viewport_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "parentDocument": {
+      "id": "Viewport_parentDocument",
+      "title": "Viewport.parentDocument Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Returns the parent document of this viewport.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = viewport_var.parentDocument",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = viewport_var->parentDocument();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2022"
+    },
+    "visualStyle": {
+      "id": "Viewport_visualStyle",
+      "title": "Viewport.visualStyle Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Gets and sets the current visual style being used.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = viewport_var.visualStyle\n\n# Set the value of the property.\nviewport_var.visualStyle = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nVisualStyles propertyValue = viewport_var->visualStyle();\n\n// Set the value of the property, where value_var is a VisualStyles.\nbool returnValue = viewport_var->visualStyle(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "width": {
+      "id": "Viewport_width",
+      "title": "Viewport.width Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Returns the width of the viewport in pixels.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = viewport_var.width",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = viewport_var->width();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "Viewport_classType",
+      "title": "Viewport.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "returnValue = adsk.core.Viewport.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Viewport::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "fit": {
+      "id": "Viewport_fit",
+      "title": "Viewport.fit Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Forces a camera change so that all of the graphics are visible in the viewport.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "returnValue = viewport_var.fit()",
+        "cpp": "#include \n\nreturnValue = viewport_var->fit();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the fit was successful.",
+      "version": "Introduced in version August 2014"
+    },
+    "goHome": {
+      "id": "Viewport_goHome",
+      "title": "Viewport.goHome Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Sets the camera of the viewport to the defined \"home\" position.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = viewport_var.goHome()\n\n# Uses optional arguments.\nreturnValue = viewport_var.goHome(transition)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = viewport_var->goHome();\n\n// Uses optional arguments.\nreturnValue = viewport_var->goHome(transition);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting the view orientation was successful.",
+      "parameters": [
+        {
+          "name": "transition",
+          "type": "boolean",
+          "description": "If this is true it will do a smooth transition from the current camera position to the home position. If false, the view will jump to the home position with no intermediate steps.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version September 2022"
+    },
+    "modelToViewSpace": {
+      "id": "Viewport_modelToViewSpace",
+      "title": "Viewport.modelToViewSpace Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "A specified point in model space returns the equivalent point in view space.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "returnValue = viewport_var.modelToViewSpace(modelCoordinate)",
+        "cpp": "#include \n\nreturnValue = viewport_var->modelToViewSpace(modelCoordinate);"
+      },
+      "return_type": "Point2D",
+      "return_description": "Returns the equivalent point in view space.",
+      "parameters": [
+        {
+          "name": "modelCoordinate",
+          "type": "Point3D",
+          "description": "A coordinate in model space."
+        }
+      ],
+      "version": "Introduced in version December 2016"
+    },
+    "refresh": {
+      "id": "Viewport_refresh",
+      "title": "Viewport.refresh Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Forces the view to refresh. It is sometimes useful to force a refresh to be able to see edits that have been made using the API.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "returnValue = viewport_var.refresh()",
+        "cpp": "#include \n\nreturnValue = viewport_var->refresh();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "version": "Introduced in version August 2014"
+    },
+    "resetFront": {
+      "id": "Viewport_resetFront",
+      "title": "Viewport.resetFront Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Resets the front view to be the default front view orientation.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "returnValue = viewport_var.resetFront()",
+        "cpp": "#include \n\nreturnValue = viewport_var->resetFront();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if resetting to front was successful.",
+      "version": "Introduced in version September 2022"
+    },
+    "saveAsImageFile": {
+      "id": "Viewport_saveAsImageFile",
+      "title": "Viewport.saveAsImageFile Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Saves the current view to the specified image file. The view is re-rendered to the specified size and not just scaled from the existing view. This allows you to generate higher resolution images than you could do with just a screen capture.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "returnValue = viewport_var.saveAsImageFile(filename, width, height)",
+        "cpp": "#include \n\nreturnValue = viewport_var->saveAsImageFile(filename, width, height);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "filename",
+          "type": "string",
+          "description": "The full filename, including the path, of the image file. The type of image file to be created is inferred from the extension of the filename."
+        },
+        {
+          "name": "width",
+          "type": "integer",
+          "description": "The width in pixels of the output image. A value of zero indicates that the current width of the viewport is to be used."
+        },
+        {
+          "name": "height",
+          "type": "integer",
+          "description": "The height in pixels of the output image. A value of zero indicates that the current height of the viewport is to be used."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Create Animation API Sample",
+          "description": "Creates a series of images of a design where a parameter is being changed. The series of images can be used to create an animation using other software. To run this sample, have a part open that contains a parameter named \"Length\". The parameter should be able to be successfully modified from 10 to 15 centimeters. Run the sample and choose or create a directory for the output. After running you should have a folder full of images that are snapshots of each parameter value."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "saveAsImageFileWithOptions": {
+      "id": "Viewport_saveAsImageFileWithOptions",
+      "title": "Viewport.saveAsImageFileWithOptions Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Saves the current view to the specified image file. The view is re-rendered to the specified size and not just scaled from the existing view. This allows you to generate higher resolution images than you could do with just a screen capture.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "returnValue = viewport_var.saveAsImageFileWithOptions(options)",
+        "cpp": "#include \n\nreturnValue = viewport_var->saveAsImageFileWithOptions(options);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "options",
+          "type": "SaveImageFileOptions",
+          "description": "A SaveImageFileOptions object that defines the various options that define how the image should be created. The SaveImageFileOptions can be created by using the static create method on the SaveImageFileOptions class."
+        }
+      ],
+      "version": "Introduced in version May 2022"
+    },
+    "screenToView": {
+      "id": "Viewport_screenToView",
+      "title": "Viewport.screenToView Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Converts a 2D screen point into the equivalent viewport coordinate.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "returnValue = viewport_var.screenToView(screenCoordinate)",
+        "cpp": "#include \n\nreturnValue = viewport_var->screenToView(screenCoordinate);"
+      },
+      "return_type": "Point2D",
+      "return_description": "Returns the equivalent point in the viewport. This can return null in the case where the input screen point does not lie within the viewport.",
+      "parameters": [
+        {
+          "name": "screenCoordinate",
+          "type": "Point2D",
+          "description": "A 2D coordinate in screen space. (0,0) indicates the upper-left corner of the entire screen."
+        }
+      ],
+      "version": "Introduced in version April 2017"
+    },
+    "setCurrentAsFront": {
+      "id": "Viewport_setCurrentAsFront",
+      "title": "Viewport.setCurrentAsFront Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Sets the \"front\" view to be the current view orientation.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "returnValue = viewport_var.setCurrentAsFront()",
+        "cpp": "#include \n\nreturnValue = viewport_var->setCurrentAsFront();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting the view orientation was successful.",
+      "version": "Introduced in version September 2022"
+    },
+    "setCurrentAsHome": {
+      "id": "Viewport_setCurrentAsHome",
+      "title": "Viewport.setCurrentAsHome Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Sets the \"home\" view to be the current view orientation.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "returnValue = viewport_var.setCurrentAsHome(isFitToView)",
+        "cpp": "#include \n\nreturnValue = viewport_var->setCurrentAsHome(isFitToView);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting the view orientation was successful.",
+      "parameters": [
+        {
+          "name": "isFitToView",
+          "type": "boolean",
+          "description": "Specifies if when the view goes \"home\" if the view should be fit to the model or not. True indicates the view will be fit to the model."
+        }
+      ],
+      "version": "Introduced in version September 2022"
+    },
+    "setCurrentAsTop": {
+      "id": "Viewport_setCurrentAsTop",
+      "title": "Viewport.setCurrentAsTop Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Sets the \"top\" view to be the current view orientation.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "returnValue = viewport_var.setCurrentAsTop()",
+        "cpp": "#include \n\nreturnValue = viewport_var->setCurrentAsTop();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting the view orientation was successful.",
+      "version": "Introduced in version September 2022"
+    },
+    "viewToModelSpace": {
+      "id": "Viewport_viewToModelSpace",
+      "title": "Viewport.viewToModelSpace Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "A specified point in view space returns the equivalent point in model space. Because view space is 2D and model space is 3D, the depth of the point is returned is somewhat arbitrary along the eye to target point direction.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "returnValue = viewport_var.viewToModelSpace(viewCoordinate)",
+        "cpp": "#include \n\nreturnValue = viewport_var->viewToModelSpace(viewCoordinate);"
+      },
+      "return_type": "Point3D",
+      "return_description": "Returns the equivalent point in model space.",
+      "parameters": [
+        {
+          "name": "viewCoordinate",
+          "type": "Point2D",
+          "description": "A coordinate in view space."
+        }
+      ],
+      "version": "Introduced in version December 2016"
+    },
+    "viewToScreen": {
+      "id": "Viewport_viewToScreen",
+      "title": "Viewport.viewToScreen Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Viewport.h",
+      "description": "Converts a 2D viewPort point into the equivalent screen coordinate.",
+      "parent_class": "Viewport",
+      "syntax": {
+        "python": "returnValue = viewport_var.viewToScreen(viewCoordinate)",
+        "cpp": "#include \n\nreturnValue = viewport_var->viewToScreen(viewCoordinate);"
+      },
+      "return_type": "Point2D",
+      "return_description": "Returns the equivalent point in the screen. This can return null in the case where the input point is outside the bounds of the screen, which also means it's outside any viewport.",
+      "parameters": [
+        {
+          "name": "viewCoordinate",
+          "type": "Point2D",
+          "description": "A 2D coordinate in the viewport. (0,0) indicates the upper-left corner of the viewport."
+        }
+      ],
+      "version": "Introduced in version April 2017"
+    }
+  }
+}

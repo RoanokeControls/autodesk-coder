@@ -1,0 +1,188 @@
+{
+  "id": "Components",
+  "title": "Components Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Components/Components.h",
+  "description": "The Components collection object provides access to existing components in a design.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified component using an index into the collection."
+    },
+    {
+      "name": "itemById",
+      "description": "Returns the Component that has the specified ID."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified component by name."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of components in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Library Item API Sample",
+      "description": "Demonstrates how to examine library items using the API.\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the existing default code. The script will search for and record all components and library items in the current project. They are displayed in a dialog when the script has finished."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "classType": {
+      "id": "Components_classType",
+      "title": "Components.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Components.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Components",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.Components.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::Components::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "Components_item",
+      "title": "Components.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Components.h",
+      "description": "Function that returns the specified component using an index into the collection.",
+      "parent_class": "Components",
+      "syntax": {
+        "python": "returnValue = components_var.item(index)",
+        "cpp": "#include \n\nreturnValue = components_var->item(index);"
+      },
+      "return_type": "Component",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Library Item API Sample",
+          "description": "Demonstrates how to examine library items using the API.\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the existing default code. The script will search for and record all components and library items in the current project. They are displayed in a dialog when the script has finished."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "itemById": {
+      "id": "Components_itemById",
+      "title": "Components.itemById Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Components.h",
+      "description": "Returns the Component that has the specified ID.",
+      "parent_class": "Components",
+      "syntax": {
+        "python": "returnValue = components_var.itemById(id)",
+        "cpp": "#include \n\nreturnValue = components_var->itemById(id);"
+      },
+      "return_type": "Component",
+      "return_description": "Returns the specified Component or null in the case where there isn't a Component with the specified ID in this Design.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The ID of the Component to get. This is the same id used by PIM (Product Information Model)."
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    },
+    "itemByName": {
+      "id": "Components_itemByName",
+      "title": "Components.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Components.h",
+      "description": "Function that returns the specified component by name.",
+      "parent_class": "Components",
+      "syntax": {
+        "python": "returnValue = components_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = components_var->itemByName(name);"
+      },
+      "return_type": "Component",
+      "return_description": "Returns the specified component or null if the name is not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the component within the collection to return."
+        }
+      ],
+      "version": "Introduced in version January 2016"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "Components_count",
+      "title": "Components.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Components.h",
+      "description": "The number of components in the collection.",
+      "parent_class": "Components",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = components_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = components_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "Components_isValid",
+      "title": "Components.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Components.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Components",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = components_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = components_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "Components_objectType",
+      "title": "Components.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Components.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Components",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = components_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = components_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

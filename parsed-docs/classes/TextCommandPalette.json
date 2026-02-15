@@ -1,0 +1,616 @@
+{
+  "id": "TextCommandPalette",
+  "title": "TextCommandPalette Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/TextCommandPalette.h",
+  "description": "Represents the palette that is the Text Command window in Fusion. Remarks",
+  "parent_class": "Palette",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this palette. Fusion native palettes cannot be deleted. Use the isNative property to determine if this is a native or API created palette."
+    },
+    {
+      "name": "sendInfoToHTML",
+      "description": "Sends the string to the JavaScript associated with the loaded HTML."
+    },
+    {
+      "name": "setMaximumSize",
+      "description": "Sets the maximum size of the palette. The user cannot resize it to be larger than this size. This does not change the current size of the palette unless the palette is already larger than this size.   Calling this method and setting the width and height to zero, removes the maximum size restriction."
+    },
+    {
+      "name": "setMinimumSize",
+      "description": "Sets the minimum size of the palette. The user cannot resize it to be smaller than this size. This does not change the current size of the palette unless the palette is already smaller than this size.   Calling this method and setting the width and height to zero, removes the minimum size restriction."
+    },
+    {
+      "name": "setPosition",
+      "description": "Sets the position of the palette. If the palette is docked or snapped, this will result in changing it to be floating."
+    },
+    {
+      "name": "setSize",
+      "description": "Sets the size of the palette. This is best used for a floating palette because either the width or height can be locked when a palette is docked."
+    },
+    {
+      "name": "snapTo",
+      "description": "Snaps this palette to another palette."
+    },
+    {
+      "name": "writeText",
+      "description": "Write the specified text to the TEXT COMMAND window."
+    }
+  ],
+  "properties": [
+    {
+      "name": "dockingOption",
+      "description": "Defines the docking behavior for this palette. This controls how the user is allowed to dock the palette."
+    },
+    {
+      "name": "dockingState",
+      "description": "Gets and sets how the palette is currently docked."
+    },
+    {
+      "name": "height",
+      "description": "Gets and sets the height of the palette. Setting this property may not always set the height. Depending on how the palette is docked or snapped, the height may not be editable."
+    },
+    {
+      "name": "htmlFileURL",
+      "description": "Gets and sets the URL to the HTML file that will be displayed in the palette. This can be a local file or a URL on the web where the HTML will be read. To avoid reading a file, this can also be the full HTML definition as a string.   If you are providing the HTML content as a string, it should begin with the  element. Any references made in the HTML should be to URL's and not local files since the local path is ambiguous."
+    },
+    {
+      "name": "id",
+      "description": "Gets The unique, language independent, ID of this palette."
+    },
+    {
+      "name": "isNative",
+      "description": "Indicates if this is one of the standard Fusion palettes or a custom palette created through the API. If true, it is a standard Fusion palette and will have some restrictions on changing its properties and cannot be deleted."
+    },
+    {
+      "name": "isTransparent",
+      "description": "Returns if this palette was created as a transparent palette."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets and sets whether this palette is currently being displayed in the user interface."
+    },
+    {
+      "name": "left",
+      "description": "Gets and sets the left side of the palette relative to screen space and in pixels. Because palettes can be positioned outside of the Fusion window, a value of zero indicates the left side of the screen and not the Fusion window."
+    },
+    {
+      "name": "name",
+      "description": "Gets and set the name of the palette as seen in the user interface. The name of native palettes cannot be set."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "top",
+      "description": "Gets and sets the top of the palette relative to screen space and in pixels. Because palettes can be positioned outside of the Fusion window, a value of zero indicates the top of the screen and not the Fusion window."
+    },
+    {
+      "name": "width",
+      "description": "Gets and sets the width of the palette. Setting this property may not always set the width. Depending on how the palette is docked or snapped, the width may not be editable."
+    }
+  ],
+  "events": [
+    {
+      "name": "closed",
+      "description": "This event is fired when the user clicks the \"Close\" button on the palette. You can choose if the \"Close\" button is available or not when you initially create the palette. When a palette is closed, it still exists but is change to invisible so you can still interact with it and retrieve any needed information and can make it visible again. Use the deleteMe method to delete the palette."
+    },
+    {
+      "name": "incomingFromHTML",
+      "description": "This event is fired when the JavaScript associated with the HTML calls the adsk.fusionSendData function. This allows the HTML to communicate with the add-in by passing information to the add-in."
+    },
+    {
+      "name": "navigatingURL",
+      "description": "This event is fired when a navigation event occurs on the page. This allows the add-in to determine how this navigation should be handled by the browser."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Customizing the UI using the API Sample",
+      "description": "Demonstrates how to work with tabs, panels, and command in the user interface. The full source for C++ and Python samples can be downloaded. This is especially useful for getting the resource files."
+    }
+  ],
+  "version": "Introduced in version August 2017",
+  "method_details": {
+    "classType": {
+      "id": "TextCommandPalette_classType",
+      "title": "TextCommandPalette.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "returnValue = adsk.core.TextCommandPalette.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::TextCommandPalette::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2017"
+    },
+    "deleteMe": {
+      "id": "TextCommandPalette_deleteMe",
+      "title": "TextCommandPalette.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Deletes this palette. Fusion native palettes cannot be deleted. Use the isNative property to determine if this is a native or API created palette.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "returnValue = textCommandPalette_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = textCommandPalette_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version August 2017"
+    },
+    "sendInfoToHTML": {
+      "id": "TextCommandPalette_sendInfoToHTML",
+      "title": "TextCommandPalette.sendInfoToHTML Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Sends the string to the JavaScript associated with the loaded HTML. Remarks",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "returnValue = textCommandPalette_var.sendInfoToHTML(action, data)",
+        "cpp": "#include \n\nreturnValue = textCommandPalette_var->sendInfoToHTML(action, data);"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string that can be anything that your JavaScript code generates. The JavaScript should always return some content because an empty string is used to indicate a failure.   If useNewWebBrowser flag is set to true while creating the palette control this API call will be asynchronous and an empty string is returned. Response will come in data field of HTMLEvent with action equal to 'response'.",
+      "parameters": [
+        {
+          "name": "action",
+          "type": "string",
+          "description": "The \"action\" string to pass to the JavaScript associated with the HTML. This string can be anything but will typically be JSON formatted information."
+        },
+        {
+          "name": "data",
+          "type": "string",
+          "description": "The \"data\" string to pass to the JavaScript associated with the HTML. This string can be anything but will typically be JSON formatted information."
+        }
+      ],
+      "version": "Introduced in version August 2017"
+    },
+    "setMaximumSize": {
+      "id": "TextCommandPalette_setMaximumSize",
+      "title": "TextCommandPalette.setMaximumSize Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Sets the maximum size of the palette. The user cannot resize it to be larger than this size. This does not change the current size of the palette unless the palette is already larger than this size. Calling this method and setting the width and height to zero, removes the maximum size restriction.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "returnValue = textCommandPalette_var.setMaximumSize(width, height)",
+        "cpp": "#include \n\nreturnValue = textCommandPalette_var->setMaximumSize(width, height);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting the maximum size was succesful.",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "integer",
+          "description": "Specifies the maximum width of the palette."
+        },
+        {
+          "name": "height",
+          "type": "integer",
+          "description": "Specifies the maximum height of the palette."
+        }
+      ],
+      "version": "Introduced in version August 2017"
+    },
+    "setMinimumSize": {
+      "id": "TextCommandPalette_setMinimumSize",
+      "title": "TextCommandPalette.setMinimumSize Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Sets the minimum size of the palette. The user cannot resize it to be smaller than this size. This does not change the current size of the palette unless the palette is already smaller than this size. Calling this method and setting the width and height to zero, removes the minimum size restriction.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "returnValue = textCommandPalette_var.setMinimumSize(width, height)",
+        "cpp": "#include \n\nreturnValue = textCommandPalette_var->setMinimumSize(width, height);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting the minimum size was succesful.",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "integer",
+          "description": "Specifies the minimum width of the palette."
+        },
+        {
+          "name": "height",
+          "type": "integer",
+          "description": "Specifies the minimum height of the palette."
+        }
+      ],
+      "version": "Introduced in version August 2017"
+    },
+    "setPosition": {
+      "id": "TextCommandPalette_setPosition",
+      "title": "TextCommandPalette.setPosition Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Sets the position of the palette. If the palette is docked or snapped, this will result in changing it to be floating.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "returnValue = textCommandPalette_var.setPosition(left, top)",
+        "cpp": "#include \n\nreturnValue = textCommandPalette_var->setPosition(left, top);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting the position was successful.",
+      "parameters": [
+        {
+          "name": "left",
+          "type": "integer",
+          "description": "The position of the left side of the palette relative to screen space and in pixels. Because palettes can be positioned outside of the Fusion window, a value of zero indicates the left side of the screen and not the Fusion window."
+        },
+        {
+          "name": "top",
+          "type": "integer",
+          "description": "The position of the top of the palette relative to screen space and in pixels. Because palettes can be positioned outside of the Fusion window, a value of zero indicates the top of the screen and not the Fusion window."
+        }
+      ],
+      "version": "Introduced in version August 2017"
+    },
+    "setSize": {
+      "id": "TextCommandPalette_setSize",
+      "title": "TextCommandPalette.setSize Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Sets the size of the palette. This is best used for a floating palette because either the width or height can be locked when a palette is docked.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "returnValue = textCommandPalette_var.setSize(width, height)",
+        "cpp": "#include \n\nreturnValue = textCommandPalette_var->setSize(width, height);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the sizing was succesful. It is still considered a success even if the width or height could not be changed because of how the palette is docked or snapped.",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "integer",
+          "description": "Specifies the width of the palette. Depending on how the palette is docked or snapped, the width may not be editable."
+        },
+        {
+          "name": "height",
+          "type": "integer",
+          "description": "Specifies the height of the palette. Depending on how the palette is docked or snapped, the height may not be editable."
+        }
+      ],
+      "version": "Introduced in version August 2017"
+    },
+    "snapTo": {
+      "id": "TextCommandPalette_snapTo",
+      "title": "TextCommandPalette.snapTo Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Snaps this palette to another palette.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "returnValue = textCommandPalette_var.snapTo(palette, snapOption)",
+        "cpp": "#include \n\nreturnValue = textCommandPalette_var->snapTo(palette, snapOption);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the palette was successfully snapped to the other palette.",
+      "parameters": [
+        {
+          "name": "palette",
+          "type": "Palette",
+          "description": "Specifies the palette to snap to."
+        },
+        {
+          "name": "snapOption",
+          "type": "PaletteSnapOptions",
+          "description": "Specifies how this palette should be snapped to the other palette."
+        }
+      ],
+      "version": "Introduced in version August 2017"
+    },
+    "writeText": {
+      "id": "TextCommandPalette_writeText",
+      "title": "TextCommandPalette.writeText Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Write the specified text to the TEXT COMMAND window. Remarks",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "returnValue = textCommandPalette_var.writeText(text)",
+        "cpp": "#include \n\nreturnValue = textCommandPalette_var->writeText(text);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "text",
+          "type": "string",
+          "description": "The text to write to the Text Command window."
+        }
+      ],
+      "version": "Introduced in version August 2017"
+    }
+  },
+  "event_details": {
+    "closed": {
+      "id": "TextCommandPalette_closed",
+      "title": "TextCommandPalette.closed Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "This event is fired when the user clicks the \"Close\" button on the palette. You can choose if the \"Close\" button is available or not when you initially create the palette. When a palette is closed, it still exists but is change to invisible so you can still interact with it and retrieve any needed information and can make it visible again. Use the deleteMe method to delete the palette.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "# Event handler for the closed event.\nclass MyClosedHandler(adsk.core.UserInterfaceGeneralEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.UserInterfaceGeneralEventArgs):\n        # Code to react to the event.\n        app.log('In MyClosedHandler event handler.')",
+        "cpp": "// \"textCommandPalette_var\" is a variable referencing a TextCommandPalette object.\n// Connect the handler function to the event.\nPtr closedEvent = textCommandPalette_var->closed();\nif (!closedEvent)\n    return;\n\nbool isOk = closedEvent->add(&_closed);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2017"
+    },
+    "incomingFromHTML": {
+      "id": "TextCommandPalette_incomingFromHTML",
+      "title": "TextCommandPalette.incomingFromHTML Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "This event is fired when the JavaScript associated with the HTML calls the adsk.fusionSendData function. This allows the HTML to communicate with the add-in by passing information to the add-in.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "# Event handler for the incomingFromHTML event.\nclass MyIncomingFromHTMLHandler(adsk.core.HTMLEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.HTMLEventArgs):\n        # Code to react to the event.\n        app.log('In MyIncomingFromHTMLHandler event handler.')",
+        "cpp": "// \"textCommandPalette_var\" is a variable referencing a TextCommandPalette object.\n// Connect the handler function to the event.\nPtr incomingFromHTMLEvent = textCommandPalette_var->incomingFromHTML();\nif (!incomingFromHTMLEvent)\n    return;\n\nbool isOk = incomingFromHTMLEvent->add(&_incomingFromHTML);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2017"
+    },
+    "navigatingURL": {
+      "id": "TextCommandPalette_navigatingURL",
+      "title": "TextCommandPalette.navigatingURL Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "This event is fired when a navigation event occurs on the page. This allows the add-in to determine how this navigation should be handled by the browser.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "# Event handler for the navigatingURL event.\nclass MyNavigatingURLHandler(adsk.core.NavigationEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.NavigationEventArgs):\n        # Code to react to the event.\n        app.log('In MyNavigatingURLHandler event handler.')",
+        "cpp": "// \"textCommandPalette_var\" is a variable referencing a TextCommandPalette object.\n// Connect the handler function to the event.\nPtr navigatingURLEvent = textCommandPalette_var->navigatingURL();\nif (!navigatingURLEvent)\n    return;\n\nbool isOk = navigatingURLEvent->add(&_navigatingURL);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2021"
+    }
+  },
+  "property_details": {
+    "dockingOption": {
+      "id": "TextCommandPalette_dockingOption",
+      "title": "TextCommandPalette.dockingOption Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Defines the docking behavior for this palette. This controls how the user is allowed to dock the palette.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textCommandPalette_var.dockingOption\n\n# Set the value of the property.\ntextCommandPalette_var.dockingOption = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPaletteDockingOptions propertyValue = textCommandPalette_var->dockingOption();\n\n// Set the value of the property, where value_var is a PaletteDockingOptions.\nbool returnValue = textCommandPalette_var->dockingOption(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2017"
+    },
+    "dockingState": {
+      "id": "TextCommandPalette_dockingState",
+      "title": "TextCommandPalette.dockingState Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Gets and sets how the palette is currently docked.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textCommandPalette_var.dockingState\n\n# Set the value of the property.\ntextCommandPalette_var.dockingState = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPaletteDockingStates propertyValue = textCommandPalette_var->dockingState();\n\n// Set the value of the property, where value_var is a PaletteDockingStates.\nbool returnValue = textCommandPalette_var->dockingState(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2017"
+    },
+    "height": {
+      "id": "TextCommandPalette_height",
+      "title": "TextCommandPalette.height Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Gets and sets the height of the palette. Setting this property may not always set the height. Depending on how the palette is docked or snapped, the height may not be editable.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textCommandPalette_var.height\n\n# Set the value of the property.\ntextCommandPalette_var.height = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = textCommandPalette_var->height();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = textCommandPalette_var->height(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2017"
+    },
+    "htmlFileURL": {
+      "id": "TextCommandPalette_htmlFileURL",
+      "title": "TextCommandPalette.htmlFileURL Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Gets and sets the URL to the HTML file that will be displayed in the palette. This can be a local file or a URL on the web where the HTML will be read. To avoid reading a file, this can also be the full HTML definition as a string. If you are providing the HTML content as a string, it should begin with the element. Any references made in the HTML should be to URL's and not local files since the local path is ambiguous.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textCommandPalette_var.htmlFileURL\n\n# Set the value of the property.\ntextCommandPalette_var.htmlFileURL = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = textCommandPalette_var->htmlFileURL();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = textCommandPalette_var->htmlFileURL(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2017"
+    },
+    "id": {
+      "id": "TextCommandPalette_id",
+      "title": "TextCommandPalette.id Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Gets The unique, language independent, ID of this palette.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textCommandPalette_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = textCommandPalette_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2017"
+    },
+    "isNative": {
+      "id": "TextCommandPalette_isNative",
+      "title": "TextCommandPalette.isNative Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Indicates if this is one of the standard Fusion palettes or a custom palette created through the API. If true, it is a standard Fusion palette and will have some restrictions on changing its properties and cannot be deleted.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textCommandPalette_var.isNative",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = textCommandPalette_var->isNative();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2017"
+    },
+    "isTransparent": {
+      "id": "TextCommandPalette_isTransparent",
+      "title": "TextCommandPalette.isTransparent Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Returns if this palette was created as a transparent palette.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textCommandPalette_var.isTransparent",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = textCommandPalette_var->isTransparent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "isValid": {
+      "id": "TextCommandPalette_isValid",
+      "title": "TextCommandPalette.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textCommandPalette_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = textCommandPalette_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2017"
+    },
+    "isVisible": {
+      "id": "TextCommandPalette_isVisible",
+      "title": "TextCommandPalette.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Gets and sets whether this palette is currently being displayed in the user interface.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textCommandPalette_var.isVisible\n\n# Set the value of the property.\ntextCommandPalette_var.isVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = textCommandPalette_var->isVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = textCommandPalette_var->isVisible(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Customizing the UI using the API Sample",
+          "description": "Demonstrates how to work with tabs, panels, and command in the user interface. The full source for C++ and Python samples can be downloaded. This is especially useful for getting the resource files."
+        }
+      ],
+      "version": "Introduced in version August 2017"
+    },
+    "left": {
+      "id": "TextCommandPalette_left",
+      "title": "TextCommandPalette.left Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Gets and sets the left side of the palette relative to screen space and in pixels. Because palettes can be positioned outside of the Fusion window, a value of zero indicates the left side of the screen and not the Fusion window.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textCommandPalette_var.left\n\n# Set the value of the property.\ntextCommandPalette_var.left = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = textCommandPalette_var->left();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = textCommandPalette_var->left(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2017"
+    },
+    "name": {
+      "id": "TextCommandPalette_name",
+      "title": "TextCommandPalette.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Gets and set the name of the palette as seen in the user interface. The name of native palettes cannot be set.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textCommandPalette_var.name\n\n# Set the value of the property.\ntextCommandPalette_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = textCommandPalette_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = textCommandPalette_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2017"
+    },
+    "objectType": {
+      "id": "TextCommandPalette_objectType",
+      "title": "TextCommandPalette.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textCommandPalette_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = textCommandPalette_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2017"
+    },
+    "top": {
+      "id": "TextCommandPalette_top",
+      "title": "TextCommandPalette.top Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Gets and sets the top of the palette relative to screen space and in pixels. Because palettes can be positioned outside of the Fusion window, a value of zero indicates the top of the screen and not the Fusion window.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textCommandPalette_var.top\n\n# Set the value of the property.\ntextCommandPalette_var.top = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = textCommandPalette_var->top();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = textCommandPalette_var->top(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2017"
+    },
+    "width": {
+      "id": "TextCommandPalette_width",
+      "title": "TextCommandPalette.width Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextCommandPalette.h",
+      "description": "Gets and sets the width of the palette. Setting this property may not always set the width. Depending on how the palette is docked or snapped, the width may not be editable.",
+      "parent_class": "TextCommandPalette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textCommandPalette_var.width\n\n# Set the value of the property.\ntextCommandPalette_var.width = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = textCommandPalette_var->width();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = textCommandPalette_var->width(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2017"
+    }
+  }
+}

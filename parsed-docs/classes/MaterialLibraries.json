@@ -1,0 +1,223 @@
+{
+  "id": "MaterialLibraries",
+  "title": "MaterialLibraries Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Materials/MaterialLibraries.h",
+  "description": "The MaterialLibraries collection object provides access to currently loaded Material and Appearance libraries",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Method that returns the specified Material Library using an index into the collection."
+    },
+    {
+      "name": "itemById",
+      "description": "Returns the Material Library at the specified ID."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns the specified Material Library using the name as seen in the user interface."
+    },
+    {
+      "name": "load",
+      "description": "Loads the specified existing local material library. Fusion remembers which libraries have been loaded from one session to the next so you should check to see if the local library is already loaded or not before loading it again."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of Material Libraries in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Avoid Machine Surface Settings API Sample",
+      "description": "This sample script demonstrates how to use Machine/Avoid/Gouge/Fixture functionality.The script starts by opening a sample model from the CAM Samples folder via its URN. The model comprises a curved surface with a through slot, a countersunk hole and a raised, circular and filleted upstand from the surface. The model is supported by two rectangular blocks, themselves mounted on a fixture plate. A setup is included with a single operation running a 3-axis diagonal raster over the model, supports and fixture. The operation machines the fixture, the supporting blocks, the upper surface of the upstand and the area within the slot and hole, something we would like to avoid.The script duplicates the original operation and then proceeds to create a series of MachineAvoidGroups. These are labelled as either Machine in the case of 2 cap surfaces for the slot and hole, Fixture for the fixture plate, Gouge for the supporting blocks and Avoid for the top face of the upstand. Additionally, both AxialOffset and RadialOffset can be specified for the Machine, Avoid and Fixture passes."
+    },
+    {
+      "name": "Create Engravings Selection Sets API Sample",
+      "description": "This sample script demonstrates how to find and machine engravings in the Z+ direction using pocket recognition.The script will first open an example model via its URN. Using pocket recognition, it will identify pockets that may be engravings based on their dimensions.We assume here that an engraving pocket is:Made with a flat bottom face and no fillet.A closed pocket.Have a Z height less than 2 mmWe demonstrate creating selection sets in both design and manufacture workspaces and use one of the selection sets as an operation geometry selection input to generate an engraving operation.The engraving toolpath can be seen by expanding the setup and selecting the operation."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "classType": {
+      "id": "MaterialLibraries_classType",
+      "title": "MaterialLibraries.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Materials/MaterialLibraries.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "MaterialLibraries",
+      "syntax": {
+        "python": "returnValue = adsk.core.MaterialLibraries.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::MaterialLibraries::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "MaterialLibraries_item",
+      "title": "MaterialLibraries.item Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Materials/MaterialLibraries.h",
+      "description": "Method that returns the specified Material Library using an index into the collection.",
+      "parent_class": "MaterialLibraries",
+      "syntax": {
+        "python": "returnValue = materialLibraries_var.item(index)",
+        "cpp": "#include \n\nreturnValue = materialLibraries_var->item(index);"
+      },
+      "return_type": "MaterialLibrary",
+      "return_description": "Returns the specified material library or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "integer",
+          "description": "The index of the item within the collection. The first item has an index of 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "itemById": {
+      "id": "MaterialLibraries_itemById",
+      "title": "MaterialLibraries.itemById Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Materials/MaterialLibraries.h",
+      "description": "Returns the Material Library at the specified ID.",
+      "parent_class": "MaterialLibraries",
+      "syntax": {
+        "python": "returnValue = materialLibraries_var.itemById(id)",
+        "cpp": "#include \n\nreturnValue = materialLibraries_var->itemById(id);"
+      },
+      "return_type": "MaterialLibrary",
+      "return_description": "Returns the specified material library or null if there's no match on the ID.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The ID of the library to return."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Avoid Machine Surface Settings API Sample",
+          "description": "This sample script demonstrates how to use Machine/Avoid/Gouge/Fixture functionality.The script starts by opening a sample model from the CAM Samples folder via its URN. The model comprises a curved surface with a through slot, a countersunk hole and a raised, circular and filleted upstand from the surface. The model is supported by two rectangular blocks, themselves mounted on a fixture plate. A setup is included with a single operation running a 3-axis diagonal raster over the model, supports and fixture. The operation machines the fixture, the supporting blocks, the upper surface of the upstand and the area within the slot and hole, something we would like to avoid.The script duplicates the original operation and then proceeds to create a series of MachineAvoidGroups. These are labelled as either Machine in the case of 2 cap surfaces for the slot and hole, Fixture for the fixture plate, Gouge for the supporting blocks and Avoid for the top face of the upstand. Additionally, both AxialOffset and RadialOffset can be specified for the Machine, Avoid and Fixture passes."
+        },
+        {
+          "name": "Create Engravings Selection Sets API Sample",
+          "description": "This sample script demonstrates how to find and machine engravings in the Z+ direction using pocket recognition.The script will first open an example model via its URN. Using pocket recognition, it will identify pockets that may be engravings based on their dimensions.We assume here that an engraving pocket is:Made with a flat bottom face and no fillet.A closed pocket.Have a Z height less than 2 mmWe demonstrate creating selection sets in both design and manufacture workspaces and use one of the selection sets as an operation geometry selection input to generate an engraving operation.The engraving toolpath can be seen by expanding the setup and selecting the operation."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "itemByName": {
+      "id": "MaterialLibraries_itemByName",
+      "title": "MaterialLibraries.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Materials/MaterialLibraries.h",
+      "description": "Returns the specified Material Library using the name as seen in the user interface.",
+      "parent_class": "MaterialLibraries",
+      "syntax": {
+        "python": "returnValue = materialLibraries_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = materialLibraries_var->itemByName(name);"
+      },
+      "return_type": "MaterialLibrary",
+      "return_description": "Returns the specified material library or null if there's no match on the name.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the library to return."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "load": {
+      "id": "MaterialLibraries_load",
+      "title": "MaterialLibraries.load Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Materials/MaterialLibraries.h",
+      "description": "Loads the specified existing local material library. Fusion remembers which libraries have been loaded from one session to the next so you should check to see if the local library is already loaded or not before loading it again.",
+      "parent_class": "MaterialLibraries",
+      "syntax": {
+        "python": "returnValue = materialLibraries_var.load(filename)",
+        "cpp": "#include \n\nreturnValue = materialLibraries_var->load(filename);"
+      },
+      "return_type": "MaterialLibrary",
+      "return_description": "Returns the MaterialLibrary object representing the opened library or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "filename",
+          "type": "string",
+          "description": "The full filename of the .adsklib material file."
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "MaterialLibraries_count",
+      "title": "MaterialLibraries.count Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Materials/MaterialLibraries.h",
+      "description": "The number of Material Libraries in the collection.",
+      "parent_class": "MaterialLibraries",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = materialLibraries_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = materialLibraries_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "MaterialLibraries_isValid",
+      "title": "MaterialLibraries.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Materials/MaterialLibraries.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "MaterialLibraries",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = materialLibraries_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = materialLibraries_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "MaterialLibraries_objectType",
+      "title": "MaterialLibraries.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Materials/MaterialLibraries.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "MaterialLibraries",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = materialLibraries_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = materialLibraries_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

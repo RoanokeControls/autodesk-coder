@@ -1,0 +1,1042 @@
+{
+  "id": "ExtrudeFeature",
+  "title": "ExtrudeFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/ExtrudeFeature.h",
+  "description": "Object that represents an existing extrude feature in a design.",
+  "parent_class": "Feature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    },
+    {
+      "name": "setOneSideExtent",
+      "description": "Redefines the extrusion to go in one direction from the profile. The extent of the extrusion is defined by the extent argument.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setSymmetricExtent",
+      "description": "Redefines the extrusion to go symmetrically in both directions from the profile.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setThinExtrude",
+      "description": "Changes the extrude feature to be a thin extrude. This is only valid if the isThinExtrude property is False. If the extrusion is already a thin extrude, you can use the properties on the ExtrudeFeature to modify the thin extrude specific values."
+    },
+    {
+      "name": "setTwoSidesExtent",
+      "description": "Redefines the extrusion to go in both directions from the profile. The extent is defined independently for each direction using the input arguments.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "endFaces",
+      "description": "Property that returns the set of faces that cap the end of the extrusion, opposite the start faces. In the case where there are no end faces, this property will return null."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "extentOne",
+      "description": "Gets and sets the extent used for a single sided extrude or side one of a two-sided extrusion. Valid inputs are DistanceExtentDefinition, ToEntityExtentDefinition, and ThroughAllExtentDefinition object, which can be created statically using the create method on the classes.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "extentTwo",
+      "description": "Gets and sets the extent used for side two of the extrusion. If the extrude is a single sided extrude this property will return null and will fail if set. The hasTwoExtents property can be used to determine if there are two sides or not. When setting this property, valid inputs are DistanceExtentDefinition, ToEntityExtentDefinition, and ThroughAllExtentDefinition object, which can be created statically using the create method on the classes.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "extentType",
+      "description": "Returns a value indicating how the extent is defined for this extrude."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "hasTwoExtents",
+      "description": "Property that indicates if the extrusion is a single or two-sided extrusion. If false, the extentTwo and taperAngleTwo properties should not be used."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSolid",
+      "description": "Indicates if this feature was initially created as a solid or a surface."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isThinExtrude",
+      "description": "Sets or returns whether the extrude is a thin extrude. Setting it as false will make it a regular extrude."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "operation",
+      "description": "Gets and sets the type of operation performed by the extrusion."
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "participantBodies",
+      "description": "Gets and sets the list of bodies that will participate in the feature when the operation is a cut or intersection.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "profile",
+      "description": "Gets and sets the profiles or planar faces used to define the shape of the extrude. This property can return or be set with a single Profile, a single planar face, or an ObjectCollection consisting of multiple profiles and planar faces. When an ObjectCollection is used all of the profiles and faces must be co-planar.   When setting this property of a surface (non-solid) extrusion, you can use the createOpenProfile and createBRepEdgeProfile methods of the Component object to create an open profile.   This property returns null in the case where the feature is non-parametric."
+    },
+    {
+      "name": "sideFaces",
+      "description": "Property that returns all of the side faces (i.e. those running perpendicular to the extrude direction) of the feature."
+    },
+    {
+      "name": "startExtent",
+      "description": "Gets and sets the extent used to define the start of the extrusion. You can set this property with either a ProfilePlaneStartDefinition, OffsetStartDefinition or a EntityStartDefinition object. You can get any of those objects by using the static create method on the class.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "startFaces",
+      "description": "Property that returns the set of faces that cap the end of the extrusion and are coincident with the sketch plane. In the case of a symmetric extrusion, these faces are the ones on the positive normal side of the sketch plane. In the case where there are no start faces, this property will return null."
+    },
+    {
+      "name": "symmetricExtent",
+      "description": "If the current extent of the feature is defined as a symmetric extent, this property returns the SymmericExtentDefinition object that provides access to the information defining the symmetric extent. If the current extent is not symmetric, this property returns null. You can determine the type of extent by using the extentType property.   To change the extent of a feature to symmetric extent you can use the setSymmetricExtent method."
+    },
+    {
+      "name": "taperAngleOne",
+      "description": "Gets the parameter controlling the taper angle for a single sided extrusion or side one of a two-sided extrusion. To edit the angle, use properties on the parameter to change the value of the parameter."
+    },
+    {
+      "name": "taperAngleTwo",
+      "description": "Gets the parameter controlling the taper angle for side two of a two-sided extrusion. if the extrusion is single-sided, this property will return null. The hasTwoExtents property can be used to determine if there are two sides or not. To edit the angle, use properties on the parameter to change the value of the parameter."
+    },
+    {
+      "name": "thinExtrudeWallLocationOne",
+      "description": "Gets and sets the wall location for a one sided thin extrude or side one of a two sided thin extrude"
+    },
+    {
+      "name": "thinExtrudeWallLocationTwo",
+      "description": "Gets and sets the wall location for side two of a two sided thin extrude"
+    },
+    {
+      "name": "thinExtrudeWallThicknessOne",
+      "description": "Gets and sets the wall thickness for a one sided thin extrude or side one of a two sided thin extrude"
+    },
+    {
+      "name": "thinExtrudeWallThicknessTwo",
+      "description": "Gets and sets the wall thickness for side two of a two sided thin extrude"
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Extrude Feature API Sample",
+      "description": "Demonstrates creating a new extrude feature."
+    },
+    {
+      "name": "Move Feature API Sample",
+      "description": "Demonstrates creating a new move feature."
+    },
+    {
+      "name": "Manage Participant Bodies API Sample",
+      "description": "Demonstrates how to manage participant During Cut operation. Same API can be used to manage participants During intersection also."
+    },
+    {
+      "name": "Patch Feature API Sample",
+      "description": "Demonstrates creating a new patch feature."
+    },
+    {
+      "name": "ReplaceFace Feature",
+      "description": "Demonstrates creating a new replaceface feature."
+    },
+    {
+      "name": "Shell Feature API Sample",
+      "description": "Demonstrates creating a new shell feature."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "property_details": {
+    "assemblyContext": {
+      "id": "ExtrudeFeature_assemblyContext",
+      "title": "ExtrudeFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "attributes": {
+      "id": "ExtrudeFeature_attributes",
+      "title": "ExtrudeFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "baseFeature": {
+      "id": "ExtrudeFeature_baseFeature",
+      "title": "ExtrudeFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "bodies": {
+      "id": "ExtrudeFeature_bodies",
+      "title": "ExtrudeFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->bodies();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Extrude Feature API Sample",
+          "description": "Demonstrates creating a new extrude feature."
+        },
+        {
+          "name": "Move Feature API Sample",
+          "description": "Demonstrates creating a new move feature."
+        },
+        {
+          "name": "Manage Participant Bodies API Sample",
+          "description": "Demonstrates how to manage participant During Cut operation. Same API can be used to manage participants During intersection also."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "endFaces": {
+      "id": "ExtrudeFeature_endFaces",
+      "title": "ExtrudeFeature.endFaces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Property that returns the set of faces that cap the end of the extrusion, opposite the start faces. In the case where there are no end faces, this property will return null.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.endFaces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->endFaces();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Patch Feature API Sample",
+          "description": "Demonstrates creating a new patch feature."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "entityToken": {
+      "id": "ExtrudeFeature_entityToken",
+      "title": "ExtrudeFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = extrudeFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "errorOrWarningMessage": {
+      "id": "ExtrudeFeature_errorOrWarningMessage",
+      "title": "ExtrudeFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = extrudeFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "extentOne": {
+      "id": "ExtrudeFeature_extentOne",
+      "title": "ExtrudeFeature.extentOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Gets and sets the extent used for a single sided extrude or side one of a two-sided extrusion. Valid inputs are DistanceExtentDefinition, ToEntityExtentDefinition, and ThroughAllExtentDefinition object, which can be created statically using the create method on the classes. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.extentOne\n\n# Set the value of the property.\nextrudeFeature_var.extentOne = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->extentOne();\n\n// Set the value of the property, where value_var is an ExtentDefinition.\nbool returnValue = extrudeFeature_var->extentOne(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Extrude Feature API Sample",
+          "description": "Demonstrates creating a new extrude feature."
+        }
+      ],
+      "version": "Introduced in version November 2016"
+    },
+    "extentTwo": {
+      "id": "ExtrudeFeature_extentTwo",
+      "title": "ExtrudeFeature.extentTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Gets and sets the extent used for side two of the extrusion. If the extrude is a single sided extrude this property will return null and will fail if set. The hasTwoExtents property can be used to determine if there are two sides or not. When setting this property, valid inputs are DistanceExtentDefinition, ToEntityExtentDefinition, and ThroughAllExtentDefinition object, which can be created statically using the create method on the classes. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.extentTwo\n\n# Set the value of the property.\nextrudeFeature_var.extentTwo = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->extentTwo();\n\n// Set the value of the property, where value_var is an ExtentDefinition.\nbool returnValue = extrudeFeature_var->extentTwo(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2016"
+    },
+    "extentType": {
+      "id": "ExtrudeFeature_extentType",
+      "title": "ExtrudeFeature.extentType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Returns a value indicating how the extent is defined for this extrude.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.extentType",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureExtentTypes propertyValue = extrudeFeature_var->extentType();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Extrude Feature API Sample",
+          "description": "Demonstrates creating a new extrude feature."
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    },
+    "faces": {
+      "id": "ExtrudeFeature_faces",
+      "title": "ExtrudeFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "hasTwoExtents": {
+      "id": "ExtrudeFeature_hasTwoExtents",
+      "title": "ExtrudeFeature.hasTwoExtents Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Property that indicates if the extrusion is a single or two-sided extrusion. If false, the extentTwo and taperAngleTwo properties should not be used.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.hasTwoExtents",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = extrudeFeature_var->hasTwoExtents();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2016"
+    },
+    "healthState": {
+      "id": "ExtrudeFeature_healthState",
+      "title": "ExtrudeFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = extrudeFeature_var->healthState();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Extrude Feature API Sample",
+          "description": "Demonstrates creating a new extrude feature."
+        }
+      ],
+      "version": "Introduced in version July 2016"
+    },
+    "isParametric": {
+      "id": "ExtrudeFeature_isParametric",
+      "title": "ExtrudeFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = extrudeFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isSolid": {
+      "id": "ExtrudeFeature_isSolid",
+      "title": "ExtrudeFeature.isSolid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Indicates if this feature was initially created as a solid or a surface.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.isSolid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = extrudeFeature_var->isSolid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "isSuppressed": {
+      "id": "ExtrudeFeature_isSuppressed",
+      "title": "ExtrudeFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.isSuppressed\n\n# Set the value of the property.\nextrudeFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = extrudeFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = extrudeFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isThinExtrude": {
+      "id": "ExtrudeFeature_isThinExtrude",
+      "title": "ExtrudeFeature.isThinExtrude Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Sets or returns whether the extrude is a thin extrude. Setting it as false will make it a regular extrude.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.isThinExtrude\n\n# Set the value of the property.\nextrudeFeature_var.isThinExtrude = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = extrudeFeature_var->isThinExtrude();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = extrudeFeature_var->isThinExtrude(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2021"
+    },
+    "isValid": {
+      "id": "ExtrudeFeature_isValid",
+      "title": "ExtrudeFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = extrudeFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "linkedFeatures": {
+      "id": "ExtrudeFeature_linkedFeatures",
+      "title": "ExtrudeFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "name": {
+      "id": "ExtrudeFeature_name",
+      "title": "ExtrudeFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.name\n\n# Set the value of the property.\nextrudeFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = extrudeFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = extrudeFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "nativeObject": {
+      "id": "ExtrudeFeature_nativeObject",
+      "title": "ExtrudeFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "ExtrudeFeature_objectType",
+      "title": "ExtrudeFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = extrudeFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "operation": {
+      "id": "ExtrudeFeature_operation",
+      "title": "ExtrudeFeature.operation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Gets and sets the type of operation performed by the extrusion.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.operation\n\n# Set the value of the property.\nextrudeFeature_var.operation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureOperations propertyValue = extrudeFeature_var->operation();\n\n// Set the value of the property, where value_var is a FeatureOperations.\nbool returnValue = extrudeFeature_var->operation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "parentComponent": {
+      "id": "ExtrudeFeature_parentComponent",
+      "title": "ExtrudeFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "participantBodies": {
+      "id": "ExtrudeFeature_participantBodies",
+      "title": "ExtrudeFeature.participantBodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Gets and sets the list of bodies that will participate in the feature when the operation is a cut or intersection. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.participantBodies\n\n# Set the value of the property.\nextrudeFeature_var.participantBodies = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = extrudeFeature_var->participantBodies();\n\n// Set the value of the property, where value_var is a BRepBody.\nbool returnValue = extrudeFeature_var->participantBodies(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "profile": {
+      "id": "ExtrudeFeature_profile",
+      "title": "ExtrudeFeature.profile Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Gets and sets the profiles or planar faces used to define the shape of the extrude. This property can return or be set with a single Profile, a single planar face, or an ObjectCollection consisting of multiple profiles and planar faces. When an ObjectCollection is used all of the profiles and faces must be co-planar. When setting this property of a surface (non-solid) extrusion, you can use the createOpenProfile and createBRepEdgeProfile methods of the Component object to create an open profile. This property returns null in the case where the feature is non-parametric.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.profile\n\n# Set the value of the property.\nextrudeFeature_var.profile = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->profile();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = extrudeFeature_var->profile(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "sideFaces": {
+      "id": "ExtrudeFeature_sideFaces",
+      "title": "ExtrudeFeature.sideFaces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Property that returns all of the side faces (i.e. those running perpendicular to the extrude direction) of the feature.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.sideFaces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->sideFaces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "startExtent": {
+      "id": "ExtrudeFeature_startExtent",
+      "title": "ExtrudeFeature.startExtent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Gets and sets the extent used to define the start of the extrusion. You can set this property with either a ProfilePlaneStartDefinition, OffsetStartDefinition or a EntityStartDefinition object. You can get any of those objects by using the static create method on the class. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.startExtent\n\n# Set the value of the property.\nextrudeFeature_var.startExtent = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->startExtent();\n\n// Set the value of the property, where value_var is an ExtentDefinition.\nbool returnValue = extrudeFeature_var->startExtent(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2016"
+    },
+    "startFaces": {
+      "id": "ExtrudeFeature_startFaces",
+      "title": "ExtrudeFeature.startFaces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Property that returns the set of faces that cap the end of the extrusion and are coincident with the sketch plane. In the case of a symmetric extrusion, these faces are the ones on the positive normal side of the sketch plane. In the case where there are no start faces, this property will return null.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.startFaces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->startFaces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "symmetricExtent": {
+      "id": "ExtrudeFeature_symmetricExtent",
+      "title": "ExtrudeFeature.symmetricExtent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "If the current extent of the feature is defined as a symmetric extent, this property returns the SymmericExtentDefinition object that provides access to the information defining the symmetric extent. If the current extent is not symmetric, this property returns null. You can determine the type of extent by using the extentType property. To change the extent of a feature to symmetric extent you can use the setSymmetricExtent method.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.symmetricExtent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->symmetricExtent();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Extrude Feature API Sample",
+          "description": "Demonstrates creating a new extrude feature."
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    },
+    "taperAngleOne": {
+      "id": "ExtrudeFeature_taperAngleOne",
+      "title": "ExtrudeFeature.taperAngleOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Gets the parameter controlling the taper angle for a single sided extrusion or side one of a two-sided extrusion. To edit the angle, use properties on the parameter to change the value of the parameter.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.taperAngleOne",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->taperAngleOne();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Extrude Feature API Sample",
+          "description": "Demonstrates creating a new extrude feature."
+        }
+      ],
+      "version": "Introduced in version November 2016"
+    },
+    "taperAngleTwo": {
+      "id": "ExtrudeFeature_taperAngleTwo",
+      "title": "ExtrudeFeature.taperAngleTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Gets the parameter controlling the taper angle for side two of a two-sided extrusion. if the extrusion is single-sided, this property will return null. The hasTwoExtents property can be used to determine if there are two sides or not. To edit the angle, use properties on the parameter to change the value of the parameter.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.taperAngleTwo",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->taperAngleTwo();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2016"
+    },
+    "thinExtrudeWallLocationOne": {
+      "id": "ExtrudeFeature_thinExtrudeWallLocationOne",
+      "title": "ExtrudeFeature.thinExtrudeWallLocationOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Gets and sets the wall location for a one sided thin extrude or side one of a two sided thin extrude",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.thinExtrudeWallLocationOne\n\n# Set the value of the property.\nextrudeFeature_var.thinExtrudeWallLocationOne = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nThinExtrudeWallLocation propertyValue = extrudeFeature_var->thinExtrudeWallLocationOne();\n\n// Set the value of the property, where value_var is a ThinExtrudeWallLocation.\nbool returnValue = extrudeFeature_var->thinExtrudeWallLocationOne(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2021"
+    },
+    "thinExtrudeWallLocationTwo": {
+      "id": "ExtrudeFeature_thinExtrudeWallLocationTwo",
+      "title": "ExtrudeFeature.thinExtrudeWallLocationTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Gets and sets the wall location for side two of a two sided thin extrude",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.thinExtrudeWallLocationTwo\n\n# Set the value of the property.\nextrudeFeature_var.thinExtrudeWallLocationTwo = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nThinExtrudeWallLocation propertyValue = extrudeFeature_var->thinExtrudeWallLocationTwo();\n\n// Set the value of the property, where value_var is a ThinExtrudeWallLocation.\nbool returnValue = extrudeFeature_var->thinExtrudeWallLocationTwo(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2021"
+    },
+    "thinExtrudeWallThicknessOne": {
+      "id": "ExtrudeFeature_thinExtrudeWallThicknessOne",
+      "title": "ExtrudeFeature.thinExtrudeWallThicknessOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Gets and sets the wall thickness for a one sided thin extrude or side one of a two sided thin extrude",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.thinExtrudeWallThicknessOne",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->thinExtrudeWallThicknessOne();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2021"
+    },
+    "thinExtrudeWallThicknessTwo": {
+      "id": "ExtrudeFeature_thinExtrudeWallThicknessTwo",
+      "title": "ExtrudeFeature.thinExtrudeWallThicknessTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Gets and sets the wall thickness for side two of a two sided thin extrude",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.thinExtrudeWallThicknessTwo",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->thinExtrudeWallThicknessTwo();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2021"
+    },
+    "timelineObject": {
+      "id": "ExtrudeFeature_timelineObject",
+      "title": "ExtrudeFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "ExtrudeFeature_classType",
+      "title": "ExtrudeFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ExtrudeFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ExtrudeFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "createForAssemblyContext": {
+      "id": "ExtrudeFeature_createForAssemblyContext",
+      "title": "ExtrudeFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "returnValue = extrudeFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = extrudeFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "ExtrudeFeature",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "deleteMe": {
+      "id": "ExtrudeFeature_deleteMe",
+      "title": "ExtrudeFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "returnValue = extrudeFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = extrudeFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version August 2014"
+    },
+    "dissolve": {
+      "id": "ExtrudeFeature_dissolve",
+      "title": "ExtrudeFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "returnValue = extrudeFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = extrudeFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version August 2014"
+    },
+    "setOneSideExtent": {
+      "id": "ExtrudeFeature_setOneSideExtent",
+      "title": "ExtrudeFeature.setOneSideExtent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Redefines the extrusion to go in one direction from the profile. The extent of the extrusion is defined by the extent argument. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = extrudeFeature_var.setOneSideExtent(extent, direction)\n\n# Uses optional arguments.\nreturnValue = extrudeFeature_var.setOneSideExtent(extent, direction, taperAngle)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = extrudeFeature_var->setOneSideExtent(extent, direction);\n\n// Uses optional arguments.\nreturnValue = extrudeFeature_var->setOneSideExtent(extent, direction, taperAngle);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true is setting the input to a one sided extent was successful.",
+      "parameters": [
+        {
+          "name": "extent",
+          "type": "ExtentDefinition",
+          "description": "An ExtentDefinition object that defines how the extent of the extrusion is defined. This can be a specified distance (DistanceExtentDefinition), to an entity (ToEntityExtent), or through-all (AllExtentDefinition). These objects can be obtained by using the static create method on the appropriate class."
+        },
+        {
+          "name": "direction",
+          "type": "ExtentDirections",
+          "description": "Specifies the direction of the extrusion. PositiveExtentDirection and NegativeExtentDirection are valid values. PositiveExtentDirection is in the same direction as the normal of the profile's parent sketch plane."
+        },
+        {
+          "name": "taperAngle",
+          "type": "ValueInput",
+          "description": "Optional argument that specifies the taper angle. If omitted a taper angle of 0 is used.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version November 2016"
+    },
+    "setSymmetricExtent": {
+      "id": "ExtrudeFeature_setSymmetricExtent",
+      "title": "ExtrudeFeature.setSymmetricExtent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Redefines the extrusion to go symmetrically in both directions from the profile. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = extrudeFeature_var.setSymmetricExtent(distance, isFullLength)\n\n# Uses optional arguments.\nreturnValue = extrudeFeature_var.setSymmetricExtent(distance, isFullLength, taperAngle)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = extrudeFeature_var->setSymmetricExtent(distance, isFullLength);\n\n// Uses optional arguments.\nreturnValue = extrudeFeature_var->setSymmetricExtent(distance, isFullLength, taperAngle);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true, if the call was successful.",
+      "parameters": [
+        {
+          "name": "distance",
+          "type": "ValueInput",
+          "description": "The distance of the extrusions. This is either the full length of half of the length of the final extrusion depending on the value of the isFullLength property."
+        },
+        {
+          "name": "isFullLength",
+          "type": "boolean",
+          "description": "Defines if the value defines the full length of the extrusion or half of the length. A value of true indicates it defines the full length."
+        },
+        {
+          "name": "taperAngle",
+          "type": "ValueInput",
+          "description": "Optional argument that specifies the taper angle. The same taper angle is used for both sides for a symmetric extrusion. If omitted a taper angle of 0 is used.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version November 2016"
+    },
+    "setThinExtrude": {
+      "id": "ExtrudeFeature_setThinExtrude",
+      "title": "ExtrudeFeature.setThinExtrude Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Changes the extrude feature to be a thin extrude. This is only valid if the isThinExtrude property is False. If the extrusion is already a thin extrude, you can use the properties on the ExtrudeFeature to modify the thin extrude specific values.",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = extrudeFeature_var.setThinExtrude(thinExtrudeWallLocationOne, thinExtrudeWallThicknessOne)\n\n# Uses optional arguments.\nreturnValue = extrudeFeature_var.setThinExtrude(thinExtrudeWallLocationOne, thinExtrudeWallThicknessOne, thinExtrudeWallLocationTwo, thinExtrudeWallThicknessTwo)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = extrudeFeature_var->setThinExtrude(thinExtrudeWallLocationOne, thinExtrudeWallThicknessOne);\n\n// Uses optional arguments.\nreturnValue = extrudeFeature_var->setThinExtrude(thinExtrudeWallLocationOne, thinExtrudeWallThicknessOne, thinExtrudeWallLocationTwo, thinExtrudeWallThicknessTwo);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "thinExtrudeWallLocationOne",
+          "type": "ThinExtrudeWallLocation",
+          "description": "Specifies the position of the thin wall extrude with respect to the profile being extruded. This defines the direction for a single sided thin extrude or side one of a two-sided extrusion."
+        },
+        {
+          "name": "thinExtrudeWallThicknessOne",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the thickness for a single sided thin extrude or side one of a two-sided extrusion ."
+        },
+        {
+          "name": "thinExtrudeWallLocationTwo",
+          "type": "ThinExtrudeWallLocation",
+          "description": "Optional argument that specifies the position of side two of a two-sided extrusion. This argument is ignored for a single sided thin extrude.   This is an optional argument whose default value is ThinExtrudeWallLocation.Side1."
+        },
+        {
+          "name": "thinExtrudeWallThicknessTwo",
+          "type": "ValueInput",
+          "description": "Optional argument that is a ValueInput object that defines the thickness for side two of a two-sided extrusion. This argument is ignored for a single sided thin extrude.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version April 2021"
+    },
+    "setTwoSidesExtent": {
+      "id": "ExtrudeFeature_setTwoSidesExtent",
+      "title": "ExtrudeFeature.setTwoSidesExtent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeature.h",
+      "description": "Redefines the extrusion to go in both directions from the profile. The extent is defined independently for each direction using the input arguments. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "ExtrudeFeature",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = extrudeFeature_var.setTwoSidesExtent(sideOneExtent, sideTwoExtent)\n\n# Uses optional arguments.\nreturnValue = extrudeFeature_var.setTwoSidesExtent(sideOneExtent, sideTwoExtent, sideOneTaperAngle, sideTwoTaperAngle)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = extrudeFeature_var->setTwoSidesExtent(sideOneExtent, sideTwoExtent);\n\n// Uses optional arguments.\nreturnValue = extrudeFeature_var->setTwoSidesExtent(sideOneExtent, sideTwoExtent, sideOneTaperAngle, sideTwoTaperAngle);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true, if the call was successful.",
+      "parameters": [
+        {
+          "name": "sideOneExtent",
+          "type": "ExtentDefinition",
+          "description": "An ExtentDefinition object that defines how the extent of the extrusion towards side one is defined. This can be a specified distance (DistanceExtentDefinition), to an entity (ToEntityExtent), or through-all (AllExtentDefinition). These objects can be obtained by using the static create method on the appropriate class."
+        },
+        {
+          "name": "sideTwoExtent",
+          "type": "ExtentDefinition",
+          "description": "An ExtentDefinition object that defines how the extent of the extrusion towards side two is defined. This can be a specified distance (DistanceExtentDefinition), to an entity (ToEntityExtent), or through-all (AllExtentDefinition). These objects can be obtained by using the static create method on the appropriate class."
+        },
+        {
+          "name": "sideOneTaperAngle",
+          "type": "ValueInput",
+          "description": "Optional argument that specifies the taper angle for side one. If omitted a taper angle of 0 is used.   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "sideTwoTaperAngle",
+          "type": "ValueInput",
+          "description": "Optional argument that specifies the taper angle for side two. If omitted a taper angle of 0 is used.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version November 2016"
+    }
+  }
+}

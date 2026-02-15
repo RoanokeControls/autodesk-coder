@@ -1,0 +1,244 @@
+{
+  "id": "OffsetFeatures",
+  "title": "OffsetFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/OffsetFeatures.h",
+  "description": "Collection that provides access to all of the existing Offset features in a component and supports the ability to create new Offset features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new offset feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates an OffsetFeatureInput object. Use properties and methods on this object to define the offset feature you want to create and then use the Add method, passing in the OffsetFeatureInput object to create the feature."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified offset feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified offset feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of Offset features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Offset Feature API Sample",
+      "description": "Demonstrates creating a new offset feature"
+    }
+  ],
+  "version": "Introduced in version June 2015",
+  "method_details": {
+    "add": {
+      "id": "OffsetFeatures_add",
+      "title": "OffsetFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/OffsetFeatures.h",
+      "description": "Creates a new offset feature.",
+      "parent_class": "OffsetFeatures",
+      "syntax": {
+        "python": "returnValue = offsetFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = offsetFeatures_var->add(input);"
+      },
+      "return_type": "OffsetFeature",
+      "return_description": "Returns the newly created OffsetFeature object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "OffsetFeatureInput",
+          "description": "A FeatureInput object that defines the desired offset feature. Use the createInput method to create a new OffsetFeatureInput object and then use methods on it (the OffsetFeatureInput object) to define the offset feature."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "offsetFeatures.add",
+          "description": "Demonstrates the offsetFeatures.add method. This is the equivalent of the Offset command in the SURFACE tab."
+        },
+        {
+          "name": "Offset Feature API Sample",
+          "description": "Demonstrates creating a new offset feature"
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "classType": {
+      "id": "OffsetFeatures_classType",
+      "title": "OffsetFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/OffsetFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "OffsetFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.OffsetFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::OffsetFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version June 2015"
+    },
+    "createInput": {
+      "id": "OffsetFeatures_createInput",
+      "title": "OffsetFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/OffsetFeatures.h",
+      "description": "Creates an OffsetFeatureInput object. Use properties and methods on this object to define the offset feature you want to create and then use the Add method, passing in the OffsetFeatureInput object to create the feature.",
+      "parent_class": "OffsetFeatures",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = offsetFeatures_var.createInput(entities, distance, operation)\n\n# Uses optional arguments.\nreturnValue = offsetFeatures_var.createInput(entities, distance, operation, isChainSelection)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = offsetFeatures_var->createInput(entities, distance, operation);\n\n// Uses optional arguments.\nreturnValue = offsetFeatures_var->createInput(entities, distance, operation, isChainSelection);"
+      },
+      "return_type": "OffsetFeatureInput",
+      "return_description": "Returns the newly created OffsetFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "entities",
+          "type": "ObjectCollection",
+          "description": "An ObjectCollection containing the BRepFace objects to offset. Additional faces may be automatically used depending on the value of the isChainSelection argument. Input faces need not be from the same body."
+        },
+        {
+          "name": "distance",
+          "type": "ValueInput",
+          "description": "ValueInput object that defines the offset distance. A positive value is in the positive normal direction of the face being offset."
+        },
+        {
+          "name": "operation",
+          "type": "FeatureOperations",
+          "description": "The feature operation to perform. 'NewBodyFeatureOperation' and 'NewComponentFeatureOperation' are the options supported."
+        },
+        {
+          "name": "isChainSelection",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not faces that are tangentially connected to the input faces (if any) will be included in the offset. The default value is true.   This is an optional argument whose default value is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "offsetFeatures.add",
+          "description": "Demonstrates the offsetFeatures.add method. This is the equivalent of the Offset command in the SURFACE tab."
+        },
+        {
+          "name": "Offset Feature API Sample",
+          "description": "Demonstrates creating a new offset feature"
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "item": {
+      "id": "OffsetFeatures_item",
+      "title": "OffsetFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/OffsetFeatures.h",
+      "description": "Function that returns the specified offset feature using an index into the collection.",
+      "parent_class": "OffsetFeatures",
+      "syntax": {
+        "python": "returnValue = offsetFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = offsetFeatures_var->item(index);"
+      },
+      "return_type": "OffsetFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "itemByName": {
+      "id": "OffsetFeatures_itemByName",
+      "title": "OffsetFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/OffsetFeatures.h",
+      "description": "Function that returns the specified offset feature using the name of the feature.",
+      "parent_class": "OffsetFeatures",
+      "syntax": {
+        "python": "returnValue = offsetFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = offsetFeatures_var->itemByName(name);"
+      },
+      "return_type": "OffsetFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "OffsetFeatures_count",
+      "title": "OffsetFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/OffsetFeatures.h",
+      "description": "The number of Offset features in the collection.",
+      "parent_class": "OffsetFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = offsetFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = offsetFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isValid": {
+      "id": "OffsetFeatures_isValid",
+      "title": "OffsetFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/OffsetFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "OffsetFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = offsetFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = offsetFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "objectType": {
+      "id": "OffsetFeatures_objectType",
+      "title": "OffsetFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/OffsetFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "OffsetFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = offsetFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = offsetFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    }
+  }
+}

@@ -1,0 +1,285 @@
+{
+  "id": "PipeFeatureInput",
+  "title": "PipeFeatureInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/PipeFeatureInput.h",
+  "description": "This class defines the methods and properties that pertain to the definition of a Pipe feature.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    }
+  ],
+  "properties": [
+    {
+      "name": "creationOccurrence",
+      "description": "In order for geometry to be transformed correctly, an Occurrence for creation needs to be specified when the Pipe is created based on geometry (e.g. a path) in another component AND (the Pipe) is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI"
+    },
+    {
+      "name": "distanceOne",
+      "description": "Gets and sets the distance for the pipe created while following the path given as input, in the same order. This value defaults to 1.0 if not set.   If the path is open, setting this to a value between 0.0 and 1.0 decides the length of the created Pipe. If the path is closed, setting this value should not be higher than 1.0 - distanceTwo. Ex: Path is made of curves A-B-C-A. The distanceOne returns and sets the length of the pipe going from A-B-C-A.   This property returns null in the case where the feature is non-parametric."
+    },
+    {
+      "name": "distanceTwo",
+      "description": "Gets and sets the distance for the pipe created while following the reversed path given as input. Before setting this value, distanceOne must be set.   If the path is open, getting this value returns null, and setting the value is ignored. If the path is closed, setting this value should not be higher than 1.0 - distanceOne. Ex: Path is made of curves A-B-C-A. The distanceTwo returns and sets the length of the pipe going from A-C-B-A.   This property returns null in the case where the feature is non-parametric."
+    },
+    {
+      "name": "isHollow",
+      "description": "Specifies if the Pipe is hollow or not.   Setting this to true will default the sectionThickness to 0.1 cm."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "operation",
+      "description": "Gets and sets the type of operation performed by the Pipe."
+    },
+    {
+      "name": "participantBodies",
+      "description": "Gets and sets the list of bodies that will participate in the feature when the operation is a cut or intersection.   If this property has not been set, the default behavior is that all bodies that are intersected by the feature will participate.   This property can return null in the case where the feature has not been fully defined so that possible intersecting bodies can be computed."
+    },
+    {
+      "name": "path",
+      "description": "Gets and sets the path to create the Pipe."
+    },
+    {
+      "name": "sectionSize",
+      "description": "Gets and sets the section size of the Pipe."
+    },
+    {
+      "name": "sectionThickness",
+      "description": "Gets and sets the section thickness of the Pipe.   Setting this will also set the isHollow setting to true."
+    },
+    {
+      "name": "sectionType",
+      "description": "Gets and sets the section type of the Pipe. The type can be: Circular, Square, Triangular."
+    },
+    {
+      "name": "targetBaseFeature",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature.   Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it."
+    }
+  ],
+  "version": "Introduced in version October 2023",
+  "method_details": {
+    "classType": {
+      "id": "PipeFeatureInput_classType",
+      "title": "PipeFeatureInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PipeFeatureInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "PipeFeatureInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.PipeFeatureInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::PipeFeatureInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version October 2023"
+    }
+  },
+  "property_details": {
+    "creationOccurrence": {
+      "id": "PipeFeatureInput_creationOccurrence",
+      "title": "PipeFeatureInput.creationOccurrence Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PipeFeatureInput.h",
+      "description": "In order for geometry to be transformed correctly, an Occurrence for creation needs to be specified when the Pipe is created based on geometry (e.g. a path) in another component AND (the Pipe) is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI",
+      "parent_class": "PipeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = pipeFeatureInput_var.creationOccurrence\n\n# Set the value of the property.\npipeFeatureInput_var.creationOccurrence = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = pipeFeatureInput_var->creationOccurrence();\n\n// Set the value of the property, where value_var is an Occurrence.\nbool returnValue = pipeFeatureInput_var->creationOccurrence(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "distanceOne": {
+      "id": "PipeFeatureInput_distanceOne",
+      "title": "PipeFeatureInput.distanceOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PipeFeatureInput.h",
+      "description": "Gets and sets the distance for the pipe created while following the path given as input, in the same order. This value defaults to 1.0 if not set. If the path is open, setting this to a value between 0.0 and 1.0 decides the length of the created Pipe. If the path is closed, setting this value should not be higher than 1.0 - distanceTwo. Ex: Path is made of curves A-B-C-A. The distanceOne returns and sets the length of the pipe going from A-B-C-A. This property returns null in the case where the feature is non-parametric.",
+      "parent_class": "PipeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = pipeFeatureInput_var.distanceOne\n\n# Set the value of the property.\npipeFeatureInput_var.distanceOne = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = pipeFeatureInput_var->distanceOne();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = pipeFeatureInput_var->distanceOne(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "distanceTwo": {
+      "id": "PipeFeatureInput_distanceTwo",
+      "title": "PipeFeatureInput.distanceTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PipeFeatureInput.h",
+      "description": "Gets and sets the distance for the pipe created while following the reversed path given as input. Before setting this value, distanceOne must be set. If the path is open, getting this value returns null, and setting the value is ignored. If the path is closed, setting this value should not be higher than 1.0 - distanceOne. Ex: Path is made of curves A-B-C-A. The distanceTwo returns and sets the length of the pipe going from A-C-B-A. This property returns null in the case where the feature is non-parametric.",
+      "parent_class": "PipeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = pipeFeatureInput_var.distanceTwo\n\n# Set the value of the property.\npipeFeatureInput_var.distanceTwo = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = pipeFeatureInput_var->distanceTwo();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = pipeFeatureInput_var->distanceTwo(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "isHollow": {
+      "id": "PipeFeatureInput_isHollow",
+      "title": "PipeFeatureInput.isHollow Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PipeFeatureInput.h",
+      "description": "Specifies if the Pipe is hollow or not. Setting this to true will default the sectionThickness to 0.1 cm.",
+      "parent_class": "PipeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = pipeFeatureInput_var.isHollow\n\n# Set the value of the property.\npipeFeatureInput_var.isHollow = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = pipeFeatureInput_var->isHollow();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = pipeFeatureInput_var->isHollow(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "isValid": {
+      "id": "PipeFeatureInput_isValid",
+      "title": "PipeFeatureInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PipeFeatureInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "PipeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = pipeFeatureInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = pipeFeatureInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "objectType": {
+      "id": "PipeFeatureInput_objectType",
+      "title": "PipeFeatureInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PipeFeatureInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "PipeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = pipeFeatureInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = pipeFeatureInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "operation": {
+      "id": "PipeFeatureInput_operation",
+      "title": "PipeFeatureInput.operation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PipeFeatureInput.h",
+      "description": "Gets and sets the type of operation performed by the Pipe.",
+      "parent_class": "PipeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = pipeFeatureInput_var.operation\n\n# Set the value of the property.\npipeFeatureInput_var.operation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureOperations propertyValue = pipeFeatureInput_var->operation();\n\n// Set the value of the property, where value_var is a FeatureOperations.\nbool returnValue = pipeFeatureInput_var->operation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "participantBodies": {
+      "id": "PipeFeatureInput_participantBodies",
+      "title": "PipeFeatureInput.participantBodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PipeFeatureInput.h",
+      "description": "Gets and sets the list of bodies that will participate in the feature when the operation is a cut or intersection. If this property has not been set, the default behavior is that all bodies that are intersected by the feature will participate. This property can return null in the case where the feature has not been fully defined so that possible intersecting bodies can be computed.",
+      "parent_class": "PipeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = pipeFeatureInput_var.participantBodies\n\n# Set the value of the property.\npipeFeatureInput_var.participantBodies = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = pipeFeatureInput_var->participantBodies();\n\n// Set the value of the property, where value_var is a BRepBody.\nbool returnValue = pipeFeatureInput_var->participantBodies(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "path": {
+      "id": "PipeFeatureInput_path",
+      "title": "PipeFeatureInput.path Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PipeFeatureInput.h",
+      "description": "Gets and sets the path to create the Pipe.",
+      "parent_class": "PipeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = pipeFeatureInput_var.path\n\n# Set the value of the property.\npipeFeatureInput_var.path = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = pipeFeatureInput_var->path();\n\n// Set the value of the property, where value_var is a Path.\nbool returnValue = pipeFeatureInput_var->path(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "sectionSize": {
+      "id": "PipeFeatureInput_sectionSize",
+      "title": "PipeFeatureInput.sectionSize Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PipeFeatureInput.h",
+      "description": "Gets and sets the section size of the Pipe.",
+      "parent_class": "PipeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = pipeFeatureInput_var.sectionSize\n\n# Set the value of the property.\npipeFeatureInput_var.sectionSize = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = pipeFeatureInput_var->sectionSize();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = pipeFeatureInput_var->sectionSize(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "sectionThickness": {
+      "id": "PipeFeatureInput_sectionThickness",
+      "title": "PipeFeatureInput.sectionThickness Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PipeFeatureInput.h",
+      "description": "Gets and sets the section thickness of the Pipe. Setting this will also set the isHollow setting to true.",
+      "parent_class": "PipeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = pipeFeatureInput_var.sectionThickness\n\n# Set the value of the property.\npipeFeatureInput_var.sectionThickness = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = pipeFeatureInput_var->sectionThickness();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = pipeFeatureInput_var->sectionThickness(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "sectionType": {
+      "id": "PipeFeatureInput_sectionType",
+      "title": "PipeFeatureInput.sectionType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PipeFeatureInput.h",
+      "description": "Gets and sets the section type of the Pipe. The type can be: Circular, Square, Triangular.",
+      "parent_class": "PipeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = pipeFeatureInput_var.sectionType\n\n# Set the value of the property.\npipeFeatureInput_var.sectionType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPipeSectionTypes propertyValue = pipeFeatureInput_var->sectionType();\n\n// Set the value of the property, where value_var is a PipeSectionTypes.\nbool returnValue = pipeFeatureInput_var->sectionType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "targetBaseFeature": {
+      "id": "PipeFeatureInput_targetBaseFeature",
+      "title": "PipeFeatureInput.targetBaseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PipeFeatureInput.h",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature. Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it.",
+      "parent_class": "PipeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = pipeFeatureInput_var.targetBaseFeature\n\n# Set the value of the property.\npipeFeatureInput_var.targetBaseFeature = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = pipeFeatureInput_var->targetBaseFeature();\n\n// Set the value of the property, where value_var is a BaseFeature.\nbool returnValue = pipeFeatureInput_var->targetBaseFeature(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    }
+  }
+}

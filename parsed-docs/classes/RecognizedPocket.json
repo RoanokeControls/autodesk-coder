@@ -1,0 +1,300 @@
+{
+  "id": "RecognizedPocket",
+  "title": "RecognizedPocket Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/PocketRecognition/RecognizedPocket.h",
+  "description": "Object that represents a single pocket (an outer boundary with depth and optional islands) which has been recognized on the model. See PocketRecognitionSelection for making a selection as in the UI",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "recognizePockets",
+      "description": "Gets all recognized pockets from the given body and returns them"
+    }
+  ],
+  "properties": [
+    {
+      "name": "bottomType",
+      "description": "Returns the type of bottom edge this pocket has."
+    },
+    {
+      "name": "boundaries",
+      "description": "Returns the outside boundaries of this pocket (in cm)."
+    },
+    {
+      "name": "depth",
+      "description": "Returns the depth of the pocket in centimeters, i.e. the positive distance from top to bottom"
+    },
+    {
+      "name": "faces",
+      "description": "Returns all faces making up the pocket."
+    },
+    {
+      "name": "isClosed",
+      "description": "Returns true if this pocket is closed, i.e. if its boundary is a single closed curve."
+    },
+    {
+      "name": "islands",
+      "description": "Returns each island inside this pocket as a separate ProfileLoop object (in cm)."
+    },
+    {
+      "name": "isThrough",
+      "description": "Returns true if this is a through pocket, i.e. if the bottom is open."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "sharedFaces",
+      "description": "Returns all faces making up the pocket, which are shared with other pockets."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Hole and Pocket Recognition API Sample",
+      "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+    }
+  ],
+  "version": "Introduced in version July 2023",
+  "property_details": {
+    "bottomType": {
+      "id": "RecognizedPocket_bottomType",
+      "title": "RecognizedPocket.bottomType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PocketRecognition/RecognizedPocket.h",
+      "description": "Returns the type of bottom edge this pocket has.",
+      "parent_class": "RecognizedPocket",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = recognizedPocket_var.bottomType",
+        "cpp": "#include \n\n// Get the value of the property.\nRecognizedPocketBottomType propertyValue = recognizedPocket_var->bottomType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "boundaries": {
+      "id": "RecognizedPocket_boundaries",
+      "title": "RecognizedPocket.boundaries Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PocketRecognition/RecognizedPocket.h",
+      "description": "Returns the outside boundaries of this pocket (in cm).",
+      "parent_class": "RecognizedPocket",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = recognizedPocket_var.boundaries",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = recognizedPocket_var->boundaries();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        }
+      ],
+      "version": "Introduced in version July 2023"
+    },
+    "depth": {
+      "id": "RecognizedPocket_depth",
+      "title": "RecognizedPocket.depth Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PocketRecognition/RecognizedPocket.h",
+      "description": "Returns the depth of the pocket in centimeters, i.e. the positive distance from top to bottom",
+      "parent_class": "RecognizedPocket",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = recognizedPocket_var.depth",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = recognizedPocket_var->depth();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        }
+      ],
+      "version": "Introduced in version July 2023"
+    },
+    "faces": {
+      "id": "RecognizedPocket_faces",
+      "title": "RecognizedPocket.faces Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PocketRecognition/RecognizedPocket.h",
+      "description": "Returns all faces making up the pocket.",
+      "parent_class": "RecognizedPocket",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = recognizedPocket_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = recognizedPocket_var->faces();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        }
+      ],
+      "version": "Introduced in version March 2025"
+    },
+    "isClosed": {
+      "id": "RecognizedPocket_isClosed",
+      "title": "RecognizedPocket.isClosed Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PocketRecognition/RecognizedPocket.h",
+      "description": "Returns true if this pocket is closed, i.e. if its boundary is a single closed curve.",
+      "parent_class": "RecognizedPocket",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = recognizedPocket_var.isClosed",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = recognizedPocket_var->isClosed();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        }
+      ],
+      "version": "Introduced in version July 2023"
+    },
+    "isThrough": {
+      "id": "RecognizedPocket_isThrough",
+      "title": "RecognizedPocket.isThrough Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PocketRecognition/RecognizedPocket.h",
+      "description": "Returns true if this is a through pocket, i.e. if the bottom is open.",
+      "parent_class": "RecognizedPocket",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = recognizedPocket_var.isThrough",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = recognizedPocket_var->isThrough();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        }
+      ],
+      "version": "Introduced in version July 2023"
+    },
+    "isValid": {
+      "id": "RecognizedPocket_isValid",
+      "title": "RecognizedPocket.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PocketRecognition/RecognizedPocket.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "RecognizedPocket",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = recognizedPocket_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = recognizedPocket_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "islands": {
+      "id": "RecognizedPocket_islands",
+      "title": "RecognizedPocket.islands Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PocketRecognition/RecognizedPocket.h",
+      "description": "Returns each island inside this pocket as a separate ProfileLoop object (in cm).",
+      "parent_class": "RecognizedPocket",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = recognizedPocket_var.islands",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = recognizedPocket_var->islands();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "objectType": {
+      "id": "RecognizedPocket_objectType",
+      "title": "RecognizedPocket.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PocketRecognition/RecognizedPocket.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "RecognizedPocket",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = recognizedPocket_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = recognizedPocket_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "sharedFaces": {
+      "id": "RecognizedPocket_sharedFaces",
+      "title": "RecognizedPocket.sharedFaces Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PocketRecognition/RecognizedPocket.h",
+      "description": "Returns all faces making up the pocket, which are shared with other pockets.",
+      "parent_class": "RecognizedPocket",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = recognizedPocket_var.sharedFaces",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = recognizedPocket_var->sharedFaces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2025"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "RecognizedPocket_classType",
+      "title": "RecognizedPocket.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PocketRecognition/RecognizedPocket.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "RecognizedPocket",
+      "syntax": {
+        "python": "returnValue = adsk.cam.RecognizedPocket.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::RecognizedPocket::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version July 2023"
+    },
+    "recognizePockets": {
+      "id": "RecognizedPocket_recognizePockets",
+      "title": "RecognizedPocket.recognizePockets Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PocketRecognition/RecognizedPocket.h",
+      "description": "Gets all recognized pockets from the given body and returns them",
+      "parent_class": "RecognizedPocket",
+      "syntax": {
+        "python": "returnValue = adsk.cam.RecognizedPocket.recognizePockets(body, attackVector)",
+        "cpp": "#include \n\nreturnValue = adsk::cam::RecognizedPocket::recognizePockets(body, attackVector);"
+      },
+      "parameters": [
+        {
+          "name": "body",
+          "type": "Base",
+          "description": "Model body on which to recognize pockets"
+        },
+        {
+          "name": "attackVector",
+          "type": "Vector3D",
+          "description": "A vector defining the orientation in which to search for pockets. This should be the vector pointing down along the tool towards its tip and the pocket floors."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        }
+      ],
+      "version": "Introduced in version July 2023"
+    }
+  }
+}

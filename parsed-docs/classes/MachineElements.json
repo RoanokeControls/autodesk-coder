@@ -1,0 +1,301 @@
+{
+  "id": "MachineElements",
+  "title": "MachineElements Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/Machine/MachineElements.h",
+  "description": "Collection of machine elements. These elements contain the properties that define the machine.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "addElement",
+      "description": "Add a new machine element to the machine."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "countByType",
+      "description": "Number of elements of specified type."
+    },
+    {
+      "name": "createMachineElementInput",
+      "description": "Create a new MachineElementInput object for the specified type. This is intedned to be used to create/add new machine elements."
+    },
+    {
+      "name": "defaultItemByType",
+      "description": "Returns the default item of the given type. In most cases this will be the element with an element ID of \"default\"."
+    },
+    {
+      "name": "item",
+      "description": "Get the element at a particular index in the collection."
+    },
+    {
+      "name": "itemById",
+      "description": "Gets an element of a specific type by ID."
+    },
+    {
+      "name": "itemsByType",
+      "description": "Gets the element of specified type."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Total number of elements in collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Additive Manufacturing MJF API Sample",
+      "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "method_details": {
+    "addElement": {
+      "id": "MachineElements_addElement",
+      "title": "MachineElements.addElement Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineElements.h",
+      "description": "Add a new machine element to the machine.",
+      "parent_class": "MachineElements",
+      "syntax": {
+        "python": "returnValue = machineElements_var.addElement(input)",
+        "cpp": "#include \n\nreturnValue = machineElements_var->addElement(input);"
+      },
+      "return_type": "MachineElement",
+      "return_description": "The created MachineElement",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "MachineElementInput",
+          "description": "A specialization of MachineElementInput class that contains the properties required to create a new machine element."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    },
+    "classType": {
+      "id": "MachineElements_classType",
+      "title": "MachineElements.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineElements.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "MachineElements",
+      "syntax": {
+        "python": "returnValue = adsk.cam.MachineElements.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::MachineElements::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    },
+    "countByType": {
+      "id": "MachineElements_countByType",
+      "title": "MachineElements.countByType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineElements.h",
+      "description": "Number of elements of specified type.",
+      "parent_class": "MachineElements",
+      "syntax": {
+        "python": "returnValue = machineElements_var.countByType(typeId)",
+        "cpp": "#include \n\nreturnValue = machineElements_var->countByType(typeId);"
+      },
+      "return_type": "uinteger",
+      "return_description": "Returns the number of elements of the requested type. Returns zero if no elements match the specified type ID.",
+      "parameters": [
+        {
+          "name": "typeId",
+          "type": "string",
+          "description": "Element typeId to filter. See staticTypeId for the desired element type."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "createMachineElementInput": {
+      "id": "MachineElements_createMachineElementInput",
+      "title": "MachineElements.createMachineElementInput Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineElements.h",
+      "description": "Create a new MachineElementInput object for the specified type. This is intedned to be used to create/add new machine elements.",
+      "parent_class": "MachineElements",
+      "syntax": {
+        "python": "returnValue = machineElements_var.createMachineElementInput(type)",
+        "cpp": "#include \n\nreturnValue = machineElements_var->createMachineElementInput(type);"
+      },
+      "return_type": "MachineElementInput",
+      "return_description": "A MachineElementInput object",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "MachineElementInputType",
+          "description": "The type of machine element to create the input for"
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    },
+    "defaultItemByType": {
+      "id": "MachineElements_defaultItemByType",
+      "title": "MachineElements.defaultItemByType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineElements.h",
+      "description": "Returns the default item of the given type. In most cases this will be the element with an element ID of \"default\".",
+      "parent_class": "MachineElements",
+      "syntax": {
+        "python": "returnValue = machineElements_var.defaultItemByType(typeId)",
+        "cpp": "#include \n\nreturnValue = machineElements_var->defaultItemByType(typeId);"
+      },
+      "return_type": "MachineElement",
+      "return_description": "Returns the specified Element or null if no matching type ID is found.",
+      "parameters": [
+        {
+          "name": "typeId",
+          "type": "string",
+          "description": "Element typeId to get the default for. See staticTypeId for the desired element type."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "item": {
+      "id": "MachineElements_item",
+      "title": "MachineElements.item Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineElements.h",
+      "description": "Get the element at a particular index in the collection.",
+      "parent_class": "MachineElements",
+      "syntax": {
+        "python": "returnValue = machineElements_var.item(index)",
+        "cpp": "#include \n\nreturnValue = machineElements_var->item(index);"
+      },
+      "return_type": "MachineElement",
+      "return_description": "Returns the element at the given index.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "integer",
+          "description": "Index of element."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "itemById": {
+      "id": "MachineElements_itemById",
+      "title": "MachineElements.itemById Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineElements.h",
+      "description": "Gets an element of a specific type by ID.",
+      "parent_class": "MachineElements",
+      "syntax": {
+        "python": "returnValue = machineElements_var.itemById(typeId, elementId)",
+        "cpp": "#include \n\nreturnValue = machineElements_var->itemById(typeId, elementId);"
+      },
+      "return_type": "MachineElement",
+      "return_description": "Returns an element of the desired type with the specified ID or null in the case where no match is found.",
+      "parameters": [
+        {
+          "name": "typeId",
+          "type": "string",
+          "description": "Element typeId to filter. See staticTypeId for the desired element type."
+        },
+        {
+          "name": "elementId",
+          "type": "string",
+          "description": "Element ID to select."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "itemsByType": {
+      "id": "MachineElements_itemsByType",
+      "title": "MachineElements.itemsByType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineElements.h",
+      "description": "Gets the element of specified type.",
+      "parent_class": "MachineElements",
+      "syntax": {
+        "python": "returnValue = machineElements_var.itemsByType(typeId)",
+        "cpp": "#include \n\nreturnValue = machineElements_var->itemsByType(typeId);"
+      },
+      "return_type": "MachineElement[]",
+      "return_description": "Returns a list of elements filtered to the specified type or an empty array if there is no match with the specified typeId.",
+      "parameters": [
+        {
+          "name": "typeId",
+          "type": "string",
+          "description": "Element typeId to filter. See staticTypeId for the desired element type."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Additive Manufacturing MJF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "MachineElements_count",
+      "title": "MachineElements.count Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineElements.h",
+      "description": "Total number of elements in collection.",
+      "parent_class": "MachineElements",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = machineElements_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = machineElements_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "MachineElements_isValid",
+      "title": "MachineElements.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineElements.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "MachineElements",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = machineElements_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = machineElements_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "MachineElements_objectType",
+      "title": "MachineElements.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineElements.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "MachineElements",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = machineElements_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = machineElements_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

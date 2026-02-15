@@ -1,0 +1,252 @@
+{
+  "id": "SketchSelection",
+  "title": "SketchSelection Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/GeometrySelections/SketchSelection.h",
+  "description": "Represents a sketch curve selection. It allows entire sketches for the input geometry. The result of the value property call may contain duplicates.",
+  "parent_class": "CurveSelection",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    }
+  ],
+  "properties": [
+    {
+      "name": "error",
+      "description": "Gets the last warning string encountered after the selection was applied to a parent."
+    },
+    {
+      "name": "hasError",
+      "description": "Gets if errors were encountered when applying the selection to a a parent."
+    },
+    {
+      "name": "hasWarning",
+      "description": "Gets if warnings were encountered when applying the selection to a parent."
+    },
+    {
+      "name": "inputGeometry",
+      "description": "Get or set the value of the input geometry. If the value originates from a component instead of an occurrence, or an occurrence outside of the CAM environment, then the subpath is checked against the CAM model tree. For some child classes, this may be the same as the value property, but might also consist of fewer elements. Valid elements depend on the capabilities of the derived class. An exception is thrown if the matching fails or the given entity does not match the expected type."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "loopType",
+      "description": "Property to get and set the desired loop type. The default is AllLoops."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "sideType",
+      "description": "Property to get and set the desired side type. The default is StartOutside."
+    },
+    {
+      "name": "value",
+      "description": "Returns the resulting value of the selection. In general, this returns the input selection, but child classes can override the return value if needed. Refer to the child classes comments for further details. The collection may contain duplicates. For OperationInputs, the return value may not be the same as for Operations, as additional geometry selected by child classes is not evaluated for OperationInputs."
+    },
+    {
+      "name": "warning",
+      "description": "Gets the last warning string encountered after the selection was applied to a parent."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Hole and Pocket Recognition API Sample",
+      "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+    }
+  ],
+  "version": "Introduced in version July 2023",
+  "method_details": {
+    "classType": {
+      "id": "SketchSelection_classType",
+      "title": "SketchSelection.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/SketchSelection.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SketchSelection",
+      "syntax": {
+        "python": "returnValue = adsk.cam.SketchSelection.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::SketchSelection::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version July 2023"
+    }
+  },
+  "property_details": {
+    "error": {
+      "id": "SketchSelection_error",
+      "title": "SketchSelection.error Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/SketchSelection.h",
+      "description": "Gets the last warning string encountered after the selection was applied to a parent.",
+      "parent_class": "SketchSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchSelection_var.error",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchSelection_var->error();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "hasError": {
+      "id": "SketchSelection_hasError",
+      "title": "SketchSelection.hasError Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/SketchSelection.h",
+      "description": "Gets if errors were encountered when applying the selection to a a parent.",
+      "parent_class": "SketchSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchSelection_var.hasError",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchSelection_var->hasError();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "hasWarning": {
+      "id": "SketchSelection_hasWarning",
+      "title": "SketchSelection.hasWarning Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/SketchSelection.h",
+      "description": "Gets if warnings were encountered when applying the selection to a parent.",
+      "parent_class": "SketchSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchSelection_var.hasWarning",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchSelection_var->hasWarning();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "inputGeometry": {
+      "id": "SketchSelection_inputGeometry",
+      "title": "SketchSelection.inputGeometry Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/SketchSelection.h",
+      "description": "Get or set the value of the input geometry. If the value originates from a component instead of an occurrence, or an occurrence outside of the CAM environment, then the subpath is checked against the CAM model tree. For some child classes, this may be the same as the value property, but might also consist of fewer elements. Valid elements depend on the capabilities of the derived class. An exception is thrown if the matching fails or the given entity does not match the expected type.",
+      "parent_class": "SketchSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchSelection_var.inputGeometry\n\n# Set the value of the property.\nsketchSelection_var.inputGeometry = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = sketchSelection_var->inputGeometry();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = sketchSelection_var->inputGeometry(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        }
+      ],
+      "version": "Introduced in version July 2023"
+    },
+    "isValid": {
+      "id": "SketchSelection_isValid",
+      "title": "SketchSelection.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/SketchSelection.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SketchSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchSelection_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchSelection_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "loopType": {
+      "id": "SketchSelection_loopType",
+      "title": "SketchSelection.loopType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/SketchSelection.h",
+      "description": "Property to get and set the desired loop type. The default is AllLoops.",
+      "parent_class": "SketchSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchSelection_var.loopType\n\n# Set the value of the property.\nsketchSelection_var.loopType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nLoopTypes propertyValue = sketchSelection_var->loopType();\n\n// Set the value of the property, where value_var is a LoopTypes.\nbool returnValue = sketchSelection_var->loopType(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        }
+      ],
+      "version": "Introduced in version July 2023"
+    },
+    "objectType": {
+      "id": "SketchSelection_objectType",
+      "title": "SketchSelection.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/SketchSelection.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SketchSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchSelection_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchSelection_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "sideType": {
+      "id": "SketchSelection_sideType",
+      "title": "SketchSelection.sideType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/SketchSelection.h",
+      "description": "Property to get and set the desired side type. The default is StartOutside.",
+      "parent_class": "SketchSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchSelection_var.sideType\n\n# Set the value of the property.\nsketchSelection_var.sideType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nSideTypes propertyValue = sketchSelection_var->sideType();\n\n// Set the value of the property, where value_var is a SideTypes.\nbool returnValue = sketchSelection_var->sideType(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        }
+      ],
+      "version": "Introduced in version July 2023"
+    },
+    "value": {
+      "id": "SketchSelection_value",
+      "title": "SketchSelection.value Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/SketchSelection.h",
+      "description": "Returns the resulting value of the selection. In general, this returns the input selection, but child classes can override the return value if needed. Refer to the child classes comments for further details. The collection may contain duplicates. For OperationInputs, the return value may not be the same as for Operations, as additional geometry selected by child classes is not evaluated for OperationInputs.",
+      "parent_class": "SketchSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchSelection_var.value",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = sketchSelection_var->value();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "warning": {
+      "id": "SketchSelection_warning",
+      "title": "SketchSelection.warning Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/SketchSelection.h",
+      "description": "Gets the last warning string encountered after the selection was applied to a parent.",
+      "parent_class": "SketchSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchSelection_var.warning",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchSelection_var->warning();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    }
+  }
+}

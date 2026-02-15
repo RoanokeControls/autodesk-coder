@@ -1,0 +1,586 @@
+{
+  "id": "NurbsSurface",
+  "title": "NurbsSurface Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Geometry/NurbsSurface.h",
+  "description": "Transient NURBS surface. A transient NURBS surface is not displayed or saved in a document. A transient NURBS surface is used as a wrapper to work with raw NURBS surface information. A transient NURBS surface is bounded by it's natural boundaries and does not support the definition of arbitrary boundaries. A NURBS surface is typically obtained from a BREPFace object, which does have boundary information. They are created statically using the create method of the NurbsSurface class.",
+  "parent_class": "Surface",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "copy",
+      "description": "Creates and returns an independent copy of this NurbsSurface object."
+    },
+    {
+      "name": "create",
+      "description": "Creates a transient NURBS surface object."
+    },
+    {
+      "name": "getData",
+      "description": "Gets the data that defines the NURBS surface."
+    },
+    {
+      "name": "set",
+      "description": "Sets the data that defines the NURBS surface."
+    },
+    {
+      "name": "transformBy",
+      "description": "Updates this surface by transforming it with a given input matrix."
+    }
+  ],
+  "properties": [
+    {
+      "name": "controlPointCountU",
+      "description": "Gets the number of control points in the U direction."
+    },
+    {
+      "name": "controlPointCountV",
+      "description": "Gets the number of control points in the V direction."
+    },
+    {
+      "name": "controlPoints",
+      "description": "Gets an array of control points from the surface."
+    },
+    {
+      "name": "degreeU",
+      "description": "Gets the degree in the U direction."
+    },
+    {
+      "name": "degreeV",
+      "description": "Gets the degree in the V direction."
+    },
+    {
+      "name": "evaluator",
+      "description": "Returns the surface evaluator."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "knotCountU",
+      "description": "Gets the knot count in the U direction."
+    },
+    {
+      "name": "knotCountV",
+      "description": "Gets thekKnot count in the V direction."
+    },
+    {
+      "name": "knotsU",
+      "description": "Get the knot vector from the U direction."
+    },
+    {
+      "name": "knotsV",
+      "description": "Get the knot vector from the V direction"
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "propertiesU",
+      "description": "Gets the properties (NurbsSurfaceProperties) of the surface in the U direction."
+    },
+    {
+      "name": "propertiesV",
+      "description": "Gets the properties (NurbsSurfaceProperties) of the surface in the V direction."
+    },
+    {
+      "name": "surfaceType",
+      "description": "Returns the surface type."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "classType": {
+      "id": "NurbsSurface_classType",
+      "title": "NurbsSurface.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "returnValue = adsk.core.NurbsSurface.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::NurbsSurface::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "copy": {
+      "id": "NurbsSurface_copy",
+      "title": "NurbsSurface.copy Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Creates and returns an independent copy of this NurbsSurface object.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "returnValue = nurbsSurface_var.copy()",
+        "cpp": "#include \n\nreturnValue = nurbsSurface_var->copy();"
+      },
+      "return_type": "NurbsSurface",
+      "return_description": "Returns a new NurbsSurface object that is a copy of this NurbsSurface object.",
+      "version": "Introduced in version August 2014"
+    },
+    "create": {
+      "id": "NurbsSurface_create",
+      "title": "NurbsSurface.create Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Creates a transient NURBS surface object.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "returnValue = adsk.core.NurbsSurface.create(degreeU, degreeV, controlPointCountU, controlPointCountV, controlPoints, knotsU, knotsV, weights, propertiesU, propertiesV)",
+        "cpp": "#include \n\nreturnValue = adsk::core::NurbsSurface::create(degreeU, degreeV, controlPointCountU, controlPointCountV, controlPoints, knotsU, knotsV, weights, propertiesU, propertiesV);"
+      },
+      "return_type": "NurbsSurface",
+      "return_description": "Returns the new NurbsSurface object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "degreeU",
+          "type": "integer",
+          "description": "The degree in the U direction."
+        },
+        {
+          "name": "degreeV",
+          "type": "integer",
+          "description": "The degree in the V direction."
+        },
+        {
+          "name": "controlPointCountU",
+          "type": "integer",
+          "description": "The number of control points in the U direction."
+        },
+        {
+          "name": "controlPointCountV",
+          "type": "integer",
+          "description": "The number of control points in the V direction."
+        },
+        {
+          "name": "controlPoints",
+          "type": "Point3D[]",
+          "description": "An array of surface control points. The length of this array must be controlPointCountU * controlPointCountV."
+        },
+        {
+          "name": "knotsU",
+          "type": "double[]",
+          "description": "The knot vector for the U direction."
+        },
+        {
+          "name": "knotsV",
+          "type": "double[]",
+          "description": "The knot vector for the V direction."
+        },
+        {
+          "name": "weights",
+          "type": "double[]",
+          "description": "An array of weights that corresponds to the control points of the surface."
+        },
+        {
+          "name": "propertiesU",
+          "type": "NurbsSurfaceProperties",
+          "description": "The properties (NurbsSurfaceProperties) of the surface in the U direction."
+        },
+        {
+          "name": "propertiesV",
+          "type": "NurbsSurfaceProperties",
+          "description": "The properties (NurbsSurfaceProperties) of the surface in the V direction."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getData": {
+      "id": "NurbsSurface_getData",
+      "title": "NurbsSurface.getData Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Gets the data that defines the NURBS surface.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "(returnValue, degreeU, degreeV, controlPointCountU, controlPointCountV, controlPoints, knotsU, knotsV, weights, propertiesU, propertiesV) = nurbsSurface_var.getData()",
+        "cpp": "#include getData(degreeU, degreeV, controlPointCountU, controlPointCountV, controlPoints, knotsU, knotsV, weights, propertiesU, propertiesV);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "degreeU",
+          "type": "integer",
+          "description": "The output degree in the U direction."
+        },
+        {
+          "name": "degreeV",
+          "type": "integer",
+          "description": "The output degree in the V direction."
+        },
+        {
+          "name": "controlPointCountU",
+          "type": "integer",
+          "description": "The output number of control points in the U direction."
+        },
+        {
+          "name": "controlPointCountV",
+          "type": "integer",
+          "description": "The output number of control points in the V direction."
+        },
+        {
+          "name": "controlPoints",
+          "type": "Point3D[]",
+          "description": "An output array of surface control points."
+        },
+        {
+          "name": "knotsU",
+          "type": "double[]",
+          "description": "The output knot vector for the U direction."
+        },
+        {
+          "name": "knotsV",
+          "type": "double[]",
+          "description": "The output knot vector for the V direction."
+        },
+        {
+          "name": "weights",
+          "type": "double[]",
+          "description": "An output array of weights that corresponds to the control points of the surface."
+        },
+        {
+          "name": "propertiesU",
+          "type": "NurbsSurfaceProperties",
+          "description": "The output properties (NurbsSurfaceProperties) of the surface in the U direction."
+        },
+        {
+          "name": "propertiesV",
+          "type": "NurbsSurfaceProperties",
+          "description": "The output properties (NurbsSurfaceProperties) of the surface in the V direction."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "set": {
+      "id": "NurbsSurface_set",
+      "title": "NurbsSurface.set Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Sets the data that defines the NURBS surface.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "returnValue = nurbsSurface_var.set(degreeU, degreeV, controlPointCountU, controlPointCountV, controlPoints, knotsU, knotsV, weights, propertiesU, propertiesV)",
+        "cpp": "#include \n\nreturnValue = nurbsSurface_var->set(degreeU, degreeV, controlPointCountU, controlPointCountV, controlPoints, knotsU, knotsV, weights, propertiesU, propertiesV);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful",
+      "parameters": [
+        {
+          "name": "degreeU",
+          "type": "integer",
+          "description": "The degree in the U direction."
+        },
+        {
+          "name": "degreeV",
+          "type": "integer",
+          "description": "The degree in the V direction."
+        },
+        {
+          "name": "controlPointCountU",
+          "type": "integer",
+          "description": "The number of control points in the U direction."
+        },
+        {
+          "name": "controlPointCountV",
+          "type": "integer",
+          "description": "The number of control points in the V direction."
+        },
+        {
+          "name": "controlPoints",
+          "type": "Point3D[]",
+          "description": "An array of surface control points."
+        },
+        {
+          "name": "knotsU",
+          "type": "double[]",
+          "description": "The knot vector for the U direction."
+        },
+        {
+          "name": "knotsV",
+          "type": "double[]",
+          "description": "The knot vector for the V direction."
+        },
+        {
+          "name": "weights",
+          "type": "double[]",
+          "description": "An array of weights that corresponds to the control points of the surface."
+        },
+        {
+          "name": "propertiesU",
+          "type": "NurbsSurfaceProperties",
+          "description": "The properties (NurbsSurfaceProperties) of the surface in the U direction."
+        },
+        {
+          "name": "propertiesV",
+          "type": "NurbsSurfaceProperties",
+          "description": "The properties (NurbsSurfaceProperties) of the surface in the V direction."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "transformBy": {
+      "id": "NurbsSurface_transformBy",
+      "title": "NurbsSurface.transformBy Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Updates this surface by transforming it with a given input matrix.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "returnValue = nurbsSurface_var.transformBy(matrix)",
+        "cpp": "#include \n\nreturnValue = nurbsSurface_var->transformBy(matrix);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the transform was successful.",
+      "parameters": [
+        {
+          "name": "matrix",
+          "type": "Matrix3D",
+          "description": "A 3D matrix that defines the transform to apply to the surface."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "controlPointCountU": {
+      "id": "NurbsSurface_controlPointCountU",
+      "title": "NurbsSurface.controlPointCountU Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Gets the number of control points in the U direction.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsSurface_var.controlPointCountU",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = nurbsSurface_var->controlPointCountU();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "controlPointCountV": {
+      "id": "NurbsSurface_controlPointCountV",
+      "title": "NurbsSurface.controlPointCountV Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Gets the number of control points in the V direction.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsSurface_var.controlPointCountV",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = nurbsSurface_var->controlPointCountV();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "controlPoints": {
+      "id": "NurbsSurface_controlPoints",
+      "title": "NurbsSurface.controlPoints Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Gets an array of control points from the surface.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsSurface_var.controlPoints",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = nurbsSurface_var->controlPoints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "degreeU": {
+      "id": "NurbsSurface_degreeU",
+      "title": "NurbsSurface.degreeU Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Gets the degree in the U direction.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsSurface_var.degreeU",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = nurbsSurface_var->degreeU();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "degreeV": {
+      "id": "NurbsSurface_degreeV",
+      "title": "NurbsSurface.degreeV Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Gets the degree in the V direction.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsSurface_var.degreeV",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = nurbsSurface_var->degreeV();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "evaluator": {
+      "id": "NurbsSurface_evaluator",
+      "title": "NurbsSurface.evaluator Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Returns the surface evaluator.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsSurface_var.evaluator",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = nurbsSurface_var->evaluator();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "NurbsSurface_isValid",
+      "title": "NurbsSurface.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsSurface_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = nurbsSurface_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "knotCountU": {
+      "id": "NurbsSurface_knotCountU",
+      "title": "NurbsSurface.knotCountU Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Gets the knot count in the U direction.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsSurface_var.knotCountU",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = nurbsSurface_var->knotCountU();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "knotCountV": {
+      "id": "NurbsSurface_knotCountV",
+      "title": "NurbsSurface.knotCountV Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Gets thekKnot count in the V direction.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsSurface_var.knotCountV",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = nurbsSurface_var->knotCountV();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "knotsU": {
+      "id": "NurbsSurface_knotsU",
+      "title": "NurbsSurface.knotsU Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Get the knot vector from the U direction.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsSurface_var.knotsU",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector propertyValue = nurbsSurface_var->knotsU();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "knotsV": {
+      "id": "NurbsSurface_knotsV",
+      "title": "NurbsSurface.knotsV Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Get the knot vector from the V direction",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsSurface_var.knotsV",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector propertyValue = nurbsSurface_var->knotsV();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "NurbsSurface_objectType",
+      "title": "NurbsSurface.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsSurface_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = nurbsSurface_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "propertiesU": {
+      "id": "NurbsSurface_propertiesU",
+      "title": "NurbsSurface.propertiesU Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Gets the properties (NurbsSurfaceProperties) of the surface in the U direction.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsSurface_var.propertiesU",
+        "cpp": "#include \n\n// Get the value of the property.\nNurbsSurfaceProperties propertyValue = nurbsSurface_var->propertiesU();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "propertiesV": {
+      "id": "NurbsSurface_propertiesV",
+      "title": "NurbsSurface.propertiesV Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Gets the properties (NurbsSurfaceProperties) of the surface in the V direction.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsSurface_var.propertiesV",
+        "cpp": "#include \n\n// Get the value of the property.\nNurbsSurfaceProperties propertyValue = nurbsSurface_var->propertiesV();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "surfaceType": {
+      "id": "NurbsSurface_surfaceType",
+      "title": "NurbsSurface.surfaceType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/NurbsSurface.h",
+      "description": "Returns the surface type.",
+      "parent_class": "NurbsSurface",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nurbsSurface_var.surfaceType",
+        "cpp": "#include \n\n// Get the value of the property.\nSurfaceTypes propertyValue = nurbsSurface_var->surfaceType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

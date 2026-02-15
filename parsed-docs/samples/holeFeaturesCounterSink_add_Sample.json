@@ -1,0 +1,12 @@
+{
+  "id": "holeFeaturesCounterSink_add_Sample",
+  "title": "holeFeatures.add with Countersink",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the holeFeatures.add method using the createCountersinkInput method and postions the hole in the center of a selected circular edge.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_holeFeatures_add_countersink(rootComp: adsk.fusion.Design.rootComponent):\n    # Have the face and edges selected.\n    face: adsk.fusion.BRepFace = _ui.selectEntity('Select a face', 'Faces').entity\n    circleEdge: adsk.fusion.BRepEdge = _ui.selectEntity('Select circular edge', 'CircularEdges').entity\n\n    # Define the needed inputs.\n    holeDiam = adsk.core.ValueInput.createByString('20 mm')\n    holeDepth = adsk.core.ValueInput.createByReal(5)\n    countersinkDiam = adsk.core.ValueInput.createByString('35 mm')\n    countersinkAngle = adsk.core.ValueInput.createByString('120 deg')\n\n    holeFeatures: adsk.fusion.HoleFeatures = rootComp.features.holeFeatures\n    input = holeFeatures.createCountersinkInput(holeDiam, countersinkDiam, countersinkAngle)\n    input.setDistanceExtent(holeDepth)\n    input.setPositionAtCenter(face, circleEdge)\n    holeFeature = holeFeatures.add(input)"
+  }
+}

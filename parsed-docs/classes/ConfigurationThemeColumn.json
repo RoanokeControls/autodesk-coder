@@ -1,0 +1,291 @@
+{
+  "id": "ConfigurationThemeColumn",
+  "title": "ConfigurationThemeColumn Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Configurations/ConfigurationThemeColumn.h",
+  "description": "Represents a theme table column in a top configuration table.",
+  "parent_class": "ConfigurationColumn",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this column from the table. Property columns cannot be deleted. If the table was obtained from a DataFile, this method will fail."
+    },
+    {
+      "name": "getCell",
+      "description": "Gets the cell in this column at the specified row index. The first row has an index of 0 and does not include the header row."
+    },
+    {
+      "name": "getCellByRowId",
+      "description": "Gets the cell in this column at the row specified by its ID."
+    },
+    {
+      "name": "getCellByRowName",
+      "description": "Gets the cell in this column at the row specified by its name."
+    }
+  ],
+  "properties": [
+    {
+      "name": "id",
+      "description": "The id of the column. This is constant and cannot be changed by the user."
+    },
+    {
+      "name": "index",
+      "description": "The index position of this column within the table. The first column is at index 0 and does not include the \"Name\" column."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentTable",
+      "description": "Returns the parent table this column is in."
+    },
+    {
+      "name": "referencedTable",
+      "description": "Returns the theme table that this column references."
+    },
+    {
+      "name": "rowCount",
+      "description": "Returns the number of rows in this column."
+    },
+    {
+      "name": "title",
+      "description": "The title of this column. In a top table, this can only be edited for suppression, visibility, parameter, and theme table columns. It behaves as read-only for all other types. In a theme table, the title of all the columns can be modified except for the column that represents the root component for materials and appearances.   If the table was obtained from a DataFile, this property behaves as read-only for all the columns."
+    }
+  ],
+  "version": "Introduced in version January 2024",
+  "method_details": {
+    "classType": {
+      "id": "ConfigurationThemeColumn_classType",
+      "title": "ConfigurationThemeColumn.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationThemeColumn.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ConfigurationThemeColumn",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ConfigurationThemeColumn.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ConfigurationThemeColumn::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2024"
+    },
+    "deleteMe": {
+      "id": "ConfigurationThemeColumn_deleteMe",
+      "title": "ConfigurationThemeColumn.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationThemeColumn.h",
+      "description": "Deletes this column from the table. Property columns cannot be deleted. If the table was obtained from a DataFile, this method will fail.",
+      "parent_class": "ConfigurationThemeColumn",
+      "syntax": {
+        "python": "returnValue = configurationThemeColumn_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = configurationThemeColumn_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the deletion was successful.",
+      "version": "Introduced in version March 2024"
+    },
+    "getCell": {
+      "id": "ConfigurationThemeColumn_getCell",
+      "title": "ConfigurationThemeColumn.getCell Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationThemeColumn.h",
+      "description": "Gets the cell in this column at the specified row index. The first row has an index of 0 and does not include the header row.",
+      "parent_class": "ConfigurationThemeColumn",
+      "syntax": {
+        "python": "returnValue = configurationThemeColumn_var.getCell(rowIndex)",
+        "cpp": "#include \n\nreturnValue = configurationThemeColumn_var->getCell(rowIndex);"
+      },
+      "return_type": "ConfigurationThemeCell",
+      "return_description": "Returns the specified cell if successful and null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "rowIndex",
+          "type": "uinteger",
+          "description": "The index of the row to return the cell for. The first row has an index of 0."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "getCellByRowId": {
+      "id": "ConfigurationThemeColumn_getCellByRowId",
+      "title": "ConfigurationThemeColumn.getCellByRowId Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationThemeColumn.h",
+      "description": "Gets the cell in this column at the row specified by its ID.",
+      "parent_class": "ConfigurationThemeColumn",
+      "syntax": {
+        "python": "returnValue = configurationThemeColumn_var.getCellByRowId(rowId)",
+        "cpp": "#include \n\nreturnValue = configurationThemeColumn_var->getCellByRowId(rowId);"
+      },
+      "return_type": "ConfigurationThemeCell",
+      "return_description": "Returns the specified cell if successful and null if the id is not found.",
+      "parameters": [
+        {
+          "name": "rowId",
+          "type": "string",
+          "description": "The ID of the row to return the cell for."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "getCellByRowName": {
+      "id": "ConfigurationThemeColumn_getCellByRowName",
+      "title": "ConfigurationThemeColumn.getCellByRowName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationThemeColumn.h",
+      "description": "Gets the cell in this column at the row specified by its name.",
+      "parent_class": "ConfigurationThemeColumn",
+      "syntax": {
+        "python": "returnValue = configurationThemeColumn_var.getCellByRowName(rowName)",
+        "cpp": "#include \n\nreturnValue = configurationThemeColumn_var->getCellByRowName(rowName);"
+      },
+      "return_type": "ConfigurationThemeCell",
+      "return_description": "Returns the specified cell if successful and null if the name is not found.",
+      "parameters": [
+        {
+          "name": "rowName",
+          "type": "string",
+          "description": "The name of the row to return the cell for."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    }
+  },
+  "property_details": {
+    "id": {
+      "id": "ConfigurationThemeColumn_id",
+      "title": "ConfigurationThemeColumn.id Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationThemeColumn.h",
+      "description": "The id of the column. This is constant and cannot be changed by the user.",
+      "parent_class": "ConfigurationThemeColumn",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationThemeColumn_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = configurationThemeColumn_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "index": {
+      "id": "ConfigurationThemeColumn_index",
+      "title": "ConfigurationThemeColumn.index Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationThemeColumn.h",
+      "description": "The index position of this column within the table. The first column is at index 0 and does not include the \"Name\" column.",
+      "parent_class": "ConfigurationThemeColumn",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationThemeColumn_var.index",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = configurationThemeColumn_var->index();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "isValid": {
+      "id": "ConfigurationThemeColumn_isValid",
+      "title": "ConfigurationThemeColumn.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationThemeColumn.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ConfigurationThemeColumn",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationThemeColumn_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = configurationThemeColumn_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "objectType": {
+      "id": "ConfigurationThemeColumn_objectType",
+      "title": "ConfigurationThemeColumn.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationThemeColumn.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ConfigurationThemeColumn",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationThemeColumn_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = configurationThemeColumn_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "parentTable": {
+      "id": "ConfigurationThemeColumn_parentTable",
+      "title": "ConfigurationThemeColumn.parentTable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationThemeColumn.h",
+      "description": "Returns the parent table this column is in.",
+      "parent_class": "ConfigurationThemeColumn",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationThemeColumn_var.parentTable",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = configurationThemeColumn_var->parentTable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "referencedTable": {
+      "id": "ConfigurationThemeColumn_referencedTable",
+      "title": "ConfigurationThemeColumn.referencedTable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationThemeColumn.h",
+      "description": "Returns the theme table that this column references.",
+      "parent_class": "ConfigurationThemeColumn",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationThemeColumn_var.referencedTable",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = configurationThemeColumn_var->referencedTable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "rowCount": {
+      "id": "ConfigurationThemeColumn_rowCount",
+      "title": "ConfigurationThemeColumn.rowCount Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationThemeColumn.h",
+      "description": "Returns the number of rows in this column.",
+      "parent_class": "ConfigurationThemeColumn",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationThemeColumn_var.rowCount",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = configurationThemeColumn_var->rowCount();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "title": {
+      "id": "ConfigurationThemeColumn_title",
+      "title": "ConfigurationThemeColumn.title Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationThemeColumn.h",
+      "description": "The title of this column. In a top table, this can only be edited for suppression, visibility, parameter, and theme table columns. It behaves as read-only for all other types. In a theme table, the title of all the columns can be modified except for the column that represents the root component for materials and appearances. If the table was obtained from a DataFile, this property behaves as read-only for all the columns.",
+      "parent_class": "ConfigurationThemeColumn",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationThemeColumn_var.title\n\n# Set the value of the property.\nconfigurationThemeColumn_var.title = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = configurationThemeColumn_var->title();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = configurationThemeColumn_var->title(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    }
+  }
+}

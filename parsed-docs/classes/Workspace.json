@@ -1,0 +1,363 @@
+{
+  "id": "Workspace",
+  "title": "Workspace Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/Workspace.h",
+  "description": "A Workspace provides access to a set of panels, which contain commands that are relevant for that particular workspace. The user can switch from one workspace to another in a product (e.g. switch from Model to Sculpt in Fusion).",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "activate",
+      "description": "Activate the workspace (assuming it is valid to do so - a SIM workspace can't be activated if Fusion is the active product)."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this workspace. Only a workspace added by the API can be deleted, (IsNative is false)."
+    }
+  ],
+  "properties": [
+    {
+      "name": "id",
+      "description": "Gets the unique Id of the workspace that can be used programmatically to find a specific workspace. It is not affected by the current language."
+    },
+    {
+      "name": "isActive",
+      "description": "Gets if the workspace is currently active - i.e. displayed"
+    },
+    {
+      "name": "isNative",
+      "description": "Gets if this workspace is native to Fusion or was created via the API."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "name",
+      "description": "Gets the visible name of the workspace as seen in the user interface. This is the localized name."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "productType",
+      "description": "Returns the name of the product this workspace is associated with."
+    },
+    {
+      "name": "resourceFolder",
+      "description": "Gets or sets the resource folder."
+    },
+    {
+      "name": "toolbarPanels",
+      "description": "Gets the collection containing the panels associated with this workspace. It's through this collection that you can add new toolbar panels."
+    },
+    {
+      "name": "toolbarTabs",
+      "description": "Gets the collection containing the tabs associated with this workspace."
+    },
+    {
+      "name": "toolClipFilename",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. the tool clip is the image shown when the user hovers the mouse over the workspace name in the workspace drop-down."
+    },
+    {
+      "name": "tooltip",
+      "description": "Gets or sets the tooltip text displayed for the workspace. This is the first line of text shown when the user hovers over the workspace name in the Fusion toolbar drop-down. This is typically the name of the workspace. This is different from the name in the that the name is a short name shown in the drop-down. The tooltip is only shown when the user hovers over the name and box appears providing more information about the workspace. For example, the name of the model workspace is \"Model\" and the tooltip is \"Model Workspace\"."
+    },
+    {
+      "name": "tooltipDescription",
+      "description": "Gets or sets the tooltip description displayed for the workspace. The tooltip description is a longer description of the workspace and is only displayed when the user hovers over the workspace name in the Fusion toolbar drop-down. The pop-up dialog that appears contains the tooltip, the tooltip description, and the tool clip which is a picture."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Customizing the UI using the API Sample",
+      "description": "Demonstrates how to work with tabs, panels, and command in the user interface. The full source for C++ and Python samples can be downloaded. This is especially useful for getting the resource files."
+    },
+    {
+      "name": "Write user interface to a file API Sample",
+      "description": "Writes out the full structure of the Fusion user interface. This information is useful when editing the user-interface, as discussed in the usre manual topic User-Interface Customization with Fusion's API"
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "activate": {
+      "id": "Workspace_activate",
+      "title": "Workspace.activate Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Workspace.h",
+      "description": "Activate the workspace (assuming it is valid to do so - a SIM workspace can't be activated if Fusion is the active product).",
+      "parent_class": "Workspace",
+      "syntax": {
+        "python": "returnValue = workspace_var.activate()",
+        "cpp": "#include \n\nreturnValue = workspace_var->activate();"
+      },
+      "return_type": "boolean",
+      "return_description": "Boolean return that indicates if the activation was successful or not.",
+      "related_samples": [
+        {
+          "name": "Additive Manufacturing MJF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "classType": {
+      "id": "Workspace_classType",
+      "title": "Workspace.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Workspace.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Workspace",
+      "syntax": {
+        "python": "returnValue = adsk.core.Workspace.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Workspace::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "deleteMe": {
+      "id": "Workspace_deleteMe",
+      "title": "Workspace.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Workspace.h",
+      "description": "Deletes this workspace. Only a workspace added by the API can be deleted, (IsNative is false).",
+      "parent_class": "Workspace",
+      "syntax": {
+        "python": "returnValue = workspace_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = workspace_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Boolean return that indicates if the deletion was successful or not.",
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "id": {
+      "id": "Workspace_id",
+      "title": "Workspace.id Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Workspace.h",
+      "description": "Gets the unique Id of the workspace that can be used programmatically to find a specific workspace. It is not affected by the current language.",
+      "parent_class": "Workspace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = workspace_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = workspace_var->id();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Write user interface to a file API Sample",
+          "description": "Writes out the full structure of the Fusion user interface. This information is useful when editing the user-interface, as discussed in the usre manual topic User-Interface Customization with Fusion's API"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isActive": {
+      "id": "Workspace_isActive",
+      "title": "Workspace.isActive Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Workspace.h",
+      "description": "Gets if the workspace is currently active - i.e. displayed",
+      "parent_class": "Workspace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = workspace_var.isActive",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = workspace_var->isActive();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isNative": {
+      "id": "Workspace_isNative",
+      "title": "Workspace.isNative Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Workspace.h",
+      "description": "Gets if this workspace is native to Fusion or was created via the API.",
+      "parent_class": "Workspace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = workspace_var.isNative",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = workspace_var->isNative();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "Workspace_isValid",
+      "title": "Workspace.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Workspace.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Workspace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = workspace_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = workspace_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "name": {
+      "id": "Workspace_name",
+      "title": "Workspace.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Workspace.h",
+      "description": "Gets the visible name of the workspace as seen in the user interface. This is the localized name.",
+      "parent_class": "Workspace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = workspace_var.name",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = workspace_var->name();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Write user interface to a file API Sample",
+          "description": "Writes out the full structure of the Fusion user interface. This information is useful when editing the user-interface, as discussed in the usre manual topic User-Interface Customization with Fusion's API"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "Workspace_objectType",
+      "title": "Workspace.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Workspace.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Workspace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = workspace_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = workspace_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "productType": {
+      "id": "Workspace_productType",
+      "title": "Workspace.productType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Workspace.h",
+      "description": "Returns the name of the product this workspace is associated with.",
+      "parent_class": "Workspace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = workspace_var.productType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = workspace_var->productType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "resourceFolder": {
+      "id": "Workspace_resourceFolder",
+      "title": "Workspace.resourceFolder Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Workspace.h",
+      "description": "Gets or sets the resource folder.",
+      "parent_class": "Workspace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = workspace_var.resourceFolder\n\n# Set the value of the property.\nworkspace_var.resourceFolder = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = workspace_var->resourceFolder();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = workspace_var->resourceFolder(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "toolClipFilename": {
+      "id": "Workspace_toolClipFilename",
+      "title": "Workspace.toolClipFilename Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Workspace.h",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. the tool clip is the image shown when the user hovers the mouse over the workspace name in the workspace drop-down.",
+      "parent_class": "Workspace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = workspace_var.toolClipFilename\n\n# Set the value of the property.\nworkspace_var.toolClipFilename = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = workspace_var->toolClipFilename();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = workspace_var->toolClipFilename(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "toolbarPanels": {
+      "id": "Workspace_toolbarPanels",
+      "title": "Workspace.toolbarPanels Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Workspace.h",
+      "description": "Gets the collection containing the panels associated with this workspace. It's through this collection that you can add new toolbar panels.",
+      "parent_class": "Workspace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = workspace_var.toolbarPanels",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = workspace_var->toolbarPanels();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "toolbarTabs": {
+      "id": "Workspace_toolbarTabs",
+      "title": "Workspace.toolbarTabs Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Workspace.h",
+      "description": "Gets the collection containing the tabs associated with this workspace.",
+      "parent_class": "Workspace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = workspace_var.toolbarTabs",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = workspace_var->toolbarTabs();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Customizing the UI using the API Sample",
+          "description": "Demonstrates how to work with tabs, panels, and command in the user interface. The full source for C++ and Python samples can be downloaded. This is especially useful for getting the resource files."
+        },
+        {
+          "name": "Write user interface to a file API Sample",
+          "description": "Writes out the full structure of the Fusion user interface. This information is useful when editing the user-interface, as discussed in the usre manual topic User-Interface Customization with Fusion's API"
+        }
+      ],
+      "version": "Introduced in version August 2019"
+    },
+    "tooltip": {
+      "id": "Workspace_tooltip",
+      "title": "Workspace.tooltip Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Workspace.h",
+      "description": "Gets or sets the tooltip text displayed for the workspace. This is the first line of text shown when the user hovers over the workspace name in the Fusion toolbar drop-down. This is typically the name of the workspace. This is different from the name in the that the name is a short name shown in the drop-down. The tooltip is only shown when the user hovers over the name and box appears providing more information about the workspace. For example, the name of the model workspace is \"Model\" and the tooltip is \"Model Workspace\".",
+      "parent_class": "Workspace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = workspace_var.tooltip\n\n# Set the value of the property.\nworkspace_var.tooltip = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = workspace_var->tooltip();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = workspace_var->tooltip(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2017"
+    },
+    "tooltipDescription": {
+      "id": "Workspace_tooltipDescription",
+      "title": "Workspace.tooltipDescription Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Workspace.h",
+      "description": "Gets or sets the tooltip description displayed for the workspace. The tooltip description is a longer description of the workspace and is only displayed when the user hovers over the workspace name in the Fusion toolbar drop-down. The pop-up dialog that appears contains the tooltip, the tooltip description, and the tool clip which is a picture.",
+      "parent_class": "Workspace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = workspace_var.tooltipDescription\n\n# Set the value of the property.\nworkspace_var.tooltipDescription = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = workspace_var->tooltipDescription();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = workspace_var->tooltipDescription(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2017"
+    }
+  }
+}

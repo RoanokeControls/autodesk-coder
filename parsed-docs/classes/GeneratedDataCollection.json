@@ -1,0 +1,165 @@
+{
+  "id": "GeneratedDataCollection",
+  "title": "GeneratedDataCollection Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/GeneratedData/GeneratedDataCollection.h",
+  "description": "Collection can hold multiple GeneratedData results for a particular operation, setup or folder. In the case of folders and setups, the data associated with the child operations is not added to the collection. In most cases folders and setups will not have any items in the collection, whereas most operations will only have one.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Gets the desired generated data at the given index."
+    },
+    {
+      "name": "itemByIdentifier",
+      "description": "Gets the desired generated data. Generated result objects are unique for a given identifier, but may contain any number of child objects."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of items in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Additive Manufacturing FFF API Sample",
+      "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+    },
+    {
+      "name": "Additive Manufacturing SLA API Sample",
+      "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+    }
+  ],
+  "version": "Introduced in version July 2023",
+  "method_details": {
+    "classType": {
+      "id": "GeneratedDataCollection_classType",
+      "title": "GeneratedDataCollection.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeneratedData/GeneratedDataCollection.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "GeneratedDataCollection",
+      "syntax": {
+        "python": "returnValue = adsk.cam.GeneratedDataCollection.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::GeneratedDataCollection::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version July 2023"
+    },
+    "item": {
+      "id": "GeneratedDataCollection_item",
+      "title": "GeneratedDataCollection.item Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeneratedData/GeneratedDataCollection.h",
+      "description": "Gets the desired generated data at the given index.",
+      "parent_class": "GeneratedDataCollection",
+      "syntax": {
+        "python": "returnValue = generatedDataCollection_var.item(index)",
+        "cpp": "#include \n\nreturnValue = generatedDataCollection_var->item(index);"
+      },
+      "parameters": [
+        {
+          "name": "index",
+          "type": "integer",
+          "description": ""
+        }
+      ],
+      "version": "Introduced in version July 2023"
+    },
+    "itemByIdentifier": {
+      "id": "GeneratedDataCollection_itemByIdentifier",
+      "title": "GeneratedDataCollection.itemByIdentifier Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeneratedData/GeneratedDataCollection.h",
+      "description": "Gets the desired generated data. Generated result objects are unique for a given identifier, but may contain any number of child objects.",
+      "parent_class": "GeneratedDataCollection",
+      "syntax": {
+        "python": "returnValue = generatedDataCollection_var.itemByIdentifier(resultType)",
+        "cpp": "#include \n\nreturnValue = generatedDataCollection_var->itemByIdentifier(resultType);"
+      },
+      "parameters": [
+        {
+          "name": "resultType",
+          "type": "GeneratedDataType",
+          "description": ""
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Additive Manufacturing FFF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+        },
+        {
+          "name": "Additive Manufacturing SLA API Sample",
+          "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+        }
+      ],
+      "version": "Introduced in version July 2023"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "GeneratedDataCollection_count",
+      "title": "GeneratedDataCollection.count Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeneratedData/GeneratedDataCollection.h",
+      "description": "The number of items in the collection.",
+      "parent_class": "GeneratedDataCollection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = generatedDataCollection_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = generatedDataCollection_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "isValid": {
+      "id": "GeneratedDataCollection_isValid",
+      "title": "GeneratedDataCollection.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeneratedData/GeneratedDataCollection.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "GeneratedDataCollection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = generatedDataCollection_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = generatedDataCollection_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "objectType": {
+      "id": "GeneratedDataCollection_objectType",
+      "title": "GeneratedDataCollection.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeneratedData/GeneratedDataCollection.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "GeneratedDataCollection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = generatedDataCollection_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = generatedDataCollection_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    }
+  }
+}

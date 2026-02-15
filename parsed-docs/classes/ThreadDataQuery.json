@@ -1,0 +1,406 @@
+{
+  "id": "ThreadDataQuery",
+  "title": "ThreadDataQuery Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/ThreadDataQuery.h",
+  "description": "This object provides methods to query the thread data contained in the XML files in ThreadData folder within the Fusion install folder. You can use the queried values to create a ThreadInfo object that is then used to create a thread feature.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "allClasses",
+      "description": "Returns and array/list of all the available classes for a thread type of a given thread designation."
+    },
+    {
+      "name": "allDesignations",
+      "description": "returns an array/list of all the available thread designations for a thread type of a given size. Valid thread types and sizes and be obtained by using the allThreadTypes and allSizes functions."
+    },
+    {
+      "name": "allSizes",
+      "description": "Returns an array/list of all the available thread sizes for a given thread type. You can use the allThreadTypes property to get the available thread types."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "create",
+      "description": "Static method to create a new ThreadDataQuery object. The ThreadDataQuery object is a utility object that provides methods to query for the valid thread definitions defined in Fusion. This object provides similar functionality as the Thread and Hole command dialogs to find valid thread types, designations and classes which can be used to create thread and tapped hole features."
+    },
+    {
+      "name": "recommendThreadData",
+      "description": "Method that gets the recommended thread data for a given cylinder diameter. This method is only valid for straight threads and will fail for tapered threads."
+    },
+    {
+      "name": "threadTypeCustomName",
+      "description": "Method that returns the custom name for a given thread type. The custom name is the localized name of the thread type using the current language specified for Fusion."
+    },
+    {
+      "name": "threadTypeUnit",
+      "description": "Method that returns the unit for a given thread type."
+    }
+  ],
+  "properties": [
+    {
+      "name": "allThreadTypes",
+      "description": "This method returns an array of all the available thread types (families). The type names are always English. This English name should be used in the other methods that take the type as an input argument. If you need to display the type name to the user, you can use the threadTypeCustomName method To get the localized name."
+    },
+    {
+      "name": "defaultInchThreadType",
+      "description": "Gets the default thread type for inch threads."
+    },
+    {
+      "name": "defaultMetricThreadType",
+      "description": "Gets the default thread type for metric threads."
+    },
+    {
+      "name": "isTapered",
+      "description": "Returns if this ThreadDataQuery was created to query for standard or tapered threads."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Thread Feature API Sample",
+      "description": "Demonstrates creating a new thread feature."
+    }
+  ],
+  "version": "Introduced in version January 2015",
+  "method_details": {
+    "allClasses": {
+      "id": "ThreadDataQuery_allClasses",
+      "title": "ThreadDataQuery.allClasses Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadDataQuery.h",
+      "description": "Returns and array/list of all the available classes for a thread type of a given thread designation.",
+      "parent_class": "ThreadDataQuery",
+      "syntax": {
+        "python": "returnValue = threadDataQuery_var.allClasses(isInternal, threadType, designation)",
+        "cpp": "#include \n\nreturnValue = threadDataQuery_var->allClasses(isInternal, threadType, designation);"
+      },
+      "return_type": "string[]",
+      "return_description": "Returns the specified thread classes or empty array/list if an invalid thread type or designation was specified.",
+      "parameters": [
+        {
+          "name": "isInternal",
+          "type": "boolean",
+          "description": "Indicates if the thread is an internal or external thread."
+        },
+        {
+          "name": "threadType",
+          "type": "string",
+          "description": "The thread type of the thread class you want."
+        },
+        {
+          "name": "designation",
+          "type": "string",
+          "description": "The thread designation of the thread class you want."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Thread Feature API Sample",
+          "description": "Demonstrates creating a new thread feature."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "allDesignations": {
+      "id": "ThreadDataQuery_allDesignations",
+      "title": "ThreadDataQuery.allDesignations Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadDataQuery.h",
+      "description": "returns an array/list of all the available thread designations for a thread type of a given size. Valid thread types and sizes and be obtained by using the allThreadTypes and allSizes functions.",
+      "parent_class": "ThreadDataQuery",
+      "syntax": {
+        "python": "returnValue = threadDataQuery_var.allDesignations(threadType, size)",
+        "cpp": "#include \n\nreturnValue = threadDataQuery_var->allDesignations(threadType, size);"
+      },
+      "return_type": "string[]",
+      "return_description": "Returns the specified thread designations or empty array/list if an invalid thread type or size was specified.",
+      "parameters": [
+        {
+          "name": "threadType",
+          "type": "string",
+          "description": "The thread type of the designation you want."
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "description": "The thread size of the designation you want."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Thread Feature API Sample",
+          "description": "Demonstrates creating a new thread feature."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "allSizes": {
+      "id": "ThreadDataQuery_allSizes",
+      "title": "ThreadDataQuery.allSizes Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadDataQuery.h",
+      "description": "Returns an array/list of all the available thread sizes for a given thread type. You can use the allThreadTypes property to get the available thread types.",
+      "parent_class": "ThreadDataQuery",
+      "syntax": {
+        "python": "returnValue = threadDataQuery_var.allSizes(threadType)",
+        "cpp": "#include \n\nreturnValue = threadDataQuery_var->allSizes(threadType);"
+      },
+      "return_type": "string[]",
+      "return_description": "Returns the specified thread sizes or an empty array/list if an invalid thread type was specified.",
+      "parameters": [
+        {
+          "name": "threadType",
+          "type": "string",
+          "description": "Specify the thread type."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Thread Feature API Sample",
+          "description": "Demonstrates creating a new thread feature."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "classType": {
+      "id": "ThreadDataQuery_classType",
+      "title": "ThreadDataQuery.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadDataQuery.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ThreadDataQuery",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ThreadDataQuery.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ThreadDataQuery::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2015"
+    },
+    "create": {
+      "id": "ThreadDataQuery_create",
+      "title": "ThreadDataQuery.create Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadDataQuery.h",
+      "description": "Static method to create a new ThreadDataQuery object. The ThreadDataQuery object is a utility object that provides methods to query for the valid thread definitions defined in Fusion. This object provides similar functionality as the Thread and Hole command dialogs to find valid thread types, designations and classes which can be used to create thread and tapped hole features.",
+      "parent_class": "ThreadDataQuery",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = adsk.fusion.ThreadDataQuery.create()\n\n# Uses optional arguments.\nreturnValue = adsk.fusion.ThreadDataQuery.create(isTapered)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = adsk::fusion::ThreadDataQuery::create();\n\n// Uses optional arguments.\nreturnValue = adsk::fusion::ThreadDataQuery::create(isTapered);"
+      },
+      "return_type": "ThreadDataQuery",
+      "return_description": "Returns a ThreadDataQuery object.",
+      "parameters": [
+        {
+          "name": "isTapered",
+          "type": "boolean",
+          "description": "Specifies if you want to query for standard or tapered holes.   This is an optional argument whose default value is False."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    },
+    "recommendThreadData": {
+      "id": "ThreadDataQuery_recommendThreadData",
+      "title": "ThreadDataQuery.recommendThreadData Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadDataQuery.h",
+      "description": "Method that gets the recommended thread data for a given cylinder diameter. This method is only valid for straight threads and will fail for tapered threads.",
+      "parent_class": "ThreadDataQuery",
+      "syntax": {
+        "python": "(returnValue, designation, threadClass) = threadDataQuery_var.recommendThreadData(modelDiameter, isInternal, threadType)",
+        "cpp": "#include recommendThreadData(modelDiameter, isInternal, threadType, designation, threadClass);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "modelDiameter",
+          "type": "double",
+          "description": "The diameter of the cylinder the thread will be placed on. The units are centimeters."
+        },
+        {
+          "name": "isInternal",
+          "type": "boolean",
+          "description": "Indicates if the thread is an internal or external thread."
+        },
+        {
+          "name": "threadType",
+          "type": "string",
+          "description": "Specifies the thread type to query the thread data."
+        },
+        {
+          "name": "designation",
+          "type": "string",
+          "description": "The output thread designation."
+        },
+        {
+          "name": "threadClass",
+          "type": "string",
+          "description": "The output thread class."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "threadTypeCustomName": {
+      "id": "ThreadDataQuery_threadTypeCustomName",
+      "title": "ThreadDataQuery.threadTypeCustomName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadDataQuery.h",
+      "description": "Method that returns the custom name for a given thread type. The custom name is the localized name of the thread type using the current language specified for Fusion.",
+      "parent_class": "ThreadDataQuery",
+      "syntax": {
+        "python": "returnValue = threadDataQuery_var.threadTypeCustomName(threadType)",
+        "cpp": "#include \n\nreturnValue = threadDataQuery_var->threadTypeCustomName(threadType);"
+      },
+      "return_type": "string",
+      "return_description": "Returns the specified custom name or an empty string if an invalid thread type was specified.",
+      "parameters": [
+        {
+          "name": "threadType",
+          "type": "string",
+          "description": "The thread type you want to get the custom name for."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "threadTypeUnit": {
+      "id": "ThreadDataQuery_threadTypeUnit",
+      "title": "ThreadDataQuery.threadTypeUnit Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadDataQuery.h",
+      "description": "Method that returns the unit for a given thread type.",
+      "parent_class": "ThreadDataQuery",
+      "syntax": {
+        "python": "returnValue = threadDataQuery_var.threadTypeUnit(threadType)",
+        "cpp": "#include \n\nreturnValue = threadDataQuery_var->threadTypeUnit(threadType);"
+      },
+      "return_type": "string",
+      "return_description": "Returns the specified unit or empty string if an invalid thread type was specified.",
+      "parameters": [
+        {
+          "name": "threadType",
+          "type": "string",
+          "description": "The thread type you want to get the thread unit type for."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    }
+  },
+  "property_details": {
+    "allThreadTypes": {
+      "id": "ThreadDataQuery_allThreadTypes",
+      "title": "ThreadDataQuery.allThreadTypes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadDataQuery.h",
+      "description": "This method returns an array of all the available thread types (families). The type names are always English. This English name should be used in the other methods that take the type as an input argument. If you need to display the type name to the user, you can use the threadTypeCustomName method To get the localized name.",
+      "parent_class": "ThreadDataQuery",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadDataQuery_var.allThreadTypes",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector propertyValue = threadDataQuery_var->allThreadTypes();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Thread Feature API Sample",
+          "description": "Demonstrates creating a new thread feature."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "defaultInchThreadType": {
+      "id": "ThreadDataQuery_defaultInchThreadType",
+      "title": "ThreadDataQuery.defaultInchThreadType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadDataQuery.h",
+      "description": "Gets the default thread type for inch threads.",
+      "parent_class": "ThreadDataQuery",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadDataQuery_var.defaultInchThreadType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = threadDataQuery_var->defaultInchThreadType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "defaultMetricThreadType": {
+      "id": "ThreadDataQuery_defaultMetricThreadType",
+      "title": "ThreadDataQuery.defaultMetricThreadType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadDataQuery.h",
+      "description": "Gets the default thread type for metric threads.",
+      "parent_class": "ThreadDataQuery",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadDataQuery_var.defaultMetricThreadType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = threadDataQuery_var->defaultMetricThreadType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isTapered": {
+      "id": "ThreadDataQuery_isTapered",
+      "title": "ThreadDataQuery.isTapered Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadDataQuery.h",
+      "description": "Returns if this ThreadDataQuery was created to query for standard or tapered threads.",
+      "parent_class": "ThreadDataQuery",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadDataQuery_var.isTapered",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = threadDataQuery_var->isTapered();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "isValid": {
+      "id": "ThreadDataQuery_isValid",
+      "title": "ThreadDataQuery.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadDataQuery.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ThreadDataQuery",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadDataQuery_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = threadDataQuery_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "objectType": {
+      "id": "ThreadDataQuery_objectType",
+      "title": "ThreadDataQuery.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadDataQuery.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ThreadDataQuery",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadDataQuery_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = threadDataQuery_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    }
+  }
+}

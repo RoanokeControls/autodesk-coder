@@ -1,0 +1,512 @@
+{
+  "id": "ConstructionPlaneInput",
+  "title": "ConstructionPlaneInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
+  "description": "A ConstructionPlaneInput is a throwaway object used to create a ConstructionPlane The usage pattern is: a. create a ConstructionPlaneInput (ConstructionPlanes.CreateInput) b. call one of the member functions to specify how the ConstructionPlane is created c. create the ConstructionPlane (call ConstructionPlanes.Add) d. stop referencing the ConstructionPlaneInput (so it gets deleted).",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "setByAngle",
+      "description": "This input method is for creating a construction plane through an edge, axis or line at a specified angle. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component."
+    },
+    {
+      "name": "setByDistanceOnPath",
+      "description": "This input method is for creating a construction plane normal to, and at specified distance along, a path defined by an edge or sketch profile. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component."
+    },
+    {
+      "name": "setByOffset",
+      "description": "This input method is for creating a construction plane that is offset from a planar face or construction plane at a specified distance. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component."
+    },
+    {
+      "name": "setByOffsetThroughPoint",
+      "description": "Defines a construction plane that is offset from a planar face or construction plane and whose offset distance is defined by a vertex, sketch point, or construction point where the plane passes through the point."
+    },
+    {
+      "name": "setByPlane",
+      "description": "This input method is for creating a non-parametric construction plane positioned in space as defined by the input Plane object.   This method of defining a construction plane is only valid when working in the direct modeling mode. This is not valid when working in the parametric modeling mode and will fail."
+    },
+    {
+      "name": "setByTangent",
+      "description": "This input method is for creating a construction plane tangent to a cylindrical or conical face at a specified point. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component."
+    },
+    {
+      "name": "setByTangentAtPoint",
+      "description": "This input method is for creating a construction plane tangent to a face and aligned to a point. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component."
+    },
+    {
+      "name": "setByThreePoints",
+      "description": "This input method is for creating a construction plane through three points that define a triangle. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component."
+    },
+    {
+      "name": "setByTwoEdges",
+      "description": "This input method is for creating a construction plane that passes through two coplanar linear entities or axes. Defines a plane by specifying two coplanar linear entities. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component."
+    },
+    {
+      "name": "setByTwoPlanes",
+      "description": "This input method is for creating a construction plane at the midpoint between two planar faces or construction planes. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component."
+    }
+  ],
+  "properties": [
+    {
+      "name": "creationOccurrence",
+      "description": "In order for geometry to be transformed correctly, an Occurrence for creation needs to be specified when the ConstructionPlane is created based on geometry (e.g. a planarEntity) in another component AND (the ConstructionPlane) is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI"
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "targetBaseOrFormFeature",
+      "description": "When creating a construction plane that is owned by a base or form feature, set this property to the base or form feature you want to associate the new construction plane with. By default, this is null, meaning it will not be associated with a base or form feature.   Because of a current limitation, if you want to create a construction plane associated with a base or form feature, you must set this property AND call the startEdit method of the base or form feature, create the feature, and then call the finishEdit method of the base or form feature. The base or form feature must be in an \"edit\" state to be able to add any additional items to it."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Construction Plane API Sample",
+      "description": "Demonstrates creating construction plane by different ways."
+    },
+    {
+      "name": "Loft Feature API Sample",
+      "description": "Demonstrates creating a new loft feature."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "classType": {
+      "id": "ConstructionPlaneInput_classType",
+      "title": "ConstructionPlaneInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ConstructionPlaneInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ConstructionPlaneInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ConstructionPlaneInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "setByAngle": {
+      "id": "ConstructionPlaneInput_setByAngle",
+      "title": "ConstructionPlaneInput.setByAngle Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
+      "description": "This input method is for creating a construction plane through an edge, axis or line at a specified angle. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionPlaneInput",
+      "syntax": {
+        "python": "returnValue = constructionPlaneInput_var.setByAngle(linearEntity, angle, planarEntity)",
+        "cpp": "#include \n\nreturnValue = constructionPlaneInput_var->setByAngle(linearEntity, angle, planarEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionPlaneInput is successful",
+      "parameters": [
+        {
+          "name": "linearEntity",
+          "type": "Base",
+          "description": "The axis about which to rotate the plane"
+        },
+        {
+          "name": "angle",
+          "type": "ValueInput",
+          "description": "The angle at which to create the plane"
+        },
+        {
+          "name": "planarEntity",
+          "type": "Base",
+          "description": "The planar face or construction plane the angle is measured from."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Plane API Sample",
+          "description": "Demonstrates creating construction plane by different ways."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByDistanceOnPath": {
+      "id": "ConstructionPlaneInput_setByDistanceOnPath",
+      "title": "ConstructionPlaneInput.setByDistanceOnPath Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
+      "description": "This input method is for creating a construction plane normal to, and at specified distance along, a path defined by an edge or sketch profile. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionPlaneInput",
+      "syntax": {
+        "python": "returnValue = constructionPlaneInput_var.setByDistanceOnPath(pathEntity, distance)",
+        "cpp": "#include \n\nreturnValue = constructionPlaneInput_var->setByDistanceOnPath(pathEntity, distance);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionPlaneInput is successful.",
+      "parameters": [
+        {
+          "name": "pathEntity",
+          "type": "Base",
+          "description": "The path can be an edge, sketch curve, or a path of multiple entities."
+        },
+        {
+          "name": "distance",
+          "type": "ValueInput",
+          "description": "The distance is a value from 0 to 1 indicating the position along the path where 0 is at the start and 1 is at the end."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Plane API Sample",
+          "description": "Demonstrates creating construction plane by different ways."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByOffset": {
+      "id": "ConstructionPlaneInput_setByOffset",
+      "title": "ConstructionPlaneInput.setByOffset Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
+      "description": "This input method is for creating a construction plane that is offset from a planar face or construction plane at a specified distance. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionPlaneInput",
+      "syntax": {
+        "python": "returnValue = constructionPlaneInput_var.setByOffset(planarEntity, offset)",
+        "cpp": "#include \n\nreturnValue = constructionPlaneInput_var->setByOffset(planarEntity, offset);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionPlaneInput is successful.",
+      "parameters": [
+        {
+          "name": "planarEntity",
+          "type": "Base",
+          "description": "A plane, planar face or construction plane from which to create the offset plane"
+        },
+        {
+          "name": "offset",
+          "type": "ValueInput",
+          "description": "ValueInput object that specifies the offset distance for the plane"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Plane API Sample",
+          "description": "Demonstrates creating construction plane by different ways."
+        },
+        {
+          "name": "Loft Feature API Sample",
+          "description": "Demonstrates creating a new loft feature."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByOffsetThroughPoint": {
+      "id": "ConstructionPlaneInput_setByOffsetThroughPoint",
+      "title": "ConstructionPlaneInput.setByOffsetThroughPoint Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
+      "description": "Defines a construction plane that is offset from a planar face or construction plane and whose offset distance is defined by a vertex, sketch point, or construction point where the plane passes through the point.",
+      "parent_class": "ConstructionPlaneInput",
+      "syntax": {
+        "python": "returnValue = constructionPlaneInput_var.setByOffsetThroughPoint(planarEntity, point)",
+        "cpp": "#include \n\nreturnValue = constructionPlaneInput_var->setByOffsetThroughPoint(planarEntity, point);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if construction plane definition is successful.",
+      "parameters": [
+        {
+          "name": "planarEntity",
+          "type": "Base",
+          "description": "A planar BRepFace, ConstructionPlane, or Plane object that the new construction plane will be offset from. A Plane object is only valid in a direct-edit design or a base feature. In that case a non-parametric result is created."
+        },
+        {
+          "name": "point",
+          "type": "Base",
+          "description": "A BRepVertex, SketchPoint, ConstructionPoint, or Point3D that defines the offset distance. A Point3D is only valid in a direct-edit design. In that case a non-parametric result is created."
+        }
+      ],
+      "version": "Introduced in version January 2025"
+    },
+    "setByPlane": {
+      "id": "ConstructionPlaneInput_setByPlane",
+      "title": "ConstructionPlaneInput.setByPlane Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
+      "description": "This input method is for creating a non-parametric construction plane positioned in space as defined by the input Plane object. This method of defining a construction plane is only valid when working in the direct modeling mode. This is not valid when working in the parametric modeling mode and will fail.",
+      "parent_class": "ConstructionPlaneInput",
+      "syntax": {
+        "python": "returnValue = constructionPlaneInput_var.setByPlane(plane)",
+        "cpp": "#include \n\nreturnValue = constructionPlaneInput_var->setByPlane(plane);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the construction plane definition is successful.",
+      "parameters": [
+        {
+          "name": "plane",
+          "type": "Plane",
+          "description": "A transient plane object"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByTangent": {
+      "id": "ConstructionPlaneInput_setByTangent",
+      "title": "ConstructionPlaneInput.setByTangent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
+      "description": "This input method is for creating a construction plane tangent to a cylindrical or conical face at a specified point. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionPlaneInput",
+      "syntax": {
+        "python": "returnValue = constructionPlaneInput_var.setByTangent(tangentFace, angle, planarEntity)",
+        "cpp": "#include \n\nreturnValue = constructionPlaneInput_var->setByTangent(tangentFace, angle, planarEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionPlaneInput is successful",
+      "parameters": [
+        {
+          "name": "tangentFace",
+          "type": "BRepFace",
+          "description": "A cylindrical or conical face to create the plane tangent to"
+        },
+        {
+          "name": "angle",
+          "type": "ValueInput",
+          "description": "The angle relative to the planarEntity input at which to create the tangent plane"
+        },
+        {
+          "name": "planarEntity",
+          "type": "Base",
+          "description": "The planar face or construction plane the tangent is measured from."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Plane API Sample",
+          "description": "Demonstrates creating construction plane by different ways."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByTangentAtPoint": {
+      "id": "ConstructionPlaneInput_setByTangentAtPoint",
+      "title": "ConstructionPlaneInput.setByTangentAtPoint Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
+      "description": "This input method is for creating a construction plane tangent to a face and aligned to a point. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionPlaneInput",
+      "syntax": {
+        "python": "returnValue = constructionPlaneInput_var.setByTangentAtPoint(tangentFace, pointEntity)",
+        "cpp": "#include \n\nreturnValue = constructionPlaneInput_var->setByTangentAtPoint(tangentFace, pointEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionPlaneInput is successful.",
+      "parameters": [
+        {
+          "name": "tangentFace",
+          "type": "BRepFace",
+          "description": "A face to create the plane tangent to"
+        },
+        {
+          "name": "pointEntity",
+          "type": "Base",
+          "description": "A construction point, sketch point or vertex the tangent plane aligns to. This point need not lie on the tangent face."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Plane API Sample",
+          "description": "Demonstrates creating construction plane by different ways."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByThreePoints": {
+      "id": "ConstructionPlaneInput_setByThreePoints",
+      "title": "ConstructionPlaneInput.setByThreePoints Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
+      "description": "This input method is for creating a construction plane through three points that define a triangle. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionPlaneInput",
+      "syntax": {
+        "python": "returnValue = constructionPlaneInput_var.setByThreePoints(pointEntityOne, pointEntityTwo, pointEntityThree)",
+        "cpp": "#include \n\nreturnValue = constructionPlaneInput_var->setByThreePoints(pointEntityOne, pointEntityTwo, pointEntityThree);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionPlaneInput is successful. This will fail if the points do not form a triangle (no two points can be coincident and all three cannot be colinear).",
+      "parameters": [
+        {
+          "name": "pointEntityOne",
+          "type": "Base",
+          "description": "The first construction point, sketch point or vertex in the triangle"
+        },
+        {
+          "name": "pointEntityTwo",
+          "type": "Base",
+          "description": "The second construction point, sketch point or vertex in the triangle"
+        },
+        {
+          "name": "pointEntityThree",
+          "type": "Base",
+          "description": "The third construction point, sketch point or vertex in the triangle"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Plane API Sample",
+          "description": "Demonstrates creating construction plane by different ways."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByTwoEdges": {
+      "id": "ConstructionPlaneInput_setByTwoEdges",
+      "title": "ConstructionPlaneInput.setByTwoEdges Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
+      "description": "This input method is for creating a construction plane that passes through two coplanar linear entities or axes. Defines a plane by specifying two coplanar linear entities. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionPlaneInput",
+      "syntax": {
+        "python": "returnValue = constructionPlaneInput_var.setByTwoEdges(linearEntityOne, linearEntityTwo)",
+        "cpp": "#include \n\nreturnValue = constructionPlaneInput_var->setByTwoEdges(linearEntityOne, linearEntityTwo);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionPlaneInput is successful. This will fail if the two linear entities are not coplanar.",
+      "parameters": [
+        {
+          "name": "linearEntityOne",
+          "type": "Base",
+          "description": "The first of two coplanar linear entities to define the plane"
+        },
+        {
+          "name": "linearEntityTwo",
+          "type": "Base",
+          "description": "The second of two coplanar linear entities to define the plane"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Plane API Sample",
+          "description": "Demonstrates creating construction plane by different ways."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByTwoPlanes": {
+      "id": "ConstructionPlaneInput_setByTwoPlanes",
+      "title": "ConstructionPlaneInput.setByTwoPlanes Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
+      "description": "This input method is for creating a construction plane at the midpoint between two planar faces or construction planes. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionPlaneInput",
+      "syntax": {
+        "python": "returnValue = constructionPlaneInput_var.setByTwoPlanes(planarEntityOne, planarEntityTwo)",
+        "cpp": "#include \n\nreturnValue = constructionPlaneInput_var->setByTwoPlanes(planarEntityOne, planarEntityTwo);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionPlaneInput is successful. This will fail if the two planes are co-planar.",
+      "parameters": [
+        {
+          "name": "planarEntityOne",
+          "type": "Base",
+          "description": "The first planar face or construction plane to create a bisecting plane between"
+        },
+        {
+          "name": "planarEntityTwo",
+          "type": "Base",
+          "description": "The second planar face or construction plane to create a bisecting plane between"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Plane API Sample",
+          "description": "Demonstrates creating construction plane by different ways."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "creationOccurrence": {
+      "id": "ConstructionPlaneInput_creationOccurrence",
+      "title": "ConstructionPlaneInput.creationOccurrence Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
+      "description": "In order for geometry to be transformed correctly, an Occurrence for creation needs to be specified when the ConstructionPlane is created based on geometry (e.g. a planarEntity) in another component AND (the ConstructionPlane) is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI",
+      "parent_class": "ConstructionPlaneInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlaneInput_var.creationOccurrence\n\n# Set the value of the property.\nconstructionPlaneInput_var.creationOccurrence = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPlaneInput_var->creationOccurrence();\n\n// Set the value of the property, where value_var is an Occurrence.\nbool returnValue = constructionPlaneInput_var->creationOccurrence(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "ConstructionPlaneInput_isValid",
+      "title": "ConstructionPlaneInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ConstructionPlaneInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlaneInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = constructionPlaneInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "ConstructionPlaneInput_objectType",
+      "title": "ConstructionPlaneInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ConstructionPlaneInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlaneInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = constructionPlaneInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "targetBaseOrFormFeature": {
+      "id": "ConstructionPlaneInput_targetBaseOrFormFeature",
+      "title": "ConstructionPlaneInput.targetBaseOrFormFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
+      "description": "When creating a construction plane that is owned by a base or form feature, set this property to the base or form feature you want to associate the new construction plane with. By default, this is null, meaning it will not be associated with a base or form feature. Because of a current limitation, if you want to create a construction plane associated with a base or form feature, you must set this property AND call the startEdit method of the base or form feature, create the feature, and then call the finishEdit method of the base or form feature. The base or form feature must be in an \"edit\" state to be able to add any additional items to it.",
+      "parent_class": "ConstructionPlaneInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlaneInput_var.targetBaseOrFormFeature\n\n# Set the value of the property.\nconstructionPlaneInput_var.targetBaseOrFormFeature = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPlaneInput_var->targetBaseOrFormFeature();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = constructionPlaneInput_var->targetBaseOrFormFeature(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "BaseFeature Sample",
+          "description": "Creates a new base feature."
+        }
+      ],
+      "version": "Introduced in version May 2016"
+    }
+  }
+}

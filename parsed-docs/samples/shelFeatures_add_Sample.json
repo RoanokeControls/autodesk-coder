@@ -1,0 +1,12 @@
+{
+  "id": "shelFeatures_add_Sample",
+  "title": "shellFeatures.add",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates creating a shell feature.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_shellFeatures_add(rootComp: adsk.fusion.Component):\n    face = _ui.selectEntity('Select a face to open as part of a shell feature.', 'Faces').entity\n    bodiesAndFaces = adsk.core.ObjectCollection.create()\n    bodiesAndFaces.add(face)\n\n    shellFeatures = rootComp.features.shellFeatures\n    input: adsk.fusion.ShellFeatureInput = shellFeatures.createInput(bodiesAndFaces, True)\n    input.insideThickness = adsk.core.ValueInput.createByReal(0.25)\n    shellFeature = shellFeatures.add(input)"
+  }
+}

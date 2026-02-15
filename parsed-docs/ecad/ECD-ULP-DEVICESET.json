@@ -1,0 +1,71 @@
+{
+  "id": "ECD-ULP-DEVICESET",
+  "title": "UL_DEVICESET",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "activedevice",
+      "type": "UL_DEVICE (see note)"
+    },
+    {
+      "name": "area",
+      "type": "UL_AREA"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "headline",
+      "type": "string (see note)"
+    },
+    {
+      "name": "library",
+      "type": "string"
+    },
+    {
+      "name": "libraryurn",
+      "type": "string (see note)"
+    },
+    {
+      "name": "libraryversion",
+      "type": "int (see note)"
+    },
+    {
+      "name": "locallymodified",
+      "type": "int (see note)"
+    },
+    {
+      "name": "librarylocallymodified",
+      "type": "int (see note)"
+    },
+    {
+      "name": "name",
+      "type": "string (DEVICE_NAME_LENGTH)"
+    },
+    {
+      "name": "prefix",
+      "type": "string (DEVICE_PREFIX_LENGTH)"
+    },
+    {
+      "name": "urn",
+      "type": "string (see note)"
+    },
+    {
+      "name": "value",
+      "type": "string (\"On\" or \"Off\")"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "devices()",
+      "type": "UL_DEVICE"
+    },
+    {
+      "name": "gates()",
+      "type": "UL_GATE"
+    }
+  ],
+  "content": "# UL_DEVICESET\n\n## Data members\n\n| | |\n| --- | --- |\n| activedevice | UL_DEVICE (see note) |\n| area | UL_AREA |\n| description | string |\n| headline | string (see note) |\n| library | string |\n| libraryurn | string (see note) |\n| libraryversion | int (see note) |\n| locallymodified | int (see note) |\n| librarylocallymodified | int (see note) |\n| name | string (DEVICE_NAME_LENGTH) |\n| prefix | string (DEVICE_PREFIX_LENGTH) |\n| urn | string (see note) |\n| value | string (\"On\" or \"Off\") |\n\n## Loop members\n\n| | |\n| --- | --- |\n| devices() | UL_DEVICE |\n| gates() | UL_GATE |\n\nSee also UL_DEVICE, UL_LIBRARY, UL_PART\n\n## Constants\n\n| | |\n| --- | --- |\n| DEVICE_NAME_LENGTH | max. recommended length of a device name (used in formatted output only) |\n| DEVICE_PREFIX_LENGTH | max. recommended length of a device prefix (used in formatted output only) |\n\n## Notes\n\nIf a deviceset is currently edited in a library editor window, the *activedevice* member returns the active device, selected by a PACKAGE command. It can be used as a boolean function to check the availability of such an *activedevice* (see example below).\n\nThe *description* member returns the complete descriptive text as defined with the DESCRIPTION command, while the *headline* member returns only the first line of the description, without any HTML tags. When using the *description* text keep in mind that it may contain newline characters ('\\n').\n\nThe *urn* contains a unique identifier for this deviceset, of the form `urn:adsk.eagle:component:123/4`, where the portion after the / is the version of the deviceset. To get the base URN (without version), use `urnbase()`; to get the version, use `urnversion()`.\n\nThe *libraryurn* and *libraryversion* are only applicable if this UL_DEVICESET comes from a managed library. If not, *libraryurn* will be the empty string and *libraryversion* will be -1.\n\nThe *locallymodified* member will be 0, if this UL_DEVICESET doesn't have local modifications, or 1, if this UL_DEVICESET has local modifications.\nThe *librarylocallymodified* member will be 0 (if this UL_DEVICESET doesn't come from a locally-modified library) or 1 (if this UL_DEVICESET comes from a locally-modified library).\n\n## Example\n\n```\nlibrary(L) {\n L.devicesets(D) {\n printf(\"Device set: %s, Description: %s\\n\", D.name, D.description);\n D.gates(G) {\n printf(\"\\t%s\\n\", G.name);\n }\n }\n }\n\nif (deviceset)\n deviceset(DS) {\n if (DS.activedevice)\n printf(\"Active Device: %s\\n\", DS.activedevice.name);\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

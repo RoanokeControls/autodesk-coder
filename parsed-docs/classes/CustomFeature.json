@@ -1,0 +1,555 @@
+{
+  "id": "CustomFeature",
+  "title": "CustomFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/CustomFeature.h",
+  "description": "Object that represents an existing CustomFeature feature in a design.",
+  "parent_class": "Feature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    },
+    {
+      "name": "setStartAndEndFeatures",
+      "description": "Sets the start and end features that will be grouped by the custom feature. The \"features\" in this case can be any object that is visible in the timeline, such as modeling features, sketches, and construction geometry. The input features and all features between them in the timeline will be grouped by the custom feature.   The current start and end features can be determined by using the CustomFeature.features property and getting the first and last feature from the returned array."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "customNamedValues",
+      "description": "Returns the set of custom named values associated with this custom feature. These are a set of named values that are saved with this feature that you can use to save any additional information that is useful for you in managing the custom feature. For example, you might have a setting like an option for different shapes that the user chooses when creating the feature that are not represented as a parameter. You can use this to save the chosen value so when the feature is computed or edited you can use the value originally chosen. During an edit, you might allow the user to edit this setting and you can update the saved custom value."
+    },
+    {
+      "name": "definition",
+      "description": "Gets the CustomFeatureDefinition object associated with this custom feature. null/None is returned in the case where the definition does not exist, which is typically a result of the owning add-in not being loaded."
+    },
+    {
+      "name": "dependencies",
+      "description": "Returns the collection of dependencies for this custom feature. You can use the collection to query, add, and remove dependencies."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "features",
+      "description": "Returns the features combined by this custom feature. The start and end features and all of the features between them in the timeline are returned."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parameters",
+      "description": "Returns the list of parameters associated with this custom feature."
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    }
+  ],
+  "version": "Introduced in version January 2021",
+  "property_details": {
+    "assemblyContext": {
+      "id": "CustomFeature_assemblyContext",
+      "title": "CustomFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "attributes": {
+      "id": "CustomFeature_attributes",
+      "title": "CustomFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "baseFeature": {
+      "id": "CustomFeature_baseFeature",
+      "title": "CustomFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "bodies": {
+      "id": "CustomFeature_bodies",
+      "title": "CustomFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "customNamedValues": {
+      "id": "CustomFeature_customNamedValues",
+      "title": "CustomFeature.customNamedValues Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Returns the set of custom named values associated with this custom feature. These are a set of named values that are saved with this feature that you can use to save any additional information that is useful for you in managing the custom feature. For example, you might have a setting like an option for different shapes that the user chooses when creating the feature that are not represented as a parameter. You can use this to save the chosen value so when the feature is computed or edited you can use the value originally chosen. During an edit, you might allow the user to edit this setting and you can update the saved custom value.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.customNamedValues",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeature_var->customNamedValues();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "definition": {
+      "id": "CustomFeature_definition",
+      "title": "CustomFeature.definition Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Gets the CustomFeatureDefinition object associated with this custom feature. null/None is returned in the case where the definition does not exist, which is typically a result of the owning add-in not being loaded.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.definition",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeature_var->definition();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "dependencies": {
+      "id": "CustomFeature_dependencies",
+      "title": "CustomFeature.dependencies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Returns the collection of dependencies for this custom feature. You can use the collection to query, add, and remove dependencies.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.dependencies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeature_var->dependencies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "entityToken": {
+      "id": "CustomFeature_entityToken",
+      "title": "CustomFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "errorOrWarningMessage": {
+      "id": "CustomFeature_errorOrWarningMessage",
+      "title": "CustomFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "faces": {
+      "id": "CustomFeature_faces",
+      "title": "CustomFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "features": {
+      "id": "CustomFeature_features",
+      "title": "CustomFeature.features Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Returns the features combined by this custom feature. The start and end features and all of the features between them in the timeline are returned.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.features",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = customFeature_var->features();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "healthState": {
+      "id": "CustomFeature_healthState",
+      "title": "CustomFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = customFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "isParametric": {
+      "id": "CustomFeature_isParametric",
+      "title": "CustomFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "isSuppressed": {
+      "id": "CustomFeature_isSuppressed",
+      "title": "CustomFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.isSuppressed\n\n# Set the value of the property.\ncustomFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = customFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "isValid": {
+      "id": "CustomFeature_isValid",
+      "title": "CustomFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "linkedFeatures": {
+      "id": "CustomFeature_linkedFeatures",
+      "title": "CustomFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "name": {
+      "id": "CustomFeature_name",
+      "title": "CustomFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.name\n\n# Set the value of the property.\ncustomFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = customFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "nativeObject": {
+      "id": "CustomFeature_nativeObject",
+      "title": "CustomFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "objectType": {
+      "id": "CustomFeature_objectType",
+      "title": "CustomFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "parameters": {
+      "id": "CustomFeature_parameters",
+      "title": "CustomFeature.parameters Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Returns the list of parameters associated with this custom feature.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.parameters",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeature_var->parameters();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "parentComponent": {
+      "id": "CustomFeature_parentComponent",
+      "title": "CustomFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "timelineObject": {
+      "id": "CustomFeature_timelineObject",
+      "title": "CustomFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "CustomFeature_classType",
+      "title": "CustomFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.CustomFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::CustomFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2021"
+    },
+    "createForAssemblyContext": {
+      "id": "CustomFeature_createForAssemblyContext",
+      "title": "CustomFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "returnValue = customFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = customFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "CustomFeature",
+      "return_description": "Returns the proxy object or null if this is not the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version January 2021"
+    },
+    "deleteMe": {
+      "id": "CustomFeature_deleteMe",
+      "title": "CustomFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "returnValue = customFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = customFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version January 2021"
+    },
+    "dissolve": {
+      "id": "CustomFeature_dissolve",
+      "title": "CustomFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "returnValue = customFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = customFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version January 2021"
+    },
+    "setStartAndEndFeatures": {
+      "id": "CustomFeature_setStartAndEndFeatures",
+      "title": "CustomFeature.setStartAndEndFeatures Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeature.h",
+      "description": "Sets the start and end features that will be grouped by the custom feature. The \"features\" in this case can be any object that is visible in the timeline, such as modeling features, sketches, and construction geometry. The input features and all features between them in the timeline will be grouped by the custom feature. The current start and end features can be determined by using the CustomFeature.features property and getting the first and last feature from the returned array.",
+      "parent_class": "CustomFeature",
+      "syntax": {
+        "python": "returnValue = customFeature_var.setStartAndEndFeatures(startFeature, endFeature)",
+        "cpp": "#include \n\nreturnValue = customFeature_var->setStartAndEndFeatures(startFeature, endFeature);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting the start and end features was successful.",
+      "parameters": [
+        {
+          "name": "startFeature",
+          "type": "Base",
+          "description": "The first feature in the timeline to be grouped by the custom feature. The start and the end features can be null which will result in moving all of the features out of the custom feature. This is useful in cases where you need to modify the inputs to a feature contained within a custom feature. You can move the features out of the custom feature, move the timeline marker as needed to edit the features, and then use this method again to add them back into the custom feature."
+        },
+        {
+          "name": "endFeature",
+          "type": "Base",
+          "description": "The last feature in the timeline that will be grouped by the custom feature. This can be the same feature that is provided as the startFeature argument for the case where the custom feature contains a single feature."
+        }
+      ],
+      "version": "Introduced in version July 2021"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "Sketches_addToFormBaseOrFeature_Sample",
+  "title": "Sketches.addToBaseOrFormFeature",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the Sketches.addToBaseOrFormFeature method.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_Sketches_addToBaseOrFeature(rootComp: adsk.fusion.Design.rootComponent):\n    # Create a base feature\n    baseFeats = rootComp.features.baseFeatures\n    targetBaseOrFormFeature  = baseFeats.add()\n\n    # To make changes to a base feature, it must be in an edit state.\n    targetBaseOrFormFeature.startEdit()\n\n    # Create a sketch in the base feature on the XY base plane.\n    sketches = rootComp.sketches\n    includeFaceEdges = True\n    sketch = sketches.addToBaseOrFormFeature(rootComp.xYConstructionPlane, targetBaseOrFormFeature, includeFaceEdges)\n\n    # Exit from the base Feature.\n    targetBaseOrFormFeature.finishEdit()"
+  }
+}

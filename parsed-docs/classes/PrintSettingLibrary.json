@@ -1,0 +1,508 @@
+{
+  "id": "PrintSettingLibrary",
+  "title": "PrintSettingLibrary Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+  "description": "The PrintSettingLibrary provides access to PrintSettings. Using this object you can import PrintSettings and get existing PrintSettings using either URL or query to find specific PrintSetting.",
+  "parent_class": "CAMLibrary",
+  "methods": [
+    {
+      "name": "childAssetURLs",
+      "description": "Get all assets under given URL."
+    },
+    {
+      "name": "childFolderURLs",
+      "description": "Get all library folders under given URL."
+    },
+    {
+      "name": "childPrintSettings",
+      "description": "Get all PrintSettings by the given parent folder URL. Returns null, if the URL does not exist."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createFolder",
+      "description": "Create a new folder in the library. Create the folder under given parent URL with given folder name. Add counting suffix, in case a folder with given name already exists. Throw an error if given URL does not point to a valid folder or the URL is read-only. Also throws an error if given folder name is empty."
+    },
+    {
+      "name": "createQuery",
+      "description": "Creates a new PrintSettingQuery that is used to query the library for PrintSettings matching the query."
+    },
+    {
+      "name": "deleteAsset",
+      "description": "Delete asset by URL from the library. Throw an error if given URL does not point to a valid asset or the URL is read-only."
+    },
+    {
+      "name": "deleteFolder",
+      "description": "Delete folder by URL from the library. Any content of the folder will also be deleted. Throw an error if given URL does not point to a valid folder or the URL is read-only."
+    },
+    {
+      "name": "displayName",
+      "description": "Get the localized display name for a given URL. The URL must point to a folder."
+    },
+    {
+      "name": "doesPathExist",
+      "description": "Checks if the given URL points to an existing folder or asset in the library."
+    },
+    {
+      "name": "importPrintSetting",
+      "description": "Import a given PrintSetting at a specific location. The PrintSetting will be stored in the library. Throws an error if the given URL is read-only."
+    },
+    {
+      "name": "printSettingAtURL",
+      "description": "Get a specific PrintSetting by the given URL. Returns null if the URL does not exist."
+    },
+    {
+      "name": "updatePrintSetting",
+      "description": "Update a PrintSetting in the library. The library overrides the URL by given PrintSetting. Throws an error if the URL does not already point to an existing printSetting."
+    },
+    {
+      "name": "urlByLocation",
+      "description": "Get the URL for a given LibraryLocations."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assetTypeName",
+      "description": "Get the name of the asset type which can be accessed by the library."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Additive Manufacturing FFF API Sample",
+      "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+    },
+    {
+      "name": "Additive Manufacturing MJF API Sample",
+      "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+    },
+    {
+      "name": "Additive Manufacturing SLA API Sample",
+      "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "property_details": {
+    "assetTypeName": {
+      "id": "PrintSettingLibrary_assetTypeName",
+      "title": "PrintSettingLibrary.assetTypeName Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+      "description": "Get the name of the asset type which can be accessed by the library.",
+      "parent_class": "PrintSettingLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = printSettingLibrary_var.assetTypeName",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = printSettingLibrary_var->assetTypeName();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "PrintSettingLibrary_isValid",
+      "title": "PrintSettingLibrary.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "PrintSettingLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = printSettingLibrary_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = printSettingLibrary_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "PrintSettingLibrary_objectType",
+      "title": "PrintSettingLibrary.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "PrintSettingLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = printSettingLibrary_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = printSettingLibrary_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  },
+  "method_details": {
+    "childAssetURLs": {
+      "id": "PrintSettingLibrary_childAssetURLs",
+      "title": "PrintSettingLibrary.childAssetURLs Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+      "description": "Get all assets under given URL.",
+      "parent_class": "PrintSettingLibrary",
+      "syntax": {
+        "python": "returnValue = printSettingLibrary_var.childAssetURLs(url)",
+        "cpp": "#include \n\nreturnValue = printSettingLibrary_var->childAssetURLs(url);"
+      },
+      "return_type": "URL[]",
+      "return_description": "Returns list of asset URLs at given location.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the parent folder."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "childFolderURLs": {
+      "id": "PrintSettingLibrary_childFolderURLs",
+      "title": "PrintSettingLibrary.childFolderURLs Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+      "description": "Get all library folders under given URL.",
+      "parent_class": "PrintSettingLibrary",
+      "syntax": {
+        "python": "returnValue = printSettingLibrary_var.childFolderURLs(url)",
+        "cpp": "#include \n\nreturnValue = printSettingLibrary_var->childFolderURLs(url);"
+      },
+      "return_type": "URL[]",
+      "return_description": "Returns list of folder URLs at given location.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the parent folder."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "childPrintSettings": {
+      "id": "PrintSettingLibrary_childPrintSettings",
+      "title": "PrintSettingLibrary.childPrintSettings Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+      "description": "Get all PrintSettings by the given parent folder URL. Returns null, if the URL does not exist.",
+      "parent_class": "PrintSettingLibrary",
+      "syntax": {
+        "python": "returnValue = printSettingLibrary_var.childPrintSettings(url)",
+        "cpp": "#include \n\nreturnValue = printSettingLibrary_var->childPrintSettings(url);"
+      },
+      "return_type": "PrintSetting[]",
+      "return_description": "Returns the PrintSetting for a valid URL, returns null otherwise.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL of the folder to get PrintSettings from."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Additive Manufacturing FFF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+        },
+        {
+          "name": "Additive Manufacturing MJF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+        },
+        {
+          "name": "Additive Manufacturing SLA API Sample",
+          "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "classType": {
+      "id": "PrintSettingLibrary_classType",
+      "title": "PrintSettingLibrary.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "PrintSettingLibrary",
+      "syntax": {
+        "python": "returnValue = adsk.cam.PrintSettingLibrary.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::PrintSettingLibrary::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    },
+    "createFolder": {
+      "id": "PrintSettingLibrary_createFolder",
+      "title": "PrintSettingLibrary.createFolder Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+      "description": "Create a new folder in the library. Create the folder under given parent URL with given folder name. Add counting suffix, in case a folder with given name already exists. Throw an error if given URL does not point to a valid folder or the URL is read-only. Also throws an error if given folder name is empty.",
+      "parent_class": "PrintSettingLibrary",
+      "syntax": {
+        "python": "returnValue = printSettingLibrary_var.createFolder(parentUrl, folderName)",
+        "cpp": "#include \n\nreturnValue = printSettingLibrary_var->createFolder(parentUrl, folderName);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL to the newly created folder",
+      "parameters": [
+        {
+          "name": "parentUrl",
+          "type": "URL",
+          "description": "The parent URL for the folder to be created."
+        },
+        {
+          "name": "folderName",
+          "type": "string",
+          "description": "Name of the new folder to be created. Must not be empty."
+        }
+      ],
+      "version": "Introduced in version May 2023"
+    },
+    "createQuery": {
+      "id": "PrintSettingLibrary_createQuery",
+      "title": "PrintSettingLibrary.createQuery Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+      "description": "Creates a new PrintSettingQuery that is used to query the library for PrintSettings matching the query.",
+      "parent_class": "PrintSettingLibrary",
+      "syntax": {
+        "python": "returnValue = printSettingLibrary_var.createQuery(location)",
+        "cpp": "#include \n\nreturnValue = printSettingLibrary_var->createQuery(location);"
+      },
+      "return_type": "PrintSettingQuery",
+      "return_description": "Returns a new PrintSettingQuery. The query is predefined by given parameter.",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "LibraryLocations",
+          "description": "The location specifies the LibraryLocations where to search for in the PrintSetting library."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "deleteAsset": {
+      "id": "PrintSettingLibrary_deleteAsset",
+      "title": "PrintSettingLibrary.deleteAsset Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+      "description": "Delete asset by URL from the library. Throw an error if given URL does not point to a valid asset or the URL is read-only.",
+      "parent_class": "PrintSettingLibrary",
+      "syntax": {
+        "python": "returnValue = printSettingLibrary_var.deleteAsset(url)",
+        "cpp": "#include \n\nreturnValue = printSettingLibrary_var->deleteAsset(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if asset was deleted successfully, false otherwise",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the asset that should be removed."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "deleteFolder": {
+      "id": "PrintSettingLibrary_deleteFolder",
+      "title": "PrintSettingLibrary.deleteFolder Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+      "description": "Delete folder by URL from the library. Any content of the folder will also be deleted. Throw an error if given URL does not point to a valid folder or the URL is read-only.",
+      "parent_class": "PrintSettingLibrary",
+      "syntax": {
+        "python": "returnValue = printSettingLibrary_var.deleteFolder(url)",
+        "cpp": "#include \n\nreturnValue = printSettingLibrary_var->deleteFolder(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if folder was deleted successfully, false otherwise",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the folder that should be removed."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "displayName": {
+      "id": "PrintSettingLibrary_displayName",
+      "title": "PrintSettingLibrary.displayName Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+      "description": "Get the localized display name for a given URL. The URL must point to a folder.",
+      "parent_class": "PrintSettingLibrary",
+      "syntax": {
+        "python": "returnValue = printSettingLibrary_var.displayName(url)",
+        "cpp": "#include \n\nreturnValue = printSettingLibrary_var->displayName(url);"
+      },
+      "return_type": "string",
+      "return_description": "Returns localized display name for the folder. Returns empty string for invalid URL.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL that defines the path to a folder."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "doesPathExist": {
+      "id": "PrintSettingLibrary_doesPathExist",
+      "title": "PrintSettingLibrary.doesPathExist Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+      "description": "Checks if the given URL points to an existing folder or asset in the library.",
+      "parent_class": "PrintSettingLibrary",
+      "syntax": {
+        "python": "returnValue = printSettingLibrary_var.doesPathExist(url)",
+        "cpp": "#include \n\nreturnValue = printSettingLibrary_var->doesPathExist(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the URL points to an existing folder or asset, false otherwise.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to be checked."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    },
+    "importPrintSetting": {
+      "id": "PrintSettingLibrary_importPrintSetting",
+      "title": "PrintSettingLibrary.importPrintSetting Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+      "description": "Import a given PrintSetting at a specific location. The PrintSetting will be stored in the library. Throws an error if the given URL is read-only.",
+      "parent_class": "PrintSettingLibrary",
+      "syntax": {
+        "python": "returnValue = printSettingLibrary_var.importPrintSetting(printSetting, destinationUrl, printSettingName)",
+        "cpp": "#include \n\nreturnValue = printSettingLibrary_var->importPrintSetting(printSetting, destinationUrl, printSettingName);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL of the newly imported PrintSetting, or null if the import failed.",
+      "parameters": [
+        {
+          "name": "printSetting",
+          "type": "PrintSetting",
+          "description": "The PrintSetting that should be imported."
+        },
+        {
+          "name": "destinationUrl",
+          "type": "URL",
+          "description": "The URL to the folder where to save the PrintSetting."
+        },
+        {
+          "name": "printSettingName",
+          "type": "string",
+          "description": "The name that should be assigned to imported PrintSetting. The name can be extended if there already exists a PrintSetting at given location to ensure a unique name."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "printSettingAtURL": {
+      "id": "PrintSettingLibrary_printSettingAtURL",
+      "title": "PrintSettingLibrary.printSettingAtURL Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+      "description": "Get a specific PrintSetting by the given URL. Returns null if the URL does not exist.",
+      "parent_class": "PrintSettingLibrary",
+      "syntax": {
+        "python": "returnValue = printSettingLibrary_var.printSettingAtURL(url)",
+        "cpp": "#include \n\nreturnValue = printSettingLibrary_var->printSettingAtURL(url);"
+      },
+      "return_type": "PrintSetting",
+      "return_description": "Returns the PrintSetting for a valid URL, returns null otherwise.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the PrintSetting to be loaded."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "updatePrintSetting": {
+      "id": "PrintSettingLibrary_updatePrintSetting",
+      "title": "PrintSettingLibrary.updatePrintSetting Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+      "description": "Update a PrintSetting in the library. The library overrides the URL by given PrintSetting. Throws an error if the URL does not already point to an existing printSetting.",
+      "parent_class": "PrintSettingLibrary",
+      "syntax": {
+        "python": "returnValue = printSettingLibrary_var.updatePrintSetting(url, printSetting)",
+        "cpp": "#include \n\nreturnValue = printSettingLibrary_var->updatePrintSetting(url, printSetting);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if asset was updated successfully, false otherwise.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the existing asset in the library that should be updated."
+        },
+        {
+          "name": "printSetting",
+          "type": "PrintSetting",
+          "description": "The PrintSetting that should be persisted."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "urlByLocation": {
+      "id": "PrintSettingLibrary_urlByLocation",
+      "title": "PrintSettingLibrary.urlByLocation Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSettingLibrary.h",
+      "description": "Get the URL for a given LibraryLocations.",
+      "parent_class": "PrintSettingLibrary",
+      "syntax": {
+        "python": "returnValue = printSettingLibrary_var.urlByLocation(location)",
+        "cpp": "#include \n\nreturnValue = printSettingLibrary_var->urlByLocation(location);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL for given location.",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "LibraryLocations",
+          "description": "The LibraryLocations to be converted into an URL."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Additive Manufacturing FFF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+        },
+        {
+          "name": "Additive Manufacturing MJF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+        },
+        {
+          "name": "Additive Manufacturing SLA API Sample",
+          "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

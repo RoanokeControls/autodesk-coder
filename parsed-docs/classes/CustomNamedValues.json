@@ -1,0 +1,235 @@
+{
+  "id": "CustomNamedValues",
+  "title": "CustomNamedValues Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/CustomNamedValues.h",
+  "description": "A collection of named values. The values are strings that Fusion stores but can be anything you choose. If you have several things you need to save you can choose to combine the data into a JSON or XML representation and save it as a single custom value or create a new custom value or each unique value you want to store. Fusion doesn't care what the value is or what it represents but only saves and provides access to it.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "addOrSetValue",
+      "description": "Adds or updates a value. If the specified ID does not exist, a new named value is added. If the ID does exist, the named value is updated with the specified value."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "idByIndex",
+      "description": "Function that returns the name of a value specified by its index."
+    },
+    {
+      "name": "isExistingValue",
+      "description": "Function that returns if a value with the specified ID exists or not."
+    },
+    {
+      "name": "remove",
+      "description": "Removes the specified value from the collection."
+    },
+    {
+      "name": "value",
+      "description": "Function that returns the specified value given its ID."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of values in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version July 2021",
+  "method_details": {
+    "addOrSetValue": {
+      "id": "CustomNamedValues_addOrSetValue",
+      "title": "CustomNamedValues.addOrSetValue Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomNamedValues.h",
+      "description": "Adds or updates a value. If the specified ID does not exist, a new named value is added. If the ID does exist, the named value is updated with the specified value.",
+      "parent_class": "CustomNamedValues",
+      "syntax": {
+        "python": "returnValue = customNamedValues_var.addOrSetValue(id, value)",
+        "cpp": "#include \n\nreturnValue = customNamedValues_var->addOrSetValue(id, value);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true is successful and false if it failed.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The ID of the value to create or change."
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "description": "The string to assign to the value."
+        }
+      ],
+      "version": "Introduced in version July 2021"
+    },
+    "classType": {
+      "id": "CustomNamedValues_classType",
+      "title": "CustomNamedValues.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomNamedValues.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CustomNamedValues",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.CustomNamedValues.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::CustomNamedValues::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version July 2021"
+    },
+    "idByIndex": {
+      "id": "CustomNamedValues_idByIndex",
+      "title": "CustomNamedValues.idByIndex Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomNamedValues.h",
+      "description": "Function that returns the name of a value specified by its index.",
+      "parent_class": "CustomNamedValues",
+      "syntax": {
+        "python": "returnValue = customNamedValues_var.idByIndex(index)",
+        "cpp": "#include \n\nreturnValue = customNamedValues_var->idByIndex(index);"
+      },
+      "return_type": "string",
+      "return_description": "Returns the ID of the specified item or asserts if an out of bounds index is used.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return the name of. The first item in the collection has an index of 0 and the last item is the count of this collection minus 1."
+        }
+      ],
+      "version": "Introduced in version July 2021"
+    },
+    "isExistingValue": {
+      "id": "CustomNamedValues_isExistingValue",
+      "title": "CustomNamedValues.isExistingValue Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomNamedValues.h",
+      "description": "Function that returns if a value with the specified ID exists or not.",
+      "parent_class": "CustomNamedValues",
+      "syntax": {
+        "python": "returnValue = customNamedValues_var.isExistingValue(id)",
+        "cpp": "#include \n\nreturnValue = customNamedValues_var->isExistingValue(id);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if a value with the ID exists.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The ID of the value to check if it exists."
+        }
+      ],
+      "version": "Introduced in version July 2021"
+    },
+    "remove": {
+      "id": "CustomNamedValues_remove",
+      "title": "CustomNamedValues.remove Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomNamedValues.h",
+      "description": "Removes the specified value from the collection.",
+      "parent_class": "CustomNamedValues",
+      "syntax": {
+        "python": "returnValue = customNamedValues_var.remove(id)",
+        "cpp": "#include \n\nreturnValue = customNamedValues_var->remove(id);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the value was successfully removed and false if it failed. Failure is typically because the specified ID does not exist within the collection.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The ID of the value to remove."
+        }
+      ],
+      "version": "Introduced in version July 2021"
+    },
+    "value": {
+      "id": "CustomNamedValues_value",
+      "title": "CustomNamedValues.value Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomNamedValues.h",
+      "description": "Function that returns the specified value given its ID.",
+      "parent_class": "CustomNamedValues",
+      "syntax": {
+        "python": "returnValue = customNamedValues_var.value(id)",
+        "cpp": "#include \n\nreturnValue = customNamedValues_var->value(id);"
+      },
+      "return_type": "string",
+      "return_description": "Returns the value or an empty string if the specified ID was not found.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The ID of the value, which was assigned when the value was created."
+        }
+      ],
+      "version": "Introduced in version July 2021"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "CustomNamedValues_count",
+      "title": "CustomNamedValues.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomNamedValues.h",
+      "description": "The number of values in the collection.",
+      "parent_class": "CustomNamedValues",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customNamedValues_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = customNamedValues_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "isValid": {
+      "id": "CustomNamedValues_isValid",
+      "title": "CustomNamedValues.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomNamedValues.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CustomNamedValues",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customNamedValues_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customNamedValues_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "objectType": {
+      "id": "CustomNamedValues_objectType",
+      "title": "CustomNamedValues.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomNamedValues.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CustomNamedValues",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customNamedValues_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customNamedValues_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    }
+  }
+}

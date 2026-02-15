@@ -1,0 +1,457 @@
+{
+  "id": "HttpRequest",
+  "title": "HttpRequest Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/HttpRequest.h",
+  "description": "Supports the ability to make HTTP requests.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "create",
+      "description": "Creates a new HttpRequest object."
+    },
+    {
+      "name": "execute",
+      "description": "Execute this request asynchronously. The response will be sent to the completed event."
+    },
+    {
+      "name": "executeSync",
+      "description": "Execute this request synchronously. This will block the thread until the request completes."
+    },
+    {
+      "name": "getHeader",
+      "description": "Gets the value of the specified header and returns the value."
+    },
+    {
+      "name": "hasHeader",
+      "description": "Gets if the request has a header with the given name. This is useful to distinguish between the case where a header is not set and the case where a header is set to an empty string."
+    },
+    {
+      "name": "headers",
+      "description": "Get the request headers."
+    },
+    {
+      "name": "removeHeader",
+      "description": "Removes a header from the request."
+    },
+    {
+      "name": "setHeader",
+      "description": "Sets a header for the request."
+    }
+  ],
+  "properties": [
+    {
+      "name": "data",
+      "description": "Gets and sets the body data to send with this request."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "method",
+      "description": "Gets and sets the method to use for the request."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "url",
+      "description": "Gets and sets the URL to make the request to."
+    }
+  ],
+  "events": [
+    {
+      "name": "completed",
+      "description": "The completed event fires when the request has completed. This event will fire on successful or failure."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Gets all properties using GraphQL",
+      "description": "Fetches bulk component properties of the root component and from occurrences via single GraphQL query."
+    },
+    {
+      "name": "Get part number using GraphQL",
+      "description": "Fetches part number of root component and from occurrences via GQL query."
+    },
+    {
+      "name": "Set part number using GraphQL",
+      "description": "Sets part number of root component and from occurrences via GQL query."
+    }
+  ],
+  "version": "Introduced in version January 2024",
+  "method_details": {
+    "classType": {
+      "id": "HttpRequest_classType",
+      "title": "HttpRequest.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpRequest.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "HttpRequest",
+      "syntax": {
+        "python": "returnValue = adsk.core.HttpRequest.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::HttpRequest::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2024"
+    },
+    "create": {
+      "id": "HttpRequest_create",
+      "title": "HttpRequest.create Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpRequest.h",
+      "description": "Creates a new HttpRequest object.",
+      "parent_class": "HttpRequest",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = adsk.core.HttpRequest.create(url)\n\n# Uses optional arguments.\nreturnValue = adsk.core.HttpRequest.create(url, method)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = adsk::core::HttpRequest::create(url);\n\n// Uses optional arguments.\nreturnValue = adsk::core::HttpRequest::create(url, method);"
+      },
+      "return_type": "HttpRequest",
+      "return_description": "Returns the new HttpRequest object.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "The URL to make the request to."
+        },
+        {
+          "name": "method",
+          "type": "HttpMethods",
+          "description": "The method to use for the request. The default is GetMethod.   This is an optional argument whose default value is HttpMethods.GetMethod."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Gets all properties using GraphQL",
+          "description": "Fetches bulk component properties of the root component and from occurrences via single GraphQL query."
+        },
+        {
+          "name": "Get part number using GraphQL",
+          "description": "Fetches part number of root component and from occurrences via GQL query."
+        },
+        {
+          "name": "Set part number using GraphQL",
+          "description": "Sets part number of root component and from occurrences via GQL query."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "execute": {
+      "id": "HttpRequest_execute",
+      "title": "HttpRequest.execute Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpRequest.h",
+      "description": "Execute this request asynchronously. The response will be sent to the completed event.",
+      "parent_class": "HttpRequest",
+      "syntax": {
+        "python": "returnValue = httpRequest_var.execute()",
+        "cpp": "#include \n\nreturnValue = httpRequest_var->execute();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the request was successfully started.",
+      "version": "Introduced in version January 2024"
+    },
+    "executeSync": {
+      "id": "HttpRequest_executeSync",
+      "title": "HttpRequest.executeSync Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpRequest.h",
+      "description": "Execute this request synchronously. This will block the thread until the request completes.",
+      "parent_class": "HttpRequest",
+      "syntax": {
+        "python": "returnValue = httpRequest_var.executeSync()",
+        "cpp": "#include \n\nreturnValue = httpRequest_var->executeSync();"
+      },
+      "return_type": "HttpResponse",
+      "return_description": "Returns the response from making this request, or null if an error prevents the request from starting.",
+      "related_samples": [
+        {
+          "name": "Gets all properties using GraphQL",
+          "description": "Fetches bulk component properties of the root component and from occurrences via single GraphQL query."
+        },
+        {
+          "name": "Get part number using GraphQL",
+          "description": "Fetches part number of root component and from occurrences via GQL query."
+        },
+        {
+          "name": "Set part number using GraphQL",
+          "description": "Sets part number of root component and from occurrences via GQL query."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "getHeader": {
+      "id": "HttpRequest_getHeader",
+      "title": "HttpRequest.getHeader Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpRequest.h",
+      "description": "Gets the value of the specified header and returns the value.",
+      "parent_class": "HttpRequest",
+      "syntax": {
+        "python": "returnValue = httpRequest_var.getHeader(name)",
+        "cpp": "#include \n\nreturnValue = httpRequest_var->getHeader(name);"
+      },
+      "return_type": "string",
+      "return_description": "Returns the value of the header, or empty if the header was not found. You can use the hasHeader method to determine if the header exists before getting it. This is especially useful in the case where the header exists but has an empty string value.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The case insensitive name of the header."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "hasHeader": {
+      "id": "HttpRequest_hasHeader",
+      "title": "HttpRequest.hasHeader Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpRequest.h",
+      "description": "Gets if the request has a header with the given name. This is useful to distinguish between the case where a header is not set and the case where a header is set to an empty string.",
+      "parent_class": "HttpRequest",
+      "syntax": {
+        "python": "returnValue = httpRequest_var.hasHeader(name)",
+        "cpp": "#include \n\nreturnValue = httpRequest_var->hasHeader(name);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if a header with this name was set in the response.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The case insensitive name of the header."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "headers": {
+      "id": "HttpRequest_headers",
+      "title": "HttpRequest.headers Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpRequest.h",
+      "description": "Get the request headers.",
+      "parent_class": "HttpRequest",
+      "syntax": {
+        "python": "(returnValue, names, values) = httpRequest_var.headers()",
+        "cpp": "#include headers(names, values);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true on success or false on error.",
+      "parameters": [
+        {
+          "name": "names",
+          "type": "string[]",
+          "description": "An array of all the header key names."
+        },
+        {
+          "name": "values",
+          "type": "string[]",
+          "description": "An array of all the header values."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Gets all properties using GraphQL",
+          "description": "Fetches bulk component properties of the root component and from occurrences via single GraphQL query."
+        },
+        {
+          "name": "Get part number using GraphQL",
+          "description": "Fetches part number of root component and from occurrences via GQL query."
+        },
+        {
+          "name": "Set part number using GraphQL",
+          "description": "Sets part number of root component and from occurrences via GQL query."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "removeHeader": {
+      "id": "HttpRequest_removeHeader",
+      "title": "HttpRequest.removeHeader Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpRequest.h",
+      "description": "Removes a header from the request.",
+      "parent_class": "HttpRequest",
+      "syntax": {
+        "python": "returnValue = httpRequest_var.removeHeader(name)",
+        "cpp": "#include \n\nreturnValue = httpRequest_var->removeHeader(name);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the header was found and removed.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The case insensitive name of the header."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "setHeader": {
+      "id": "HttpRequest_setHeader",
+      "title": "HttpRequest.setHeader Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpRequest.h",
+      "description": "Sets a header for the request.",
+      "parent_class": "HttpRequest",
+      "syntax": {
+        "python": "returnValue = httpRequest_var.setHeader(name, value)",
+        "cpp": "#include \n\nreturnValue = httpRequest_var->setHeader(name, value);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting the header succeeds.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the header value."
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "description": "The header's value."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Gets all properties using GraphQL",
+          "description": "Fetches bulk component properties of the root component and from occurrences via single GraphQL query."
+        },
+        {
+          "name": "Get part number using GraphQL",
+          "description": "Fetches part number of root component and from occurrences via GQL query."
+        },
+        {
+          "name": "Set part number using GraphQL",
+          "description": "Sets part number of root component and from occurrences via GQL query."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    }
+  },
+  "event_details": {
+    "completed": {
+      "id": "HttpRequest_completed",
+      "title": "HttpRequest.completed Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpRequest.h",
+      "description": "The completed event fires when the request has completed. This event will fire on successful or failure.",
+      "parent_class": "HttpRequest",
+      "syntax": {
+        "python": "# Event handler for the completed event.\nclass MyCompletedHandler(adsk.core.HttpEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.HttpEventArgs):\n        # Code to react to the event.\n        app.log('In MyCompletedHandler event handler.')",
+        "cpp": "// \"httpRequest_var\" is a variable referencing a HttpRequest object.\n// Connect the handler function to the event.\nPtr completedEvent = httpRequest_var->completed();\nif (!completedEvent)\n    return;\n\nbool isOk = completedEvent->add(&_completed);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    }
+  },
+  "property_details": {
+    "data": {
+      "id": "HttpRequest_data",
+      "title": "HttpRequest.data Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpRequest.h",
+      "description": "Gets and sets the body data to send with this request.",
+      "parent_class": "HttpRequest",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = httpRequest_var.data\n\n# Set the value of the property.\nhttpRequest_var.data = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = httpRequest_var->data();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = httpRequest_var->data(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Gets all properties using GraphQL",
+          "description": "Fetches bulk component properties of the root component and from occurrences via single GraphQL query."
+        },
+        {
+          "name": "Get part number using GraphQL",
+          "description": "Fetches part number of root component and from occurrences via GQL query."
+        },
+        {
+          "name": "Set part number using GraphQL",
+          "description": "Sets part number of root component and from occurrences via GQL query."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "isValid": {
+      "id": "HttpRequest_isValid",
+      "title": "HttpRequest.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpRequest.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "HttpRequest",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = httpRequest_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = httpRequest_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "method": {
+      "id": "HttpRequest_method",
+      "title": "HttpRequest.method Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpRequest.h",
+      "description": "Gets and sets the method to use for the request.",
+      "parent_class": "HttpRequest",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = httpRequest_var.method\n\n# Set the value of the property.\nhttpRequest_var.method = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nHttpMethods propertyValue = httpRequest_var->method();\n\n// Set the value of the property, where value_var is a HttpMethods.\nbool returnValue = httpRequest_var->method(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "objectType": {
+      "id": "HttpRequest_objectType",
+      "title": "HttpRequest.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpRequest.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "HttpRequest",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = httpRequest_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = httpRequest_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "url": {
+      "id": "HttpRequest_url",
+      "title": "HttpRequest.url Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/HttpRequest.h",
+      "description": "Gets and sets the URL to make the request to.",
+      "parent_class": "HttpRequest",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = httpRequest_var.url\n\n# Set the value of the property.\nhttpRequest_var.url = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = httpRequest_var->url();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = httpRequest_var->url(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    }
+  }
+}

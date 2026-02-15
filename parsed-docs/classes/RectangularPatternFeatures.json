@@ -1,0 +1,253 @@
+{
+  "id": "RectangularPatternFeatures",
+  "title": "RectangularPatternFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/RectangularPatternFeatures.h",
+  "description": "Collection that provides access to all of the existing rectangular pattern features in a component and supports the ability to create new rectangular pattern features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new rectangular pattern feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a RectangularPatternFeatureInput object. Use properties and methods on this object to define the rectangular pattern you want to create and then use the Add method, passing in the RectangularPatternFeatureInput object."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified rectangular pattern feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified rectangular pattern feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of rectangular pattern features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Manage Participant Bodies API Sample",
+      "description": "Demonstrates how to manage participant During Cut operation. Same API can be used to manage participants During intersection also."
+    },
+    {
+      "name": "RectangularPattern Feature",
+      "description": "Demonstrates creating a new rectangular pattern feature."
+    }
+  ],
+  "version": "Introduced in version November 2014",
+  "method_details": {
+    "add": {
+      "id": "RectangularPatternFeatures_add",
+      "title": "RectangularPatternFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeatures.h",
+      "description": "Creates a new rectangular pattern feature.",
+      "parent_class": "RectangularPatternFeatures",
+      "syntax": {
+        "python": "returnValue = rectangularPatternFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = rectangularPatternFeatures_var->add(input);"
+      },
+      "return_type": "RectangularPatternFeature",
+      "return_description": "Returns the newly created RectangularPatternFeature object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "RectangularPatternFeatureInput",
+          "description": "A RectangularPatternFeatureInput object that defines the desired rectangular pattern. Use the createInput method to create a new RectangularPatternFeatureInput object and then use methods on it (the RectangularPatternFeatureInput object) to define the rectangular pattern."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Manage Participant Bodies API Sample",
+          "description": "Demonstrates how to manage participant During Cut operation. Same API can be used to manage participants During intersection also."
+        },
+        {
+          "name": "rectangularPattern.add",
+          "description": "Demonstrates the rectangularPattern.add method using a selected body and two selected edges to define the directions."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "classType": {
+      "id": "RectangularPatternFeatures_classType",
+      "title": "RectangularPatternFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "RectangularPatternFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.RectangularPatternFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::RectangularPatternFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version November 2014"
+    },
+    "createInput": {
+      "id": "RectangularPatternFeatures_createInput",
+      "title": "RectangularPatternFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeatures.h",
+      "description": "Creates a RectangularPatternFeatureInput object. Use properties and methods on this object to define the rectangular pattern you want to create and then use the Add method, passing in the RectangularPatternFeatureInput object.",
+      "parent_class": "RectangularPatternFeatures",
+      "syntax": {
+        "python": "returnValue = rectangularPatternFeatures_var.createInput(inputEntities, directionOneEntity, quantityOne, distanceOne, patternDistanceType)",
+        "cpp": "#include \n\nreturnValue = rectangularPatternFeatures_var->createInput(inputEntities, directionOneEntity, quantityOne, distanceOne, patternDistanceType);"
+      },
+      "return_type": "RectangularPatternFeatureInput",
+      "return_description": "Returns the newly created RectangularPatternFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "inputEntities",
+          "type": "ObjectCollection",
+          "description": "The collection can contain faces, features, bodies or occurrences. All of the entities must be of a single type. For example, it can't contain features and occurrences but only features or occurrences."
+        },
+        {
+          "name": "directionOneEntity",
+          "type": "Base",
+          "description": "Specifies the entity used to define the first direction entity. This can be a linear edge, construction axis, sketch line or rectangular pattern feature. If a rectangular pattern feature is set, the directionOneEntity and directionTwoEntity properties return the same rectangular pattern feature."
+        },
+        {
+          "name": "quantityOne",
+          "type": "ValueInput",
+          "description": "Specifies the number of instances in the first direction."
+        },
+        {
+          "name": "distanceOne",
+          "type": "ValueInput",
+          "description": "Specifies the distance in the first direction. How this value is used depends on the value of the PatternDistanceType property. A negative value can be used to change the direction. If the value is ExtentPatternDistanceType then it defines the total distance of the pattern. If the value is SpacingPatternDistanceType then it defines the distance between each element."
+        },
+        {
+          "name": "patternDistanceType",
+          "type": "PatternDistanceType",
+          "description": "Specifies how the distance between elements is computed."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Manage Participant Bodies API Sample",
+          "description": "Demonstrates how to manage participant During Cut operation. Same API can be used to manage participants During intersection also."
+        },
+        {
+          "name": "rectangularPattern.add",
+          "description": "Demonstrates the rectangularPattern.add method using a selected body and two selected edges to define the directions."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "item": {
+      "id": "RectangularPatternFeatures_item",
+      "title": "RectangularPatternFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeatures.h",
+      "description": "Function that returns the specified rectangular pattern feature using an index into the collection.",
+      "parent_class": "RectangularPatternFeatures",
+      "syntax": {
+        "python": "returnValue = rectangularPatternFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = rectangularPatternFeatures_var->item(index);"
+      },
+      "return_type": "RectangularPatternFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "itemByName": {
+      "id": "RectangularPatternFeatures_itemByName",
+      "title": "RectangularPatternFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeatures.h",
+      "description": "Function that returns the specified rectangular pattern feature using the name of the feature.",
+      "parent_class": "RectangularPatternFeatures",
+      "syntax": {
+        "python": "returnValue = rectangularPatternFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = rectangularPatternFeatures_var->itemByName(name);"
+      },
+      "return_type": "RectangularPatternFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "RectangularPatternFeatures_count",
+      "title": "RectangularPatternFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeatures.h",
+      "description": "The number of rectangular pattern features in the collection.",
+      "parent_class": "RectangularPatternFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = rectangularPatternFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isValid": {
+      "id": "RectangularPatternFeatures_isValid",
+      "title": "RectangularPatternFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "RectangularPatternFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = rectangularPatternFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "objectType": {
+      "id": "RectangularPatternFeatures_objectType",
+      "title": "RectangularPatternFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "RectangularPatternFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = rectangularPatternFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    }
+  }
+}

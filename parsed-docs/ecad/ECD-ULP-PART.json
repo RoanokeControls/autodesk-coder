@@ -1,0 +1,63 @@
+{
+  "id": "ECD-ULP-PART",
+  "title": "UL_PART",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "attribute[]",
+      "type": "string (see note)"
+    },
+    {
+      "name": "device",
+      "type": "UL_DEVICE"
+    },
+    {
+      "name": "deviceset",
+      "type": "UL_DEVICESET"
+    },
+    {
+      "name": "module",
+      "type": "UL_MODULE (see note)"
+    },
+    {
+      "name": "modulepart",
+      "type": "UL_PART (see note)"
+    },
+    {
+      "name": "modulepath",
+      "type": "string (see note)"
+    },
+    {
+      "name": "name",
+      "type": "string (PART_NAME_LENGTH)"
+    },
+    {
+      "name": "package3d",
+      "type": "UL_PACKAGE3D"
+    },
+    {
+      "name": "populate",
+      "type": "int (0=do not populate, 1=populate)"
+    },
+    {
+      "name": "value",
+      "type": "string (PART_VALUE_LENGTH)"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "attributes()",
+      "type": "UL_ATTRIBUTE (see note)"
+    },
+    {
+      "name": "instances()",
+      "type": "UL_INSTANCE (see note)"
+    },
+    {
+      "name": "variants()",
+      "type": "UL_VARIANT (see note)"
+    }
+  ],
+  "content": "# UL_PART\n\n## Data members\n\n| | |\n| --- | --- |\n| attribute[] | string (see note) |\n| device | UL_DEVICE |\n| deviceset | UL_DEVICESET |\n| module | UL_MODULE (see note) |\n| modulepart | UL_PART (see note) |\n| modulepath | string (see note) |\n| name | string (PART_NAME_LENGTH) |\n| package3d | UL_PACKAGE3D |\n| populate | int (0=do not populate, 1=populate) |\n| value | string (PART_VALUE_LENGTH) |\n\n## Loop members\n\n| | |\n| --- | --- |\n| attributes() | UL_ATTRIBUTE (see note) |\n| instances() | UL_INSTANCE (see note) |\n| variants() | UL_VARIANT (see note) |\n\nSee also UL_SCHEMATIC, UL_SHEET\n\n## Constants\n\n| | |\n| --- | --- |\n| PART_NAME_LENGTH | max. recommended length of a part name (used in formatted output only) |\n| PART_VALUE_LENGTH | max. recommended length of a part value (used in formatted output only) |\n\n## Note\n\nThe *attribute[]* member can be used to query a UL_PART for the value of a given attribute (see the second example below). The returned string is empty if there is no attribute by the given name, or if this attribute is explicitly empty.\n\nWhen looping through the attributes() of a UL_PART, only the name, value, defaultvalue and constant members of the resulting UL_ATTRIBUTE objects are valid.\n\nWhen looping through the assembly *variants()* of a UL_PART, only actual variants are available. The default assembly variant is not available here. Therefore this loop is not active on parts without assembly variants.\n\nIf the part is in a sheet context, the *instances()* loop member loops only through those instances that are actually used on that sheet. If the part is in a schematic or module context, all instances are looped through.\n\nIf the part is a virtual part (virtual parts can be retrieved with UL_SCHEMATIC.allparts(), see UL_SCHEMATIC) the instances() loop is empty.\n\nIf the part is from a module or is a virtual part, module refers to this. If not (part in main schematic), module is null.\n\nIf the part is virtual, modulepart is the (real) part from the source module module. If it's a part in main schematic or if it's a module part itself modulepart is null.\n\nIf the part is virtual, modulepath is a string with the sequence of names of the module instances that point to the module containing the part being used. These names are separated by ':'. In other cases this string is empty.\n\nFor example, a virtual part with name 'MI1:R1' has modulepath 'MI1'.\n'R101' coming from a module instance 'MX' with offset notation, delivers modulepath 'MX'.\n'MAIN:SUB1:SUBSUB1:C5' has modulepath 'MAIN:SUB1:SUBSUB1'.\n\nNot all UL_PART's have 3D packages. The *package3d* member can be used as a boolean to test whether or not a 3D package is present, e.g. if (P.package3d).\n\n## Examples\n\n```\nschematic(S) {\n S.parts(P) printf(\"Part: %s\\n\", P.name);\n}\nschematic(S) {\n S.allparts(P) {\n if (P.attribute[\"REMARK\"])\n printf(\"%s: %s\\n\", P.name, P.attribute[\"REMARK\"]);\n if (P.modulepart) {\n P.modulepart.instances(I)\n printf(\"%s is a virtual part from %s in module %s with part instance on sheet %d\\n\",\n P.name, P.modulepart.name, P.module.name, I.sheet);\n }\n else {\n P.instances(I)\n printf(\"%s is a part on main schematic with instance on sheet %d\\n\",\n P.name, I.sheet);\n }\n }\n}\nschematic(S) {\n S.allparts(P) {\n if (P.modulepart) {\n string miNames[];\n int nr = strsplit(miNames, P.modulepath, ':');\n if (nr == 1)\n printf(\"%s is a virtual part created by module instance %s in main schematic.\\n\",\n P.name, miNames[0]);\n else {\n printf(\"%s is a virtual part in a multiple hierarchy created by this path of module instances:\\n\", P.name);\n for (int i = 0; i\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

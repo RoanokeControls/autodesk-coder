@@ -1,0 +1,306 @@
+{
+  "id": "Sketches",
+  "title": "Sketches Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Sketch/Sketches.h",
+  "description": "Provides access to the sketches within a design and provides methods to create new sketches.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new sketch on the specified planar entity."
+    },
+    {
+      "name": "addToBaseOrFormFeature",
+      "description": "Creates a parametric sketch that is associated with a base feature.   Because of a current limitation, if you want to create a sketch associated with a base feature, you must first call the edit method of the base feature, use this method to create the sketch, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it."
+    },
+    {
+      "name": "addWithoutEdges",
+      "description": "Creates a new sketch on the specified planar entity. If a BRepFace is provided, the edges of the face are not projected into the sketch so the result of creating a new sketch with this method will always be a new empty sketch."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified sketch using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns the sketch with the specified name."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of sketches in a component"
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "API Sample that demonstrates creating sketch lines in various ways.",
+      "description": "Demonstrates several ways to create sketch lines, including as the result of creating a rectangle."
+    },
+    {
+      "name": "Loft Feature API Sample",
+      "description": "Demonstrates creating a new loft feature."
+    },
+    {
+      "name": "Patch Feature API Sample",
+      "description": "Demonstrates creating a new patch feature."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "add": {
+      "id": "Sketches_add",
+      "title": "Sketches.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Sketches.h",
+      "description": "Creates a new sketch on the specified planar entity.",
+      "parent_class": "Sketches",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketches_var.add(planarEntity)\n\n# Uses optional arguments.\nreturnValue = sketches_var.add(planarEntity, occurrenceForCreation)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketches_var->add(planarEntity);\n\n// Uses optional arguments.\nreturnValue = sketches_var->add(planarEntity, occurrenceForCreation);"
+      },
+      "return_type": "Sketch",
+      "return_description": "Returns the newly created Sketch or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "planarEntity",
+          "type": "Base",
+          "description": "A construction plane or planar face that defines the sketch plane"
+        },
+        {
+          "name": "occurrenceForCreation",
+          "type": "Occurrence",
+          "description": "A creation occurrence is needed if the planarEntity is in another component AND the sketch is not in the root component. The occurrenceForCreation is analogous to the active occurrence in the UI.   This is an optional argument whose default value is null."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "API Sample that demonstrates creating sketch lines in various ways.",
+          "description": "Demonstrates several ways to create sketch lines, including as the result of creating a rectangle."
+        },
+        {
+          "name": "Loft Feature API Sample",
+          "description": "Demonstrates creating a new loft feature."
+        },
+        {
+          "name": "Patch Feature API Sample",
+          "description": "Demonstrates creating a new patch feature."
+        },
+        {
+          "name": "Simple Extrusion Sample",
+          "description": "Creates a new extrusion feature, resulting in a new component."
+        },
+        {
+          "name": "Simple Revolve Feature Sample",
+          "description": "Creates a new revolve feature, resulting in a new component."
+        },
+        {
+          "name": "Sketches.add",
+          "description": "Demonstrates the Sketches.add method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addToBaseOrFormFeature": {
+      "id": "Sketches_addToBaseOrFormFeature",
+      "title": "Sketches.addToBaseOrFormFeature Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Sketches.h",
+      "description": "Creates a parametric sketch that is associated with a base feature. Because of a current limitation, if you want to create a sketch associated with a base feature, you must first call the edit method of the base feature, use this method to create the sketch, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it.",
+      "parent_class": "Sketches",
+      "syntax": {
+        "python": "returnValue = sketches_var.addToBaseOrFormFeature(planarEntity, targetBaseOrFormFeature, includeFaceEdges)",
+        "cpp": "#include \n\nreturnValue = sketches_var->addToBaseOrFormFeature(planarEntity, targetBaseOrFormFeature, includeFaceEdges);"
+      },
+      "return_type": "Sketch",
+      "return_description": "Returns the newly created Sketch or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "planarEntity",
+          "type": "Base",
+          "description": "A construction plane or planar face that defines the sketch plane."
+        },
+        {
+          "name": "targetBaseOrFormFeature",
+          "type": "Base",
+          "description": "The existing base feature that you want to associate this sketch with."
+        },
+        {
+          "name": "includeFaceEdges",
+          "type": "boolean",
+          "description": "When a BrepFace is used as the planarEntity argument, this defines if the edges of the face should be included in the sketch."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "BaseFeature Sample",
+          "description": "Creates a new base feature."
+        },
+        {
+          "name": "Sketches.addToBaseOrFormFeature",
+          "description": "Demonstrates the Sketches.addToBaseOrFormFeature method."
+        }
+      ],
+      "version": "Introduced in version May 2016"
+    },
+    "addWithoutEdges": {
+      "id": "Sketches_addWithoutEdges",
+      "title": "Sketches.addWithoutEdges Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Sketches.h",
+      "description": "Creates a new sketch on the specified planar entity. If a BRepFace is provided, the edges of the face are not projected into the sketch so the result of creating a new sketch with this method will always be a new empty sketch.",
+      "parent_class": "Sketches",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketches_var.addWithoutEdges(planarEntity)\n\n# Uses optional arguments.\nreturnValue = sketches_var.addWithoutEdges(planarEntity, occurrenceForCreation)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketches_var->addWithoutEdges(planarEntity);\n\n// Uses optional arguments.\nreturnValue = sketches_var->addWithoutEdges(planarEntity, occurrenceForCreation);"
+      },
+      "return_type": "Sketch",
+      "return_description": "Returns the newly created Sketch or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "planarEntity",
+          "type": "Base",
+          "description": "A construction plane or planar face that defines the sketch plane."
+        },
+        {
+          "name": "occurrenceForCreation",
+          "type": "Occurrence",
+          "description": "A creation occurrence is needed if the planarEntity is in another component AND the sketch is not in the root component. The occurrenceForCreation is analogous to the active occurrence in the UI.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    },
+    "classType": {
+      "id": "Sketches_classType",
+      "title": "Sketches.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Sketches.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Sketches",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.Sketches.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::Sketches::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "Sketches_item",
+      "title": "Sketches.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Sketches.h",
+      "description": "Function that returns the specified sketch using an index into the collection.",
+      "parent_class": "Sketches",
+      "syntax": {
+        "python": "returnValue = sketches_var.item(index)",
+        "cpp": "#include \n\nreturnValue = sketches_var->item(index);"
+      },
+      "return_type": "Sketch",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "itemByName": {
+      "id": "Sketches_itemByName",
+      "title": "Sketches.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Sketches.h",
+      "description": "Returns the sketch with the specified name.",
+      "parent_class": "Sketches",
+      "syntax": {
+        "python": "returnValue = sketches_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = sketches_var->itemByName(name);"
+      },
+      "return_type": "Sketch",
+      "return_description": "Returns the sketch or null if there isn't a sketch with that name.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the sketch as seen in the browser and the timeline."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "Sketches_count",
+      "title": "Sketches.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Sketches.h",
+      "description": "Returns the number of sketches in a component",
+      "parent_class": "Sketches",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketches_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = sketches_var->count();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Delete Empty Components",
+          "description": "Deletes empty components from the active design."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "Sketches_isValid",
+      "title": "Sketches.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Sketches.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Sketches",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketches_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketches_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "Sketches_objectType",
+      "title": "Sketches.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/Sketches.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Sketches",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketches_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketches_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

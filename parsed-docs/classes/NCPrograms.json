@@ -1,0 +1,261 @@
+{
+  "id": "NCPrograms",
+  "title": "NCPrograms Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/NCProgram/NCPrograms.h",
+  "description": "Container for all NC programs. Referenced from CAM product to access NC programs in a document, similar to what Setups is for all setup objects.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new NC program."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Create a new NCProgramInput object. Use properties and methods on this object to define the NC program you want to create and then use the Add method, passing in the NCProgramInput object."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified NC program using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns the NC program with the specified name."
+    },
+    {
+      "name": "itemByOperationId",
+      "description": "Returns the NC program with the specified operation id."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of items in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Manufacturing Workflow API Sample",
+      "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+    },
+    {
+      "name": "Turning Workflow API Sample",
+      "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "method_details": {
+    "add": {
+      "id": "NCPrograms_add",
+      "title": "NCPrograms.add Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCPrograms.h",
+      "description": "Creates a new NC program.",
+      "parent_class": "NCPrograms",
+      "syntax": {
+        "python": "returnValue = nCPrograms_var.add(input)",
+        "cpp": "#include \n\nreturnValue = nCPrograms_var->add(input);"
+      },
+      "return_type": "NCProgram",
+      "return_description": "Returns the created NC program.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "NCProgramInput",
+          "description": "NCProgramInput which will be used to create the NC program."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Basic Milling Workflow Sample",
+          "description": "Demonstrates the creation of a basic milling workflow from scriptDemonstrates creating a setup, searching tool library to retrieve a tool, create a couple of machining operations and a NC program, ready for post processing.Use the 2D Strategies model from the Fusion CAM Samples folder as your CAD model."
+        },
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        },
+        {
+          "name": "Turning Workflow API Sample",
+          "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "classType": {
+      "id": "NCPrograms_classType",
+      "title": "NCPrograms.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCPrograms.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "NCPrograms",
+      "syntax": {
+        "python": "returnValue = adsk.cam.NCPrograms.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::NCPrograms::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    },
+    "createInput": {
+      "id": "NCPrograms_createInput",
+      "title": "NCPrograms.createInput Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCPrograms.h",
+      "description": "Create a new NCProgramInput object. Use properties and methods on this object to define the NC program you want to create and then use the Add method, passing in the NCProgramInput object.",
+      "parent_class": "NCPrograms",
+      "syntax": {
+        "python": "returnValue = nCPrograms_var.createInput()",
+        "cpp": "#include \n\nreturnValue = nCPrograms_var->createInput();"
+      },
+      "return_type": "NCProgramInput",
+      "return_description": "Returns a new NCProgramInput object.",
+      "related_samples": [
+        {
+          "name": "Basic Milling Workflow Sample",
+          "description": "Demonstrates the creation of a basic milling workflow from scriptDemonstrates creating a setup, searching tool library to retrieve a tool, create a couple of machining operations and a NC program, ready for post processing.Use the 2D Strategies model from the Fusion CAM Samples folder as your CAD model."
+        },
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        },
+        {
+          "name": "Turning Workflow API Sample",
+          "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "item": {
+      "id": "NCPrograms_item",
+      "title": "NCPrograms.item Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCPrograms.h",
+      "description": "Function that returns the specified NC program using an index into the collection.",
+      "parent_class": "NCPrograms",
+      "syntax": {
+        "python": "returnValue = nCPrograms_var.item(index)",
+        "cpp": "#include \n\nreturnValue = nCPrograms_var->item(index);"
+      },
+      "return_type": "NCProgram",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "itemByName": {
+      "id": "NCPrograms_itemByName",
+      "title": "NCPrograms.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCPrograms.h",
+      "description": "Returns the NC program with the specified name.",
+      "parent_class": "NCPrograms",
+      "syntax": {
+        "python": "returnValue = nCPrograms_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = nCPrograms_var->itemByName(name);"
+      },
+      "return_type": "NCProgram",
+      "return_description": "Returns the specified NC program or null in the case where there is no NC program with the specified name. If there are multiple NC programs with the same name, the first item in the tree will be returned.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name (as it appears in the browser) of the operation."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "itemByOperationId": {
+      "id": "NCPrograms_itemByOperationId",
+      "title": "NCPrograms.itemByOperationId Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCPrograms.h",
+      "description": "Returns the NC program with the specified operation id.",
+      "parent_class": "NCPrograms",
+      "syntax": {
+        "python": "returnValue = nCPrograms_var.itemByOperationId(id)",
+        "cpp": "#include \n\nreturnValue = nCPrograms_var->itemByOperationId(id);"
+      },
+      "return_type": "NCProgram",
+      "return_description": "Returns the specified NC program or null in the case where there is no NC program with the specified operation id.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "integer",
+          "description": "The id of the NC program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "NCPrograms_count",
+      "title": "NCPrograms.count Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCPrograms.h",
+      "description": "The number of items in the collection.",
+      "parent_class": "NCPrograms",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCPrograms_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = nCPrograms_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "NCPrograms_isValid",
+      "title": "NCPrograms.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCPrograms.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "NCPrograms",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCPrograms_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = nCPrograms_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "NCPrograms_objectType",
+      "title": "NCPrograms.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCPrograms.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "NCPrograms",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCPrograms_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = nCPrograms_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

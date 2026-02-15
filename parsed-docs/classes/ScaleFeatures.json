@@ -1,0 +1,239 @@
+{
+  "id": "ScaleFeatures",
+  "title": "ScaleFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/ScaleFeatures.h",
+  "description": "Collection that provides access to all of the existing scale features in a component and supports the ability to create new scale features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new scale feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a ScaleFeatureInput object. Use properties and methods on this object to define the scale you want to create and then use the Add method, passing in the ScaleFeatureInput object."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified scale feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified scale feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of scale features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Scale Feature API Sample",
+      "description": "Demonstrates creating a new scale feature."
+    }
+  ],
+  "version": "Introduced in version January 2015",
+  "method_details": {
+    "add": {
+      "id": "ScaleFeatures_add",
+      "title": "ScaleFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatures.h",
+      "description": "Creates a new scale feature.",
+      "parent_class": "ScaleFeatures",
+      "syntax": {
+        "python": "returnValue = scaleFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = scaleFeatures_var->add(input);"
+      },
+      "return_type": "ScaleFeature",
+      "return_description": "Returns the newly created ScaleFeature object or null if the creation failed. Returns nothing in the case where the feature is non-parametric.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "ScaleFeatureInput",
+          "description": "A ScaleFeatureInput object that defines the desired scale. Use the createInput method to create a new ScaleFeatureInput object and then use methods on it (the ScaleFeatureInput object) to define the scale."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "scaleFeatures.add",
+          "description": "Demonstrates the creation a scale feature."
+        },
+        {
+          "name": "Scale Feature API Sample",
+          "description": "Demonstrates creating a new scale feature."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "classType": {
+      "id": "ScaleFeatures_classType",
+      "title": "ScaleFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ScaleFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ScaleFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ScaleFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2015"
+    },
+    "createInput": {
+      "id": "ScaleFeatures_createInput",
+      "title": "ScaleFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatures.h",
+      "description": "Creates a ScaleFeatureInput object. Use properties and methods on this object to define the scale you want to create and then use the Add method, passing in the ScaleFeatureInput object.",
+      "parent_class": "ScaleFeatures",
+      "syntax": {
+        "python": "returnValue = scaleFeatures_var.createInput(inputEntities, point, scaleFactor)",
+        "cpp": "#include \n\nreturnValue = scaleFeatures_var->createInput(inputEntities, point, scaleFactor);"
+      },
+      "return_type": "ScaleFeatureInput",
+      "return_description": "Returns the newly created ScaleFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "inputEntities",
+          "type": "ObjectCollection",
+          "description": "This collection can contain sketches, BRep bodies and T-Spline bodies in parametric modeling. It can contain sketches, BRep bodies, T-Spline bodies, mesh bodies, root component and occurrences in non-parametric modeling."
+        },
+        {
+          "name": "point",
+          "type": "Base",
+          "description": "Input a point as reference to scale. This can be a BRepVertex, a SketchPoint or a ConstructionPoint."
+        },
+        {
+          "name": "scaleFactor",
+          "type": "ValueInput",
+          "description": "The ValueInput object that defines the scale factor for uniform scale."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "scaleFeatures.add",
+          "description": "Demonstrates the creation a scale feature."
+        },
+        {
+          "name": "Scale Feature API Sample",
+          "description": "Demonstrates creating a new scale feature."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "item": {
+      "id": "ScaleFeatures_item",
+      "title": "ScaleFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatures.h",
+      "description": "Function that returns the specified scale feature using an index into the collection.",
+      "parent_class": "ScaleFeatures",
+      "syntax": {
+        "python": "returnValue = scaleFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = scaleFeatures_var->item(index);"
+      },
+      "return_type": "ScaleFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "itemByName": {
+      "id": "ScaleFeatures_itemByName",
+      "title": "ScaleFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatures.h",
+      "description": "Function that returns the specified scale feature using the name of the feature.",
+      "parent_class": "ScaleFeatures",
+      "syntax": {
+        "python": "returnValue = scaleFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = scaleFeatures_var->itemByName(name);"
+      },
+      "return_type": "ScaleFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "ScaleFeatures_count",
+      "title": "ScaleFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatures.h",
+      "description": "The number of scale features in the collection.",
+      "parent_class": "ScaleFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = scaleFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = scaleFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isValid": {
+      "id": "ScaleFeatures_isValid",
+      "title": "ScaleFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ScaleFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = scaleFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = scaleFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "objectType": {
+      "id": "ScaleFeatures_objectType",
+      "title": "ScaleFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ScaleFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ScaleFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = scaleFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = scaleFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    }
+  }
+}

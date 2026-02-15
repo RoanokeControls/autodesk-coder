@@ -1,0 +1,237 @@
+{
+  "id": "Attributes",
+  "title": "Attributes Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/Attributes.h",
+  "description": "Provides access to attributes associated with a specific entity, Product, or Document. Also supports the creation of new attributes.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Adds a new attribute to the parent entity. If an attribute already exists on the entity with the same groupName and name already exists, this will update the existing attribute with the new value."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Returns the specified attribute using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns the specified attribute using the name of the attribute."
+    },
+    {
+      "name": "itemsByGroup",
+      "description": "Returns an array of all of the attributes that belong to the specified group."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of attributes in the collection."
+    },
+    {
+      "name": "groupNames",
+      "description": "Returns an array of strings that are all of the name of attribute groups that exist on this entity. An empty array can be returns if there are no attributes on the entity."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version May 2016",
+  "method_details": {
+    "add": {
+      "id": "Attributes_add",
+      "title": "Attributes.add Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Attributes.h",
+      "description": "Adds a new attribute to the parent entity. If an attribute already exists on the entity with the same groupName and name already exists, this will update the existing attribute with the new value.",
+      "parent_class": "Attributes",
+      "syntax": {
+        "python": "returnValue = attributes_var.add(groupName, name, value)",
+        "cpp": "#include \n\nreturnValue = attributes_var->add(groupName, name, value);"
+      },
+      "return_type": "Attribute",
+      "return_description": "Returns the newly created attribute or null if the creation failed. If an attribute with the  same groupName and name already exists, it will return the existing attribute.",
+      "parameters": [
+        {
+          "name": "groupName",
+          "type": "string",
+          "description": "The name of the attribute group to create this attribute within."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the attribute. This must be unique with respect to other attributes in the group."
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "description": "The value of the attribute. The size of an attribute value is limited to 2MB (2097152 bytes). If you need to save data that is larger than 2MB you'll need to break it into pieces and save it in multiple attributes."
+        }
+      ],
+      "version": "Introduced in version May 2016"
+    },
+    "classType": {
+      "id": "Attributes_classType",
+      "title": "Attributes.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Attributes.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Attributes",
+      "syntax": {
+        "python": "returnValue = adsk.core.Attributes.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Attributes::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version May 2016"
+    },
+    "item": {
+      "id": "Attributes_item",
+      "title": "Attributes.item Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Attributes.h",
+      "description": "Returns the specified attribute using an index into the collection.",
+      "parent_class": "Attributes",
+      "syntax": {
+        "python": "returnValue = attributes_var.item(index)",
+        "cpp": "#include \n\nreturnValue = attributes_var->item(index);"
+      },
+      "return_type": "Attribute",
+      "return_description": "Returns the specified attribute or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the attribute within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version May 2016"
+    },
+    "itemByName": {
+      "id": "Attributes_itemByName",
+      "title": "Attributes.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Attributes.h",
+      "description": "Returns the specified attribute using the name of the attribute.",
+      "parent_class": "Attributes",
+      "syntax": {
+        "python": "returnValue = attributes_var.itemByName(groupName, name)",
+        "cpp": "#include \n\nreturnValue = attributes_var->itemByName(groupName, name);"
+      },
+      "return_type": "Attribute",
+      "return_description": "Returns the specified attribute or null if no attribute exists with the specified name.",
+      "parameters": [
+        {
+          "name": "groupName",
+          "type": "string",
+          "description": "The name of the attribute group this attribute will belong to."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the attribute."
+        }
+      ],
+      "version": "Introduced in version May 2016"
+    },
+    "itemsByGroup": {
+      "id": "Attributes_itemsByGroup",
+      "title": "Attributes.itemsByGroup Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Attributes.h",
+      "description": "Returns an array of all of the attributes that belong to the specified group.",
+      "parent_class": "Attributes",
+      "syntax": {
+        "python": "returnValue = attributes_var.itemsByGroup(groupName)",
+        "cpp": "#include \n\nreturnValue = attributes_var->itemsByGroup(groupName);"
+      },
+      "return_type": "Attribute[]",
+      "return_description": "Returns an array of attributes or will fail in the case where an invalid group name is specified.",
+      "parameters": [
+        {
+          "name": "groupName",
+          "type": "string",
+          "description": "The name of the group."
+        }
+      ],
+      "version": "Introduced in version May 2016"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "Attributes_count",
+      "title": "Attributes.count Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Attributes.h",
+      "description": "Returns the number of attributes in the collection.",
+      "parent_class": "Attributes",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = attributes_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = attributes_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "groupNames": {
+      "id": "Attributes_groupNames",
+      "title": "Attributes.groupNames Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Attributes.h",
+      "description": "Returns an array of strings that are all of the name of attribute groups that exist on this entity. An empty array can be returns if there are no attributes on the entity.",
+      "parent_class": "Attributes",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = attributes_var.groupNames",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector propertyValue = attributes_var->groupNames();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "isValid": {
+      "id": "Attributes_isValid",
+      "title": "Attributes.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Attributes.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Attributes",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = attributes_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = attributes_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "objectType": {
+      "id": "Attributes_objectType",
+      "title": "Attributes.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Attributes.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Attributes",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = attributes_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = attributes_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    }
+  }
+}

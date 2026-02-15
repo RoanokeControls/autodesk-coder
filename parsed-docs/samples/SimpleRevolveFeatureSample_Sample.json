@@ -1,0 +1,12 @@
+{
+  "id": "SimpleRevolveFeatureSample_Sample",
+  "title": "Simple Revolve Feature Sample",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Creates a new revolve feature, resulting in a new component.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "import adsk.core, adsk.fusion, math, traceback\n\ndef run(context):\n    ui = None\n    try: \n        app = adsk.core.Application.get()\n        ui = app.userInterface\n\n        doc = app.documents.add(adsk.core.DocumentTypes.FusionDesignDocumentType)\n        design = app.activeProduct\n\n        # Get the root component of the active design.\n        rootComp = design.rootComponent\n\n        # Create a new sketch on the xy plane.\n        sketches = rootComp.sketches;\n        xyPlane = rootComp.xYConstructionPlane;\n        sketch = sketches.add(xyPlane)\n\n        # Draw a circle.\n        circles = sketch.sketchCurves.sketchCircles\n        circle1 = circles.addByCenterRadius(adsk.core.Point3D.create(0, 0, 0), 2)\n        \n        # Draw a line to use as the axis of revolution.\n        lines = sketch.sketchCurves.sketchLines\n        axisLine = lines.addByTwoPoints(adsk.core.Point3D.create(-1, -5, 0), adsk.core.Point3D.create(1, -5, 0))\n\n        # Get the profile defined by the circle.\n        prof = sketch.profiles.item(0)\n\n        # Create an revolution input to be able to define the input needed for a revolution\n        # while specifying the profile and that a new component is to be created\n        revolves = rootComp.features.revolveFeatures\n        revInput = revolves.createInput(prof, axisLine, adsk.fusion.FeatureOperations.NewComponentFeatureOperation)\n\n        # Define that the extent is an angle of pi to get half of a torus.\n        angle = adsk.core.ValueInput.createByReal(math.pi)\n        revInput.setAngleExtent(False, angle)\n\n        # Create the extrusion.\n        ext = revolves.add(revInput)\n    except:\n        if ui:\n            ui.messageBox('Failed:\\n{}'.format(traceback.format_exc()))"
+  }
+}

@@ -1,0 +1,407 @@
+{
+  "id": "ConfigurationColumns",
+  "title": "ConfigurationColumns Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Configurations/ConfigurationColumns.h",
+  "description": "Returns a collection of the columns in the table. The Name column is not included in this list.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "addClearanceTypeColumns",
+      "description": "Creates the columns in the configuration table to control the clearance information associated with a clearance hole. Because configuring a clearance hole requires several pieces of related information, this method collects it all at once and creates all the corresponding feature aspect columns.   The fit is also a setting that controls the hole clearance, but it's independent of the other settings and can be created independently using the addFeatureAspectColumn method."
+    },
+    {
+      "name": "addFeatureAspectColumn",
+      "description": "Creates a new column to control an aspect of a feature that supports being configured."
+    },
+    {
+      "name": "addInsertColumn",
+      "description": "Add a new column to control which configuration is used for an inserted configuration. If an insert column already exists for the occurrence, the existing column is returned.   This is only valid for ConfigurationTopTable and ConfigurationCustomThemeTable objects and will fail for all other table types."
+    },
+    {
+      "name": "addInsertStandardDesignColumn",
+      "description": "Add a new column to control which standard design is used for an inserted design. If an insert column already exists for the occurrence, the existing column is returned.   This is only valid for ConfigurationTopTable and ConfigurationCustomThemeTable objects and will fail for all other table types."
+    },
+    {
+      "name": "addParameterColumn",
+      "description": "Adds a new parameter column to the configuration table. If a parameter column already exists for the parameter, the existing column is returned.   This is only valid for TopConfigurationTable and ThemeConfigurationTable objects. It will fail for all other table types."
+    },
+    {
+      "name": "addPropertyColumn",
+      "description": "Add a new column to control the property inside the component. The component is the owner of the property. This is only valid for TopConfigurationTable. It will fail for all other table types."
+    },
+    {
+      "name": "addSuppressColumn",
+      "description": "Adds a new column to control the suppression of a feature. The term \"feature\" is used broadly and includes anything displayed in the timeline. If a suppression column already exists for the feature, the existing column is returned.   This is only valid for TopConfigurationTable and ThemeConfigurationTable objects. It will fail for all other table types."
+    },
+    {
+      "name": "addThreadTypeColumns",
+      "description": "Creates the columns in the configuration table to control the type of thread associated with a thread feature or a tapped hole. Because configuring a thread requires several pieces of information, this method collects it all at once and creates all the corresponding feature aspect columns."
+    },
+    {
+      "name": "addVisibilityColumn",
+      "description": "Adds a new column to control the visibility of an entity. If a visibility column already exists for the entity, the existing column is returned.   This is only valid for ConfigurationTopTable and ConfigurationCustomThemeTable objects and will fail for all other table types."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "A method that returns the specified column object using an index into the collection."
+    },
+    {
+      "name": "itemById",
+      "description": "A method that returns the specified column object using the ID of the column."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of columns in the table. The name column is not included."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version January 2024",
+  "method_details": {
+    "addClearanceTypeColumns": {
+      "id": "ConfigurationColumns_addClearanceTypeColumns",
+      "title": "ConfigurationColumns.addClearanceTypeColumns Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationColumns.h",
+      "description": "Creates the columns in the configuration table to control the clearance information associated with a clearance hole. Because configuring a clearance hole requires several pieces of related information, this method collects it all at once and creates all the corresponding feature aspect columns. The fit is also a setting that controls the hole clearance, but it's independent of the other settings and can be created independently using the addFeatureAspectColumn method.",
+      "parent_class": "ConfigurationColumns",
+      "syntax": {
+        "python": "returnValue = configurationColumns_var.addClearanceTypeColumns(holeFeature, holeClearanceColumns)",
+        "cpp": "#include \n\nreturnValue = configurationColumns_var->addClearanceTypeColumns(holeFeature, holeClearanceColumns);"
+      },
+      "return_type": "ConfigurationFeatureAspectColumn[]",
+      "return_description": "Returns an array of the columns created. They are in order of standard, fastener type, and size.",
+      "parameters": [
+        {
+          "name": "holeFeature",
+          "type": "HoleFeature",
+          "description": "The hole feature that defines a clearance hole whose clearance will be controlled by the configuration table."
+        },
+        {
+          "name": "holeClearanceColumns",
+          "type": "ConfigurationClearanceHoleColumns",
+          "description": "Enum value that indicates which columns should be created to control the clearance hole definition. You can fully define the clearance hole by specifying the standard, fastener type, and size. Or you can leave the standard controlled by the hole and only configure the fastener type, and size. Or you can leave the standard and fastener type controlled by the hole and only configure the size. As a result, this can create and return 3, 2, or 1 columns.   The fit is also a setting that controls the hole clearance, but it's independent of the other settings and can be created independently using the addFeatureAspectColumn method."
+        }
+      ],
+      "version": "Introduced in version January 2025"
+    },
+    "addFeatureAspectColumn": {
+      "id": "ConfigurationColumns_addFeatureAspectColumn",
+      "title": "ConfigurationColumns.addFeatureAspectColumn Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationColumns.h",
+      "description": "Creates a new column to control an aspect of a feature that supports being configured.",
+      "parent_class": "ConfigurationColumns",
+      "syntax": {
+        "python": "returnValue = configurationColumns_var.addFeatureAspectColumn(feature, aspectType)",
+        "cpp": "#include \n\nreturnValue = configurationColumns_var->addFeatureAspectColumn(feature, aspectType);"
+      },
+      "return_type": "ConfigurationFeatureAspectColumn",
+      "return_description": "Retruns the created ConfigurationFeatureAspectColumn or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "feature",
+          "type": "Base",
+          "description": "The feature to be configured. The term \"feature\" is used broadly and includes ThreadFeature, HoleFeature that is tapped, Joint, and AsBuiltJoint objects. The existing column is returned if a feature aspect column already exists for the feature and aspect type."
+        },
+        {
+          "name": "aspectType",
+          "type": "ConfigurationFeatureAspectTypes",
+          "description": "The aspect type to create a column for. The type specified must be a valid type for the specified feature; otherwise, this will fail with an error."
+        }
+      ],
+      "version": "Introduced in version September 2024"
+    },
+    "addInsertColumn": {
+      "id": "ConfigurationColumns_addInsertColumn",
+      "title": "ConfigurationColumns.addInsertColumn Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationColumns.h",
+      "description": "Add a new column to control which configuration is used for an inserted configuration. If an insert column already exists for the occurrence, the existing column is returned. This is only valid for ConfigurationTopTable and ConfigurationCustomThemeTable objects and will fail for all other table types.",
+      "parent_class": "ConfigurationColumns",
+      "syntax": {
+        "python": "returnValue = configurationColumns_var.addInsertColumn(occurrence)",
+        "cpp": "#include \n\nreturnValue = configurationColumns_var->addInsertColumn(occurrence);"
+      },
+      "return_type": "ConfigurationInsertColumn",
+      "return_description": "Returns the new column or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that references a configuration."
+        }
+      ],
+      "version": "Introduced in version March 2024"
+    },
+    "addInsertStandardDesignColumn": {
+      "id": "ConfigurationColumns_addInsertStandardDesignColumn",
+      "title": "ConfigurationColumns.addInsertStandardDesignColumn Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationColumns.h",
+      "description": "Add a new column to control which standard design is used for an inserted design. If an insert column already exists for the occurrence, the existing column is returned. This is only valid for ConfigurationTopTable and ConfigurationCustomThemeTable objects and will fail for all other table types.",
+      "parent_class": "ConfigurationColumns",
+      "syntax": {
+        "python": "returnValue = configurationColumns_var.addInsertStandardDesignColumn(occurrence)",
+        "cpp": "#include \n\nreturnValue = configurationColumns_var->addInsertStandardDesignColumn(occurrence);"
+      },
+      "return_type": "ConfigurationInsertStandardDesignColumn",
+      "return_description": "Returns the new column or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that references a standard design."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    },
+    "addParameterColumn": {
+      "id": "ConfigurationColumns_addParameterColumn",
+      "title": "ConfigurationColumns.addParameterColumn Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationColumns.h",
+      "description": "Adds a new parameter column to the configuration table. If a parameter column already exists for the parameter, the existing column is returned. This is only valid for TopConfigurationTable and ThemeConfigurationTable objects. It will fail for all other table types.",
+      "parent_class": "ConfigurationColumns",
+      "syntax": {
+        "python": "returnValue = configurationColumns_var.addParameterColumn(parameter)",
+        "cpp": "#include \n\nreturnValue = configurationColumns_var->addParameterColumn(parameter);"
+      },
+      "return_type": "ConfigurationParameterColumn",
+      "return_description": "Returns the new column or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "parameter",
+          "type": "Parameter",
+          "description": "The parameter to add to the table."
+        }
+      ],
+      "version": "Introduced in version March 2024"
+    },
+    "addPropertyColumn": {
+      "id": "ConfigurationColumns_addPropertyColumn",
+      "title": "ConfigurationColumns.addPropertyColumn Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationColumns.h",
+      "description": "Add a new column to control the property inside the component. The component is the owner of the property. This is only valid for TopConfigurationTable. It will fail for all other table types.",
+      "parent_class": "ConfigurationColumns",
+      "syntax": {
+        "python": "returnValue = configurationColumns_var.addPropertyColumn(property)",
+        "cpp": "#include \n\nreturnValue = configurationColumns_var->addPropertyColumn(property);"
+      },
+      "return_type": "ConfigurationPropertyColumn",
+      "return_description": "Returns the new column or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "property",
+          "type": "Property",
+          "description": "The property to add to the table."
+        }
+      ],
+      "version": "Introduced in version March 2024"
+    },
+    "addSuppressColumn": {
+      "id": "ConfigurationColumns_addSuppressColumn",
+      "title": "ConfigurationColumns.addSuppressColumn Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationColumns.h",
+      "description": "Adds a new column to control the suppression of a feature. The term \"feature\" is used broadly and includes anything displayed in the timeline. If a suppression column already exists for the feature, the existing column is returned. This is only valid for TopConfigurationTable and ThemeConfigurationTable objects. It will fail for all other table types.",
+      "parent_class": "ConfigurationColumns",
+      "syntax": {
+        "python": "returnValue = configurationColumns_var.addSuppressColumn(feature)",
+        "cpp": "#include \n\nreturnValue = configurationColumns_var->addSuppressColumn(feature);"
+      },
+      "return_type": "ConfigurationSuppressColumn",
+      "return_description": "Returns the new column or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "feature",
+          "type": "Base",
+          "description": "The feature to add to the table. Any object that is displayed in the timeline can be used as input. For example, some valid objects are any modeling features, sketches, construction geometry, and joints."
+        }
+      ],
+      "version": "Introduced in version March 2024"
+    },
+    "addThreadTypeColumns": {
+      "id": "ConfigurationColumns_addThreadTypeColumns",
+      "title": "ConfigurationColumns.addThreadTypeColumns Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationColumns.h",
+      "description": "Creates the columns in the configuration table to control the type of thread associated with a thread feature or a tapped hole. Because configuring a thread requires several pieces of information, this method collects it all at once and creates all the corresponding feature aspect columns.",
+      "parent_class": "ConfigurationColumns",
+      "syntax": {
+        "python": "returnValue = configurationColumns_var.addThreadTypeColumns(threadFeature, threadColumns)",
+        "cpp": "#include \n\nreturnValue = configurationColumns_var->addThreadTypeColumns(threadFeature, threadColumns);"
+      },
+      "return_type": "ConfigurationFeatureAspectColumn[]",
+      "return_description": "Returns an array of the columns created. They are in order of type, size, designation, and class.",
+      "parameters": [
+        {
+          "name": "threadFeature",
+          "type": "Feature",
+          "description": "The thread or tapped hole feature whose thread will be controlled by the configuration table."
+        },
+        {
+          "name": "threadColumns",
+          "type": "ConfigurationThreadColumns",
+          "description": "Enum value that indicates which columns should be created to control the thread type. You can fully define the thread type by specifying the type, size, designation, and class. Or you can leave the thread type controlled by the feature and only configure the size, designation, and class. Or you can leave the thread type and size controlled by the feature and only configure the designation and class. Or you can leave the thread type, size, and designation controlled by the feature and only configure the class. As a result, this can create and return 4, 3, 2, or 1 columns."
+        }
+      ],
+      "version": "Introduced in version September 2024"
+    },
+    "addVisibilityColumn": {
+      "id": "ConfigurationColumns_addVisibilityColumn",
+      "title": "ConfigurationColumns.addVisibilityColumn Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationColumns.h",
+      "description": "Adds a new column to control the visibility of an entity. If a visibility column already exists for the entity, the existing column is returned. This is only valid for ConfigurationTopTable and ConfigurationCustomThemeTable objects and will fail for all other table types.",
+      "parent_class": "ConfigurationColumns",
+      "syntax": {
+        "python": "returnValue = configurationColumns_var.addVisibilityColumn(entity)",
+        "cpp": "#include \n\nreturnValue = configurationColumns_var->addVisibilityColumn(entity);"
+      },
+      "return_type": "ConfigurationVisibilityColumn",
+      "return_description": "Returns the new column or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "entity",
+          "type": "Base",
+          "description": "Returns the entity whose visibility will be controlled by this column."
+        }
+      ],
+      "version": "Introduced in version March 2024"
+    },
+    "classType": {
+      "id": "ConfigurationColumns_classType",
+      "title": "ConfigurationColumns.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationColumns.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ConfigurationColumns",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ConfigurationColumns.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ConfigurationColumns::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2024"
+    },
+    "item": {
+      "id": "ConfigurationColumns_item",
+      "title": "ConfigurationColumns.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationColumns.h",
+      "description": "A method that returns the specified column object using an index into the collection.",
+      "parent_class": "ConfigurationColumns",
+      "syntax": {
+        "python": "returnValue = configurationColumns_var.item(index)",
+        "cpp": "#include \n\nreturnValue = configurationColumns_var->item(index);"
+      },
+      "return_type": "ConfigurationColumn",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "itemById": {
+      "id": "ConfigurationColumns_itemById",
+      "title": "ConfigurationColumns.itemById Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationColumns.h",
+      "description": "A method that returns the specified column object using the ID of the column.",
+      "parent_class": "ConfigurationColumns",
+      "syntax": {
+        "python": "returnValue = configurationColumns_var.itemById(id)",
+        "cpp": "#include \n\nreturnValue = configurationColumns_var->itemById(id);"
+      },
+      "return_type": "ConfigurationColumn",
+      "return_description": "Returns the specified item or null if no column matches the provided ID.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The ID of the column within the collection to return."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "ConfigurationColumns_count",
+      "title": "ConfigurationColumns.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationColumns.h",
+      "description": "Returns the number of columns in the table. The name column is not included.",
+      "parent_class": "ConfigurationColumns",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationColumns_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = configurationColumns_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "isValid": {
+      "id": "ConfigurationColumns_isValid",
+      "title": "ConfigurationColumns.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationColumns.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ConfigurationColumns",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationColumns_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = configurationColumns_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "objectType": {
+      "id": "ConfigurationColumns_objectType",
+      "title": "ConfigurationColumns.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationColumns.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ConfigurationColumns",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationColumns_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = configurationColumns_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    }
+  }
+}

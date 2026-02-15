@@ -1,0 +1,239 @@
+{
+  "id": "ReplaceFaceFeatures",
+  "title": "ReplaceFaceFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/ReplaceFaceFeatures.h",
+  "description": "Collection that provides access to all of the existing replace face features in a component and supports the ability to create new replace face features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new replace face feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a ReplaceFaceFeatureInput object. Use properties and methods on this object to define the replace face you want to create and then use the Add method, passing in the ReplaceFaceFeatureInput object."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified replace face feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified replace face feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of replace face features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "ReplaceFace Feature",
+      "description": "Demonstrates creating a new replaceface feature."
+    }
+  ],
+  "version": "Introduced in version March 2015",
+  "method_details": {
+    "add": {
+      "id": "ReplaceFaceFeatures_add",
+      "title": "ReplaceFaceFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ReplaceFaceFeatures.h",
+      "description": "Creates a new replace face feature.",
+      "parent_class": "ReplaceFaceFeatures",
+      "syntax": {
+        "python": "returnValue = replaceFaceFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = replaceFaceFeatures_var->add(input);"
+      },
+      "return_type": "ReplaceFaceFeature",
+      "return_description": "Returns the newly created ReplaceFaceFeature object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "ReplaceFaceFeatureInput",
+          "description": "A ReplaceFaceFeatureInput object that defines the desired replace face. Use the createInput method to create a new ReplaceFaceFeatureInput object and then use methods on it (the ReplaceFaceFeatureInput object) to define the replace face."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "replaceFaceFeatures.add",
+          "description": "Demonstrate the remove replaceFaceFeatures.add method."
+        },
+        {
+          "name": "ReplaceFace Feature",
+          "description": "Demonstrates creating a new replaceface feature."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    },
+    "classType": {
+      "id": "ReplaceFaceFeatures_classType",
+      "title": "ReplaceFaceFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ReplaceFaceFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ReplaceFaceFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ReplaceFaceFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ReplaceFaceFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version March 2015"
+    },
+    "createInput": {
+      "id": "ReplaceFaceFeatures_createInput",
+      "title": "ReplaceFaceFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ReplaceFaceFeatures.h",
+      "description": "Creates a ReplaceFaceFeatureInput object. Use properties and methods on this object to define the replace face you want to create and then use the Add method, passing in the ReplaceFaceFeatureInput object.",
+      "parent_class": "ReplaceFaceFeatures",
+      "syntax": {
+        "python": "returnValue = replaceFaceFeatures_var.createInput(sourceFaces, isTangentChain, targetFaces)",
+        "cpp": "#include \n\nreturnValue = replaceFaceFeatures_var->createInput(sourceFaces, isTangentChain, targetFaces);"
+      },
+      "return_type": "ReplaceFaceFeatureInput",
+      "return_description": "Returns the newly created ReplaceFaceFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "sourceFaces",
+          "type": "ObjectCollection",
+          "description": "Input the entities that define the source faces (the faces to be replaced). The collection can contain the faces from a solid and/or features. All the faces must be on the same body."
+        },
+        {
+          "name": "isTangentChain",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not faces that are tangentially connected to the input faces (if any) will also be included. A value of true indicates that tangent faces will be included."
+        },
+        {
+          "name": "targetFaces",
+          "type": "Base",
+          "description": "Input the entities that define the target faces. The new faces must completely intersect the part. The collection can contain the surface faces, surface bodies and construction planes."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "replaceFaceFeatures.add",
+          "description": "Demonstrate the remove replaceFaceFeatures.add method."
+        },
+        {
+          "name": "ReplaceFace Feature",
+          "description": "Demonstrates creating a new replaceface feature."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    },
+    "item": {
+      "id": "ReplaceFaceFeatures_item",
+      "title": "ReplaceFaceFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ReplaceFaceFeatures.h",
+      "description": "Function that returns the specified replace face feature using an index into the collection.",
+      "parent_class": "ReplaceFaceFeatures",
+      "syntax": {
+        "python": "returnValue = replaceFaceFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = replaceFaceFeatures_var->item(index);"
+      },
+      "return_type": "ReplaceFaceFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    },
+    "itemByName": {
+      "id": "ReplaceFaceFeatures_itemByName",
+      "title": "ReplaceFaceFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ReplaceFaceFeatures.h",
+      "description": "Function that returns the specified replace face feature using the name of the feature.",
+      "parent_class": "ReplaceFaceFeatures",
+      "syntax": {
+        "python": "returnValue = replaceFaceFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = replaceFaceFeatures_var->itemByName(name);"
+      },
+      "return_type": "ReplaceFaceFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "ReplaceFaceFeatures_count",
+      "title": "ReplaceFaceFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ReplaceFaceFeatures.h",
+      "description": "The number of replace face features in the collection.",
+      "parent_class": "ReplaceFaceFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = replaceFaceFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = replaceFaceFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "isValid": {
+      "id": "ReplaceFaceFeatures_isValid",
+      "title": "ReplaceFaceFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ReplaceFaceFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ReplaceFaceFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = replaceFaceFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = replaceFaceFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "objectType": {
+      "id": "ReplaceFaceFeatures_objectType",
+      "title": "ReplaceFaceFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ReplaceFaceFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ReplaceFaceFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = replaceFaceFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = replaceFaceFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    }
+  }
+}

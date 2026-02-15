@@ -1,0 +1,619 @@
+{
+  "id": "Palette",
+  "title": "Palette Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/Palette.h",
+  "description": "A Palette is a floating or docked dialog in Fusion. The browser is an example of a built-in palette. The contents of a custom palette are created by displaying an HTML file.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this palette. Fusion native palettes cannot be deleted. Use the isNative property to determine if this is a native or API created palette."
+    },
+    {
+      "name": "sendInfoToHTML",
+      "description": "Sends the string to the JavaScript associated with the loaded HTML."
+    },
+    {
+      "name": "setMaximumSize",
+      "description": "Sets the maximum size of the palette. The user cannot resize it to be larger than this size. This does not change the current size of the palette unless the palette is already larger than this size.   Calling this method and setting the width and height to zero, removes the maximum size restriction."
+    },
+    {
+      "name": "setMinimumSize",
+      "description": "Sets the minimum size of the palette. The user cannot resize it to be smaller than this size. This does not change the current size of the palette unless the palette is already smaller than this size.   Calling this method and setting the width and height to zero, removes the minimum size restriction."
+    },
+    {
+      "name": "setPosition",
+      "description": "Sets the position of the palette. If the palette is docked or snapped, this will result in changing it to be floating."
+    },
+    {
+      "name": "setSize",
+      "description": "Sets the size of the palette. This is best used for a floating palette because either the width or height can be locked when a palette is docked."
+    },
+    {
+      "name": "snapTo",
+      "description": "Snaps this palette to another palette."
+    }
+  ],
+  "properties": [
+    {
+      "name": "dockingOption",
+      "description": "Defines the docking behavior for this palette. This controls how the user is allowed to dock the palette."
+    },
+    {
+      "name": "dockingState",
+      "description": "Gets and sets how the palette is currently docked."
+    },
+    {
+      "name": "height",
+      "description": "Gets and sets the height of the palette. Setting this property may not always set the height. Depending on how the palette is docked or snapped, the height may not be editable."
+    },
+    {
+      "name": "htmlFileURL",
+      "description": "Gets and sets the URL to the HTML file that will be displayed in the palette. This can be a local file or a URL on the web where the HTML will be read. To avoid reading a file, this can also be the full HTML definition as a string.   If you are providing the HTML content as a string, it should begin with the  element. Any references made in the HTML should be to URL's and not local files since the local path is ambiguous."
+    },
+    {
+      "name": "id",
+      "description": "Gets The unique, language independent, ID of this palette."
+    },
+    {
+      "name": "isNative",
+      "description": "Indicates if this is one of the standard Fusion palettes or a custom palette created through the API. If true, it is a standard Fusion palette and will have some restrictions on changing its properties and cannot be deleted."
+    },
+    {
+      "name": "isTransparent",
+      "description": "Returns if this palette was created as a transparent palette."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets and sets whether this palette is currently being displayed in the user interface."
+    },
+    {
+      "name": "left",
+      "description": "Gets and sets the left side of the palette relative to screen space and in pixels. Because palettes can be positioned outside of the Fusion window, a value of zero indicates the left side of the screen and not the Fusion window."
+    },
+    {
+      "name": "name",
+      "description": "Gets and set the name of the palette as seen in the user interface. The name of native palettes cannot be set."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "top",
+      "description": "Gets and sets the top of the palette relative to screen space and in pixels. Because palettes can be positioned outside of the Fusion window, a value of zero indicates the top of the screen and not the Fusion window."
+    },
+    {
+      "name": "width",
+      "description": "Gets and sets the width of the palette. Setting this property may not always set the width. Depending on how the palette is docked or snapped, the width may not be editable."
+    }
+  ],
+  "events": [
+    {
+      "name": "closed",
+      "description": "This event is fired when the user clicks the \"Close\" button on the palette. You can choose if the \"Close\" button is available or not when you initially create the palette. When a palette is closed, it still exists but is change to invisible so you can still interact with it and retrieve any needed information and can make it visible again. Use the deleteMe method to delete the palette."
+    },
+    {
+      "name": "incomingFromHTML",
+      "description": "This event is fired when the JavaScript associated with the HTML calls the adsk.fusionSendData function. This allows the HTML to communicate with the add-in by passing information to the add-in."
+    },
+    {
+      "name": "navigatingURL",
+      "description": "This event is fired when a navigation event occurs on the page. This allows the add-in to determine how this navigation should be handled by the browser."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Palette Sample",
+      "description": "Demonstrates how to create a palette, how to dock and snap palettes and how Fusion communicates with the palette HTML. The sample is an add-in.  To use it, create a new Python add-in and replace the code with the code below. You also need to create an html file using the name and code below. The html file needs to be in the same folder as the py file.\n\tWhen you load the add-in, you'll see two new commands under the ADD-INS panel of the TOOLS tab. The \"Show Custom Palette\" command will cause the custom palette to be displayed. It will remain displayed until you click its Close button. Clicking the \"Click to send info to Fusion\" button on the palette, will send information to your add-in, which uses the API to display that information in a message box. Running the \"Send Info to HTML\" command to send data to the javascript running in the palette, which uses it to update the content of a paragraph.\n\npalette.html"
+    }
+  ],
+  "version": "Introduced in version March 2017",
+  "method_details": {
+    "classType": {
+      "id": "Palette_classType",
+      "title": "Palette.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "returnValue = adsk.core.Palette.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Palette::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version March 2017"
+    },
+    "deleteMe": {
+      "id": "Palette_deleteMe",
+      "title": "Palette.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Deletes this palette. Fusion native palettes cannot be deleted. Use the isNative property to determine if this is a native or API created palette.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "returnValue = palette_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = palette_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "related_samples": [
+        {
+          "name": "Palette Sample",
+          "description": "Demonstrates how to create a palette, how to dock and snap palettes and how Fusion communicates with the palette HTML. The sample is an add-in.\u00a0To use it, create a new Python add-in and replace the code with the code below. You also need to create an html file using the name and code below. The html file needs to be in the same folder as the py file.\n\tWhen you load the add-in, you'll see two new commands under the ADD-INS panel of the TOOLS tab. The \"Show Custom Palette\" command will cause the custom palette to be displayed. It will remain displayed until you click its Close button. Clicking the \"Click to send info to Fusion\" button on the palette, will send information to your add-in, which uses the API to display that information in a message box. Running the \"Send Info to HTML\" command to send data to the javascript running in the palette, which uses it to update the content of a paragraph.\n\npalette.html"
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    },
+    "sendInfoToHTML": {
+      "id": "Palette_sendInfoToHTML",
+      "title": "Palette.sendInfoToHTML Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Sends the string to the JavaScript associated with the loaded HTML. Remarks",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "returnValue = palette_var.sendInfoToHTML(action, data)",
+        "cpp": "#include \n\nreturnValue = palette_var->sendInfoToHTML(action, data);"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string that can be anything that your JavaScript code generates. The JavaScript should always return some content because an empty string is used to indicate a failure.   If useNewWebBrowser flag is set to true while creating the palette control this API call will be asynchronous and an empty string is returned. Response will come in data field of HTMLEvent with action equal to 'response'.",
+      "parameters": [
+        {
+          "name": "action",
+          "type": "string",
+          "description": "The \"action\" string to pass to the JavaScript associated with the HTML. This string can be anything but will typically be JSON formatted information."
+        },
+        {
+          "name": "data",
+          "type": "string",
+          "description": "The \"data\" string to pass to the JavaScript associated with the HTML. This string can be anything but will typically be JSON formatted information."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Palette Sample",
+          "description": "Demonstrates how to create a palette, how to dock and snap palettes and how Fusion communicates with the palette HTML. The sample is an add-in.\u00a0To use it, create a new Python add-in and replace the code with the code below. You also need to create an html file using the name and code below. The html file needs to be in the same folder as the py file.\n\tWhen you load the add-in, you'll see two new commands under the ADD-INS panel of the TOOLS tab. The \"Show Custom Palette\" command will cause the custom palette to be displayed. It will remain displayed until you click its Close button. Clicking the \"Click to send info to Fusion\" button on the palette, will send information to your add-in, which uses the API to display that information in a message box. Running the \"Send Info to HTML\" command to send data to the javascript running in the palette, which uses it to update the content of a paragraph.\n\npalette.html"
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    },
+    "setMaximumSize": {
+      "id": "Palette_setMaximumSize",
+      "title": "Palette.setMaximumSize Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Sets the maximum size of the palette. The user cannot resize it to be larger than this size. This does not change the current size of the palette unless the palette is already larger than this size. Calling this method and setting the width and height to zero, removes the maximum size restriction.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "returnValue = palette_var.setMaximumSize(width, height)",
+        "cpp": "#include \n\nreturnValue = palette_var->setMaximumSize(width, height);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting the maximum size was successful.",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "integer",
+          "description": "Specifies the maximum width of the palette."
+        },
+        {
+          "name": "height",
+          "type": "integer",
+          "description": "Specifies the maximum height of the palette."
+        }
+      ],
+      "version": "Introduced in version May 2017"
+    },
+    "setMinimumSize": {
+      "id": "Palette_setMinimumSize",
+      "title": "Palette.setMinimumSize Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Sets the minimum size of the palette. The user cannot resize it to be smaller than this size. This does not change the current size of the palette unless the palette is already smaller than this size. Calling this method and setting the width and height to zero, removes the minimum size restriction.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "returnValue = palette_var.setMinimumSize(width, height)",
+        "cpp": "#include \n\nreturnValue = palette_var->setMinimumSize(width, height);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting the minimum size was successful.",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "integer",
+          "description": "Specifies the minimum width of the palette."
+        },
+        {
+          "name": "height",
+          "type": "integer",
+          "description": "Specifies the minimum height of the palette."
+        }
+      ],
+      "version": "Introduced in version May 2017"
+    },
+    "setPosition": {
+      "id": "Palette_setPosition",
+      "title": "Palette.setPosition Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Sets the position of the palette. If the palette is docked or snapped, this will result in changing it to be floating.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "returnValue = palette_var.setPosition(left, top)",
+        "cpp": "#include \n\nreturnValue = palette_var->setPosition(left, top);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting the position was successful.",
+      "parameters": [
+        {
+          "name": "left",
+          "type": "integer",
+          "description": "The position of the left side of the palette relative to screen space and in pixels. Because palettes can be positioned outside of the Fusion window, a value of zero indicates the left side of the screen and not the Fusion window."
+        },
+        {
+          "name": "top",
+          "type": "integer",
+          "description": "The position of the top of the palette relative to screen space and in pixels. Because palettes can be positioned outside of the Fusion window, a value of zero indicates the top of the screen and not the Fusion window."
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    },
+    "setSize": {
+      "id": "Palette_setSize",
+      "title": "Palette.setSize Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Sets the size of the palette. This is best used for a floating palette because either the width or height can be locked when a palette is docked.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "returnValue = palette_var.setSize(width, height)",
+        "cpp": "#include \n\nreturnValue = palette_var->setSize(width, height);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the sizing was succesful. It is still considered a success even if the width or height could not be changed because of how the palette is docked or snapped.",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "integer",
+          "description": "Specifies the width of the palette. Depending on how the palette is docked or snapped, the width may not be editable."
+        },
+        {
+          "name": "height",
+          "type": "integer",
+          "description": "Specifies the height of the palette. Depending on how the palette is docked or snapped, the height may not be editable."
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    },
+    "snapTo": {
+      "id": "Palette_snapTo",
+      "title": "Palette.snapTo Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Snaps this palette to another palette.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "returnValue = palette_var.snapTo(palette, snapOption)",
+        "cpp": "#include \n\nreturnValue = palette_var->snapTo(palette, snapOption);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the palette was successfully snapped to the other palette.",
+      "parameters": [
+        {
+          "name": "palette",
+          "type": "Palette",
+          "description": "Specifies the palette to snap to."
+        },
+        {
+          "name": "snapOption",
+          "type": "PaletteSnapOptions",
+          "description": "Specifies how this palette should be snapped to the other palette."
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    }
+  },
+  "event_details": {
+    "closed": {
+      "id": "Palette_closed",
+      "title": "Palette.closed Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "This event is fired when the user clicks the \"Close\" button on the palette. You can choose if the \"Close\" button is available or not when you initially create the palette. When a palette is closed, it still exists but is change to invisible so you can still interact with it and retrieve any needed information and can make it visible again. Use the deleteMe method to delete the palette.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "# Event handler for the closed event.\nclass MyClosedHandler(adsk.core.UserInterfaceGeneralEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.UserInterfaceGeneralEventArgs):\n        # Code to react to the event.\n        app.log('In MyClosedHandler event handler.')",
+        "cpp": "// \"palette_var\" is a variable referencing a Palette object.\n// Connect the handler function to the event.\nPtr closedEvent = palette_var->closed();\nif (!closedEvent)\n    return;\n\nbool isOk = closedEvent->add(&_closed);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Palette Sample",
+          "description": "Demonstrates how to create a palette, how to dock and snap palettes and how Fusion communicates with the palette HTML. The sample is an add-in.\u00a0To use it, create a new Python add-in and replace the code with the code below. You also need to create an html file using the name and code below. The html file needs to be in the same folder as the py file.\n\tWhen you load the add-in, you'll see two new commands under the ADD-INS panel of the TOOLS tab. The \"Show Custom Palette\" command will cause the custom palette to be displayed. It will remain displayed until you click its Close button. Clicking the \"Click to send info to Fusion\" button on the palette, will send information to your add-in, which uses the API to display that information in a message box. Running the \"Send Info to HTML\" command to send data to the javascript running in the palette, which uses it to update the content of a paragraph.\n\npalette.html"
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    },
+    "incomingFromHTML": {
+      "id": "Palette_incomingFromHTML",
+      "title": "Palette.incomingFromHTML Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "This event is fired when the JavaScript associated with the HTML calls the adsk.fusionSendData function. This allows the HTML to communicate with the add-in by passing information to the add-in.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "# Event handler for the incomingFromHTML event.\nclass MyIncomingFromHTMLHandler(adsk.core.HTMLEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.HTMLEventArgs):\n        # Code to react to the event.\n        app.log('In MyIncomingFromHTMLHandler event handler.')",
+        "cpp": "// \"palette_var\" is a variable referencing a Palette object.\n// Connect the handler function to the event.\nPtr incomingFromHTMLEvent = palette_var->incomingFromHTML();\nif (!incomingFromHTMLEvent)\n    return;\n\nbool isOk = incomingFromHTMLEvent->add(&_incomingFromHTML);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Palette Sample",
+          "description": "Demonstrates how to create a palette, how to dock and snap palettes and how Fusion communicates with the palette HTML. The sample is an add-in.\u00a0To use it, create a new Python add-in and replace the code with the code below. You also need to create an html file using the name and code below. The html file needs to be in the same folder as the py file.\n\tWhen you load the add-in, you'll see two new commands under the ADD-INS panel of the TOOLS tab. The \"Show Custom Palette\" command will cause the custom palette to be displayed. It will remain displayed until you click its Close button. Clicking the \"Click to send info to Fusion\" button on the palette, will send information to your add-in, which uses the API to display that information in a message box. Running the \"Send Info to HTML\" command to send data to the javascript running in the palette, which uses it to update the content of a paragraph.\n\npalette.html"
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    },
+    "navigatingURL": {
+      "id": "Palette_navigatingURL",
+      "title": "Palette.navigatingURL Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "This event is fired when a navigation event occurs on the page. This allows the add-in to determine how this navigation should be handled by the browser.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "# Event handler for the navigatingURL event.\nclass MyNavigatingURLHandler(adsk.core.NavigationEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.NavigationEventArgs):\n        # Code to react to the event.\n        app.log('In MyNavigatingURLHandler event handler.')",
+        "cpp": "// \"palette_var\" is a variable referencing a Palette object.\n// Connect the handler function to the event.\nPtr navigatingURLEvent = palette_var->navigatingURL();\nif (!navigatingURLEvent)\n    return;\n\nbool isOk = navigatingURLEvent->add(&_navigatingURL);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2021"
+    }
+  },
+  "property_details": {
+    "dockingOption": {
+      "id": "Palette_dockingOption",
+      "title": "Palette.dockingOption Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Defines the docking behavior for this palette. This controls how the user is allowed to dock the palette.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = palette_var.dockingOption\n\n# Set the value of the property.\npalette_var.dockingOption = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPaletteDockingOptions propertyValue = palette_var->dockingOption();\n\n// Set the value of the property, where value_var is a PaletteDockingOptions.\nbool returnValue = palette_var->dockingOption(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    },
+    "dockingState": {
+      "id": "Palette_dockingState",
+      "title": "Palette.dockingState Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Gets and sets how the palette is currently docked.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = palette_var.dockingState\n\n# Set the value of the property.\npalette_var.dockingState = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPaletteDockingStates propertyValue = palette_var->dockingState();\n\n// Set the value of the property, where value_var is a PaletteDockingStates.\nbool returnValue = palette_var->dockingState(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Palette Sample",
+          "description": "Demonstrates how to create a palette, how to dock and snap palettes and how Fusion communicates with the palette HTML. The sample is an add-in.\u00a0To use it, create a new Python add-in and replace the code with the code below. You also need to create an html file using the name and code below. The html file needs to be in the same folder as the py file.\n\tWhen you load the add-in, you'll see two new commands under the ADD-INS panel of the TOOLS tab. The \"Show Custom Palette\" command will cause the custom palette to be displayed. It will remain displayed until you click its Close button. Clicking the \"Click to send info to Fusion\" button on the palette, will send information to your add-in, which uses the API to display that information in a message box. Running the \"Send Info to HTML\" command to send data to the javascript running in the palette, which uses it to update the content of a paragraph.\n\npalette.html"
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    },
+    "height": {
+      "id": "Palette_height",
+      "title": "Palette.height Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Gets and sets the height of the palette. Setting this property may not always set the height. Depending on how the palette is docked or snapped, the height may not be editable.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = palette_var.height\n\n# Set the value of the property.\npalette_var.height = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = palette_var->height();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = palette_var->height(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    },
+    "htmlFileURL": {
+      "id": "Palette_htmlFileURL",
+      "title": "Palette.htmlFileURL Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Gets and sets the URL to the HTML file that will be displayed in the palette. This can be a local file or a URL on the web where the HTML will be read. To avoid reading a file, this can also be the full HTML definition as a string. If you are providing the HTML content as a string, it should begin with the element. Any references made in the HTML should be to URL's and not local files since the local path is ambiguous.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = palette_var.htmlFileURL\n\n# Set the value of the property.\npalette_var.htmlFileURL = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = palette_var->htmlFileURL();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = palette_var->htmlFileURL(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    },
+    "id": {
+      "id": "Palette_id",
+      "title": "Palette.id Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Gets The unique, language independent, ID of this palette.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = palette_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = palette_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    },
+    "isNative": {
+      "id": "Palette_isNative",
+      "title": "Palette.isNative Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Indicates if this is one of the standard Fusion palettes or a custom palette created through the API. If true, it is a standard Fusion palette and will have some restrictions on changing its properties and cannot be deleted.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = palette_var.isNative",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = palette_var->isNative();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    },
+    "isTransparent": {
+      "id": "Palette_isTransparent",
+      "title": "Palette.isTransparent Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Returns if this palette was created as a transparent palette.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = palette_var.isTransparent",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = palette_var->isTransparent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "isValid": {
+      "id": "Palette_isValid",
+      "title": "Palette.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = palette_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = palette_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    },
+    "isVisible": {
+      "id": "Palette_isVisible",
+      "title": "Palette.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Gets and sets whether this palette is currently being displayed in the user interface.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = palette_var.isVisible\n\n# Set the value of the property.\npalette_var.isVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = palette_var->isVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = palette_var->isVisible(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Palette Sample",
+          "description": "Demonstrates how to create a palette, how to dock and snap palettes and how Fusion communicates with the palette HTML. The sample is an add-in.\u00a0To use it, create a new Python add-in and replace the code with the code below. You also need to create an html file using the name and code below. The html file needs to be in the same folder as the py file.\n\tWhen you load the add-in, you'll see two new commands under the ADD-INS panel of the TOOLS tab. The \"Show Custom Palette\" command will cause the custom palette to be displayed. It will remain displayed until you click its Close button. Clicking the \"Click to send info to Fusion\" button on the palette, will send information to your add-in, which uses the API to display that information in a message box. Running the \"Send Info to HTML\" command to send data to the javascript running in the palette, which uses it to update the content of a paragraph.\n\npalette.html"
+        }
+      ],
+      "version": "Introduced in version March 2017"
+    },
+    "left": {
+      "id": "Palette_left",
+      "title": "Palette.left Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Gets and sets the left side of the palette relative to screen space and in pixels. Because palettes can be positioned outside of the Fusion window, a value of zero indicates the left side of the screen and not the Fusion window.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = palette_var.left\n\n# Set the value of the property.\npalette_var.left = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = palette_var->left();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = palette_var->left(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    },
+    "name": {
+      "id": "Palette_name",
+      "title": "Palette.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Gets and set the name of the palette as seen in the user interface. The name of native palettes cannot be set.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = palette_var.name\n\n# Set the value of the property.\npalette_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = palette_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = palette_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    },
+    "objectType": {
+      "id": "Palette_objectType",
+      "title": "Palette.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = palette_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = palette_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    },
+    "top": {
+      "id": "Palette_top",
+      "title": "Palette.top Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Gets and sets the top of the palette relative to screen space and in pixels. Because palettes can be positioned outside of the Fusion window, a value of zero indicates the top of the screen and not the Fusion window.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = palette_var.top\n\n# Set the value of the property.\npalette_var.top = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = palette_var->top();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = palette_var->top(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    },
+    "width": {
+      "id": "Palette_width",
+      "title": "Palette.width Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Palette.h",
+      "description": "Gets and sets the width of the palette. Setting this property may not always set the width. Depending on how the palette is docked or snapped, the width may not be editable.",
+      "parent_class": "Palette",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = palette_var.width\n\n# Set the value of the property.\npalette_var.width = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = palette_var->width();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = palette_var->width(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2017"
+    }
+  }
+}

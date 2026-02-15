@@ -1,0 +1,12 @@
+{
+  "id": "GeometricConstraints_addSymmetry_Sample",
+  "title": "GeometricConstraints.addSymmetry",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the GeometricConstraints.addSymmetry method.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_GeometricConstraints_addSymmetry(sketch: adsk.fusion.Sketch):\n    # Create two sketch circles.\n    leftCircle = sketch.sketchCurves.sketchCircles.addByCenterRadius(adsk.core.Point3D.create(2, 3, 0), 3)\n    rightCircle = sketch.sketchCurves.sketchCircles.addByCenterRadius(adsk.core.Point3D.create(10, 5, 0), 2)\n    \n    # Create a sketch line.\n    symmetryLine = sketch.sketchCurves.sketchLines.addByTwoPoints(adsk.core.Point3D.create(6, 0, 0),\n                                                                  adsk.core.Point3D.create(6, 7, 0))    \n    \n    # Add a symmetric constraint to make the circles symmetric around the line.\n    constraints = sketch.geometricConstraints\n    symmetryConstraint = constraints.addSymmetry(leftCircle, rightCircle, symmetryLine)"
+  }
+}

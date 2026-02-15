@@ -1,0 +1,285 @@
+{
+  "id": "ManufacturingModels",
+  "title": "ManufacturingModels Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/ManufacturingModels/ManufacturingModels.h",
+  "description": "Referenced from CAM product to access manufacturing models in document.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Create a new ManufacturingModel."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Create a new ManufacturingModelInput object. Use properties and methods on this object to define the ManufacturingModel you want to create and then use the Add method, passing in the ManufacturingModelInput object."
+    },
+    {
+      "name": "item",
+      "description": "Get ManufacturingModel by index in collection."
+    },
+    {
+      "name": "itemById",
+      "description": "Returns ManufacturingModel with given id."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns all ManufacturingModel with given name (as appears in the browser)."
+    },
+    {
+      "name": "syncAllManufacturingModels",
+      "description": "Checks wether changes to the original design have been made. If so, all manufacturing models are synchronized with their sources."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of items in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Additive Manufacturing FFF API Sample",
+      "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+    },
+    {
+      "name": "Additive Manufacturing MJF API Sample",
+      "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+    },
+    {
+      "name": "Additive Manufacturing SLA API Sample",
+      "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "method_details": {
+    "add": {
+      "id": "ManufacturingModels_add",
+      "title": "ManufacturingModels.add Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/ManufacturingModels/ManufacturingModels.h",
+      "description": "Create a new ManufacturingModel.",
+      "parent_class": "ManufacturingModels",
+      "syntax": {
+        "python": "returnValue = manufacturingModels_var.add(input)",
+        "cpp": "#include \n\nreturnValue = manufacturingModels_var->add(input);"
+      },
+      "return_type": "ManufacturingModel",
+      "return_description": "Returns the newly created ManufacturingModel.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "ManufacturingModelInput",
+          "description": "A ManufacturingModelInput object that defines the desired ManufacturingModel. Use the createInput method to create a new ManufacturingModelInput object and then use methods on it to define the ManufacturingModel."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Additive Manufacturing FFF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+        },
+        {
+          "name": "Additive Manufacturing MJF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+        },
+        {
+          "name": "Additive Manufacturing SLA API Sample",
+          "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "classType": {
+      "id": "ManufacturingModels_classType",
+      "title": "ManufacturingModels.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/ManufacturingModels/ManufacturingModels.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ManufacturingModels",
+      "syntax": {
+        "python": "returnValue = adsk.cam.ManufacturingModels.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::ManufacturingModels::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    },
+    "createInput": {
+      "id": "ManufacturingModels_createInput",
+      "title": "ManufacturingModels.createInput Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/ManufacturingModels/ManufacturingModels.h",
+      "description": "Create a new ManufacturingModelInput object. Use properties and methods on this object to define the ManufacturingModel you want to create and then use the Add method, passing in the ManufacturingModelInput object.",
+      "parent_class": "ManufacturingModels",
+      "syntax": {
+        "python": "returnValue = manufacturingModels_var.createInput()",
+        "cpp": "#include \n\nreturnValue = manufacturingModels_var->createInput();"
+      },
+      "return_type": "ManufacturingModelInput",
+      "return_description": "Returns new ManufacturingModelInput object.",
+      "related_samples": [
+        {
+          "name": "Additive Manufacturing FFF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+        },
+        {
+          "name": "Additive Manufacturing MJF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+        },
+        {
+          "name": "Additive Manufacturing SLA API Sample",
+          "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "item": {
+      "id": "ManufacturingModels_item",
+      "title": "ManufacturingModels.item Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/ManufacturingModels/ManufacturingModels.h",
+      "description": "Get ManufacturingModel by index in collection.",
+      "parent_class": "ManufacturingModels",
+      "syntax": {
+        "python": "returnValue = manufacturingModels_var.item(index)",
+        "cpp": "#include \n\nreturnValue = manufacturingModels_var->item(index);"
+      },
+      "return_type": "ManufacturingModel",
+      "return_description": "Returns ManufacturingModel at given index.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": ""
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "itemById": {
+      "id": "ManufacturingModels_itemById",
+      "title": "ManufacturingModels.itemById Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/ManufacturingModels/ManufacturingModels.h",
+      "description": "Returns ManufacturingModel with given id.",
+      "parent_class": "ManufacturingModels",
+      "syntax": {
+        "python": "returnValue = manufacturingModels_var.itemById(id)",
+        "cpp": "#include \n\nreturnValue = manufacturingModels_var->itemById(id);"
+      },
+      "return_type": "ManufacturingModel",
+      "return_description": "Returns ManufacturingModel with the specified id or null if no ManufacturingModel has that id.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The id of the ManufacturingModel."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "itemByName": {
+      "id": "ManufacturingModels_itemByName",
+      "title": "ManufacturingModels.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/ManufacturingModels/ManufacturingModels.h",
+      "description": "Returns all ManufacturingModel with given name (as appears in the browser).",
+      "parent_class": "ManufacturingModels",
+      "syntax": {
+        "python": "returnValue = manufacturingModels_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = manufacturingModels_var->itemByName(name);"
+      },
+      "return_type": "ManufacturingModel[]",
+      "return_description": "Returns all ManufacturingModel with the specified name.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name (as it appears in the browser) of the ManufacturingModel."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "syncAllManufacturingModels": {
+      "id": "ManufacturingModels_syncAllManufacturingModels",
+      "title": "ManufacturingModels.syncAllManufacturingModels Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/ManufacturingModels/ManufacturingModels.h",
+      "description": "Checks wether changes to the original design have been made. If so, all manufacturing models are synchronized with their sources.",
+      "parent_class": "ManufacturingModels",
+      "syntax": {
+        "python": "returnValue = manufacturingModels_var.syncAllManufacturingModels()",
+        "cpp": "#include \n\nreturnValue = manufacturingModels_var->syncAllManufacturingModels();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if any manufacturing model needed an update.",
+      "version": "Introduced in version March 2024"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "ManufacturingModels_count",
+      "title": "ManufacturingModels.count Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/ManufacturingModels/ManufacturingModels.h",
+      "description": "The number of items in the collection.",
+      "parent_class": "ManufacturingModels",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = manufacturingModels_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = manufacturingModels_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "ManufacturingModels_isValid",
+      "title": "ManufacturingModels.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/ManufacturingModels/ManufacturingModels.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ManufacturingModels",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = manufacturingModels_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = manufacturingModels_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "ManufacturingModels_objectType",
+      "title": "ManufacturingModels.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/ManufacturingModels/ManufacturingModels.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ManufacturingModels",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = manufacturingModels_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = manufacturingModels_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

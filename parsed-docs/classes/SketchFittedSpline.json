@@ -1,0 +1,909 @@
+{
+  "id": "SketchFittedSpline",
+  "title": "SketchFittedSpline Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+  "description": "A fitted spline in a sketch.",
+  "parent_class": "SketchCurve",
+  "methods": [
+    {
+      "name": "activateCurvatureHandle",
+      "description": "Activates the curvature handle for the specified fit point and returns the sketch arc that acts as the handle to control the curvature. You can use the getCurvatureHandle property to determine if the curvature handle has already been activated. If this method is called for a handle that already exists, nothing changes and the existing sketch arc that acts as the curvature handle is returned.   The getCurvatureHandle method can be used to determine if the handle has already been activated.   To deactivate a sketch handle you can delete the sketch arc."
+    },
+    {
+      "name": "activateTangentHandle",
+      "description": "Activates the tangent handle for the specified fit point and returns the sketch line that acts as the handle to control the tangency. You can use the getTangentHandle property to determine if the tangent handle has already been activated. If this method is called for a handle that already exists, nothing changes and the existing sketch line that acts as the tangent handle is returned.   The getTangentHandle method can be used to determine if the handle has already been activated.   To deactivate a sketch handle you can delete the sketch line."
+    },
+    {
+      "name": "addFitPoint",
+      "description": "Creates a new fit point at the specified parameter value."
+    },
+    {
+      "name": "breakCurve",
+      "description": "Breaks a curve into two or three pieces by finding intersections of this curve with all other curves in the sketch and splitting this curve at the nearest intersections to a specified point on the curve."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the entity from the sketch."
+    },
+    {
+      "name": "extend",
+      "description": "Extend a curve by specifying a point that determines the end of the curve to extend"
+    },
+    {
+      "name": "getCurvatureHandle",
+      "description": "Returns the sketch arc that acts as the handle to control the curvature at the specified fit point. Returns null in the case where the curvature handle has not been activated at that sketch point. Deleting the returned arc will deactivate the curvature handle. Use the activateCurvatureHandle method to activate the curvature handle."
+    },
+    {
+      "name": "getTangentHandle",
+      "description": "Returns the sketch line that acts as the handle to control the tangency at the specified fit point. Returns null in the case where the tangent handle has not been activated at that sketch point. Deleting the returned line will deactivate the tangent handle. Use the activateTangentHandle method to activate the tangent handle."
+    },
+    {
+      "name": "intersections",
+      "description": "Get the curves that intersect this curve along with the intersection points (Point3D)"
+    },
+    {
+      "name": "split",
+      "description": "Split a curve at a position specified along the curve"
+    },
+    {
+      "name": "trim",
+      "description": "Trim a curve by specifying a point that determines the segment of the curve to trim away"
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "boundingBox",
+      "description": "Returns the bounding box of the entity in sketch space."
+    },
+    {
+      "name": "endSketchPoint",
+      "description": "Returns the sketch point that defines the ending position of the spline. Editing the position of this sketch point will result in editing the spline."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the SketchEntity object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same sketch entity.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "fitPoints",
+      "description": "Returns the set of sketch points that the spline fits through. The points include the start and end points and are returned in the same order as the spline fits through them where the first point in the list is the start point and the last point is the end point. Editing the position of these sketch points will result in editing the spline."
+    },
+    {
+      "name": "geometricConstraints",
+      "description": "Returns the sketch constraints that are attached to this curve."
+    },
+    {
+      "name": "geometry",
+      "description": "Returns the transient geometry of the curve which provides geometric information about the curve. The returned geometry is always in sketch space."
+    },
+    {
+      "name": "is2D",
+      "description": "Indicates if this curve lies entirely on the sketch x-y plane."
+    },
+    {
+      "name": "isClosed",
+      "description": "Gets and sets if this spline is closed. A closed spline is also periodic. This property can return false even in the case where the spline is physically closed. It's possible that the start and end points of a spline can be the same point but the curve is still not considered closed. This can happen when the start and end points of an open curve are merged. The curve is physically closed but is not periodic and can have a discontinuity at the joint. Setting it to closed will cause it to be periodic and to always remain closed even as fit points are deleted."
+    },
+    {
+      "name": "isConstruction",
+      "description": "Gets and sets whether this curve is construction geometry."
+    },
+    {
+      "name": "isDeletable",
+      "description": "Indicates if this sketch entity can be deleted. There are cases, especially with sketch points where another entity is dependent on an entity so deleting it is not allowed. For example, you can't delete the center point of circle by itself but deleting the circle will delete the point. The same is true for the end points of a line."
+    },
+    {
+      "name": "isFixed",
+      "description": "Indicates if this geometry is \"fixed\"."
+    },
+    {
+      "name": "isFullyConstrained",
+      "description": "Indicates if this sketch entity is fully constrained."
+    },
+    {
+      "name": "isLinked",
+      "description": "Indicates if this sketch entity was created by a projection, inclusion, or driven by an API script. If this returns true, then the entity is presented to the user as not editable and with a 'break link' command available."
+    },
+    {
+      "name": "isReference",
+      "description": "Indicates if this geometry is a reference. Changing this property from true to false removes the reference. This property can not be set to true if it is already false."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "When a sketch is created, geometry is sometimes automatically added to the sketch. For example a sketch point that references the origin point is always included and if a face was selected to create the sketch on, geometry from the face is also included. This automatically created geometry behaves in a special way in that it is invisible but is available for selection and it also participates in profile calculations. It's not possible to make them visible but they can be deleted and they can be used for any other standard sketch operation."
+    },
+    {
+      "name": "length",
+      "description": "Returns the length of the curve in centimeters."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentSketch",
+      "description": "Returns the parent sketch."
+    },
+    {
+      "name": "referencedEntity",
+      "description": "Returns the referenced entity in the case where IsReference is true. However, this property can also return null when IsReference is true in the case where the reference is not parametric."
+    },
+    {
+      "name": "sketchDimensions",
+      "description": "Returns the sketch dimensions that are attached to this curve."
+    },
+    {
+      "name": "startSketchPoint",
+      "description": "Returns the sketch point that defines the starting position of the spline. Editing the position of this sketch point will result in editing the spline."
+    },
+    {
+      "name": "worldGeometry",
+      "description": "Returns an NurbsCurve3D object which provides geometric information in world space. The returned geometry takes into account the assembly context and the position of the sketch in it's parent component, which means the geometry will be returned in the root component space."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Sketch spline through points creation and relative functions API Sample",
+      "description": "Create a sketch spline with points and use some operations for spline tangent handle & curvature handle."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "activateCurvatureHandle": {
+      "id": "SketchFittedSpline_activateCurvatureHandle",
+      "title": "SketchFittedSpline.activateCurvatureHandle Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Activates the curvature handle for the specified fit point and returns the sketch arc that acts as the handle to control the curvature. You can use the getCurvatureHandle property to determine if the curvature handle has already been activated. If this method is called for a handle that already exists, nothing changes and the existing sketch arc that acts as the curvature handle is returned. The getCurvatureHandle method can be used to determine if the handle has already been activated. To deactivate a sketch handle you can delete the sketch arc.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "returnValue = sketchFittedSpline_var.activateCurvatureHandle(fitPoint)",
+        "cpp": "#include \n\nreturnValue = sketchFittedSpline_var->activateCurvatureHandle(fitPoint);"
+      },
+      "return_type": "SketchArc",
+      "return_description": "Returns the sketch arc that acts as the curvature handle at the specified fit point.",
+      "parameters": [
+        {
+          "name": "fitPoint",
+          "type": "SketchPoint",
+          "description": "The fit point on the curve where you want to activate the curvature handle. The fit points can be obtained by using the fitPoints property of the SketchFittedSpline object."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Sketch spline through points creation and relative functions API Sample",
+          "description": "Create a sketch spline with points and use some operations for spline tangent handle & curvature handle."
+        }
+      ],
+      "version": "Introduced in version April 2019"
+    },
+    "activateTangentHandle": {
+      "id": "SketchFittedSpline_activateTangentHandle",
+      "title": "SketchFittedSpline.activateTangentHandle Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Activates the tangent handle for the specified fit point and returns the sketch line that acts as the handle to control the tangency. You can use the getTangentHandle property to determine if the tangent handle has already been activated. If this method is called for a handle that already exists, nothing changes and the existing sketch line that acts as the tangent handle is returned. The getTangentHandle method can be used to determine if the handle has already been activated. To deactivate a sketch handle you can delete the sketch line.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "returnValue = sketchFittedSpline_var.activateTangentHandle(fitPoint)",
+        "cpp": "#include \n\nreturnValue = sketchFittedSpline_var->activateTangentHandle(fitPoint);"
+      },
+      "return_type": "SketchLine",
+      "return_description": "Returns the sketch line that acts as the tangent handle at the specified fit point.",
+      "parameters": [
+        {
+          "name": "fitPoint",
+          "type": "SketchPoint",
+          "description": "The fit point on the curve where you want to activate the tangent handle. The fit points can be obtained by using the fitPoints property of the SketchFittedSpline object."
+        }
+      ],
+      "version": "Introduced in version April 2019"
+    },
+    "addFitPoint": {
+      "id": "SketchFittedSpline_addFitPoint",
+      "title": "SketchFittedSpline.addFitPoint Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Creates a new fit point at the specified parameter value.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "returnValue = sketchFittedSpline_var.addFitPoint(parameter)",
+        "cpp": "#include \n\nreturnValue = sketchFittedSpline_var->addFitPoint(parameter);"
+      },
+      "return_type": "SketchPoint",
+      "return_description": "Returns the newly created SketchPoint that acts as the fit point. Fails in the case where an invalid parameter is specified.",
+      "parameters": [
+        {
+          "name": "parameter",
+          "type": "double",
+          "description": "The parameter value at the position along the curve where you want to add the new fit point. The CurveEvaluator3D object provides utilities that support going from a 3D coordinate to a parameter value on the curve."
+        }
+      ],
+      "version": "Introduced in version September 2022"
+    },
+    "breakCurve": {
+      "id": "SketchFittedSpline_breakCurve",
+      "title": "SketchFittedSpline.breakCurve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Breaks a curve into two or three pieces by finding intersections of this curve with all other curves in the sketch and splitting this curve at the nearest intersections to a specified point on the curve.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchFittedSpline_var.breakCurve(segmentPoint)\n\n# Uses optional arguments.\nreturnValue = sketchFittedSpline_var.breakCurve(segmentPoint, createConstraints)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchFittedSpline_var->breakCurve(segmentPoint);\n\n// Uses optional arguments.\nreturnValue = sketchFittedSpline_var->breakCurve(segmentPoint, createConstraints);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "All of the curves resulting from the break are returned in an ObjectCollection. In the case where no intersections are found and as a result the curve is not broken, an empty ObjectCollection is returned.",
+      "parameters": [
+        {
+          "name": "segmentPoint",
+          "type": "Point3D",
+          "description": "A point that specifies the segment of the curve that is to be split from the rest of the curve. The nearest intersection(s) to this point define the break location(s)."
+        },
+        {
+          "name": "createConstraints",
+          "type": "boolean",
+          "description": "Optional argument that specifies if constraints should be created between the new curve segments. A value of true indicates constraints will be created.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "classType": {
+      "id": "SketchFittedSpline_classType",
+      "title": "SketchFittedSpline.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.SketchFittedSpline.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::SketchFittedSpline::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "createForAssemblyContext": {
+      "id": "SketchFittedSpline_createForAssemblyContext",
+      "title": "SketchFittedSpline.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "returnValue = sketchFittedSpline_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = sketchFittedSpline_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "SketchFittedSpline",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "deleteMe": {
+      "id": "SketchFittedSpline_deleteMe",
+      "title": "SketchFittedSpline.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Deletes the entity from the sketch.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "returnValue = sketchFittedSpline_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = sketchFittedSpline_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true is the delete was successful.",
+      "version": "Introduced in version August 2014"
+    },
+    "extend": {
+      "id": "SketchFittedSpline_extend",
+      "title": "SketchFittedSpline.extend Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Extend a curve by specifying a point that determines the end of the curve to extend",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchFittedSpline_var.extend(endPoint)\n\n# Uses optional arguments.\nreturnValue = sketchFittedSpline_var.extend(endPoint, createConstraints)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchFittedSpline_var->extend(endPoint);\n\n// Uses optional arguments.\nreturnValue = sketchFittedSpline_var->extend(endPoint, createConstraints);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "Returns the modified original curve if the start or end of the curve is extended If the extend joins a curve to another, the two original curves are deleted and a new curve is returned If an arc is extended so as to become a circle, the original arc is deleted and a new circle is returned",
+      "parameters": [
+        {
+          "name": "endPoint",
+          "type": "Point3D",
+          "description": "A point (transient Point3D) on or closest to the end of the curve to extend. (start or end) The end of the curve closest to the endPoint gets extended"
+        },
+        {
+          "name": "createConstraints",
+          "type": "boolean",
+          "description": "Constraints are created by default. Specify false to not create constraints.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getCurvatureHandle": {
+      "id": "SketchFittedSpline_getCurvatureHandle",
+      "title": "SketchFittedSpline.getCurvatureHandle Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Returns the sketch arc that acts as the handle to control the curvature at the specified fit point. Returns null in the case where the curvature handle has not been activated at that sketch point. Deleting the returned arc will deactivate the curvature handle. Use the activateCurvatureHandle method to activate the curvature handle.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "returnValue = sketchFittedSpline_var.getCurvatureHandle(fitPoint)",
+        "cpp": "#include \n\nreturnValue = sketchFittedSpline_var->getCurvatureHandle(fitPoint);"
+      },
+      "return_type": "SketchArc",
+      "return_description": "Returns the sketch arc that acts as the handle to control the curvature at the specified point or returns null in the case where the curvature handle has not been activated at the specified sketch point.",
+      "parameters": [
+        {
+          "name": "fitPoint",
+          "type": "SketchPoint",
+          "description": "The fit point on the curve where you want to get the curvature handle. The fit points can be obtained by using the fitPoints property of the SketchFittedSpline object."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Sketch spline through points creation and relative functions API Sample",
+          "description": "Create a sketch spline with points and use some operations for spline tangent handle & curvature handle."
+        }
+      ],
+      "version": "Introduced in version April 2019"
+    },
+    "getTangentHandle": {
+      "id": "SketchFittedSpline_getTangentHandle",
+      "title": "SketchFittedSpline.getTangentHandle Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Returns the sketch line that acts as the handle to control the tangency at the specified fit point. Returns null in the case where the tangent handle has not been activated at that sketch point. Deleting the returned line will deactivate the tangent handle. Use the activateTangentHandle method to activate the tangent handle.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "returnValue = sketchFittedSpline_var.getTangentHandle(fitPoint)",
+        "cpp": "#include \n\nreturnValue = sketchFittedSpline_var->getTangentHandle(fitPoint);"
+      },
+      "return_type": "SketchLine",
+      "return_description": "Returns the sketch line that acts as the handle to control the tangency at the specified point or returns null in the case where the tangency handle has not been activated at the specified sketch point.",
+      "parameters": [
+        {
+          "name": "fitPoint",
+          "type": "SketchPoint",
+          "description": "The fit point on the curve where you want to get the tangent handle. The fit points can be obtained by using the fitPoints property of the SketchFittedSpline object."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Sketch spline through points creation and relative functions API Sample",
+          "description": "Create a sketch spline with points and use some operations for spline tangent handle & curvature handle."
+        }
+      ],
+      "version": "Introduced in version April 2019"
+    },
+    "intersections": {
+      "id": "SketchFittedSpline_intersections",
+      "title": "SketchFittedSpline.intersections Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Get the curves that intersect this curve along with the intersection points (Point3D)",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "(returnValue, intersectingCurves, intersectionPoints) = sketchFittedSpline_var.intersections(sketchCurves)",
+        "cpp": "#include  sketchCurves;\nPtr intersectingCurves;\nPtr intersectionPoints;\nboolean returnValue = sketchFittedSpline_var->intersections(sketchCurves, intersectingCurves, intersectionPoints);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if intersections are found",
+      "parameters": [
+        {
+          "name": "sketchCurves",
+          "type": "ObjectCollection",
+          "description": "A collection of curves to attempt to find intersections with. Set the value of this parameter to null to use all curves in the sketch for the calculation."
+        },
+        {
+          "name": "intersectingCurves",
+          "type": "ObjectCollection",
+          "description": "A collection of the actual intersecting curves"
+        },
+        {
+          "name": "intersectionPoints",
+          "type": "ObjectCollection",
+          "description": "A collection of intersection points (Point3D) Item numbers in this collection correspond to the item numbers in the intersectingCurves collection."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "split": {
+      "id": "SketchFittedSpline_split",
+      "title": "SketchFittedSpline.split Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Split a curve at a position specified along the curve",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchFittedSpline_var.split(splitPoint)\n\n# Uses optional arguments.\nreturnValue = sketchFittedSpline_var.split(splitPoint, createConstraints)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchFittedSpline_var->split(splitPoint);\n\n// Uses optional arguments.\nreturnValue = sketchFittedSpline_var->split(splitPoint, createConstraints);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "Returns the resulting 2 curves; the orginal curve + the newly created curve When split spline the original is deleted and two new curves returned. Empty collection returned if curve is closed.",
+      "parameters": [
+        {
+          "name": "splitPoint",
+          "type": "Point3D",
+          "description": "A position (transient Point3D) on the curve that defines the point at which to split the curve"
+        },
+        {
+          "name": "createConstraints",
+          "type": "boolean",
+          "description": "Constraints are created by default. Specify false to create no constraints.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "trim": {
+      "id": "SketchFittedSpline_trim",
+      "title": "SketchFittedSpline.trim Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Trim a curve by specifying a point that determines the segment of the curve to trim away",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchFittedSpline_var.trim(segmentPoint)\n\n# Uses optional arguments.\nreturnValue = sketchFittedSpline_var.trim(segmentPoint, createConstraints)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchFittedSpline_var->trim(segmentPoint);\n\n// Uses optional arguments.\nreturnValue = sketchFittedSpline_var->trim(segmentPoint, createConstraints);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "When trimming the start or end side of a line, unclosed circular or elliptical arc, the original entity is modified and returned When trimming the middle of a line, unclosed circular or elliptical arc the original entity is deleted and two new entities are returned When trimming the start or end of any type of closed curve, the original is deleted and a new curve is returned Any trimming of a spline (open or closed) deletes the original and new spline/s are returned Trimming a curve having no intersections deletes the original and returns an empty collection",
+      "parameters": [
+        {
+          "name": "segmentPoint",
+          "type": "Point3D",
+          "description": "A point (transient Point3D) on or closest to the segment of the curve to remove. (start, end or middle) The segment of the curve closest to the segmentPoint gets removed"
+        },
+        {
+          "name": "createConstraints",
+          "type": "boolean",
+          "description": "Constraints are created by default. Specify false to not create constraints.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "assemblyContext": {
+      "id": "SketchFittedSpline_assemblyContext",
+      "title": "SketchFittedSpline.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchFittedSpline_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "attributes": {
+      "id": "SketchFittedSpline_attributes",
+      "title": "SketchFittedSpline.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchFittedSpline_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "boundingBox": {
+      "id": "SketchFittedSpline_boundingBox",
+      "title": "SketchFittedSpline.boundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Returns the bounding box of the entity in sketch space.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.boundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchFittedSpline_var->boundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "endSketchPoint": {
+      "id": "SketchFittedSpline_endSketchPoint",
+      "title": "SketchFittedSpline.endSketchPoint Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Returns the sketch point that defines the ending position of the spline. Editing the position of this sketch point will result in editing the spline.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.endSketchPoint",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchFittedSpline_var->endSketchPoint();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "entityToken": {
+      "id": "SketchFittedSpline_entityToken",
+      "title": "SketchFittedSpline.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Returns a token for the SketchEntity object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same sketch entity. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchFittedSpline_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "fitPoints": {
+      "id": "SketchFittedSpline_fitPoints",
+      "title": "SketchFittedSpline.fitPoints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Returns the set of sketch points that the spline fits through. The points include the start and end points and are returned in the same order as the spline fits through them where the first point in the list is the start point and the last point is the end point. Editing the position of these sketch points will result in editing the spline.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.fitPoints",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchFittedSpline_var->fitPoints();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Sketch spline through points creation and relative functions API Sample",
+          "description": "Create a sketch spline with points and use some operations for spline tangent handle & curvature handle."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "geometricConstraints": {
+      "id": "SketchFittedSpline_geometricConstraints",
+      "title": "SketchFittedSpline.geometricConstraints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Returns the sketch constraints that are attached to this curve.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.geometricConstraints",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchFittedSpline_var->geometricConstraints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "geometry": {
+      "id": "SketchFittedSpline_geometry",
+      "title": "SketchFittedSpline.geometry Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Returns the transient geometry of the curve which provides geometric information about the curve. The returned geometry is always in sketch space.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.geometry",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchFittedSpline_var->geometry();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "is2D": {
+      "id": "SketchFittedSpline_is2D",
+      "title": "SketchFittedSpline.is2D Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Indicates if this curve lies entirely on the sketch x-y plane.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.is2D",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchFittedSpline_var->is2D();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isClosed": {
+      "id": "SketchFittedSpline_isClosed",
+      "title": "SketchFittedSpline.isClosed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Gets and sets if this spline is closed. A closed spline is also periodic. This property can return false even in the case where the spline is physically closed. It's possible that the start and end points of a spline can be the same point but the curve is still not considered closed. This can happen when the start and end points of an open curve are merged. The curve is physically closed but is not periodic and can have a discontinuity at the joint. Setting it to closed will cause it to be periodic and to always remain closed even as fit points are deleted.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.isClosed\n\n# Set the value of the property.\nsketchFittedSpline_var.isClosed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchFittedSpline_var->isClosed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchFittedSpline_var->isClosed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isConstruction": {
+      "id": "SketchFittedSpline_isConstruction",
+      "title": "SketchFittedSpline.isConstruction Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Gets and sets whether this curve is construction geometry.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.isConstruction\n\n# Set the value of the property.\nsketchFittedSpline_var.isConstruction = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchFittedSpline_var->isConstruction();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchFittedSpline_var->isConstruction(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isDeletable": {
+      "id": "SketchFittedSpline_isDeletable",
+      "title": "SketchFittedSpline.isDeletable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Indicates if this sketch entity can be deleted. There are cases, especially with sketch points where another entity is dependent on an entity so deleting it is not allowed. For example, you can't delete the center point of circle by itself but deleting the circle will delete the point. The same is true for the end points of a line.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.isDeletable",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchFittedSpline_var->isDeletable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isFixed": {
+      "id": "SketchFittedSpline_isFixed",
+      "title": "SketchFittedSpline.isFixed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Indicates if this geometry is \"fixed\".",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.isFixed\n\n# Set the value of the property.\nsketchFittedSpline_var.isFixed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchFittedSpline_var->isFixed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchFittedSpline_var->isFixed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isFullyConstrained": {
+      "id": "SketchFittedSpline_isFullyConstrained",
+      "title": "SketchFittedSpline.isFullyConstrained Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Indicates if this sketch entity is fully constrained.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.isFullyConstrained",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchFittedSpline_var->isFullyConstrained();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isLinked": {
+      "id": "SketchFittedSpline_isLinked",
+      "title": "SketchFittedSpline.isLinked Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Indicates if this sketch entity was created by a projection, inclusion, or driven by an API script. If this returns true, then the entity is presented to the user as not editable and with a 'break link' command available.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.isLinked",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchFittedSpline_var->isLinked();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "isReference": {
+      "id": "SketchFittedSpline_isReference",
+      "title": "SketchFittedSpline.isReference Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Indicates if this geometry is a reference. Changing this property from true to false removes the reference. This property can not be set to true if it is already false.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.isReference\n\n# Set the value of the property.\nsketchFittedSpline_var.isReference = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchFittedSpline_var->isReference();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchFittedSpline_var->isReference(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "SketchFittedSpline_isValid",
+      "title": "SketchFittedSpline.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchFittedSpline_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isVisible": {
+      "id": "SketchFittedSpline_isVisible",
+      "title": "SketchFittedSpline.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "When a sketch is created, geometry is sometimes automatically added to the sketch. For example a sketch point that references the origin point is always included and if a face was selected to create the sketch on, geometry from the face is also included. This automatically created geometry behaves in a special way in that it is invisible but is available for selection and it also participates in profile calculations. It's not possible to make them visible but they can be deleted and they can be used for any other standard sketch operation.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchFittedSpline_var->isVisible();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "length": {
+      "id": "SketchFittedSpline_length",
+      "title": "SketchFittedSpline.length Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Returns the length of the curve in centimeters.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.length",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sketchFittedSpline_var->length();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "nativeObject": {
+      "id": "SketchFittedSpline_nativeObject",
+      "title": "SketchFittedSpline.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchFittedSpline_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "SketchFittedSpline_objectType",
+      "title": "SketchFittedSpline.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchFittedSpline_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "parentSketch": {
+      "id": "SketchFittedSpline_parentSketch",
+      "title": "SketchFittedSpline.parentSketch Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Returns the parent sketch.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.parentSketch",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchFittedSpline_var->parentSketch();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "referencedEntity": {
+      "id": "SketchFittedSpline_referencedEntity",
+      "title": "SketchFittedSpline.referencedEntity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Returns the referenced entity in the case where IsReference is true. However, this property can also return null when IsReference is true in the case where the reference is not parametric.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.referencedEntity",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchFittedSpline_var->referencedEntity();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "sketchDimensions": {
+      "id": "SketchFittedSpline_sketchDimensions",
+      "title": "SketchFittedSpline.sketchDimensions Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Returns the sketch dimensions that are attached to this curve.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.sketchDimensions",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchFittedSpline_var->sketchDimensions();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "startSketchPoint": {
+      "id": "SketchFittedSpline_startSketchPoint",
+      "title": "SketchFittedSpline.startSketchPoint Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Returns the sketch point that defines the starting position of the spline. Editing the position of this sketch point will result in editing the spline.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.startSketchPoint",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchFittedSpline_var->startSketchPoint();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "worldGeometry": {
+      "id": "SketchFittedSpline_worldGeometry",
+      "title": "SketchFittedSpline.worldGeometry Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchFittedSpline.h",
+      "description": "Returns an NurbsCurve3D object which provides geometric information in world space. The returned geometry takes into account the assembly context and the position of the sketch in it's parent component, which means the geometry will be returned in the root component space.",
+      "parent_class": "SketchFittedSpline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchFittedSpline_var.worldGeometry",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchFittedSpline_var->worldGeometry();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

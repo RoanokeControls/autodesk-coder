@@ -1,0 +1,316 @@
+{
+  "id": "CAMLibrary",
+  "title": "CAMLibrary Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/Global/CAMLibrary.h",
+  "description": "The CAMLibrary is the base-class for all other asset-specific libraries.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "childAssetURLs",
+      "description": "Get all assets under given URL."
+    },
+    {
+      "name": "childFolderURLs",
+      "description": "Get all library folders under given URL."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createFolder",
+      "description": "Create a new folder in the library. Create the folder under given parent URL with given folder name. Add counting suffix, in case a folder with given name already exists. Throw an error if given URL does not point to a valid folder or the URL is read-only. Also throws an error if given folder name is empty."
+    },
+    {
+      "name": "deleteAsset",
+      "description": "Delete asset by URL from the library. Throw an error if given URL does not point to a valid asset or the URL is read-only."
+    },
+    {
+      "name": "deleteFolder",
+      "description": "Delete folder by URL from the library. Any content of the folder will also be deleted. Throw an error if given URL does not point to a valid folder or the URL is read-only."
+    },
+    {
+      "name": "displayName",
+      "description": "Get the localized display name for a given URL. The URL must point to a folder."
+    },
+    {
+      "name": "doesPathExist",
+      "description": "Checks if the given URL points to an existing folder or asset in the library."
+    },
+    {
+      "name": "urlByLocation",
+      "description": "Get the URL for a given LibraryLocations."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assetTypeName",
+      "description": "Get the name of the asset type which can be accessed by the library."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "property_details": {
+    "assetTypeName": {
+      "id": "CAMLibrary_assetTypeName",
+      "title": "CAMLibrary.assetTypeName Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibrary.h",
+      "description": "Get the name of the asset type which can be accessed by the library.",
+      "parent_class": "CAMLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMLibrary_var.assetTypeName",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMLibrary_var->assetTypeName();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "CAMLibrary_isValid",
+      "title": "CAMLibrary.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibrary.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CAMLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMLibrary_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMLibrary_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "CAMLibrary_objectType",
+      "title": "CAMLibrary.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibrary.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CAMLibrary",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMLibrary_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMLibrary_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  },
+  "method_details": {
+    "childAssetURLs": {
+      "id": "CAMLibrary_childAssetURLs",
+      "title": "CAMLibrary.childAssetURLs Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibrary.h",
+      "description": "Get all assets under given URL.",
+      "parent_class": "CAMLibrary",
+      "syntax": {
+        "python": "returnValue = cAMLibrary_var.childAssetURLs(url)",
+        "cpp": "#include \n\nreturnValue = cAMLibrary_var->childAssetURLs(url);"
+      },
+      "return_type": "URL[]",
+      "return_description": "Returns list of asset URLs at given location.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the parent folder."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "childFolderURLs": {
+      "id": "CAMLibrary_childFolderURLs",
+      "title": "CAMLibrary.childFolderURLs Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibrary.h",
+      "description": "Get all library folders under given URL.",
+      "parent_class": "CAMLibrary",
+      "syntax": {
+        "python": "returnValue = cAMLibrary_var.childFolderURLs(url)",
+        "cpp": "#include \n\nreturnValue = cAMLibrary_var->childFolderURLs(url);"
+      },
+      "return_type": "URL[]",
+      "return_description": "Returns list of folder URLs at given location.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the parent folder."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "classType": {
+      "id": "CAMLibrary_classType",
+      "title": "CAMLibrary.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibrary.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CAMLibrary",
+      "syntax": {
+        "python": "returnValue = adsk.cam.CAMLibrary.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::CAMLibrary::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    },
+    "createFolder": {
+      "id": "CAMLibrary_createFolder",
+      "title": "CAMLibrary.createFolder Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibrary.h",
+      "description": "Create a new folder in the library. Create the folder under given parent URL with given folder name. Add counting suffix, in case a folder with given name already exists. Throw an error if given URL does not point to a valid folder or the URL is read-only. Also throws an error if given folder name is empty.",
+      "parent_class": "CAMLibrary",
+      "syntax": {
+        "python": "returnValue = cAMLibrary_var.createFolder(parentUrl, folderName)",
+        "cpp": "#include \n\nreturnValue = cAMLibrary_var->createFolder(parentUrl, folderName);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL to the newly created folder",
+      "parameters": [
+        {
+          "name": "parentUrl",
+          "type": "URL",
+          "description": "The parent URL for the folder to be created."
+        },
+        {
+          "name": "folderName",
+          "type": "string",
+          "description": "Name of the new folder to be created. Must not be empty."
+        }
+      ],
+      "version": "Introduced in version May 2023"
+    },
+    "deleteAsset": {
+      "id": "CAMLibrary_deleteAsset",
+      "title": "CAMLibrary.deleteAsset Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibrary.h",
+      "description": "Delete asset by URL from the library. Throw an error if given URL does not point to a valid asset or the URL is read-only.",
+      "parent_class": "CAMLibrary",
+      "syntax": {
+        "python": "returnValue = cAMLibrary_var.deleteAsset(url)",
+        "cpp": "#include \n\nreturnValue = cAMLibrary_var->deleteAsset(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if asset was deleted successfully, false otherwise",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the asset that should be removed."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "deleteFolder": {
+      "id": "CAMLibrary_deleteFolder",
+      "title": "CAMLibrary.deleteFolder Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibrary.h",
+      "description": "Delete folder by URL from the library. Any content of the folder will also be deleted. Throw an error if given URL does not point to a valid folder or the URL is read-only.",
+      "parent_class": "CAMLibrary",
+      "syntax": {
+        "python": "returnValue = cAMLibrary_var.deleteFolder(url)",
+        "cpp": "#include \n\nreturnValue = cAMLibrary_var->deleteFolder(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if folder was deleted successfully, false otherwise",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to the folder that should be removed."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "displayName": {
+      "id": "CAMLibrary_displayName",
+      "title": "CAMLibrary.displayName Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibrary.h",
+      "description": "Get the localized display name for a given URL. The URL must point to a folder.",
+      "parent_class": "CAMLibrary",
+      "syntax": {
+        "python": "returnValue = cAMLibrary_var.displayName(url)",
+        "cpp": "#include \n\nreturnValue = cAMLibrary_var->displayName(url);"
+      },
+      "return_type": "string",
+      "return_description": "Returns localized display name for the folder. Returns empty string for invalid URL.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL that defines the path to a folder."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "doesPathExist": {
+      "id": "CAMLibrary_doesPathExist",
+      "title": "CAMLibrary.doesPathExist Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibrary.h",
+      "description": "Checks if the given URL points to an existing folder or asset in the library.",
+      "parent_class": "CAMLibrary",
+      "syntax": {
+        "python": "returnValue = cAMLibrary_var.doesPathExist(url)",
+        "cpp": "#include \n\nreturnValue = cAMLibrary_var->doesPathExist(url);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the URL points to an existing folder or asset, false otherwise.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "URL",
+          "description": "The URL to be checked."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    },
+    "urlByLocation": {
+      "id": "CAMLibrary_urlByLocation",
+      "title": "CAMLibrary.urlByLocation Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Global/CAMLibrary.h",
+      "description": "Get the URL for a given LibraryLocations.",
+      "parent_class": "CAMLibrary",
+      "syntax": {
+        "python": "returnValue = cAMLibrary_var.urlByLocation(location)",
+        "cpp": "#include \n\nreturnValue = cAMLibrary_var->urlByLocation(location);"
+      },
+      "return_type": "URL",
+      "return_description": "Returns the URL for given location.",
+      "parameters": [
+        {
+          "name": "location",
+          "type": "LibraryLocations",
+          "description": "The LibraryLocations to be converted into an URL."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

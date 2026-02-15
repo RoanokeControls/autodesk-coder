@@ -1,0 +1,67 @@
+{
+  "id": "ECD-ULP-INSTANCE",
+  "title": "UL_INSTANCE",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "angle",
+      "type": "real (0, 90, 180 and 270)"
+    },
+    {
+      "name": "column",
+      "type": "string (see note)"
+    },
+    {
+      "name": "gate",
+      "type": "UL_GATE"
+    },
+    {
+      "name": "mirror",
+      "type": "int"
+    },
+    {
+      "name": "name",
+      "type": "string (INSTANCE_NAME_LENGTH)"
+    },
+    {
+      "name": "part",
+      "type": "UL_PART"
+    },
+    {
+      "name": "row",
+      "type": "string (see note)"
+    },
+    {
+      "name": "sheet",
+      "type": "int (0=unused, >0=sheet number)"
+    },
+    {
+      "name": "smashed",
+      "type": "int (see note)"
+    },
+    {
+      "name": "value",
+      "type": "string (PART_VALUE_LENGTH)"
+    },
+    {
+      "name": "x, y",
+      "type": "int (origin point)"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "attributes()",
+      "type": "UL_ATTRIBUTE (see note)"
+    },
+    {
+      "name": "texts()",
+      "type": "UL_TEXT (see note)"
+    },
+    {
+      "name": "xrefs()",
+      "type": "UL_GATE (see note)"
+    }
+  ],
+  "content": "# UL_INSTANCE\n\n## Data members\n\n| | |\n| --- | --- |\n| angle | real (0, 90, 180 and 270) |\n| column | string (see note) |\n| gate | UL_GATE |\n| mirror | int |\n| name | string (INSTANCE_NAME_LENGTH) |\n| part | UL_PART |\n| row | string (see note) |\n| sheet | int (0=unused, >0=sheet number) |\n| smashed | int (see note) |\n| value | string (PART_VALUE_LENGTH) |\n| x, y | int (origin point) |\n\n## Loop members\n\n| | |\n| --- | --- |\n| attributes() | UL_ATTRIBUTE (see note) |\n| texts() | UL_TEXT (see note) |\n| xrefs() | UL_GATE (see note) |\n\nSee also UL_PINREF\n\n## Constants\n\n| | |\n| --- | --- |\n| INSTANCE_NAME_LENGTH | max. recommended length of an instance name (used in formatted output only) |\n| PART_VALUE_LENGTH | max. recommended length of a part value (instances do not have a value of their own!) |\n\n## Note\n\nThe *attributes()* member only loops through those attributes that have been explicitly assigned to this instance (including smashed attributes).\n\nThe *texts()* member only loops through those texts of the instance that have been detached using REPOSITION, and through the visible texts of any attributes assigned to this instance. To process all texts of an instance, you have to loop through the instance's own texts() member as well as the texts() member of the instance's gate's symbol. If attributes have been assigned to an instance, texts() delivers their texts in the form as they are currently visible.\n\nThe *column* and *row* members return the column and row location within the frame on the sheet on which this instance is invoked. If there is no frame on that sheet, or the instance is placed outside the frame, a '?' (question mark) is returned. These members can only be used in a sheet context.\n\nThe *smashed* member tells whether the instance is smashed. This function can also be used to find out whether there is a detached text parameter by giving the name of that parameter in square brackets, as in smashed[\"VALUE\"]. This is useful in case you want to select such a text with the MOVE command by doing MOVE R5>VALUE. Valid parameter names are \"NAME\", \"VALUE\", \"PART\" and \"GATE\", as well as the names of any user defined attributes. They are treated case insensitive, and they may be preceded by a '>' character.\n\nThe *xrefs()* member loops through the contact cross-reference gates of this instance. These are only of importance if the ULP is going to create a drawing of some sort (for instance a DXF file).\n\n## Example\n\n```\nschematic(S) {\n S.parts(P) {\n printf(\"Part: %s\\n\", P.name);\n P.instances(I) {\n if (I.sheet != 0)\n printf(\"\\t%s used on sheet %d\\n\", I.name, I.sheet);\n }\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

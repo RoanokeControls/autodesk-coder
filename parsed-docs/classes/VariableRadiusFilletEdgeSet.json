@@ -1,0 +1,298 @@
+{
+  "id": "VariableRadiusFilletEdgeSet",
+  "title": "VariableRadiusFilletEdgeSet Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/VariableRadiusFilletEdgeSet.h",
+  "description": "Provides access to the edges and the parameters associated with a variable radius fillet.",
+  "parent_class": "FilletEdgeSet",
+  "methods": [
+    {
+      "name": "addMidPosition",
+      "description": "Creates a new mid position radius on the variable radius edge set.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the fillet edge set from the fillet.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "deleteMidPosition",
+      "description": "Deletes the specified mid position from the variable radius fillet.   To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    }
+  ],
+  "properties": [
+    {
+      "name": "continuity",
+      "description": "Gets and sets the continuity of the fillet edge set. Valid values are TangentSurfaceContinuityType and CurvatureSurfaceContinuityType."
+    },
+    {
+      "name": "edges",
+      "description": "Gets and sets an ObjectCollection containing the edges that are filleted.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "endRadius",
+      "description": "Returns the model parameter that controls the end radius of the fillet. You can edit the end radius by using the properties on the returned ModelParameter object."
+    },
+    {
+      "name": "isTangentChain",
+      "description": "Gets and sets the Tangent chain for fillet. This enables tangent chain option for fillet."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "midPositions",
+      "description": "Returns a list of model parameters that control the location of each mid point radius. These positions are defined from 0 to 1 where 0 is at the start of the edge and 1 is at the end. You can edit any of these positions by using the properties on its returned ModelParameter object."
+    },
+    {
+      "name": "midRadii",
+      "description": "Returns a list of model parameters that control radius of the fillet at each position defined along the edge set. You can edit any of these radii by using the properties on its returned ModelParameter object. This list does not include the parameters for the start and end radii. Use the startRadius and endRadius properties to get those."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "startRadius",
+      "description": "Returns the model parameter that controls the start radius of the fillet. You can edit the start radius by using the properties on the returned ModelParameter object."
+    },
+    {
+      "name": "tangencyWeight",
+      "description": "Returns the model parameter that controls the G1 or G2 tangency weight of the fillet. It must be a real value between 0.1 and 2.0 inclusive. You can edit the tangency weight by using the properties on the returned ModelParameter object."
+    }
+  ],
+  "method_details": {
+    "addMidPosition": {
+      "id": "VariableRadiusFilletEdgeSet_addMidPosition",
+      "title": "VariableRadiusFilletEdgeSet.addMidPosition Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSet.h",
+      "description": "Creates a new mid position radius on the variable radius edge set. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "VariableRadiusFilletEdgeSet",
+      "syntax": {
+        "python": "returnValue = variableRadiusFilletEdgeSet_var.addMidPosition(position, radius)",
+        "cpp": "#include \n\nreturnValue = variableRadiusFilletEdgeSet_var->addMidPosition(position, radius);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "position",
+          "type": "ValueInput",
+          "description": "The position where the new radius is to be created. This is a value between 0 and 1 where 0 is at the start of the edge and 1 is at the end. If the ValueInput uses a real then it is interpreted as a unitless value. If it is a string then it must resolve to a unitless value."
+        },
+        {
+          "name": "radius",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the radius at the defined position. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\"). If no units are specified it will be interpreted using the current default units for length."
+        }
+      ]
+    },
+    "classType": {
+      "id": "VariableRadiusFilletEdgeSet_classType",
+      "title": "VariableRadiusFilletEdgeSet.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSet.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "VariableRadiusFilletEdgeSet",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.VariableRadiusFilletEdgeSet.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::VariableRadiusFilletEdgeSet::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version November 2014"
+    },
+    "deleteMe": {
+      "id": "VariableRadiusFilletEdgeSet_deleteMe",
+      "title": "VariableRadiusFilletEdgeSet.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSet.h",
+      "description": "Deletes the fillet edge set from the fillet. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "VariableRadiusFilletEdgeSet",
+      "syntax": {
+        "python": "returnValue = variableRadiusFilletEdgeSet_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = variableRadiusFilletEdgeSet_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "version": "Introduced in version November 2022"
+    },
+    "deleteMidPosition": {
+      "id": "VariableRadiusFilletEdgeSet_deleteMidPosition",
+      "title": "VariableRadiusFilletEdgeSet.deleteMidPosition Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSet.h",
+      "description": "Deletes the specified mid position from the variable radius fillet. To use this method, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "VariableRadiusFilletEdgeSet",
+      "syntax": {
+        "python": "returnValue = variableRadiusFilletEdgeSet_var.deleteMidPosition(positionIndex)",
+        "cpp": "#include \n\nreturnValue = variableRadiusFilletEdgeSet_var->deleteMidPosition(positionIndex);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "positionIndex",
+          "type": "uinteger",
+          "description": "The index of the mid position to delete. The points are in the order they appear along the edge where the first point has an index of 0. The number of mid positions and their locations can be obtained by getting the list of mid positions using the midPositions property."
+        }
+      ]
+    }
+  },
+  "property_details": {
+    "continuity": {
+      "id": "VariableRadiusFilletEdgeSet_continuity",
+      "title": "VariableRadiusFilletEdgeSet.continuity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSet.h",
+      "description": "Gets and sets the continuity of the fillet edge set. Valid values are TangentSurfaceContinuityType and CurvatureSurfaceContinuityType.",
+      "parent_class": "VariableRadiusFilletEdgeSet",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = variableRadiusFilletEdgeSet_var.continuity\n\n# Set the value of the property.\nvariableRadiusFilletEdgeSet_var.continuity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nSurfaceContinuityTypes propertyValue = variableRadiusFilletEdgeSet_var->continuity();\n\n// Set the value of the property, where value_var is a SurfaceContinuityTypes.\nbool returnValue = variableRadiusFilletEdgeSet_var->continuity(value_var);"
+      },
+      "property_value": "Samples"
+    },
+    "edges": {
+      "id": "VariableRadiusFilletEdgeSet_edges",
+      "title": "VariableRadiusFilletEdgeSet.edges Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSet.h",
+      "description": "Gets and sets an ObjectCollection containing the edges that are filleted. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "VariableRadiusFilletEdgeSet",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = variableRadiusFilletEdgeSet_var.edges\n\n# Set the value of the property.\nvariableRadiusFilletEdgeSet_var.edges = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = variableRadiusFilletEdgeSet_var->edges();\n\n// Set the value of the property, where value_var is an ObjectCollection.\nbool returnValue = variableRadiusFilletEdgeSet_var->edges(value_var);"
+      },
+      "property_value": "Samples"
+    },
+    "endRadius": {
+      "id": "VariableRadiusFilletEdgeSet_endRadius",
+      "title": "VariableRadiusFilletEdgeSet.endRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSet.h",
+      "description": "Returns the model parameter that controls the end radius of the fillet. You can edit the end radius by using the properties on the returned ModelParameter object.",
+      "parent_class": "VariableRadiusFilletEdgeSet",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = variableRadiusFilletEdgeSet_var.endRadius",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = variableRadiusFilletEdgeSet_var->endRadius();"
+      },
+      "property_value": "Samples"
+    },
+    "isTangentChain": {
+      "id": "VariableRadiusFilletEdgeSet_isTangentChain",
+      "title": "VariableRadiusFilletEdgeSet.isTangentChain Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSet.h",
+      "description": "Gets and sets the Tangent chain for fillet. This enables tangent chain option for fillet.",
+      "parent_class": "VariableRadiusFilletEdgeSet",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = variableRadiusFilletEdgeSet_var.isTangentChain\n\n# Set the value of the property.\nvariableRadiusFilletEdgeSet_var.isTangentChain = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = variableRadiusFilletEdgeSet_var->isTangentChain();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = variableRadiusFilletEdgeSet_var->isTangentChain(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2021"
+    },
+    "isValid": {
+      "id": "VariableRadiusFilletEdgeSet_isValid",
+      "title": "VariableRadiusFilletEdgeSet.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSet.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "VariableRadiusFilletEdgeSet",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = variableRadiusFilletEdgeSet_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = variableRadiusFilletEdgeSet_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "midPositions": {
+      "id": "VariableRadiusFilletEdgeSet_midPositions",
+      "title": "VariableRadiusFilletEdgeSet.midPositions Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSet.h",
+      "description": "Returns a list of model parameters that control the location of each mid point radius. These positions are defined from 0 to 1 where 0 is at the start of the edge and 1 is at the end. You can edit any of these positions by using the properties on its returned ModelParameter object.",
+      "parent_class": "VariableRadiusFilletEdgeSet",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = variableRadiusFilletEdgeSet_var.midPositions",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = variableRadiusFilletEdgeSet_var->midPositions();"
+      },
+      "property_value": "Samples"
+    },
+    "midRadii": {
+      "id": "VariableRadiusFilletEdgeSet_midRadii",
+      "title": "VariableRadiusFilletEdgeSet.midRadii Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSet.h",
+      "description": "Returns a list of model parameters that control radius of the fillet at each position defined along the edge set. You can edit any of these radii by using the properties on its returned ModelParameter object. This list does not include the parameters for the start and end radii. Use the startRadius and endRadius properties to get those.",
+      "parent_class": "VariableRadiusFilletEdgeSet",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = variableRadiusFilletEdgeSet_var.midRadii",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = variableRadiusFilletEdgeSet_var->midRadii();"
+      },
+      "property_value": "Samples"
+    },
+    "objectType": {
+      "id": "VariableRadiusFilletEdgeSet_objectType",
+      "title": "VariableRadiusFilletEdgeSet.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSet.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "VariableRadiusFilletEdgeSet",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = variableRadiusFilletEdgeSet_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = variableRadiusFilletEdgeSet_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "startRadius": {
+      "id": "VariableRadiusFilletEdgeSet_startRadius",
+      "title": "VariableRadiusFilletEdgeSet.startRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSet.h",
+      "description": "Returns the model parameter that controls the start radius of the fillet. You can edit the start radius by using the properties on the returned ModelParameter object.",
+      "parent_class": "VariableRadiusFilletEdgeSet",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = variableRadiusFilletEdgeSet_var.startRadius",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = variableRadiusFilletEdgeSet_var->startRadius();"
+      },
+      "property_value": "Samples"
+    },
+    "tangencyWeight": {
+      "id": "VariableRadiusFilletEdgeSet_tangencyWeight",
+      "title": "VariableRadiusFilletEdgeSet.tangencyWeight Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/VariableRadiusFilletEdgeSet.h",
+      "description": "Returns the model parameter that controls the G1 or G2 tangency weight of the fillet. It must be a real value between 0.1 and 2.0 inclusive. You can edit the tangency weight by using the properties on the returned ModelParameter object.",
+      "parent_class": "VariableRadiusFilletEdgeSet",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = variableRadiusFilletEdgeSet_var.tangencyWeight",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = variableRadiusFilletEdgeSet_var->tangencyWeight();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    }
+  }
+}

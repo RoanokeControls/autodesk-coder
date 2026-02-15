@@ -1,0 +1,633 @@
+{
+  "id": "ChamferFeature",
+  "title": "ChamferFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/ChamferFeature.h",
+  "description": "Object that represents an existing chamfer feature in a design.",
+  "parent_class": "Feature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    },
+    {
+      "name": "setDistanceAndAngle",
+      "description": "**RETIRED** Changes the type of chamfer to be a distance and angle chamfer."
+    },
+    {
+      "name": "setEqualDistance",
+      "description": "**RETIRED** Changes the type of chamfer to be an equal distance chamfer."
+    },
+    {
+      "name": "setTwoDistances",
+      "description": "**RETIRED** Changes the type of chamfer to be a two distances chamfer."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "chamferType",
+      "description": "**RETIRED** Gets an enum indicating how the chamfer was defined. The valid return values are EqualDistanceType, TwoDistancesType and DistanceAndAngleType. This property returns nothing in the case where the feature is non-parametric."
+    },
+    {
+      "name": "chamferTypeDefinition",
+      "description": "**RETIRED** Gets the definition object that is defining the type of chamfer. Modifying the definition object will cause the chamfer to recompute. Various types of definition objects can be returned depending on how the chamfer is defined. The ChamferType property can be used to determine which type of definition will be returned. This property returns nothing in the case where the feature is non-parametric."
+    },
+    {
+      "name": "cornerType",
+      "description": "Gets and sets the type of corner to be modeled when multiple edges connect at a vertex."
+    },
+    {
+      "name": "edges",
+      "description": "**RETIRED** Gets and sets the edges being chamfered. Specific edges can be defined using one or more BRepEdge objects or BRepFace objects can be used to chamfer all edges of the face or Feature objects can be used to chamfer all edges associated with the input features. If BRepEdge objects are provided and the isTangentChain argument is true additional edges may also get chamfered if they are tangentially connected to any of the input edges. When getting the property, your code should check for the different types in the returned collection and handle it appropriately.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)   This property returns nothing in the case where the feature is non-parametric."
+    },
+    {
+      "name": "edgeSets",
+      "description": "Returns the edge sets associated with this chamfer."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isTangentChain",
+      "description": "**RETIRED** Gets and sets whether or not edges that are tangentially connected to the input edges (if any) will also be chamfered."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    }
+  ],
+  "version": "Introduced in version November 2014",
+  "property_details": {
+    "assemblyContext": {
+      "id": "ChamferFeature_assemblyContext",
+      "title": "ChamferFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = chamferFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "attributes": {
+      "id": "ChamferFeature_attributes",
+      "title": "ChamferFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = chamferFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "baseFeature": {
+      "id": "ChamferFeature_baseFeature",
+      "title": "ChamferFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = chamferFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "bodies": {
+      "id": "ChamferFeature_bodies",
+      "title": "ChamferFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = chamferFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "chamferType": {
+      "id": "ChamferFeature_chamferType",
+      "title": "ChamferFeature.chamferType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets an enum indicating how the chamfer was defined. The valid return values are EqualDistanceType, TwoDistancesType and DistanceAndAngleType. This property returns nothing in the case where the feature is non-parametric.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.chamferType",
+        "cpp": "#include \n\n// Get the value of the property.\nChamferTypes propertyValue = chamferFeature_var->chamferType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "chamferTypeDefinition": {
+      "id": "ChamferFeature_chamferTypeDefinition",
+      "title": "ChamferFeature.chamferTypeDefinition Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets the definition object that is defining the type of chamfer. Modifying the definition object will cause the chamfer to recompute. Various types of definition objects can be returned depending on how the chamfer is defined. The ChamferType property can be used to determine which type of definition will be returned. This property returns nothing in the case where the feature is non-parametric.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.chamferTypeDefinition",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = chamferFeature_var->chamferTypeDefinition();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "cornerType": {
+      "id": "ChamferFeature_cornerType",
+      "title": "ChamferFeature.cornerType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Gets and sets the type of corner to be modeled when multiple edges connect at a vertex.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.cornerType\n\n# Set the value of the property.\nchamferFeature_var.cornerType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nChamferCornerTypes propertyValue = chamferFeature_var->cornerType();\n\n// Set the value of the property, where value_var is a ChamferCornerTypes.\nbool returnValue = chamferFeature_var->cornerType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "edgeSets": {
+      "id": "ChamferFeature_edgeSets",
+      "title": "ChamferFeature.edgeSets Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Returns the edge sets associated with this chamfer.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.edgeSets",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = chamferFeature_var->edgeSets();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "edges": {
+      "id": "ChamferFeature_edges",
+      "title": "ChamferFeature.edges Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets and sets the edges being chamfered. Specific edges can be defined using one or more BRepEdge objects or BRepFace objects can be used to chamfer all edges of the face or Feature objects can be used to chamfer all edges associated with the input features. If BRepEdge objects are provided and the isTangentChain argument is true additional edges may also get chamfered if they are tangentially connected to any of the input edges. When getting the property, your code should check for the different types in the returned collection and handle it appropriately. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True) This property returns nothing in the case where the feature is non-parametric.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.edges\n\n# Set the value of the property.\nchamferFeature_var.edges = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = chamferFeature_var->edges();\n\n// Set the value of the property, where value_var is an ObjectCollection.\nbool returnValue = chamferFeature_var->edges(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "entityToken": {
+      "id": "ChamferFeature_entityToken",
+      "title": "ChamferFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = chamferFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "errorOrWarningMessage": {
+      "id": "ChamferFeature_errorOrWarningMessage",
+      "title": "ChamferFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = chamferFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "faces": {
+      "id": "ChamferFeature_faces",
+      "title": "ChamferFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = chamferFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "healthState": {
+      "id": "ChamferFeature_healthState",
+      "title": "ChamferFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = chamferFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "isParametric": {
+      "id": "ChamferFeature_isParametric",
+      "title": "ChamferFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = chamferFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isSuppressed": {
+      "id": "ChamferFeature_isSuppressed",
+      "title": "ChamferFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.isSuppressed\n\n# Set the value of the property.\nchamferFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = chamferFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = chamferFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isTangentChain": {
+      "id": "ChamferFeature_isTangentChain",
+      "title": "ChamferFeature.isTangentChain Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets and sets whether or not edges that are tangentially connected to the input edges (if any) will also be chamfered.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.isTangentChain\n\n# Set the value of the property.\nchamferFeature_var.isTangentChain = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = chamferFeature_var->isTangentChain();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = chamferFeature_var->isTangentChain(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isValid": {
+      "id": "ChamferFeature_isValid",
+      "title": "ChamferFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = chamferFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "linkedFeatures": {
+      "id": "ChamferFeature_linkedFeatures",
+      "title": "ChamferFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = chamferFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "name": {
+      "id": "ChamferFeature_name",
+      "title": "ChamferFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.name\n\n# Set the value of the property.\nchamferFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = chamferFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = chamferFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "nativeObject": {
+      "id": "ChamferFeature_nativeObject",
+      "title": "ChamferFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = chamferFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "objectType": {
+      "id": "ChamferFeature_objectType",
+      "title": "ChamferFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = chamferFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "parentComponent": {
+      "id": "ChamferFeature_parentComponent",
+      "title": "ChamferFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = chamferFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "timelineObject": {
+      "id": "ChamferFeature_timelineObject",
+      "title": "ChamferFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chamferFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = chamferFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "ChamferFeature_classType",
+      "title": "ChamferFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ChamferFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ChamferFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version November 2014"
+    },
+    "createForAssemblyContext": {
+      "id": "ChamferFeature_createForAssemblyContext",
+      "title": "ChamferFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "returnValue = chamferFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = chamferFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "ChamferFeature",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "deleteMe": {
+      "id": "ChamferFeature_deleteMe",
+      "title": "ChamferFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "returnValue = chamferFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = chamferFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version November 2014"
+    },
+    "dissolve": {
+      "id": "ChamferFeature_dissolve",
+      "title": "ChamferFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "returnValue = chamferFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = chamferFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version November 2014"
+    },
+    "setDistanceAndAngle": {
+      "id": "ChamferFeature_setDistanceAndAngle",
+      "title": "ChamferFeature.setDistanceAndAngle Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Changes the type of chamfer to be a distance and angle chamfer.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "returnValue = chamferFeature_var.setDistanceAndAngle(distance, angle)",
+        "cpp": "#include \n\nreturnValue = chamferFeature_var->setDistanceAndAngle(distance, angle);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the feature is successfully changed",
+      "parameters": [
+        {
+          "name": "distance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the distance of the chamfer. This distance is along the face which is on the right of the selected edge. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\"). If no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "angle",
+          "type": "ValueInput",
+          "description": "A valueInput object that defines the angle. The direction will be towards to the face which is on the left of the selected edge. This can be a string or a value. If it's a string it is interpreted using the current document units and can include equations. For example all of the following are valid as long as they result in angle units; \"45\", \"45 deg\", \"a1 / 2\". If a value is input it is interpreted as radians. It cannot be negative."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "setEqualDistance": {
+      "id": "ChamferFeature_setEqualDistance",
+      "title": "ChamferFeature.setEqualDistance Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Changes the type of chamfer to be an equal distance chamfer.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "returnValue = chamferFeature_var.setEqualDistance(distance)",
+        "cpp": "#include \n\nreturnValue = chamferFeature_var->setEqualDistance(distance);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the feature is successfully changed",
+      "parameters": [
+        {
+          "name": "distance",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the distance of the chamfer. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\"). If no units are specified it is interpreted using the current default units for length."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "setTwoDistances": {
+      "id": "ChamferFeature_setTwoDistances",
+      "title": "ChamferFeature.setTwoDistances Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ChamferFeature.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Changes the type of chamfer to be a two distances chamfer.",
+      "parent_class": "ChamferFeature",
+      "syntax": {
+        "python": "returnValue = chamferFeature_var.setTwoDistances(distanceOne, distanceTwo)",
+        "cpp": "#include \n\nreturnValue = chamferFeature_var->setTwoDistances(distanceOne, distanceTwo);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the feature is successfully changed",
+      "parameters": [
+        {
+          "name": "distanceOne",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the distanceOne of the chamfer. This distance is along the face which is on the left of the selected edge. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\"). If no units are specified it is interpreted using the current default units for length."
+        },
+        {
+          "name": "distanceTwo",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the distanceTwo of the chamfer. This distance is along the face which is on the right of the selected edge. If the ValueInput uses a real then it is interpreted as centimeters. If it is a string then the units can be defined as part of the string (i.e. \"2 in\"). If no units are specified it is interpreted using the current default units for length."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    }
+  }
+}

@@ -1,0 +1,573 @@
+{
+  "id": "BRepFace",
+  "title": "BRepFace Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/BRep/BRepFace.h",
+  "description": "Represent a connected region on a single geometric surface.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "convert",
+      "description": "Creates a new body where this face and its edges are converted to different types of geometry based on the input options.   The tempId on the faces, edges, and vertices on the new body will match with the corresponding tempId on the original body. In cases where the face is split as a result of the conversion there can be more than one face or edge in the new body that matches to a single face or edge in the original body."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "isPointOnFace",
+      "description": "Checks if input point is on this BRepFace. This takes into account any boundaries so if the point is within a void area of the face, this will return false."
+    }
+  ],
+  "properties": [
+    {
+      "name": "appearance",
+      "description": "Read-write property that gets and sets the current appearance of the face. Setting this property will result in applying an override appearance to the face and the AppearanceSourceType property will return OverrideAppearanceSource. Setting this property to null will remove any override."
+    },
+    {
+      "name": "appearanceSourceType",
+      "description": "Read-write property that gets the source of the appearance for the face. If this returns OverrideAppearanceSource, an override exists on this face. The override can be removed by setting the Appearance property to null."
+    },
+    {
+      "name": "area",
+      "description": "Returns the area in cm ^ 2."
+    },
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this BRepFace object is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly. but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "body",
+      "description": "Returns the parent body of the face."
+    },
+    {
+      "name": "boundingBox",
+      "description": "Returns the bounding box of this face"
+    },
+    {
+      "name": "centroid",
+      "description": "Returns a point at the centroid (aka, geometric center) of the face."
+    },
+    {
+      "name": "edges",
+      "description": "Returns the BRepEdges used by this face"
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the BRepFace object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same face.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.   This is only valid for faces that exist in the design, (the isTemporary property is false)."
+    },
+    {
+      "name": "evaluator",
+      "description": "Returns a SurfaceEvaluator to allow geometric evaluations across the face's surface. This evaluator differs from the evaluator available from the Surface obtained from the geometry property by being bounded by the topological boundaries of this face."
+    },
+    {
+      "name": "geometry",
+      "description": "Returns the underlying surface geometry of this face"
+    },
+    {
+      "name": "isParamReversed",
+      "description": "Gets if the normal of this face is reversed with respect to the surface geometry associated with this face."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "loops",
+      "description": "Returns the BRepLoops owned by this face"
+    },
+    {
+      "name": "meshManager",
+      "description": "Returns a MeshManager object that allows access to existing and new meshes of this face."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "pointOnFace",
+      "description": "Returns a sample point guaranteed to lie on the face's surface, within the face's boundaries, and not on a boundary edge."
+    },
+    {
+      "name": "shell",
+      "description": "Returns the parent shell of the face."
+    },
+    {
+      "name": "tangentiallyConnectedFaces",
+      "description": "Returns the set of faces that are tangentially adjacent to this face. In other words, it is the set of faces that are adjacent to this face's edges and have a smooth transition across those edges."
+    },
+    {
+      "name": "tempId",
+      "description": "Returns the temporary ID of this face. This ID is only good while the document remains open and as long as the owning BRepBody is not modified in any way. The findByTempId method of the BRepBody will return the entity in the body with the given ID."
+    },
+    {
+      "name": "vertices",
+      "description": "Returns the BRepVertices used by this face"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Patch Feature API Sample",
+      "description": "Demonstrates creating a new patch feature."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "property_details": {
+    "appearance": {
+      "id": "BRepFace_appearance",
+      "title": "BRepFace.appearance Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Read-write property that gets and sets the current appearance of the face. Setting this property will result in applying an override appearance to the face and the AppearanceSourceType property will return OverrideAppearanceSource. Setting this property to null will remove any override.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.appearance\n\n# Set the value of the property.\nbRepFace_var.appearance = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepFace_var->appearance();\n\n// Set the value of the property, where value_var is an Appearance.\nbool returnValue = bRepFace_var->appearance(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "appearanceSourceType": {
+      "id": "BRepFace_appearanceSourceType",
+      "title": "BRepFace.appearanceSourceType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Read-write property that gets the source of the appearance for the face. If this returns OverrideAppearanceSource, an override exists on this face. The override can be removed by setting the Appearance property to null.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.appearanceSourceType",
+        "cpp": "#include \n\n// Get the value of the property.\nAppearanceSourceTypes propertyValue = bRepFace_var->appearanceSourceType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "area": {
+      "id": "BRepFace_area",
+      "title": "BRepFace.area Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns the area in cm ^ 2.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.area",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = bRepFace_var->area();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2016"
+    },
+    "assemblyContext": {
+      "id": "BRepFace_assemblyContext",
+      "title": "BRepFace.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this BRepFace object is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly. but is already the native object.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepFace_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "attributes": {
+      "id": "BRepFace_attributes",
+      "title": "BRepFace.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepFace_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "body": {
+      "id": "BRepFace_body",
+      "title": "BRepFace.body Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns the parent body of the face.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.body",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepFace_var->body();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "boundingBox": {
+      "id": "BRepFace_boundingBox",
+      "title": "BRepFace.boundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns the bounding box of this face",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.boundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepFace_var->boundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2016"
+    },
+    "centroid": {
+      "id": "BRepFace_centroid",
+      "title": "BRepFace.centroid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns a point at the centroid (aka, geometric center) of the face.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.centroid",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepFace_var->centroid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2016"
+    },
+    "edges": {
+      "id": "BRepFace_edges",
+      "title": "BRepFace.edges Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns the BRepEdges used by this face",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.edges",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepFace_var->edges();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "entityToken": {
+      "id": "BRepFace_entityToken",
+      "title": "BRepFace.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns a token for the BRepFace object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same face. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them. This is only valid for faces that exist in the design, (the isTemporary property is false).",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = bRepFace_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "evaluator": {
+      "id": "BRepFace_evaluator",
+      "title": "BRepFace.evaluator Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns a SurfaceEvaluator to allow geometric evaluations across the face's surface. This evaluator differs from the evaluator available from the Surface obtained from the geometry property by being bounded by the topological boundaries of this face.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.evaluator",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepFace_var->evaluator();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "geometry": {
+      "id": "BRepFace_geometry",
+      "title": "BRepFace.geometry Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns the underlying surface geometry of this face",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.geometry",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepFace_var->geometry();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isParamReversed": {
+      "id": "BRepFace_isParamReversed",
+      "title": "BRepFace.isParamReversed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Gets if the normal of this face is reversed with respect to the surface geometry associated with this face.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.isParamReversed",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bRepFace_var->isParamReversed();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2019"
+    },
+    "isValid": {
+      "id": "BRepFace_isValid",
+      "title": "BRepFace.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bRepFace_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "loops": {
+      "id": "BRepFace_loops",
+      "title": "BRepFace.loops Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns the BRepLoops owned by this face",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.loops",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepFace_var->loops();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Patch Feature API Sample",
+          "description": "Demonstrates creating a new patch feature."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "meshManager": {
+      "id": "BRepFace_meshManager",
+      "title": "BRepFace.meshManager Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns a MeshManager object that allows access to existing and new meshes of this face.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.meshManager",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepFace_var->meshManager();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "nativeObject": {
+      "id": "BRepFace_nativeObject",
+      "title": "BRepFace.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "The NativeObject is the object outside the context of an assembly. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepFace_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "BRepFace_objectType",
+      "title": "BRepFace.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = bRepFace_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "pointOnFace": {
+      "id": "BRepFace_pointOnFace",
+      "title": "BRepFace.pointOnFace Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns a sample point guaranteed to lie on the face's surface, within the face's boundaries, and not on a boundary edge.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.pointOnFace",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepFace_var->pointOnFace();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "shell": {
+      "id": "BRepFace_shell",
+      "title": "BRepFace.shell Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns the parent shell of the face.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.shell",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepFace_var->shell();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "tangentiallyConnectedFaces": {
+      "id": "BRepFace_tangentiallyConnectedFaces",
+      "title": "BRepFace.tangentiallyConnectedFaces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns the set of faces that are tangentially adjacent to this face. In other words, it is the set of faces that are adjacent to this face's edges and have a smooth transition across those edges.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.tangentiallyConnectedFaces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepFace_var->tangentiallyConnectedFaces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "tempId": {
+      "id": "BRepFace_tempId",
+      "title": "BRepFace.tempId Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns the temporary ID of this face. This ID is only good while the document remains open and as long as the owning BRepBody is not modified in any way. The findByTempId method of the BRepBody will return the entity in the body with the given ID.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.tempId",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = bRepFace_var->tempId();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "vertices": {
+      "id": "BRepFace_vertices",
+      "title": "BRepFace.vertices Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns the BRepVertices used by this face",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepFace_var.vertices",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepFace_var->vertices();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "BRepFace_classType",
+      "title": "BRepFace.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.BRepFace.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::BRepFace::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "convert": {
+      "id": "BRepFace_convert",
+      "title": "BRepFace.convert Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Creates a new body where this face and its edges are converted to different types of geometry based on the input options. The tempId on the faces, edges, and vertices on the new body will match with the corresponding tempId on the original body. In cases where the face is split as a result of the conversion there can be more than one face or edge in the new body that matches to a single face or edge in the original body.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "returnValue = bRepFace_var.convert(options)",
+        "cpp": "#include \n\nreturnValue = bRepFace_var->convert(options);"
+      },
+      "return_type": "BRepBody",
+      "return_description": "Returns the new converted body or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "options",
+          "type": "BRepConvertOptions",
+          "description": "Input options that define how the conversion should be done. These are bitwise options so they can be combined."
+        }
+      ],
+      "version": "Introduced in version August 2016"
+    },
+    "createForAssemblyContext": {
+      "id": "BRepFace_createForAssemblyContext",
+      "title": "BRepFace.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "returnValue = bRepFace_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = bRepFace_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "BRepFace",
+      "return_description": "Returns the new BRepFace proxy or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context for the created proxy."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isPointOnFace": {
+      "id": "BRepFace_isPointOnFace",
+      "title": "BRepFace.isPointOnFace Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepFace.h",
+      "description": "Checks if input point is on this BRepFace. This takes into account any boundaries so if the point is within a void area of the face, this will return false.",
+      "parent_class": "BRepFace",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = bRepFace_var.isPointOnFace(point)\n\n# Uses optional arguments.\nreturnValue = bRepFace_var.isPointOnFace(point, tolerance)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = bRepFace_var->isPointOnFace(point);\n\n// Uses optional arguments.\nreturnValue = bRepFace_var->isPointOnFace(point, tolerance);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the point lies on the face.",
+      "parameters": [
+        {
+          "name": "point",
+          "type": "Point3D",
+          "description": "The input point to check."
+        },
+        {
+          "name": "tolerance",
+          "type": "double",
+          "description": "Specifies how close the point must be to the face to be considered on the face. Defaults to the point tolerance which can be obtained using the Application.pointTolerance property. The value is in centimeters.   This is an optional argument whose default value is 0.0."
+        }
+      ],
+      "version": "Introduced in version September 2024"
+    }
+  }
+}

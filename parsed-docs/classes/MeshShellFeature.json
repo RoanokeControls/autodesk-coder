@@ -1,0 +1,466 @@
+{
+  "id": "MeshShellFeature",
+  "title": "MeshShellFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+  "description": "Object that represents an existing mesh shell feature in a design. To change the properties of this feature, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+  "parent_class": "MeshFeature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "mesh",
+      "description": "Gets and sets the input mesh body.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "thickness",
+      "description": "Controls the thickness of the shell."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    }
+  ],
+  "version": "Introduced in version March 2024",
+  "property_details": {
+    "assemblyContext": {
+      "id": "MeshShellFeature_assemblyContext",
+      "title": "MeshShellFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshShellFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "attributes": {
+      "id": "MeshShellFeature_attributes",
+      "title": "MeshShellFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshShellFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "baseFeature": {
+      "id": "MeshShellFeature_baseFeature",
+      "title": "MeshShellFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshShellFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "bodies": {
+      "id": "MeshShellFeature_bodies",
+      "title": "MeshShellFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshShellFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "entityToken": {
+      "id": "MeshShellFeature_entityToken",
+      "title": "MeshShellFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = meshShellFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "errorOrWarningMessage": {
+      "id": "MeshShellFeature_errorOrWarningMessage",
+      "title": "MeshShellFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = meshShellFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "faces": {
+      "id": "MeshShellFeature_faces",
+      "title": "MeshShellFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshShellFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "healthState": {
+      "id": "MeshShellFeature_healthState",
+      "title": "MeshShellFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = meshShellFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "isParametric": {
+      "id": "MeshShellFeature_isParametric",
+      "title": "MeshShellFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = meshShellFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "isSuppressed": {
+      "id": "MeshShellFeature_isSuppressed",
+      "title": "MeshShellFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.isSuppressed\n\n# Set the value of the property.\nmeshShellFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = meshShellFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = meshShellFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "isValid": {
+      "id": "MeshShellFeature_isValid",
+      "title": "MeshShellFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = meshShellFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "linkedFeatures": {
+      "id": "MeshShellFeature_linkedFeatures",
+      "title": "MeshShellFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshShellFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "mesh": {
+      "id": "MeshShellFeature_mesh",
+      "title": "MeshShellFeature.mesh Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Gets and sets the input mesh body. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.mesh\n\n# Set the value of the property.\nmeshShellFeature_var.mesh = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshShellFeature_var->mesh();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = meshShellFeature_var->mesh(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "name": {
+      "id": "MeshShellFeature_name",
+      "title": "MeshShellFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.name\n\n# Set the value of the property.\nmeshShellFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = meshShellFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = meshShellFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "nativeObject": {
+      "id": "MeshShellFeature_nativeObject",
+      "title": "MeshShellFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshShellFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "objectType": {
+      "id": "MeshShellFeature_objectType",
+      "title": "MeshShellFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = meshShellFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "parentComponent": {
+      "id": "MeshShellFeature_parentComponent",
+      "title": "MeshShellFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshShellFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "thickness": {
+      "id": "MeshShellFeature_thickness",
+      "title": "MeshShellFeature.thickness Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Controls the thickness of the shell.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.thickness",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshShellFeature_var->thickness();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "timelineObject": {
+      "id": "MeshShellFeature_timelineObject",
+      "title": "MeshShellFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshShellFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshShellFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "MeshShellFeature_classType",
+      "title": "MeshShellFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.MeshShellFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::MeshShellFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version March 2024"
+    },
+    "createForAssemblyContext": {
+      "id": "MeshShellFeature_createForAssemblyContext",
+      "title": "MeshShellFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "returnValue = meshShellFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = meshShellFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "MeshShellFeature",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version March 2024"
+    },
+    "deleteMe": {
+      "id": "MeshShellFeature_deleteMe",
+      "title": "MeshShellFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "returnValue = meshShellFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = meshShellFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version March 2024"
+    },
+    "dissolve": {
+      "id": "MeshShellFeature_dissolve",
+      "title": "MeshShellFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshShellFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "MeshShellFeature",
+      "syntax": {
+        "python": "returnValue = meshShellFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = meshShellFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version March 2024"
+    }
+  }
+}

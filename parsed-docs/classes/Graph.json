@@ -1,0 +1,407 @@
+{
+  "id": "Graph",
+  "title": "Graph Object",
+  "type": "class",
+  "namespace": "adsk::volume",
+  "header_file": "Volume/Volumetric/Graph.h",
+  "description": "The graph that describes the volumetric model. Possible node types: \"BoxSDF\", \"CylinderSDF\", \"SphereSDF\", \"TorusSDF\", \"PlaneSDF\", \"ReferencedGeometrySDF\", \"ReferencedCurveLength\", \"ReferencedCurveCoords\", \"ReferencedFaceCoords\", \"GradientVector\", \"InvertDensity\", \"PerlinNoiseScalar\", \"VoronoiNoiseScalar\", \"Shell\", \"ConstantScalar\", \"ConstantColor\", \"ImageSamplerScalar\", \"ImageSamplerVector\", \"ImageSamplerColor\", \"3DImageSamplerScalar\", \"SphereCoords\", \"TorusCoords\", \"CylinderCoords\", \"HomogenousTransformCoords\", \"TransformCoords\", \"AxisBasedDeformCoords \", \"TwistCoords\", \"ControlPointMapScalarToScalar\", \"ControlPointMapScalarToColor\", \"FalloffMapping\", \"VectorToColor\", \"CombineScalarsToVector\", \"CombineScalarsToColor\", \"SplitVectorToScalars\", \"SplitColorToScalars\", \"LengthOfVector\", \"NormalizeVector\", \"ExternalColor\", \"FunctionScalarToScalar\", \"FunctionVectorToColor\", \"FunctionVectorToVector\", \"FunctionVectorToScalar\", \"BinaryOperatorColor\", \"BinaryOperatorVector\", \"BinaryOperatorScalar\", \"MultiplyColor\", \"MultiplyVector\", \"MultiplyScalar\"",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "addNode",
+      "description": "Add a new node to the graph. Node names are unique, attempting to add two nodes with the same name produces an error."
+    },
+    {
+      "name": "canEvaluateGraph",
+      "description": "Check if all the channels in the graph can be evaluated and in a good state."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "connect",
+      "description": "Create a connection between nodes."
+    },
+    {
+      "name": "disconnect",
+      "description": "Delete a connection between nodes."
+    },
+    {
+      "name": "getNode",
+      "description": "Get node with the given name."
+    },
+    {
+      "name": "getNodeInputPinConnector",
+      "description": "Get an upstream connection to the node's input pin."
+    },
+    {
+      "name": "getNodeOutputPinConnectors",
+      "description": "Get an array of downstream connections from the node's output pin."
+    },
+    {
+      "name": "getOutputNode",
+      "description": "Get one of the special graph output nodes. Every graph has one or more, the cannot be created or added. The final output pins of the graph nodes should be connected to these to make a useful graph."
+    }
+  ],
+  "properties": [
+    {
+      "name": "allGraphConnectors",
+      "description": "Get all the connectors in the graph."
+    },
+    {
+      "name": "allNodes",
+      "description": "Get all the nodes in the graph, including the output nodes."
+    },
+    {
+      "name": "allPossibleNodeTypes",
+      "description": "Get all the possible node types that can be used as the nodeType parameter for addNode."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Volumetric Custom Feature API Sample",
+      "description": "Demonstrates how to create a Volumetric Custom Feature using the API for graph creation.\n\nTo run the sample script, have a document open in Fusion\u2019s DESIGN workspace. This script will create a component with a box by sketching then extruding that sketch. It will then use that box as a boundary body and create a Volumetric Custom Feature.\n\nThe script will the create a gyroid lattice using the Volumetric Model API with the appropriate Graphs, Nodes and Connections for a minimal example. Finally, the script will convert that Volumetric Model to Mesh using the API and the VolumetricModelToMeshFeature."
+    }
+  ],
+  "version": "Introduced in version May 2025",
+  "method_details": {
+    "addNode": {
+      "id": "Graph_addNode",
+      "title": "Graph.addNode Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/Graph.h",
+      "description": "Add a new node to the graph. Node names are unique, attempting to add two nodes with the same name produces an error.",
+      "parent_class": "Graph",
+      "syntax": {
+        "python": "returnValue = graph_var.addNode(name, nodeType)",
+        "cpp": "#include \n\nreturnValue = graph_var->addNode(name, nodeType);"
+      },
+      "return_type": "GraphNode",
+      "return_description": "The new node if it could be added, null otherwise.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Name of the new node."
+        },
+        {
+          "name": "nodeType",
+          "type": "string",
+          "description": "The node type string, one of the types listed in the documentation."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Volumetric Custom Feature API Sample",
+          "description": "Demonstrates how to create a Volumetric Custom Feature using the API for graph creation.\n\nTo run the sample script, have a document open in Fusion\u2019s DESIGN workspace. This script will create a component with a box by sketching then extruding that sketch. It will then use that box as a boundary body and create a Volumetric Custom Feature.\n\nThe script will the create a gyroid lattice using the Volumetric Model API with the appropriate Graphs, Nodes and Connections for a minimal example. Finally, the script will convert that Volumetric Model to Mesh using the API and the VolumetricModelToMeshFeature."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "canEvaluateGraph": {
+      "id": "Graph_canEvaluateGraph",
+      "title": "Graph.canEvaluateGraph Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/Graph.h",
+      "description": "Check if all the channels in the graph can be evaluated and in a good state.",
+      "parent_class": "Graph",
+      "syntax": {
+        "python": "returnValue = graph_var.canEvaluateGraph()",
+        "cpp": "#include \n\nreturnValue = graph_var->canEvaluateGraph();"
+      },
+      "return_type": "boolean",
+      "return_description": "True if this graph can be evaluated, false otherwise.",
+      "version": "Introduced in version July 2025"
+    },
+    "classType": {
+      "id": "Graph_classType",
+      "title": "Graph.classType Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/Graph.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Graph",
+      "syntax": {
+        "python": "returnValue = adsk.volume.Graph.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::volume::Graph::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version May 2025"
+    },
+    "connect": {
+      "id": "Graph_connect",
+      "title": "Graph.connect Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/Graph.h",
+      "description": "Create a connection between nodes.",
+      "parent_class": "Graph",
+      "syntax": {
+        "python": "returnValue = graph_var.connect(outputNode, outputPinIndex, inputNode, inputPinIndex)",
+        "cpp": "#include \n\nreturnValue = graph_var->connect(outputNode, outputPinIndex, inputNode, inputPinIndex);"
+      },
+      "parameters": [
+        {
+          "name": "outputNode",
+          "type": "GraphNode",
+          "description": "The node where the connection starts."
+        },
+        {
+          "name": "outputPinIndex",
+          "type": "uinteger",
+          "description": "The index of the output pin on the start node."
+        },
+        {
+          "name": "inputNode",
+          "type": "GraphNode",
+          "description": "The node where the connection ends."
+        },
+        {
+          "name": "inputPinIndex",
+          "type": "uinteger",
+          "description": "The index of the input pin on the end node."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Volumetric Custom Feature API Sample",
+          "description": "Demonstrates how to create a Volumetric Custom Feature using the API for graph creation.\n\nTo run the sample script, have a document open in Fusion\u2019s DESIGN workspace. This script will create a component with a box by sketching then extruding that sketch. It will then use that box as a boundary body and create a Volumetric Custom Feature.\n\nThe script will the create a gyroid lattice using the Volumetric Model API with the appropriate Graphs, Nodes and Connections for a minimal example. Finally, the script will convert that Volumetric Model to Mesh using the API and the VolumetricModelToMeshFeature."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "disconnect": {
+      "id": "Graph_disconnect",
+      "title": "Graph.disconnect Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/Graph.h",
+      "description": "Delete a connection between nodes.",
+      "parent_class": "Graph",
+      "syntax": {
+        "python": "returnValue = graph_var.disconnect(outputNode, outputPinIndex, inputNode, inputPinIndex)",
+        "cpp": "#include \n\nreturnValue = graph_var->disconnect(outputNode, outputPinIndex, inputNode, inputPinIndex);"
+      },
+      "parameters": [
+        {
+          "name": "outputNode",
+          "type": "GraphNode",
+          "description": "The node where the connection starts."
+        },
+        {
+          "name": "outputPinIndex",
+          "type": "uinteger",
+          "description": "The index of the output pin on the start node."
+        },
+        {
+          "name": "inputNode",
+          "type": "GraphNode",
+          "description": "The node where the connection ends."
+        },
+        {
+          "name": "inputPinIndex",
+          "type": "uinteger",
+          "description": "The index of the input pin on the end node."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "getNode": {
+      "id": "Graph_getNode",
+      "title": "Graph.getNode Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/Graph.h",
+      "description": "Get node with the given name.",
+      "parent_class": "Graph",
+      "syntax": {
+        "python": "returnValue = graph_var.getNode(name)",
+        "cpp": "#include \n\nreturnValue = graph_var->getNode(name);"
+      },
+      "return_type": "GraphNode",
+      "return_description": "The node if found, null otherwise.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Name to search for."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "getNodeInputPinConnector": {
+      "id": "Graph_getNodeInputPinConnector",
+      "title": "Graph.getNodeInputPinConnector Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/Graph.h",
+      "description": "Get an upstream connection to the node's input pin.",
+      "parent_class": "Graph",
+      "syntax": {
+        "python": "returnValue = graph_var.getNodeInputPinConnector(node, inputPinIndex)",
+        "cpp": "#include \n\nreturnValue = graph_var->getNodeInputPinConnector(node, inputPinIndex);"
+      },
+      "return_type": "GraphConnector",
+      "return_description": "An array of GraphConnector objects, one for each connection to another node.",
+      "parameters": [
+        {
+          "name": "node",
+          "type": "GraphNode",
+          "description": "The node in question."
+        },
+        {
+          "name": "inputPinIndex",
+          "type": "uinteger",
+          "description": "The index of the input pin of the node."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "getNodeOutputPinConnectors": {
+      "id": "Graph_getNodeOutputPinConnectors",
+      "title": "Graph.getNodeOutputPinConnectors Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/Graph.h",
+      "description": "Get an array of downstream connections from the node's output pin.",
+      "parent_class": "Graph",
+      "syntax": {
+        "python": "returnValue = graph_var.getNodeOutputPinConnectors(node, outputPinIndex)",
+        "cpp": "#include \n\nreturnValue = graph_var->getNodeOutputPinConnectors(node, outputPinIndex);"
+      },
+      "return_type": "GraphConnector[]",
+      "return_description": "An array of GraphConnector objects, one for each connection to another node.",
+      "parameters": [
+        {
+          "name": "node",
+          "type": "GraphNode",
+          "description": "The node in question."
+        },
+        {
+          "name": "outputPinIndex",
+          "type": "uinteger",
+          "description": "The index of the output pin of the node."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    },
+    "getOutputNode": {
+      "id": "Graph_getOutputNode",
+      "title": "Graph.getOutputNode Method",
+      "type": "method",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/Graph.h",
+      "description": "Get one of the special graph output nodes. Every graph has one or more, the cannot be created or added. The final output pins of the graph nodes should be connected to these to make a useful graph.",
+      "parent_class": "Graph",
+      "syntax": {
+        "python": "returnValue = graph_var.getOutputNode(outputNodeType)",
+        "cpp": "#include \n\nreturnValue = graph_var->getOutputNode(outputNodeType);"
+      },
+      "return_type": "GraphNode",
+      "return_description": "The output node if present in the graph, null otherwise.",
+      "parameters": [
+        {
+          "name": "outputNodeType",
+          "type": "GraphOutputNodeTypes",
+          "description": "The type of the output graph node. Not every graph has every type; the primary graph has all four ouput node types, the cell graph only has OutputDensity."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Volumetric Custom Feature API Sample",
+          "description": "Demonstrates how to create a Volumetric Custom Feature using the API for graph creation.\n\nTo run the sample script, have a document open in Fusion\u2019s DESIGN workspace. This script will create a component with a box by sketching then extruding that sketch. It will then use that box as a boundary body and create a Volumetric Custom Feature.\n\nThe script will the create a gyroid lattice using the Volumetric Model API with the appropriate Graphs, Nodes and Connections for a minimal example. Finally, the script will convert that Volumetric Model to Mesh using the API and the VolumetricModelToMeshFeature."
+        }
+      ],
+      "version": "Introduced in version May 2025"
+    }
+  },
+  "property_details": {
+    "allGraphConnectors": {
+      "id": "Graph_allGraphConnectors",
+      "title": "Graph.allGraphConnectors Property",
+      "type": "property",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/Graph.h",
+      "description": "Get all the connectors in the graph.",
+      "parent_class": "Graph",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = graph_var.allGraphConnectors",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = graph_var->allGraphConnectors();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "allNodes": {
+      "id": "Graph_allNodes",
+      "title": "Graph.allNodes Property",
+      "type": "property",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/Graph.h",
+      "description": "Get all the nodes in the graph, including the output nodes.",
+      "parent_class": "Graph",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = graph_var.allNodes",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = graph_var->allNodes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "allPossibleNodeTypes": {
+      "id": "Graph_allPossibleNodeTypes",
+      "title": "Graph.allPossibleNodeTypes Property",
+      "type": "property",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/Graph.h",
+      "description": "Get all the possible node types that can be used as the nodeType parameter for addNode.",
+      "parent_class": "Graph",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = graph_var.allPossibleNodeTypes",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector propertyValue = graph_var->allPossibleNodeTypes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "isValid": {
+      "id": "Graph_isValid",
+      "title": "Graph.isValid Property",
+      "type": "property",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/Graph.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Graph",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = graph_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = graph_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "objectType": {
+      "id": "Graph_objectType",
+      "title": "Graph.objectType Property",
+      "type": "property",
+      "namespace": "adsk::volume",
+      "header_file": "Volume/Volumetric/Graph.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Graph",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = graph_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = graph_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    }
+  }
+}

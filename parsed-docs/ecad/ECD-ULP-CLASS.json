@@ -1,0 +1,30 @@
+{
+  "id": "ECD-ULP-CLASS",
+  "title": "UL_CLASS",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "clearance[number]",
+      "type": "int (see note)"
+    },
+    {
+      "name": "drill",
+      "type": "int"
+    },
+    {
+      "name": "name",
+      "type": "string (see note)"
+    },
+    {
+      "name": "number",
+      "type": "int"
+    },
+    {
+      "name": "width",
+      "type": "int"
+    }
+  ],
+  "loop_members": [],
+  "content": "# UL_CLASS\n\n## Data members\n\n| | |\n| --- | --- |\n| clearance[number] | int (see note) |\n| drill | int |\n| name | string (see note) |\n| number | int |\n| width | int |\n\nSee also Design Rules, UL_NET, UL_SIGNAL, UL_SCHEMATIC, UL_BOARD\n\n## Notes\n\nThe *clearance* member returns the clearance value between this net class and the net class with the given number. If the number (and the square brackets) is ommitted, the net class's own clearance value is returned. If a number is given, it must be between 0 and the number of this net class.\n\nIf the *name* member returns an empty string, the net class is not defined and therefore not in use by any signal or net.\n\n## Example\n\n```\nboard(B) {\n B.signals(S) {\n printf(\"%-10s %d %s\\n\", S.name, S.class.number, S.class.name);\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

@@ -1,0 +1,268 @@
+{
+  "id": "InCanvasRendering",
+  "title": "InCanvasRendering Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Render/InCanvasRendering.h",
+  "description": "Provides access to the in-canvas rendering capabilities of Fusion. This uses the active viewport and the user will see the rendering as it takes place.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "saveImage",
+      "description": "Saves the image as it currently exists in the active viewport. To get the best quality, this should be called after the renderComplete event has fired."
+    },
+    {
+      "name": "start",
+      "description": "Starts the process of in-canvas rendering. There are two modes when doing in-canvas rendering; advanced and fast. This is specified in the API using the isAdvanced property. When using advanced rendering, you can specify the desired quality and the rendering will stop once that quality has been reached. When using fast rendering, the rendering never stops but continues until you stop it.   When using the API, it's generally best to use advanced rendering so you can easily control the final quality and get notified by the renderComplete event when it has finished. When using fast rendering, the renderComplete event is not fired and you have to use some other criteria like the number of iterations complete or the time taken to determine when to stop the rendering process."
+    },
+    {
+      "name": "stop",
+      "description": "Stops the current rendering process."
+    }
+  ],
+  "properties": [
+    {
+      "name": "elapsedTime",
+      "description": "Returns the seconds spent on the current render."
+    },
+    {
+      "name": "isAdvanced",
+      "description": "Gets and sets if \"Fast\" or \"Advanced\" rendering should be used. If false, \"Fast\" rendering is used, which uses simplified lighting and materials.   There are two modes when doing in-canvas rendering; advanced and fast. When using advanced rendering, you can specify the desired quality and the rendering will stop once that quality has been reached. When using fast rendering, the rendering never stops but continues until you stop it.   When using the API, it's generally best to use advanced rendering so you can easily control the final quality and get notified by the renderComplete event when it has finished. When using fast rendering, the renderComplete event is not fired, and you have to use some other criteria like the number of iterations complete, or the time taken to determine when to stop the rendering process."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "iterations",
+      "description": "Returns the current number of iterations the renderer has completed."
+    },
+    {
+      "name": "limitResolution",
+      "description": "Sets the percentage of the full resolution to render the image. Valid values are between 20 and 100 inclusive. 100 is full resolution (100%)."
+    },
+    {
+      "name": "lockView",
+      "description": "Gets and sets if the view should be locked during the in-canvas render. This prohibits the user from interacting with the view, which will cause the rendering to restart."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "events": [
+    {
+      "name": "renderComplete",
+      "description": "The RenderEvent event fires when the rendering has reached the quality that was specified when the rendering started. This event is only fired when using advanced rendering (the isAdvanced property is True). To save the finished rendering, use the saveImage method.   You can add or remove event handlers from the RenderEvent."
+    }
+  ],
+  "version": "Introduced in version September 2023",
+  "method_details": {
+    "classType": {
+      "id": "InCanvasRendering_classType",
+      "title": "InCanvasRendering.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/InCanvasRendering.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "InCanvasRendering",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.InCanvasRendering.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::InCanvasRendering::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2023"
+    },
+    "saveImage": {
+      "id": "InCanvasRendering_saveImage",
+      "title": "InCanvasRendering.saveImage Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/InCanvasRendering.h",
+      "description": "Saves the image as it currently exists in the active viewport. To get the best quality, this should be called after the renderComplete event has fired.",
+      "parent_class": "InCanvasRendering",
+      "syntax": {
+        "python": "returnValue = inCanvasRendering_var.saveImage(filename)",
+        "cpp": "#include \n\nreturnValue = inCanvasRendering_var->saveImage(filename);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the save was successful.",
+      "parameters": [
+        {
+          "name": "filename",
+          "type": "string",
+          "description": "The filename to save the image to. This must be the full path. The file extension can be .png, .jpg, .jpeg, or .tiff and the file will be saved as that type.   The size of the image is dependent on the size of the viewport and the current specified aspect ratio."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    },
+    "start": {
+      "id": "InCanvasRendering_start",
+      "title": "InCanvasRendering.start Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/InCanvasRendering.h",
+      "description": "Starts the process of in-canvas rendering. There are two modes when doing in-canvas rendering; advanced and fast. This is specified in the API using the isAdvanced property. When using advanced rendering, you can specify the desired quality and the rendering will stop once that quality has been reached. When using fast rendering, the rendering never stops but continues until you stop it. When using the API, it's generally best to use advanced rendering so you can easily control the final quality and get notified by the renderComplete event when it has finished. When using fast rendering, the renderComplete event is not fired and you have to use some other criteria like the number of iterations complete or the time taken to determine when to stop the rendering process.",
+      "parent_class": "InCanvasRendering",
+      "syntax": {
+        "python": "returnValue = inCanvasRendering_var.start(renderQuality)",
+        "cpp": "#include \n\nreturnValue = inCanvasRendering_var->start(renderQuality);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the rendering was successfully started.",
+      "parameters": [
+        {
+          "name": "renderQuality",
+          "type": "double",
+          "description": "Specifies the desired quality of the rendering. The quality is specified using a value between 0 and 1, where 0.75 is the equivalent of \"Excellent\" and 1.0 is the same as \"Final\" in the user interface.   This is ignored when using fast rendering (the isAdvanced property is False)."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    },
+    "stop": {
+      "id": "InCanvasRendering_stop",
+      "title": "InCanvasRendering.stop Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/InCanvasRendering.h",
+      "description": "Stops the current rendering process.",
+      "parent_class": "InCanvasRendering",
+      "syntax": {
+        "python": "returnValue = inCanvasRendering_var.stop()",
+        "cpp": "#include \n\nreturnValue = inCanvasRendering_var->stop();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "version": "Introduced in version September 2023"
+    }
+  },
+  "property_details": {
+    "elapsedTime": {
+      "id": "InCanvasRendering_elapsedTime",
+      "title": "InCanvasRendering.elapsedTime Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/InCanvasRendering.h",
+      "description": "Returns the seconds spent on the current render.",
+      "parent_class": "InCanvasRendering",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = inCanvasRendering_var.elapsedTime",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = inCanvasRendering_var->elapsedTime();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "isAdvanced": {
+      "id": "InCanvasRendering_isAdvanced",
+      "title": "InCanvasRendering.isAdvanced Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/InCanvasRendering.h",
+      "description": "Gets and sets if \"Fast\" or \"Advanced\" rendering should be used. If false, \"Fast\" rendering is used, which uses simplified lighting and materials. There are two modes when doing in-canvas rendering; advanced and fast. When using advanced rendering, you can specify the desired quality and the rendering will stop once that quality has been reached. When using fast rendering, the rendering never stops but continues until you stop it. When using the API, it's generally best to use advanced rendering so you can easily control the final quality and get notified by the renderComplete event when it has finished. When using fast rendering, the renderComplete event is not fired, and you have to use some other criteria like the number of iterations complete, or the time taken to determine when to stop the rendering process.",
+      "parent_class": "InCanvasRendering",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = inCanvasRendering_var.isAdvanced\n\n# Set the value of the property.\ninCanvasRendering_var.isAdvanced = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = inCanvasRendering_var->isAdvanced();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = inCanvasRendering_var->isAdvanced(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "isValid": {
+      "id": "InCanvasRendering_isValid",
+      "title": "InCanvasRendering.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/InCanvasRendering.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "InCanvasRendering",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = inCanvasRendering_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = inCanvasRendering_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "iterations": {
+      "id": "InCanvasRendering_iterations",
+      "title": "InCanvasRendering.iterations Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/InCanvasRendering.h",
+      "description": "Returns the current number of iterations the renderer has completed.",
+      "parent_class": "InCanvasRendering",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = inCanvasRendering_var.iterations",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = inCanvasRendering_var->iterations();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "limitResolution": {
+      "id": "InCanvasRendering_limitResolution",
+      "title": "InCanvasRendering.limitResolution Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/InCanvasRendering.h",
+      "description": "Sets the percentage of the full resolution to render the image. Valid values are between 20 and 100 inclusive. 100 is full resolution (100%).",
+      "parent_class": "InCanvasRendering",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = inCanvasRendering_var.limitResolution\n\n# Set the value of the property.\ninCanvasRendering_var.limitResolution = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = inCanvasRendering_var->limitResolution();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = inCanvasRendering_var->limitResolution(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "lockView": {
+      "id": "InCanvasRendering_lockView",
+      "title": "InCanvasRendering.lockView Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/InCanvasRendering.h",
+      "description": "Gets and sets if the view should be locked during the in-canvas render. This prohibits the user from interacting with the view, which will cause the rendering to restart.",
+      "parent_class": "InCanvasRendering",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = inCanvasRendering_var.lockView\n\n# Set the value of the property.\ninCanvasRendering_var.lockView = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = inCanvasRendering_var->lockView();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = inCanvasRendering_var->lockView(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "objectType": {
+      "id": "InCanvasRendering_objectType",
+      "title": "InCanvasRendering.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/InCanvasRendering.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "InCanvasRendering",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = inCanvasRendering_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = inCanvasRendering_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    }
+  },
+  "event_details": {
+    "renderComplete": {
+      "id": "InCanvasRendering_renderComplete",
+      "title": "InCanvasRendering.renderComplete Event",
+      "type": "event",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Render/InCanvasRendering.h",
+      "description": "The RenderEvent event fires when the rendering has reached the quality that was specified when the rendering started. This event is only fired when using advanced rendering (the isAdvanced property is True). To save the finished rendering, use the saveImage method. You can add or remove event handlers from the RenderEvent.",
+      "parent_class": "InCanvasRendering",
+      "syntax": {
+        "python": "# Event handler for the renderComplete event.\nclass MyRenderCompleteHandler(adsk.fusion.RenderEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.fusion.RenderEventArgs):\n        # Code to react to the event.\n        app.log('In MyRenderCompleteHandler event handler.')",
+        "cpp": "// \"inCanvasRendering_var\" is a variable referencing an InCanvasRendering object.\n// Connect the handler function to the event.\nPtr renderCompleteEvent = inCanvasRendering_var->renderComplete();\nif (!renderCompleteEvent)\n    return;\n\nbool isOk = renderCompleteEvent->add(&_renderComplete);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    }
+  }
+}

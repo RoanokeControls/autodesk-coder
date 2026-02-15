@@ -1,0 +1,357 @@
+{
+  "id": "SketchArcs",
+  "title": "SketchArcs Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Sketch/SketchArcs.h",
+  "description": "The collection of arcs in a sketch. This provides access to the existing arcs and supports the methods to create new arcs.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "addByCenterStartEnd",
+      "description": "Creates a sketch arc that is centered at the specified point and between the two input points."
+    },
+    {
+      "name": "addByCenterStartSweep",
+      "description": "Creates a sketch arc that is always parallel to the x-y plane of the sketch and is centered at the specified point."
+    },
+    {
+      "name": "addByThreePoints",
+      "description": "Creates a sketch arc that passes through the three points."
+    },
+    {
+      "name": "addFillet",
+      "description": "Creates a fillet between two sketch entities The side (quadrant) the fillet is created on is determined by the points specified. The point for each entity can be its startSketchPoint or endSketchPoint"
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified sketch arc using an index into the collection."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of arcs in the sketch."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "SketchArcs.addByCenterStartSweep",
+      "description": "Demonstrates the SketchArcs.addByCenterStartSweep method."
+    },
+    {
+      "name": "SketchArcs.addByThreePoints",
+      "description": "Demonstrates the SketchArcs.addByThreePoints method."
+    },
+    {
+      "name": "SketchArcs.addFillet",
+      "description": "Demonstrates the SketchArcs.addFillet method."
+    },
+    {
+      "name": "SketchArcs.breakCurve",
+      "description": "Demonstrates the SketchArc.breakCurve method."
+    },
+    {
+      "name": "SketchArcs.extend",
+      "description": "Demonstrates the SketchArc.extend method."
+    },
+    {
+      "name": "SketchArcs.split",
+      "description": "Demonstrates the SketchArc.split method."
+    },
+    {
+      "name": "Sketch fillet and offset API Sample",
+      "description": "Demonstrates the creation of a fillet in a sketch and offset a set of curves."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "addByCenterStartEnd": {
+      "id": "SketchArcs_addByCenterStartEnd",
+      "title": "SketchArcs.addByCenterStartEnd Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchArcs.h",
+      "description": "Creates a sketch arc that is centered at the specified point and between the two input points. Remarks",
+      "parent_class": "SketchArcs",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchArcs_var.addByCenterStartEnd(centerPoint, startPoint, endPoint)\n\n# Uses optional arguments.\nreturnValue = sketchArcs_var.addByCenterStartEnd(centerPoint, startPoint, endPoint, normal)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchArcs_var->addByCenterStartEnd(centerPoint, startPoint, endPoint);\n\n// Uses optional arguments.\nreturnValue = sketchArcs_var->addByCenterStartEnd(centerPoint, startPoint, endPoint, normal);"
+      },
+      "return_type": "SketchArc",
+      "return_description": "Returns the newly created SketchArc or null in the case of a failure.",
+      "parameters": [
+        {
+          "name": "centerPoint",
+          "type": "Base",
+          "description": "The center point of the arc. This can be either an existing SketchPoint or a Point3D object."
+        },
+        {
+          "name": "startPoint",
+          "type": "Base",
+          "description": "The start point of the arc. This can be either an existing SketchPoint or a Point3D object."
+        },
+        {
+          "name": "endPoint",
+          "type": "Base",
+          "description": "The end point of the arc. This can be either an existing SketchPoint or a Point3D object. If the end point does not lie on the arc, a new point would be created such that it lies on the arc."
+        },
+        {
+          "name": "normal",
+          "type": "Vector3D",
+          "description": "An optional argument that specifies the normal of the plane the arc will be created on. If not supplied, a vector in the positive Z direction will be used, which results in the creation of an arc that is parallel to the X-Y plane of the sketch. However, you can specify a normal vector to orient the arc in any orientation. The normal also helps to control the sweep direction of the arc, where the sweep direction is always counterclockwise from the start to the end point, where counterclockwise is defined using the right-hand rule around the normal vector.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "addByCenterStartSweep": {
+      "id": "SketchArcs_addByCenterStartSweep",
+      "title": "SketchArcs.addByCenterStartSweep Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchArcs.h",
+      "description": "Creates a sketch arc that is always parallel to the x-y plane of the sketch and is centered at the specified point. Remarks",
+      "parent_class": "SketchArcs",
+      "syntax": {
+        "python": "returnValue = sketchArcs_var.addByCenterStartSweep(centerPoint, startPoint, sweepAngle)",
+        "cpp": "#include \n\nreturnValue = sketchArcs_var->addByCenterStartSweep(centerPoint, startPoint, sweepAngle);"
+      },
+      "return_type": "SketchArc",
+      "return_description": "Returns the newly created SketchArc object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "centerPoint",
+          "type": "Base",
+          "description": "The center point of the arc. This can be either an existing SketchPoint or a Point3D object."
+        },
+        {
+          "name": "startPoint",
+          "type": "Base",
+          "description": "The start point of the arc. The distance between this point and the center defines the radius of the arc. This can be either an existing SketchPoint or a Point3D object."
+        },
+        {
+          "name": "sweepAngle",
+          "type": "double",
+          "description": "The sweep of the arc. This is defined in radians and a positive value defines a counter-clockwise sweep."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "SketchArcs.addByCenterStartSweep",
+          "description": "Demonstrates the SketchArcs.addByCenterStartSweep method."
+        },
+        {
+          "name": "SketchArcs.addFillet",
+          "description": "Demonstrates the SketchArcs.addFillet method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addByThreePoints": {
+      "id": "SketchArcs_addByThreePoints",
+      "title": "SketchArcs.addByThreePoints Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchArcs.h",
+      "description": "Creates a sketch arc that passes through the three points. Remarks",
+      "parent_class": "SketchArcs",
+      "syntax": {
+        "python": "returnValue = sketchArcs_var.addByThreePoints(startPoint, point, endPoint)",
+        "cpp": "#include \n\nreturnValue = sketchArcs_var->addByThreePoints(startPoint, point, endPoint);"
+      },
+      "return_type": "SketchArc",
+      "return_description": "Returns the newly created SketchArc or null in the case of a failure.",
+      "parameters": [
+        {
+          "name": "startPoint",
+          "type": "Base",
+          "description": "The start point of the arc. This can be either an existing SketchPoint or a Point3D object."
+        },
+        {
+          "name": "point",
+          "type": "Point3D",
+          "description": "A point along the arc. This is a Point3D object."
+        },
+        {
+          "name": "endPoint",
+          "type": "Base",
+          "description": "The end point of the arc. This can be either an existing SketchPoint or a Point3D object."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "GeometricConstraints.addCoincident",
+          "description": "Demonstrates the GeometricConstraints.addCoincident method."
+        },
+        {
+          "name": "SketchArcs.addByThreePoints",
+          "description": "Demonstrates the SketchArcs.addByThreePoints method."
+        },
+        {
+          "name": "SketchArcs.breakCurve",
+          "description": "Demonstrates the SketchArc.breakCurve method."
+        },
+        {
+          "name": "SketchArcs.extend",
+          "description": "Demonstrates the SketchArc.extend method."
+        },
+        {
+          "name": "SketchArcs.split",
+          "description": "Demonstrates the SketchArc.split method."
+        },
+        {
+          "name": "SketchArcs.trim",
+          "description": "Demonstrates the SketchArc.trim method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addFillet": {
+      "id": "SketchArcs_addFillet",
+      "title": "SketchArcs.addFillet Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchArcs.h",
+      "description": "Creates a fillet between two sketch entities The side (quadrant) the fillet is created on is determined by the points specified. The point for each entity can be its startSketchPoint or endSketchPoint",
+      "parent_class": "SketchArcs",
+      "syntax": {
+        "python": "returnValue = sketchArcs_var.addFillet(firstEntity, firstEntityPoint, secondEnitity, secondEntityPoint, radius)",
+        "cpp": "#include \n\nreturnValue = sketchArcs_var->addFillet(firstEntity, firstEntityPoint, secondEnitity, secondEntityPoint, radius);"
+      },
+      "return_type": "SketchArc",
+      "return_description": "Returns the newly created SketchArc object (fillet) if the operation was successful or null if it failed.",
+      "parameters": [
+        {
+          "name": "firstEntity",
+          "type": "SketchCurve",
+          "description": "The first curve for the fillet definition. The curve must be open."
+        },
+        {
+          "name": "firstEntityPoint",
+          "type": "Point3D",
+          "description": "A point on or closer to one end of the first curve that indicates the side to create the fillet on"
+        },
+        {
+          "name": "secondEnitity",
+          "type": "SketchCurve",
+          "description": "The second curve for the fillet definition. The curve must be open."
+        },
+        {
+          "name": "secondEntityPoint",
+          "type": "Point3D",
+          "description": "A point on or closer to one end of the second curve that indicates the side to create the fillet on"
+        },
+        {
+          "name": "radius",
+          "type": "double",
+          "description": "radius of the arc in centimeters"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Sketch fillet and offset API Sample",
+          "description": "Demonstrates the creation of a fillet in a sketch and offset a set of curves."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "classType": {
+      "id": "SketchArcs_classType",
+      "title": "SketchArcs.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchArcs.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SketchArcs",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.SketchArcs.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::SketchArcs::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "SketchArcs_item",
+      "title": "SketchArcs.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchArcs.h",
+      "description": "Function that returns the specified sketch arc using an index into the collection.",
+      "parent_class": "SketchArcs",
+      "syntax": {
+        "python": "returnValue = sketchArcs_var.item(index)",
+        "cpp": "#include \n\nreturnValue = sketchArcs_var->item(index);"
+      },
+      "return_type": "SketchArc",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "SketchArcs_count",
+      "title": "SketchArcs.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchArcs.h",
+      "description": "Returns the number of arcs in the sketch.",
+      "parent_class": "SketchArcs",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchArcs_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = sketchArcs_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "SketchArcs_isValid",
+      "title": "SketchArcs.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchArcs.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SketchArcs",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchArcs_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchArcs_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "SketchArcs_objectType",
+      "title": "SketchArcs.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchArcs.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SketchArcs",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchArcs_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchArcs_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

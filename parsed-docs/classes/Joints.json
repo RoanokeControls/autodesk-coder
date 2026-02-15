@@ -1,0 +1,345 @@
+{
+  "id": "Joints",
+  "title": "Joints Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Components/Joints.h",
+  "description": "The collection of joints in this component. This provides access to all existing joints and supports the ability to create new joints.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new joint."
+    },
+    {
+      "name": "addInferredJoint",
+      "description": "Creates a new inferred joint."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInferredJointInput",
+      "description": "Creates a joint input to define an inferred joint. Use functionality on the returned InferredJointInput to define the input needed to infer a joint."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a JointInput object, which is the API equivalent to the Joint command dialog. You you use methods and properties on the returned class to set the desired options, similar to providing input and setting options in the Joint command dialog. Once the settings are defined you call the Joints.add method passing in the JointInput object to create the actual joint."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified joint using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified joint using a name."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns number of joints in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "BallJointMotion API Sample",
+      "description": "Demonstrates creating a joint with ball joint motion"
+    },
+    {
+      "name": "CylindricalJointMotion API Sample",
+      "description": "Demonstrates creating a joint with cylindrical joint motion."
+    },
+    {
+      "name": "Joint API Sample",
+      "description": "Demonstrates creating a new joint."
+    },
+    {
+      "name": "Pin Slot Joint Motion API Sample",
+      "description": "Demonstrates creating a joint with pin slot joint motion"
+    },
+    {
+      "name": "Planar Joint Motion API Sample",
+      "description": "Demonstrates creating a joint with planar joint motion"
+    },
+    {
+      "name": "RevoluteJointMotion API Sample",
+      "description": "Demonstrates creating a joint with revolute joint motion."
+    },
+    {
+      "name": "SliderJointMotion API Sample",
+      "description": "Demonstrates creating a joint with slider joint motion."
+    }
+  ],
+  "version": "Introduced in version July 2015",
+  "method_details": {
+    "add": {
+      "id": "Joints_add",
+      "title": "Joints.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joints.h",
+      "description": "Creates a new joint.",
+      "parent_class": "Joints",
+      "syntax": {
+        "python": "returnValue = joints_var.add(input)",
+        "cpp": "#include \n\nreturnValue = joints_var->add(input);"
+      },
+      "return_type": "Joint",
+      "return_description": "Returns the newly created Joint or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "JointInput",
+          "description": "The JointInput object that defines the geometry and various inputs that fully define a joint. A JointInput object is created using the Joints.createInput method."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "BallJointMotion API Sample",
+          "description": "Demonstrates creating a joint with ball joint motion"
+        },
+        {
+          "name": "CylindricalJointMotion API Sample",
+          "description": "Demonstrates creating a joint with cylindrical joint motion."
+        },
+        {
+          "name": "Joint API Sample",
+          "description": "Demonstrates creating a new joint."
+        },
+        {
+          "name": "Pin Slot Joint Motion API Sample",
+          "description": "Demonstrates creating a joint with pin slot joint motion"
+        },
+        {
+          "name": "Planar Joint Motion API Sample",
+          "description": "Demonstrates creating a joint with planar joint motion"
+        },
+        {
+          "name": "RevoluteJointMotion API Sample",
+          "description": "Demonstrates creating a joint with revolute joint motion."
+        },
+        {
+          "name": "SliderJointMotion API Sample",
+          "description": "Demonstrates creating a joint with slider joint motion."
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    },
+    "addInferredJoint": {
+      "id": "Joints_addInferredJoint",
+      "title": "Joints.addInferredJoint Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joints.h",
+      "description": "Creates a new inferred joint.",
+      "parent_class": "Joints",
+      "syntax": {
+        "python": "returnValue = joints_var.addInferredJoint(input)",
+        "cpp": "#include \n\nreturnValue = joints_var->addInferredJoint(input);"
+      },
+      "return_type": "Joint",
+      "return_description": "Returns the newly created Joint or fails if there is bad input.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "InferredJointInput",
+          "description": "The InferredJointInput object that defines the pairs of geometry and other settings that Fusion will use to infer a joint from. An InferredJointInput object is created using the Joints.createInferredJointInput method."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    },
+    "classType": {
+      "id": "Joints_classType",
+      "title": "Joints.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joints.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Joints",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.Joints.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::Joints::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version July 2015"
+    },
+    "createInferredJointInput": {
+      "id": "Joints_createInferredJointInput",
+      "title": "Joints.createInferredJointInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joints.h",
+      "description": "Creates a joint input to define an inferred joint. Use functionality on the returned InferredJointInput to define the input needed to infer a joint.",
+      "parent_class": "Joints",
+      "syntax": {
+        "python": "returnValue = joints_var.createInferredJointInput()",
+        "cpp": "#include \n\nreturnValue = joints_var->createInferredJointInput();"
+      },
+      "return_type": "InferredJointInput",
+      "return_description": "Returns an InferredJointInput.",
+      "version": "Introduced in version September 2025"
+    },
+    "createInput": {
+      "id": "Joints_createInput",
+      "title": "Joints.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joints.h",
+      "description": "Creates a JointInput object, which is the API equivalent to the Joint command dialog. You you use methods and properties on the returned class to set the desired options, similar to providing input and setting options in the Joint command dialog. Once the settings are defined you call the Joints.add method passing in the JointInput object to create the actual joint.",
+      "parent_class": "Joints",
+      "syntax": {
+        "python": "returnValue = joints_var.createInput(geometryOrOriginOne, geometryOrOriginTwo)",
+        "cpp": "#include \n\nreturnValue = joints_var->createInput(geometryOrOriginOne, geometryOrOriginTwo);"
+      },
+      "return_type": "JointInput",
+      "return_description": "Returns the JointInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "geometryOrOriginOne",
+          "type": "Base",
+          "description": "A JointGeometry or JointOrigin object that defines the first set of geometry of the joint. JointGeometry objects are created by using the various static methods on the JointGeometry class and JointOrigin objects are created through the JointOrigins object."
+        },
+        {
+          "name": "geometryOrOriginTwo",
+          "type": "Base",
+          "description": "A JointGeometry or JointOrigin object that defines the second set of geometry of the joint. JointGeometry objects are created by using the various static methods on the JointGeometry class and JointOrigin objects are created through the JointOrigins object."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "BallJointMotion API Sample",
+          "description": "Demonstrates creating a joint with ball joint motion"
+        },
+        {
+          "name": "CylindricalJointMotion API Sample",
+          "description": "Demonstrates creating a joint with cylindrical joint motion."
+        },
+        {
+          "name": "Joint API Sample",
+          "description": "Demonstrates creating a new joint."
+        },
+        {
+          "name": "Pin Slot Joint Motion API Sample",
+          "description": "Demonstrates creating a joint with pin slot joint motion"
+        },
+        {
+          "name": "Planar Joint Motion API Sample",
+          "description": "Demonstrates creating a joint with planar joint motion"
+        },
+        {
+          "name": "RevoluteJointMotion API Sample",
+          "description": "Demonstrates creating a joint with revolute joint motion."
+        },
+        {
+          "name": "SliderJointMotion API Sample",
+          "description": "Demonstrates creating a joint with slider joint motion."
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    },
+    "item": {
+      "id": "Joints_item",
+      "title": "Joints.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joints.h",
+      "description": "Function that returns the specified joint using an index into the collection.",
+      "parent_class": "Joints",
+      "syntax": {
+        "python": "returnValue = joints_var.item(index)",
+        "cpp": "#include \n\nreturnValue = joints_var->item(index);"
+      },
+      "return_type": "Joint",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    },
+    "itemByName": {
+      "id": "Joints_itemByName",
+      "title": "Joints.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joints.h",
+      "description": "Function that returns the specified joint using a name.",
+      "parent_class": "Joints",
+      "syntax": {
+        "python": "returnValue = joints_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = joints_var->itemByName(name);"
+      },
+      "return_type": "Joint",
+      "return_description": "Returns the specified item or null if an invalid name was specified.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the item within the collection to return."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "Joints_count",
+      "title": "Joints.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joints.h",
+      "description": "Returns number of joints in the collection.",
+      "parent_class": "Joints",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joints_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = joints_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "isValid": {
+      "id": "Joints_isValid",
+      "title": "Joints.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joints.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Joints",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joints_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = joints_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "objectType": {
+      "id": "Joints_objectType",
+      "title": "Joints.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joints.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Joints",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joints_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = joints_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    }
+  }
+}

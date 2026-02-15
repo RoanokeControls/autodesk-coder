@@ -1,0 +1,483 @@
+{
+  "id": "CustomGraphicsBRepBody",
+  "title": "CustomGraphicsBRepBody Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+  "description": "This represents custom graphics that are based on a BRepBody.",
+  "parent_class": "CustomGraphicsEntity",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the entity from the custom graphics group."
+    },
+    {
+      "name": "getOpacity",
+      "description": "Gets the opacity of the graphics entity."
+    },
+    {
+      "name": "setOpacity",
+      "description": "Sets the opacity of the graphics entity. By default, when a new entity is it is completely opaque and does not override the opacity defined by the material."
+    }
+  ],
+  "properties": [
+    {
+      "name": "billBoarding",
+      "description": "Gets and sets the billboarding behavior of this custom graphics entity. To define billboarding you can set this property using a CustomGraphicsBillBoard objects that you statically create using the create method of the CustomGraphicsBillBoard class. To remove billboarding from this entity you can set this property to null.   Billboarding is used to specify that the orientation of custom graphics is defined relative to the screen instead of model space. This is commonly used for legends and symbols that you want to always face the user, even as the camera is rotated."
+    },
+    {
+      "name": "boundingBox",
+      "description": "Returns a box oriented parallel to the world x-y-x axes that contains the graphics entity. Depending on whether the graphics are drawn in model space or screen space this will return the bounding box in either centimeters (model) or pixels (screen). In the case where it returns the bounding box in pixel space, the Z coordinates of the box will be 0 and can be ignored."
+    },
+    {
+      "name": "bRepBody",
+      "description": "Returns a transient BRepBody that is being displayed as custom graphics."
+    },
+    {
+      "name": "color",
+      "description": "Gets and sets the current color definition for this entity. The color of custom graphics can be defined in many ways; solid color, simple material, and appearance."
+    },
+    {
+      "name": "cullMode",
+      "description": "Gets and sets the culling model to use when rendering the entity. Culling is used when the entity contains a mesh or B-Rep faces and defines which sides of the mesh or face are rendered. This is primarily used for a watertight mesh or solid B-Rep so that the \"inside\" of the faces is not rendered since it's never visible to the user.   When a new graphics entity is created its default cull mode is CustomGraphicsCullBack which will optimize the rendering of \"solid\" meshes so the inside is not rendered."
+    },
+    {
+      "name": "depthPriority",
+      "description": "Gets and sets the depth priority associated with the graphics entity. The depth priority defines how one graphics entity will be drawn with respect to another entity. This is useful when there are entities that lie in the same space so it's ambiguous which should be drawn on the other. For example, if you draw a curve on a planar mesh and want the curve to be completely visible. You can set the depth priority of the curve to be greater than the mesh so it will be drawn after the mesh and will remain visible.   When a new graphics entity is created it's default depth priority is 0."
+    },
+    {
+      "name": "edges",
+      "description": "Returns the collection of CustomGraphicsBRepEdge objects in the CustomGraphicsBRepBody."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the collection of CustomGraphicsBRepFace objects in the CustomGraphicsBRepBody."
+    },
+    {
+      "name": "id",
+      "description": "An id you can specify for the entity. By default, all new graphics entities do not have an id and this property will return an empty string. But in cases where entities will be selected, assigning an id can make understanding what was selected much easier."
+    },
+    {
+      "name": "isSelectable",
+      "description": "Gets and sets if the graphics entity is selectable within the graphics window. By default, when a new entity is created it is selectable."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets and sets if the graphics entity is visible in the graphics window. By default, when a new entity is created it is visible."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name displayed when this entity is selected. If no name has been set, \"Custom Graphics\" will be displayed."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parent",
+      "description": "Returns the parent Component for a top-level group or the CustomGraphicsGroup object for graphics entities and child groups."
+    },
+    {
+      "name": "transform",
+      "description": "Gets and sets the transform associated with the graphics entity. When a new graphics entity is created its default transform is an identity matrix which results in the graphics entity being displayed in model space using the original coordinate data used to define the entity."
+    },
+    {
+      "name": "vertices",
+      "description": "Returns the collection of CustomGraphicsBRepVertex objects in the CustomGraphicsBRepBody."
+    },
+    {
+      "name": "viewPlacement",
+      "description": "Gets and sets the graphics view placement being applied to this graphics entity. A CustomGraphicsViewPlacement object can be created using the static create method of the class. When assigned to a graphics entity the position of the graphics is defined relative to the view in 2D view space (pixels) rather than in 3D model space (centimeters)."
+    },
+    {
+      "name": "viewScale",
+      "description": "Gets and sets the graphics view scale being applied to this graphics entity. A CustomGraphicsViewScale object can be created using the static create method of the class. When assigned to a graphics entity the size of the graphics entity is defined in view space (pixels) instead of model space (centimeters)."
+    }
+  ],
+  "version": "Introduced in version September 2017",
+  "property_details": {
+    "bRepBody": {
+      "id": "CustomGraphicsBRepBody_bRepBody",
+      "title": "CustomGraphicsBRepBody.bRepBody Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Returns a transient BRepBody that is being displayed as custom graphics.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.bRepBody",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsBRepBody_var->bRepBody();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "billBoarding": {
+      "id": "CustomGraphicsBRepBody_billBoarding",
+      "title": "CustomGraphicsBRepBody.billBoarding Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Gets and sets the billboarding behavior of this custom graphics entity. To define billboarding you can set this property using a CustomGraphicsBillBoard objects that you statically create using the create method of the CustomGraphicsBillBoard class. To remove billboarding from this entity you can set this property to null. Billboarding is used to specify that the orientation of custom graphics is defined relative to the screen instead of model space. This is commonly used for legends and symbols that you want to always face the user, even as the camera is rotated.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.billBoarding\n\n# Set the value of the property.\ncustomGraphicsBRepBody_var.billBoarding = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsBRepBody_var->billBoarding();\n\n// Set the value of the property, where value_var is a CustomGraphicsBillBoard.\nbool returnValue = customGraphicsBRepBody_var->billBoarding(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "boundingBox": {
+      "id": "CustomGraphicsBRepBody_boundingBox",
+      "title": "CustomGraphicsBRepBody.boundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Returns a box oriented parallel to the world x-y-x axes that contains the graphics entity. Depending on whether the graphics are drawn in model space or screen space this will return the bounding box in either centimeters (model) or pixels (screen). In the case where it returns the bounding box in pixel space, the Z coordinates of the box will be 0 and can be ignored.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.boundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsBRepBody_var->boundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "color": {
+      "id": "CustomGraphicsBRepBody_color",
+      "title": "CustomGraphicsBRepBody.color Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Gets and sets the current color definition for this entity. The color of custom graphics can be defined in many ways; solid color, simple material, and appearance.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.color\n\n# Set the value of the property.\ncustomGraphicsBRepBody_var.color = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsBRepBody_var->color();\n\n// Set the value of the property, where value_var is a CustomGraphicsColorEffect.\nbool returnValue = customGraphicsBRepBody_var->color(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "cullMode": {
+      "id": "CustomGraphicsBRepBody_cullMode",
+      "title": "CustomGraphicsBRepBody.cullMode Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Gets and sets the culling model to use when rendering the entity. Culling is used when the entity contains a mesh or B-Rep faces and defines which sides of the mesh or face are rendered. This is primarily used for a watertight mesh or solid B-Rep so that the \"inside\" of the faces is not rendered since it's never visible to the user. When a new graphics entity is created its default cull mode is CustomGraphicsCullBack which will optimize the rendering of \"solid\" meshes so the inside is not rendered.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.cullMode\n\n# Set the value of the property.\ncustomGraphicsBRepBody_var.cullMode = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nCustomGraphicsCullModes propertyValue = customGraphicsBRepBody_var->cullMode();\n\n// Set the value of the property, where value_var is a CustomGraphicsCullModes.\nbool returnValue = customGraphicsBRepBody_var->cullMode(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "depthPriority": {
+      "id": "CustomGraphicsBRepBody_depthPriority",
+      "title": "CustomGraphicsBRepBody.depthPriority Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Gets and sets the depth priority associated with the graphics entity. The depth priority defines how one graphics entity will be drawn with respect to another entity. This is useful when there are entities that lie in the same space so it's ambiguous which should be drawn on the other. For example, if you draw a curve on a planar mesh and want the curve to be completely visible. You can set the depth priority of the curve to be greater than the mesh so it will be drawn after the mesh and will remain visible. When a new graphics entity is created it's default depth priority is 0.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.depthPriority\n\n# Set the value of the property.\ncustomGraphicsBRepBody_var.depthPriority = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = customGraphicsBRepBody_var->depthPriority();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = customGraphicsBRepBody_var->depthPriority(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "edges": {
+      "id": "CustomGraphicsBRepBody_edges",
+      "title": "CustomGraphicsBRepBody.edges Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Returns the collection of CustomGraphicsBRepEdge objects in the CustomGraphicsBRepBody.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.edges",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsBRepBody_var->edges();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2017"
+    },
+    "faces": {
+      "id": "CustomGraphicsBRepBody_faces",
+      "title": "CustomGraphicsBRepBody.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Returns the collection of CustomGraphicsBRepFace objects in the CustomGraphicsBRepBody.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsBRepBody_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2017"
+    },
+    "id": {
+      "id": "CustomGraphicsBRepBody_id",
+      "title": "CustomGraphicsBRepBody.id Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "An id you can specify for the entity. By default, all new graphics entities do not have an id and this property will return an empty string. But in cases where entities will be selected, assigning an id can make understanding what was selected much easier.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.id\n\n# Set the value of the property.\ncustomGraphicsBRepBody_var.id = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customGraphicsBRepBody_var->id();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = customGraphicsBRepBody_var->id(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "isSelectable": {
+      "id": "CustomGraphicsBRepBody_isSelectable",
+      "title": "CustomGraphicsBRepBody.isSelectable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Gets and sets if the graphics entity is selectable within the graphics window. By default, when a new entity is created it is selectable.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.isSelectable\n\n# Set the value of the property.\ncustomGraphicsBRepBody_var.isSelectable = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customGraphicsBRepBody_var->isSelectable();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = customGraphicsBRepBody_var->isSelectable(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "isValid": {
+      "id": "CustomGraphicsBRepBody_isValid",
+      "title": "CustomGraphicsBRepBody.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customGraphicsBRepBody_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "isVisible": {
+      "id": "CustomGraphicsBRepBody_isVisible",
+      "title": "CustomGraphicsBRepBody.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Gets and sets if the graphics entity is visible in the graphics window. By default, when a new entity is created it is visible.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.isVisible\n\n# Set the value of the property.\ncustomGraphicsBRepBody_var.isVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customGraphicsBRepBody_var->isVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = customGraphicsBRepBody_var->isVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "name": {
+      "id": "CustomGraphicsBRepBody_name",
+      "title": "CustomGraphicsBRepBody.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Gets and sets the name displayed when this entity is selected. If no name has been set, \"Custom Graphics\" will be displayed.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.name\n\n# Set the value of the property.\ncustomGraphicsBRepBody_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customGraphicsBRepBody_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = customGraphicsBRepBody_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "objectType": {
+      "id": "CustomGraphicsBRepBody_objectType",
+      "title": "CustomGraphicsBRepBody.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customGraphicsBRepBody_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "parent": {
+      "id": "CustomGraphicsBRepBody_parent",
+      "title": "CustomGraphicsBRepBody.parent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Returns the parent Component for a top-level group or the CustomGraphicsGroup object for graphics entities and child groups.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.parent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsBRepBody_var->parent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "transform": {
+      "id": "CustomGraphicsBRepBody_transform",
+      "title": "CustomGraphicsBRepBody.transform Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Gets and sets the transform associated with the graphics entity. When a new graphics entity is created its default transform is an identity matrix which results in the graphics entity being displayed in model space using the original coordinate data used to define the entity.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.transform\n\n# Set the value of the property.\ncustomGraphicsBRepBody_var.transform = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsBRepBody_var->transform();\n\n// Set the value of the property, where value_var is a Matrix3D.\nbool returnValue = customGraphicsBRepBody_var->transform(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "vertices": {
+      "id": "CustomGraphicsBRepBody_vertices",
+      "title": "CustomGraphicsBRepBody.vertices Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Returns the collection of CustomGraphicsBRepVertex objects in the CustomGraphicsBRepBody.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.vertices",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsBRepBody_var->vertices();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2017"
+    },
+    "viewPlacement": {
+      "id": "CustomGraphicsBRepBody_viewPlacement",
+      "title": "CustomGraphicsBRepBody.viewPlacement Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Gets and sets the graphics view placement being applied to this graphics entity. A CustomGraphicsViewPlacement object can be created using the static create method of the class. When assigned to a graphics entity the position of the graphics is defined relative to the view in 2D view space (pixels) rather than in 3D model space (centimeters).",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.viewPlacement\n\n# Set the value of the property.\ncustomGraphicsBRepBody_var.viewPlacement = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsBRepBody_var->viewPlacement();\n\n// Set the value of the property, where value_var is a CustomGraphicsViewPlacement.\nbool returnValue = customGraphicsBRepBody_var->viewPlacement(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "viewScale": {
+      "id": "CustomGraphicsBRepBody_viewScale",
+      "title": "CustomGraphicsBRepBody.viewScale Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Gets and sets the graphics view scale being applied to this graphics entity. A CustomGraphicsViewScale object can be created using the static create method of the class. When assigned to a graphics entity the size of the graphics entity is defined in view space (pixels) instead of model space (centimeters).",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsBRepBody_var.viewScale\n\n# Set the value of the property.\ncustomGraphicsBRepBody_var.viewScale = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsBRepBody_var->viewScale();\n\n// Set the value of the property, where value_var is a CustomGraphicsViewScale.\nbool returnValue = customGraphicsBRepBody_var->viewScale(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "CustomGraphicsBRepBody_classType",
+      "title": "CustomGraphicsBRepBody.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.CustomGraphicsBRepBody.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::CustomGraphicsBRepBody::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2017"
+    },
+    "deleteMe": {
+      "id": "CustomGraphicsBRepBody_deleteMe",
+      "title": "CustomGraphicsBRepBody.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Deletes the entity from the custom graphics group.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "returnValue = customGraphicsBRepBody_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = customGraphicsBRepBody_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the deletion was successful.",
+      "version": "Introduced in version September 2017"
+    },
+    "getOpacity": {
+      "id": "CustomGraphicsBRepBody_getOpacity",
+      "title": "CustomGraphicsBRepBody.getOpacity Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Gets the opacity of the graphics entity.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "(returnValue, opacity, isOverride) = customGraphicsBRepBody_var.getOpacity()",
+        "cpp": "#include getOpacity(opacity, isOverride);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if getting the opacity information was successful.",
+      "parameters": [
+        {
+          "name": "opacity",
+          "type": "double",
+          "description": "The opacity value where 1.0 is completely opaque and 0.0 is completely transparent."
+        },
+        {
+          "name": "isOverride",
+          "type": "boolean",
+          "description": "Indicates if this entities opacity will override the opacity defined by the material. If true, it will override the material opacity and if false the opacity values will accumulate."
+        }
+      ],
+      "version": "Introduced in version September 2017"
+    },
+    "setOpacity": {
+      "id": "CustomGraphicsBRepBody_setOpacity",
+      "title": "CustomGraphicsBRepBody.setOpacity Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsBRepBody.h",
+      "description": "Sets the opacity of the graphics entity. By default, when a new entity is it is completely opaque and does not override the opacity defined by the material.",
+      "parent_class": "CustomGraphicsBRepBody",
+      "syntax": {
+        "python": "returnValue = customGraphicsBRepBody_var.setOpacity(opacity, isOverride)",
+        "cpp": "#include \n\nreturnValue = customGraphicsBRepBody_var->setOpacity(opacity, isOverride);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting the opacity information was successful.",
+      "parameters": [
+        {
+          "name": "opacity",
+          "type": "double",
+          "description": "The opacity value where 1.0 is completely opaque and 0.0 is completely transparent."
+        },
+        {
+          "name": "isOverride",
+          "type": "boolean",
+          "description": "Indicates if this entities opacity will override the opacity defined by the material. If true, it will override the material opacity and if false the opacity values will accumulate."
+        }
+      ],
+      "version": "Introduced in version September 2017"
+    }
+  }
+}

@@ -1,0 +1,543 @@
+{
+  "id": "Script",
+  "title": "Script Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/Script.h",
+  "description": "Object that represents a script or add-in.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "edit",
+      "description": "Invokes the default edit behavior for this script or add-in."
+    },
+    {
+      "name": "run",
+      "description": "Runs this script or add-in, if it's not already running."
+    },
+    {
+      "name": "stop",
+      "description": "If this script or add-in is running, this method will stop it. The isRunning property can be used to determine if it is running. If the script or add-in is not running and this method is called, there is no effect."
+    },
+    {
+      "name": "unlink",
+      "description": "Unlinks this script or add-in. This removes it from Fusion's list of linked scripts and add-ins, so it is no longer displayed in the dialog, and if it's an add-in, it will no longer run on startup.   This is only valid for a script or add-in that is linked; the sourceLocation property returns LinkedScriptSourceLocation."
+    }
+  ],
+  "properties": [
+    {
+      "name": "appStoreURL",
+      "description": "For an add-in installed from the Autodesk App Store, this property returns the URL on the store for the page of this app. This property returns an empty string for all scripts and add-ins not installed from the App Store and if there is a problem determining the URL for an App Store app."
+    },
+    {
+      "name": "author",
+      "description": "Returns the author information associated with this script or add-in."
+    },
+    {
+      "name": "description",
+      "description": "Gets the description of this script or add-in."
+    },
+    {
+      "name": "folder",
+      "description": "Gets the full path of the folder that contains this script or add-in."
+    },
+    {
+      "name": "helpFilename",
+      "description": "Returns the filename of a local html file that serves as the help file for this script or add-in. This filename is defined in the manifest of the script or add-in using the \"helpFilename\" setting."
+    },
+    {
+      "name": "iconFilename",
+      "description": "Returns the filename of the image file that can be used as the icon for this script or add-in. This filename is defined in the manifest of the script or add-in using the \"iconFilename\" setting."
+    },
+    {
+      "name": "id",
+      "description": "Gets the ID of this script or add-in. This is typically a GUID and is assumed to be unique with respect to all other add-ins."
+    },
+    {
+      "name": "isAddIn",
+      "description": "Gets if this Script object represents a script or an add-in. Returns true if it is an add-in."
+    },
+    {
+      "name": "isEditable",
+      "description": "Indicates if this script or add-in is blocked from being edited by the user in the \"Scripts and Add-Ins\" dialog."
+    },
+    {
+      "name": "isFavorite",
+      "description": "Gets and sets whether this script or add-in is a favorite of the user."
+    },
+    {
+      "name": "isInternal",
+      "description": "Indicates if this is an internal script or add-in that is delivered with Fusion. Returns true if it is an internal script or add-in."
+    },
+    {
+      "name": "isRunning",
+      "description": "Gets if this script or add-in is currently running."
+    },
+    {
+      "name": "isRunOnStartup",
+      "description": "Gets and sets whether this add-in will automatically run when Fusion is started. This property is only valid when the isAddIn property returns true."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets and sets whether the script or add-in is visible within the \u201cScripts and Add-Ins\u201d dialog. By default, all scripts and add-ins are visible. Setting this to false will cause it to be hidden and unloaded if it is already running. Also, if it\u2019s an add-in set to load on startup, it will no longer be loaded."
+    },
+    {
+      "name": "location",
+      "description": "Gets which standard location this script is located."
+    },
+    {
+      "name": "manifestContent",
+      "description": "Gets the full contents of the manifest file associated with this script or add-in. This is particularly useful if you have any custom information defined in the manifest. The manifest file uses JSON to format its content."
+    },
+    {
+      "name": "name",
+      "description": "Gets the name of this script or add-in."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "programmingLanguage",
+      "description": "Returns the programming language this script or add-in is written in."
+    },
+    {
+      "name": "targetOperatingSystem",
+      "description": "Returns the operating systems this script or add-in is available for."
+    },
+    {
+      "name": "version",
+      "description": "Returns the version information associated with this script or add-in."
+    }
+  ],
+  "version": "Introduced in version October 2023",
+  "property_details": {
+    "appStoreURL": {
+      "id": "Script_appStoreURL",
+      "title": "Script.appStoreURL Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "For an add-in installed from the Autodesk App Store, this property returns the URL on the store for the page of this app. This property returns an empty string for all scripts and add-ins not installed from the App Store and if there is a problem determining the URL for an App Store app.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.appStoreURL",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = script_var->appStoreURL();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "author": {
+      "id": "Script_author",
+      "title": "Script.author Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Returns the author information associated with this script or add-in.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.author",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = script_var->author();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "description": {
+      "id": "Script_description",
+      "title": "Script.description Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Gets the description of this script or add-in.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.description",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = script_var->description();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "folder": {
+      "id": "Script_folder",
+      "title": "Script.folder Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Gets the full path of the folder that contains this script or add-in.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.folder",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = script_var->folder();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "helpFilename": {
+      "id": "Script_helpFilename",
+      "title": "Script.helpFilename Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Returns the filename of a local html file that serves as the help file for this script or add-in. This filename is defined in the manifest of the script or add-in using the \"helpFilename\" setting.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.helpFilename",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = script_var->helpFilename();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "iconFilename": {
+      "id": "Script_iconFilename",
+      "title": "Script.iconFilename Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Returns the filename of the image file that can be used as the icon for this script or add-in. This filename is defined in the manifest of the script or add-in using the \"iconFilename\" setting.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.iconFilename",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = script_var->iconFilename();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "id": {
+      "id": "Script_id",
+      "title": "Script.id Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Gets the ID of this script or add-in. This is typically a GUID and is assumed to be unique with respect to all other add-ins.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = script_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "isAddIn": {
+      "id": "Script_isAddIn",
+      "title": "Script.isAddIn Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Gets if this Script object represents a script or an add-in. Returns true if it is an add-in.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.isAddIn",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = script_var->isAddIn();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "isEditable": {
+      "id": "Script_isEditable",
+      "title": "Script.isEditable Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Indicates if this script or add-in is blocked from being edited by the user in the \"Scripts and Add-Ins\" dialog.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.isEditable",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = script_var->isEditable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "isFavorite": {
+      "id": "Script_isFavorite",
+      "title": "Script.isFavorite Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Gets and sets whether this script or add-in is a favorite of the user.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.isFavorite\n\n# Set the value of the property.\nscript_var.isFavorite = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = script_var->isFavorite();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = script_var->isFavorite(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "isInternal": {
+      "id": "Script_isInternal",
+      "title": "Script.isInternal Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Indicates if this is an internal script or add-in that is delivered with Fusion. Returns true if it is an internal script or add-in.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.isInternal",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = script_var->isInternal();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "isRunOnStartup": {
+      "id": "Script_isRunOnStartup",
+      "title": "Script.isRunOnStartup Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Gets and sets whether this add-in will automatically run when Fusion is started. This property is only valid when the isAddIn property returns true.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.isRunOnStartup\n\n# Set the value of the property.\nscript_var.isRunOnStartup = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = script_var->isRunOnStartup();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = script_var->isRunOnStartup(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "isRunning": {
+      "id": "Script_isRunning",
+      "title": "Script.isRunning Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Gets if this script or add-in is currently running.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.isRunning",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = script_var->isRunning();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "isValid": {
+      "id": "Script_isValid",
+      "title": "Script.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = script_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "isVisible": {
+      "id": "Script_isVisible",
+      "title": "Script.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Gets and sets whether the script or add-in is visible within the \u201cScripts and Add-Ins\u201d dialog. By default, all scripts and add-ins are visible. Setting this to false will cause it to be hidden and unloaded if it is already running. Also, if it\u2019s an add-in set to load on startup, it will no longer be loaded.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.isVisible\n\n# Set the value of the property.\nscript_var.isVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = script_var->isVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = script_var->isVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "location": {
+      "id": "Script_location",
+      "title": "Script.location Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Gets which standard location this script is located.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.location",
+        "cpp": "#include \n\n// Get the value of the property.\nScriptSourceLocations propertyValue = script_var->location();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "manifestContent": {
+      "id": "Script_manifestContent",
+      "title": "Script.manifestContent Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Gets the full contents of the manifest file associated with this script or add-in. This is particularly useful if you have any custom information defined in the manifest. The manifest file uses JSON to format its content.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.manifestContent",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = script_var->manifestContent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "name": {
+      "id": "Script_name",
+      "title": "Script.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Gets the name of this script or add-in.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.name",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = script_var->name();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "objectType": {
+      "id": "Script_objectType",
+      "title": "Script.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = script_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "programmingLanguage": {
+      "id": "Script_programmingLanguage",
+      "title": "Script.programmingLanguage Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Returns the programming language this script or add-in is written in.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.programmingLanguage",
+        "cpp": "#include \n\n// Get the value of the property.\nProgrammingLanguages propertyValue = script_var->programmingLanguage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "targetOperatingSystem": {
+      "id": "Script_targetOperatingSystem",
+      "title": "Script.targetOperatingSystem Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Returns the operating systems this script or add-in is available for.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.targetOperatingSystem",
+        "cpp": "#include \n\n// Get the value of the property.\nOperatingSystems propertyValue = script_var->targetOperatingSystem();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    },
+    "version": {
+      "id": "Script_version",
+      "title": "Script.version Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Returns the version information associated with this script or add-in.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = script_var.version",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = script_var->version();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2023"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "Script_classType",
+      "title": "Script.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "returnValue = adsk.core.Script.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Script::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version October 2023"
+    },
+    "edit": {
+      "id": "Script_edit",
+      "title": "Script.edit Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Invokes the default edit behavior for this script or add-in.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "returnValue = script_var.edit()",
+        "cpp": "#include \n\nreturnValue = script_var->edit();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "version": "Introduced in version October 2023"
+    },
+    "run": {
+      "id": "Script_run",
+      "title": "Script.run Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Runs this script or add-in, if it's not already running.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = script_var.run()\n\n# Uses optional arguments.\nreturnValue = script_var.run(waitForFinish)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = script_var->run();\n\n// Uses optional arguments.\nreturnValue = script_var->run(waitForFinish);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "waitForFinish",
+          "type": "boolean",
+          "description": "Specifies if call will wait until the script or add-in has finished running. For add-ins, this should always be false, because they typically continue to run for the entire Fusion session.   For scripts, there are cases where you might want to set this to true, where you need to wait for the script to finish because you want to do something with whatever it creates. Typically, this should be false, so it starts the script and immediately returns.   This is an optional argument whose default value is False."
+        }
+      ],
+      "version": "Introduced in version October 2023"
+    },
+    "stop": {
+      "id": "Script_stop",
+      "title": "Script.stop Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "If this script or add-in is running, this method will stop it. The isRunning property can be used to determine if it is running. If the script or add-in is not running and this method is called, there is no effect.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "returnValue = script_var.stop()",
+        "cpp": "#include \n\nreturnValue = script_var->stop();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "version": "Introduced in version October 2023"
+    },
+    "unlink": {
+      "id": "Script_unlink",
+      "title": "Script.unlink Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Script.h",
+      "description": "Unlinks this script or add-in. This removes it from Fusion's list of linked scripts and add-ins, so it is no longer displayed in the dialog, and if it's an add-in, it will no longer run on startup. This is only valid for a script or add-in that is linked; the sourceLocation property returns LinkedScriptSourceLocation.",
+      "parent_class": "Script",
+      "syntax": {
+        "python": "returnValue = script_var.unlink()",
+        "cpp": "#include \n\nreturnValue = script_var->unlink();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the unlink was successful.",
+      "version": "Introduced in version January 2025"
+    }
+  }
+}

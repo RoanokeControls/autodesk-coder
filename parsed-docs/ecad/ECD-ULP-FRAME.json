@@ -1,0 +1,43 @@
+{
+  "id": "ECD-ULP-FRAME",
+  "title": "UL_FRAME",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "columns",
+      "type": "int (-127...127)"
+    },
+    {
+      "name": "rows",
+      "type": "int (-26...26)"
+    },
+    {
+      "name": "border",
+      "type": "int (FRAME_BORDER_...)"
+    },
+    {
+      "name": "layer",
+      "type": "int"
+    },
+    {
+      "name": "x1, y1",
+      "type": "int (lower left corner)"
+    },
+    {
+      "name": "x2, y2",
+      "type": "int (upper right corner)"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "texts()",
+      "type": "UL_TEXT"
+    },
+    {
+      "name": "wires()",
+      "type": "UL_WIRE"
+    }
+  ],
+  "content": "# UL_FRAME\n\n## Data members\n\n| | |\n| --- | --- |\n| columns | int (-127...127) |\n| rows | int (-26...26) |\n| border | int (FRAME_BORDER_...) |\n| layer | int |\n| x1, y1 | int (lower left corner) |\n| x2, y2 | int (upper right corner) |\n\n## Loop members\n\n| | |\n| --- | --- |\n| texts() | UL_TEXT |\n| wires() | UL_WIRE |\n\nSee also UL_BOARD, UL_FOOTPRINT, UL_SHEET, UL_SYMBOL\n\n## Constants\n\n| | |\n| --- | --- |\n| FRAME_BORDER_BOTTOM | bottom border is drawn |\n| FRAME_BORDER_RIGHT | right border is drawn |\n| FRAME_BORDER_TOP | top border is drawn |\n| FRAME_BORDER_LEFT | left border is drawn |\n\n## Notes\n\n*border* contains a bitwise or'ed value consisting of `FRAME_BORDER_...` and defines which of the four borders are actually drawn.\n\nThe *texts()* and *wires()* loop members loop through all the texts and wires the frame consists of.\n\n## Example\n\n```\nboard(B) {\n B.frames(F) {\n printf(\"Frame: (%f %f), (%f %f)\\n\",\n u2mm(F.x1), u2mm(F.y1), u2mm(F.x2), u2mm(F.y2));\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

@@ -1,0 +1,476 @@
+{
+  "id": "CustomFeatureParameter",
+  "title": "CustomFeatureParameter Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/CustomFeatureParameter.h",
+  "description": "A custom parameter is a parameter that was created as the result of a custom feature being created. It is associated with the custom feature and it's lifetime is the same as the custom feature that owns it.",
+  "parent_class": "ModelParameter",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this ModelParameter. As a general rule, model parameters cannot be deleted because features depend on them. However, there are uncommon workflows where a parameter no longer has any dependents and is not automatically deleted. You can use the isDeletable property to see if the parameter is in this state and can successfully be deleted."
+    }
+  ],
+  "properties": [
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "comment",
+      "description": "The comment associated with this parameter"
+    },
+    {
+      "name": "component",
+      "description": "Returns the Component containing the ModelParameter."
+    },
+    {
+      "name": "createdBy",
+      "description": "Returns the object that created this parameter. For example, a feature, a sketch dimension, or a construction plane."
+    },
+    {
+      "name": "dependencyParameters",
+      "description": "Returns a list of parameters that this parameter is dependent on."
+    },
+    {
+      "name": "dependentParameters",
+      "description": "Returns a list of parameters that are dependent on this parameter as a result of this parameter being referenced in their equation."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Parameter object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same parameter.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "expression",
+      "description": "Gets and sets the expression used to calculate the value of the parameter. This is the equivalent of the \"Expression\" column in the Parameters dialog. Numeric parameters can be defined by a simple expression like \"6.25\", which will be interpreted based on whatever the default units are for the document. For example, if the units are set to millimeters, the value will be 6.25 mm; if the units are inches, it will be 6.25 inches. The expression can also contain the units so \"6.25 in\" will always be evaluated as inches regardless of the document units.   An expression can also contain references to other parameters and use equations. For example, the expression \"Length / 2\" is valid for a numeric parameter as long as there is a numeric parameter named \"Length\". Expressions can also be used for text parameters, such as concatenating two other text parameters. For example, if there are two existing text parameters named text1 and text2, the expression for another text parameter can be \"text1 + text2\". More complex equations can also be used with text parameters like \"if (Length < 20 mm; 'Short'; 'Long')\" where \"Length\" is a numeric parameter. The resulting string can be obtained using the textValue property."
+    },
+    {
+      "name": "id",
+      "description": "Returns the ID of this custom feature parameter."
+    },
+    {
+      "name": "isDeletable",
+      "description": "Gets if this parameter can be deleted. Parameters that have dependents cannot be deleted, and model parameters typically cannot be deleted. However, there is the possibility in uncommon workflows where a model parameter no longer has any dependents, and it was not automatically deleted. In this case, this property will return true, and the deleteMe method can delete the parameter."
+    },
+    {
+      "name": "isFavorite",
+      "description": "Gets and sets whether this parameter is included in the Favorites list in the parameters dialog"
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets and sets if this parameter is visible in the parameters dialog. By default, all new parameters are visible.   This can be useful in cases where the feature can be edited to be in different states where a parameter is only valid in a certain state. You can change the visibility based on the current state of the feature and if that parameter should be available for edit. This implies that you create all the parameters that might be needed and then change their visibility based on the current state of the feature. The parameters that are not visible will not be returned by the ModelParameters collection and are only available through the custom feature they're associated with."
+    },
+    {
+      "name": "modelParameters",
+      "description": "Returns the Collection containing the ModelParameter."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name of the parameter. Setting the name can fail if the name is not unique with respect to all other parameters in the design."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentCustomFeature",
+      "description": "Returns the custom feature this parameter is associated with."
+    },
+    {
+      "name": "role",
+      "description": "This property identifies what the parameter is used for. For an extrude, it could be \"Depth\", for a work plane it could be \"Offset\"."
+    },
+    {
+      "name": "textValue",
+      "description": "Gets and sets the value of the parameter when it is a text parameter. This can be determined by checking the valueType property. Setting this value will cause the current expression to be overwritten. If the parameter is not a text parameter, the value of this property should be ignored and setting will fail."
+    },
+    {
+      "name": "unit",
+      "description": "The unit type associated with this parameter. An empty string is returned for parameters that don't have a unit type."
+    },
+    {
+      "name": "value",
+      "description": "Gets and sets the real value (a double) of the parameter in database units. Setting this property will set/reset the expression value for this parameter.   This property is only valid for numeric parameters and will fail for text parameters. You can determine the value type of the parameter by using the valueType property. Use the textValue property to get and set the value of text parameters."
+    },
+    {
+      "name": "valueType",
+      "description": "Returns the type of value this parameter is. For a numeric parameter, you can get the value using the value property. For a text parameter, you can get the value using the textValue property."
+    }
+  ],
+  "version": "Introduced in version January 2021",
+  "property_details": {
+    "attributes": {
+      "id": "CustomFeatureParameter_attributes",
+      "title": "CustomFeatureParameter.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeatureParameter_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "comment": {
+      "id": "CustomFeatureParameter_comment",
+      "title": "CustomFeatureParameter.comment Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "The comment associated with this parameter",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.comment\n\n# Set the value of the property.\ncustomFeatureParameter_var.comment = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeatureParameter_var->comment();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = customFeatureParameter_var->comment(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "component": {
+      "id": "CustomFeatureParameter_component",
+      "title": "CustomFeatureParameter.component Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Returns the Component containing the ModelParameter.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.component",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeatureParameter_var->component();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "createdBy": {
+      "id": "CustomFeatureParameter_createdBy",
+      "title": "CustomFeatureParameter.createdBy Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Returns the object that created this parameter. For example, a feature, a sketch dimension, or a construction plane.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.createdBy",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeatureParameter_var->createdBy();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "dependencyParameters": {
+      "id": "CustomFeatureParameter_dependencyParameters",
+      "title": "CustomFeatureParameter.dependencyParameters Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Returns a list of parameters that this parameter is dependent on.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.dependencyParameters",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeatureParameter_var->dependencyParameters();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "dependentParameters": {
+      "id": "CustomFeatureParameter_dependentParameters",
+      "title": "CustomFeatureParameter.dependentParameters Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Returns a list of parameters that are dependent on this parameter as a result of this parameter being referenced in their equation.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.dependentParameters",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeatureParameter_var->dependentParameters();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "entityToken": {
+      "id": "CustomFeatureParameter_entityToken",
+      "title": "CustomFeatureParameter.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Returns a token for the Parameter object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same parameter. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeatureParameter_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "expression": {
+      "id": "CustomFeatureParameter_expression",
+      "title": "CustomFeatureParameter.expression Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Gets and sets the expression used to calculate the value of the parameter. This is the equivalent of the \"Expression\" column in the Parameters dialog. Numeric parameters can be defined by a simple expression like \"6.25\", which will be interpreted based on whatever the default units are for the document. For example, if the units are set to millimeters, the value will be 6.25 mm; if the units are inches, it will be 6.25 inches. The expression can also contain the units so \"6.25 in\" will always be evaluated as inches regardless of the document units. An expression can also contain references to other parameters and use equations. For example, the expression \"Length / 2\" is valid for a numeric parameter as long as there is a numeric parameter named \"Length\". Expressions can also be used for text parameters, such as concatenating two other text parameters. For example, if there are two existing text parameters named text1 and text2, the expression for another text parameter can be \"text1 + text2\". More complex equations can also be used with text parameters like \"if (Length < 20 mm; 'Short'; 'Long')\" where \"Length\" is a numeric parameter. The resulting string can be obtained using the textValue property.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.expression\n\n# Set the value of the property.\ncustomFeatureParameter_var.expression = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeatureParameter_var->expression();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = customFeatureParameter_var->expression(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "id": {
+      "id": "CustomFeatureParameter_id",
+      "title": "CustomFeatureParameter.id Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Returns the ID of this custom feature parameter.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeatureParameter_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "isDeletable": {
+      "id": "CustomFeatureParameter_isDeletable",
+      "title": "CustomFeatureParameter.isDeletable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Gets if this parameter can be deleted. Parameters that have dependents cannot be deleted, and model parameters typically cannot be deleted. However, there is the possibility in uncommon workflows where a model parameter no longer has any dependents, and it was not automatically deleted. In this case, this property will return true, and the deleteMe method can delete the parameter.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.isDeletable",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customFeatureParameter_var->isDeletable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "isFavorite": {
+      "id": "CustomFeatureParameter_isFavorite",
+      "title": "CustomFeatureParameter.isFavorite Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Gets and sets whether this parameter is included in the Favorites list in the parameters dialog",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.isFavorite\n\n# Set the value of the property.\ncustomFeatureParameter_var.isFavorite = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customFeatureParameter_var->isFavorite();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = customFeatureParameter_var->isFavorite(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "isValid": {
+      "id": "CustomFeatureParameter_isValid",
+      "title": "CustomFeatureParameter.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customFeatureParameter_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "isVisible": {
+      "id": "CustomFeatureParameter_isVisible",
+      "title": "CustomFeatureParameter.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Gets and sets if this parameter is visible in the parameters dialog. By default, all new parameters are visible. This can be useful in cases where the feature can be edited to be in different states where a parameter is only valid in a certain state. You can change the visibility based on the current state of the feature and if that parameter should be available for edit. This implies that you create all the parameters that might be needed and then change their visibility based on the current state of the feature. The parameters that are not visible will not be returned by the ModelParameters collection and are only available through the custom feature they're associated with.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.isVisible\n\n# Set the value of the property.\ncustomFeatureParameter_var.isVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customFeatureParameter_var->isVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = customFeatureParameter_var->isVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "modelParameters": {
+      "id": "CustomFeatureParameter_modelParameters",
+      "title": "CustomFeatureParameter.modelParameters Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Returns the Collection containing the ModelParameter.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.modelParameters",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeatureParameter_var->modelParameters();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "name": {
+      "id": "CustomFeatureParameter_name",
+      "title": "CustomFeatureParameter.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Gets and sets the name of the parameter. Setting the name can fail if the name is not unique with respect to all other parameters in the design.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.name\n\n# Set the value of the property.\ncustomFeatureParameter_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeatureParameter_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = customFeatureParameter_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "objectType": {
+      "id": "CustomFeatureParameter_objectType",
+      "title": "CustomFeatureParameter.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeatureParameter_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "parentCustomFeature": {
+      "id": "CustomFeatureParameter_parentCustomFeature",
+      "title": "CustomFeatureParameter.parentCustomFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Returns the custom feature this parameter is associated with.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.parentCustomFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customFeatureParameter_var->parentCustomFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "role": {
+      "id": "CustomFeatureParameter_role",
+      "title": "CustomFeatureParameter.role Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "This property identifies what the parameter is used for. For an extrude, it could be \"Depth\", for a work plane it could be \"Offset\".",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.role",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeatureParameter_var->role();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "textValue": {
+      "id": "CustomFeatureParameter_textValue",
+      "title": "CustomFeatureParameter.textValue Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Gets and sets the value of the parameter when it is a text parameter. This can be determined by checking the valueType property. Setting this value will cause the current expression to be overwritten. If the parameter is not a text parameter, the value of this property should be ignored and setting will fail.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.textValue\n\n# Set the value of the property.\ncustomFeatureParameter_var.textValue = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeatureParameter_var->textValue();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = customFeatureParameter_var->textValue(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "unit": {
+      "id": "CustomFeatureParameter_unit",
+      "title": "CustomFeatureParameter.unit Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "The unit type associated with this parameter. An empty string is returned for parameters that don't have a unit type.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.unit",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customFeatureParameter_var->unit();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "value": {
+      "id": "CustomFeatureParameter_value",
+      "title": "CustomFeatureParameter.value Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Gets and sets the real value (a double) of the parameter in database units. Setting this property will set/reset the expression value for this parameter. This property is only valid for numeric parameters and will fail for text parameters. You can determine the value type of the parameter by using the valueType property. Use the textValue property to get and set the value of text parameters.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.value\n\n# Set the value of the property.\ncustomFeatureParameter_var.value = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = customFeatureParameter_var->value();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = customFeatureParameter_var->value(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "valueType": {
+      "id": "CustomFeatureParameter_valueType",
+      "title": "CustomFeatureParameter.valueType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Returns the type of value this parameter is. For a numeric parameter, you can get the value using the value property. For a text parameter, you can get the value using the textValue property.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customFeatureParameter_var.valueType",
+        "cpp": "#include \n\n// Get the value of the property.\nParameterValueTypes propertyValue = customFeatureParameter_var->valueType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "CustomFeatureParameter_classType",
+      "title": "CustomFeatureParameter.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.CustomFeatureParameter.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::CustomFeatureParameter::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2021"
+    },
+    "deleteMe": {
+      "id": "CustomFeatureParameter_deleteMe",
+      "title": "CustomFeatureParameter.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/CustomFeatureParameter.h",
+      "description": "Deletes this ModelParameter. As a general rule, model parameters cannot be deleted because features depend on them. However, there are uncommon workflows where a parameter no longer has any dependents and is not automatically deleted. You can use the isDeletable property to see if the parameter is in this state and can successfully be deleted.",
+      "parent_class": "CustomFeatureParameter",
+      "syntax": {
+        "python": "returnValue = customFeatureParameter_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = customFeatureParameter_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version May 2025"
+    }
+  }
+}

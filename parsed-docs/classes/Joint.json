@@ -1,0 +1,947 @@
+{
+  "id": "Joint",
+  "title": "Joint Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Components/Joint.h",
+  "description": "A joint in a design.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this joint."
+    },
+    {
+      "name": "setAsBallJointMotion",
+      "description": "Redefines the relationship between the two joint geometries as a ball joint.   This method will fail in the case where the jointType property returns InferredJointType.   To use this method, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setAsCylindricalJointMotion",
+      "description": "Redefines the relationship between the two joint geometries as a cylindrical joint.   This method will fail in the case where the jointType property returns InferredJointType.   To use this method, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setAsPinSlotJointMotion",
+      "description": "Redefines the relationship between the two joint geometries as a pin-slot joint.   This method will fail in the case where the jointType property returns InferredJointType.   To use this method, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setAsPlanarJointMotion",
+      "description": "Redefines the relationship between the two joint geometries as a planar joint.   This method will fail in the case where the jointType property returns InferredJointType.   To use this method, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setAsRevoluteJointMotion",
+      "description": "Redefines the relationship between the two joint geometries as a revolute joint.   This method will fail in the case where the jointType property returns InferredJointType.   To use this method, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setAsRigidJointMotion",
+      "description": "Redefines the relationship between the two joint geometries as a rigid joint.   This method will fail in the case where the jointType property returns InferredJointType.   To use this method, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "setAsSliderJointMotion",
+      "description": "Redefines the relationship between the two joint geometries as a slider joint.   This method will fail in the case where the jointType property returns InferredJointType.   To use this method, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)"
+    }
+  ],
+  "properties": [
+    {
+      "name": "angle",
+      "description": "Returns the parameter controlling the angle between the two input geometries. This is effectively the angle between the two primary axes of the two joint geometries.   This property will return null in the case where the jointType property returns InferredJointType."
+    },
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this joint."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Joint object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same joint.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "geometricRelationships",
+      "description": "Returns the set of geometric relationships that were used to infer this joint. This property is only valid when the jointType property returns InferredJointType. Otherwise, it returns null."
+    },
+    {
+      "name": "geometryOneTransform",
+      "description": "Returns the position and orientation of the joint geometry associated with the first occurrence. This is returned as a 3D matrix which provides the origin and the X, Y, and Z axis vectors of the coordinate system.   This property is especially useful in cases where the JointGeometry cannot be obtained. This can happen when the model has been modified in a way where the geometry used to create the joint is no longer available.   This property will return null in the case where the jointType property returns InferredJointType."
+    },
+    {
+      "name": "geometryOrOriginOne",
+      "description": "Gets and sets the first JointGeometry or JointOrigin for this joint.   If the JointType is InferredJointType, this property will return null when queried and will fail if it set.   To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "geometryOrOriginTwo",
+      "description": "Gets and sets the second JointGeometry or JointOrigin for this joint.   If the JointType is InferredJointType, this property will return null when queried and will fail if it set.   To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "geometryTwoTransform",
+      "description": "Returns the position and orientation of the joint geometry associated with the second occurrence. This is returned as a 3D matrix which provides the origin and the X, Y, and Z axis vectors of the coordinate system.   This property is especially useful in cases where the JointGeometry cannot be obtained. This can happen when the model has been modified in a way where the geometry used to create the joint is no longer available.   This property will return null in the case where the jointType property returns InferredJointType."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the joint."
+    },
+    {
+      "name": "isFlipped",
+      "description": "Gets and sets if the joint direction is flipped or not. This is effectively specifying if the third axis of the two input geometries is facing (false) or opposed (true).   To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)   The value of this property should be ignored in the case where the jointType property returns InferredJointType."
+    },
+    {
+      "name": "isLightBulbOn",
+      "description": "Gets and sets if the light bulb of this joint as displayed in the browser is on or off. A joint will only be visible if the light bulb is switched on. However, the light bulb can be on and the joint still invisible if a higher level occurrence in the assembly context is not visible because its light bulb is off or the joints folder is light bulb is off."
+    },
+    {
+      "name": "isLocked",
+      "description": "Gets and sets if the joint is locked."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this joint is suppressed."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets whether the joint is visible. To change the visibility see the isLightBulbOn property. This property is affected by the assembly context."
+    },
+    {
+      "name": "jointMotion",
+      "description": "Returns a JointMotion object that defines the motion relationship between the two geometries.   This property will return null in the case where the jointType property returns InferredJointType."
+    },
+    {
+      "name": "motionLinks",
+      "description": "Returns the MotionLink objects that this joint is involved in."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name of the joint."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "occurrenceOne",
+      "description": "Returns the first of two occurrences that this joint defines a relationship between. This is the occurrence that can also be found through the geometryOrOriginOne property."
+    },
+    {
+      "name": "occurrenceTwo",
+      "description": "Returns the first of two occurrences that this joint defines a relationship between. This is the occurrence that can also be found through the geometryOrOriginTwo property."
+    },
+    {
+      "name": "offset",
+      "description": "Returns the parameter controlling the offset between the two input geometries. This is effectively the offset distance between the two planes defined by the primary and secondary axes of the input geometries or the offset along the tertiary axis (z axis) of the joint.   This property will return null in the case where the jointType property returns InferredJointType."
+    },
+    {
+      "name": "offsetX",
+      "description": "Returns the parameter controlling the offset along the primary axis (x axis) of the joint. To edit this value, get the parameter and use one of its properties to edit the value.   This property will return null in the case where the jointType property returns InferredJointType."
+    },
+    {
+      "name": "offsetY",
+      "description": "Returns the parameter controlling the offset along the primary axis (y axis) of the joint. To edit this value, get the parameter and use one of its properties to edit the value.   This property will return null in the case where the jointType property returns InferredJointType."
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this joint."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this joint."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "BallJointMotion API Sample",
+      "description": "Demonstrates creating a joint with ball joint motion"
+    },
+    {
+      "name": "CylindricalJointMotion API Sample",
+      "description": "Demonstrates creating a joint with cylindrical joint motion."
+    },
+    {
+      "name": "Joint API Sample",
+      "description": "Demonstrates creating a new joint."
+    },
+    {
+      "name": "Pin Slot Joint Motion API Sample",
+      "description": "Demonstrates creating a joint with pin slot joint motion"
+    },
+    {
+      "name": "Planar Joint Motion API Sample",
+      "description": "Demonstrates creating a joint with planar joint motion"
+    },
+    {
+      "name": "RevoluteJointMotion API Sample",
+      "description": "Demonstrates creating a joint with revolute joint motion."
+    },
+    {
+      "name": "SliderJointMotion API Sample",
+      "description": "Demonstrates creating a joint with slider joint motion."
+    }
+  ],
+  "version": "Introduced in version July 2015",
+  "property_details": {
+    "angle": {
+      "id": "Joint_angle",
+      "title": "Joint.angle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns the parameter controlling the angle between the two input geometries. This is effectively the angle between the two primary axes of the two joint geometries. This property will return null in the case where the jointType property returns InferredJointType.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.angle",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = joint_var->angle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "assemblyContext": {
+      "id": "Joint_assemblyContext",
+      "title": "Joint.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = joint_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "attributes": {
+      "id": "Joint_attributes",
+      "title": "Joint.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns the collection of attributes associated with this joint.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = joint_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "entityToken": {
+      "id": "Joint_entityToken",
+      "title": "Joint.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns a token for the Joint object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same joint. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = joint_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "errorOrWarningMessage": {
+      "id": "Joint_errorOrWarningMessage",
+      "title": "Joint.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = joint_var->errorOrWarningMessage();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Joint API Sample",
+          "description": "Demonstrates creating a new joint."
+        }
+      ],
+      "version": "Introduced in version July 2016"
+    },
+    "geometricRelationships": {
+      "id": "Joint_geometricRelationships",
+      "title": "Joint.geometricRelationships Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns the set of geometric relationships that were used to infer this joint. This property is only valid when the jointType property returns InferredJointType. Otherwise, it returns null.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.geometricRelationships",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = joint_var->geometricRelationships();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "geometryOneTransform": {
+      "id": "Joint_geometryOneTransform",
+      "title": "Joint.geometryOneTransform Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns the position and orientation of the joint geometry associated with the first occurrence. This is returned as a 3D matrix which provides the origin and the X, Y, and Z axis vectors of the coordinate system. This property is especially useful in cases where the JointGeometry cannot be obtained. This can happen when the model has been modified in a way where the geometry used to create the joint is no longer available. This property will return null in the case where the jointType property returns InferredJointType.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.geometryOneTransform",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = joint_var->geometryOneTransform();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2024"
+    },
+    "geometryOrOriginOne": {
+      "id": "Joint_geometryOrOriginOne",
+      "title": "Joint.geometryOrOriginOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Gets and sets the first JointGeometry or JointOrigin for this joint. If the JointType is InferredJointType, this property will return null when queried and will fail if it set. To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.geometryOrOriginOne\n\n# Set the value of the property.\njoint_var.geometryOrOriginOne = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = joint_var->geometryOrOriginOne();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = joint_var->geometryOrOriginOne(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "geometryOrOriginTwo": {
+      "id": "Joint_geometryOrOriginTwo",
+      "title": "Joint.geometryOrOriginTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Gets and sets the second JointGeometry or JointOrigin for this joint. If the JointType is InferredJointType, this property will return null when queried and will fail if it set. To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.geometryOrOriginTwo\n\n# Set the value of the property.\njoint_var.geometryOrOriginTwo = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = joint_var->geometryOrOriginTwo();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = joint_var->geometryOrOriginTwo(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "geometryTwoTransform": {
+      "id": "Joint_geometryTwoTransform",
+      "title": "Joint.geometryTwoTransform Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns the position and orientation of the joint geometry associated with the second occurrence. This is returned as a 3D matrix which provides the origin and the X, Y, and Z axis vectors of the coordinate system. This property is especially useful in cases where the JointGeometry cannot be obtained. This can happen when the model has been modified in a way where the geometry used to create the joint is no longer available. This property will return null in the case where the jointType property returns InferredJointType.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.geometryTwoTransform",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = joint_var->geometryTwoTransform();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2024"
+    },
+    "healthState": {
+      "id": "Joint_healthState",
+      "title": "Joint.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns the current health state of the joint.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = joint_var->healthState();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Joint API Sample",
+          "description": "Demonstrates creating a new joint."
+        }
+      ],
+      "version": "Introduced in version July 2016"
+    },
+    "isFlipped": {
+      "id": "Joint_isFlipped",
+      "title": "Joint.isFlipped Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Gets and sets if the joint direction is flipped or not. This is effectively specifying if the third axis of the two input geometries is facing (false) or opposed (true). To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True) The value of this property should be ignored in the case where the jointType property returns InferredJointType.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.isFlipped\n\n# Set the value of the property.\njoint_var.isFlipped = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = joint_var->isFlipped();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = joint_var->isFlipped(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "isLightBulbOn": {
+      "id": "Joint_isLightBulbOn",
+      "title": "Joint.isLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Gets and sets if the light bulb of this joint as displayed in the browser is on or off. A joint will only be visible if the light bulb is switched on. However, the light bulb can be on and the joint still invisible if a higher level occurrence in the assembly context is not visible because its light bulb is off or the joints folder is light bulb is off.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.isLightBulbOn\n\n# Set the value of the property.\njoint_var.isLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = joint_var->isLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = joint_var->isLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isLocked": {
+      "id": "Joint_isLocked",
+      "title": "Joint.isLocked Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Gets and sets if the joint is locked.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.isLocked\n\n# Set the value of the property.\njoint_var.isLocked = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = joint_var->isLocked();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = joint_var->isLocked(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Joint API Sample",
+          "description": "Demonstrates creating a new joint."
+        }
+      ],
+      "version": "Introduced in version April 2019"
+    },
+    "isSuppressed": {
+      "id": "Joint_isSuppressed",
+      "title": "Joint.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Gets and sets if this joint is suppressed.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.isSuppressed\n\n# Set the value of the property.\njoint_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = joint_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = joint_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isValid": {
+      "id": "Joint_isValid",
+      "title": "Joint.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = joint_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "isVisible": {
+      "id": "Joint_isVisible",
+      "title": "Joint.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Gets whether the joint is visible. To change the visibility see the isLightBulbOn property. This property is affected by the assembly context.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = joint_var->isVisible();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "jointMotion": {
+      "id": "Joint_jointMotion",
+      "title": "Joint.jointMotion Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns a JointMotion object that defines the motion relationship between the two geometries. This property will return null in the case where the jointType property returns InferredJointType.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.jointMotion",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = joint_var->jointMotion();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "BallJointMotion API Sample",
+          "description": "Demonstrates creating a joint with ball joint motion"
+        },
+        {
+          "name": "CylindricalJointMotion API Sample",
+          "description": "Demonstrates creating a joint with cylindrical joint motion."
+        },
+        {
+          "name": "Pin Slot Joint Motion API Sample",
+          "description": "Demonstrates creating a joint with pin slot joint motion"
+        },
+        {
+          "name": "Planar Joint Motion API Sample",
+          "description": "Demonstrates creating a joint with planar joint motion"
+        },
+        {
+          "name": "RevoluteJointMotion API Sample",
+          "description": "Demonstrates creating a joint with revolute joint motion."
+        },
+        {
+          "name": "SliderJointMotion API Sample",
+          "description": "Demonstrates creating a joint with slider joint motion."
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    },
+    "motionLinks": {
+      "id": "Joint_motionLinks",
+      "title": "Joint.motionLinks Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns the MotionLink objects that this joint is involved in.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.motionLinks",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = joint_var->motionLinks();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2025"
+    },
+    "name": {
+      "id": "Joint_name",
+      "title": "Joint.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Gets and sets the name of the joint.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.name\n\n# Set the value of the property.\njoint_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = joint_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = joint_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "nativeObject": {
+      "id": "Joint_nativeObject",
+      "title": "Joint.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = joint_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "objectType": {
+      "id": "Joint_objectType",
+      "title": "Joint.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = joint_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "occurrenceOne": {
+      "id": "Joint_occurrenceOne",
+      "title": "Joint.occurrenceOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns the first of two occurrences that this joint defines a relationship between. This is the occurrence that can also be found through the geometryOrOriginOne property.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.occurrenceOne",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = joint_var->occurrenceOne();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "occurrenceTwo": {
+      "id": "Joint_occurrenceTwo",
+      "title": "Joint.occurrenceTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns the first of two occurrences that this joint defines a relationship between. This is the occurrence that can also be found through the geometryOrOriginTwo property.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.occurrenceTwo",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = joint_var->occurrenceTwo();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "offset": {
+      "id": "Joint_offset",
+      "title": "Joint.offset Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns the parameter controlling the offset between the two input geometries. This is effectively the offset distance between the two planes defined by the primary and secondary axes of the input geometries or the offset along the tertiary axis (z axis) of the joint. This property will return null in the case where the jointType property returns InferredJointType.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.offset",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = joint_var->offset();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "offsetX": {
+      "id": "Joint_offsetX",
+      "title": "Joint.offsetX Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns the parameter controlling the offset along the primary axis (x axis) of the joint. To edit this value, get the parameter and use one of its properties to edit the value. This property will return null in the case where the jointType property returns InferredJointType.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.offsetX",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = joint_var->offsetX();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2022"
+    },
+    "offsetY": {
+      "id": "Joint_offsetY",
+      "title": "Joint.offsetY Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns the parameter controlling the offset along the primary axis (y axis) of the joint. To edit this value, get the parameter and use one of its properties to edit the value. This property will return null in the case where the jointType property returns InferredJointType.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.offsetY",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = joint_var->offsetY();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2022"
+    },
+    "parentComponent": {
+      "id": "Joint_parentComponent",
+      "title": "Joint.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns the parent component that owns this joint.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = joint_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "timelineObject": {
+      "id": "Joint_timelineObject",
+      "title": "Joint.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Returns the timeline object associated with this joint.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = joint_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = joint_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "Joint_classType",
+      "title": "Joint.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.Joint.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::Joint::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version July 2015"
+    },
+    "createForAssemblyContext": {
+      "id": "Joint_createForAssemblyContext",
+      "title": "Joint.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "returnValue = joint_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = joint_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "Joint",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    },
+    "deleteMe": {
+      "id": "Joint_deleteMe",
+      "title": "Joint.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Deletes this joint.",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "returnValue = joint_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = joint_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete is successful.",
+      "version": "Introduced in version July 2015"
+    },
+    "setAsBallJointMotion": {
+      "id": "Joint_setAsBallJointMotion",
+      "title": "Joint.setAsBallJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Redefines the relationship between the two joint geometries as a ball joint. This method will fail in the case where the jointType property returns InferredJointType. To use this method, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = joint_var.setAsBallJointMotion(pitchDirection, yawDirection)\n\n# Uses optional arguments.\nreturnValue = joint_var.setAsBallJointMotion(pitchDirection, yawDirection, customPitchDirection, customYawDirection)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = joint_var->setAsBallJointMotion(pitchDirection, yawDirection);\n\n// Uses optional arguments.\nreturnValue = joint_var->setAsBallJointMotion(pitchDirection, yawDirection, customPitchDirection, customYawDirection);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "pitchDirection",
+          "type": "JointDirections",
+          "description": "Defines the direction the pitch angle is measured from. This can be ZAxisJointDirection or CustomJointDirection. If CustomJointDirection is specified then you must also provide a value for the customPitchDirection argument."
+        },
+        {
+          "name": "yawDirection",
+          "type": "JointDirections",
+          "description": "Defines the direction the yaw is measured from. This can be XAxisJointDirection or CustomJointDirection. If CustomJointDirection is specified then you must also provide a value for the customYawDirection argument."
+        },
+        {
+          "name": "customPitchDirection",
+          "type": "Base",
+          "description": "If the pitchDirection argument is customPitchDirection this argument is used to define the direction the pitch angel is measured from. This can be several types of entities that can define a direction.   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "customYawDirection",
+          "type": "Base",
+          "description": "If the yawDirection argument is customPitchDirection this argument is used to define the direction the yaw angel is measured from. This can be several types of entities that can define a direction.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    },
+    "setAsCylindricalJointMotion": {
+      "id": "Joint_setAsCylindricalJointMotion",
+      "title": "Joint.setAsCylindricalJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Redefines the relationship between the two joint geometries as a cylindrical joint. This method will fail in the case where the jointType property returns InferredJointType. To use this method, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = joint_var.setAsCylindricalJointMotion(rotationAxis)\n\n# Uses optional arguments.\nreturnValue = joint_var.setAsCylindricalJointMotion(rotationAxis, customRotationAxisEntity)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = joint_var->setAsCylindricalJointMotion(rotationAxis);\n\n// Uses optional arguments.\nreturnValue = joint_var->setAsCylindricalJointMotion(rotationAxis, customRotationAxisEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "rotationAxis",
+          "type": "JointDirections",
+          "description": "Specifies which axis the rotation is around. If this is set to CustomJointDirection then the customRotationAxisEntity argument must also be provided."
+        },
+        {
+          "name": "customRotationAxisEntity",
+          "type": "Base",
+          "description": "If the rotationAxis is customAxisEntity this argument is used to specify the entity that defines the custom axis of rotation. This can be several types of entities that an axis can be derived from.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    },
+    "setAsPinSlotJointMotion": {
+      "id": "Joint_setAsPinSlotJointMotion",
+      "title": "Joint.setAsPinSlotJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Redefines the relationship between the two joint geometries as a pin-slot joint. This method will fail in the case where the jointType property returns InferredJointType. To use this method, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = joint_var.setAsPinSlotJointMotion(rotationAxis, slideDirection)\n\n# Uses optional arguments.\nreturnValue = joint_var.setAsPinSlotJointMotion(rotationAxis, slideDirection, customRotationAxisEntity, customSlideDirectionEntity)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = joint_var->setAsPinSlotJointMotion(rotationAxis, slideDirection);\n\n// Uses optional arguments.\nreturnValue = joint_var->setAsPinSlotJointMotion(rotationAxis, slideDirection, customRotationAxisEntity, customSlideDirectionEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "rotationAxis",
+          "type": "JointDirections",
+          "description": "Specifies which axis the rotation is around. If this is set to CustomJointDirection then the customRotationAxisEntity argument must also be provided."
+        },
+        {
+          "name": "slideDirection",
+          "type": "JointDirections",
+          "description": "Specifies which axis the slide direction is along. If this is set to CustomJointDirection then the customSlideDirectionEntity argument must also be provided."
+        },
+        {
+          "name": "customRotationAxisEntity",
+          "type": "Base",
+          "description": "If the rotationAxis is customAxisEntity this argument is used to specify the entity that defines the custom axis of rotation. This can be several types of entities that an axis can be derived   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "customSlideDirectionEntity",
+          "type": "Base",
+          "description": "If the slideDirection is CustomJointDirection this argument is used to specify the entity that defines the custom slide direction. This can be several types of entities that can define a direction.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    },
+    "setAsPlanarJointMotion": {
+      "id": "Joint_setAsPlanarJointMotion",
+      "title": "Joint.setAsPlanarJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Redefines the relationship between the two joint geometries as a planar joint. This method will fail in the case where the jointType property returns InferredJointType. To use this method, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = joint_var.setAsPlanarJointMotion(normalDirection)\n\n# Uses optional arguments.\nreturnValue = joint_var.setAsPlanarJointMotion(normalDirection, customNormalDirectionEntity, customPrimarySlideDirection)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = joint_var->setAsPlanarJointMotion(normalDirection);\n\n// Uses optional arguments.\nreturnValue = joint_var->setAsPlanarJointMotion(normalDirection, customNormalDirectionEntity, customPrimarySlideDirection);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "normalDirection",
+          "type": "JointDirections",
+          "description": "Defines the direction of the normal of the single degree of rotation. This can be set to XAxisJointDirection, YAxisJointDirection, ZAxisJointDirection, or CustomJointDirection. If set to CustomJointDirection then the customNormalDirectionEntity argument must also be provided."
+        },
+        {
+          "name": "customNormalDirectionEntity",
+          "type": "Base",
+          "description": "If the normalDirection is CustomJointDirection this argument is used to specify the entity that defines the direction of the normal. This can be several types of entities that can define a direction.   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "customPrimarySlideDirection",
+          "type": "Base",
+          "description": "This arguments defines the direction of the primary slide direction. A default primary slide direction is automatically chosen and will be used if this argument is not provided or is null. The secondary slide direction is automatically inferred from the normal and primary slide directions.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    },
+    "setAsRevoluteJointMotion": {
+      "id": "Joint_setAsRevoluteJointMotion",
+      "title": "Joint.setAsRevoluteJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Redefines the relationship between the two joint geometries as a revolute joint. This method will fail in the case where the jointType property returns InferredJointType. To use this method, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = joint_var.setAsRevoluteJointMotion(rotationAxis)\n\n# Uses optional arguments.\nreturnValue = joint_var.setAsRevoluteJointMotion(rotationAxis, customRotationAxisEntity)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = joint_var->setAsRevoluteJointMotion(rotationAxis);\n\n// Uses optional arguments.\nreturnValue = joint_var->setAsRevoluteJointMotion(rotationAxis, customRotationAxisEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "rotationAxis",
+          "type": "JointDirections",
+          "description": "Specifies which axis the rotation is around. If this is set to CustomJointDirection then the customRotationAxisEntity argument must also be provided."
+        },
+        {
+          "name": "customRotationAxisEntity",
+          "type": "Base",
+          "description": "If the rotationAxis is customAxisEntity this argument is used to specify the entity that defines the custom axis of rotation. This can be several types of entities that an axis can be derived from.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    },
+    "setAsRigidJointMotion": {
+      "id": "Joint_setAsRigidJointMotion",
+      "title": "Joint.setAsRigidJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Redefines the relationship between the two joint geometries as a rigid joint. This method will fail in the case where the jointType property returns InferredJointType. To use this method, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "returnValue = joint_var.setAsRigidJointMotion()",
+        "cpp": "#include \n\nreturnValue = joint_var->setAsRigidJointMotion();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "version": "Introduced in version July 2015"
+    },
+    "setAsSliderJointMotion": {
+      "id": "Joint_setAsSliderJointMotion",
+      "title": "Joint.setAsSliderJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/Joint.h",
+      "description": "Redefines the relationship between the two joint geometries as a slider joint. This method will fail in the case where the jointType property returns InferredJointType. To use this method, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: thisJoint.timelineObject.rollTo(True)",
+      "parent_class": "Joint",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = joint_var.setAsSliderJointMotion(sliderDirection)\n\n# Uses optional arguments.\nreturnValue = joint_var.setAsSliderJointMotion(sliderDirection, customSliderDirectionEntity)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = joint_var->setAsSliderJointMotion(sliderDirection);\n\n// Uses optional arguments.\nreturnValue = joint_var->setAsSliderJointMotion(sliderDirection, customSliderDirectionEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "sliderDirection",
+          "type": "JointDirections",
+          "description": "Specifies which axis the slide direction is along. If this is set to CustomJointDirection then the customSliderDirectionEntity argument must also be provided."
+        },
+        {
+          "name": "customSliderDirectionEntity",
+          "type": "Base",
+          "description": "If the sliderDirection is CustomJointDirection this argument is used to specify the entity that defines the custom slider direction. This can be several types of entities that can define a direction.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version July 2015"
+    }
+  }
+}

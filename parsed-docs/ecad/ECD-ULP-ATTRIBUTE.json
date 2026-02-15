@@ -1,0 +1,34 @@
+{
+  "id": "ECD-ULP-ATTRIBUTE",
+  "title": "UL_ATTRIBUTE",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "constant",
+      "type": "int (0=variable, i.e. allows overwriting, 1=constant - see note)"
+    },
+    {
+      "name": "defaultvalue",
+      "type": "string (see note)"
+    },
+    {
+      "name": "display",
+      "type": "int (ATTRIBUTE_DISPLAY_FLAG_...)"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "text",
+      "type": "UL_TEXT (see note)"
+    },
+    {
+      "name": "value",
+      "type": "string"
+    }
+  ],
+  "loop_members": [],
+  "content": "# UL_ATTRIBUTE\n\n## Data members\n\n| | |\n| --- | --- |\n| constant | int (0=variable, i.e. allows overwriting, 1=constant - see note) |\n| defaultvalue | string (see note) |\n| display | int (ATTRIBUTE_DISPLAY_FLAG_...) |\n| name | string |\n| text | UL_TEXT (see note) |\n| value | string |\n\nSee also UL_DEVICE, UL_PART, UL_INSTANCE, UL_ELEMENT.\n\n## Constants\n\n| | |\n| --- | --- |\n| ATTRIBUTE_DISPLAY_FLAG_OFF | nothing is displayed |\n| ATTRIBUTE_DISPLAY_FLAG_VALUE | value is displayed |\n| ATTRIBUTE_DISPLAY_FLAG_NAME | name is displayed |\n\nA UL_ATTRIBUTE can be used to access the attributes that have been defined in the library for a device, or assigned to a part in the schematic or board.\n\n## Notes\n\n`display` contains a bitwise or'ed value consisting of `ATTRIBUTE_DISPLAY_FLAG_...` and defines which parts of the attribute are actually drawn. This value is only valid if display is used in a UL_INSTANCE or UL_ELEMENT context.\nIn a UL_ELEMENT context constant only returns an actual value if f/b annotation is active, otherwise it returns 0.\n\nThe defaultvalue member returns the value as defined in the library (if different from the actual value, otherwise the same as value). In a UL_ELEMENT context `defaultvalue` only returns an actual value if f/b annotation is active, otherwise an empty string is returned.\n\nThe text member is only available in a UL_INSTANCE or UL_ELEMENT context and returns a UL_TEXT object that contains all the text parameters. The value of this text object is the string as it will be displayed according to the UL_ATTRIBUTE's 'display' parameter. If called from a different context, the data of the returned UL_TEXT object is undefined.\n\nFor global attributes only *name* and *value* are defined.\n\n## Example\n\n```\nschematic(SCH) {\n SCH.parts(P) {\n P.attributes(A) {\n printf(\"%s = %s\\n\", A.name, A.value);\n }\n }\n }\nschematic(SCH) {\n SCH.attributes(A) { // global attributes\n printf(\"%s = %s\\n\", A.name, A.value);\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

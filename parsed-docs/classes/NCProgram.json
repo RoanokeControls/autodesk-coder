@@ -1,0 +1,873 @@
+{
+  "id": "NCProgram",
+  "title": "NCProgram Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/NCProgram/NCProgram.h",
+  "description": "Object that represents an existing NC program.",
+  "parent_class": "OperationBase",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "copyAfter",
+      "description": "Creates a duplicate of the operation in the tree after the given operation. Throws an exception if a not allowed copy operation is made for example copying a operation out of a setup."
+    },
+    {
+      "name": "copyBefore",
+      "description": "Creates a duplicate of the operation in the tree before the given operation. Throws an exception if a not allowed copy operation is made for example copying a operation out of a setup."
+    },
+    {
+      "name": "copyInto",
+      "description": "Creates a duplicate of the operation into the given container. You can only copy into containers, such as setups or folders. Copied operation will be copied at the end of all operations already in the container. Throws an exception if a not allowed copy operation is made for example copying a setup into a setup."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the operation from the document. In case of a setup or folder, all containing child operations will be deleted as well. Note: Child classes may overwrite this function and throw an exception if the object cannot be deleted."
+    },
+    {
+      "name": "duplicate",
+      "description": "Creates a duplicate of the operation in the tree after the itself."
+    },
+    {
+      "name": "modifyUtility",
+      "description": "Get ModifyUtility for the current operation by given utility type."
+    },
+    {
+      "name": "moveAfter",
+      "description": "Move operation in tree after the given operation. Throws an exception if a not allowed move is made for example moving a operation out of a setup."
+    },
+    {
+      "name": "moveBefore",
+      "description": "Move operation in tree before the given operation. Throws an exception if a not allowed move is made for example moving a operation out of a setup."
+    },
+    {
+      "name": "moveInto",
+      "description": "Move operation in tree into the given container. This only works with setups, patterns and folders. Moved operation will be moved at the end of all operations already in the container. Throws an exception if a not allowed move is made for example moving a setup into a setup."
+    },
+    {
+      "name": "postProcess",
+      "description": "Creates machine-specific NC code for this NC program."
+    },
+    {
+      "name": "updatePostParameters",
+      "description": "Overrides the default post parameters of this NC program with the given user's input."
+    }
+  ],
+  "properties": [
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this object."
+    },
+    {
+      "name": "error",
+      "description": "Returns a message corresponding to any active error associated with the value of this parameter."
+    },
+    {
+      "name": "filteredOperations",
+      "description": "Gets all valid operations derived from the operations property. The list is ordered with respect to the nc_program_oderByTool parameter and considers the number of instances in a setup."
+    },
+    {
+      "name": "fusionHubFolder",
+      "description": "Gets and sets the DataFolder to which the exported files should be uploaded to if the parameter nc_program_postToFusionTeam is set to true. When a DataFolder is set, nc_program_postToFusionTeam is automatically set to true. An exception will be thrown if the DataFolder to set is not valid or not accessible. Depending on the FusionHubExecutionBehaviors used for the export the design may be saved at this location as well."
+    },
+    {
+      "name": "generatedDataCollection",
+      "description": "Get the generated data associated with a given operation base instance. The type of data depends on the strategy type and might not be available for all strategy types. The available types can be found in GeneratedData.cs"
+    },
+    {
+      "name": "hasError",
+      "description": "Gets if errors were encountered when generating the operation."
+    },
+    {
+      "name": "hasWarning",
+      "description": "Gets if problems were encountered when generating the operation."
+    },
+    {
+      "name": "isLightBulbOn",
+      "description": "Gets if this operation is currently visible in the graphics window. Use the isLightBulbOn to change if the eye icon beside the operation node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children so this property does not indicate if the operation is actually visible, just that it should be visible if all of its parent nodes are also visible. Use the isVisible property to determine if it's actually visible."
+    },
+    {
+      "name": "isOptional",
+      "description": "Gets and sets the \"Optional\" property value of the operation. Gets/sets true if the operation is optional."
+    },
+    {
+      "name": "isProtected",
+      "description": "Gets and sets the \"protected\" property value of the operation. Gets/sets true if the operation is protected."
+    },
+    {
+      "name": "isSelected",
+      "description": "Gets if this operation is selected in the 'Setups' browser."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets the \"Suppressed\" property value of the operation. Gets/sets true if the operation is suppressed."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets if this operation is currently visible in the graphics window. Use the isLightBulbOn to change if the eye icon beside the operation node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children. This property indicates the final result and whether this operation is actually visible or not."
+    },
+    {
+      "name": "machine",
+      "description": "Gets and sets the machine of this NC program. When a machine is set, \"use machine configuration\" is automatically set to true. If this machine has a default post assigned, this post will be set for the NC program as well."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name of the operation as seen in the browser.\u00a0This name is unique as compared to the names of all other operations in the document."
+    },
+    {
+      "name": "notes",
+      "description": "Gets and sets the notes of the operation."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "operationId",
+      "description": "Returns the id of the operation.\u00a0This id is unique as compared to the ids of all other operations in the document. This id will not change when changing the order or parent of the operation. This id will remain valid when the document is saved and reloaded."
+    },
+    {
+      "name": "operations",
+      "description": "Gets and sets the operations which will be included in the NC program. Valid input contains any number of operations, setups or folders. For setups and folders all child operations will be added. Operations will be post processed in setup order, with operations from the same setup grouped together. Setting the nc_program_orderByTool BooleanParameterValue on the parameters property to true will reorder operations across multiple setups to reduce the number of tool changes."
+    },
+    {
+      "name": "parameters",
+      "description": "Gets the CAMParameters collection for this operation."
+    },
+    {
+      "name": "parentSetup",
+      "description": "Gets the Setup this operation belongs to."
+    },
+    {
+      "name": "postConfiguration",
+      "description": "Gets and sets the post configuration of this NC program."
+    },
+    {
+      "name": "postParameters",
+      "description": "Gets the post parameters of this NC program."
+    },
+    {
+      "name": "strategy",
+      "description": "Gets the name of the strategy associated with this operation."
+    },
+    {
+      "name": "warning",
+      "description": "Returns a message corresponding to any active warning associated with the value of this parameter."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Manufacturing Workflow API Sample",
+      "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+    },
+    {
+      "name": "Turning Workflow API Sample",
+      "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "property_details": {
+    "attributes": {
+      "id": "NCProgram_attributes",
+      "title": "NCProgram.attributes Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Returns the collection of attributes associated with this object.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = nCProgram_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "error": {
+      "id": "NCProgram_error",
+      "title": "NCProgram.error Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Returns a message corresponding to any active error associated with the value of this parameter.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.error",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = nCProgram_var->error();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "filteredOperations": {
+      "id": "NCProgram_filteredOperations",
+      "title": "NCProgram.filteredOperations Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets all valid operations derived from the operations property. The list is ordered with respect to the nc_program_oderByTool parameter and considers the number of instances in a setup.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.filteredOperations",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = nCProgram_var->filteredOperations();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "fusionHubFolder": {
+      "id": "NCProgram_fusionHubFolder",
+      "title": "NCProgram.fusionHubFolder Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets and sets the DataFolder to which the exported files should be uploaded to if the parameter nc_program_postToFusionTeam is set to true. When a DataFolder is set, nc_program_postToFusionTeam is automatically set to true. An exception will be thrown if the DataFolder to set is not valid or not accessible. Depending on the FusionHubExecutionBehaviors used for the export the design may be saved at this location as well.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.fusionHubFolder\n\n# Set the value of the property.\nnCProgram_var.fusionHubFolder = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = nCProgram_var->fusionHubFolder();\n\n// Set the value of the property, where value_var is a DataFolder.\nbool returnValue = nCProgram_var->fusionHubFolder(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2024"
+    },
+    "generatedDataCollection": {
+      "id": "NCProgram_generatedDataCollection",
+      "title": "NCProgram.generatedDataCollection Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Get the generated data associated with a given operation base instance. The type of data depends on the strategy type and might not be available for all strategy types. The available types can be found in GeneratedData.cs",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.generatedDataCollection",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = nCProgram_var->generatedDataCollection();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "hasError": {
+      "id": "NCProgram_hasError",
+      "title": "NCProgram.hasError Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets if errors were encountered when generating the operation.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.hasError",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = nCProgram_var->hasError();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "hasWarning": {
+      "id": "NCProgram_hasWarning",
+      "title": "NCProgram.hasWarning Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets if problems were encountered when generating the operation.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.hasWarning",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = nCProgram_var->hasWarning();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isLightBulbOn": {
+      "id": "NCProgram_isLightBulbOn",
+      "title": "NCProgram.isLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets if this operation is currently visible in the graphics window. Use the isLightBulbOn to change if the eye icon beside the operation node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children so this property does not indicate if the operation is actually visible, just that it should be visible if all of its parent nodes are also visible. Use the isVisible property to determine if it's actually visible.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.isLightBulbOn\n\n# Set the value of the property.\nnCProgram_var.isLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = nCProgram_var->isLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = nCProgram_var->isLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "isOptional": {
+      "id": "NCProgram_isOptional",
+      "title": "NCProgram.isOptional Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets and sets the \"Optional\" property value of the operation. Gets/sets true if the operation is optional.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.isOptional\n\n# Set the value of the property.\nnCProgram_var.isOptional = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = nCProgram_var->isOptional();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = nCProgram_var->isOptional(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isProtected": {
+      "id": "NCProgram_isProtected",
+      "title": "NCProgram.isProtected Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets and sets the \"protected\" property value of the operation. Gets/sets true if the operation is protected.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.isProtected\n\n# Set the value of the property.\nnCProgram_var.isProtected = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = nCProgram_var->isProtected();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = nCProgram_var->isProtected(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isSelected": {
+      "id": "NCProgram_isSelected",
+      "title": "NCProgram.isSelected Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets if this operation is selected in the 'Setups' browser.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.isSelected",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = nCProgram_var->isSelected();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isSuppressed": {
+      "id": "NCProgram_isSuppressed",
+      "title": "NCProgram.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets and sets the \"Suppressed\" property value of the operation. Gets/sets true if the operation is suppressed.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.isSuppressed\n\n# Set the value of the property.\nnCProgram_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = nCProgram_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = nCProgram_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "NCProgram_isValid",
+      "title": "NCProgram.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = nCProgram_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isVisible": {
+      "id": "NCProgram_isVisible",
+      "title": "NCProgram.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets if this operation is currently visible in the graphics window. Use the isLightBulbOn to change if the eye icon beside the operation node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children. This property indicates the final result and whether this operation is actually visible or not.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = nCProgram_var->isVisible();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "machine": {
+      "id": "NCProgram_machine",
+      "title": "NCProgram.machine Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets and sets the machine of this NC program. When a machine is set, \"use machine configuration\" is automatically set to true. If this machine has a default post assigned, this post will be set for the NC program as well.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.machine\n\n# Set the value of the property.\nnCProgram_var.machine = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = nCProgram_var->machine();\n\n// Set the value of the property, where value_var is a Machine.\nbool returnValue = nCProgram_var->machine(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "name": {
+      "id": "NCProgram_name",
+      "title": "NCProgram.name Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets and sets the name of the operation as seen in the browser.\u00a0This name is unique as compared to the names of all other operations in the document.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.name\n\n# Set the value of the property.\nnCProgram_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = nCProgram_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = nCProgram_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "notes": {
+      "id": "NCProgram_notes",
+      "title": "NCProgram.notes Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets and sets the notes of the operation.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.notes\n\n# Set the value of the property.\nnCProgram_var.notes = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = nCProgram_var->notes();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = nCProgram_var->notes(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "NCProgram_objectType",
+      "title": "NCProgram.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = nCProgram_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "operationId": {
+      "id": "NCProgram_operationId",
+      "title": "NCProgram.operationId Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Returns the id of the operation.\u00a0This id is unique as compared to the ids of all other operations in the document. This id will not change when changing the order or parent of the operation. This id will remain valid when the document is saved and reloaded.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.operationId",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = nCProgram_var->operationId();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "operations": {
+      "id": "NCProgram_operations",
+      "title": "NCProgram.operations Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets and sets the operations which will be included in the NC program. Valid input contains any number of operations, setups or folders. For setups and folders all child operations will be added. Operations will be post processed in setup order, with operations from the same setup grouped together. Setting the nc_program_orderByTool BooleanParameterValue on the parameters property to true will reorder operations across multiple setups to reduce the number of tool changes.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.operations\n\n# Set the value of the property.\nnCProgram_var.operations = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = nCProgram_var->operations();\n\n// Set the value of the property, where value_var is an OperationBase.\nbool returnValue = nCProgram_var->operations(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "parameters": {
+      "id": "NCProgram_parameters",
+      "title": "NCProgram.parameters Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets the CAMParameters collection for this operation.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.parameters",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = nCProgram_var->parameters();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "parentSetup": {
+      "id": "NCProgram_parentSetup",
+      "title": "NCProgram.parentSetup Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets the Setup this operation belongs to.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.parentSetup",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = nCProgram_var->parentSetup();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "postConfiguration": {
+      "id": "NCProgram_postConfiguration",
+      "title": "NCProgram.postConfiguration Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets and sets the post configuration of this NC program.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.postConfiguration\n\n# Set the value of the property.\nnCProgram_var.postConfiguration = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = nCProgram_var->postConfiguration();\n\n// Set the value of the property, where value_var is a PostConfiguration.\nbool returnValue = nCProgram_var->postConfiguration(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        },
+        {
+          "name": "Turning Workflow API Sample",
+          "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "postParameters": {
+      "id": "NCProgram_postParameters",
+      "title": "NCProgram.postParameters Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets the post parameters of this NC program.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.postParameters",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = nCProgram_var->postParameters();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Basic Milling Workflow Sample",
+          "description": "Demonstrates the creation of a basic milling workflow from scriptDemonstrates creating a setup, searching tool library to retrieve a tool, create a couple of machining operations and a NC program, ready for post processing.Use the 2D Strategies model from the Fusion CAM Samples folder as your CAD model."
+        },
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        },
+        {
+          "name": "Turning Workflow API Sample",
+          "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "strategy": {
+      "id": "NCProgram_strategy",
+      "title": "NCProgram.strategy Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Gets the name of the strategy associated with this operation.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.strategy",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = nCProgram_var->strategy();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "warning": {
+      "id": "NCProgram_warning",
+      "title": "NCProgram.warning Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Returns a message corresponding to any active warning associated with the value of this parameter.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = nCProgram_var.warning",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = nCProgram_var->warning();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "NCProgram_classType",
+      "title": "NCProgram.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "returnValue = adsk.cam.NCProgram.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::NCProgram::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    },
+    "copyAfter": {
+      "id": "NCProgram_copyAfter",
+      "title": "NCProgram.copyAfter Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Creates a duplicate of the operation in the tree after the given operation. Throws an exception if a not allowed copy operation is made for example copying a operation out of a setup.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "returnValue = nCProgram_var.copyAfter(operation)",
+        "cpp": "#include \n\nreturnValue = nCProgram_var->copyAfter(operation);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if copy command was successful.",
+      "parameters": [
+        {
+          "name": "operation",
+          "type": "OperationBase",
+          "description": "Operation to copy targeted operation after."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "copyBefore": {
+      "id": "NCProgram_copyBefore",
+      "title": "NCProgram.copyBefore Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Creates a duplicate of the operation in the tree before the given operation. Throws an exception if a not allowed copy operation is made for example copying a operation out of a setup.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "returnValue = nCProgram_var.copyBefore(operation)",
+        "cpp": "#include \n\nreturnValue = nCProgram_var->copyBefore(operation);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if copy command was successful.",
+      "parameters": [
+        {
+          "name": "operation",
+          "type": "OperationBase",
+          "description": "Operation to copy targeted operation before."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "copyInto": {
+      "id": "NCProgram_copyInto",
+      "title": "NCProgram.copyInto Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Creates a duplicate of the operation into the given container. You can only copy into containers, such as setups or folders. Copied operation will be copied at the end of all operations already in the container. Throws an exception if a not allowed copy operation is made for example copying a setup into a setup.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "returnValue = nCProgram_var.copyInto(container)",
+        "cpp": "#include \n\nreturnValue = nCProgram_var->copyInto(container);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if copy command was successful.",
+      "parameters": [
+        {
+          "name": "container",
+          "type": "OperationBase",
+          "description": "Container to copy targeted operation into."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "deleteMe": {
+      "id": "NCProgram_deleteMe",
+      "title": "NCProgram.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Deletes the operation from the document. In case of a setup or folder, all containing child operations will be deleted as well. Note: Child classes may overwrite this function and throw an exception if the object cannot be deleted.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "returnValue = nCProgram_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = nCProgram_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version May 2023"
+    },
+    "duplicate": {
+      "id": "NCProgram_duplicate",
+      "title": "NCProgram.duplicate Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Creates a duplicate of the operation in the tree after the itself.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "returnValue = nCProgram_var.duplicate()",
+        "cpp": "#include \n\nreturnValue = nCProgram_var->duplicate();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if duplicate command was successful.",
+      "version": "Introduced in version May 2024"
+    },
+    "modifyUtility": {
+      "id": "NCProgram_modifyUtility",
+      "title": "NCProgram.modifyUtility Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Get ModifyUtility for the current operation by given utility type.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "returnValue = nCProgram_var.modifyUtility(utility)",
+        "cpp": "#include \n\nreturnValue = nCProgram_var->modifyUtility(utility);"
+      },
+      "return_type": "ModifyUtility",
+      "return_description": "Returns ModifyUtility for specific type or null if the type is not compatible with the operation.",
+      "parameters": [
+        {
+          "name": "utility",
+          "type": "ModifyUtilityTypes",
+          "description": "Defines the specific ModifyUtility."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    },
+    "moveAfter": {
+      "id": "NCProgram_moveAfter",
+      "title": "NCProgram.moveAfter Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Move operation in tree after the given operation. Throws an exception if a not allowed move is made for example moving a operation out of a setup.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "returnValue = nCProgram_var.moveAfter(operation)",
+        "cpp": "#include \n\nreturnValue = nCProgram_var->moveAfter(operation);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if move operation was successful.",
+      "parameters": [
+        {
+          "name": "operation",
+          "type": "OperationBase",
+          "description": "Operation to move targeted operation after."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "moveBefore": {
+      "id": "NCProgram_moveBefore",
+      "title": "NCProgram.moveBefore Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Move operation in tree before the given operation. Throws an exception if a not allowed move is made for example moving a operation out of a setup.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "returnValue = nCProgram_var.moveBefore(operation)",
+        "cpp": "#include \n\nreturnValue = nCProgram_var->moveBefore(operation);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if move operation was successful.",
+      "parameters": [
+        {
+          "name": "operation",
+          "type": "OperationBase",
+          "description": "Operation to move targeted operation before."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "moveInto": {
+      "id": "NCProgram_moveInto",
+      "title": "NCProgram.moveInto Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Move operation in tree into the given container. This only works with setups, patterns and folders. Moved operation will be moved at the end of all operations already in the container. Throws an exception if a not allowed move is made for example moving a setup into a setup.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "returnValue = nCProgram_var.moveInto(container)",
+        "cpp": "#include \n\nreturnValue = nCProgram_var->moveInto(container);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns if move operation was successful.",
+      "parameters": [
+        {
+          "name": "container",
+          "type": "OperationBase",
+          "description": "Container to move targeted operation into."
+        }
+      ],
+      "version": "Introduced in version May 2024"
+    },
+    "postProcess": {
+      "id": "NCProgram_postProcess",
+      "title": "NCProgram.postProcess Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Creates machine-specific NC code for this NC program.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "returnValue = nCProgram_var.postProcess(options)",
+        "cpp": "#include \n\nreturnValue = nCProgram_var->postProcess(options);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the post process was successful.",
+      "parameters": [
+        {
+          "name": "options",
+          "type": "NCProgramPostProcessOptions",
+          "description": "NCProgramPostProcessOptions to speficy the behavior on internal warning. Can be null if the default values should be used. If needed it can be created by its static create() method."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        },
+        {
+          "name": "Turning Workflow API Sample",
+          "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "updatePostParameters": {
+      "id": "NCProgram_updatePostParameters",
+      "title": "NCProgram.updatePostParameters Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/NCProgram/NCProgram.h",
+      "description": "Overrides the default post parameters of this NC program with the given user's input.",
+      "parent_class": "NCProgram",
+      "syntax": {
+        "python": "returnValue = nCProgram_var.updatePostParameters(parameters)",
+        "cpp": "#include \n\nreturnValue = nCProgram_var->updatePostParameters(parameters);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the update was successful. False otherwise",
+      "parameters": [
+        {
+          "name": "parameters",
+          "type": "CAMParameters",
+          "description": ""
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Basic Milling Workflow Sample",
+          "description": "Demonstrates the creation of a basic milling workflow from scriptDemonstrates creating a setup, searching tool library to retrieve a tool, create a couple of machining operations and a NC program, ready for post processing.Use the 2D Strategies model from the Fusion CAM Samples folder as your CAD model."
+        },
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        },
+        {
+          "name": "Turning Workflow API Sample",
+          "description": "Turning Workflow API SampleThis sample script starts by opening a simple component which is then used to describe a basic turning workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

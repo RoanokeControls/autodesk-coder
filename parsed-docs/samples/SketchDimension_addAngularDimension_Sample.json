@@ -1,0 +1,12 @@
+{
+  "id": "SketchDimension_addAngularDimension_Sample",
+  "title": "SketchDimensions.addAngularDimension",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the SketchDimension.addAngularDimension method.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_Dimension_addAngularDimension(sketch: adsk.fusion.Sketch):\n    # Create points for the lines\n    startPoint = adsk.core.Point3D.create(6, 0, 0)\n    endPoint = adsk.core.Point3D.create(0, 0, 0)\n\n    # Create the lines and text point for parameters\n    lines = sketch.sketchCurves.sketchLines\n    lineOne = lines.addByTwoPoints(startPoint, endPoint)\n    lineTwo = lines.addByTwoPoints(lineOne.endSketchPoint, adsk.core.Point3D.create(5, 4, 0))\n    textPoint = adsk.core.Point3D.create(7, 2, 0)\n\n    # Create the angular dimension\n    dimensions = sketch.sketchDimensions\n    angularDimension = dimensions.addAngularDimension(lineOne, lineTwo, textPoint)"
+  }
+}

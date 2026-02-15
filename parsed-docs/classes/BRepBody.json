@@ -1,0 +1,1115 @@
+{
+  "id": "BRepBody",
+  "title": "BRepBody Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/BRep/BRepBody.h",
+  "description": "Represents a B-Rep (Boundary Representation) body.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "convert",
+      "description": "Creates a new body where the faces and edges are converted to different types of geometry based on the input options. This is particularly useful when you need a body made up entirely of NURBS surfaces.   The tempId on the faces, edges, and vertices on the new body will match with the corresponding tempId on the original body. In cases where faces are split as a result of the conversion there can be more than one face or edge in the new body that matches to a single face or edge in the original body. The findByTempId method will find the entity with the matching id."
+    },
+    {
+      "name": "copy",
+      "description": "Copies the body to the clipboard.   This property is only valid if the IsTransient property is false."
+    },
+    {
+      "name": "copyToComponent",
+      "description": "Creates a copy of this body into the specified target."
+    },
+    {
+      "name": "createComponent",
+      "description": "Creates a new component and occurrence within the component that currently owns this body. This body is moved into the new component and returned. The newly created component can be obtained by using the parentComponent property of the BRepBody object.   This method is only valid if the IsTransient property is false."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.   This method is only valid if the IsTransient property is false."
+    },
+    {
+      "name": "cut",
+      "description": "Cuts the body to the clipboard.   This property is only valid if the IsTransient property is false."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the body.   This property is only valid if the IsTransient property is false."
+    },
+    {
+      "name": "findByTempId",
+      "description": "Returns all of the faces, edges, or vertices that match the input ID."
+    },
+    {
+      "name": "getPhysicalProperties",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this body."
+    },
+    {
+      "name": "moveToComponent",
+      "description": "Moves this body from it's current component into the root component or the component owned by the specified occurrence."
+    },
+    {
+      "name": "pointContainment",
+      "description": "Determines the relationship of the input point with respect to this body."
+    }
+  ],
+  "properties": [
+    {
+      "name": "appearance",
+      "description": "Read-write property that gets and sets the current appearance of the body. Setting this property will result in applying an override appearance to the body and the AppearanceSourceType property will return OverrideAppearanceSource. Setting this property to null will remove any override.   This property is only valid if the IsTransient property is false."
+    },
+    {
+      "name": "appearanceSourceType",
+      "description": "Read-write property that gets the source of the appearance for the body. If this returns OverrideAppearanceSource, an override exists on this body. The override can be removed by setting the Appearance property to null.   This property is only valid if the IsTransient property is false."
+    },
+    {
+      "name": "area",
+      "description": "Returns the area in cm ^ 2."
+    },
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this BRepBody object is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly. but is already the native object. Also returns null in the case where this body is transient."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this body is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "boundingBox",
+      "description": "Returns the bounding box of this body."
+    },
+    {
+      "name": "concaveEdges",
+      "description": "Returns all of the edges that connect concave faces."
+    },
+    {
+      "name": "convexEdges",
+      "description": "Returns all of the edges that connect convex faces."
+    },
+    {
+      "name": "deriveFeature",
+      "description": "Returns the DeriveFeature if this BRepBody is derived from another design. This property returns null if the BRepBody is not derived from another design (i.e. isDerived property returns false)."
+    },
+    {
+      "name": "edges",
+      "description": "Returns a collection of all of the edges in the body."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the BRepBody object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same body.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.   This is only valid for bodies that exist in the design, (the isTemporary property is false)."
+    },
+    {
+      "name": "faces",
+      "description": "Returns a collection of all of the faces in the body."
+    },
+    {
+      "name": "isDerived",
+      "description": "Returns if this BRepBody is derived from another design. If true, this body cannot be deleted."
+    },
+    {
+      "name": "isLightBulbOn",
+      "description": "Gets and set if the light bulb beside the body node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children so this property does not indicate if the body is actually visible, just that it should be visible if all of it's parent nodes are also visible. Use the isVisible property to determine if it's actually visible.   This property is only valid if the IsTransient property is false."
+    },
+    {
+      "name": "isSelectable",
+      "description": "Gets and sets if this body is selectable.   This property is only valid if the IsTransient property is false."
+    },
+    {
+      "name": "isSheetMetal",
+      "description": "Indicates if this body represents a sheet metal folded part or not and if a flat pattern can be created."
+    },
+    {
+      "name": "isSolid",
+      "description": "Returns whether this body is closed (solid) or not."
+    },
+    {
+      "name": "isTemporary",
+      "description": "Indicates if this body is represented in the model or is temporary."
+    },
+    {
+      "name": "isTransient",
+      "description": "Indicates if this body is represented in the model or is transient."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets if this body is currently visible in the graphics window. Use the isLightBulbOn to change if the light bulb beside the body node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children. This property indicates the final result and whether this body is actually visible or not.   This property is only valid if the IsTransient property is false."
+    },
+    {
+      "name": "lumps",
+      "description": "Returns a collection of all of the lumps in the body."
+    },
+    {
+      "name": "material",
+      "description": "Gets and sets the material assigned to this body.   This property is only valid if the IsTransient property is false."
+    },
+    {
+      "name": "meshManager",
+      "description": "Returns the mesh manager object for this body."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name of the body.   This property is only valid if the IsTransient property is false."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "opacity",
+      "description": "Gets and sets the opacity override assigned to this body. A value of 1.0 specifies that is it completely opaque and a value of 0.0 specifies that is it completely transparent.   This value is not necessarily related to what the user sees because the opacity is inherited. For example, if you this body is in a component and that component's opacity is set to something other than 1.0, the body will also be shown as slightly transparent even though the opacity property for the body will return 1.0. Because the component that contains the body can be referenced as an occurrence in other components and they can have different opacity settings, it's possible that different instances of the same body can display using different opacity levels. To get the opacity that it is being displayed with use the BrepBody.visibleOpacity property.   This is the API equivalent of the \"Opacity Control\" command available for the body in the browser."
+    },
+    {
+      "name": "orientedMinimumBoundingBox",
+      "description": "Returns an oriented bounding box of the body that is best oriented to tightly fit the body."
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the component this body is owned by."
+    },
+    {
+      "name": "physicalProperties",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this body. Property values will be calculated using the 'LowCalculationAccuracy' setting when using this property to get the PhysicalProperties object. To specify a higher calculation tolerance, use the getPhysicalProperties method on the Design class instead."
+    },
+    {
+      "name": "preciseBoundingBox",
+      "description": "Returns a bounding box that tightly fits this body."
+    },
+    {
+      "name": "revisionId",
+      "description": "Returns the current revision ID of the body. This ID changes any time the body is modified in any way. By getting and saving the ID when you create any data that is dependent on the body, you can then compare the saved ID with the current ID to determine if the body has changed to know if you should update your data."
+    },
+    {
+      "name": "shells",
+      "description": "Returns a collection of all of the shells in the body."
+    },
+    {
+      "name": "textureMapControl",
+      "description": "Returns the TextureMapControl object associated with this body when there is an appearance assigned to the body that has a texture associated with it. If there isn't a texture, this property will return null. If there is a texture, you can use the returned object to query and modify how the texture is applied to the body."
+    },
+    {
+      "name": "vertices",
+      "description": "Returns a collection of all of the vertices in the body."
+    },
+    {
+      "name": "visibleOpacity",
+      "description": "The user can set an override opacity for components and bodies these opacity overrides combine if children and parent components have overrides. This property returns the actual opacity that is being used to render the body. To set the opacity use the opacity property of the BRepBody object."
+    },
+    {
+      "name": "volume",
+      "description": "Returns the volume in cm ^ 3. Returns 0 in the case the body is not solid."
+    },
+    {
+      "name": "wires",
+      "description": "Returns any wire bodies that exist within this body."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Get Volume of Active Design API Sample",
+      "description": "Traverses through the active design and totals the volume of every body within the design."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "property_details": {
+    "appearance": {
+      "id": "BRepBody_appearance",
+      "title": "BRepBody.appearance Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Read-write property that gets and sets the current appearance of the body. Setting this property will result in applying an override appearance to the body and the AppearanceSourceType property will return OverrideAppearanceSource. Setting this property to null will remove any override. This property is only valid if the IsTransient property is false.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.appearance\n\n# Set the value of the property.\nbRepBody_var.appearance = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->appearance();\n\n// Set the value of the property, where value_var is an Appearance.\nbool returnValue = bRepBody_var->appearance(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Material API Sample",
+          "description": "Demonstrates using materials and appearance using the API.\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code. The sample also used an external appearance library which you can get here. Copy that to any location on your computer and edit the path in the script. When running the script, have a design open that contains a body in the root component."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "appearanceSourceType": {
+      "id": "BRepBody_appearanceSourceType",
+      "title": "BRepBody.appearanceSourceType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Read-write property that gets the source of the appearance for the body. If this returns OverrideAppearanceSource, an override exists on this body. The override can be removed by setting the Appearance property to null. This property is only valid if the IsTransient property is false.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.appearanceSourceType",
+        "cpp": "#include \n\n// Get the value of the property.\nAppearanceSourceTypes propertyValue = bRepBody_var->appearanceSourceType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "area": {
+      "id": "BRepBody_area",
+      "title": "BRepBody.area Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns the area in cm ^ 2.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.area",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = bRepBody_var->area();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "assemblyContext": {
+      "id": "BRepBody_assemblyContext",
+      "title": "BRepBody.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this BRepBody object is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly. but is already the native object. Also returns null in the case where this body is transient.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "attributes": {
+      "id": "BRepBody_attributes",
+      "title": "BRepBody.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "baseFeature": {
+      "id": "BRepBody_baseFeature",
+      "title": "BRepBody.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "If this body is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "boundingBox": {
+      "id": "BRepBody_boundingBox",
+      "title": "BRepBody.boundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns the bounding box of this body.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.boundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->boundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "concaveEdges": {
+      "id": "BRepBody_concaveEdges",
+      "title": "BRepBody.concaveEdges Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns all of the edges that connect concave faces.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.concaveEdges",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->concaveEdges();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "convexEdges": {
+      "id": "BRepBody_convexEdges",
+      "title": "BRepBody.convexEdges Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns all of the edges that connect convex faces.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.convexEdges",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->convexEdges();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "deriveFeature": {
+      "id": "BRepBody_deriveFeature",
+      "title": "BRepBody.deriveFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns the DeriveFeature if this BRepBody is derived from another design. This property returns null if the BRepBody is not derived from another design (i.e. isDerived property returns false).",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.deriveFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->deriveFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "edges": {
+      "id": "BRepBody_edges",
+      "title": "BRepBody.edges Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns a collection of all of the edges in the body.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.edges",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->edges();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "extendFeatures.add",
+          "description": "Demonstrates the extendFeatures.add method.\u00a0To use this sample, have a design open that contains at least one surface body. When you run the sample, you will be prompted to select an open edge of the body."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "entityToken": {
+      "id": "BRepBody_entityToken",
+      "title": "BRepBody.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns a token for the BRepBody object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same body. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them. This is only valid for bodies that exist in the design, (the isTemporary property is false).",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = bRepBody_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "faces": {
+      "id": "BRepBody_faces",
+      "title": "BRepBody.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns a collection of all of the faces in the body.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isDerived": {
+      "id": "BRepBody_isDerived",
+      "title": "BRepBody.isDerived Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns if this BRepBody is derived from another design. If true, this body cannot be deleted.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.isDerived",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bRepBody_var->isDerived();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "isLightBulbOn": {
+      "id": "BRepBody_isLightBulbOn",
+      "title": "BRepBody.isLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Gets and set if the light bulb beside the body node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children so this property does not indicate if the body is actually visible, just that it should be visible if all of it's parent nodes are also visible. Use the isVisible property to determine if it's actually visible. This property is only valid if the IsTransient property is false.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.isLightBulbOn\n\n# Set the value of the property.\nbRepBody_var.isLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bRepBody_var->isLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = bRepBody_var->isLightBulbOn(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "BRep Body Sample",
+          "description": "B-Rep (Boundary Representation) body related functions"
+        }
+      ],
+      "version": "Introduced in version January 2016"
+    },
+    "isSelectable": {
+      "id": "BRepBody_isSelectable",
+      "title": "BRepBody.isSelectable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Gets and sets if this body is selectable. This property is only valid if the IsTransient property is false.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.isSelectable\n\n# Set the value of the property.\nbRepBody_var.isSelectable = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bRepBody_var->isSelectable();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = bRepBody_var->isSelectable(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isSheetMetal": {
+      "id": "BRepBody_isSheetMetal",
+      "title": "BRepBody.isSheetMetal Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Indicates if this body represents a sheet metal folded part or not and if a flat pattern can be created.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.isSheetMetal",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bRepBody_var->isSheetMetal();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isSolid": {
+      "id": "BRepBody_isSolid",
+      "title": "BRepBody.isSolid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns whether this body is closed (solid) or not.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.isSolid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bRepBody_var->isSolid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isTemporary": {
+      "id": "BRepBody_isTemporary",
+      "title": "BRepBody.isTemporary Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Indicates if this body is represented in the model or is temporary.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.isTemporary",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bRepBody_var->isTemporary();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "isTransient": {
+      "id": "BRepBody_isTransient",
+      "title": "BRepBody.isTransient Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Indicates if this body is represented in the model or is transient.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.isTransient",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bRepBody_var->isTransient();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "isValid": {
+      "id": "BRepBody_isValid",
+      "title": "BRepBody.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bRepBody_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isVisible": {
+      "id": "BRepBody_isVisible",
+      "title": "BRepBody.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Gets if this body is currently visible in the graphics window. Use the isLightBulbOn to change if the light bulb beside the body node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children. This property indicates the final result and whether this body is actually visible or not. This property is only valid if the IsTransient property is false.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.isVisible\n\n# Set the value of the property.\nbRepBody_var.isVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bRepBody_var->isVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = bRepBody_var->isVisible(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "BRep Body Sample",
+          "description": "B-Rep (Boundary Representation) body related functions"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "lumps": {
+      "id": "BRepBody_lumps",
+      "title": "BRepBody.lumps Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns a collection of all of the lumps in the body.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.lumps",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->lumps();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "material": {
+      "id": "BRepBody_material",
+      "title": "BRepBody.material Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Gets and sets the material assigned to this body. This property is only valid if the IsTransient property is false.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.material\n\n# Set the value of the property.\nbRepBody_var.material = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->material();\n\n// Set the value of the property, where value_var is a Material.\nbool returnValue = bRepBody_var->material(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "meshManager": {
+      "id": "BRepBody_meshManager",
+      "title": "BRepBody.meshManager Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns the mesh manager object for this body.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.meshManager",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->meshManager();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "name": {
+      "id": "BRepBody_name",
+      "title": "BRepBody.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Gets and sets the name of the body. This property is only valid if the IsTransient property is false.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.name\n\n# Set the value of the property.\nbRepBody_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = bRepBody_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = bRepBody_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "nativeObject": {
+      "id": "BRepBody_nativeObject",
+      "title": "BRepBody.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "The NativeObject is the object outside the context of an assembly. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "BRepBody_objectType",
+      "title": "BRepBody.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = bRepBody_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "opacity": {
+      "id": "BRepBody_opacity",
+      "title": "BRepBody.opacity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Gets and sets the opacity override assigned to this body. A value of 1.0 specifies that is it completely opaque and a value of 0.0 specifies that is it completely transparent. This value is not necessarily related to what the user sees because the opacity is inherited. For example, if you this body is in a component and that component's opacity is set to something other than 1.0, the body will also be shown as slightly transparent even though the opacity property for the body will return 1.0. Because the component that contains the body can be referenced as an occurrence in other components and they can have different opacity settings, it's possible that different instances of the same body can display using different opacity levels. To get the opacity that it is being displayed with use the BrepBody.visibleOpacity property. This is the API equivalent of the \"Opacity Control\" command available for the body in the browser.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.opacity\n\n# Set the value of the property.\nbRepBody_var.opacity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = bRepBody_var->opacity();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = bRepBody_var->opacity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2017"
+    },
+    "orientedMinimumBoundingBox": {
+      "id": "BRepBody_orientedMinimumBoundingBox",
+      "title": "BRepBody.orientedMinimumBoundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns an oriented bounding box of the body that is best oriented to tightly fit the body.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.orientedMinimumBoundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->orientedMinimumBoundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "parentComponent": {
+      "id": "BRepBody_parentComponent",
+      "title": "BRepBody.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns the component this body is owned by.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "physicalProperties": {
+      "id": "BRepBody_physicalProperties",
+      "title": "BRepBody.physicalProperties Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this body. Property values will be calculated using the 'LowCalculationAccuracy' setting when using this property to get the PhysicalProperties object. To specify a higher calculation tolerance, use the getPhysicalProperties method on the Design class instead.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.physicalProperties",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->physicalProperties();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Get Physical Properties API Sample",
+          "description": "Script that demonstrates getting physical properties using the API. When this script is run it will create a new document, build a simple model, and get the various physical properties from the model."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "preciseBoundingBox": {
+      "id": "BRepBody_preciseBoundingBox",
+      "title": "BRepBody.preciseBoundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns a bounding box that tightly fits this body.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.preciseBoundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->preciseBoundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "revisionId": {
+      "id": "BRepBody_revisionId",
+      "title": "BRepBody.revisionId Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns the current revision ID of the body. This ID changes any time the body is modified in any way. By getting and saving the ID when you create any data that is dependent on the body, you can then compare the saved ID with the current ID to determine if the body has changed to know if you should update your data.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.revisionId",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = bRepBody_var->revisionId();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "BRep Body Sample",
+          "description": "B-Rep (Boundary Representation) body related functions"
+        }
+      ],
+      "version": "Introduced in version September 2017"
+    },
+    "shells": {
+      "id": "BRepBody_shells",
+      "title": "BRepBody.shells Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns a collection of all of the shells in the body.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.shells",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->shells();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "textureMapControl": {
+      "id": "BRepBody_textureMapControl",
+      "title": "BRepBody.textureMapControl Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns the TextureMapControl object associated with this body when there is an appearance assigned to the body that has a texture associated with it. If there isn't a texture, this property will return null. If there is a texture, you can use the returned object to query and modify how the texture is applied to the body.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.textureMapControl",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->textureMapControl();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2022"
+    },
+    "vertices": {
+      "id": "BRepBody_vertices",
+      "title": "BRepBody.vertices Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns a collection of all of the vertices in the body.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.vertices",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->vertices();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "visibleOpacity": {
+      "id": "BRepBody_visibleOpacity",
+      "title": "BRepBody.visibleOpacity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "The user can set an override opacity for components and bodies these opacity overrides combine if children and parent components have overrides. This property returns the actual opacity that is being used to render the body. To set the opacity use the opacity property of the BRepBody object.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.visibleOpacity",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = bRepBody_var->visibleOpacity();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "volume": {
+      "id": "BRepBody_volume",
+      "title": "BRepBody.volume Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns the volume in cm ^ 3. Returns 0 in the case the body is not solid.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.volume",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = bRepBody_var->volume();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Get Volume of Active Design API Sample",
+          "description": "Traverses through the active design and totals the volume of every body within the design."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "wires": {
+      "id": "BRepBody_wires",
+      "title": "BRepBody.wires Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns any wire bodies that exist within this body.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBody_var.wires",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bRepBody_var->wires();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2017"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "BRepBody_classType",
+      "title": "BRepBody.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.BRepBody.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::BRepBody::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "convert": {
+      "id": "BRepBody_convert",
+      "title": "BRepBody.convert Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Creates a new body where the faces and edges are converted to different types of geometry based on the input options. This is particularly useful when you need a body made up entirely of NURBS surfaces. The tempId on the faces, edges, and vertices on the new body will match with the corresponding tempId on the original body. In cases where faces are split as a result of the conversion there can be more than one face or edge in the new body that matches to a single face or edge in the original body. The findByTempId method will find the entity with the matching id.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "returnValue = bRepBody_var.convert(options)",
+        "cpp": "#include \n\nreturnValue = bRepBody_var->convert(options);"
+      },
+      "return_type": "BRepBody",
+      "return_description": "Returns the new converted body or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "options",
+          "type": "BRepConvertOptions",
+          "description": "Input options that define how the conversion should be done. These are bitwise options so they can be combined."
+        }
+      ],
+      "version": "Introduced in version August 2016"
+    },
+    "copy": {
+      "id": "BRepBody_copy",
+      "title": "BRepBody.copy Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Copies the body to the clipboard. This property is only valid if the IsTransient property is false.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "returnValue = bRepBody_var.copy()",
+        "cpp": "#include \n\nreturnValue = bRepBody_var->copy();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the copy was successful.",
+      "version": "Introduced in version August 2014"
+    },
+    "copyToComponent": {
+      "id": "BRepBody_copyToComponent",
+      "title": "BRepBody.copyToComponent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Creates a copy of this body into the specified target.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "returnValue = bRepBody_var.copyToComponent(target)",
+        "cpp": "#include \n\nreturnValue = bRepBody_var->copyToComponent(target);"
+      },
+      "return_type": "BRepBody",
+      "return_description": "Returns the moved BRepBody or null in the case the move failed.",
+      "parameters": [
+        {
+          "name": "target",
+          "type": "Base",
+          "description": "The target can be either the root component or an occurrence.   In the case where an occurrence is specified, the body will be copied into the parent component of the target occurrence and the target occurrence defines the transform of how the body will be copied so that the body maintains it's same position with respect to the assembly.   If target is null, then a copy of the body is created in the owning component of the original body."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "createComponent": {
+      "id": "BRepBody_createComponent",
+      "title": "BRepBody.createComponent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Creates a new component and occurrence within the component that currently owns this body. This body is moved into the new component and returned. The newly created component can be obtained by using the parentComponent property of the BRepBody object. This method is only valid if the IsTransient property is false.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "returnValue = bRepBody_var.createComponent()",
+        "cpp": "#include \n\nreturnValue = bRepBody_var->createComponent();"
+      },
+      "return_type": "BRepBody",
+      "return_description": "Returns the BRrepBody in the new component or null in the case the creation failed.",
+      "version": "Introduced in version June 2015"
+    },
+    "createForAssemblyContext": {
+      "id": "BRepBody_createForAssemblyContext",
+      "title": "BRepBody.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence. This method is only valid if the IsTransient property is false.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "returnValue = bRepBody_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = bRepBody_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "BRepBody",
+      "return_description": "Returns the new BRepBoy proxy or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context for the created proxy."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "cut": {
+      "id": "BRepBody_cut",
+      "title": "BRepBody.cut Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Cuts the body to the clipboard. This property is only valid if the IsTransient property is false.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "returnValue = bRepBody_var.cut()",
+        "cpp": "#include \n\nreturnValue = bRepBody_var->cut();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the cut was successful.",
+      "version": "Introduced in version August 2014"
+    },
+    "deleteMe": {
+      "id": "BRepBody_deleteMe",
+      "title": "BRepBody.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Deletes the body. This property is only valid if the IsTransient property is false.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "returnValue = bRepBody_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = bRepBody_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version August 2014"
+    },
+    "findByTempId": {
+      "id": "BRepBody_findByTempId",
+      "title": "BRepBody.findByTempId Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns all of the faces, edges, or vertices that match the input ID.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "returnValue = bRepBody_var.findByTempId(tempId)",
+        "cpp": "#include \n\nreturnValue = bRepBody_var->findByTempId(tempId);"
+      },
+      "return_type": "Base[]",
+      "return_description": "Returns an array of entities that have the specified ID. This returns an array because it's possible that a body created by converting a body can have multiple entities with the same ID in the case where a curve or face was split. Returns an empty array in the case where no match is found.",
+      "parameters": [
+        {
+          "name": "tempId",
+          "type": "integer",
+          "description": "The ID of the B-Rep entity to find."
+        }
+      ],
+      "version": "Introduced in version August 2016"
+    },
+    "getPhysicalProperties": {
+      "id": "BRepBody_getPhysicalProperties",
+      "title": "BRepBody.getPhysicalProperties Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this body.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = bRepBody_var.getPhysicalProperties()\n\n# Uses optional arguments.\nreturnValue = bRepBody_var.getPhysicalProperties(accuracy)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = bRepBody_var->getPhysicalProperties();\n\n// Uses optional arguments.\nreturnValue = bRepBody_var->getPhysicalProperties(accuracy);"
+      },
+      "return_type": "PhysicalProperties",
+      "return_description": "Returns a PhysicalProperties object that can be used to get the various physical property related values.",
+      "parameters": [
+        {
+          "name": "accuracy",
+          "type": "CalculationAccuracy",
+          "description": "Specifies the desired level of computational accuracy of the property calculations. The default value of 'LowCalculationAccuracy' returns results within a +/- 1% error margin.   This is an optional argument whose default value is CalculationAccuracy.LowCalculationAccuracy."
+        }
+      ],
+      "version": "Introduced in version September 2020"
+    },
+    "moveToComponent": {
+      "id": "BRepBody_moveToComponent",
+      "title": "BRepBody.moveToComponent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Moves this body from it's current component into the root component or the component owned by the specified occurrence.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "returnValue = bRepBody_var.moveToComponent(target)",
+        "cpp": "#include \n\nreturnValue = bRepBody_var->moveToComponent(target);"
+      },
+      "return_type": "BRepBody",
+      "return_description": "Returns the moved BRepBody or null in the case the move failed.",
+      "parameters": [
+        {
+          "name": "target",
+          "type": "Base",
+          "description": "The target can be either the root component or an occurrence.   In the case where an occurrence is specified, the body will be moved into the parent component of the target occurrence and the target occurrence defines the transform of how the body will be copied so that the body maintains it's same position with respect to the assembly."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "pointContainment": {
+      "id": "BRepBody_pointContainment",
+      "title": "BRepBody.pointContainment Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Determines the relationship of the input point with respect to this body.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "returnValue = bRepBody_var.pointContainment(point)",
+        "cpp": "#include \n\nreturnValue = bRepBody_var->pointContainment(point);"
+      },
+      "return_type": "PointContainment",
+      "return_description": "Returns a value from the PointContainment enum indicating the relationship of the input point to the body.",
+      "parameters": [
+        {
+          "name": "point",
+          "type": "Point3D",
+          "description": "The point to do the containment check for."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

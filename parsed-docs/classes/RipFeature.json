@@ -1,0 +1,578 @@
+{
+  "id": "RipFeature",
+  "title": "RipFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/SheetMetal/RipFeature.h",
+  "description": "Object that represents an existing Rip feature in a design.",
+  "parent_class": "Feature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    },
+    {
+      "name": "redefineToAlongEdge",
+      "description": "Redefines the feature to be a rip along an edge."
+    },
+    {
+      "name": "redefineToBetweenPoints",
+      "description": "Redefines the feature to be a rip between two points."
+    },
+    {
+      "name": "setByFace",
+      "description": "This input method is for creating a rip from a face."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "definition",
+      "description": "Returns the RipFeatureDefinition object which provides access to the information defining this RipFeature and the ability to edit it."
+    },
+    {
+      "name": "definitionType",
+      "description": "Gets the type of rip defined."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Rip Feature Sample",
+      "description": "Demonstrates creating a new sheet metal rip feature."
+    }
+  ],
+  "version": "Introduced in version September 2023",
+  "property_details": {
+    "assemblyContext": {
+      "id": "RipFeature_assemblyContext",
+      "title": "RipFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = ripFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "attributes": {
+      "id": "RipFeature_attributes",
+      "title": "RipFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = ripFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "baseFeature": {
+      "id": "RipFeature_baseFeature",
+      "title": "RipFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = ripFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "bodies": {
+      "id": "RipFeature_bodies",
+      "title": "RipFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = ripFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "definition": {
+      "id": "RipFeature_definition",
+      "title": "RipFeature.definition Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Returns the RipFeatureDefinition object which provides access to the information defining this RipFeature and the ability to edit it.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.definition",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = ripFeature_var->definition();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "definitionType": {
+      "id": "RipFeature_definitionType",
+      "title": "RipFeature.definitionType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Gets the type of rip defined.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.definitionType",
+        "cpp": "#include \n\n// Get the value of the property.\nRipFeatureDefinitionTypes propertyValue = ripFeature_var->definitionType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "entityToken": {
+      "id": "RipFeature_entityToken",
+      "title": "RipFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = ripFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "errorOrWarningMessage": {
+      "id": "RipFeature_errorOrWarningMessage",
+      "title": "RipFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = ripFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "faces": {
+      "id": "RipFeature_faces",
+      "title": "RipFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = ripFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "healthState": {
+      "id": "RipFeature_healthState",
+      "title": "RipFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = ripFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "isParametric": {
+      "id": "RipFeature_isParametric",
+      "title": "RipFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = ripFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "isSuppressed": {
+      "id": "RipFeature_isSuppressed",
+      "title": "RipFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.isSuppressed\n\n# Set the value of the property.\nripFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = ripFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = ripFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "isValid": {
+      "id": "RipFeature_isValid",
+      "title": "RipFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = ripFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "linkedFeatures": {
+      "id": "RipFeature_linkedFeatures",
+      "title": "RipFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = ripFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "name": {
+      "id": "RipFeature_name",
+      "title": "RipFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.name\n\n# Set the value of the property.\nripFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = ripFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = ripFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "nativeObject": {
+      "id": "RipFeature_nativeObject",
+      "title": "RipFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = ripFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "objectType": {
+      "id": "RipFeature_objectType",
+      "title": "RipFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = ripFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "parentComponent": {
+      "id": "RipFeature_parentComponent",
+      "title": "RipFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = ripFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "timelineObject": {
+      "id": "RipFeature_timelineObject",
+      "title": "RipFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = ripFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = ripFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "RipFeature_classType",
+      "title": "RipFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.RipFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::RipFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2023"
+    },
+    "createForAssemblyContext": {
+      "id": "RipFeature_createForAssemblyContext",
+      "title": "RipFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "returnValue = ripFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = ripFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "RipFeature",
+      "return_description": "Returns the proxy object or null if this is not the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    },
+    "deleteMe": {
+      "id": "RipFeature_deleteMe",
+      "title": "RipFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "returnValue = ripFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = ripFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version September 2023"
+    },
+    "dissolve": {
+      "id": "RipFeature_dissolve",
+      "title": "RipFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "returnValue = ripFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = ripFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version September 2023"
+    },
+    "redefineToAlongEdge": {
+      "id": "RipFeature_redefineToAlongEdge",
+      "title": "RipFeature.redefineToAlongEdge Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Redefines the feature to be a rip along an edge.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "returnValue = ripFeature_var.redefineToAlongEdge(edge, gapDistance)",
+        "cpp": "#include \n\nreturnValue = ripFeature_var->redefineToAlongEdge(edge, gapDistance);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the rip definition is successful.",
+      "parameters": [
+        {
+          "name": "edge",
+          "type": "BRepEdge",
+          "description": "The BRepEdge that defines the rip."
+        },
+        {
+          "name": "gapDistance",
+          "type": "ValueInput",
+          "description": "The gap distance of the rip."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    },
+    "redefineToBetweenPoints": {
+      "id": "RipFeature_redefineToBetweenPoints",
+      "title": "RipFeature.redefineToBetweenPoints Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "Redefines the feature to be a rip between two points.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = ripFeature_var.redefineToBetweenPoints(pointOneEntity, pointTwoEntity, gapDistance)\n\n# Uses optional arguments.\nreturnValue = ripFeature_var.redefineToBetweenPoints(pointOneEntity, pointTwoEntity, gapDistance, pointOneOffset, pointTwoOffset)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = ripFeature_var->redefineToBetweenPoints(pointOneEntity, pointTwoEntity, gapDistance);\n\n// Uses optional arguments.\nreturnValue = ripFeature_var->redefineToBetweenPoints(pointOneEntity, pointTwoEntity, gapDistance, pointOneOffset, pointTwoOffset);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the rip definition is successful.",
+      "parameters": [
+        {
+          "name": "pointOneEntity",
+          "type": "Base",
+          "description": "The first point of the rip. This can be defined using a BrepVertex or a BRepEdge and offset to define where the point is along the edge. If an edge is specified, the pointOneOffset parameter must be specified."
+        },
+        {
+          "name": "pointTwoEntity",
+          "type": "Base",
+          "description": "The second point of the rip and must lie on the same face as point 1. This can be defined using a BrepVertex or a BRepEdge and an offset to define where the point is along the edge. If an edge is specified, the pointTwoOffset parameter must be specified."
+        },
+        {
+          "name": "gapDistance",
+          "type": "ValueInput",
+          "description": "The gap distance of the rip."
+        },
+        {
+          "name": "pointOneOffset",
+          "type": "ValueInput",
+          "description": "If the first point lies on an edge, then this is the offset along the edge which defines the point. This is the physical distance from the topological start of the edge. If the offset is negative or exceeds the edge length, the corresponding vertex of the edge will be used.   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "pointTwoOffset",
+          "type": "ValueInput",
+          "description": "If the second point lies on an edge, then this is the offset along the edge which defines the point. This is the physical distance from the topological start of the edge. If the offset is negative or exceeds the edge length, the corresponding vertex of the edge will be used.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    },
+    "setByFace": {
+      "id": "RipFeature_setByFace",
+      "title": "RipFeature.setByFace Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/RipFeature.h",
+      "description": "This input method is for creating a rip from a face.",
+      "parent_class": "RipFeature",
+      "syntax": {
+        "python": "returnValue = ripFeature_var.setByFace(face)",
+        "cpp": "#include \n\nreturnValue = ripFeature_var->setByFace(face);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the rip definition is successful.",
+      "parameters": [
+        {
+          "name": "face",
+          "type": "BRepFace",
+          "description": "The sheet metal face that defines the rip."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    }
+  }
+}

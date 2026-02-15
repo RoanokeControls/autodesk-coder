@@ -1,0 +1,12 @@
+{
+  "id": "holeFeaturesCounterBore_add_Sample",
+  "title": "holeFeatures.add with Counterbore",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the holeFeatures.add method using the createCounterboreInput method. The hole is positioned at the center of the selected edge.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_holeFeatures_add_counterbore(rootComp: adsk.fusion.Design.rootComponent):\n    # Have the face and edges selected.\n    face: adsk.fusion.BRepFace = _ui.selectEntity('Select a face', 'Faces').entity\n    edge: adsk.fusion.BRepEdge = _ui.selectEntity('Select edge', 'Edges').entity\n\n    # Define the needed inputs.\n    holeDiam = adsk.core.ValueInput.createByString('10 mm')\n    holeDepth = adsk.core.ValueInput.createByReal(5)\n    counterboreDiam = adsk.core.ValueInput.createByString('20 mm')\n    counterboreDepth = adsk.core.ValueInput.createByString('3 mm')\n    offset1 = adsk.core.ValueInput.createByReal(4)\n    offset2 = adsk.core.ValueInput.createByReal(6)\n\n    holeFeatures: adsk.fusion.HoleFeatures = rootComp.features.holeFeatures\n    input = holeFeatures.createCounterboreInput(holeDiam, counterboreDiam, counterboreDepth)\n    input.setDistanceExtent(holeDepth)\n    facePoint = face.pointOnFace\n    input.setPositionOnEdge(face, edge, adsk.fusion.HoleEdgePositions.EdgeMidPointPosition)\n    holeFeature = holeFeatures.add(input)"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "ECD-ULP-PIN",
+  "title": "UL_PIN",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "angle",
+      "type": "real (0, 90, 180 and 270)"
+    },
+    {
+      "name": "contact",
+      "type": "UL_CONTACT (deprecated, see note)"
+    },
+    {
+      "name": "direction",
+      "type": "int (PIN_DIRECTION_...)"
+    },
+    {
+      "name": "function",
+      "type": "int (PIN_FUNCTION_FLAG_...)"
+    },
+    {
+      "name": "length",
+      "type": "int (PIN_LENGTH_...)"
+    },
+    {
+      "name": "name",
+      "type": "string (PIN_NAME_LENGTH)"
+    },
+    {
+      "name": "net",
+      "type": "string (see note)"
+    },
+    {
+      "name": "route",
+      "type": "int (CONTACT_ROUTE_...)"
+    },
+    {
+      "name": "swaplevel",
+      "type": "int"
+    },
+    {
+      "name": "visible",
+      "type": "int (PIN_VISIBLE_FLAG_...)"
+    },
+    {
+      "name": "x, y",
+      "type": "int (connection point)"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "circles()",
+      "type": "UL_CIRCLE"
+    },
+    {
+      "name": "contacts()",
+      "type": "UL_CONTACT (see note)"
+    },
+    {
+      "name": "texts()",
+      "type": "UL_TEXT"
+    },
+    {
+      "name": "wires()",
+      "type": "UL_WIRE"
+    }
+  ],
+  "content": "- \n \n \n\n \n \n# UL_PIN\n\n## Data members\n\n| | |\n| --- | --- |\n| angle | real (0, 90, 180 and 270) |\n| contact | UL_CONTACT (deprecated, see note) |\n| direction | int (PIN_DIRECTION_...) |\n| function | int (PIN_FUNCTION_FLAG_...) |\n| length | int (PIN_LENGTH_...) |\n| name | string (PIN_NAME_LENGTH) |\n| net | string (see note) |\n| route | int (CONTACT_ROUTE_...) |\n| swaplevel | int |\n| visible | int (PIN_VISIBLE_FLAG_...) |\n| x, y | int (connection point) |\n\n## Loop members\n\n| | |\n| --- | --- |\n| circles() | UL_CIRCLE |\n| contacts() | UL_CONTACT (see note) |\n| texts() | UL_TEXT |\n| wires() | UL_WIRE |\n\nSee also UL_SYMBOL, UL_PINREF, UL_CONTACTREF\n\n## Constants\n\n| | |\n| --- | --- |\n| PIN_DIRECTION_NC | not connected |\n| PIN_DIRECTION_IN | input |\n| PIN_DIRECTION_OUT | output (totem-pole) |\n| PIN_DIRECTION_IO | in/output (bidirectional) |\n| PIN_DIRECTION_OC | open collector |\n| PIN_DIRECTION_PWR | power input pin |\n| PIN_DIRECTION_PAS | passive |\n| PIN_DIRECTION_HIZ | high impedance output |\n| PIN_DIRECTION_SUP | supply pin |\n| PIN_FUNCTION_FLAG_NONE | no symbol |\n| PIN_FUNCTION_FLAG_DOT | inverter symbol |\n| PIN_FUNCTION_FLAG_CLK | clock symbol |\n| PIN_LENGTH_POINT | no wire |\n| PIN_LENGTH_SHORT | 0.1 inch wire |\n| PIN_LENGTH_MIDDLE | 0.2 inch wire |\n| PIN_LENGTH_LONG | 0.3 inch wire |\n| PIN_NAME_LENGTH | max. recommended length of a pin name (used in formatted output only) |\n| PIN_VISIBLE_FLAG_OFF | no name drawn |\n| PIN_VISIBLE_FLAG_PAD | pad name drawn |\n| PIN_VISIBLE_FLAG_PIN | pin name drawn |\n| CONTACT_ROUTE_ALL | must explicitly route to all contacts |\n| CONTACT_ROUTE_ANY | may route to any contact |\n\n## Note\n\nThe *contacts()* loop member loops through the contacts that have been assigned to the pin through a CONNECT command. This is the case in a UL_DEVICE context or coming via UL_PINREF, but not via UL_LIBRARY.symbols(). If this is not the case the list is empty.\n\nThe contact data member returns the contact that has been assigned to the pin through a CONNECT command. This member is deprecated! It will work for backwards compatibility and as long as only one pad has been connected to the pin, but will cause a runtime error when used with a pin that is connected to more than one pad.\n\nThe *route* member also only makes sense if there's a relation to contacts the pin is connected to. Otherwise the value is set to 0.\n\nThe coordinates (and layer, in case of an SMD) of the contact returned by the contact data member depend on the context in which it is called:\n\nif the pin is derived from a UL_PART that is used on a sheet, and if there is a corresponding element on the board, the resulting contact will have the coordinates as used on the board.\n\n- in all other cases, the coordinates of the contact will be the same as defined in the footprint drawing.\n\nThe *name* data member always returns the name of the pin as it was defined in the library, with any '@' character for pins with the same name left intact (see the PIN command for details). The *texts* loop member, on the other hand, returns the pin name (if it is visible) in the same way as it is displayed in the current drawing type.\n\nThe *net* data member returns the name of the net to which this pin is connected to (only available in a UL_SCHEMATIC context).\n\n## Example\n\n```\nlibrary(L) {\n L.symbols(S) {\n printf(\"Symbol: %s\\n\", S.name);\n S.pins(P) {\n printf(\"\\tPin: %s, (%f %f)\", P.name, u2mm(P.x), u2mm(P.y));\n if (P.direction == PIN_DIRECTION_IN)\n printf(\" input\");\n if ((P.function & PIN_FUNCTION_FLAG_DOT) != 0)\n printf(\" inverted\");\n printf(\"\\n\");\n }\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

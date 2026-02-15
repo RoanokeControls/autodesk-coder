@@ -1,0 +1,363 @@
+{
+  "id": "STLExportOptions",
+  "title": "STLExportOptions Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Fusion/STLExportOptions.h",
+  "description": "Defines that a STL export is to be done and specifies the various options.",
+  "parent_class": "ExportOptions",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    }
+  ],
+  "properties": [
+    {
+      "name": "aspectRatio",
+      "description": "Gets and sets the minimum aspect ratio for that triangles that are generated for the mesh. Setting this property will automatically set the meshRefinement to MeshRefinementCustom. The default is the value associated with medium mesh refinement."
+    },
+    {
+      "name": "availablePrintUtilities",
+      "description": "Returns a list of the known available print utilities. These strings can be used to set the PrintUtility property to specify which print utility to open the STL file in."
+    },
+    {
+      "name": "filename",
+      "description": "Gets and sets the filename that the exported file will be written to. This can be empty in the case of STL export and sending the result to the mesh editor."
+    },
+    {
+      "name": "geometry",
+      "description": "Specifies the geometry to export. This can be an Occurrence, or the root Component. For STL, OBJ, and 3MF export, it can be a BRepBody. For DXF export, it can be a sketch of flat pattern."
+    },
+    {
+      "name": "isBinaryFormat",
+      "description": "Indicates if the STL file is to be an ASCII or binary STL format. The default is true."
+    },
+    {
+      "name": "isOneFilePerBody",
+      "description": "If the input is an Occurrence or the root Component, this specifies if a single file should be created containing all of the bodies within that occurrence or component or if multiple files should be created; one for each body. If multiple files are created, the body name is appended to the filename. The default is false."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "maximumEdgeLength",
+      "description": "Gets and sets the maximum length of any mesh edge. This is defined in centimeter. Setting this property will automatically set the meshRefinement to MeshRefinementCustom. The default is the value associated with medium mesh refinement."
+    },
+    {
+      "name": "meshRefinement",
+      "description": "Gets and sets the current simple mesh refinement settings. Setting this property will reset the surfaceDeviation, normalDeviation, maximumEdgeLength, and aspectRatio to values that correspond to the specified mesh refinement. The default is MeshRefinementMedium."
+    },
+    {
+      "name": "normalDeviation",
+      "description": "Gets and sets the current normal deviation, or the angle the mesh normals at the vertices can deviate from the actual surface normals. This is defined in radians. Setting this property will automatically set the meshRefinement to MeshRefinementCustom. The default is the value associated with medium mesh refinement."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "printUtility",
+      "description": "Specifies which print utility to use when opening the STL file if the sendToPrintUtility property is true. The value of this property can be one of the strings returned by the availalbePrintUtilities property, which will specify one of the know print utilities. You can also specify a custom print utility by specifying the full path to the print utility executable. The default value of this property is the last setting specified in the user-interface."
+    },
+    {
+      "name": "sendToPrintUtility",
+      "description": "Gets and sets whether the created STL file will be sent to the print utility specified by the printUtility property. If this is false a filename must be defined."
+    },
+    {
+      "name": "surfaceDeviation",
+      "description": "Gets and sets the current surface deviation, or the distance the mesh can deviate from the actual surface. This is defined in centimeter. Setting this property will automatically set the meshRefinement to MeshRefinementCustom. The default is the value associated with medium mesh refinement."
+    },
+    {
+      "name": "unitType",
+      "description": "Gets and sets the units to use for the created STL file. When the STLExportOptions object is created, this property is initialized with the default units specified for the Design."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Export to other formats API Sample",
+      "description": "Demonstrates exporting the active design to IGES, STEP, SAT, SMT, F3D and STL formats. To run this sample, have a design open and run the script. It will write out the translated files to a temp directory, which will it show in a message box."
+    },
+    {
+      "name": "STLExport API Sample",
+      "description": "Demonstrates how to export f3d to STL format."
+    }
+  ],
+  "version": "Introduced in version January 2015",
+  "property_details": {
+    "aspectRatio": {
+      "id": "STLExportOptions_aspectRatio",
+      "title": "STLExportOptions.aspectRatio Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/STLExportOptions.h",
+      "description": "Gets and sets the minimum aspect ratio for that triangles that are generated for the mesh. Setting this property will automatically set the meshRefinement to MeshRefinementCustom. The default is the value associated with medium mesh refinement.",
+      "parent_class": "STLExportOptions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sTLExportOptions_var.aspectRatio\n\n# Set the value of the property.\nsTLExportOptions_var.aspectRatio = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sTLExportOptions_var->aspectRatio();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sTLExportOptions_var->aspectRatio(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "availablePrintUtilities": {
+      "id": "STLExportOptions_availablePrintUtilities",
+      "title": "STLExportOptions.availablePrintUtilities Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/STLExportOptions.h",
+      "description": "Returns a list of the known available print utilities. These strings can be used to set the PrintUtility property to specify which print utility to open the STL file in.",
+      "parent_class": "STLExportOptions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sTLExportOptions_var.availablePrintUtilities",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector propertyValue = sTLExportOptions_var->availablePrintUtilities();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "STLExport API Sample",
+          "description": "Demonstrates how to export f3d to STL format."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    },
+    "filename": {
+      "id": "STLExportOptions_filename",
+      "title": "STLExportOptions.filename Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/STLExportOptions.h",
+      "description": "Gets and sets the filename that the exported file will be written to. This can be empty in the case of STL export and sending the result to the mesh editor.",
+      "parent_class": "STLExportOptions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sTLExportOptions_var.filename\n\n# Set the value of the property.\nsTLExportOptions_var.filename = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sTLExportOptions_var->filename();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = sTLExportOptions_var->filename(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "geometry": {
+      "id": "STLExportOptions_geometry",
+      "title": "STLExportOptions.geometry Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/STLExportOptions.h",
+      "description": "Specifies the geometry to export. This can be an Occurrence, or the root Component. For STL, OBJ, and 3MF export, it can be a BRepBody. For DXF export, it can be a sketch of flat pattern.",
+      "parent_class": "STLExportOptions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sTLExportOptions_var.geometry\n\n# Set the value of the property.\nsTLExportOptions_var.geometry = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sTLExportOptions_var->geometry();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = sTLExportOptions_var->geometry(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "isBinaryFormat": {
+      "id": "STLExportOptions_isBinaryFormat",
+      "title": "STLExportOptions.isBinaryFormat Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/STLExportOptions.h",
+      "description": "Indicates if the STL file is to be an ASCII or binary STL format. The default is true.",
+      "parent_class": "STLExportOptions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sTLExportOptions_var.isBinaryFormat\n\n# Set the value of the property.\nsTLExportOptions_var.isBinaryFormat = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sTLExportOptions_var->isBinaryFormat();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sTLExportOptions_var->isBinaryFormat(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Export to other formats API Sample",
+          "description": "Demonstrates exporting the active design to IGES, STEP, SAT, SMT, F3D and STL formats. To run this sample, have a design open and run the script. It will write out the translated files to a temp directory, which will it show in a message box."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "isOneFilePerBody": {
+      "id": "STLExportOptions_isOneFilePerBody",
+      "title": "STLExportOptions.isOneFilePerBody Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/STLExportOptions.h",
+      "description": "If the input is an Occurrence or the root Component, this specifies if a single file should be created containing all of the bodies within that occurrence or component or if multiple files should be created; one for each body. If multiple files are created, the body name is appended to the filename. The default is false.",
+      "parent_class": "STLExportOptions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sTLExportOptions_var.isOneFilePerBody\n\n# Set the value of the property.\nsTLExportOptions_var.isOneFilePerBody = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sTLExportOptions_var->isOneFilePerBody();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sTLExportOptions_var->isOneFilePerBody(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isValid": {
+      "id": "STLExportOptions_isValid",
+      "title": "STLExportOptions.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/STLExportOptions.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "STLExportOptions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sTLExportOptions_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sTLExportOptions_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "maximumEdgeLength": {
+      "id": "STLExportOptions_maximumEdgeLength",
+      "title": "STLExportOptions.maximumEdgeLength Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/STLExportOptions.h",
+      "description": "Gets and sets the maximum length of any mesh edge. This is defined in centimeter. Setting this property will automatically set the meshRefinement to MeshRefinementCustom. The default is the value associated with medium mesh refinement.",
+      "parent_class": "STLExportOptions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sTLExportOptions_var.maximumEdgeLength\n\n# Set the value of the property.\nsTLExportOptions_var.maximumEdgeLength = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sTLExportOptions_var->maximumEdgeLength();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sTLExportOptions_var->maximumEdgeLength(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "meshRefinement": {
+      "id": "STLExportOptions_meshRefinement",
+      "title": "STLExportOptions.meshRefinement Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/STLExportOptions.h",
+      "description": "Gets and sets the current simple mesh refinement settings. Setting this property will reset the surfaceDeviation, normalDeviation, maximumEdgeLength, and aspectRatio to values that correspond to the specified mesh refinement. The default is MeshRefinementMedium.",
+      "parent_class": "STLExportOptions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sTLExportOptions_var.meshRefinement\n\n# Set the value of the property.\nsTLExportOptions_var.meshRefinement = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nMeshRefinementSettings propertyValue = sTLExportOptions_var->meshRefinement();\n\n// Set the value of the property, where value_var is a MeshRefinementSettings.\nbool returnValue = sTLExportOptions_var->meshRefinement(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Export to other formats API Sample",
+          "description": "Demonstrates exporting the active design to IGES, STEP, SAT, SMT, F3D and STL formats. To run this sample, have a design open and run the script. It will write out the translated files to a temp directory, which will it show in a message box."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "normalDeviation": {
+      "id": "STLExportOptions_normalDeviation",
+      "title": "STLExportOptions.normalDeviation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/STLExportOptions.h",
+      "description": "Gets and sets the current normal deviation, or the angle the mesh normals at the vertices can deviate from the actual surface normals. This is defined in radians. Setting this property will automatically set the meshRefinement to MeshRefinementCustom. The default is the value associated with medium mesh refinement.",
+      "parent_class": "STLExportOptions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sTLExportOptions_var.normalDeviation\n\n# Set the value of the property.\nsTLExportOptions_var.normalDeviation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sTLExportOptions_var->normalDeviation();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sTLExportOptions_var->normalDeviation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "objectType": {
+      "id": "STLExportOptions_objectType",
+      "title": "STLExportOptions.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/STLExportOptions.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "STLExportOptions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sTLExportOptions_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sTLExportOptions_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "printUtility": {
+      "id": "STLExportOptions_printUtility",
+      "title": "STLExportOptions.printUtility Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/STLExportOptions.h",
+      "description": "Specifies which print utility to use when opening the STL file if the sendToPrintUtility property is true. The value of this property can be one of the strings returned by the availalbePrintUtilities property, which will specify one of the know print utilities. You can also specify a custom print utility by specifying the full path to the print utility executable. The default value of this property is the last setting specified in the user-interface.",
+      "parent_class": "STLExportOptions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sTLExportOptions_var.printUtility\n\n# Set the value of the property.\nsTLExportOptions_var.printUtility = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sTLExportOptions_var->printUtility();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = sTLExportOptions_var->printUtility(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "STLExport API Sample",
+          "description": "Demonstrates how to export f3d to STL format."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    },
+    "sendToPrintUtility": {
+      "id": "STLExportOptions_sendToPrintUtility",
+      "title": "STLExportOptions.sendToPrintUtility Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/STLExportOptions.h",
+      "description": "Gets and sets whether the created STL file will be sent to the print utility specified by the printUtility property. If this is false a filename must be defined.",
+      "parent_class": "STLExportOptions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sTLExportOptions_var.sendToPrintUtility\n\n# Set the value of the property.\nsTLExportOptions_var.sendToPrintUtility = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sTLExportOptions_var->sendToPrintUtility();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sTLExportOptions_var->sendToPrintUtility(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "STLExport API Sample",
+          "description": "Demonstrates how to export f3d to STL format."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    },
+    "surfaceDeviation": {
+      "id": "STLExportOptions_surfaceDeviation",
+      "title": "STLExportOptions.surfaceDeviation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/STLExportOptions.h",
+      "description": "Gets and sets the current surface deviation, or the distance the mesh can deviate from the actual surface. This is defined in centimeter. Setting this property will automatically set the meshRefinement to MeshRefinementCustom. The default is the value associated with medium mesh refinement.",
+      "parent_class": "STLExportOptions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sTLExportOptions_var.surfaceDeviation\n\n# Set the value of the property.\nsTLExportOptions_var.surfaceDeviation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sTLExportOptions_var->surfaceDeviation();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sTLExportOptions_var->surfaceDeviation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "unitType": {
+      "id": "STLExportOptions_unitType",
+      "title": "STLExportOptions.unitType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/STLExportOptions.h",
+      "description": "Gets and sets the units to use for the created STL file. When the STLExportOptions object is created, this property is initialized with the default units specified for the Design.",
+      "parent_class": "STLExportOptions",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sTLExportOptions_var.unitType\n\n# Set the value of the property.\nsTLExportOptions_var.unitType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nDistanceUnits propertyValue = sTLExportOptions_var->unitType();\n\n// Set the value of the property, where value_var is a DistanceUnits.\nbool returnValue = sTLExportOptions_var->unitType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "STLExportOptions_classType",
+      "title": "STLExportOptions.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/STLExportOptions.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "STLExportOptions",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.STLExportOptions.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::STLExportOptions::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2015"
+    }
+  }
+}

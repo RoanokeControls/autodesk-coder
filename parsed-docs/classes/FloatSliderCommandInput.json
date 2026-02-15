@@ -1,0 +1,566 @@
+{
+  "id": "FloatSliderCommandInput",
+  "title": "FloatSliderCommandInput Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+  "description": "Provides a command input to get the value of a slider from the user, the value type is float.",
+  "parent_class": "SliderCommandInput",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this Command input."
+    },
+    {
+      "name": "getText",
+      "description": "Gets the texts of the slider if text has been defined."
+    },
+    {
+      "name": "setText",
+      "description": "Sets the text of the slider. Both the left and the right text should be set."
+    }
+  ],
+  "properties": [
+    {
+      "name": "commandInputs",
+      "description": "Gets the CommandInputs class of the parent, which can be a Command, GroupCommandInput or TabCommandInput."
+    },
+    {
+      "name": "expressionOne",
+      "description": "Uses an expression to set the value in the first input field. This can contain equations and is evaluated using the specified unit type."
+    },
+    {
+      "name": "expressionTwo",
+      "description": "Uses an expression to set the value in the second input field. This can contain equations and is evaluated using the specified unit type.   This property is only available when the hasTwoSliders property returns true."
+    },
+    {
+      "name": "hasTwoSliders",
+      "description": "Gets if the command input has two sliders."
+    },
+    {
+      "name": "id",
+      "description": "Gets the unique identifier for this input in the command's CommandInputs."
+    },
+    {
+      "name": "isEnabled",
+      "description": "Gets or sets if this input is currently enabled or disabled for user interaction.   Currently, the isEnabled property does not disable SelectionCommandInput objects but instead has the same effect as the SelectionCommandInput.hasFocus property."
+    },
+    {
+      "name": "isFullWidth",
+      "description": "Gets or sets if this input fills the entire width of the dialog. If true, the name is ignored and the input control will fill the entire width of the command dialog. The default value for this property in a new command input if false, or not to fill the width. This property does not apply to GroupCommandInputs or TabCommandInputs."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets or sets if this input will be visible to the user.   Setting a SelectionCommandInput to be invisible will clear any selections it currently has."
+    },
+    {
+      "name": "maximumValue",
+      "description": "Gets and sets maximum value of the slider in database units. Gets a failure when set if the value of this command input was added by value list."
+    },
+    {
+      "name": "minimumValue",
+      "description": "Gets and sets minimum value of the slider in database units. Gets a failure when set if the value of this command input was added by value list."
+    },
+    {
+      "name": "name",
+      "description": "Gets the user visible name of this input."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentCommand",
+      "description": "Gets the parent Command."
+    },
+    {
+      "name": "parentCommandInput",
+      "description": "Gets the parent CommandInput if this commandInput is the child of a TabCommandInput or GroupCommandInput. Returns null if there is no parent."
+    },
+    {
+      "name": "spinStep",
+      "description": "Gets and sets the spin step value in the unit type set by the unitType argument. The value should be more than zero. This is the amount the slider will advance when the user clicks the spin button beside the value."
+    },
+    {
+      "name": "toolClipFilename",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text."
+    },
+    {
+      "name": "tooltip",
+      "description": "Gets or sets the base tooltip string. This is always shown for commands. If the tooltip description and/or tool clip are also specified then the tooltip will progressively display more information as the user hovers the mouse over the control."
+    },
+    {
+      "name": "tooltipDescription",
+      "description": "Gets or sets additional text to display progressively along with the tooltip. The text for the description can contain some basic HTML formatting tags to format the tags. For example the br tag can be used to create multiple paragraphs. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text."
+    },
+    {
+      "name": "unitType",
+      "description": "Gets and sets the unit type that is used when evaluating the user's input."
+    },
+    {
+      "name": "valueList",
+      "description": "Gets the value list of the slider. This property is valid when this input represents a list type of slider command input. Otherwise an empty list will be returned."
+    },
+    {
+      "name": "valueOne",
+      "description": "Gets or sets the first value associated with this input. The value is always in the database units of the unit type specified. For example, if the unit type is \"inch\" this value is in centimeters since centimeters are the database length unit. When setting the value it is converted into a string using the unit type and displayed in the input box."
+    },
+    {
+      "name": "valueTwo",
+      "description": "Gets or sets the second value associated with this input. The value is always in the database units of the unit type specified. For example, if the unit type is \"inch\" this value is in centimeters since centimeters are the database length unit. When setting the value it is converted into a string using the unit type and displayed in the input box.   This property is only available when the hasTwoSliders property returns true."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Command Inputs API Sample",
+      "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.  You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+    }
+  ],
+  "version": "Introduced in version June 2015",
+  "method_details": {
+    "classType": {
+      "id": "FloatSliderCommandInput_classType",
+      "title": "FloatSliderCommandInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "returnValue = adsk.core.FloatSliderCommandInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::FloatSliderCommandInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version June 2015"
+    },
+    "deleteMe": {
+      "id": "FloatSliderCommandInput_deleteMe",
+      "title": "FloatSliderCommandInput.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Deletes this Command input.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "returnValue = floatSliderCommandInput_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = floatSliderCommandInput_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version August 2020"
+    },
+    "getText": {
+      "id": "FloatSliderCommandInput_getText",
+      "title": "FloatSliderCommandInput.getText Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets the texts of the slider if text has been defined.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "returnValue = floatSliderCommandInput_var.getText(isLeft)",
+        "cpp": "#include \n\nreturnValue = floatSliderCommandInput_var->getText(isLeft);"
+      },
+      "return_type": "string",
+      "return_description": "Returns the left or right text of the slider.",
+      "parameters": [
+        {
+          "name": "isLeft",
+          "type": "boolean",
+          "description": "Indicates to get the left or right text."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "setText": {
+      "id": "FloatSliderCommandInput_setText",
+      "title": "FloatSliderCommandInput.setText Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Sets the text of the slider. Both the left and the right text should be set.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "returnValue = floatSliderCommandInput_var.setText(left, right)",
+        "cpp": "#include \n\nreturnValue = floatSliderCommandInput_var->setText(left, right);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "left",
+          "type": "string",
+          "description": "Indicates the text on the left side of the slider."
+        },
+        {
+          "name": "right",
+          "type": "string",
+          "description": "Indicates the text on the right side of the slider."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Command Inputs API Sample",
+          "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.\u00a0You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    }
+  },
+  "property_details": {
+    "commandInputs": {
+      "id": "FloatSliderCommandInput_commandInputs",
+      "title": "FloatSliderCommandInput.commandInputs Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets the CommandInputs class of the parent, which can be a Command, GroupCommandInput or TabCommandInput.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.commandInputs",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = floatSliderCommandInput_var->commandInputs();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "expressionOne": {
+      "id": "FloatSliderCommandInput_expressionOne",
+      "title": "FloatSliderCommandInput.expressionOne Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Uses an expression to set the value in the first input field. This can contain equations and is evaluated using the specified unit type.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.expressionOne\n\n# Set the value of the property.\nfloatSliderCommandInput_var.expressionOne = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = floatSliderCommandInput_var->expressionOne();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = floatSliderCommandInput_var->expressionOne(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "expressionTwo": {
+      "id": "FloatSliderCommandInput_expressionTwo",
+      "title": "FloatSliderCommandInput.expressionTwo Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Uses an expression to set the value in the second input field. This can contain equations and is evaluated using the specified unit type. This property is only available when the hasTwoSliders property returns true.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.expressionTwo\n\n# Set the value of the property.\nfloatSliderCommandInput_var.expressionTwo = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = floatSliderCommandInput_var->expressionTwo();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = floatSliderCommandInput_var->expressionTwo(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "hasTwoSliders": {
+      "id": "FloatSliderCommandInput_hasTwoSliders",
+      "title": "FloatSliderCommandInput.hasTwoSliders Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets if the command input has two sliders.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.hasTwoSliders",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = floatSliderCommandInput_var->hasTwoSliders();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "id": {
+      "id": "FloatSliderCommandInput_id",
+      "title": "FloatSliderCommandInput.id Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets the unique identifier for this input in the command's CommandInputs.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = floatSliderCommandInput_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isEnabled": {
+      "id": "FloatSliderCommandInput_isEnabled",
+      "title": "FloatSliderCommandInput.isEnabled Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets or sets if this input is currently enabled or disabled for user interaction. Currently, the isEnabled property does not disable SelectionCommandInput objects but instead has the same effect as the SelectionCommandInput.hasFocus property.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.isEnabled\n\n# Set the value of the property.\nfloatSliderCommandInput_var.isEnabled = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = floatSliderCommandInput_var->isEnabled();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = floatSliderCommandInput_var->isEnabled(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isFullWidth": {
+      "id": "FloatSliderCommandInput_isFullWidth",
+      "title": "FloatSliderCommandInput.isFullWidth Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets or sets if this input fills the entire width of the dialog. If true, the name is ignored and the input control will fill the entire width of the command dialog. The default value for this property in a new command input if false, or not to fill the width. This property does not apply to GroupCommandInputs or TabCommandInputs.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.isFullWidth\n\n# Set the value of the property.\nfloatSliderCommandInput_var.isFullWidth = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = floatSliderCommandInput_var->isFullWidth();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = floatSliderCommandInput_var->isFullWidth(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isValid": {
+      "id": "FloatSliderCommandInput_isValid",
+      "title": "FloatSliderCommandInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = floatSliderCommandInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isVisible": {
+      "id": "FloatSliderCommandInput_isVisible",
+      "title": "FloatSliderCommandInput.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets or sets if this input will be visible to the user. Setting a SelectionCommandInput to be invisible will clear any selections it currently has.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.isVisible\n\n# Set the value of the property.\nfloatSliderCommandInput_var.isVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = floatSliderCommandInput_var->isVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = floatSliderCommandInput_var->isVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "maximumValue": {
+      "id": "FloatSliderCommandInput_maximumValue",
+      "title": "FloatSliderCommandInput.maximumValue Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets and sets maximum value of the slider in database units. Gets a failure when set if the value of this command input was added by value list.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.maximumValue\n\n# Set the value of the property.\nfloatSliderCommandInput_var.maximumValue = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = floatSliderCommandInput_var->maximumValue();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = floatSliderCommandInput_var->maximumValue(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "minimumValue": {
+      "id": "FloatSliderCommandInput_minimumValue",
+      "title": "FloatSliderCommandInput.minimumValue Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets and sets minimum value of the slider in database units. Gets a failure when set if the value of this command input was added by value list.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.minimumValue\n\n# Set the value of the property.\nfloatSliderCommandInput_var.minimumValue = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = floatSliderCommandInput_var->minimumValue();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = floatSliderCommandInput_var->minimumValue(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "name": {
+      "id": "FloatSliderCommandInput_name",
+      "title": "FloatSliderCommandInput.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets the user visible name of this input.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.name",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = floatSliderCommandInput_var->name();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "objectType": {
+      "id": "FloatSliderCommandInput_objectType",
+      "title": "FloatSliderCommandInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = floatSliderCommandInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "parentCommand": {
+      "id": "FloatSliderCommandInput_parentCommand",
+      "title": "FloatSliderCommandInput.parentCommand Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets the parent Command.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.parentCommand",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = floatSliderCommandInput_var->parentCommand();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "parentCommandInput": {
+      "id": "FloatSliderCommandInput_parentCommandInput",
+      "title": "FloatSliderCommandInput.parentCommandInput Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets the parent CommandInput if this commandInput is the child of a TabCommandInput or GroupCommandInput. Returns null if there is no parent.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.parentCommandInput",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = floatSliderCommandInput_var->parentCommandInput();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "spinStep": {
+      "id": "FloatSliderCommandInput_spinStep",
+      "title": "FloatSliderCommandInput.spinStep Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets and sets the spin step value in the unit type set by the unitType argument. The value should be more than zero. This is the amount the slider will advance when the user clicks the spin button beside the value.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.spinStep\n\n# Set the value of the property.\nfloatSliderCommandInput_var.spinStep = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = floatSliderCommandInput_var->spinStep();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = floatSliderCommandInput_var->spinStep(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "toolClipFilename": {
+      "id": "FloatSliderCommandInput_toolClipFilename",
+      "title": "FloatSliderCommandInput.toolClipFilename Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.toolClipFilename\n\n# Set the value of the property.\nfloatSliderCommandInput_var.toolClipFilename = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = floatSliderCommandInput_var->toolClipFilename();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = floatSliderCommandInput_var->toolClipFilename(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "tooltip": {
+      "id": "FloatSliderCommandInput_tooltip",
+      "title": "FloatSliderCommandInput.tooltip Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets or sets the base tooltip string. This is always shown for commands. If the tooltip description and/or tool clip are also specified then the tooltip will progressively display more information as the user hovers the mouse over the control.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.tooltip\n\n# Set the value of the property.\nfloatSliderCommandInput_var.tooltip = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = floatSliderCommandInput_var->tooltip();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = floatSliderCommandInput_var->tooltip(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "tooltipDescription": {
+      "id": "FloatSliderCommandInput_tooltipDescription",
+      "title": "FloatSliderCommandInput.tooltipDescription Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets or sets additional text to display progressively along with the tooltip. The text for the description can contain some basic HTML formatting tags to format the tags. For example the br tag can be used to create multiple paragraphs. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.tooltipDescription\n\n# Set the value of the property.\nfloatSliderCommandInput_var.tooltipDescription = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = floatSliderCommandInput_var->tooltipDescription();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = floatSliderCommandInput_var->tooltipDescription(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "unitType": {
+      "id": "FloatSliderCommandInput_unitType",
+      "title": "FloatSliderCommandInput.unitType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets and sets the unit type that is used when evaluating the user's input.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.unitType\n\n# Set the value of the property.\nfloatSliderCommandInput_var.unitType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = floatSliderCommandInput_var->unitType();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = floatSliderCommandInput_var->unitType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "valueList": {
+      "id": "FloatSliderCommandInput_valueList",
+      "title": "FloatSliderCommandInput.valueList Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets the value list of the slider. This property is valid when this input represents a list type of slider command input. Otherwise an empty list will be returned.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.valueList",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector propertyValue = floatSliderCommandInput_var->valueList();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "valueOne": {
+      "id": "FloatSliderCommandInput_valueOne",
+      "title": "FloatSliderCommandInput.valueOne Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets or sets the first value associated with this input. The value is always in the database units of the unit type specified. For example, if the unit type is \"inch\" this value is in centimeters since centimeters are the database length unit. When setting the value it is converted into a string using the unit type and displayed in the input box.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.valueOne\n\n# Set the value of the property.\nfloatSliderCommandInput_var.valueOne = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = floatSliderCommandInput_var->valueOne();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = floatSliderCommandInput_var->valueOne(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "valueTwo": {
+      "id": "FloatSliderCommandInput_valueTwo",
+      "title": "FloatSliderCommandInput.valueTwo Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/FloatSliderCommandInput.h",
+      "description": "Gets or sets the second value associated with this input. The value is always in the database units of the unit type specified. For example, if the unit type is \"inch\" this value is in centimeters since centimeters are the database length unit. When setting the value it is converted into a string using the unit type and displayed in the input box. This property is only available when the hasTwoSliders property returns true.",
+      "parent_class": "FloatSliderCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatSliderCommandInput_var.valueTwo\n\n# Set the value of the property.\nfloatSliderCommandInput_var.valueTwo = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = floatSliderCommandInput_var->valueTwo();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = floatSliderCommandInput_var->valueTwo(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    }
+  }
+}

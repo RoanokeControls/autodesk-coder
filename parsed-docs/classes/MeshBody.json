@@ -1,0 +1,800 @@
+{
+  "id": "MeshBody",
+  "title": "MeshBody Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/MeshBody/MeshBody.h",
+  "description": "Provides access to a mesh body.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "copy",
+      "description": "Copies the mesh body to the clipboard."
+    },
+    {
+      "name": "copyToComponent",
+      "description": "Creates a copy of this mesh body into the specified target."
+    },
+    {
+      "name": "createComponent",
+      "description": "Creates a new component and occurrence within the component that currently owns this body. This body is moved into the new component and returned. The newly created component can be obtained by using the parentComponent property of the MeshBody object."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence. Fails if this object is not the NativeObject."
+    },
+    {
+      "name": "cut",
+      "description": "Cuts the mesh body to the clipboard."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the mesh body."
+    },
+    {
+      "name": "findByTempId",
+      "description": "Returns the face group with the temporary id."
+    },
+    {
+      "name": "moveToComponent",
+      "description": "Moves this mesh body from it's current component into the root component or the component owned by the specified occurrence."
+    }
+  ],
+  "properties": [
+    {
+      "name": "appearance",
+      "description": "Read-write property that gets and sets the current appearance of the body. Setting this property will result in applying an override appearance to the body and the AppearanceSourceType property will return OverrideAppearanceSource. Setting this property to null will remove any override."
+    },
+    {
+      "name": "appearanceSourceType",
+      "description": "Read-write property that gets the source of the appearance for the body. If this returns OverrideAppearanceSource, an override exists on this body. The override can be removed by setting the Appearance property to null."
+    },
+    {
+      "name": "area",
+      "description": "Returns the area in cm ^ 2."
+    },
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this mesh body."
+    },
+    {
+      "name": "baseOrFormFeature",
+      "description": "This property returns the base or form feature that this mesh body is associated with. It returns null in a direct modeling design."
+    },
+    {
+      "name": "boundingBox",
+      "description": "Returns the bounding box of this mesh body."
+    },
+    {
+      "name": "displayMesh",
+      "description": "Returns the associated mesh that is used for the display. This will always be triangles and includes any textures."
+    },
+    {
+      "name": "displayOverrides",
+      "description": "Gets the object that allows manipulation of overrides that control how the mesh is displayed in the interactive 3D view."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the MeshBody object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same mesh body.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "faceGroups",
+      "description": "Returns a collection of all of the face groups in the body."
+    },
+    {
+      "name": "isClosed",
+      "description": "Check to see if the mesh is closed - i.e. contains no edges with only one triangle. Returns true if the mesh is closed, false if not."
+    },
+    {
+      "name": "isLightBulbOn",
+      "description": "Is the light bulb (as displayed in the browser) on. A mesh body will only be visible if the light bulb is switched on. However, the light bulb can be on and the mesh body is still invisible if the light bulb for all bodies or the owning component is off."
+    },
+    {
+      "name": "isOriented",
+      "description": "Check to see if the mesh is oriented - i.e. every edge has at most two triangles, and those triangles have consistent orientations. Returns true if the mesh is oriented, false if not."
+    },
+    {
+      "name": "isSelectable",
+      "description": "Gets and sets if the mesh body is selectable in the graphics window."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets if the mesh body point is visible."
+    },
+    {
+      "name": "material",
+      "description": "Gets and sets the physical material assigned to this mesh body."
+    },
+    {
+      "name": "mesh",
+      "description": "Returns the original mesh data that was imported. This can include triangles, quads, and polygons."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name of the mesh body as displayed in the browser."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "opacity",
+      "description": "Gets and sets the opacity override assigned to this body. A value of 1.0 specifies that is it completely opaque and a value of 0.0 specifies that is it completely transparent.   This value is not necessarily related to what the user sees because the opacity is inherited. For example, if you this body is in a component and that component's opacity is set to something other than 1.0, the body will also be shown as slightly transparent even though the opacity property for the body will return 1.0. Because the component that contains the body can be referenced as an occurrence in other components and they can have different opacity settings, it's possible that different instances of the same body can display using different opacity levels. To get the opacity that it is being displayed with use the MeshBody.visibleOpacity property.   This is the API equivalent of the \"Opacity Control\" command available for the body in the browser."
+    },
+    {
+      "name": "orientedMinimumBoundingBox",
+      "description": "Returns an oriented bounding box of the body that is best oriented to tightly fit the body."
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent Component."
+    },
+    {
+      "name": "textureMapControl",
+      "description": "Returns the TextureMapControl object associated with this body when there is an appearance assigned to the body that has a texture associated with it. If there isn't a texture, this property will return null. If there is a texture, you can use the returned object to query and modify how the texture is applied to the body."
+    },
+    {
+      "name": "visibleOpacity",
+      "description": "The user can set an override opacity for components and bodies these opacity overrides combine if children and parent components have overrides. This property returns the actual opacity that is being used to render the body. To set the opacity use the opacity property of the MeshBody object."
+    },
+    {
+      "name": "volume",
+      "description": "Returns the volume in cm ^ 3. Returns 0 in the case the mesh body is not closed."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "property_details": {
+    "appearance": {
+      "id": "MeshBody_appearance",
+      "title": "MeshBody.appearance Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Read-write property that gets and sets the current appearance of the body. Setting this property will result in applying an override appearance to the body and the AppearanceSourceType property will return OverrideAppearanceSource. Setting this property to null will remove any override.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.appearance\n\n# Set the value of the property.\nmeshBody_var.appearance = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshBody_var->appearance();\n\n// Set the value of the property, where value_var is an Appearance.\nbool returnValue = meshBody_var->appearance(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "appearanceSourceType": {
+      "id": "MeshBody_appearanceSourceType",
+      "title": "MeshBody.appearanceSourceType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Read-write property that gets the source of the appearance for the body. If this returns OverrideAppearanceSource, an override exists on this body. The override can be removed by setting the Appearance property to null.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.appearanceSourceType",
+        "cpp": "#include \n\n// Get the value of the property.\nAppearanceSourceTypes propertyValue = meshBody_var->appearanceSourceType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "area": {
+      "id": "MeshBody_area",
+      "title": "MeshBody.area Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Returns the area in cm ^ 2.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.area",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = meshBody_var->area();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "assemblyContext": {
+      "id": "MeshBody_assemblyContext",
+      "title": "MeshBody.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshBody_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "attributes": {
+      "id": "MeshBody_attributes",
+      "title": "MeshBody.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Returns the collection of attributes associated with this mesh body.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshBody_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "baseOrFormFeature": {
+      "id": "MeshBody_baseOrFormFeature",
+      "title": "MeshBody.baseOrFormFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "This property returns the base or form feature that this mesh body is associated with. It returns null in a direct modeling design.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.baseOrFormFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshBody_var->baseOrFormFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "boundingBox": {
+      "id": "MeshBody_boundingBox",
+      "title": "MeshBody.boundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Returns the bounding box of this mesh body.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.boundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshBody_var->boundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "displayMesh": {
+      "id": "MeshBody_displayMesh",
+      "title": "MeshBody.displayMesh Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Returns the associated mesh that is used for the display. This will always be triangles and includes any textures.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.displayMesh",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshBody_var->displayMesh();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "displayOverrides": {
+      "id": "MeshBody_displayOverrides",
+      "title": "MeshBody.displayOverrides Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Gets the object that allows manipulation of overrides that control how the mesh is displayed in the interactive 3D view.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.displayOverrides",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshBody_var->displayOverrides();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2025"
+    },
+    "entityToken": {
+      "id": "MeshBody_entityToken",
+      "title": "MeshBody.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Returns a token for the MeshBody object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same mesh body. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = meshBody_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "faceGroups": {
+      "id": "MeshBody_faceGroups",
+      "title": "MeshBody.faceGroups Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Returns a collection of all of the face groups in the body.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.faceGroups",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshBody_var->faceGroups();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "isClosed": {
+      "id": "MeshBody_isClosed",
+      "title": "MeshBody.isClosed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Check to see if the mesh is closed - i.e. contains no edges with only one triangle. Returns true if the mesh is closed, false if not.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.isClosed",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = meshBody_var->isClosed();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "isLightBulbOn": {
+      "id": "MeshBody_isLightBulbOn",
+      "title": "MeshBody.isLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Is the light bulb (as displayed in the browser) on. A mesh body will only be visible if the light bulb is switched on. However, the light bulb can be on and the mesh body is still invisible if the light bulb for all bodies or the owning component is off.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.isLightBulbOn\n\n# Set the value of the property.\nmeshBody_var.isLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = meshBody_var->isLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = meshBody_var->isLightBulbOn(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Mesh Body Sample",
+          "description": "Mesh body related functions"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isOriented": {
+      "id": "MeshBody_isOriented",
+      "title": "MeshBody.isOriented Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Check to see if the mesh is oriented - i.e. every edge has at most two triangles, and those triangles have consistent orientations. Returns true if the mesh is oriented, false if not.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.isOriented",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = meshBody_var->isOriented();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "isSelectable": {
+      "id": "MeshBody_isSelectable",
+      "title": "MeshBody.isSelectable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Gets and sets if the mesh body is selectable in the graphics window.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.isSelectable\n\n# Set the value of the property.\nmeshBody_var.isSelectable = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = meshBody_var->isSelectable();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = meshBody_var->isSelectable(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Mesh Body Sample",
+          "description": "Mesh body related functions"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "MeshBody_isValid",
+      "title": "MeshBody.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = meshBody_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isVisible": {
+      "id": "MeshBody_isVisible",
+      "title": "MeshBody.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Gets if the mesh body point is visible.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = meshBody_var->isVisible();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Mesh Body Sample",
+          "description": "Mesh body related functions"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "material": {
+      "id": "MeshBody_material",
+      "title": "MeshBody.material Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Gets and sets the physical material assigned to this mesh body.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.material\n\n# Set the value of the property.\nmeshBody_var.material = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshBody_var->material();\n\n// Set the value of the property, where value_var is a Material.\nbool returnValue = meshBody_var->material(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Mesh Body Sample",
+          "description": "Mesh body related functions"
+        }
+      ],
+      "version": "Introduced in version August 2016"
+    },
+    "mesh": {
+      "id": "MeshBody_mesh",
+      "title": "MeshBody.mesh Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Returns the original mesh data that was imported. This can include triangles, quads, and polygons.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.mesh",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshBody_var->mesh();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "name": {
+      "id": "MeshBody_name",
+      "title": "MeshBody.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Gets and sets the name of the mesh body as displayed in the browser.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.name\n\n# Set the value of the property.\nmeshBody_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = meshBody_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = meshBody_var->name(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Mesh Body Sample",
+          "description": "Mesh body related functions"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "nativeObject": {
+      "id": "MeshBody_nativeObject",
+      "title": "MeshBody.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshBody_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "MeshBody_objectType",
+      "title": "MeshBody.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = meshBody_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "opacity": {
+      "id": "MeshBody_opacity",
+      "title": "MeshBody.opacity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Gets and sets the opacity override assigned to this body. A value of 1.0 specifies that is it completely opaque and a value of 0.0 specifies that is it completely transparent. This value is not necessarily related to what the user sees because the opacity is inherited. For example, if you this body is in a component and that component's opacity is set to something other than 1.0, the body will also be shown as slightly transparent even though the opacity property for the body will return 1.0. Because the component that contains the body can be referenced as an occurrence in other components and they can have different opacity settings, it's possible that different instances of the same body can display using different opacity levels. To get the opacity that it is being displayed with use the MeshBody.visibleOpacity property. This is the API equivalent of the \"Opacity Control\" command available for the body in the browser.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.opacity\n\n# Set the value of the property.\nmeshBody_var.opacity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = meshBody_var->opacity();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = meshBody_var->opacity(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Mesh Body Sample",
+          "description": "Mesh body related functions"
+        }
+      ],
+      "version": "Introduced in version December 2017"
+    },
+    "orientedMinimumBoundingBox": {
+      "id": "MeshBody_orientedMinimumBoundingBox",
+      "title": "MeshBody.orientedMinimumBoundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Returns an oriented bounding box of the body that is best oriented to tightly fit the body.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.orientedMinimumBoundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshBody_var->orientedMinimumBoundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2025"
+    },
+    "parentComponent": {
+      "id": "MeshBody_parentComponent",
+      "title": "MeshBody.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Returns the parent Component.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshBody_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "textureMapControl": {
+      "id": "MeshBody_textureMapControl",
+      "title": "MeshBody.textureMapControl Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Returns the TextureMapControl object associated with this body when there is an appearance assigned to the body that has a texture associated with it. If there isn't a texture, this property will return null. If there is a texture, you can use the returned object to query and modify how the texture is applied to the body.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.textureMapControl",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshBody_var->textureMapControl();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "visibleOpacity": {
+      "id": "MeshBody_visibleOpacity",
+      "title": "MeshBody.visibleOpacity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "The user can set an override opacity for components and bodies these opacity overrides combine if children and parent components have overrides. This property returns the actual opacity that is being used to render the body. To set the opacity use the opacity property of the MeshBody object.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.visibleOpacity",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = meshBody_var->visibleOpacity();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Mesh Body Sample",
+          "description": "Mesh body related functions"
+        }
+      ],
+      "version": "Introduced in version December 2017"
+    },
+    "volume": {
+      "id": "MeshBody_volume",
+      "title": "MeshBody.volume Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Returns the volume in cm ^ 3. Returns 0 in the case the mesh body is not closed.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshBody_var.volume",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = meshBody_var->volume();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "MeshBody_classType",
+      "title": "MeshBody.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.MeshBody.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::MeshBody::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "copy": {
+      "id": "MeshBody_copy",
+      "title": "MeshBody.copy Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Copies the mesh body to the clipboard.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "returnValue = meshBody_var.copy()",
+        "cpp": "#include \n\nreturnValue = meshBody_var->copy();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the copy was successful.",
+      "version": "Introduced in version July 2025"
+    },
+    "copyToComponent": {
+      "id": "MeshBody_copyToComponent",
+      "title": "MeshBody.copyToComponent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Creates a copy of this mesh body into the specified target.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "returnValue = meshBody_var.copyToComponent(target)",
+        "cpp": "#include \n\nreturnValue = meshBody_var->copyToComponent(target);"
+      },
+      "return_type": "MeshBody",
+      "return_description": "Returns the moved mesh body or null in the case the move failed.",
+      "parameters": [
+        {
+          "name": "target",
+          "type": "Base",
+          "description": "The target can be either the root component or an occurrence.   In the case where an occurrence is specified, the mesh body will be copied into the parent component of the target occurrence and the target occurrence defines the transform of how the mesh body will be copied so that the body maintains it's same position with respect to the assembly."
+        }
+      ],
+      "version": "Introduced in version July 2025"
+    },
+    "createComponent": {
+      "id": "MeshBody_createComponent",
+      "title": "MeshBody.createComponent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Creates a new component and occurrence within the component that currently owns this body. This body is moved into the new component and returned. The newly created component can be obtained by using the parentComponent property of the MeshBody object.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "returnValue = meshBody_var.createComponent()",
+        "cpp": "#include \n\nreturnValue = meshBody_var->createComponent();"
+      },
+      "return_type": "MeshBody",
+      "return_description": "Returns the MeshBody in the new component or null in the case the creation failed.",
+      "version": "Introduced in version January 2024"
+    },
+    "createForAssemblyContext": {
+      "id": "MeshBody_createForAssemblyContext",
+      "title": "MeshBody.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence. Fails if this object is not the NativeObject.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "returnValue = meshBody_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = meshBody_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "MeshBody",
+      "return_description": "Returns the proxy for the occurrence in the context of the specified occurrence. Returns null if it failed.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that represents the context you want to create this proxy in."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "cut": {
+      "id": "MeshBody_cut",
+      "title": "MeshBody.cut Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Cuts the mesh body to the clipboard.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "returnValue = meshBody_var.cut()",
+        "cpp": "#include \n\nreturnValue = meshBody_var->cut();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the cut was successful.",
+      "version": "Introduced in version July 2025"
+    },
+    "deleteMe": {
+      "id": "MeshBody_deleteMe",
+      "title": "MeshBody.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Deletes the mesh body.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "returnValue = meshBody_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = meshBody_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true in the case where the selection was successful.",
+      "version": "Introduced in version August 2014"
+    },
+    "findByTempId": {
+      "id": "MeshBody_findByTempId",
+      "title": "MeshBody.findByTempId Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Returns the face group with the temporary id.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "returnValue = meshBody_var.findByTempId(tempId)",
+        "cpp": "#include \n\nreturnValue = meshBody_var->findByTempId(tempId);"
+      },
+      "return_type": "Base",
+      "return_description": "Returns the face group with the given tempId.",
+      "parameters": [
+        {
+          "name": "tempId",
+          "type": "integer",
+          "description": "The ID of the face group to find."
+        }
+      ],
+      "version": "Introduced in version September 2024"
+    },
+    "moveToComponent": {
+      "id": "MeshBody_moveToComponent",
+      "title": "MeshBody.moveToComponent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshBody.h",
+      "description": "Moves this mesh body from it's current component into the root component or the component owned by the specified occurrence.",
+      "parent_class": "MeshBody",
+      "syntax": {
+        "python": "returnValue = meshBody_var.moveToComponent(target)",
+        "cpp": "#include \n\nreturnValue = meshBody_var->moveToComponent(target);"
+      },
+      "return_type": "MeshBody",
+      "return_description": "Returns the moved mesh body or null in the case the move failed.",
+      "parameters": [
+        {
+          "name": "target",
+          "type": "Base",
+          "description": "The target can be either the root component or an occurrence.   In the case where an occurrence is specified, the mesh body will be moved into the parent component of the target occurrence and the target occurrence defines the transform of how the mesh body will be copied so that the body maintains it's same position with respect to the assembly."
+        }
+      ],
+      "version": "Introduced in version July 2025"
+    }
+  }
+}

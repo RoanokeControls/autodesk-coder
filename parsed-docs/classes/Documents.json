@@ -1,0 +1,203 @@
+{
+  "id": "Documents",
+  "title": "Documents Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/Documents.h",
+  "description": "The Documents object provides access to all of the currently open documents and provides methods to create and open documents.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates and opens a new document of the specified type."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified document using an index into the collection."
+    },
+    {
+      "name": "open",
+      "description": "Opens an item that has previously been saved."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of currently open documents. This includes documents that are visible and invisible."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Loft Feature API Sample",
+      "description": "Demonstrates creating a new loft feature."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "add": {
+      "id": "Documents_add",
+      "title": "Documents.add Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Documents.h",
+      "description": "Creates and opens a new document of the specified type. Remarks",
+      "parent_class": "Documents",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = documents_var.add(documentType)\n\n# Uses optional arguments.\nreturnValue = documents_var.add(documentType, visible, options)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = documents_var->add(documentType);\n\n// Uses optional arguments.\nreturnValue = documents_var->add(documentType, visible, options);"
+      },
+      "return_type": "Document",
+      "return_description": "Returns the created document",
+      "parameters": [
+        {
+          "name": "documentType",
+          "type": "DocumentTypes",
+          "description": "A value from the DocumentTypes enum that specifies the type of document to create."
+        },
+        {
+          "name": "visible",
+          "type": "boolean",
+          "description": "Optional argument specifying is the document should be visible or not. Currently, documents can only be created visibly so this argument must always be true.   This is an optional argument whose default value is True."
+        },
+        {
+          "name": "options",
+          "type": "NamedValues",
+          "description": "Various options that are supported that are specific to the document type. See the documentation for the DocumentTypes enum for information about the options supported for the various types.   This is an optional argument whose default value is null."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Loft Feature API Sample",
+          "description": "Demonstrates creating a new loft feature."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "classType": {
+      "id": "Documents_classType",
+      "title": "Documents.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Documents.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Documents",
+      "syntax": {
+        "python": "returnValue = adsk.core.Documents.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Documents::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "Documents_item",
+      "title": "Documents.item Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Documents.h",
+      "description": "Function that returns the specified document using an index into the collection.",
+      "parent_class": "Documents",
+      "syntax": {
+        "python": "returnValue = documents_var.item(index)",
+        "cpp": "#include \n\nreturnValue = documents_var->item(index);"
+      },
+      "return_type": "Document",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "open": {
+      "id": "Documents_open",
+      "title": "Documents.open Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Documents.h",
+      "description": "Opens an item that has previously been saved.",
+      "parent_class": "Documents",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = documents_var.open(dataFile)\n\n# Uses optional arguments.\nreturnValue = documents_var.open(dataFile, visible)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = documents_var->open(dataFile);\n\n// Uses optional arguments.\nreturnValue = documents_var->open(dataFile, visible);"
+      },
+      "return_type": "Document",
+      "return_description": "Returns the open document or null if the open failed.",
+      "parameters": [
+        {
+          "name": "dataFile",
+          "type": "DataFile",
+          "description": "The item to open."
+        },
+        {
+          "name": "visible",
+          "type": "boolean",
+          "description": "Specifies if the document should be opened visibly or not.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "Documents_count",
+      "title": "Documents.count Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Documents.h",
+      "description": "Returns the number of currently open documents. This includes documents that are visible and invisible.",
+      "parent_class": "Documents",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = documents_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = documents_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "Documents_isValid",
+      "title": "Documents.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Documents.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Documents",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = documents_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = documents_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "Documents_objectType",
+      "title": "Documents.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Documents.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Documents",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = documents_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = documents_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

@@ -1,0 +1,377 @@
+{
+  "id": "Camera",
+  "title": "Camera Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/Camera.h",
+  "description": "The Camera class represents the information that specifies how a model is displayed within a viewport. It's analogous to a real camera, which has a position in space, is pointed towards a specific point, is oriented in a particular way, and has a specific type of lens. Whether a camera is created statically using the Camera.create() method or obtained from a Viewport, a Camera object is always temporary and not associated with anything. This means when you get it from a Viewport, the Camera object captures the current state of the Viewport and stores it but doesn't save where it came from, so it is completely independent. To update the camera settings associated with a Viewport, get a Camera object from a Viewport or create a new Camera using Camera.create(), modify the Camera object to define the view you want, and assign it to the Viewport.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "create",
+      "description": "Creates a new Camera object that is independent of any viewport. This can be used to construct a camera to be used as input to modify a viewport, and create or update a named view."
+    },
+    {
+      "name": "getExtents",
+      "description": "Gets the extents of the camera. This is only used for orthographic cameras. The extents of a perspective camera is defined by a combination of the position of the eye point (how close the eye is to the model) and the perspective angle."
+    },
+    {
+      "name": "setExtents",
+      "description": "Sets the extents of the camera. This is only used for orthographic cameras. The extents of a perspective camera is defined by a combination of the position of the eye point (how close the eye is to the model) and the perspective angle.   When the camera is assigned to a viewport, typically only the width or the height is used depending on the aspect ratio of the viewport. For example, if the width and height are both 10, but the viewport is twice as wide as it is tall (2:1 aspect ratio). The height extent will be 10 and the width extent will be recomputed to be 20 to match the viewport."
+    }
+  ],
+  "properties": [
+    {
+      "name": "cameraType",
+      "description": "Gets and sets the current camera type."
+    },
+    {
+      "name": "eye",
+      "description": "Gets and sets the position of the eye in world space."
+    },
+    {
+      "name": "isFitView",
+      "description": "If this property is true, when this camera is applied to a viewport it will modify the camera such that the entire model is displayed in the viewport. When getting a camera from a viewport or creating a camera using Camera.create(), this property defaults to false."
+    },
+    {
+      "name": "isSmoothTransition",
+      "description": "This property controls if Fusion will perform a smooth transition animation from the current camera position to the new position. If this property is set to true, it will smoothly transition. If false, the camera will jump to the position defined by the camera without any animated transition.   When a camera is obtained from a Viewport or created using the Camera.create() method, this property defaults to false."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "perspectiveAngle",
+      "description": "Gets and sets the perspective angle of the camera. This property is only valid when the CameraType property is either Perspective or PerspectiveWithOrthoFaces."
+    },
+    {
+      "name": "target",
+      "description": "Gets and sets the camera target point in world space."
+    },
+    {
+      "name": "upVector",
+      "description": "Defines the \"up\" direction for the camera which controls the orientation of the camera around the line defined between the eye and target points."
+    },
+    {
+      "name": "viewExtents",
+      "description": "**RETIRED** Defines the area that's visible by the camera. This value is the radius of a sphere centered at the target point. The camera will display everything within that sphere and everything in front of and behind the sphere. Additional geometry outside of the sphere will also be visible depending on the shape of the window. Setting this value can cause the eye and/or perspective angle to be modified when the camera type is perspective."
+    },
+    {
+      "name": "viewOrientation",
+      "description": "Sets the camera to a standard orientation. If this is set, it will result in resetting all the camera values except the camera type. The orientation is based on the current orientation defined by the ViewCube. This means, that the view orientations cannot be expected to be consistent from one view to another."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "As-Built Joint Sample",
+      "description": "Demonstrates creating a new As-Built Joint."
+    },
+    {
+      "name": "Joint Origin Sample",
+      "description": "Demonstrates creating a new Joint Origin."
+    },
+    {
+      "name": "Rigid Group API Sample",
+      "description": "Demonstrates creating a new Rigid Group."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "property_details": {
+    "cameraType": {
+      "id": "Camera_cameraType",
+      "title": "Camera.cameraType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Camera.h",
+      "description": "Gets and sets the current camera type.",
+      "parent_class": "Camera",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = camera_var.cameraType\n\n# Set the value of the property.\ncamera_var.cameraType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nCameraTypes propertyValue = camera_var->cameraType();\n\n// Set the value of the property, where value_var is a CameraTypes.\nbool returnValue = camera_var->cameraType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "eye": {
+      "id": "Camera_eye",
+      "title": "Camera.eye Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Camera.h",
+      "description": "Gets and sets the position of the eye in world space.",
+      "parent_class": "Camera",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = camera_var.eye\n\n# Set the value of the property.\ncamera_var.eye = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = camera_var->eye();\n\n// Set the value of the property, where value_var is a Point3D.\nbool returnValue = camera_var->eye(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Rendering Sample",
+          "description": "Demonstrates using the Rendering capabilities in the API. This starts a series of local renderings to generate a series of frames, where the camera is repositioned and a parameter is modified for each frame to create a dynamic animation. To use the sample, have a design open that contains a parameter named \"Length\". It can be a user or model parameter. The sample will modify this parameter from a value of 0.1 cm to 15 cm, but you can change these values by editing the values of the paramStartVal and paramEndVal variables on lines 90 and 91 of the sample. It expects a folder named \"C:\\Temp\\RenderSample\" to exist, and will fail if it doesn't. The rendered frames will be written to that folder.An example rendering is shown below where this file was used. The parameter is modifying a move feature which results in changing the shape of an extrusion. The parameter could be driving anything and you could modify the code to edit more than one parameter. The result of this sample is a folder containing all of the rendered frames. You can process these to create an animation. The sample animation was created using GIMP."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isFitView": {
+      "id": "Camera_isFitView",
+      "title": "Camera.isFitView Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Camera.h",
+      "description": "If this property is true, when this camera is applied to a viewport it will modify the camera such that the entire model is displayed in the viewport. When getting a camera from a viewport or creating a camera using Camera.create(), this property defaults to false.",
+      "parent_class": "Camera",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = camera_var.isFitView\n\n# Set the value of the property.\ncamera_var.isFitView = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = camera_var->isFitView();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = camera_var->isFitView(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "As-Built Joint Sample",
+          "description": "Demonstrates creating a new As-Built Joint."
+        },
+        {
+          "name": "Joint Origin Sample",
+          "description": "Demonstrates creating a new Joint Origin."
+        },
+        {
+          "name": "Rigid Group API Sample",
+          "description": "Demonstrates creating a new Rigid Group."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isSmoothTransition": {
+      "id": "Camera_isSmoothTransition",
+      "title": "Camera.isSmoothTransition Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Camera.h",
+      "description": "This property controls if Fusion will perform a smooth transition animation from the current camera position to the new position. If this property is set to true, it will smoothly transition. If false, the camera will jump to the position defined by the camera without any animated transition. When a camera is obtained from a Viewport or created using the Camera.create() method, this property defaults to false.",
+      "parent_class": "Camera",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = camera_var.isSmoothTransition\n\n# Set the value of the property.\ncamera_var.isSmoothTransition = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = camera_var->isSmoothTransition();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = camera_var->isSmoothTransition(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isValid": {
+      "id": "Camera_isValid",
+      "title": "Camera.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Camera.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Camera",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = camera_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = camera_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "Camera_objectType",
+      "title": "Camera.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Camera.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Camera",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = camera_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = camera_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "perspectiveAngle": {
+      "id": "Camera_perspectiveAngle",
+      "title": "Camera.perspectiveAngle Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Camera.h",
+      "description": "Gets and sets the perspective angle of the camera. This property is only valid when the CameraType property is either Perspective or PerspectiveWithOrthoFaces.",
+      "parent_class": "Camera",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = camera_var.perspectiveAngle\n\n# Set the value of the property.\ncamera_var.perspectiveAngle = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = camera_var->perspectiveAngle();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = camera_var->perspectiveAngle(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "target": {
+      "id": "Camera_target",
+      "title": "Camera.target Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Camera.h",
+      "description": "Gets and sets the camera target point in world space.",
+      "parent_class": "Camera",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = camera_var.target\n\n# Set the value of the property.\ncamera_var.target = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = camera_var->target();\n\n// Set the value of the property, where value_var is a Point3D.\nbool returnValue = camera_var->target(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Rendering Sample",
+          "description": "Demonstrates using the Rendering capabilities in the API. This starts a series of local renderings to generate a series of frames, where the camera is repositioned and a parameter is modified for each frame to create a dynamic animation. To use the sample, have a design open that contains a parameter named \"Length\". It can be a user or model parameter. The sample will modify this parameter from a value of 0.1 cm to 15 cm, but you can change these values by editing the values of the paramStartVal and paramEndVal variables on lines 90 and 91 of the sample. It expects a folder named \"C:\\Temp\\RenderSample\" to exist, and will fail if it doesn't. The rendered frames will be written to that folder.An example rendering is shown below where this file was used. The parameter is modifying a move feature which results in changing the shape of an extrusion. The parameter could be driving anything and you could modify the code to edit more than one parameter. The result of this sample is a folder containing all of the rendered frames. You can process these to create an animation. The sample animation was created using GIMP."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "upVector": {
+      "id": "Camera_upVector",
+      "title": "Camera.upVector Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Camera.h",
+      "description": "Defines the \"up\" direction for the camera which controls the orientation of the camera around the line defined between the eye and target points.",
+      "parent_class": "Camera",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = camera_var.upVector\n\n# Set the value of the property.\ncamera_var.upVector = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = camera_var->upVector();\n\n// Set the value of the property, where value_var is a Vector3D.\nbool returnValue = camera_var->upVector(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Rendering Sample",
+          "description": "Demonstrates using the Rendering capabilities in the API. This starts a series of local renderings to generate a series of frames, where the camera is repositioned and a parameter is modified for each frame to create a dynamic animation. To use the sample, have a design open that contains a parameter named \"Length\". It can be a user or model parameter. The sample will modify this parameter from a value of 0.1 cm to 15 cm, but you can change these values by editing the values of the paramStartVal and paramEndVal variables on lines 90 and 91 of the sample. It expects a folder named \"C:\\Temp\\RenderSample\" to exist, and will fail if it doesn't. The rendered frames will be written to that folder.An example rendering is shown below where this file was used. The parameter is modifying a move feature which results in changing the shape of an extrusion. The parameter could be driving anything and you could modify the code to edit more than one parameter. The result of this sample is a folder containing all of the rendered frames. You can process these to create an animation. The sample animation was created using GIMP."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "viewExtents": {
+      "id": "Camera_viewExtents",
+      "title": "Camera.viewExtents Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Camera.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Defines the area that's visible by the camera. This value is the radius of a sphere centered at the target point. The camera will display everything within that sphere and everything in front of and behind the sphere. Additional geometry outside of the sphere will also be visible depending on the shape of the window. Setting this value can cause the eye and/or perspective angle to be modified when the camera type is perspective. Remarks",
+      "parent_class": "Camera",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = camera_var.viewExtents\n\n# Set the value of the property.\ncamera_var.viewExtents = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = camera_var->viewExtents();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = camera_var->viewExtents(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "viewOrientation": {
+      "id": "Camera_viewOrientation",
+      "title": "Camera.viewOrientation Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Camera.h",
+      "description": "Sets the camera to a standard orientation. If this is set, it will result in resetting all the camera values except the camera type. The orientation is based on the current orientation defined by the ViewCube. This means, that the view orientations cannot be expected to be consistent from one view to another.",
+      "parent_class": "Camera",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = camera_var.viewOrientation\n\n# Set the value of the property.\ncamera_var.viewOrientation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nViewOrientations propertyValue = camera_var->viewOrientation();\n\n// Set the value of the property, where value_var is a ViewOrientations.\nbool returnValue = camera_var->viewOrientation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "Camera_classType",
+      "title": "Camera.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Camera.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Camera",
+      "syntax": {
+        "python": "returnValue = adsk.core.Camera.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Camera::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "create": {
+      "id": "Camera_create",
+      "title": "Camera.create Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Camera.h",
+      "description": "Creates a new Camera object that is independent of any viewport. This can be used to construct a camera to be used as input to modify a viewport, and create or update a named view.",
+      "parent_class": "Camera",
+      "syntax": {
+        "python": "returnValue = adsk.core.Camera.create()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Camera::create();"
+      },
+      "return_type": "Camera",
+      "return_description": "Returns the created camera.",
+      "version": "Introduced in version September 2023"
+    },
+    "getExtents": {
+      "id": "Camera_getExtents",
+      "title": "Camera.getExtents Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Camera.h",
+      "description": "Gets the extents of the camera. This is only used for orthographic cameras. The extents of a perspective camera is defined by a combination of the position of the eye point (how close the eye is to the model) and the perspective angle.",
+      "parent_class": "Camera",
+      "syntax": {
+        "python": "(returnValue, width, height) = camera_var.getExtents()",
+        "cpp": "#include getExtents(width, height);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful. This will fail in the case it is used for a perspective camera.",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "double",
+          "description": "The width of the extent in centimeters."
+        },
+        {
+          "name": "height",
+          "type": "double",
+          "description": "The height of the extent in centimeters."
+        }
+      ],
+      "version": "Introduced in version October 2023"
+    },
+    "setExtents": {
+      "id": "Camera_setExtents",
+      "title": "Camera.setExtents Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/Camera.h",
+      "description": "Sets the extents of the camera. This is only used for orthographic cameras. The extents of a perspective camera is defined by a combination of the position of the eye point (how close the eye is to the model) and the perspective angle. When the camera is assigned to a viewport, typically only the width or the height is used depending on the aspect ratio of the viewport. For example, if the width and height are both 10, but the viewport is twice as wide as it is tall (2:1 aspect ratio). The height extent will be 10 and the width extent will be recomputed to be 20 to match the viewport.",
+      "parent_class": "Camera",
+      "syntax": {
+        "python": "returnValue = camera_var.setExtents(width, height)",
+        "cpp": "#include \n\nreturnValue = camera_var->setExtents(width, height);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful. This will fail in the case it is used for a perspective camera.",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "double",
+          "description": "The width of the extent in centimeters."
+        },
+        {
+          "name": "height",
+          "type": "double",
+          "description": "The height of the extent in centimeters."
+        }
+      ],
+      "version": "Introduced in version October 2023"
+    }
+  }
+}

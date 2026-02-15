@@ -1,0 +1,12 @@
+{
+  "id": "thickenFeatures_add_Sample",
+  "title": "thickenFeatures.add",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the thickenFeatures.add method.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_thickenFeatures_add(rootComp: adsk.fusion.Component):\n    face = _ui.selectEntity('Select a face to thicken.', 'Faces').entity\n    faces = adsk.core.ObjectCollection.create()\n    faces.add(face)\n    thickness = adsk.core.ValueInput.createByReal(1)\n    isSymmetric = False\n    operation = adsk.fusion.FeatureOperations.NewBodyFeatureOperation\n\n    thickFeatures = rootComp.features.thickenFeatures\n    input: adsk.fusion.ThickenFeatureInput = thickFeatures.createInput(faces, thickness, isSymmetric, operation)\n    input.isChainSelection = True\n    thickFeature = thickFeatures.add(input)"
+  }
+}

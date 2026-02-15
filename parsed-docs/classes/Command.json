@@ -1,0 +1,1111 @@
+{
+  "id": "Command",
+  "title": "Command Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/Command.h",
+  "description": "The Command class contains all of the functionality needed by a command to gather various command input from a user, provide previews, and create the final result which is also encapsulated within a transaction so it can be undone.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "beginStep",
+      "description": "Begin a transacted step within the command's transaction. If the all of the command inputs are valid, this will trigger the execute event for the current step."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "doExecute",
+      "description": "Causes the execution of this command which results in the execute event being fired. This is the same effect as the user clicking the \"OK\" button in the command dialog and is most useful when there is no command dialog (no command inputs where created) and the isAutoExecute property has been set to False. This allows you to execute the command through code."
+    },
+    {
+      "name": "doExecutePreview",
+      "description": "Causes the executePreview event of this command to be fired. This is most useful when there is no command dialog (no command inputs where created) and the isAutoExecute property has been set to False. This allows you to force the preview to be generated instead of relying on changing command inputs."
+    },
+    {
+      "name": "getCursor",
+      "description": "Gets the custom cursor information currently being used."
+    },
+    {
+      "name": "setCursor",
+      "description": "Specifies the cursor to display at the mouse."
+    },
+    {
+      "name": "setDialogInitialSize",
+      "description": "Sets the initial size of the dialog when it is first displayed. If this is not set, Fusion will use a default size for the dialog."
+    },
+    {
+      "name": "setDialogMinimumSize",
+      "description": "Sets the minimum size for the dialog when resized to by the user. If this is not set, a default minimum size is used."
+    },
+    {
+      "name": "setDialogSize",
+      "description": "Sets the size of the dialog and overrides any size. This can be used when the command is created or anytime while the command is running. If the height is zero, the dialog will be sized to fit the command inputs currently displayed."
+    }
+  ],
+  "properties": [
+    {
+      "name": "cancelButtonText",
+      "description": "Gets and sets the text displayed on the Cancel button. The value of this property is ignored if the isCancelButtonVisible property is false."
+    },
+    {
+      "name": "commandInputs",
+      "description": "Gets the associated CommandInputs object which provides the ability to create new command inputs and provides access to any existing inputs that have already been created for this command."
+    },
+    {
+      "name": "editingFeature",
+      "description": "Sets the editing feature for this command. The timeline will be rolled to the editing feature on activate and will the current position will be restored on deactivate."
+    },
+    {
+      "name": "hasDistinctSelectionSets",
+      "description": "Determines if this selection input shares a common selection set with the other selection inputs of this command or its own unique selection set. The default is False, which means each selection input will have its own selection set. This means that the items in this selection set are only shown as selected when this selection input is active. As a result, other selection inputs associated with this command can select those same entities.   If this is True, then all selection inputs share a selection set, which means that when entities are selected by any of the selection inputs of this command, they will remain selected regardless of which command input is active. This has the side effect that once an entity is selected, it cannot be selected again by another selection input."
+    },
+    {
+      "name": "helpFile",
+      "description": "Gets and sets the associated HTML help file for this command."
+    },
+    {
+      "name": "isAutoExecute",
+      "description": "Gets and sets whether this command will automatically execute if no command inputs have been defined. If any command inputs have been created, the value of this property is ignored and the command dialog will be displayed and the command will execute when the user clicks 'OK'. if no command inputs have been defined and this is set to False, then the command will not execute but will remain running.   The default value for this property is true so that the command will execute if no command inputs have been defined."
+    },
+    {
+      "name": "isExecutedWhenPreEmpted",
+      "description": "Specifies what the behavior will be when a command is preempted by the user executing another command. If true (the default), and all of the current inputs are valid, the command will be executed just the same as if the user clicked the OK button. If false, the command is terminated."
+    },
+    {
+      "name": "isOKButtonVisible",
+      "description": "Specifies if the OK button is visible or not. If set to false then the OK button is removed and the \"CANCEL\" button text changes to \"CLOSE\". You can override the default button text using the cancelButtonText property."
+    },
+    {
+      "name": "isPositionDependent",
+      "description": "When working in a parametric design in Fusion and you move any occurrences, those move operations are pending and aren't captured until you use the \"Capture Position\" command from the POSITION panel or use the \"Revert\" command from the same panel to move them all back to their original positions. If the design is in a pending situation and you run a command like \"Create Sketch\", a dialog appears asking if you want to capture the current position or not before continuing. This is because the creation of a sketch can be dependent on the current positions of occurrences in the design. Other commands, like \"Fillet\", depend directly on model geometry and do not rely on occurrence positions so running the Fillet command does not display the dialog and does not affect the pending state of the occurrences.   This property allows you to specify if your command is dependent on the current position of occurrences or not. One good way to know if your command is dependent or not is to run the commands in the UI that are equivalent to the API functions you're using and see if the dialog that prompts to save or abort appears. If it does, then you know your command is dependent on occurrence positions.   If this property is true, then the dialog will appear if there are any pending moved occurrences. The user can choose whether to capture the current changes or abort them, and then your command will continue.   If you set this property to false, (which is the default), then even if there are pending changes, the occurrences are left in their current positions and your command will run."
+    },
+    {
+      "name": "isRepeatable",
+      "description": "Gets and Sets if this command is repeatable using the 'Repeat Last Command' option from the Fusion marking menu."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "okButtonText",
+      "description": "Gets and sets the text displayed on the OK button. When the OK and Cancel buttons are displayed, this text defaults to \"OK\". If the Cancel button is not displayed the text defaults to \"CLOSE\"."
+    },
+    {
+      "name": "parentCommandDefinition",
+      "description": "Gets the parent CommandDefinition object."
+    }
+  ],
+  "events": [
+    {
+      "name": "activate",
+      "description": "Gets an event that is fired when the command is first activated or re-activated after being suspended."
+    },
+    {
+      "name": "deactivate",
+      "description": "Gets an event that is fired when the command is deactivated. The command still exists and could still be activated again."
+    },
+    {
+      "name": "destroy",
+      "description": "Gets an event that is fired when the command is destroyed. The command is destroyed and can be cleaned up."
+    },
+    {
+      "name": "execute",
+      "description": "Gets an event that is fired when the command has completed gathering the required input and now needs to perform whatever action the command does."
+    },
+    {
+      "name": "executePreview",
+      "description": "Gets an event that is fired when the command has completed gathering the required input and now needs to perform a preview."
+    },
+    {
+      "name": "incomingFromHTML",
+      "description": "This event is fired when the JavaScript associated with the HTML displayed in a BrowserCommandInput calls the adsk.fusionSendData function and when the JavaScript responds to the sendInfoToHTML call. The HTMLEventArgs provided by the event indicates which BrowserCommandInput triggered the event."
+    },
+    {
+      "name": "inputChanged",
+      "description": "Gets an event that is fired whenever an input value is changed."
+    },
+    {
+      "name": "keyDown",
+      "description": "Gets an event that is fired when a key on the keyboard is pressed down."
+    },
+    {
+      "name": "keyUp",
+      "description": "Gets an event that is fired when a key on the keyboard goes up."
+    },
+    {
+      "name": "mouseClick",
+      "description": "Gets an event that is fired when the mouse is clicked, (a button is pressed and released)."
+    },
+    {
+      "name": "mouseDoubleClick",
+      "description": "Gets an event that is fired when the mouse is double-clicked, (clicked twice within the time specified by a system setting.)"
+    },
+    {
+      "name": "mouseDown",
+      "description": "Gets an event that is fired when a mouse button is pressed."
+    },
+    {
+      "name": "mouseDrag",
+      "description": "Gets an event that is fired when the mouse is in drag mode, (being moved while a button is pressed)."
+    },
+    {
+      "name": "mouseDragBegin",
+      "description": "Gets an event that is fired when a mouse drag starts, (the mouse is pressed and moved)."
+    },
+    {
+      "name": "mouseDragEnd",
+      "description": "Gets an event that is fired when the mouse button is released after a drag."
+    },
+    {
+      "name": "mouseMove",
+      "description": "Gets an event that is fired when the mouse is moved."
+    },
+    {
+      "name": "mouseUp",
+      "description": "Gets an event that is fired when a mouse button is released."
+    },
+    {
+      "name": "mouseWheel",
+      "description": "Gets an event that is fired when the mouse wheel is rotated."
+    },
+    {
+      "name": "navigatingURL",
+      "description": "This event is fired when a navigation event occurs on the page displayed within a BrowserCommandInput. This allows the add-in to determine how this navigation should be handled by the browser. The NavigationEventArgs provided by the event indicates which BrowserCommandInput triggered the event."
+    },
+    {
+      "name": "preSelect",
+      "description": "This event is used to be able to participate in the selection process in a dynamic way. When a user is selecting geometry, they move the mouse over the model and if the entity the mouse is currently over is valid for selection it will highlight indicating that it can be selected. This process of determining what is available for selection and highlighting it is referred to as the \"preselect\" behavior.   You use functions on the SelectionCommandInput object to define what types of entities are selectable and in many cases this coarse level of specification is all that's needed, but in other cases you may need more control over the selection. For example, you might want to allow the user to selection construction planes and planar faces, which can easily be controlled by defining those as valid entities for selection in the SelectionCommandInput object. But if you only want to allow the user to select planes that are parallel then you need some dynamic control over the selection, which can be done using the preSelect event.   In the example of selecting parallel planes, you would still set the valid selection types for the SelectionCommandInput to allow selection of construction planes and planar faces. This will limit the selection to only planes but any plane can still be selected. You'll also need to connect to the preSelect event for the command. As the user moves the mouse over any construction plane or planar face, the preSelect event will fire for the plane the mouse is current over. If no planes have yet been selected, then you allow the user to select this plane. If one or more planes have already selected, then in the preSelect event you'll check to see if the plane the mouse is over is parallel to the first plane already selected. If it is then you allow it to be selected. If it isn't parallel then you set the isSelectable property of the provided SelectEventArgs object to False so that it won't pre-highlight and won't be selectable.   The entity and mouse position on the entity can be obtained through the Selection object returned through the selection property of the SelectionEventArgs object provided through the event."
+    },
+    {
+      "name": "preSelectEnd",
+      "description": "This event fires when the moused is moved away from an entity that was in a pre-select state. If your add-in has done something in reaction to the preSelect event, like draw some custom graphics, this event provides the notification to clean up whatever you've done that's associated with the current pre-select.   The entity and mouse position on the entity can be obtained through the Selection object returned through the selection property of the SelectionEventArgs object provided through the event."
+    },
+    {
+      "name": "preSelectMouseMove",
+      "description": "This event fires continually while the mouse is moved over an entity that is valid for selected.   The entity and mouse position on the entity can be obtained through the Selection object returned through the selection property of the SelectionEventArgs object provided through the event."
+    },
+    {
+      "name": "preSelectStart",
+      "description": "As the mouse moves over entities in the graphics window, entities valid for selection are highlighted. Before an entity is highlighted, Fusion determines if it is a valid selectable entity using the selection filter defined on the SelectionCommandInput and the preSelect event of the command. The preSelectStart event fires when the mouse first moves over an entity valid for selection. You can obtain the entity and mouse position from the Selection object returned by the selection property of the SelectionEventArgs object provided through the event.   Some related events are the preSelectMouseMove event, which fires as the mouse moves across the entity, and the preSelectEnd event, which fires when the mouse moves off the entity."
+    },
+    {
+      "name": "select",
+      "description": "This even fires when the user selects an entity. This is different from the preselect where an entity is shown as being available for selection as the mouse passes over the entity. This is the actual selection where the user has clicked the mouse on the entity.   The entity and mouse position on the entity can be obtained through the Selection object returned through the selection property of the SelectionEventArgs object provided through the event."
+    },
+    {
+      "name": "selectionEvent",
+      "description": "**RETIRED** Provides a notification when the mouse passes over an entity allowing you to determine if the entity should be available for selection or not."
+    },
+    {
+      "name": "unselect",
+      "description": "This even fires when the user unselects an entity by clicking the mouse again on selected entity or canceling previous selection.   The entity and mouse position on the entity can be obtained through the Selection object returned through the selection property of the SelectionEventArgs object provided through the event."
+    },
+    {
+      "name": "validateInputs",
+      "description": "Gets an event that is fired to allow you to check if the current state of the inputs are valid for execution.   The timing of this event is indeterminate and not always tied to the editing of an input. There are cases where this isn't fired when an input is edited. This happens when an input is able to validate its content on its own. For example, if you enter an invalid value for a ValueCommandInput, it can evaluate this on its own, and as a result, the validate inputs event is not fired. Fusion will sometimes fire this event at other random times that are not tied to the edit of an input.   If you want to be notified when an input changes, you should use the input changed event instead."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Command Inputs API Sample",
+      "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.  You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+    },
+    {
+      "name": "Customizing the UI using the API Sample",
+      "description": "Demonstrates how to work with tabs, panels, and command in the user interface. The full source for C++ and Python samples can be downloaded. This is especially useful for getting the resource files."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "event_details": {
+    "activate": {
+      "id": "Command_activate",
+      "title": "Command.activate Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired when the command is first activated or re-activated after being suspended.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the activate event.\nclass MyActivateHandler(adsk.core.CommandEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.CommandEventArgs):\n        # Code to react to the event.\n        app.log('In MyActivateHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr activateEvent = command_var->activate();\nif (!activateEvent)\n    return;\n\nbool isOk = activateEvent->add(&_activate);\nif (!isOk)\n    return;"
+      },
+      "return_type": "CommandEvent",
+      "return_description": "Returns a CommandEvent object that is used to connect and release from the event.",
+      "property_value": "Return Value",
+      "version": "Introduced in version August 2014"
+    },
+    "deactivate": {
+      "id": "Command_deactivate",
+      "title": "Command.deactivate Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired when the command is deactivated. The command still exists and could still be activated again.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the deactivate event.\nclass MyDeactivateHandler(adsk.core.CommandEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.CommandEventArgs):\n        # Code to react to the event.\n        app.log('In MyDeactivateHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr deactivateEvent = command_var->deactivate();\nif (!deactivateEvent)\n    return;\n\nbool isOk = deactivateEvent->add(&_deactivate);\nif (!isOk)\n    return;"
+      },
+      "return_type": "CommandEvent",
+      "return_description": "Returns a CommandEvent object that is used to connect and release from the event.",
+      "property_value": "Return Value",
+      "version": "Introduced in version August 2014"
+    },
+    "destroy": {
+      "id": "Command_destroy",
+      "title": "Command.destroy Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired when the command is destroyed. The command is destroyed and can be cleaned up.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the destroy event.\nclass MyDestroyHandler(adsk.core.CommandEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.CommandEventArgs):\n        # Code to react to the event.\n        app.log('In MyDestroyHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr destroyEvent = command_var->destroy();\nif (!destroyEvent)\n    return;\n\nbool isOk = destroyEvent->add(&_destroy);\nif (!isOk)\n    return;"
+      },
+      "return_type": "CommandEvent",
+      "return_description": "Returns a CommandEvent object that is used to connect and release from the event.",
+      "property_value": "Return Value",
+      "related_samples": [
+        {
+          "name": "Command Inputs API Sample",
+          "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.\u00a0You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "execute": {
+      "id": "Command_execute",
+      "title": "Command.execute Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired when the command has completed gathering the required input and now needs to perform whatever action the command does.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the execute event.\nclass MyExecuteHandler(adsk.core.CommandEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.CommandEventArgs):\n        # Code to react to the event.\n        app.log('In MyExecuteHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr executeEvent = command_var->execute();\nif (!executeEvent)\n    return;\n\nbool isOk = executeEvent->add(&_execute);\nif (!isOk)\n    return;"
+      },
+      "return_type": "CommandEvent",
+      "return_description": "Returns a CommandEvent object that is used to connect and release from the event.",
+      "property_value": "Return Value",
+      "version": "Introduced in version August 2014"
+    },
+    "executePreview": {
+      "id": "Command_executePreview",
+      "title": "Command.executePreview Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired when the command has completed gathering the required input and now needs to perform a preview.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the executePreview event.\nclass MyExecutePreviewHandler(adsk.core.CommandEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.CommandEventArgs):\n        # Code to react to the event.\n        app.log('In MyExecutePreviewHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr executePreviewEvent = command_var->executePreview();\nif (!executePreviewEvent)\n    return;\n\nbool isOk = executePreviewEvent->add(&_executePreview);\nif (!isOk)\n    return;"
+      },
+      "return_type": "CommandEvent",
+      "return_description": "Returns a CommandEvent object that is used to connect and release from the event.",
+      "property_value": "Return Value",
+      "version": "Introduced in version January 2015"
+    },
+    "incomingFromHTML": {
+      "id": "Command_incomingFromHTML",
+      "title": "Command.incomingFromHTML Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "This event is fired when the JavaScript associated with the HTML displayed in a BrowserCommandInput calls the adsk.fusionSendData function and when the JavaScript responds to the sendInfoToHTML call. The HTMLEventArgs provided by the event indicates which BrowserCommandInput triggered the event.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the incomingFromHTML event.\nclass MyIncomingFromHTMLHandler(adsk.core.HTMLEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.HTMLEventArgs):\n        # Code to react to the event.\n        app.log('In MyIncomingFromHTMLHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr incomingFromHTMLEvent = command_var->incomingFromHTML();\nif (!incomingFromHTMLEvent)\n    return;\n\nbool isOk = incomingFromHTMLEvent->add(&_incomingFromHTML);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "inputChanged": {
+      "id": "Command_inputChanged",
+      "title": "Command.inputChanged Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired whenever an input value is changed.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the inputChanged event.\nclass MyInputChangedHandler(adsk.core.InputChangedEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.InputChangedEventArgs):\n        # Code to react to the event.\n        app.log('In MyInputChangedHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr inputChangedEvent = command_var->inputChanged();\nif (!inputChangedEvent)\n    return;\n\nbool isOk = inputChangedEvent->add(&_inputChanged);\nif (!isOk)\n    return;"
+      },
+      "return_type": "InputChangedEvent",
+      "return_description": "Returns an InputChangedEvent object that is used to connect and release from the event.",
+      "property_value": "Return Value",
+      "related_samples": [
+        {
+          "name": "Command Inputs API Sample",
+          "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.\u00a0You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "keyDown": {
+      "id": "Command_keyDown",
+      "title": "Command.keyDown Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired when a key on the keyboard is pressed down.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the keyDown event.\nclass MyKeyDownHandler(adsk.core.KeyboardEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.KeyboardEventArgs):\n        # Code to react to the event.\n        app.log('In MyKeyDownHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr keyDownEvent = command_var->keyDown();\nif (!keyDownEvent)\n    return;\n\nbool isOk = keyDownEvent->add(&_keyDown);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "keyUp": {
+      "id": "Command_keyUp",
+      "title": "Command.keyUp Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired when a key on the keyboard goes up.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the keyUp event.\nclass MyKeyUpHandler(adsk.core.KeyboardEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.KeyboardEventArgs):\n        # Code to react to the event.\n        app.log('In MyKeyUpHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr keyUpEvent = command_var->keyUp();\nif (!keyUpEvent)\n    return;\n\nbool isOk = keyUpEvent->add(&_keyUp);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "mouseClick": {
+      "id": "Command_mouseClick",
+      "title": "Command.mouseClick Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired when the mouse is clicked, (a button is pressed and released).",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the mouseClick event.\nclass MyMouseClickHandler(adsk.core.MouseEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.MouseEventArgs):\n        # Code to react to the event.\n        app.log('In MyMouseClickHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr mouseClickEvent = command_var->mouseClick();\nif (!mouseClickEvent)\n    return;\n\nbool isOk = mouseClickEvent->add(&_mouseClick);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "mouseDoubleClick": {
+      "id": "Command_mouseDoubleClick",
+      "title": "Command.mouseDoubleClick Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired when the mouse is double-clicked, (clicked twice within the time specified by a system setting.)",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the mouseDoubleClick event.\nclass MyMouseDoubleClickHandler(adsk.core.MouseEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.MouseEventArgs):\n        # Code to react to the event.\n        app.log('In MyMouseDoubleClickHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr mouseDoubleClickEvent = command_var->mouseDoubleClick();\nif (!mouseDoubleClickEvent)\n    return;\n\nbool isOk = mouseDoubleClickEvent->add(&_mouseDoubleClick);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "mouseDown": {
+      "id": "Command_mouseDown",
+      "title": "Command.mouseDown Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired when a mouse button is pressed.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the mouseDown event.\nclass MyMouseDownHandler(adsk.core.MouseEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.MouseEventArgs):\n        # Code to react to the event.\n        app.log('In MyMouseDownHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr mouseDownEvent = command_var->mouseDown();\nif (!mouseDownEvent)\n    return;\n\nbool isOk = mouseDownEvent->add(&_mouseDown);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "mouseDrag": {
+      "id": "Command_mouseDrag",
+      "title": "Command.mouseDrag Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired when the mouse is in drag mode, (being moved while a button is pressed).",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the mouseDrag event.\nclass MyMouseDragHandler(adsk.core.MouseEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.MouseEventArgs):\n        # Code to react to the event.\n        app.log('In MyMouseDragHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr mouseDragEvent = command_var->mouseDrag();\nif (!mouseDragEvent)\n    return;\n\nbool isOk = mouseDragEvent->add(&_mouseDrag);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "mouseDragBegin": {
+      "id": "Command_mouseDragBegin",
+      "title": "Command.mouseDragBegin Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired when a mouse drag starts, (the mouse is pressed and moved).",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the mouseDragBegin event.\nclass MyMouseDragBeginHandler(adsk.core.MouseEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.MouseEventArgs):\n        # Code to react to the event.\n        app.log('In MyMouseDragBeginHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr mouseDragBeginEvent = command_var->mouseDragBegin();\nif (!mouseDragBeginEvent)\n    return;\n\nbool isOk = mouseDragBeginEvent->add(&_mouseDragBegin);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "mouseDragEnd": {
+      "id": "Command_mouseDragEnd",
+      "title": "Command.mouseDragEnd Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired when the mouse button is released after a drag.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the mouseDragEnd event.\nclass MyMouseDragEndHandler(adsk.core.MouseEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.MouseEventArgs):\n        # Code to react to the event.\n        app.log('In MyMouseDragEndHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr mouseDragEndEvent = command_var->mouseDragEnd();\nif (!mouseDragEndEvent)\n    return;\n\nbool isOk = mouseDragEndEvent->add(&_mouseDragEnd);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "mouseMove": {
+      "id": "Command_mouseMove",
+      "title": "Command.mouseMove Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired when the mouse is moved.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the mouseMove event.\nclass MyMouseMoveHandler(adsk.core.MouseEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.MouseEventArgs):\n        # Code to react to the event.\n        app.log('In MyMouseMoveHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr mouseMoveEvent = command_var->mouseMove();\nif (!mouseMoveEvent)\n    return;\n\nbool isOk = mouseMoveEvent->add(&_mouseMove);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "mouseUp": {
+      "id": "Command_mouseUp",
+      "title": "Command.mouseUp Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired when a mouse button is released.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the mouseUp event.\nclass MyMouseUpHandler(adsk.core.MouseEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.MouseEventArgs):\n        # Code to react to the event.\n        app.log('In MyMouseUpHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr mouseUpEvent = command_var->mouseUp();\nif (!mouseUpEvent)\n    return;\n\nbool isOk = mouseUpEvent->add(&_mouseUp);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "mouseWheel": {
+      "id": "Command_mouseWheel",
+      "title": "Command.mouseWheel Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired when the mouse wheel is rotated.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the mouseWheel event.\nclass MyMouseWheelHandler(adsk.core.MouseEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.MouseEventArgs):\n        # Code to react to the event.\n        app.log('In MyMouseWheelHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr mouseWheelEvent = command_var->mouseWheel();\nif (!mouseWheelEvent)\n    return;\n\nbool isOk = mouseWheelEvent->add(&_mouseWheel);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "navigatingURL": {
+      "id": "Command_navigatingURL",
+      "title": "Command.navigatingURL Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "This event is fired when a navigation event occurs on the page displayed within a BrowserCommandInput. This allows the add-in to determine how this navigation should be handled by the browser. The NavigationEventArgs provided by the event indicates which BrowserCommandInput triggered the event.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the navigatingURL event.\nclass MyNavigatingURLHandler(adsk.core.NavigationEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.NavigationEventArgs):\n        # Code to react to the event.\n        app.log('In MyNavigatingURLHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr navigatingURLEvent = command_var->navigatingURL();\nif (!navigatingURLEvent)\n    return;\n\nbool isOk = navigatingURLEvent->add(&_navigatingURL);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "preSelect": {
+      "id": "Command_preSelect",
+      "title": "Command.preSelect Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "This event is used to be able to participate in the selection process in a dynamic way. When a user is selecting geometry, they move the mouse over the model and if the entity the mouse is currently over is valid for selection it will highlight indicating that it can be selected. This process of determining what is available for selection and highlighting it is referred to as the \"preselect\" behavior. You use functions on the SelectionCommandInput object to define what types of entities are selectable and in many cases this coarse level of specification is all that's needed, but in other cases you may need more control over the selection. For example, you might want to allow the user to selection construction planes and planar faces, which can easily be controlled by defining those as valid entities for selection in the SelectionCommandInput object. But if you only want to allow the user to select planes that are parallel then you need some dynamic control over the selection, which can be done using the preSelect event. In the example of selecting parallel planes, you would still set the valid selection types for the SelectionCommandInput to allow selection of construction planes and planar faces. This will limit the selection to only planes but any plane can still be selected. You'll also need to connect to the preSelect event for the command. As the user moves the mouse over any construction plane or planar face, the preSelect event will fire for the plane the mouse is current over. If no planes have yet been selected, then you allow the user to select this plane. If one or more planes have already selected, then in the preSelect event you'll check to see if the plane the mouse is over is parallel to the first plane already selected. If it is then you allow it to be selected. If it isn't parallel then you set the isSelectable property of the provided SelectEventArgs object to False so that it won't pre-highlight and won't be selectable. The entity and mouse position on the entity can be obtained through the Selection object returned through the selection property of the SelectionEventArgs object provided through the event.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the preSelect event.\nclass MyPreSelectHandler(adsk.core.SelectionEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.SelectionEventArgs):\n        # Code to react to the event.\n        app.log('In MyPreSelectHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr preSelectEvent = command_var->preSelect();\nif (!preSelectEvent)\n    return;\n\nbool isOk = preSelectEvent->add(&_preSelect);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2019"
+    },
+    "preSelectEnd": {
+      "id": "Command_preSelectEnd",
+      "title": "Command.preSelectEnd Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "This event fires when the moused is moved away from an entity that was in a pre-select state. If your add-in has done something in reaction to the preSelect event, like draw some custom graphics, this event provides the notification to clean up whatever you've done that's associated with the current pre-select. The entity and mouse position on the entity can be obtained through the Selection object returned through the selection property of the SelectionEventArgs object provided through the event.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the preSelectEnd event.\nclass MyPreSelectEndHandler(adsk.core.SelectionEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.SelectionEventArgs):\n        # Code to react to the event.\n        app.log('In MyPreSelectEndHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr preSelectEndEvent = command_var->preSelectEnd();\nif (!preSelectEndEvent)\n    return;\n\nbool isOk = preSelectEndEvent->add(&_preSelectEnd);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2019"
+    },
+    "preSelectMouseMove": {
+      "id": "Command_preSelectMouseMove",
+      "title": "Command.preSelectMouseMove Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "This event fires continually while the mouse is moved over an entity that is valid for selected. The entity and mouse position on the entity can be obtained through the Selection object returned through the selection property of the SelectionEventArgs object provided through the event.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the preSelectMouseMove event.\nclass MyPreSelectMouseMoveHandler(adsk.core.SelectionEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.SelectionEventArgs):\n        # Code to react to the event.\n        app.log('In MyPreSelectMouseMoveHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr preSelectMouseMoveEvent = command_var->preSelectMouseMove();\nif (!preSelectMouseMoveEvent)\n    return;\n\nbool isOk = preSelectMouseMoveEvent->add(&_preSelectMouseMove);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2019"
+    },
+    "preSelectStart": {
+      "id": "Command_preSelectStart",
+      "title": "Command.preSelectStart Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "As the mouse moves over entities in the graphics window, entities valid for selection are highlighted. Before an entity is highlighted, Fusion determines if it is a valid selectable entity using the selection filter defined on the SelectionCommandInput and the preSelect event of the command. The preSelectStart event fires when the mouse first moves over an entity valid for selection. You can obtain the entity and mouse position from the Selection object returned by the selection property of the SelectionEventArgs object provided through the event. Some related events are the preSelectMouseMove event, which fires as the mouse moves across the entity, and the preSelectEnd event, which fires when the mouse moves off the entity.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the preSelectStart event.\nclass MyPreSelectStartHandler(adsk.core.SelectionEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.SelectionEventArgs):\n        # Code to react to the event.\n        app.log('In MyPreSelectStartHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr preSelectStartEvent = command_var->preSelectStart();\nif (!preSelectStartEvent)\n    return;\n\nbool isOk = preSelectStartEvent->add(&_preSelectStart);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "select": {
+      "id": "Command_select",
+      "title": "Command.select Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "This even fires when the user selects an entity. This is different from the preselect where an entity is shown as being available for selection as the mouse passes over the entity. This is the actual selection where the user has clicked the mouse on the entity. The entity and mouse position on the entity can be obtained through the Selection object returned through the selection property of the SelectionEventArgs object provided through the event.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the select event.\nclass MySelectHandler(adsk.core.SelectionEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.SelectionEventArgs):\n        # Code to react to the event.\n        app.log('In MySelectHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr selectEvent = command_var->select();\nif (!selectEvent)\n    return;\n\nbool isOk = selectEvent->add(&_select);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2019"
+    },
+    "selectionEvent": {
+      "id": "Command_selectionEvent",
+      "title": "Command.selectionEvent Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Provides a notification when the mouse passes over an entity allowing you to determine if the entity should be available for selection or not. Remarks",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the selectionEvent event.\nclass MySelectionEventHandler(adsk.core.SelectionEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.SelectionEventArgs):\n        # Code to react to the event.\n        app.log('In MySelectionEventHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr selectionEventEvent = command_var->selectionEvent();\nif (!selectionEventEvent)\n    return;\n\nbool isOk = selectionEventEvent->add(&_selectionEvent);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "unselect": {
+      "id": "Command_unselect",
+      "title": "Command.unselect Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "This even fires when the user unselects an entity by clicking the mouse again on selected entity or canceling previous selection. The entity and mouse position on the entity can be obtained through the Selection object returned through the selection property of the SelectionEventArgs object provided through the event.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the unselect event.\nclass MyUnselectHandler(adsk.core.SelectionEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.SelectionEventArgs):\n        # Code to react to the event.\n        app.log('In MyUnselectHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr unselectEvent = command_var->unselect();\nif (!unselectEvent)\n    return;\n\nbool isOk = unselectEvent->add(&_unselect);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2019"
+    },
+    "validateInputs": {
+      "id": "Command_validateInputs",
+      "title": "Command.validateInputs Event",
+      "type": "event",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets an event that is fired to allow you to check if the current state of the inputs are valid for execution. The timing of this event is indeterminate and not always tied to the editing of an input. There are cases where this isn't fired when an input is edited. This happens when an input is able to validate its content on its own. For example, if you enter an invalid value for a ValueCommandInput, it can evaluate this on its own, and as a result, the validate inputs event is not fired. Fusion will sometimes fire this event at other random times that are not tied to the edit of an input. If you want to be notified when an input changes, you should use the input changed event instead.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Event handler for the validateInputs event.\nclass MyValidateInputsHandler(adsk.core.ValidateInputsEventHandler):\n    def __init__(self):\n        super().__init__()\n    def notify(self, args: adsk.core.ValidateInputsEventArgs):\n        # Code to react to the event.\n        app.log('In MyValidateInputsHandler event handler.')",
+        "cpp": "// \"command_var\" is a variable referencing a Command object.\n// Connect the handler function to the event.\nPtr validateInputsEvent = command_var->validateInputs();\nif (!validateInputsEvent)\n    return;\n\nbool isOk = validateInputsEvent->add(&_validateInputs);\nif (!isOk)\n    return;"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "method_details": {
+    "beginStep": {
+      "id": "Command_beginStep",
+      "title": "Command.beginStep Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Begin a transacted step within the command's transaction. If the all of the command inputs are valid, this will trigger the execute event for the current step.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = command_var.beginStep()\n\n# Uses optional arguments.\nreturnValue = command_var.beginStep(makeExistingStepNonUndoable)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = command_var->beginStep();\n\n// Uses optional arguments.\nreturnValue = command_var->beginStep(makeExistingStepNonUndoable);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if beginning the step was successful.",
+      "parameters": [
+        {
+          "name": "makeExistingStepNonUndoable",
+          "type": "boolean",
+          "description": "If true the current step will not be undo-able.   This is an optional argument whose default value is False."
+        }
+      ],
+      "version": "Introduced in version January 2021"
+    },
+    "classType": {
+      "id": "Command_classType",
+      "title": "Command.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "returnValue = adsk.core.Command.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::Command::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "doExecute": {
+      "id": "Command_doExecute",
+      "title": "Command.doExecute Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Causes the execution of this command which results in the execute event being fired. This is the same effect as the user clicking the \"OK\" button in the command dialog and is most useful when there is no command dialog (no command inputs where created) and the isAutoExecute property has been set to False. This allows you to execute the command through code.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "returnValue = command_var.doExecute(terminate)",
+        "cpp": "#include \n\nreturnValue = command_var->doExecute(terminate);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the execution of the command was successful.",
+      "parameters": [
+        {
+          "name": "terminate",
+          "type": "boolean",
+          "description": "In the case where there isn't a command dialog you can also use the terminate argument to specify if the command should terminate after execution or continue running. This is similar to the sketch line command where each line placement results in the creation of an undo-able line but the command continues to run to allow additional lines to be placed."
+        }
+      ],
+      "version": "Introduced in version April 2017"
+    },
+    "doExecutePreview": {
+      "id": "Command_doExecutePreview",
+      "title": "Command.doExecutePreview Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Causes the executePreview event of this command to be fired. This is most useful when there is no command dialog (no command inputs where created) and the isAutoExecute property has been set to False. This allows you to force the preview to be generated instead of relying on changing command inputs.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "returnValue = command_var.doExecutePreview()",
+        "cpp": "#include \n\nreturnValue = command_var->doExecutePreview();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the execute Preview event was successfully fired..",
+      "version": "Introduced in version April 2017"
+    },
+    "getCursor": {
+      "id": "Command_getCursor",
+      "title": "Command.getCursor Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets the custom cursor information currently being used.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "(returnValue, cursorImage, xHotSpot, yHotSpot) = command_var.getCursor()",
+        "cpp": "#include getCursor(cursorImage, xHotSpot, yHotSpot);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if getting the cursor information was successful.",
+      "parameters": [
+        {
+          "name": "cursorImage",
+          "type": "string",
+          "description": "The full path to the png image that is being displayed as the cursor."
+        },
+        {
+          "name": "xHotSpot",
+          "type": "integer",
+          "description": "Gets the position of the x pixel within the image that is the \"hot\" spot or the point that is used as the mouse point. A value of zero indicates the left of the image."
+        },
+        {
+          "name": "yHotSpot",
+          "type": "integer",
+          "description": "Gets the position of the y pixel within the image that is the \"hot\" spot or the point that is used as the mouse point. A value of zero indicates the top of the image."
+        }
+      ],
+      "version": "Introduced in version April 2019"
+    },
+    "setCursor": {
+      "id": "Command_setCursor",
+      "title": "Command.setCursor Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Specifies the cursor to display at the mouse.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "returnValue = command_var.setCursor(cursorImage, xHotSpot, yHotSpot)",
+        "cpp": "#include \n\nreturnValue = command_var->setCursor(cursorImage, xHotSpot, yHotSpot);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting the cursor was successful.",
+      "parameters": [
+        {
+          "name": "cursorImage",
+          "type": "string",
+          "description": "The path to the PNG image to display as the cursor. This can either be a relative path from the py, dll, or dylib file of the full path. Specifying an empty string will set the cursor back to the default cursor."
+        },
+        {
+          "name": "xHotSpot",
+          "type": "integer",
+          "description": "Specifies the position of the x pixel within the image that is the \"hot\" spot or the point that is used as the mouse point. A value of zero indicates the far left of the image. If an empty string is used as the cursorImage, this value is ignored."
+        },
+        {
+          "name": "yHotSpot",
+          "type": "integer",
+          "description": "Specifies the position of the y pixel within the image that is the \"hot\" spot or the point that is used as the mouse point. A value of zero indicates the top of the image. If an empty string is used as the cursorImage, this value is ignored."
+        }
+      ],
+      "version": "Introduced in version April 2019"
+    },
+    "setDialogInitialSize": {
+      "id": "Command_setDialogInitialSize",
+      "title": "Command.setDialogInitialSize Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Sets the initial size of the dialog when it is first displayed. If this is not set, Fusion will use a default size for the dialog.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "returnValue = command_var.setDialogInitialSize(width, height)",
+        "cpp": "#include \n\nreturnValue = command_var->setDialogInitialSize(width, height);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the default size was successfully set.",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "integer",
+          "description": "The width of the dialog in pixels."
+        },
+        {
+          "name": "height",
+          "type": "integer",
+          "description": "The height of the dialog in pixels."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "setDialogMinimumSize": {
+      "id": "Command_setDialogMinimumSize",
+      "title": "Command.setDialogMinimumSize Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Sets the minimum size for the dialog when resized to by the user. If this is not set, a default minimum size is used.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "returnValue = command_var.setDialogMinimumSize(width, height)",
+        "cpp": "#include \n\nreturnValue = command_var->setDialogMinimumSize(width, height);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the minimum size was successfully set.",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "integer",
+          "description": "The minimum width of the dialog in pixels."
+        },
+        {
+          "name": "height",
+          "type": "integer",
+          "description": "The minimum height of the dialog in pixels."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "setDialogSize": {
+      "id": "Command_setDialogSize",
+      "title": "Command.setDialogSize Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Sets the size of the dialog and overrides any size. This can be used when the command is created or anytime while the command is running. If the height is zero, the dialog will be sized to fit the command inputs currently displayed.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "returnValue = command_var.setDialogSize(width, height)",
+        "cpp": "#include \n\nreturnValue = command_var->setDialogSize(width, height);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if size was successfully set.",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "integer",
+          "description": "The width of the dialog in pixels."
+        },
+        {
+          "name": "height",
+          "type": "integer",
+          "description": "The height of the dialog in pixels. If zero, the dialog will be sized to fit the command inputs currently displayed."
+        }
+      ],
+      "version": "Introduced in version March 2024"
+    }
+  },
+  "property_details": {
+    "cancelButtonText": {
+      "id": "Command_cancelButtonText",
+      "title": "Command.cancelButtonText Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets and sets the text displayed on the Cancel button. The value of this property is ignored if the isCancelButtonVisible property is false.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = command_var.cancelButtonText\n\n# Set the value of the property.\ncommand_var.cancelButtonText = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = command_var->cancelButtonText();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = command_var->cancelButtonText(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "commandInputs": {
+      "id": "Command_commandInputs",
+      "title": "Command.commandInputs Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets the associated CommandInputs object which provides the ability to create new command inputs and provides access to any existing inputs that have already been created for this command.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = command_var.commandInputs",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = command_var->commandInputs();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Command Inputs API Sample",
+          "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.\u00a0You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "editingFeature": {
+      "id": "Command_editingFeature",
+      "title": "Command.editingFeature Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Sets the editing feature for this command. The timeline will be rolled to the editing feature on activate and will the current position will be restored on deactivate.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = command_var.editingFeature\n\n# Set the value of the property.\ncommand_var.editingFeature = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = command_var->editingFeature();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = command_var->editingFeature(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2021"
+    },
+    "hasDistinctSelectionSets": {
+      "id": "Command_hasDistinctSelectionSets",
+      "title": "Command.hasDistinctSelectionSets Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Determines if this selection input shares a common selection set with the other selection inputs of this command or its own unique selection set. The default is False, which means each selection input will have its own selection set. This means that the items in this selection set are only shown as selected when this selection input is active. As a result, other selection inputs associated with this command can select those same entities. If this is True, then all selection inputs share a selection set, which means that when entities are selected by any of the selection inputs of this command, they will remain selected regardless of which command input is active. This has the side effect that once an entity is selected, it cannot be selected again by another selection input.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = command_var.hasDistinctSelectionSets\n\n# Set the value of the property.\ncommand_var.hasDistinctSelectionSets = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = command_var->hasDistinctSelectionSets();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = command_var->hasDistinctSelectionSets(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2024"
+    },
+    "helpFile": {
+      "id": "Command_helpFile",
+      "title": "Command.helpFile Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets and sets the associated HTML help file for this command. Remarks",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = command_var.helpFile\n\n# Set the value of the property.\ncommand_var.helpFile = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = command_var->helpFile();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = command_var->helpFile(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "isAutoExecute": {
+      "id": "Command_isAutoExecute",
+      "title": "Command.isAutoExecute Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets and sets whether this command will automatically execute if no command inputs have been defined. If any command inputs have been created, the value of this property is ignored and the command dialog will be displayed and the command will execute when the user clicks 'OK'. if no command inputs have been defined and this is set to False, then the command will not execute but will remain running. The default value for this property is true so that the command will execute if no command inputs have been defined.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = command_var.isAutoExecute\n\n# Set the value of the property.\ncommand_var.isAutoExecute = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = command_var->isAutoExecute();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = command_var->isAutoExecute(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2017"
+    },
+    "isExecutedWhenPreEmpted": {
+      "id": "Command_isExecutedWhenPreEmpted",
+      "title": "Command.isExecutedWhenPreEmpted Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Specifies what the behavior will be when a command is preempted by the user executing another command. If true (the default), and all of the current inputs are valid, the command will be executed just the same as if the user clicked the OK button. If false, the command is terminated.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = command_var.isExecutedWhenPreEmpted\n\n# Set the value of the property.\ncommand_var.isExecutedWhenPreEmpted = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = command_var->isExecutedWhenPreEmpted();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = command_var->isExecutedWhenPreEmpted(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2015"
+    },
+    "isOKButtonVisible": {
+      "id": "Command_isOKButtonVisible",
+      "title": "Command.isOKButtonVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Specifies if the OK button is visible or not. If set to false then the OK button is removed and the \"CANCEL\" button text changes to \"CLOSE\". You can override the default button text using the cancelButtonText property.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = command_var.isOKButtonVisible\n\n# Set the value of the property.\ncommand_var.isOKButtonVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = command_var->isOKButtonVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = command_var->isOKButtonVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isPositionDependent": {
+      "id": "Command_isPositionDependent",
+      "title": "Command.isPositionDependent Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "When working in a parametric design in Fusion and you move any occurrences, those move operations are pending and aren't captured until you use the \"Capture Position\" command from the POSITION panel or use the \"Revert\" command from the same panel to move them all back to their original positions. If the design is in a pending situation and you run a command like \"Create Sketch\", a dialog appears asking if you want to capture the current position or not before continuing. This is because the creation of a sketch can be dependent on the current positions of occurrences in the design. Other commands, like \"Fillet\", depend directly on model geometry and do not rely on occurrence positions so running the Fillet command does not display the dialog and does not affect the pending state of the occurrences. This property allows you to specify if your command is dependent on the current position of occurrences or not. One good way to know if your command is dependent or not is to run the commands in the UI that are equivalent to the API functions you're using and see if the dialog that prompts to save or abort appears. If it does, then you know your command is dependent on occurrence positions. If this property is true, then the dialog will appear if there are any pending moved occurrences. The user can choose whether to capture the current changes or abort them, and then your command will continue. If you set this property to false, (which is the default), then even if there are pending changes, the occurrences are left in their current positions and your command will run.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = command_var.isPositionDependent\n\n# Set the value of the property.\ncommand_var.isPositionDependent = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = command_var->isPositionDependent();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = command_var->isPositionDependent(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2017"
+    },
+    "isRepeatable": {
+      "id": "Command_isRepeatable",
+      "title": "Command.isRepeatable Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets and Sets if this command is repeatable using the 'Repeat Last Command' option from the Fusion marking menu.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = command_var.isRepeatable\n\n# Set the value of the property.\ncommand_var.isRepeatable = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = command_var->isRepeatable();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = command_var->isRepeatable(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isValid": {
+      "id": "Command_isValid",
+      "title": "Command.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = command_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = command_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "Command_objectType",
+      "title": "Command.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = command_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = command_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "okButtonText": {
+      "id": "Command_okButtonText",
+      "title": "Command.okButtonText Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets and sets the text displayed on the OK button. When the OK and Cancel buttons are displayed, this text defaults to \"OK\". If the Cancel button is not displayed the text defaults to \"CLOSE\".",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = command_var.okButtonText\n\n# Set the value of the property.\ncommand_var.okButtonText = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = command_var->okButtonText();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = command_var->okButtonText(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "parentCommandDefinition": {
+      "id": "Command_parentCommandDefinition",
+      "title": "Command.parentCommandDefinition Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/Command.h",
+      "description": "Gets the parent CommandDefinition object.",
+      "parent_class": "Command",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = command_var.parentCommandDefinition",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = command_var->parentCommandDefinition();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Customizing the UI using the API Sample",
+          "description": "Demonstrates how to work with tabs, panels, and command in the user interface. The full source for C++ and Python samples can be downloaded. This is especially useful for getting the resource files."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

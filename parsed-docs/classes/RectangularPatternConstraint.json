@@ -1,0 +1,539 @@
+{
+  "id": "RectangularPatternConstraint",
+  "title": "RectangularPatternConstraint Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+  "description": "A rectangular pattern constraint in a sketch.",
+  "parent_class": "GeometricConstraint",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this constraint. The IsDeletable property can be used to determine if this constraint can be deleted."
+    },
+    {
+      "name": "setDirectionOne",
+      "description": "Sets all of the input required to define the pattern in the first direction."
+    },
+    {
+      "name": "setDirectionTwo",
+      "description": "Sets all of the input required to define the pattern in the second direction."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this geometric constraint."
+    },
+    {
+      "name": "createdEntities",
+      "description": "Returns an array that contains all of the sketch entities that were created as a result of the pattern. This does not contain the original entities that were used as input to the pattern. The input entities can be obtained by using the entities property."
+    },
+    {
+      "name": "directionOneEntity",
+      "description": "Gets and sets the entity that defined the first direction of the pattern. This can be null which indicates to use the default which is the X-axis of the sketch. Setting this property to null will automatically clear directionTwoEntity, if it has been set."
+    },
+    {
+      "name": "directionTwoEntity",
+      "description": "Gets and sets the entity that defines the second direction of the pattern. This can be null which indicates to use the default direction, which is perpendicular to direction one. The directionOneEntity property must be set before setting this property."
+    },
+    {
+      "name": "distanceOne",
+      "description": "Returns the parameter that controls the distance in first direction. To change the value, use the properties on the returned ModelParameter object."
+    },
+    {
+      "name": "distanceTwo",
+      "description": "Returns the parameter that controls the distance in second direction. To change the value, use the properties on the returned ModelParameter object."
+    },
+    {
+      "name": "distanceType",
+      "description": "Gets and sets how the distance between elements is computed."
+    },
+    {
+      "name": "entities",
+      "description": "Gets and sets the entities that are patterned. Sketch points and curves are valid entities to pattern."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the GeometricConstraint object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same geometric constraint.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "isDeletable",
+      "description": "Indicates if this constraint is deletable."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Specifies which, if any, instances of the pattern are suppressed. This returns an array of Boolean values that indicates if a particular instance in the pattern is suppressed or not. A value of true will result in the associated instance being suppressed.   The indices represent the pattern instances in a row-column order, with the initial geometry not counting. For example, if you have a 4x4 pattern, the array will have 15 elements rather than 16 because the original geometry cannot be suppressed as part of the pattern. The first element in the array is the one next to the original in the first direction. The second element is the next one on the first row, and the third is the next one. The fourth element will be the first element in the row next to the first row that contains the original geometry."
+    },
+    {
+      "name": "isSymmetricInDirectionOne",
+      "description": "Gets and sets if the pattern in direction one is in one direction or is symmetric."
+    },
+    {
+      "name": "isSymmetricInDirectionTwo",
+      "description": "Gets and sets if the pattern in direction two is in one direction or is symmetric."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentSketch",
+      "description": "Returns the parent sketch object."
+    },
+    {
+      "name": "quantityOne",
+      "description": "Returns the parameter that controls the number of instances in the first direction. To change the value, use the properties on the returned ModelParameter."
+    },
+    {
+      "name": "quantityTwo",
+      "description": "Returns the parameter that controls the number of instances in the second direction. To change the value, use the properties on the returned ModelParameter object."
+    }
+  ],
+  "version": "Introduced in version March 2016",
+  "property_details": {
+    "assemblyContext": {
+      "id": "RectangularPatternConstraint_assemblyContext",
+      "title": "RectangularPatternConstraint.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternConstraint_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2016"
+    },
+    "attributes": {
+      "id": "RectangularPatternConstraint_attributes",
+      "title": "RectangularPatternConstraint.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Returns the collection of attributes associated with this geometric constraint.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternConstraint_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "createdEntities": {
+      "id": "RectangularPatternConstraint_createdEntities",
+      "title": "RectangularPatternConstraint.createdEntities Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Returns an array that contains all of the sketch entities that were created as a result of the pattern. This does not contain the original entities that were used as input to the pattern. The input entities can be obtained by using the entities property.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.createdEntities",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = rectangularPatternConstraint_var->createdEntities();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2022"
+    },
+    "directionOneEntity": {
+      "id": "RectangularPatternConstraint_directionOneEntity",
+      "title": "RectangularPatternConstraint.directionOneEntity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Gets and sets the entity that defined the first direction of the pattern. This can be null which indicates to use the default which is the X-axis of the sketch. Setting this property to null will automatically clear directionTwoEntity, if it has been set.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.directionOneEntity\n\n# Set the value of the property.\nrectangularPatternConstraint_var.directionOneEntity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternConstraint_var->directionOneEntity();\n\n// Set the value of the property, where value_var is a SketchLine.\nbool returnValue = rectangularPatternConstraint_var->directionOneEntity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2022"
+    },
+    "directionTwoEntity": {
+      "id": "RectangularPatternConstraint_directionTwoEntity",
+      "title": "RectangularPatternConstraint.directionTwoEntity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Gets and sets the entity that defines the second direction of the pattern. This can be null which indicates to use the default direction, which is perpendicular to direction one. The directionOneEntity property must be set before setting this property.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.directionTwoEntity\n\n# Set the value of the property.\nrectangularPatternConstraint_var.directionTwoEntity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternConstraint_var->directionTwoEntity();\n\n// Set the value of the property, where value_var is a SketchLine.\nbool returnValue = rectangularPatternConstraint_var->directionTwoEntity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2022"
+    },
+    "distanceOne": {
+      "id": "RectangularPatternConstraint_distanceOne",
+      "title": "RectangularPatternConstraint.distanceOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Returns the parameter that controls the distance in first direction. To change the value, use the properties on the returned ModelParameter object.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.distanceOne",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternConstraint_var->distanceOne();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2022"
+    },
+    "distanceTwo": {
+      "id": "RectangularPatternConstraint_distanceTwo",
+      "title": "RectangularPatternConstraint.distanceTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Returns the parameter that controls the distance in second direction. To change the value, use the properties on the returned ModelParameter object.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.distanceTwo",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternConstraint_var->distanceTwo();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2022"
+    },
+    "distanceType": {
+      "id": "RectangularPatternConstraint_distanceType",
+      "title": "RectangularPatternConstraint.distanceType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Gets and sets how the distance between elements is computed.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.distanceType\n\n# Set the value of the property.\nrectangularPatternConstraint_var.distanceType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPatternDistanceType propertyValue = rectangularPatternConstraint_var->distanceType();\n\n// Set the value of the property, where value_var is a PatternDistanceType.\nbool returnValue = rectangularPatternConstraint_var->distanceType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2022"
+    },
+    "entities": {
+      "id": "RectangularPatternConstraint_entities",
+      "title": "RectangularPatternConstraint.entities Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Gets and sets the entities that are patterned. Sketch points and curves are valid entities to pattern.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.entities\n\n# Set the value of the property.\nrectangularPatternConstraint_var.entities = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = rectangularPatternConstraint_var->entities();\n\n// Set the value of the property, where value_var is a SketchEntity.\nbool returnValue = rectangularPatternConstraint_var->entities(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2022"
+    },
+    "entityToken": {
+      "id": "RectangularPatternConstraint_entityToken",
+      "title": "RectangularPatternConstraint.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Returns a token for the GeometricConstraint object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same geometric constraint. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = rectangularPatternConstraint_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "isDeletable": {
+      "id": "RectangularPatternConstraint_isDeletable",
+      "title": "RectangularPatternConstraint.isDeletable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Indicates if this constraint is deletable.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.isDeletable",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = rectangularPatternConstraint_var->isDeletable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2016"
+    },
+    "isSuppressed": {
+      "id": "RectangularPatternConstraint_isSuppressed",
+      "title": "RectangularPatternConstraint.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Specifies which, if any, instances of the pattern are suppressed. This returns an array of Boolean values that indicates if a particular instance in the pattern is suppressed or not. A value of true will result in the associated instance being suppressed. The indices represent the pattern instances in a row-column order, with the initial geometry not counting. For example, if you have a 4x4 pattern, the array will have 15 elements rather than 16 because the original geometry cannot be suppressed as part of the pattern. The first element in the array is the one next to the original in the first direction. The second element is the next one on the first row, and the third is the next one. The fourth element will be the first element in the row next to the first row that contains the original geometry.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.isSuppressed\n\n# Set the value of the property.\nrectangularPatternConstraint_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector propertyValue = rectangularPatternConstraint_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = rectangularPatternConstraint_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2022"
+    },
+    "isSymmetricInDirectionOne": {
+      "id": "RectangularPatternConstraint_isSymmetricInDirectionOne",
+      "title": "RectangularPatternConstraint.isSymmetricInDirectionOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Gets and sets if the pattern in direction one is in one direction or is symmetric.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.isSymmetricInDirectionOne\n\n# Set the value of the property.\nrectangularPatternConstraint_var.isSymmetricInDirectionOne = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = rectangularPatternConstraint_var->isSymmetricInDirectionOne();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = rectangularPatternConstraint_var->isSymmetricInDirectionOne(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2022"
+    },
+    "isSymmetricInDirectionTwo": {
+      "id": "RectangularPatternConstraint_isSymmetricInDirectionTwo",
+      "title": "RectangularPatternConstraint.isSymmetricInDirectionTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Gets and sets if the pattern in direction two is in one direction or is symmetric.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.isSymmetricInDirectionTwo\n\n# Set the value of the property.\nrectangularPatternConstraint_var.isSymmetricInDirectionTwo = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = rectangularPatternConstraint_var->isSymmetricInDirectionTwo();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = rectangularPatternConstraint_var->isSymmetricInDirectionTwo(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2022"
+    },
+    "isValid": {
+      "id": "RectangularPatternConstraint_isValid",
+      "title": "RectangularPatternConstraint.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = rectangularPatternConstraint_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2016"
+    },
+    "nativeObject": {
+      "id": "RectangularPatternConstraint_nativeObject",
+      "title": "RectangularPatternConstraint.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternConstraint_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2022"
+    },
+    "objectType": {
+      "id": "RectangularPatternConstraint_objectType",
+      "title": "RectangularPatternConstraint.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = rectangularPatternConstraint_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2016"
+    },
+    "parentSketch": {
+      "id": "RectangularPatternConstraint_parentSketch",
+      "title": "RectangularPatternConstraint.parentSketch Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Returns the parent sketch object.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.parentSketch",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternConstraint_var->parentSketch();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2016"
+    },
+    "quantityOne": {
+      "id": "RectangularPatternConstraint_quantityOne",
+      "title": "RectangularPatternConstraint.quantityOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Returns the parameter that controls the number of instances in the first direction. To change the value, use the properties on the returned ModelParameter.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.quantityOne",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternConstraint_var->quantityOne();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2022"
+    },
+    "quantityTwo": {
+      "id": "RectangularPatternConstraint_quantityTwo",
+      "title": "RectangularPatternConstraint.quantityTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Returns the parameter that controls the number of instances in the second direction. To change the value, use the properties on the returned ModelParameter object.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternConstraint_var.quantityTwo",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternConstraint_var->quantityTwo();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2022"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "RectangularPatternConstraint_classType",
+      "title": "RectangularPatternConstraint.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.RectangularPatternConstraint.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::RectangularPatternConstraint::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version March 2016"
+    },
+    "createForAssemblyContext": {
+      "id": "RectangularPatternConstraint_createForAssemblyContext",
+      "title": "RectangularPatternConstraint.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "returnValue = rectangularPatternConstraint_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = rectangularPatternConstraint_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "RectangularPatternConstraint",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version September 2022"
+    },
+    "deleteMe": {
+      "id": "RectangularPatternConstraint_deleteMe",
+      "title": "RectangularPatternConstraint.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Deletes this constraint. The IsDeletable property can be used to determine if this constraint can be deleted.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "returnValue = rectangularPatternConstraint_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = rectangularPatternConstraint_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version March 2016"
+    },
+    "setDirectionOne": {
+      "id": "RectangularPatternConstraint_setDirectionOne",
+      "title": "RectangularPatternConstraint.setDirectionOne Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Sets all of the input required to define the pattern in the first direction.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "returnValue = rectangularPatternConstraint_var.setDirectionOne(directionOneEntity, quantityOne, distanceOne)",
+        "cpp": "#include \n\nreturnValue = rectangularPatternConstraint_var->setDirectionOne(directionOneEntity, quantityOne, distanceOne);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if it was successful.",
+      "parameters": [
+        {
+          "name": "directionOneEntity",
+          "type": "SketchLine",
+          "description": "Specifies the SketchLine object used to define the first direction entity.   This argument can be null to indicate that the default first direction is to be used, which is along the X axis of the sketch."
+        },
+        {
+          "name": "quantityOne",
+          "type": "ValueInput",
+          "description": "Specifies the number of instances in the first direction."
+        },
+        {
+          "name": "distanceOne",
+          "type": "ValueInput",
+          "description": "Specifies the distance in the first direction. How this value is used depends on the value of the PatternDistanceType property. If the value is ExtentPatternDistanceType then it defines the total distance of the pattern. If the value is SpacingPatternDistanceType then it defines the distance between each element."
+        }
+      ],
+      "version": "Introduced in version September 2022"
+    },
+    "setDirectionTwo": {
+      "id": "RectangularPatternConstraint_setDirectionTwo",
+      "title": "RectangularPatternConstraint.setDirectionTwo Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/RectangularPatternConstraint.h",
+      "description": "Sets all of the input required to define the pattern in the second direction.",
+      "parent_class": "RectangularPatternConstraint",
+      "syntax": {
+        "python": "returnValue = rectangularPatternConstraint_var.setDirectionTwo(directionTwoEntity, quantityTwo, distanceTwo)",
+        "cpp": "#include \n\nreturnValue = rectangularPatternConstraint_var->setDirectionTwo(directionTwoEntity, quantityTwo, distanceTwo);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if it was successful.",
+      "parameters": [
+        {
+          "name": "directionTwoEntity",
+          "type": "SketchLine",
+          "description": "Specifies the SketchLine object used to define the second direction entity.   This argument can be null to indicate that the default second direction is to be used, which is 90 degrees to the first direction."
+        },
+        {
+          "name": "quantityTwo",
+          "type": "ValueInput",
+          "description": "Specifies the number of instances in the second direction."
+        },
+        {
+          "name": "distanceTwo",
+          "type": "ValueInput",
+          "description": "Specifies the distance in the second direction. How this value is used depends on the value of the PatternDistanceType property. If the value is ExtentPatternDistanceType then it defines the total distance of the pattern. If the value is SpacingPatternDistanceType then it defines the distance between each element."
+        }
+      ],
+      "version": "Introduced in version September 2022"
+    }
+  }
+}

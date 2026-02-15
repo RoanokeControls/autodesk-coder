@@ -1,0 +1,782 @@
+{
+  "id": "SketchEllipticalArc",
+  "title": "SketchEllipticalArc Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+  "description": "An elliptical arc in a sketch.",
+  "parent_class": "SketchCurve",
+  "methods": [
+    {
+      "name": "breakCurve",
+      "description": "Breaks a curve into two or three pieces by finding intersections of this curve with all other curves in the sketch and splitting this curve at the nearest intersections to a specified point on the curve."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the entity from the sketch."
+    },
+    {
+      "name": "extend",
+      "description": "Extend a curve by specifying a point that determines the end of the curve to extend"
+    },
+    {
+      "name": "intersections",
+      "description": "Get the curves that intersect this curve along with the intersection points (Point3D)"
+    },
+    {
+      "name": "split",
+      "description": "Split a curve at a position specified along the curve"
+    },
+    {
+      "name": "trim",
+      "description": "Trim a curve by specifying a point that determines the segment of the curve to trim away"
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "boundingBox",
+      "description": "Returns the bounding box of the entity in sketch space."
+    },
+    {
+      "name": "centerSketchPoint",
+      "description": "Gets the sketch point that defines the center of the elliptical arc. You can reposition the elliptical arc by moving the sketch point, assuming any existing constraints allow the desired change."
+    },
+    {
+      "name": "endSketchPoint",
+      "description": "Gets the sketch point that defines the end of the elliptical arc. You can reposition the sketch point, assuming any existing constraints allow the desired change."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the SketchEntity object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same sketch entity.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "geometricConstraints",
+      "description": "Returns the sketch constraints that are attached to this curve."
+    },
+    {
+      "name": "geometry",
+      "description": "Returns the transient geometry of the elliptical arc which provides geometric information about the elliptical arc. The returned geometry is always in sketch space."
+    },
+    {
+      "name": "is2D",
+      "description": "Indicates if this curve lies entirely on the sketch x-y plane."
+    },
+    {
+      "name": "isConstruction",
+      "description": "Gets and sets whether this curve is construction geometry."
+    },
+    {
+      "name": "isDeletable",
+      "description": "Indicates if this sketch entity can be deleted. There are cases, especially with sketch points where another entity is dependent on an entity so deleting it is not allowed. For example, you can't delete the center point of circle by itself but deleting the circle will delete the point. The same is true for the end points of a line."
+    },
+    {
+      "name": "isFixed",
+      "description": "Indicates if this geometry is \"fixed\"."
+    },
+    {
+      "name": "isFullyConstrained",
+      "description": "Indicates if this sketch entity is fully constrained."
+    },
+    {
+      "name": "isLinked",
+      "description": "Indicates if this sketch entity was created by a projection, inclusion, or driven by an API script. If this returns true, then the entity is presented to the user as not editable and with a 'break link' command available."
+    },
+    {
+      "name": "isReference",
+      "description": "Indicates if this geometry is a reference. Changing this property from true to false removes the reference. This property can not be set to true if it is already false."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "When a sketch is created, geometry is sometimes automatically added to the sketch. For example a sketch point that references the origin point is always included and if a face was selected to create the sketch on, geometry from the face is also included. This automatically created geometry behaves in a special way in that it is invisible but is available for selection and it also participates in profile calculations. It's not possible to make them visible but they can be deleted and they can be used for any other standard sketch operation."
+    },
+    {
+      "name": "length",
+      "description": "Returns the length of the curve in centimeters."
+    },
+    {
+      "name": "majorAxis",
+      "description": "Gets and sets the major axis direction of the elliptical arc. Changing the axis is limited by any constraints that might exist on the elliptical arc. Setting the axis can fail in cases where the direction is fully defined through constraints."
+    },
+    {
+      "name": "majorAxisRadius",
+      "description": "Gets and sets the major axis radius of the elliptical arc. Changing the radius is limited by any constraints that might exist on the elliptical arc. Setting the radius can fail in cases where the radius is fully defined through constraints."
+    },
+    {
+      "name": "minorAxisRadius",
+      "description": "Gets and sets the minor axis radius of the elliptical arc. Changing the radius is limited by any constraints that might exist on the elliptical arc. Setting the radius can fail in cases where the radius is fully defined through constraints."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentSketch",
+      "description": "Returns the parent sketch."
+    },
+    {
+      "name": "referencedEntity",
+      "description": "Returns the referenced entity in the case where IsReference is true. However, this property can also return null when IsReference is true in the case where the reference is not parametric."
+    },
+    {
+      "name": "sketchDimensions",
+      "description": "Returns the sketch dimensions that are attached to this curve."
+    },
+    {
+      "name": "startSketchPoint",
+      "description": "Gets the sketch point that defines the start of the elliptical arc. You can reposition the sketch point, assuming any existing constraints allow the desired change."
+    },
+    {
+      "name": "worldGeometry",
+      "description": "Returns an EllipticalArc3D object which provides geometric information in world space. The returned geometry takes into account the assembly context and the position of the sketch in it's parent component, which means the geometry will be returned in the root component space."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "property_details": {
+    "assemblyContext": {
+      "id": "SketchEllipticalArc_assemblyContext",
+      "title": "SketchEllipticalArc.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchEllipticalArc_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "attributes": {
+      "id": "SketchEllipticalArc_attributes",
+      "title": "SketchEllipticalArc.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchEllipticalArc_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "boundingBox": {
+      "id": "SketchEllipticalArc_boundingBox",
+      "title": "SketchEllipticalArc.boundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Returns the bounding box of the entity in sketch space.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.boundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchEllipticalArc_var->boundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "centerSketchPoint": {
+      "id": "SketchEllipticalArc_centerSketchPoint",
+      "title": "SketchEllipticalArc.centerSketchPoint Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Gets the sketch point that defines the center of the elliptical arc. You can reposition the elliptical arc by moving the sketch point, assuming any existing constraints allow the desired change.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.centerSketchPoint",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchEllipticalArc_var->centerSketchPoint();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "endSketchPoint": {
+      "id": "SketchEllipticalArc_endSketchPoint",
+      "title": "SketchEllipticalArc.endSketchPoint Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Gets the sketch point that defines the end of the elliptical arc. You can reposition the sketch point, assuming any existing constraints allow the desired change.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.endSketchPoint",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchEllipticalArc_var->endSketchPoint();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "entityToken": {
+      "id": "SketchEllipticalArc_entityToken",
+      "title": "SketchEllipticalArc.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Returns a token for the SketchEntity object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same sketch entity. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchEllipticalArc_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "geometricConstraints": {
+      "id": "SketchEllipticalArc_geometricConstraints",
+      "title": "SketchEllipticalArc.geometricConstraints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Returns the sketch constraints that are attached to this curve.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.geometricConstraints",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchEllipticalArc_var->geometricConstraints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "geometry": {
+      "id": "SketchEllipticalArc_geometry",
+      "title": "SketchEllipticalArc.geometry Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Returns the transient geometry of the elliptical arc which provides geometric information about the elliptical arc. The returned geometry is always in sketch space.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.geometry",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchEllipticalArc_var->geometry();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "is2D": {
+      "id": "SketchEllipticalArc_is2D",
+      "title": "SketchEllipticalArc.is2D Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Indicates if this curve lies entirely on the sketch x-y plane.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.is2D",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchEllipticalArc_var->is2D();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isConstruction": {
+      "id": "SketchEllipticalArc_isConstruction",
+      "title": "SketchEllipticalArc.isConstruction Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Gets and sets whether this curve is construction geometry.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.isConstruction\n\n# Set the value of the property.\nsketchEllipticalArc_var.isConstruction = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchEllipticalArc_var->isConstruction();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchEllipticalArc_var->isConstruction(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isDeletable": {
+      "id": "SketchEllipticalArc_isDeletable",
+      "title": "SketchEllipticalArc.isDeletable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Indicates if this sketch entity can be deleted. There are cases, especially with sketch points where another entity is dependent on an entity so deleting it is not allowed. For example, you can't delete the center point of circle by itself but deleting the circle will delete the point. The same is true for the end points of a line.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.isDeletable",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchEllipticalArc_var->isDeletable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isFixed": {
+      "id": "SketchEllipticalArc_isFixed",
+      "title": "SketchEllipticalArc.isFixed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Indicates if this geometry is \"fixed\".",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.isFixed\n\n# Set the value of the property.\nsketchEllipticalArc_var.isFixed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchEllipticalArc_var->isFixed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchEllipticalArc_var->isFixed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isFullyConstrained": {
+      "id": "SketchEllipticalArc_isFullyConstrained",
+      "title": "SketchEllipticalArc.isFullyConstrained Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Indicates if this sketch entity is fully constrained.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.isFullyConstrained",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchEllipticalArc_var->isFullyConstrained();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isLinked": {
+      "id": "SketchEllipticalArc_isLinked",
+      "title": "SketchEllipticalArc.isLinked Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Indicates if this sketch entity was created by a projection, inclusion, or driven by an API script. If this returns true, then the entity is presented to the user as not editable and with a 'break link' command available.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.isLinked",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchEllipticalArc_var->isLinked();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "isReference": {
+      "id": "SketchEllipticalArc_isReference",
+      "title": "SketchEllipticalArc.isReference Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Indicates if this geometry is a reference. Changing this property from true to false removes the reference. This property can not be set to true if it is already false.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.isReference\n\n# Set the value of the property.\nsketchEllipticalArc_var.isReference = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchEllipticalArc_var->isReference();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchEllipticalArc_var->isReference(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "SketchEllipticalArc_isValid",
+      "title": "SketchEllipticalArc.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchEllipticalArc_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isVisible": {
+      "id": "SketchEllipticalArc_isVisible",
+      "title": "SketchEllipticalArc.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "When a sketch is created, geometry is sometimes automatically added to the sketch. For example a sketch point that references the origin point is always included and if a face was selected to create the sketch on, geometry from the face is also included. This automatically created geometry behaves in a special way in that it is invisible but is available for selection and it also participates in profile calculations. It's not possible to make them visible but they can be deleted and they can be used for any other standard sketch operation.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchEllipticalArc_var->isVisible();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "length": {
+      "id": "SketchEllipticalArc_length",
+      "title": "SketchEllipticalArc.length Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Returns the length of the curve in centimeters.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.length",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sketchEllipticalArc_var->length();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "majorAxis": {
+      "id": "SketchEllipticalArc_majorAxis",
+      "title": "SketchEllipticalArc.majorAxis Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Gets and sets the major axis direction of the elliptical arc. Changing the axis is limited by any constraints that might exist on the elliptical arc. Setting the axis can fail in cases where the direction is fully defined through constraints.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.majorAxis\n\n# Set the value of the property.\nsketchEllipticalArc_var.majorAxis = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchEllipticalArc_var->majorAxis();\n\n// Set the value of the property, where value_var is a Vector3D.\nbool returnValue = sketchEllipticalArc_var->majorAxis(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "majorAxisRadius": {
+      "id": "SketchEllipticalArc_majorAxisRadius",
+      "title": "SketchEllipticalArc.majorAxisRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Gets and sets the major axis radius of the elliptical arc. Changing the radius is limited by any constraints that might exist on the elliptical arc. Setting the radius can fail in cases where the radius is fully defined through constraints.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.majorAxisRadius\n\n# Set the value of the property.\nsketchEllipticalArc_var.majorAxisRadius = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sketchEllipticalArc_var->majorAxisRadius();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sketchEllipticalArc_var->majorAxisRadius(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "minorAxisRadius": {
+      "id": "SketchEllipticalArc_minorAxisRadius",
+      "title": "SketchEllipticalArc.minorAxisRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Gets and sets the minor axis radius of the elliptical arc. Changing the radius is limited by any constraints that might exist on the elliptical arc. Setting the radius can fail in cases where the radius is fully defined through constraints.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.minorAxisRadius\n\n# Set the value of the property.\nsketchEllipticalArc_var.minorAxisRadius = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sketchEllipticalArc_var->minorAxisRadius();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sketchEllipticalArc_var->minorAxisRadius(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "nativeObject": {
+      "id": "SketchEllipticalArc_nativeObject",
+      "title": "SketchEllipticalArc.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchEllipticalArc_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "SketchEllipticalArc_objectType",
+      "title": "SketchEllipticalArc.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchEllipticalArc_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "parentSketch": {
+      "id": "SketchEllipticalArc_parentSketch",
+      "title": "SketchEllipticalArc.parentSketch Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Returns the parent sketch.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.parentSketch",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchEllipticalArc_var->parentSketch();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "referencedEntity": {
+      "id": "SketchEllipticalArc_referencedEntity",
+      "title": "SketchEllipticalArc.referencedEntity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Returns the referenced entity in the case where IsReference is true. However, this property can also return null when IsReference is true in the case where the reference is not parametric.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.referencedEntity",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchEllipticalArc_var->referencedEntity();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "sketchDimensions": {
+      "id": "SketchEllipticalArc_sketchDimensions",
+      "title": "SketchEllipticalArc.sketchDimensions Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Returns the sketch dimensions that are attached to this curve.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.sketchDimensions",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchEllipticalArc_var->sketchDimensions();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "startSketchPoint": {
+      "id": "SketchEllipticalArc_startSketchPoint",
+      "title": "SketchEllipticalArc.startSketchPoint Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Gets the sketch point that defines the start of the elliptical arc. You can reposition the sketch point, assuming any existing constraints allow the desired change.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.startSketchPoint",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchEllipticalArc_var->startSketchPoint();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "worldGeometry": {
+      "id": "SketchEllipticalArc_worldGeometry",
+      "title": "SketchEllipticalArc.worldGeometry Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Returns an EllipticalArc3D object which provides geometric information in world space. The returned geometry takes into account the assembly context and the position of the sketch in it's parent component, which means the geometry will be returned in the root component space.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArc_var.worldGeometry",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchEllipticalArc_var->worldGeometry();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "method_details": {
+    "breakCurve": {
+      "id": "SketchEllipticalArc_breakCurve",
+      "title": "SketchEllipticalArc.breakCurve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Breaks a curve into two or three pieces by finding intersections of this curve with all other curves in the sketch and splitting this curve at the nearest intersections to a specified point on the curve.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchEllipticalArc_var.breakCurve(segmentPoint)\n\n# Uses optional arguments.\nreturnValue = sketchEllipticalArc_var.breakCurve(segmentPoint, createConstraints)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchEllipticalArc_var->breakCurve(segmentPoint);\n\n// Uses optional arguments.\nreturnValue = sketchEllipticalArc_var->breakCurve(segmentPoint, createConstraints);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "All of the curves resulting from the break are returned in an ObjectCollection. In the case where no intersections are found and as a result the curve is not broken, an empty ObjectCollection is returned.",
+      "parameters": [
+        {
+          "name": "segmentPoint",
+          "type": "Point3D",
+          "description": "A point that specifies the segment of the curve that is to be split from the rest of the curve. The nearest intersection(s) to this point define the break location(s)."
+        },
+        {
+          "name": "createConstraints",
+          "type": "boolean",
+          "description": "Optional argument that specifies if constraints should be created between the new curve segments. A value of true indicates constraints will be created.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "classType": {
+      "id": "SketchEllipticalArc_classType",
+      "title": "SketchEllipticalArc.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.SketchEllipticalArc.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::SketchEllipticalArc::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "createForAssemblyContext": {
+      "id": "SketchEllipticalArc_createForAssemblyContext",
+      "title": "SketchEllipticalArc.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "returnValue = sketchEllipticalArc_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = sketchEllipticalArc_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "SketchEllipticalArc",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "deleteMe": {
+      "id": "SketchEllipticalArc_deleteMe",
+      "title": "SketchEllipticalArc.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Deletes the entity from the sketch.",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "returnValue = sketchEllipticalArc_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = sketchEllipticalArc_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true is the delete was successful.",
+      "version": "Introduced in version August 2014"
+    },
+    "extend": {
+      "id": "SketchEllipticalArc_extend",
+      "title": "SketchEllipticalArc.extend Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Extend a curve by specifying a point that determines the end of the curve to extend",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchEllipticalArc_var.extend(endPoint)\n\n# Uses optional arguments.\nreturnValue = sketchEllipticalArc_var.extend(endPoint, createConstraints)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchEllipticalArc_var->extend(endPoint);\n\n// Uses optional arguments.\nreturnValue = sketchEllipticalArc_var->extend(endPoint, createConstraints);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "Returns the modified original curve if the start or end of the curve is extended If the extend joins a curve to another, the two original curves are deleted and a new curve is returned If an arc is extended so as to become a circle, the original arc is deleted and a new circle is returned",
+      "parameters": [
+        {
+          "name": "endPoint",
+          "type": "Point3D",
+          "description": "A point (transient Point3D) on or closest to the end of the curve to extend. (start or end) The end of the curve closest to the endPoint gets extended"
+        },
+        {
+          "name": "createConstraints",
+          "type": "boolean",
+          "description": "Constraints are created by default. Specify false to not create constraints.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "intersections": {
+      "id": "SketchEllipticalArc_intersections",
+      "title": "SketchEllipticalArc.intersections Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Get the curves that intersect this curve along with the intersection points (Point3D)",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "(returnValue, intersectingCurves, intersectionPoints) = sketchEllipticalArc_var.intersections(sketchCurves)",
+        "cpp": "#include  sketchCurves;\nPtr intersectingCurves;\nPtr intersectionPoints;\nboolean returnValue = sketchEllipticalArc_var->intersections(sketchCurves, intersectingCurves, intersectionPoints);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if intersections are found",
+      "parameters": [
+        {
+          "name": "sketchCurves",
+          "type": "ObjectCollection",
+          "description": "A collection of curves to attempt to find intersections with. Set the value of this parameter to null to use all curves in the sketch for the calculation."
+        },
+        {
+          "name": "intersectingCurves",
+          "type": "ObjectCollection",
+          "description": "A collection of the actual intersecting curves"
+        },
+        {
+          "name": "intersectionPoints",
+          "type": "ObjectCollection",
+          "description": "A collection of intersection points (Point3D) Item numbers in this collection correspond to the item numbers in the intersectingCurves collection."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "split": {
+      "id": "SketchEllipticalArc_split",
+      "title": "SketchEllipticalArc.split Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Split a curve at a position specified along the curve",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchEllipticalArc_var.split(splitPoint)\n\n# Uses optional arguments.\nreturnValue = sketchEllipticalArc_var.split(splitPoint, createConstraints)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchEllipticalArc_var->split(splitPoint);\n\n// Uses optional arguments.\nreturnValue = sketchEllipticalArc_var->split(splitPoint, createConstraints);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "Returns the resulting 2 curves; the orginal curve + the newly created curve When split spline the original is deleted and two new curves returned. Empty collection returned if curve is closed.",
+      "parameters": [
+        {
+          "name": "splitPoint",
+          "type": "Point3D",
+          "description": "A position (transient Point3D) on the curve that defines the point at which to split the curve"
+        },
+        {
+          "name": "createConstraints",
+          "type": "boolean",
+          "description": "Constraints are created by default. Specify false to create no constraints.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "trim": {
+      "id": "SketchEllipticalArc_trim",
+      "title": "SketchEllipticalArc.trim Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArc.h",
+      "description": "Trim a curve by specifying a point that determines the segment of the curve to trim away",
+      "parent_class": "SketchEllipticalArc",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = sketchEllipticalArc_var.trim(segmentPoint)\n\n# Uses optional arguments.\nreturnValue = sketchEllipticalArc_var.trim(segmentPoint, createConstraints)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = sketchEllipticalArc_var->trim(segmentPoint);\n\n// Uses optional arguments.\nreturnValue = sketchEllipticalArc_var->trim(segmentPoint, createConstraints);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "When trimming the start or end side of a line, unclosed circular or elliptical arc, the original entity is modified and returned When trimming the middle of a line, unclosed circular or elliptical arc the original entity is deleted and two new entities are returned When trimming the start or end of any type of closed curve, the original is deleted and a new curve is returned Any trimming of a spline (open or closed) deletes the original and new spline/s are returned Trimming a curve having no intersections deletes the original and returns an empty collection",
+      "parameters": [
+        {
+          "name": "segmentPoint",
+          "type": "Point3D",
+          "description": "A point (transient Point3D) on or closest to the segment of the curve to remove. (start, end or middle) The segment of the curve closest to the segmentPoint gets removed"
+        },
+        {
+          "name": "createConstraints",
+          "type": "boolean",
+          "description": "Constraints are created by default. Specify false to not create constraints.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

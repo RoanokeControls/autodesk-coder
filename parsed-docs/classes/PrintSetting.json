@@ -1,0 +1,474 @@
+{
+  "id": "PrintSetting",
+  "title": "PrintSetting Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/PrintSetting/PrintSetting.h",
+  "description": "Object that represents a PrintSetting.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createFromXML",
+      "description": "Creates a PrintSetting from a xml content."
+    },
+    {
+      "name": "deletePrintSettingItem",
+      "description": "Deletes the PrintSettingItem of the specified body preset. Throws an exception when the name does not match any available PrintSettingItems or when trying to delete the default PrintSettingItem."
+    },
+    {
+      "name": "duplicatePrintSettingItem",
+      "description": "Duplicates the PrintSetting item of the specified body preset."
+    },
+    {
+      "name": "getDefaultPrintSettingItem",
+      "description": "Gets the default PrintSetting item of the specified body preset. Throws exception when name not found."
+    },
+    {
+      "name": "isCompatibleWithMachine",
+      "description": "Checks whether the print setting is usable with the given machine."
+    },
+    {
+      "name": "item",
+      "description": "Get the PrintSettingItem at index in PrintSetting."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns the PrintSetting item of the specified body preset."
+    },
+    {
+      "name": "parameters",
+      "description": "Function that returns the specified parameterTable using an enum into the collection."
+    },
+    {
+      "name": "setDefaultPrintSettingItem",
+      "description": "Defaults the PrintSetting item of the specified body preset. Throws exception when name not found."
+    },
+    {
+      "name": "syncWithMachine",
+      "description": "Synchronizes the print setting with the given machine, making extruder parameter options dependent on the available extruders in the machine."
+    },
+    {
+      "name": "toXML",
+      "description": "Generates and returns the print setting xml content string."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Get the number of PrintSettingItems in this collection."
+    },
+    {
+      "name": "description",
+      "description": "Gets and sets the description of the PrintSetting."
+    },
+    {
+      "name": "id",
+      "description": "Gets the unique identifier of the PrintSetting. Can be used for comparing PrintSettings within the document."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name of the PrintSetting."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "technology",
+      "description": "Gets the technology of the PrintSetting."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Additive Manufacturing FFF API Sample",
+      "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+    },
+    {
+      "name": "Additive Manufacturing MJF API Sample",
+      "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+    },
+    {
+      "name": "Additive Manufacturing SLA API Sample",
+      "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "method_details": {
+    "classType": {
+      "id": "PrintSetting_classType",
+      "title": "PrintSetting.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "returnValue = adsk.cam.PrintSetting.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::PrintSetting::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    },
+    "createFromXML": {
+      "id": "PrintSetting_createFromXML",
+      "title": "PrintSetting.createFromXML Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Creates a PrintSetting from a xml content.",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "returnValue = adsk.cam.PrintSetting.createFromXML(xmlContent)",
+        "cpp": "#include \n\nreturnValue = adsk::cam::PrintSetting::createFromXML(xmlContent);"
+      },
+      "return_type": "PrintSetting",
+      "return_description": "Returns the newly created PrintSetting.",
+      "parameters": [
+        {
+          "name": "xmlContent",
+          "type": "string",
+          "description": "The xml content string of a PrintSetting file to act as a base for creating a PrintSetting from."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "deletePrintSettingItem": {
+      "id": "PrintSetting_deletePrintSettingItem",
+      "title": "PrintSetting.deletePrintSettingItem Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Deletes the PrintSettingItem of the specified body preset. Throws an exception when the name does not match any available PrintSettingItems or when trying to delete the default PrintSettingItem.",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "returnValue = printSetting_var.deletePrintSettingItem(name)",
+        "cpp": "#include \n\nreturnValue = printSetting_var->deletePrintSettingItem(name);"
+      },
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The body preset id of the parameters that has to be deleted."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "duplicatePrintSettingItem": {
+      "id": "PrintSetting_duplicatePrintSettingItem",
+      "title": "PrintSetting.duplicatePrintSettingItem Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Duplicates the PrintSetting item of the specified body preset.",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "returnValue = printSetting_var.duplicatePrintSettingItem(name)",
+        "cpp": "#include \n\nreturnValue = printSetting_var->duplicatePrintSettingItem(name);"
+      },
+      "return_type": "PrintSettingItem",
+      "return_description": "Returns the specified parameters or throws exception in the case where there is no parameters with the specified id.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The body preset id of the parameters that has to be duplicated."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "getDefaultPrintSettingItem": {
+      "id": "PrintSetting_getDefaultPrintSettingItem",
+      "title": "PrintSetting.getDefaultPrintSettingItem Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Gets the default PrintSetting item of the specified body preset. Throws exception when name not found.",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "returnValue = printSetting_var.getDefaultPrintSettingItem()",
+        "cpp": "#include \n\nreturnValue = printSetting_var->getDefaultPrintSettingItem();"
+      },
+      "return_type": "PrintSettingItem",
+      "return_description": "Returns the default parameters.",
+      "version": "Introduced in version April 2023"
+    },
+    "isCompatibleWithMachine": {
+      "id": "PrintSetting_isCompatibleWithMachine",
+      "title": "PrintSetting.isCompatibleWithMachine Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Checks whether the print setting is usable with the given machine.",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "returnValue = printSetting_var.isCompatibleWithMachine(machine)",
+        "cpp": "#include \n\nreturnValue = printSetting_var->isCompatibleWithMachine(machine);"
+      },
+      "parameters": [
+        {
+          "name": "machine",
+          "type": "Machine",
+          "description": ""
+        }
+      ],
+      "version": "Introduced in version January 2025"
+    },
+    "item": {
+      "id": "PrintSetting_item",
+      "title": "PrintSetting.item Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Get the PrintSettingItem at index in PrintSetting.",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "returnValue = printSetting_var.item(index)",
+        "cpp": "#include \n\nreturnValue = printSetting_var->item(index);"
+      },
+      "return_type": "PrintSettingItem",
+      "return_description": "The PrintSettingItem at index.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "integer",
+          "description": "The index of the PrintSettingItem."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "itemByName": {
+      "id": "PrintSetting_itemByName",
+      "title": "PrintSetting.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Returns the PrintSetting item of the specified body preset.",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "returnValue = printSetting_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = printSetting_var->itemByName(name);"
+      },
+      "return_type": "PrintSettingItem",
+      "return_description": "Returns the specified parameters or  throws exception in the case where there is no parameters with the specified id.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The body preset id of the parameters."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "parameters": {
+      "id": "PrintSetting_parameters",
+      "title": "PrintSetting.parameters Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Function that returns the specified parameterTable using an enum into the collection.",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "returnValue = printSetting_var.parameters(type)",
+        "cpp": "#include \n\nreturnValue = printSetting_var->parameters(type);"
+      },
+      "return_type": "CAMParameters",
+      "return_description": "Returns the specified type of parameters or null if an invalid type was specified.",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "PrintSettingItemTypes",
+          "description": "The type of the item within the collection to return."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "setDefaultPrintSettingItem": {
+      "id": "PrintSetting_setDefaultPrintSettingItem",
+      "title": "PrintSetting.setDefaultPrintSettingItem Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Defaults the PrintSetting item of the specified body preset. Throws exception when name not found.",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "returnValue = printSetting_var.setDefaultPrintSettingItem(name)",
+        "cpp": "#include \n\nreturnValue = printSetting_var->setDefaultPrintSettingItem(name);"
+      },
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The body preset id of the parameters that has to be defaulted."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "syncWithMachine": {
+      "id": "PrintSetting_syncWithMachine",
+      "title": "PrintSetting.syncWithMachine Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Synchronizes the print setting with the given machine, making extruder parameter options dependent on the available extruders in the machine.",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "returnValue = printSetting_var.syncWithMachine(machine)",
+        "cpp": "#include \n\nreturnValue = printSetting_var->syncWithMachine(machine);"
+      },
+      "parameters": [
+        {
+          "name": "machine",
+          "type": "Machine",
+          "description": ""
+        }
+      ],
+      "version": "Introduced in version March 2024"
+    },
+    "toXML": {
+      "id": "PrintSetting_toXML",
+      "title": "PrintSetting.toXML Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Generates and returns the print setting xml content string.",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "returnValue = printSetting_var.toXML()",
+        "cpp": "#include \n\nreturnValue = printSetting_var->toXML();"
+      },
+      "return_type": "string",
+      "return_description": "Returns print setting xml content string.",
+      "version": "Introduced in version January 2026"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "PrintSetting_count",
+      "title": "PrintSetting.count Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Get the number of PrintSettingItems in this collection.",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = printSetting_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = printSetting_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "description": {
+      "id": "PrintSetting_description",
+      "title": "PrintSetting.description Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Gets and sets the description of the PrintSetting.",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = printSetting_var.description\n\n# Set the value of the property.\nprintSetting_var.description = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = printSetting_var->description();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = printSetting_var->description(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "id": {
+      "id": "PrintSetting_id",
+      "title": "PrintSetting.id Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Gets the unique identifier of the PrintSetting. Can be used for comparing PrintSettings within the document.",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = printSetting_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = printSetting_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "PrintSetting_isValid",
+      "title": "PrintSetting.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = printSetting_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = printSetting_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "name": {
+      "id": "PrintSetting_name",
+      "title": "PrintSetting.name Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Gets and sets the name of the PrintSetting.",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = printSetting_var.name\n\n# Set the value of the property.\nprintSetting_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = printSetting_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = printSetting_var->name(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Additive Manufacturing FFF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive FFF manufacturing setup and generate a toolpath.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select an FFF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected FFF machine. This script will also create support structures, if required, based on the orientation of each component. Finally, the script generates the toolpath for the active setup and lets the user choose if they wish to post process the resulting toolpath or if they want to simulate it."
+        },
+        {
+          "name": "Additive Manufacturing MJF API Sample",
+          "description": "Demonstrates how to automate the creation of an additive MJF manufacturing setup and arrange components within the build volume of a 3D printer.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive Arrange using that manufacturing model as an input.\n\nThe setup will select an MJF 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically arranged within the build volume of the selected MJF machine."
+        },
+        {
+          "name": "Additive Manufacturing SLA API Sample",
+          "description": "Demonstrates how to automate the creation of an additive SLA manufacturing setup.\n\nTo run the sample script, have a design with one or more components open in Fusion\u2019s DESIGN workspace. This script will switch the UI from the DESIGN workspace to the MANUFACTURE workspace, create a new Manufacturing Model, and create an Additive setup using that manufacturing model as an input.\n\nThe setup will select a SLA 3D printer from Fusion\u2019s machine library and a print setting from the print setting library. All components in the Manufacturing model will be automatically oriented and arranged within the build area of the selected SLA machine. This script will also create support structures, based on the orientation of each component.\n\nThe support and orientation operations are created from a template. The script further demonstrates how to wrap script code into a command such that only one undo entry is created for the entire script instead of one entry per internal action."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "PrintSetting_objectType",
+      "title": "PrintSetting.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = printSetting_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = printSetting_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "technology": {
+      "id": "PrintSetting_technology",
+      "title": "PrintSetting.technology Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/PrintSetting/PrintSetting.h",
+      "description": "Gets the technology of the PrintSetting.",
+      "parent_class": "PrintSetting",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = printSetting_var.technology",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = printSetting_var->technology();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

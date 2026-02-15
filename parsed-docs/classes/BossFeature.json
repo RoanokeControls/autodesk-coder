@@ -1,0 +1,1406 @@
+{
+  "id": "BossFeature",
+  "title": "BossFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Plastic/BossFeature.h",
+  "description": "Object that represents an existing boss feature in a design. For history free model this interface has limited functionality.",
+  "parent_class": "Feature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates object with inputs this feature represents. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    },
+    {
+      "name": "update",
+      "description": "Changes the boss feature (or boss connection) to the input provided. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)."
+    }
+  ],
+  "properties": [
+    {
+      "name": "alignmentDepth",
+      "description": "Returns the model parameter controlling the step depth used for alignment of its counterparts."
+    },
+    {
+      "name": "alignmentDiameter",
+      "description": "Returns the model parameter controlling the step diameter used for alignment of its counterparts."
+    },
+    {
+      "name": "alignmentDraftAngle",
+      "description": "Returns the model parameter controlling the step draft angle."
+    },
+    {
+      "name": "alignmentRootRadius",
+      "description": "Returns the model parameter controlling blend radius of the boss alignment root."
+    },
+    {
+      "name": "alignmentTipRadius",
+      "description": "Returns the model parameter controlling blend radius of the boss alignment top face."
+    },
+    {
+      "name": "alignmentType",
+      "description": "Returns the current boss alignment shape this feature represents."
+    },
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "diameter",
+      "description": "Returns the model parameter controlling the shank diameter."
+    },
+    {
+      "name": "direction",
+      "description": "Returns the direction of the boss feature with respect to selected position point. For selected sketch point this direction represents a Z-axis of the sketch."
+    },
+    {
+      "name": "draftAngle",
+      "description": "Returns the model parameter controlling the shank draft angle."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "holeCountersinkAngle",
+      "description": "Returns the model parameter controlling countersink angle for countersink hole. If hole type is not set to countersink hole or boss shape is to BossBlank this parameter is unused."
+    },
+    {
+      "name": "holeDepth",
+      "description": "Returns the model parameter controlling the hole depth with respect to hole extent type. If hole extent type is set to BossHoleThrough parameter not used. If hole extent type is BossBlindFull the parameter is a distance from farthest face. If hole extent type is set to BossBlindDepth the parameter is a distance from start face of the hole."
+    },
+    {
+      "name": "holeDiameter",
+      "description": "Returns the model parameter controlling the hole diameter."
+    },
+    {
+      "name": "holeDraftAngle",
+      "description": "Returns the model parameter controlling hole draft angle."
+    },
+    {
+      "name": "holeEndRadius",
+      "description": "Returns the model parameter controlling blend radius of the hole end."
+    },
+    {
+      "name": "holeExtentType",
+      "description": "Returns the current type of hole extent this feature represents."
+    },
+    {
+      "name": "holeMajorDepth",
+      "description": "Returns the model parameter controlling major hole depth for counterbore and countersink hole. If hole type is set to simple hole or boss shape is to BossBlank this parameter is unused."
+    },
+    {
+      "name": "holeMajorDiameter",
+      "description": "Returns the model parameter controlling major hole diameter for counterbore and countersink hole. If hole type is set to simple hole or boss shape is to BossBlank this parameter is unused."
+    },
+    {
+      "name": "holeMajorDraftAngle",
+      "description": "Returns the model parameter controlling major hole draft angle for counterbore and countersink hole. If hole type is set to simple hole or boss shape is to BossBlank this parameter is unused."
+    },
+    {
+      "name": "holeMajorRootRadius",
+      "description": "Returns the model parameter controlling blend radius of major hole counterbore root."
+    },
+    {
+      "name": "holeMajorTipRadius",
+      "description": "Returns the model parameter controlling blend radius of major hole counterbore."
+    },
+    {
+      "name": "holeStartRadius",
+      "description": "Returns the model parameter controlling blend radius of the hole start."
+    },
+    {
+      "name": "holeType",
+      "description": "Returns the current type of hole this feature represents."
+    },
+    {
+      "name": "innerRadius",
+      "description": "Returns the model parameter for inner radius - reference for parametric expressions."
+    },
+    {
+      "name": "isDirectionFlipped",
+      "description": "Gets and sets if the direction of the boss (or boss connection) is flipped."
+    },
+    {
+      "name": "isGeometryOpposite",
+      "description": "Gets if this boss feature instance represents a bottom side where screw thread engages with the part. If this feature instance represents a geometry where screw head engages it returns false."
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "offset",
+      "description": "Returns the model parameter controlling the offset from the selected parting plane."
+    },
+    {
+      "name": "offsetClearance",
+      "description": "Returns the model parameter controlling the offset clearance from the selected parting plane and offset."
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "positionDefinition",
+      "description": "Returns a BossPositionDefinition object that provides access to the information used to define the position of the boss feature."
+    },
+    {
+      "name": "ribBlendRadius",
+      "description": "Returns the model parameter controlling size of rib root blend radius."
+    },
+    {
+      "name": "ribChamferAngle",
+      "description": "Returns the model parameter controlling size of rib chamfer angle."
+    },
+    {
+      "name": "ribCount",
+      "description": "Returns the model parameter controlling number of ribs."
+    },
+    {
+      "name": "ribCutSize",
+      "description": "Returns the model parameter controlling size of rib chamfer or fillet."
+    },
+    {
+      "name": "ribDraftAngle",
+      "description": "Returns the model parameter controlling ribs draft angle."
+    },
+    {
+      "name": "ribLength",
+      "description": "Returns the model parameter controlling ribs length measured from the shank axis."
+    },
+    {
+      "name": "ribOffset",
+      "description": "Returns the model parameter controlling ribs offset from the top face or alignment face."
+    },
+    {
+      "name": "ribOuterDraftAngle",
+      "description": "Returns the model parameter controlling size of rib outer draft angle."
+    },
+    {
+      "name": "ribRotation",
+      "description": "Returns the model parameter controlling rotation angle of the first rib from the reference vector. For selected sketch point(s) the direction of reference vector is X-axis of the parent sketch."
+    },
+    {
+      "name": "ribThickness",
+      "description": "Returns the model parameter controlling ribs thickness."
+    },
+    {
+      "name": "ribTipRadius",
+      "description": "Returns the model parameter controlling size of rib tip blend radius."
+    },
+    {
+      "name": "ribTotalAngle",
+      "description": "Returns the model parameter controlling total angle for ribs distribution."
+    },
+    {
+      "name": "ribType",
+      "description": "Returns the current type of ribs shape this feature represents."
+    },
+    {
+      "name": "rootRadius",
+      "description": "Returns the model parameter controlling blend radius of the boss shank."
+    },
+    {
+      "name": "screwDiameter",
+      "description": "Returns the model parameter for screw diameter - reference for parametric expressions."
+    },
+    {
+      "name": "screwHeadAngle",
+      "description": "Returns the model parameter for countersink head angle - reference for parametric expressions."
+    },
+    {
+      "name": "screwHeadDiameter",
+      "description": "Returns the model parameter for screw head diameter - reference for parametric expressions."
+    },
+    {
+      "name": "shapeType",
+      "description": "Returns the current boss shape this feature represents."
+    },
+    {
+      "name": "taperAngle",
+      "description": "Returns the model parameter for taper angle - plastic part rule reference."
+    },
+    {
+      "name": "thickness",
+      "description": "Returns the model parameter for thickness - plastic part rule reference."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    },
+    {
+      "name": "tipRadius",
+      "description": "Returns the model parameter controlling blend radius of the boss shank top face."
+    }
+  ],
+  "version": "Introduced in version October 2022",
+  "property_details": {
+    "alignmentDepth": {
+      "id": "BossFeature_alignmentDepth",
+      "title": "BossFeature.alignmentDepth Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling the step depth used for alignment of its counterparts.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.alignmentDepth",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->alignmentDepth();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "alignmentDiameter": {
+      "id": "BossFeature_alignmentDiameter",
+      "title": "BossFeature.alignmentDiameter Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling the step diameter used for alignment of its counterparts.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.alignmentDiameter",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->alignmentDiameter();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "alignmentDraftAngle": {
+      "id": "BossFeature_alignmentDraftAngle",
+      "title": "BossFeature.alignmentDraftAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling the step draft angle.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.alignmentDraftAngle",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->alignmentDraftAngle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "alignmentRootRadius": {
+      "id": "BossFeature_alignmentRootRadius",
+      "title": "BossFeature.alignmentRootRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling blend radius of the boss alignment root.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.alignmentRootRadius",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->alignmentRootRadius();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "alignmentTipRadius": {
+      "id": "BossFeature_alignmentTipRadius",
+      "title": "BossFeature.alignmentTipRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling blend radius of the boss alignment top face.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.alignmentTipRadius",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->alignmentTipRadius();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "alignmentType": {
+      "id": "BossFeature_alignmentType",
+      "title": "BossFeature.alignmentType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the current boss alignment shape this feature represents.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.alignmentType",
+        "cpp": "#include \n\n// Get the value of the property.\nBossAlignmentTypes propertyValue = bossFeature_var->alignmentType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "assemblyContext": {
+      "id": "BossFeature_assemblyContext",
+      "title": "BossFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "attributes": {
+      "id": "BossFeature_attributes",
+      "title": "BossFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "baseFeature": {
+      "id": "BossFeature_baseFeature",
+      "title": "BossFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "bodies": {
+      "id": "BossFeature_bodies",
+      "title": "BossFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "diameter": {
+      "id": "BossFeature_diameter",
+      "title": "BossFeature.diameter Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling the shank diameter.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.diameter",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->diameter();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "direction": {
+      "id": "BossFeature_direction",
+      "title": "BossFeature.direction Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the direction of the boss feature with respect to selected position point. For selected sketch point this direction represents a Z-axis of the sketch.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.direction",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->direction();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "draftAngle": {
+      "id": "BossFeature_draftAngle",
+      "title": "BossFeature.draftAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling the shank draft angle.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.draftAngle",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->draftAngle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "entityToken": {
+      "id": "BossFeature_entityToken",
+      "title": "BossFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = bossFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "errorOrWarningMessage": {
+      "id": "BossFeature_errorOrWarningMessage",
+      "title": "BossFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = bossFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "faces": {
+      "id": "BossFeature_faces",
+      "title": "BossFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "healthState": {
+      "id": "BossFeature_healthState",
+      "title": "BossFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = bossFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "holeCountersinkAngle": {
+      "id": "BossFeature_holeCountersinkAngle",
+      "title": "BossFeature.holeCountersinkAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling countersink angle for countersink hole. If hole type is not set to countersink hole or boss shape is to BossBlank this parameter is unused.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.holeCountersinkAngle",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->holeCountersinkAngle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "holeDepth": {
+      "id": "BossFeature_holeDepth",
+      "title": "BossFeature.holeDepth Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling the hole depth with respect to hole extent type. If hole extent type is set to BossHoleThrough parameter not used. If hole extent type is BossBlindFull the parameter is a distance from farthest face. If hole extent type is set to BossBlindDepth the parameter is a distance from start face of the hole.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.holeDepth",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->holeDepth();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "holeDiameter": {
+      "id": "BossFeature_holeDiameter",
+      "title": "BossFeature.holeDiameter Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling the hole diameter.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.holeDiameter",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->holeDiameter();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "holeDraftAngle": {
+      "id": "BossFeature_holeDraftAngle",
+      "title": "BossFeature.holeDraftAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling hole draft angle.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.holeDraftAngle",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->holeDraftAngle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "holeEndRadius": {
+      "id": "BossFeature_holeEndRadius",
+      "title": "BossFeature.holeEndRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling blend radius of the hole end.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.holeEndRadius",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->holeEndRadius();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "holeExtentType": {
+      "id": "BossFeature_holeExtentType",
+      "title": "BossFeature.holeExtentType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the current type of hole extent this feature represents.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.holeExtentType",
+        "cpp": "#include \n\n// Get the value of the property.\nBossHoleExtentTypes propertyValue = bossFeature_var->holeExtentType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "holeMajorDepth": {
+      "id": "BossFeature_holeMajorDepth",
+      "title": "BossFeature.holeMajorDepth Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling major hole depth for counterbore and countersink hole. If hole type is set to simple hole or boss shape is to BossBlank this parameter is unused.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.holeMajorDepth",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->holeMajorDepth();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "holeMajorDiameter": {
+      "id": "BossFeature_holeMajorDiameter",
+      "title": "BossFeature.holeMajorDiameter Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling major hole diameter for counterbore and countersink hole. If hole type is set to simple hole or boss shape is to BossBlank this parameter is unused.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.holeMajorDiameter",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->holeMajorDiameter();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "holeMajorDraftAngle": {
+      "id": "BossFeature_holeMajorDraftAngle",
+      "title": "BossFeature.holeMajorDraftAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling major hole draft angle for counterbore and countersink hole. If hole type is set to simple hole or boss shape is to BossBlank this parameter is unused.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.holeMajorDraftAngle",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->holeMajorDraftAngle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "holeMajorRootRadius": {
+      "id": "BossFeature_holeMajorRootRadius",
+      "title": "BossFeature.holeMajorRootRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling blend radius of major hole counterbore root.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.holeMajorRootRadius",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->holeMajorRootRadius();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "holeMajorTipRadius": {
+      "id": "BossFeature_holeMajorTipRadius",
+      "title": "BossFeature.holeMajorTipRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling blend radius of major hole counterbore.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.holeMajorTipRadius",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->holeMajorTipRadius();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "holeStartRadius": {
+      "id": "BossFeature_holeStartRadius",
+      "title": "BossFeature.holeStartRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling blend radius of the hole start.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.holeStartRadius",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->holeStartRadius();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "holeType": {
+      "id": "BossFeature_holeType",
+      "title": "BossFeature.holeType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the current type of hole this feature represents.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.holeType",
+        "cpp": "#include \n\n// Get the value of the property.\nHoleTypes propertyValue = bossFeature_var->holeType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "innerRadius": {
+      "id": "BossFeature_innerRadius",
+      "title": "BossFeature.innerRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter for inner radius - reference for parametric expressions.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.innerRadius",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->innerRadius();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isDirectionFlipped": {
+      "id": "BossFeature_isDirectionFlipped",
+      "title": "BossFeature.isDirectionFlipped Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Gets and sets if the direction of the boss (or boss connection) is flipped.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.isDirectionFlipped\n\n# Set the value of the property.\nbossFeature_var.isDirectionFlipped = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bossFeature_var->isDirectionFlipped();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = bossFeature_var->isDirectionFlipped(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isGeometryOpposite": {
+      "id": "BossFeature_isGeometryOpposite",
+      "title": "BossFeature.isGeometryOpposite Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Gets if this boss feature instance represents a bottom side where screw thread engages with the part. If this feature instance represents a geometry where screw head engages it returns false.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.isGeometryOpposite",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bossFeature_var->isGeometryOpposite();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isParametric": {
+      "id": "BossFeature_isParametric",
+      "title": "BossFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bossFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isSuppressed": {
+      "id": "BossFeature_isSuppressed",
+      "title": "BossFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.isSuppressed\n\n# Set the value of the property.\nbossFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bossFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = bossFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isValid": {
+      "id": "BossFeature_isValid",
+      "title": "BossFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bossFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "linkedFeatures": {
+      "id": "BossFeature_linkedFeatures",
+      "title": "BossFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "name": {
+      "id": "BossFeature_name",
+      "title": "BossFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.name\n\n# Set the value of the property.\nbossFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = bossFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = bossFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "nativeObject": {
+      "id": "BossFeature_nativeObject",
+      "title": "BossFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "objectType": {
+      "id": "BossFeature_objectType",
+      "title": "BossFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = bossFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "offset": {
+      "id": "BossFeature_offset",
+      "title": "BossFeature.offset Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling the offset from the selected parting plane.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.offset",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->offset();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "offsetClearance": {
+      "id": "BossFeature_offsetClearance",
+      "title": "BossFeature.offsetClearance Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling the offset clearance from the selected parting plane and offset.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.offsetClearance",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->offsetClearance();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "parentComponent": {
+      "id": "BossFeature_parentComponent",
+      "title": "BossFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "positionDefinition": {
+      "id": "BossFeature_positionDefinition",
+      "title": "BossFeature.positionDefinition Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns a BossPositionDefinition object that provides access to the information used to define the position of the boss feature.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.positionDefinition",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->positionDefinition();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "ribBlendRadius": {
+      "id": "BossFeature_ribBlendRadius",
+      "title": "BossFeature.ribBlendRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling size of rib root blend radius.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.ribBlendRadius",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->ribBlendRadius();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "ribChamferAngle": {
+      "id": "BossFeature_ribChamferAngle",
+      "title": "BossFeature.ribChamferAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling size of rib chamfer angle.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.ribChamferAngle",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->ribChamferAngle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "ribCount": {
+      "id": "BossFeature_ribCount",
+      "title": "BossFeature.ribCount Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling number of ribs.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.ribCount",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->ribCount();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "ribCutSize": {
+      "id": "BossFeature_ribCutSize",
+      "title": "BossFeature.ribCutSize Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling size of rib chamfer or fillet.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.ribCutSize",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->ribCutSize();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "ribDraftAngle": {
+      "id": "BossFeature_ribDraftAngle",
+      "title": "BossFeature.ribDraftAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling ribs draft angle.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.ribDraftAngle",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->ribDraftAngle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "ribLength": {
+      "id": "BossFeature_ribLength",
+      "title": "BossFeature.ribLength Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling ribs length measured from the shank axis.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.ribLength",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->ribLength();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "ribOffset": {
+      "id": "BossFeature_ribOffset",
+      "title": "BossFeature.ribOffset Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling ribs offset from the top face or alignment face.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.ribOffset",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->ribOffset();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "ribOuterDraftAngle": {
+      "id": "BossFeature_ribOuterDraftAngle",
+      "title": "BossFeature.ribOuterDraftAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling size of rib outer draft angle.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.ribOuterDraftAngle",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->ribOuterDraftAngle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "ribRotation": {
+      "id": "BossFeature_ribRotation",
+      "title": "BossFeature.ribRotation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling rotation angle of the first rib from the reference vector. For selected sketch point(s) the direction of reference vector is X-axis of the parent sketch.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.ribRotation",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->ribRotation();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "ribThickness": {
+      "id": "BossFeature_ribThickness",
+      "title": "BossFeature.ribThickness Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling ribs thickness.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.ribThickness",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->ribThickness();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "ribTipRadius": {
+      "id": "BossFeature_ribTipRadius",
+      "title": "BossFeature.ribTipRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling size of rib tip blend radius.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.ribTipRadius",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->ribTipRadius();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "ribTotalAngle": {
+      "id": "BossFeature_ribTotalAngle",
+      "title": "BossFeature.ribTotalAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling total angle for ribs distribution.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.ribTotalAngle",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->ribTotalAngle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "ribType": {
+      "id": "BossFeature_ribType",
+      "title": "BossFeature.ribType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the current type of ribs shape this feature represents.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.ribType",
+        "cpp": "#include \n\n// Get the value of the property.\nBossRibShapeTypes propertyValue = bossFeature_var->ribType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "rootRadius": {
+      "id": "BossFeature_rootRadius",
+      "title": "BossFeature.rootRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling blend radius of the boss shank.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.rootRadius",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->rootRadius();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "screwDiameter": {
+      "id": "BossFeature_screwDiameter",
+      "title": "BossFeature.screwDiameter Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter for screw diameter - reference for parametric expressions.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.screwDiameter",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->screwDiameter();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "screwHeadAngle": {
+      "id": "BossFeature_screwHeadAngle",
+      "title": "BossFeature.screwHeadAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter for countersink head angle - reference for parametric expressions.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.screwHeadAngle",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->screwHeadAngle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "screwHeadDiameter": {
+      "id": "BossFeature_screwHeadDiameter",
+      "title": "BossFeature.screwHeadDiameter Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter for screw head diameter - reference for parametric expressions.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.screwHeadDiameter",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->screwHeadDiameter();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "shapeType": {
+      "id": "BossFeature_shapeType",
+      "title": "BossFeature.shapeType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the current boss shape this feature represents.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.shapeType",
+        "cpp": "#include \n\n// Get the value of the property.\nBossShapeTypes propertyValue = bossFeature_var->shapeType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "taperAngle": {
+      "id": "BossFeature_taperAngle",
+      "title": "BossFeature.taperAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter for taper angle - plastic part rule reference.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.taperAngle",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->taperAngle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "thickness": {
+      "id": "BossFeature_thickness",
+      "title": "BossFeature.thickness Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter for thickness - plastic part rule reference.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.thickness",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->thickness();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "timelineObject": {
+      "id": "BossFeature_timelineObject",
+      "title": "BossFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "tipRadius": {
+      "id": "BossFeature_tipRadius",
+      "title": "BossFeature.tipRadius Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Returns the model parameter controlling blend radius of the boss shank top face.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bossFeature_var.tipRadius",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = bossFeature_var->tipRadius();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "BossFeature_classType",
+      "title": "BossFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.BossFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::BossFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version October 2022"
+    },
+    "createForAssemblyContext": {
+      "id": "BossFeature_createForAssemblyContext",
+      "title": "BossFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "returnValue = bossFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = bossFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "BossFeature",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    },
+    "createInput": {
+      "id": "BossFeature_createInput",
+      "title": "BossFeature.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Creates object with inputs this feature represents. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True).",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "returnValue = bossFeature_var.createInput()",
+        "cpp": "#include \n\nreturnValue = bossFeature_var->createInput();"
+      },
+      "return_type": "BossFeatureInput",
+      "return_description": "Returns BossFeatureInput this feature represent if successful.",
+      "version": "Introduced in version October 2022"
+    },
+    "deleteMe": {
+      "id": "BossFeature_deleteMe",
+      "title": "BossFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "returnValue = bossFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = bossFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version October 2022"
+    },
+    "dissolve": {
+      "id": "BossFeature_dissolve",
+      "title": "BossFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "returnValue = bossFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = bossFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version October 2022"
+    },
+    "update": {
+      "id": "BossFeature_update",
+      "title": "BossFeature.update Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Plastic/BossFeature.h",
+      "description": "Changes the boss feature (or boss connection) to the input provided. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True).",
+      "parent_class": "BossFeature",
+      "syntax": {
+        "python": "returnValue = bossFeature_var.update(input)",
+        "cpp": "#include \n\nreturnValue = bossFeature_var->update(input);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "BossFeatureInput",
+          "description": "The object defines inputs the feature will be set to."
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    }
+  }
+}

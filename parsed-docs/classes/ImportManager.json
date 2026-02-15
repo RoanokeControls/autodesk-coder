@@ -1,0 +1,415 @@
+{
+  "id": "ImportManager",
+  "title": "ImportManager Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/ImportManager.h",
+  "description": "Provides access to functionality to support importing various modeling formats into Fusion.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createDXF2DImportOptions",
+      "description": "Creates a DXF2DImportOptions object that is used to import 2D data to create sketches. Creation of the createDXF2DImportOptions object does not perform the import. You must pass this object to the ImportManager.importToTarget method to perform the import. The sketches created as a result of the import are available through the 'results' property of the DXF2DImportOptions."
+    },
+    {
+      "name": "createFusionArchiveImportOptions",
+      "description": "Creates a FusionArchiveImportOptions object that imports a design from a Fusion archive format. The creation of the FusionArchiveImportOptions object does not perform the import. You must pass this object to one of the ImportManager import methods to perform the import. The FusionArchiveImportOptions object supports the available options when importing from a Fusion archive format. This method only supports f3d files. For f3z files, you should use the DataFolder.uploadFile method."
+    },
+    {
+      "name": "createIGESImportOptions",
+      "description": "Creates an IGESImportOptions object that is used to import a design from IGES format. Creation of the IGESImportOptions object does not perform the import. You must pass this object to one of the ImportManager import methods to perform the import. The IGESImportOptions supports any available options when importing from IGES format."
+    },
+    {
+      "name": "createSATImportOptions",
+      "description": "Creates an SATImportOptions object that's used to import a design from SAT format. Creation of the SATImportOptions object does not perform the import. You must pass this object to one of the ImportManager import methods to perform the import. The SATImportOptions supports any available options when importing from SAT format."
+    },
+    {
+      "name": "createSMTImportOptions",
+      "description": "Creates an SMTImportOptions object that's used to import a design from SMT format. Creation of the SMTImportOptions object does not perform the import. You must pass this object to one of the ImportManager import methods to perform the import. The SMTImportOptions supports any available options when importing from SMT format."
+    },
+    {
+      "name": "createSTEPImportOptions",
+      "description": "Creates an STEPImportOptions object that's used to import a design from STEP format. Creation of the STEPImportOptions object does not perform the import. You must pass this object to one of the ImportManager import methods to perform the import. The STEPImportOptions supports any available options when importing from STEP format."
+    },
+    {
+      "name": "createSVGImportOptions",
+      "description": "Creates a SVGImportOptions object that is used to import SVG data into a sketch. Creation of the SVGImportOptions object does not perform the import. You must pass this object to the importToTarget or importToTarget2 methods to perform the import and provide the sketch you want to import to as the target."
+    },
+    {
+      "name": "importToNewDocument",
+      "description": "Executes the import operation to import a file (of the format specified by the input ImportOptions object) to a new document.   This method does not support the DXF2DImportOptions or SVGImportOptions objects. Use ImportToTarget or ImportToTarget2 for those types."
+    },
+    {
+      "name": "importToTarget",
+      "description": "Executes the import operation to import a file (of the format specified by the input ImportOptions object) into an existing component in an existing design."
+    },
+    {
+      "name": "importToTarget2",
+      "description": "Executes the import operation to import a file (of the format specified by the input ImportOptions object) into an existing component in an existing design and returns the imported objects."
+    }
+  ],
+  "properties": [
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Import Manager API Sample",
+      "description": "Demonstrates how to import different formats to Fusion document"
+    }
+  ],
+  "version": "Introduced in version September 2015",
+  "method_details": {
+    "classType": {
+      "id": "ImportManager_classType",
+      "title": "ImportManager.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ImportManager.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ImportManager",
+      "syntax": {
+        "python": "returnValue = adsk.core.ImportManager.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::ImportManager::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2015"
+    },
+    "createDXF2DImportOptions": {
+      "id": "ImportManager_createDXF2DImportOptions",
+      "title": "ImportManager.createDXF2DImportOptions Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ImportManager.h",
+      "description": "Creates a DXF2DImportOptions object that is used to import 2D data to create sketches. Creation of the createDXF2DImportOptions object does not perform the import. You must pass this object to the ImportManager.importToTarget method to perform the import. The sketches created as a result of the import are available through the 'results' property of the DXF2DImportOptions.",
+      "parent_class": "ImportManager",
+      "syntax": {
+        "python": "returnValue = importManager_var.createDXF2DImportOptions(filename, planarEntity)",
+        "cpp": "#include \n\nreturnValue = importManager_var->createDXF2DImportOptions(filename, planarEntity);"
+      },
+      "return_type": "DXF2DImportOptions",
+      "return_description": "The created DXF2DImportOptions object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "filename",
+          "type": "string",
+          "description": "The filename of the DXF file to be imported."
+        },
+        {
+          "name": "planarEntity",
+          "type": "Base",
+          "description": "The construction plane or planar face that defines the plane that the resulting sketches will be created on."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Import Manager API Sample",
+          "description": "Demonstrates how to import different formats to Fusion document"
+        }
+      ],
+      "version": "Introduced in version November 2015"
+    },
+    "createFusionArchiveImportOptions": {
+      "id": "ImportManager_createFusionArchiveImportOptions",
+      "title": "ImportManager.createFusionArchiveImportOptions Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ImportManager.h",
+      "description": "Creates a FusionArchiveImportOptions object that imports a design from a Fusion archive format. The creation of the FusionArchiveImportOptions object does not perform the import. You must pass this object to one of the ImportManager import methods to perform the import. The FusionArchiveImportOptions object supports the available options when importing from a Fusion archive format. This method only supports f3d files. For f3z files, you should use the DataFolder.uploadFile method.",
+      "parent_class": "ImportManager",
+      "syntax": {
+        "python": "returnValue = importManager_var.createFusionArchiveImportOptions(filename)",
+        "cpp": "#include \n\nreturnValue = importManager_var->createFusionArchiveImportOptions(filename);"
+      },
+      "return_type": "FusionArchiveImportOptions",
+      "return_description": "The created FusionArchiveImportOptions object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "filename",
+          "type": "string",
+          "description": "The filename or URL of the Fusion archive file to be imported. Only f3d files can be imported. For f3z files, you should use the DataFolder.uploadFile method."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Import Manager API Sample",
+          "description": "Demonstrates how to import different formats to Fusion document"
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "createIGESImportOptions": {
+      "id": "ImportManager_createIGESImportOptions",
+      "title": "ImportManager.createIGESImportOptions Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ImportManager.h",
+      "description": "Creates an IGESImportOptions object that is used to import a design from IGES format. Creation of the IGESImportOptions object does not perform the import. You must pass this object to one of the ImportManager import methods to perform the import. The IGESImportOptions supports any available options when importing from IGES format.",
+      "parent_class": "ImportManager",
+      "syntax": {
+        "python": "returnValue = importManager_var.createIGESImportOptions(filename)",
+        "cpp": "#include \n\nreturnValue = importManager_var->createIGESImportOptions(filename);"
+      },
+      "return_type": "IGESImportOptions",
+      "return_description": "The created IGESImportOptions object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "filename",
+          "type": "string",
+          "description": "The filename or URL of the IGES file to be imported."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Import Manager API Sample",
+          "description": "Demonstrates how to import different formats to Fusion document"
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "createSATImportOptions": {
+      "id": "ImportManager_createSATImportOptions",
+      "title": "ImportManager.createSATImportOptions Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ImportManager.h",
+      "description": "Creates an SATImportOptions object that's used to import a design from SAT format. Creation of the SATImportOptions object does not perform the import. You must pass this object to one of the ImportManager import methods to perform the import. The SATImportOptions supports any available options when importing from SAT format.",
+      "parent_class": "ImportManager",
+      "syntax": {
+        "python": "returnValue = importManager_var.createSATImportOptions(filename)",
+        "cpp": "#include \n\nreturnValue = importManager_var->createSATImportOptions(filename);"
+      },
+      "return_type": "SATImportOptions",
+      "return_description": "The created SATImportOptions object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "filename",
+          "type": "string",
+          "description": "The filename or URL of the SAT file to be imported."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Import Manager API Sample",
+          "description": "Demonstrates how to import different formats to Fusion document"
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "createSMTImportOptions": {
+      "id": "ImportManager_createSMTImportOptions",
+      "title": "ImportManager.createSMTImportOptions Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ImportManager.h",
+      "description": "Creates an SMTImportOptions object that's used to import a design from SMT format. Creation of the SMTImportOptions object does not perform the import. You must pass this object to one of the ImportManager import methods to perform the import. The SMTImportOptions supports any available options when importing from SMT format.",
+      "parent_class": "ImportManager",
+      "syntax": {
+        "python": "returnValue = importManager_var.createSMTImportOptions(filename)",
+        "cpp": "#include \n\nreturnValue = importManager_var->createSMTImportOptions(filename);"
+      },
+      "return_type": "SMTImportOptions",
+      "return_description": "The created SMTImportOptions object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "filename",
+          "type": "string",
+          "description": "The filename or URL of the SMT file to be imported."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Import Manager API Sample",
+          "description": "Demonstrates how to import different formats to Fusion document"
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "createSTEPImportOptions": {
+      "id": "ImportManager_createSTEPImportOptions",
+      "title": "ImportManager.createSTEPImportOptions Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ImportManager.h",
+      "description": "Creates an STEPImportOptions object that's used to import a design from STEP format. Creation of the STEPImportOptions object does not perform the import. You must pass this object to one of the ImportManager import methods to perform the import. The STEPImportOptions supports any available options when importing from STEP format.",
+      "parent_class": "ImportManager",
+      "syntax": {
+        "python": "returnValue = importManager_var.createSTEPImportOptions(filename)",
+        "cpp": "#include \n\nreturnValue = importManager_var->createSTEPImportOptions(filename);"
+      },
+      "return_type": "STEPImportOptions",
+      "return_description": "The created STEPImportOptions object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "filename",
+          "type": "string",
+          "description": "The filename or URL of the STEP file to be imported."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Import Manager API Sample",
+          "description": "Demonstrates how to import different formats to Fusion document"
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "createSVGImportOptions": {
+      "id": "ImportManager_createSVGImportOptions",
+      "title": "ImportManager.createSVGImportOptions Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ImportManager.h",
+      "description": "Creates a SVGImportOptions object that is used to import SVG data into a sketch. Creation of the SVGImportOptions object does not perform the import. You must pass this object to the importToTarget or importToTarget2 methods to perform the import and provide the sketch you want to import to as the target.",
+      "parent_class": "ImportManager",
+      "syntax": {
+        "python": "returnValue = importManager_var.createSVGImportOptions(fullFilename)",
+        "cpp": "#include \n\nreturnValue = importManager_var->createSVGImportOptions(fullFilename);"
+      },
+      "return_type": "SVGImportOptions",
+      "return_description": "The created SVGImportOptions object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "fullFilename",
+          "type": "string",
+          "description": "The full filename, including the path, of the SVG file."
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    },
+    "importToNewDocument": {
+      "id": "ImportManager_importToNewDocument",
+      "title": "ImportManager.importToNewDocument Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ImportManager.h",
+      "description": "Executes the import operation to import a file (of the format specified by the input ImportOptions object) to a new document. This method does not support the DXF2DImportOptions or SVGImportOptions objects. Use ImportToTarget or ImportToTarget2 for those types.",
+      "parent_class": "ImportManager",
+      "syntax": {
+        "python": "returnValue = importManager_var.importToNewDocument(importOptions)",
+        "cpp": "#include \n\nreturnValue = importManager_var->importToNewDocument(importOptions);"
+      },
+      "return_type": "Document",
+      "return_description": "Returns the newly created Document object or null if the creation failed. A new unnamed, unsaved document will be opened in Fusion 360 as a result.",
+      "parameters": [
+        {
+          "name": "importOptions",
+          "type": "ImportOptions",
+          "description": "An ImportOptions object that is created using one of the create methods on the ImportManager object. This defines the type of file and any available options supported for that file type."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Import Manager API Sample",
+          "description": "Demonstrates how to import different formats to Fusion document"
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "importToTarget": {
+      "id": "ImportManager_importToTarget",
+      "title": "ImportManager.importToTarget Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ImportManager.h",
+      "description": "Executes the import operation to import a file (of the format specified by the input ImportOptions object) into an existing component in an existing design. Remarks",
+      "parent_class": "ImportManager",
+      "syntax": {
+        "python": "returnValue = importManager_var.importToTarget(importOptions, target)",
+        "cpp": "#include \n\nreturnValue = importManager_var->importToTarget(importOptions, target);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the import was successful.",
+      "parameters": [
+        {
+          "name": "importOptions",
+          "type": "ImportOptions",
+          "description": "An ImportOptions object that is created using one of the create methods on the ImportManager object. This defines the type of file and any available options supported for that file type. Supplying a DXF2DImportOptions object will result in the creation of one or more sketches (depending on the layers in the DXF file) in the target component."
+        },
+        {
+          "name": "target",
+          "type": "Base",
+          "description": "For most import types this will be a Component. For SVGImportOptions this is the sketch you want to import the SVG data into."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Import Manager API Sample",
+          "description": "Demonstrates how to import different formats to Fusion document"
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "importToTarget2": {
+      "id": "ImportManager_importToTarget2",
+      "title": "ImportManager.importToTarget2 Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ImportManager.h",
+      "description": "Executes the import operation to import a file (of the format specified by the input ImportOptions object) into an existing component in an existing design and returns the imported objects. Remarks",
+      "parent_class": "ImportManager",
+      "syntax": {
+        "python": "returnValue = importManager_var.importToTarget2(importOptions, target)",
+        "cpp": "#include \n\nreturnValue = importManager_var->importToTarget2(importOptions, target);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "Returns an ObjectCollection containing the results of whatever was created as a result of the import. null is returned in the case of failure.",
+      "parameters": [
+        {
+          "name": "importOptions",
+          "type": "ImportOptions",
+          "description": "An ImportOptions object that is created using one of the create methods on the ImportManager object. This defines the type of file and any available options supported for that file type. Supplying a DXF2DImportOptions object will result in the creation of one or more sketches (depending on the layers in the DXF file) in the target component."
+        },
+        {
+          "name": "target",
+          "type": "Base",
+          "description": "For most import types this will be a Component. For SVGImportOptions this is the sketch you want to import the SVG data into."
+        }
+      ],
+      "version": "Introduced in version September 2017"
+    }
+  },
+  "property_details": {
+    "isValid": {
+      "id": "ImportManager_isValid",
+      "title": "ImportManager.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ImportManager.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ImportManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = importManager_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = importManager_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "objectType": {
+      "id": "ImportManager_objectType",
+      "title": "ImportManager.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ImportManager.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ImportManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = importManager_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = importManager_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    }
+  }
+}

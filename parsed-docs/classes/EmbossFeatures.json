@@ -1,0 +1,213 @@
+{
+  "id": "EmbossFeatures",
+  "title": "EmbossFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/EmbossFeatures.h",
+  "description": "Collection that provides access to all of the existing emboss features in a component and supports the ability to create new emboss features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new emboss feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates an EmbossFeatureInput object. Use properties and methods on this object to define the emboss feature you want to create and then use the Add method, passing in the EmbossFeatureInput object to create the feature."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified emboss feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified emboss feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of emboss features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version September 2025",
+  "method_details": {
+    "add": {
+      "id": "EmbossFeatures_add",
+      "title": "EmbossFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/EmbossFeatures.h",
+      "description": "Creates a new emboss feature.",
+      "parent_class": "EmbossFeatures",
+      "syntax": {
+        "python": "returnValue = embossFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = embossFeatures_var->add(input);"
+      },
+      "return_type": "EmbossFeature",
+      "return_description": "Returns the newly created EmbossFeature object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "EmbossFeatureInput",
+          "description": "An EmbossFeatureInput object that defines the desired emboss feature. Use the createInput method to create a new EmbossFeatureInput object and then use methods on the EmbossFeatureInput object to define the emboss feature."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    },
+    "classType": {
+      "id": "EmbossFeatures_classType",
+      "title": "EmbossFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/EmbossFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "EmbossFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.EmbossFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::EmbossFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2025"
+    },
+    "createInput": {
+      "id": "EmbossFeatures_createInput",
+      "title": "EmbossFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/EmbossFeatures.h",
+      "description": "Creates an EmbossFeatureInput object. Use properties and methods on this object to define the emboss feature you want to create and then use the Add method, passing in the EmbossFeatureInput object to create the feature.",
+      "parent_class": "EmbossFeatures",
+      "syntax": {
+        "python": "returnValue = embossFeatures_var.createInput(profiles, faces, depth)",
+        "cpp": "#include \n\nreturnValue = embossFeatures_var->createInput(profiles, faces, depth);"
+      },
+      "return_type": "EmbossFeatureInput",
+      "return_description": "Returns the newly created EmbossFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "profiles",
+          "type": "Base[]",
+          "description": "An array of Profile objects that define the shape of the emboss. The profile argument can be Profile and SketchText objects. When multiple objects are used, all profiles and sketch texts must be co-planar."
+        },
+        {
+          "name": "faces",
+          "type": "BRepFace[]",
+          "description": "An array of BRepFace objects that define the faces the emboss will be performed on. By default, faces that are tangent to any of the input faces are also used. Use the isTangentChain property on the input object to disable the use of tangent faces."
+        },
+        {
+          "name": "depth",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the depth of the emboss. A positive value results in the emboss protruding out of the body and a negative value results in the emboss going into the body."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    },
+    "item": {
+      "id": "EmbossFeatures_item",
+      "title": "EmbossFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/EmbossFeatures.h",
+      "description": "Function that returns the specified emboss feature using an index into the collection.",
+      "parent_class": "EmbossFeatures",
+      "syntax": {
+        "python": "returnValue = embossFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = embossFeatures_var->item(index);"
+      },
+      "return_type": "EmbossFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    },
+    "itemByName": {
+      "id": "EmbossFeatures_itemByName",
+      "title": "EmbossFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/EmbossFeatures.h",
+      "description": "Function that returns the specified emboss feature using the name of the feature.",
+      "parent_class": "EmbossFeatures",
+      "syntax": {
+        "python": "returnValue = embossFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = embossFeatures_var->itemByName(name);"
+      },
+      "return_type": "EmbossFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "EmbossFeatures_count",
+      "title": "EmbossFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/EmbossFeatures.h",
+      "description": "The number of emboss features in the collection.",
+      "parent_class": "EmbossFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = embossFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = embossFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "isValid": {
+      "id": "EmbossFeatures_isValid",
+      "title": "EmbossFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/EmbossFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "EmbossFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = embossFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = embossFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "objectType": {
+      "id": "EmbossFeatures_objectType",
+      "title": "EmbossFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/EmbossFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "EmbossFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = embossFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = embossFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    }
+  }
+}

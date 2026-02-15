@@ -1,0 +1,299 @@
+{
+  "id": "ThreadFeatures",
+  "title": "ThreadFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/ThreadFeatures.h",
+  "description": "Collection that provides access to all of the existing thread features in a component and supports the ability to create new thread features. The creation of a tapped hole also results in the creation of a thread feature. These thread features are also returned by this collection, even though they aren't present in the timeline and are represented by the hole feature.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new thread feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a ThreadFeatureInput object. This object is the API equivalent of the Thread feature dialog. It collects the required input and once fully defined you can pass this object to the ThreadFeatures.add method to create the thread feature."
+    },
+    {
+      "name": "createThreadInfo",
+      "description": "**RETIRED** Method that creates a new ThreadInfo object that can be used in creating thread features. The ThreadInfo object that defines the type and size of the thread to create. When creating a thread, the type and size of the thread is specified by referencing thread information defined in one of the XML files in the ThreadData folder within the Fusion install folder. You can use the ThreadDataQuery object to query these XML files to find the specific thread you want to create. The ThreadDataQuery object can be obtained by using the ThreadFeatures.threadDataQuery property."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified thread feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified thread feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of thread features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "threadDataQuery",
+      "description": "**RETIRED** Property that returns the ThreadDataQuery object. When creating a thread, the type and size of the thread is specified by referencing thread information defined in one of the XML files in the ThreadData folder. The ThreadDataQuery is an object that supports methods to query the existing threads defined in these files."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Thread Feature API Sample",
+      "description": "Demonstrates creating a new thread feature."
+    }
+  ],
+  "version": "Introduced in version January 2015",
+  "method_details": {
+    "add": {
+      "id": "ThreadFeatures_add",
+      "title": "ThreadFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatures.h",
+      "description": "Creates a new thread feature.",
+      "parent_class": "ThreadFeatures",
+      "syntax": {
+        "python": "returnValue = threadFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = threadFeatures_var->add(input);"
+      },
+      "return_type": "ThreadFeature",
+      "return_description": "Returns the newly created ThreadFeature object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "ThreadFeatureInput",
+          "description": "A ThreadFeatureInput object that defines the desired thread. Use the createInput method to create a new ThreadFeatureInput object and then use methods on it (the ThreadFeatureInput object) to define the thread."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Thread Feature API Sample",
+          "description": "Demonstrates creating a new thread feature."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "classType": {
+      "id": "ThreadFeatures_classType",
+      "title": "ThreadFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ThreadFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ThreadFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ThreadFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2015"
+    },
+    "createInput": {
+      "id": "ThreadFeatures_createInput",
+      "title": "ThreadFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatures.h",
+      "description": "Creates a ThreadFeatureInput object. This object is the API equivalent of the Thread feature dialog. It collects the required input and once fully defined you can pass this object to the ThreadFeatures.add method to create the thread feature.",
+      "parent_class": "ThreadFeatures",
+      "syntax": {
+        "python": "returnValue = threadFeatures_var.createInput(inputCylindricalFaces, threadInfo)",
+        "cpp": "#include \n\nreturnValue = threadFeatures_var->createInput(inputCylindricalFaces, threadInfo);"
+      },
+      "return_type": "ThreadFeatureInput",
+      "return_description": "Returns the newly created ThreadFeatureInput object or null/None if the creation failed.",
+      "parameters": [
+        {
+          "name": "inputCylindricalFaces",
+          "type": "Base",
+          "description": "A single cylindrical BRep face or a collection of cylindrical BRep faces to thread. A collection of faces must all be from either holes (for internal threading) or all from cylinders (for external threading). Both internal and external threads cannot be created in the same feature. The faces in a collection can come from different bodies or components."
+        },
+        {
+          "name": "threadInfo",
+          "type": "ThreadInfo",
+          "description": "The ThreadInfo object that defines the type and size of the thread to create. When creating a thread, the type and size of the thread is specified by referencing thread information defined in one of the XML files in the ThreadData folder within the Fusion install folder. You can use the ThreadDataQuery object to query these XML files to find the specific thread you want to create. The ThreadDataQuery object can be obtained by using the ThreadFeatures.threadDataQuery property. You then use this information to create a ThreadInfo object using the ThreadFeatures.createThreadInfo method."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Thread Feature API Sample",
+          "description": "Demonstrates creating a new thread feature."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "createThreadInfo": {
+      "id": "ThreadFeatures_createThreadInfo",
+      "title": "ThreadFeatures.createThreadInfo Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatures.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Method that creates a new ThreadInfo object that can be used in creating thread features. The ThreadInfo object that defines the type and size of the thread to create. When creating a thread, the type and size of the thread is specified by referencing thread information defined in one of the XML files in the ThreadData folder within the Fusion install folder. You can use the ThreadDataQuery object to query these XML files to find the specific thread you want to create. The ThreadDataQuery object can be obtained by using the ThreadFeatures.threadDataQuery property. Remarks",
+      "parent_class": "ThreadFeatures",
+      "syntax": {
+        "python": "returnValue = threadFeatures_var.createThreadInfo(isInternal, threadType, threadDesignation, threadClass)",
+        "cpp": "#include \n\nreturnValue = threadFeatures_var->createThreadInfo(isInternal, threadType, threadDesignation, threadClass);"
+      },
+      "return_type": "ThreadInfo",
+      "return_description": "Returns the newly created ThreadInfo object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "isInternal",
+          "type": "boolean",
+          "description": "Input Boolean that indicates if the thread is an internal or external thread. A value of true indicates an internal thread."
+        },
+        {
+          "name": "threadType",
+          "type": "string",
+          "description": "Input string that defines the thread type."
+        },
+        {
+          "name": "threadDesignation",
+          "type": "string",
+          "description": "Input string that contains the thread designation. This is input as the full thread designation that will be used in a drawing for the thread call-out. The nominal size and pitch information are extracted from the designation."
+        },
+        {
+          "name": "threadClass",
+          "type": "string",
+          "description": "Input string that defines the thread class."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Thread Feature API Sample",
+          "description": "Demonstrates creating a new thread feature."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "item": {
+      "id": "ThreadFeatures_item",
+      "title": "ThreadFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatures.h",
+      "description": "Function that returns the specified thread feature using an index into the collection.",
+      "parent_class": "ThreadFeatures",
+      "syntax": {
+        "python": "returnValue = threadFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = threadFeatures_var->item(index);"
+      },
+      "return_type": "ThreadFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "itemByName": {
+      "id": "ThreadFeatures_itemByName",
+      "title": "ThreadFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatures.h",
+      "description": "Function that returns the specified thread feature using the name of the feature.",
+      "parent_class": "ThreadFeatures",
+      "syntax": {
+        "python": "returnValue = threadFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = threadFeatures_var->itemByName(name);"
+      },
+      "return_type": "ThreadFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "ThreadFeatures_count",
+      "title": "ThreadFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatures.h",
+      "description": "The number of thread features in the collection.",
+      "parent_class": "ThreadFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = threadFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isValid": {
+      "id": "ThreadFeatures_isValid",
+      "title": "ThreadFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ThreadFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = threadFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "objectType": {
+      "id": "ThreadFeatures_objectType",
+      "title": "ThreadFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ThreadFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = threadFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "threadDataQuery": {
+      "id": "ThreadFeatures_threadDataQuery",
+      "title": "ThreadFeatures.threadDataQuery Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThreadFeatures.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Property that returns the ThreadDataQuery object. When creating a thread, the type and size of the thread is specified by referencing thread information defined in one of the XML files in the ThreadData folder. The ThreadDataQuery is an object that supports methods to query the existing threads defined in these files. Remarks",
+      "parent_class": "ThreadFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = threadFeatures_var.threadDataQuery",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = threadFeatures_var->threadDataQuery();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Thread Feature API Sample",
+          "description": "Demonstrates creating a new thread feature."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    }
+  }
+}

@@ -1,0 +1,513 @@
+{
+  "id": "JointOrigin",
+  "title": "JointOrigin Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Components/JointOrigin.h",
+  "description": "Represents an existing joint origin in a design.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this joint origin."
+    }
+  ],
+  "properties": [
+    {
+      "name": "angle",
+      "description": "Gets the parameter that controls the angle. The value can be changed using the functionality of the returned ModelParameter object."
+    },
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this joint origin."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the JointOrigin object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same joint origin.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "geometry",
+      "description": "Gets and sets the joint geometry for this joint origin input. This defines the location of the joint origin.   To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: joint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isFlipped",
+      "description": "Gets and sets if the joint origin direction is flipped or not.   To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: joint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isLightBulbOn",
+      "description": "Gets and sets if the light bulb of this jointOrigin as displayed in the browser is on or off. A joint origin will only be visible if the light bulb is switched on. However, the light bulb can be on and the joint origin still invisible if a higher level occurrence in the assembly context is not visible because its light bulb is off or the joint origins folder light bulb is off."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name of this joint origin. This is the name seen by the user in the timeline."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "offsetX",
+      "description": "Gets the parameter that controls the X offset direction. The value can be changed using the functionality of the returned ModelParameter object."
+    },
+    {
+      "name": "offsetY",
+      "description": "Gets the parameter that controls the Y offset direction. The value can be changed using the functionality of the returned ModelParameter object."
+    },
+    {
+      "name": "offsetZ",
+      "description": "Gets the parameter that controls the Z offset direction. The value can be changed using the functionality of the returned ModelParameter object."
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this joint origin."
+    },
+    {
+      "name": "primaryAxisVector",
+      "description": "Returns the direction of the primary axis that's been calculated for this joint origin. This is conceptually the Z axis as shown by the triad representing the joint origin."
+    },
+    {
+      "name": "secondaryAxisVector",
+      "description": "Returns the direction of the secondary axis that's been calculated for this joint origin. This is conceptually the X axis as shown by the triad representing the joint origin."
+    },
+    {
+      "name": "thirdAxisVector",
+      "description": "Returns the direction of the third axis that's been calculated for this joint origin. This is conceptually the Y axis as shown by the triad representing the joint origin."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this joint origin."
+    },
+    {
+      "name": "transform",
+      "description": "Returns the position and orientation of the joint geometry associated with this joint origin. This is returned as a 3D matrix which provides the origin and the X, Y, and Z axis vectors of the coordinate system.   This property is especially useful in cases where the JointGeometry cannot be obtained. This can happen when the model has been modified in a way where the geometry used to create the joint is no longer available."
+    },
+    {
+      "name": "xAxisEntity",
+      "description": "Gets and sets the entity that defines the X axis direction. This defaults to null meaning the X axis is inferred from the input geometry.   To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: joint.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "zAxisEntity",
+      "description": "Gets and sets the entity that defines the Z axis direction. This defaults to null meaning the Z axis is inferred from the input geometry.   To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: joint.timelineObject.rollTo(True)"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Joint Origin Between Two Faces Sample",
+      "description": "Demonstrates creating a new Joint Origin between two planes."
+    },
+    {
+      "name": "Joint Origin Sample",
+      "description": "Demonstrates creating a new Joint Origin."
+    }
+  ],
+  "version": "Introduced in version September 2015",
+  "property_details": {
+    "angle": {
+      "id": "JointOrigin_angle",
+      "title": "JointOrigin.angle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Gets the parameter that controls the angle. The value can be changed using the functionality of the returned ModelParameter object.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.angle",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointOrigin_var->angle();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "assemblyContext": {
+      "id": "JointOrigin_assemblyContext",
+      "title": "JointOrigin.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointOrigin_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "attributes": {
+      "id": "JointOrigin_attributes",
+      "title": "JointOrigin.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Returns the collection of attributes associated with this joint origin.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointOrigin_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "entityToken": {
+      "id": "JointOrigin_entityToken",
+      "title": "JointOrigin.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Returns a token for the JointOrigin object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same joint origin. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = jointOrigin_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "geometry": {
+      "id": "JointOrigin_geometry",
+      "title": "JointOrigin.geometry Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Gets and sets the joint geometry for this joint origin input. This defines the location of the joint origin. To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: joint.timelineObject.rollTo(True)",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.geometry\n\n# Set the value of the property.\njointOrigin_var.geometry = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointOrigin_var->geometry();\n\n// Set the value of the property, where value_var is a JointGeometry.\nbool returnValue = jointOrigin_var->geometry(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "isFlipped": {
+      "id": "JointOrigin_isFlipped",
+      "title": "JointOrigin.isFlipped Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Gets and sets if the joint origin direction is flipped or not. To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: joint.timelineObject.rollTo(True)",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.isFlipped\n\n# Set the value of the property.\njointOrigin_var.isFlipped = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = jointOrigin_var->isFlipped();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = jointOrigin_var->isFlipped(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "isLightBulbOn": {
+      "id": "JointOrigin_isLightBulbOn",
+      "title": "JointOrigin.isLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Gets and sets if the light bulb of this jointOrigin as displayed in the browser is on or off. A joint origin will only be visible if the light bulb is switched on. However, the light bulb can be on and the joint origin still invisible if a higher level occurrence in the assembly context is not visible because its light bulb is off or the joint origins folder light bulb is off.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.isLightBulbOn\n\n# Set the value of the property.\njointOrigin_var.isLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = jointOrigin_var->isLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = jointOrigin_var->isLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2022"
+    },
+    "isValid": {
+      "id": "JointOrigin_isValid",
+      "title": "JointOrigin.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = jointOrigin_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "name": {
+      "id": "JointOrigin_name",
+      "title": "JointOrigin.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Gets and sets the name of this joint origin. This is the name seen by the user in the timeline.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.name\n\n# Set the value of the property.\njointOrigin_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = jointOrigin_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = jointOrigin_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "nativeObject": {
+      "id": "JointOrigin_nativeObject",
+      "title": "JointOrigin.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointOrigin_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "objectType": {
+      "id": "JointOrigin_objectType",
+      "title": "JointOrigin.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = jointOrigin_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "offsetX": {
+      "id": "JointOrigin_offsetX",
+      "title": "JointOrigin.offsetX Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Gets the parameter that controls the X offset direction. The value can be changed using the functionality of the returned ModelParameter object.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.offsetX",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointOrigin_var->offsetX();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "offsetY": {
+      "id": "JointOrigin_offsetY",
+      "title": "JointOrigin.offsetY Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Gets the parameter that controls the Y offset direction. The value can be changed using the functionality of the returned ModelParameter object.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.offsetY",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointOrigin_var->offsetY();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "offsetZ": {
+      "id": "JointOrigin_offsetZ",
+      "title": "JointOrigin.offsetZ Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Gets the parameter that controls the Z offset direction. The value can be changed using the functionality of the returned ModelParameter object.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.offsetZ",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointOrigin_var->offsetZ();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "parentComponent": {
+      "id": "JointOrigin_parentComponent",
+      "title": "JointOrigin.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Returns the parent component that owns this joint origin.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointOrigin_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "primaryAxisVector": {
+      "id": "JointOrigin_primaryAxisVector",
+      "title": "JointOrigin.primaryAxisVector Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Returns the direction of the primary axis that's been calculated for this joint origin. This is conceptually the Z axis as shown by the triad representing the joint origin.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.primaryAxisVector",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointOrigin_var->primaryAxisVector();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "secondaryAxisVector": {
+      "id": "JointOrigin_secondaryAxisVector",
+      "title": "JointOrigin.secondaryAxisVector Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Returns the direction of the secondary axis that's been calculated for this joint origin. This is conceptually the X axis as shown by the triad representing the joint origin.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.secondaryAxisVector",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointOrigin_var->secondaryAxisVector();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "thirdAxisVector": {
+      "id": "JointOrigin_thirdAxisVector",
+      "title": "JointOrigin.thirdAxisVector Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Returns the direction of the third axis that's been calculated for this joint origin. This is conceptually the Y axis as shown by the triad representing the joint origin.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.thirdAxisVector",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointOrigin_var->thirdAxisVector();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "timelineObject": {
+      "id": "JointOrigin_timelineObject",
+      "title": "JointOrigin.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Returns the timeline object associated with this joint origin.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointOrigin_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "transform": {
+      "id": "JointOrigin_transform",
+      "title": "JointOrigin.transform Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Returns the position and orientation of the joint geometry associated with this joint origin. This is returned as a 3D matrix which provides the origin and the X, Y, and Z axis vectors of the coordinate system. This property is especially useful in cases where the JointGeometry cannot be obtained. This can happen when the model has been modified in a way where the geometry used to create the joint is no longer available.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.transform",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointOrigin_var->transform();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2024"
+    },
+    "xAxisEntity": {
+      "id": "JointOrigin_xAxisEntity",
+      "title": "JointOrigin.xAxisEntity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Gets and sets the entity that defines the X axis direction. This defaults to null meaning the X axis is inferred from the input geometry. To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: joint.timelineObject.rollTo(True)",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.xAxisEntity\n\n# Set the value of the property.\njointOrigin_var.xAxisEntity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointOrigin_var->xAxisEntity();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = jointOrigin_var->xAxisEntity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "zAxisEntity": {
+      "id": "JointOrigin_zAxisEntity",
+      "title": "JointOrigin.zAxisEntity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Gets and sets the entity that defines the Z axis direction. This defaults to null meaning the Z axis is inferred from the input geometry. To set this property, you need to position the timeline marker to immediately before this joint. This can be accomplished using the following code: joint.timelineObject.rollTo(True)",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = jointOrigin_var.zAxisEntity\n\n# Set the value of the property.\njointOrigin_var.zAxisEntity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = jointOrigin_var->zAxisEntity();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = jointOrigin_var->zAxisEntity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "JointOrigin_classType",
+      "title": "JointOrigin.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.JointOrigin.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::JointOrigin::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2015"
+    },
+    "createForAssemblyContext": {
+      "id": "JointOrigin_createForAssemblyContext",
+      "title": "JointOrigin.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "returnValue = jointOrigin_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = jointOrigin_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "JointOrigin",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "deleteMe": {
+      "id": "JointOrigin_deleteMe",
+      "title": "JointOrigin.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/JointOrigin.h",
+      "description": "Deletes this joint origin.",
+      "parent_class": "JointOrigin",
+      "syntax": {
+        "python": "returnValue = jointOrigin_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = jointOrigin_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "version": "Introduced in version September 2015"
+    }
+  }
+}

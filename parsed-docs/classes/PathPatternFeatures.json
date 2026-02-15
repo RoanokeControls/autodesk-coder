@@ -1,0 +1,241 @@
+{
+  "id": "PathPatternFeatures",
+  "title": "PathPatternFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/PathPatternFeatures.h",
+  "description": "Collection that provides access to all of the existing path pattern features in a component and supports the ability to create new path pattern features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new path pattern feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a PathPatternFeatureInput object. Use properties and methods on this object to define the path pattern you want to create and then use the Add method, passing in the PathPatternFeatureInput object."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified path pattern feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified path pattern feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of path pattern features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Path Pattern Feature API Sample",
+      "description": "Demonstrates creating a new path pattern feature."
+    }
+  ],
+  "version": "Introduced in version November 2014",
+  "method_details": {
+    "add": {
+      "id": "PathPatternFeatures_add",
+      "title": "PathPatternFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PathPatternFeatures.h",
+      "description": "Creates a new path pattern feature.",
+      "parent_class": "PathPatternFeatures",
+      "syntax": {
+        "python": "returnValue = pathPatternFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = pathPatternFeatures_var->add(input);"
+      },
+      "return_type": "PathPatternFeature",
+      "return_description": "Returns the newly created PathPatternFeature object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "PathPatternFeatureInput",
+          "description": "A PathPatternFeatureInput object that defines the desired path pattern. Use the createInput method to create a new PathPatternFeatureInput object and then use methods on it (the PathPatternFeatureInput object) to define the path pattern."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "pathPatternFeatures.add",
+          "description": "Demonstrates the pathPatternFeatures.add method using a selected body and sketch curve as the path."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "classType": {
+      "id": "PathPatternFeatures_classType",
+      "title": "PathPatternFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PathPatternFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "PathPatternFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.PathPatternFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::PathPatternFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version November 2014"
+    },
+    "createInput": {
+      "id": "PathPatternFeatures_createInput",
+      "title": "PathPatternFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PathPatternFeatures.h",
+      "description": "Creates a PathPatternFeatureInput object. Use properties and methods on this object to define the path pattern you want to create and then use the Add method, passing in the PathPatternFeatureInput object.",
+      "parent_class": "PathPatternFeatures",
+      "syntax": {
+        "python": "returnValue = pathPatternFeatures_var.createInput(inputEntities, path, quantity, distance, patternDistanceType)",
+        "cpp": "#include \n\nreturnValue = pathPatternFeatures_var->createInput(inputEntities, path, quantity, distance, patternDistanceType);"
+      },
+      "return_type": "PathPatternFeatureInput",
+      "return_description": "Returns the newly created PathPatternFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "inputEntities",
+          "type": "ObjectCollection",
+          "description": "The collection can contain faces, features, bodies or occurrences. All of the entities must be of a single type. For example, it can't contain features and occurrences but only features or occurrences."
+        },
+        {
+          "name": "path",
+          "type": "Path",
+          "description": "The Path object that represents a single set of connected curves along which to drive the pattern."
+        },
+        {
+          "name": "quantity",
+          "type": "ValueInput",
+          "description": "Specifies the number of instances in the first direction."
+        },
+        {
+          "name": "distance",
+          "type": "ValueInput",
+          "description": "Specifies the distance. How this value is used depends on the value of the PatternDistanceType property. A negative value can be used to change the direction. If the value is ExtentPatternDistanceType then it defines the total distance of the pattern. If the value is SpacingPatternDistanceType then it defines the distance between each element."
+        },
+        {
+          "name": "patternDistanceType",
+          "type": "PatternDistanceType",
+          "description": "Specifies how the distance between elements is computed."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "pathPatternFeatures.add",
+          "description": "Demonstrates the pathPatternFeatures.add method using a selected body and sketch curve as the path."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "item": {
+      "id": "PathPatternFeatures_item",
+      "title": "PathPatternFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PathPatternFeatures.h",
+      "description": "Function that returns the specified path pattern feature using an index into the collection.",
+      "parent_class": "PathPatternFeatures",
+      "syntax": {
+        "python": "returnValue = pathPatternFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = pathPatternFeatures_var->item(index);"
+      },
+      "return_type": "PathPatternFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "itemByName": {
+      "id": "PathPatternFeatures_itemByName",
+      "title": "PathPatternFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PathPatternFeatures.h",
+      "description": "Function that returns the specified path pattern feature using the name of the feature.",
+      "parent_class": "PathPatternFeatures",
+      "syntax": {
+        "python": "returnValue = pathPatternFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = pathPatternFeatures_var->itemByName(name);"
+      },
+      "return_type": "PathPatternFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "PathPatternFeatures_count",
+      "title": "PathPatternFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PathPatternFeatures.h",
+      "description": "The number of path pattern features in the collection.",
+      "parent_class": "PathPatternFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = pathPatternFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = pathPatternFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isValid": {
+      "id": "PathPatternFeatures_isValid",
+      "title": "PathPatternFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PathPatternFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "PathPatternFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = pathPatternFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = pathPatternFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "objectType": {
+      "id": "PathPatternFeatures_objectType",
+      "title": "PathPatternFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/PathPatternFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "PathPatternFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = pathPatternFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = pathPatternFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    }
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "id": "FloatProperty",
+  "title": "FloatProperty Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/FloatProperty.h",
+  "description": "A float or real value property.",
+  "parent_class": "Property",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "getLimits",
+      "description": "Method that returns any limits for the value of this property. The HasLimits property can be used to see if there are any limits or not.   This is most commonly used for properties associated with materials and appearances."
+    }
+  ],
+  "properties": [
+    {
+      "name": "connectedTexture",
+      "description": "When the property is associated with an appearance, this gets the associated texture, if one exists. The HasConnectedTexture property controls if there is an associated texture or not. If it's parent writable you can edit the texture. If no texture exists, this property will return null."
+    },
+    {
+      "name": "hasConnectedTexture",
+      "description": "When the property is associated with an appearance this indicates if the float value has been overridden using a texture. Setting this property to False will remove the texture so that a float value is used. Setting this property to True will connect a texture to this float value. For properties not associated with an appearance, this acts as read-only and always returns false."
+    },
+    {
+      "name": "hasLimits",
+      "description": "Gets the boolean flag that indicates if the value of this property has any limits it must be within to be valid. If True, use the GetLimits method to get the limit values.   This is most commonly used for properties associated with materials and appearances and in most cases will return false."
+    },
+    {
+      "name": "hasMultipleValues",
+      "description": "Gets the boolean flag that indicates if this property has multiple values or not.   This is most commonly used for properties associated with materials and appearances."
+    },
+    {
+      "name": "id",
+      "description": "Returns the unique ID of this property."
+    },
+    {
+      "name": "isPercentage",
+      "description": "Gets the boolean flag that indicates that this property represents a percentage value so the valid values must be in the range of 0.0 to 1.0 unless they\u2019re further limited by additional limits which can be determined with the HasLimits property.   This is most commonly used for properties associated with materials and appearances."
+    },
+    {
+      "name": "isReadOnly",
+      "description": "Indicates if this property is read-only. If True any attempted edits will fail."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of this property as seen in the user interface. This name is localized and can change based on the current language"
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parent",
+      "description": "Returns the parent of this property.For properties associated with an appearance this will return the parent Appearance. For properties associated with a material, this will return the parent Material. For other types of properties, this will return the PropertyGroup it is in."
+    },
+    {
+      "name": "units",
+      "description": "Gets the units that the value of this property is returned in. The String returned is a valid Fusion unit string. An empty string indicates a unitless value."
+    },
+    {
+      "name": "value",
+      "description": "Gets and sets this property value. The value of this property should be ignored if the HasConnectedTexture property is true. Setting this will remove any associated texture, if there is one."
+    },
+    {
+      "name": "values",
+      "description": "Gets and sets the values associated with this property. HasMultipleValues property indicates if this property will be returning more than one value.   This is most commonly used for properties associated with materials and appearances."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "classType": {
+      "id": "FloatProperty_classType",
+      "title": "FloatProperty.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/FloatProperty.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "FloatProperty",
+      "syntax": {
+        "python": "returnValue = adsk.core.FloatProperty.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::FloatProperty::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "getLimits": {
+      "id": "FloatProperty_getLimits",
+      "title": "FloatProperty.getLimits Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/FloatProperty.h",
+      "description": "Method that returns any limits for the value of this property. The HasLimits property can be used to see if there are any limits or not. This is most commonly used for properties associated with materials and appearances.",
+      "parent_class": "FloatProperty",
+      "syntax": {
+        "python": "(returnValue, hasLowLimit, lowLimit, hasHighLimit, highLimit) = floatProperty_var.getLimits()",
+        "cpp": "#include getLimits(hasLowLimit, lowLimit, hasHighLimit, highLimit);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the method call was successful.",
+      "parameters": [
+        {
+          "name": "hasLowLimit",
+          "type": "boolean",
+          "description": "Output Boolean that indicates if there is a low limit or not."
+        },
+        {
+          "name": "lowLimit",
+          "type": "double",
+          "description": "If the hasLowLimit argument is true, this argument returns the low limit."
+        },
+        {
+          "name": "hasHighLimit",
+          "type": "boolean",
+          "description": "Output Boolean that indicates if there is a high limit or not."
+        },
+        {
+          "name": "highLimit",
+          "type": "double",
+          "description": "If the hasHighLimit argument is true, this argument returns the high limit."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "connectedTexture": {
+      "id": "FloatProperty_connectedTexture",
+      "title": "FloatProperty.connectedTexture Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/FloatProperty.h",
+      "description": "When the property is associated with an appearance, this gets the associated texture, if one exists. The HasConnectedTexture property controls if there is an associated texture or not. If it's parent writable you can edit the texture. If no texture exists, this property will return null.",
+      "parent_class": "FloatProperty",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatProperty_var.connectedTexture",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = floatProperty_var->connectedTexture();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "hasConnectedTexture": {
+      "id": "FloatProperty_hasConnectedTexture",
+      "title": "FloatProperty.hasConnectedTexture Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/FloatProperty.h",
+      "description": "When the property is associated with an appearance this indicates if the float value has been overridden using a texture. Setting this property to False will remove the texture so that a float value is used. Setting this property to True will connect a texture to this float value. For properties not associated with an appearance, this acts as read-only and always returns false.",
+      "parent_class": "FloatProperty",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatProperty_var.hasConnectedTexture\n\n# Set the value of the property.\nfloatProperty_var.hasConnectedTexture = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = floatProperty_var->hasConnectedTexture();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = floatProperty_var->hasConnectedTexture(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "hasLimits": {
+      "id": "FloatProperty_hasLimits",
+      "title": "FloatProperty.hasLimits Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/FloatProperty.h",
+      "description": "Gets the boolean flag that indicates if the value of this property has any limits it must be within to be valid. If True, use the GetLimits method to get the limit values. This is most commonly used for properties associated with materials and appearances and in most cases will return false.",
+      "parent_class": "FloatProperty",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatProperty_var.hasLimits",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = floatProperty_var->hasLimits();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "hasMultipleValues": {
+      "id": "FloatProperty_hasMultipleValues",
+      "title": "FloatProperty.hasMultipleValues Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/FloatProperty.h",
+      "description": "Gets the boolean flag that indicates if this property has multiple values or not. This is most commonly used for properties associated with materials and appearances.",
+      "parent_class": "FloatProperty",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatProperty_var.hasMultipleValues",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = floatProperty_var->hasMultipleValues();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "id": {
+      "id": "FloatProperty_id",
+      "title": "FloatProperty.id Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/FloatProperty.h",
+      "description": "Returns the unique ID of this property.",
+      "parent_class": "FloatProperty",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatProperty_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = floatProperty_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isPercentage": {
+      "id": "FloatProperty_isPercentage",
+      "title": "FloatProperty.isPercentage Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/FloatProperty.h",
+      "description": "Gets the boolean flag that indicates that this property represents a percentage value so the valid values must be in the range of 0.0 to 1.0 unless they\u2019re further limited by additional limits which can be determined with the HasLimits property. This is most commonly used for properties associated with materials and appearances.",
+      "parent_class": "FloatProperty",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatProperty_var.isPercentage",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = floatProperty_var->isPercentage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isReadOnly": {
+      "id": "FloatProperty_isReadOnly",
+      "title": "FloatProperty.isReadOnly Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/FloatProperty.h",
+      "description": "Indicates if this property is read-only. If True any attempted edits will fail.",
+      "parent_class": "FloatProperty",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatProperty_var.isReadOnly",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = floatProperty_var->isReadOnly();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "FloatProperty_isValid",
+      "title": "FloatProperty.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/FloatProperty.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "FloatProperty",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatProperty_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = floatProperty_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "name": {
+      "id": "FloatProperty_name",
+      "title": "FloatProperty.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/FloatProperty.h",
+      "description": "Returns the name of this property as seen in the user interface. This name is localized and can change based on the current language",
+      "parent_class": "FloatProperty",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatProperty_var.name",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = floatProperty_var->name();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "FloatProperty_objectType",
+      "title": "FloatProperty.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/FloatProperty.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "FloatProperty",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatProperty_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = floatProperty_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "parent": {
+      "id": "FloatProperty_parent",
+      "title": "FloatProperty.parent Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/FloatProperty.h",
+      "description": "Returns the parent of this property.For properties associated with an appearance this will return the parent Appearance. For properties associated with a material, this will return the parent Material. For other types of properties, this will return the PropertyGroup it is in.",
+      "parent_class": "FloatProperty",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatProperty_var.parent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = floatProperty_var->parent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "units": {
+      "id": "FloatProperty_units",
+      "title": "FloatProperty.units Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/FloatProperty.h",
+      "description": "Gets the units that the value of this property is returned in. The String returned is a valid Fusion unit string. An empty string indicates a unitless value.",
+      "parent_class": "FloatProperty",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatProperty_var.units",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = floatProperty_var->units();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "value": {
+      "id": "FloatProperty_value",
+      "title": "FloatProperty.value Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/FloatProperty.h",
+      "description": "Gets and sets this property value. The value of this property should be ignored if the HasConnectedTexture property is true. Setting this will remove any associated texture, if there is one.",
+      "parent_class": "FloatProperty",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatProperty_var.value\n\n# Set the value of the property.\nfloatProperty_var.value = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = floatProperty_var->value();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = floatProperty_var->value(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "values": {
+      "id": "FloatProperty_values",
+      "title": "FloatProperty.values Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/FloatProperty.h",
+      "description": "Gets and sets the values associated with this property. HasMultipleValues property indicates if this property will be returning more than one value. This is most commonly used for properties associated with materials and appearances.",
+      "parent_class": "FloatProperty",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = floatProperty_var.values\n\n# Set the value of the property.\nfloatProperty_var.values = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector propertyValue = floatProperty_var->values();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = floatProperty_var->values(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

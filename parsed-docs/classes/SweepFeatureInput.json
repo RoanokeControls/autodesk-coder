@@ -1,0 +1,552 @@
+{
+  "id": "SweepFeatureInput",
+  "title": "SweepFeatureInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/SweepFeatureInput.h",
+  "description": "This class defines the methods and properties that pertain to the definition of a sweep feature.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    }
+  ],
+  "properties": [
+    {
+      "name": "creationOccurrence",
+      "description": "In order for geometry to be transformed correctly, an Occurrence for creation needs to be specified when the sweep is created based on geometry (e.g. a profile and/or face(s)) in another component AND (the sweep) is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI"
+    },
+    {
+      "name": "distanceOne",
+      "description": "Gets and sets the distance for the first side. The distance is a value from 0 to 1 indicating the position along the path where 0 is at the start and 1 is at the end. The value is default to 1.0."
+    },
+    {
+      "name": "distanceTwo",
+      "description": "Gets and sets the distance for the second side. The distance is a value from 0 to 1 indicating the position along the path where 0 is at the start and 1 is at the end. The value defaults to 0 in the case where the path is closed, otherwise it defaults to 1.0. It is ignored if the path is only on one side of the profile or if the sweep definition includes a guide rail. It's always the distance against the normal of the profile if available."
+    },
+    {
+      "name": "extent",
+      "description": "Gets and sets the sweep extent type. It defaults to PerpendicularToPathExtentType. This property is ignored when a guide rail has not been specified."
+    },
+    {
+      "name": "guideRail",
+      "description": "Gets and sets the guide rail to create the sweep. This can be set to null to remove the guide rail definition and have a single path sweep feature."
+    },
+    {
+      "name": "guideSurfaces",
+      "description": "Gets and sets the guide surfaces to create the sweep. This can be set to an empty array to remove the guide surfaces and have a single path sweep feature. By default connected faces that are tangent to any of the guide faces are set as guide faces. Use the isChainSelection property to disable the use of tangent faces."
+    },
+    {
+      "name": "isChainSelection",
+      "description": "Get and sets whether faces that are tangentially connected to the guide surfaces are also made guide surfaces."
+    },
+    {
+      "name": "isDirectionFlipped",
+      "description": "Gets and sets if the direction of the sweep is flipped. This property only applies to sweep features that include a guide rail and whose path runs on both sides of the profile."
+    },
+    {
+      "name": "isSolid",
+      "description": "Specifies if the sweep should be created as a solid or surface. If it's a surface then there aren't any end caps and it's open. This is initialized to true so a solid will be created if it's not changed."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "operation",
+      "description": "Gets and sets the type of operation performed by the sweep."
+    },
+    {
+      "name": "orientation",
+      "description": "Gets and sets the sweep orientation. It defaults to PerpendicularOrientationType. This property is ignored when sweeping a solid or a guide rail or surface has been specified."
+    },
+    {
+      "name": "participantBodies",
+      "description": "Gets and sets the list of bodies that will participate in the feature when the operation is a cut or intersection.   If this property has not been set, the default behavior is that all bodies that are intersected by the feature will participate.   This property can return null in the case where the feature has not been fully defined so that possible intersecting bodies can be computed."
+    },
+    {
+      "name": "path",
+      "description": "Gets and sets the path to create the sweep."
+    },
+    {
+      "name": "profile",
+      "description": "Gets and sets the profiles or planar faces used to define the shape of the sweep. This property can return or be set with a single Profile, a single planar face, or an ObjectCollection consisting of multiple profiles and planar faces. When an ObjectCollection is used all of the profiles and faces must be co-planar."
+    },
+    {
+      "name": "profileScaling",
+      "description": "Gets and sets the sweep profile scaling option. It defaults to SweepProfileScaleOption. This property is only used when a guide rail has been specified."
+    },
+    {
+      "name": "solidAlignedAxis",
+      "description": "Gets and sets the axis to align the solid being swept with. The axis is used when sweeping a solid, and the solid orientation is set to AlignedSolidOrientationType. It can be a sketch line, linear edge, or construction axis."
+    },
+    {
+      "name": "solidBody",
+      "description": "Gets and sets the BRepBody object to sweep. It must be a solid body. Setting this property results in the type being a single path sweep, and if the profile, guide path, or surface are set, they are set to null."
+    },
+    {
+      "name": "solidOrientation",
+      "description": "Gets and sets the solid sweep orientation. It defaults to PerpendicularSolidOrientationType. Setting the solid orientation to AlignedSolidOrientationType requires the solid aligned axis to be set. This property is ignored if sweeping a profile."
+    },
+    {
+      "name": "solidTwistAxis",
+      "description": "Gets and sets the twist axis of the solid being swept. The axis is used when sweeping a solid, and the twist angle is set. It can be a sketch line, linear edge, construction axis, or a face that defines an axis (cylinder, cone, torus, etc.)."
+    },
+    {
+      "name": "taperAngle",
+      "description": "Gets and sets the taper angle of the sweep. This property is initialized with a taper angle of zero. A negative angle will taper the sweep inward while a positive value will taper the sweep outward.   This property is ignored if sweeping a solid or a guide rail or surface has been specified. This property is valid for both parametric and non-parametric extrusions."
+    },
+    {
+      "name": "targetBaseFeature",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature.   Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it."
+    },
+    {
+      "name": "twistAngle",
+      "description": "Gets and sets the twist angle of the sweep. This property is initialized with a twist angle of zero. When sweeping a solid setting the twist angle requires the solid twist axis to be set.   This property is ignored if a guide rail or surface has been specified. This property is valid for both parametric and non-parametric extrusions."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Sweep Feature API Sample",
+      "description": "Demonstrates creating a new sweep feature."
+    },
+    {
+      "name": "Sweep with guide rail Feature API Sample",
+      "description": "Demonstrates creating a new Sweep feature that uses a guide rail along with a profile."
+    },
+    {
+      "name": "Two Rail Sweep Feature API Sample",
+      "description": "Demonstrates creating new two rail sweep feature."
+    }
+  ],
+  "version": "Introduced in version November 2014",
+  "method_details": {
+    "classType": {
+      "id": "SweepFeatureInput_classType",
+      "title": "SweepFeatureInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.SweepFeatureInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::SweepFeatureInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version November 2014"
+    }
+  },
+  "property_details": {
+    "creationOccurrence": {
+      "id": "SweepFeatureInput_creationOccurrence",
+      "title": "SweepFeatureInput.creationOccurrence Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "In order for geometry to be transformed correctly, an Occurrence for creation needs to be specified when the sweep is created based on geometry (e.g. a profile and/or face(s)) in another component AND (the sweep) is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.creationOccurrence\n\n# Set the value of the property.\nsweepFeatureInput_var.creationOccurrence = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sweepFeatureInput_var->creationOccurrence();\n\n// Set the value of the property, where value_var is an Occurrence.\nbool returnValue = sweepFeatureInput_var->creationOccurrence(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "distanceOne": {
+      "id": "SweepFeatureInput_distanceOne",
+      "title": "SweepFeatureInput.distanceOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets the distance for the first side. The distance is a value from 0 to 1 indicating the position along the path where 0 is at the start and 1 is at the end. The value is default to 1.0.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.distanceOne\n\n# Set the value of the property.\nsweepFeatureInput_var.distanceOne = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sweepFeatureInput_var->distanceOne();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = sweepFeatureInput_var->distanceOne(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "distanceTwo": {
+      "id": "SweepFeatureInput_distanceTwo",
+      "title": "SweepFeatureInput.distanceTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets the distance for the second side. The distance is a value from 0 to 1 indicating the position along the path where 0 is at the start and 1 is at the end. The value defaults to 0 in the case where the path is closed, otherwise it defaults to 1.0. It is ignored if the path is only on one side of the profile or if the sweep definition includes a guide rail. It's always the distance against the normal of the profile if available.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.distanceTwo\n\n# Set the value of the property.\nsweepFeatureInput_var.distanceTwo = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sweepFeatureInput_var->distanceTwo();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = sweepFeatureInput_var->distanceTwo(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "extent": {
+      "id": "SweepFeatureInput_extent",
+      "title": "SweepFeatureInput.extent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets the sweep extent type. It defaults to PerpendicularToPathExtentType. This property is ignored when a guide rail has not been specified.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.extent\n\n# Set the value of the property.\nsweepFeatureInput_var.extent = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nSweepExtentTypes propertyValue = sweepFeatureInput_var->extent();\n\n// Set the value of the property, where value_var is a SweepExtentTypes.\nbool returnValue = sweepFeatureInput_var->extent(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "guideRail": {
+      "id": "SweepFeatureInput_guideRail",
+      "title": "SweepFeatureInput.guideRail Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets the guide rail to create the sweep. This can be set to null to remove the guide rail definition and have a single path sweep feature.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.guideRail\n\n# Set the value of the property.\nsweepFeatureInput_var.guideRail = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sweepFeatureInput_var->guideRail();\n\n// Set the value of the property, where value_var is a Path.\nbool returnValue = sweepFeatureInput_var->guideRail(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Sweep with guide rail Feature API Sample",
+          "description": "Demonstrates creating a new Sweep feature that uses a guide rail along with a profile."
+        },
+        {
+          "name": "Two Rail Sweep Feature API Sample",
+          "description": "Demonstrates creating new two rail sweep feature."
+        }
+      ],
+      "version": "Introduced in version November 2015"
+    },
+    "guideSurfaces": {
+      "id": "SweepFeatureInput_guideSurfaces",
+      "title": "SweepFeatureInput.guideSurfaces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets the guide surfaces to create the sweep. This can be set to an empty array to remove the guide surfaces and have a single path sweep feature. By default connected faces that are tangent to any of the guide faces are set as guide faces. Use the isChainSelection property to disable the use of tangent faces.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.guideSurfaces\n\n# Set the value of the property.\nsweepFeatureInput_var.guideSurfaces = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = sweepFeatureInput_var->guideSurfaces();\n\n// Set the value of the property, where value_var is a BRepFace.\nbool returnValue = sweepFeatureInput_var->guideSurfaces(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "isChainSelection": {
+      "id": "SweepFeatureInput_isChainSelection",
+      "title": "SweepFeatureInput.isChainSelection Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Get and sets whether faces that are tangentially connected to the guide surfaces are also made guide surfaces.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.isChainSelection\n\n# Set the value of the property.\nsweepFeatureInput_var.isChainSelection = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sweepFeatureInput_var->isChainSelection();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sweepFeatureInput_var->isChainSelection(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "isDirectionFlipped": {
+      "id": "SweepFeatureInput_isDirectionFlipped",
+      "title": "SweepFeatureInput.isDirectionFlipped Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets if the direction of the sweep is flipped. This property only applies to sweep features that include a guide rail and whose path runs on both sides of the profile.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.isDirectionFlipped\n\n# Set the value of the property.\nsweepFeatureInput_var.isDirectionFlipped = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sweepFeatureInput_var->isDirectionFlipped();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sweepFeatureInput_var->isDirectionFlipped(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Two Rail Sweep Feature API Sample",
+          "description": "Demonstrates creating new two rail sweep feature."
+        }
+      ],
+      "version": "Introduced in version November 2015"
+    },
+    "isSolid": {
+      "id": "SweepFeatureInput_isSolid",
+      "title": "SweepFeatureInput.isSolid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Specifies if the sweep should be created as a solid or surface. If it's a surface then there aren't any end caps and it's open. This is initialized to true so a solid will be created if it's not changed.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.isSolid\n\n# Set the value of the property.\nsweepFeatureInput_var.isSolid = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sweepFeatureInput_var->isSolid();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sweepFeatureInput_var->isSolid(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "isValid": {
+      "id": "SweepFeatureInput_isValid",
+      "title": "SweepFeatureInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sweepFeatureInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "objectType": {
+      "id": "SweepFeatureInput_objectType",
+      "title": "SweepFeatureInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sweepFeatureInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "operation": {
+      "id": "SweepFeatureInput_operation",
+      "title": "SweepFeatureInput.operation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets the type of operation performed by the sweep.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.operation\n\n# Set the value of the property.\nsweepFeatureInput_var.operation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureOperations propertyValue = sweepFeatureInput_var->operation();\n\n// Set the value of the property, where value_var is a FeatureOperations.\nbool returnValue = sweepFeatureInput_var->operation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "orientation": {
+      "id": "SweepFeatureInput_orientation",
+      "title": "SweepFeatureInput.orientation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets the sweep orientation. It defaults to PerpendicularOrientationType. This property is ignored when sweeping a solid or a guide rail or surface has been specified.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.orientation\n\n# Set the value of the property.\nsweepFeatureInput_var.orientation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nSweepOrientationTypes propertyValue = sweepFeatureInput_var->orientation();\n\n// Set the value of the property, where value_var is a SweepOrientationTypes.\nbool returnValue = sweepFeatureInput_var->orientation(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "sweepFeatures.add",
+          "description": "Demonstrates the sweepFeatures.add method."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "participantBodies": {
+      "id": "SweepFeatureInput_participantBodies",
+      "title": "SweepFeatureInput.participantBodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets the list of bodies that will participate in the feature when the operation is a cut or intersection. If this property has not been set, the default behavior is that all bodies that are intersected by the feature will participate. This property can return null in the case where the feature has not been fully defined so that possible intersecting bodies can be computed.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.participantBodies\n\n# Set the value of the property.\nsweepFeatureInput_var.participantBodies = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = sweepFeatureInput_var->participantBodies();\n\n// Set the value of the property, where value_var is a BRepBody.\nbool returnValue = sweepFeatureInput_var->participantBodies(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "path": {
+      "id": "SweepFeatureInput_path",
+      "title": "SweepFeatureInput.path Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets the path to create the sweep.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.path\n\n# Set the value of the property.\nsweepFeatureInput_var.path = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sweepFeatureInput_var->path();\n\n// Set the value of the property, where value_var is a Path.\nbool returnValue = sweepFeatureInput_var->path(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Sweep with guide rail Feature API Sample",
+          "description": "Demonstrates creating a new Sweep feature that uses a guide rail along with a profile."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "profile": {
+      "id": "SweepFeatureInput_profile",
+      "title": "SweepFeatureInput.profile Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets the profiles or planar faces used to define the shape of the sweep. This property can return or be set with a single Profile, a single planar face, or an ObjectCollection consisting of multiple profiles and planar faces. When an ObjectCollection is used all of the profiles and faces must be co-planar.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.profile\n\n# Set the value of the property.\nsweepFeatureInput_var.profile = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sweepFeatureInput_var->profile();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = sweepFeatureInput_var->profile(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Sweep with guide rail Feature API Sample",
+          "description": "Demonstrates creating a new Sweep feature that uses a guide rail along with a profile."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "profileScaling": {
+      "id": "SweepFeatureInput_profileScaling",
+      "title": "SweepFeatureInput.profileScaling Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets the sweep profile scaling option. It defaults to SweepProfileScaleOption. This property is only used when a guide rail has been specified.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.profileScaling\n\n# Set the value of the property.\nsweepFeatureInput_var.profileScaling = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nSweepProfileScalingOptions propertyValue = sweepFeatureInput_var->profileScaling();\n\n// Set the value of the property, where value_var is a SweepProfileScalingOptions.\nbool returnValue = sweepFeatureInput_var->profileScaling(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Sweep with guide rail Feature API Sample",
+          "description": "Demonstrates creating a new Sweep feature that uses a guide rail along with a profile."
+        },
+        {
+          "name": "Two Rail Sweep Feature API Sample",
+          "description": "Demonstrates creating new two rail sweep feature."
+        }
+      ],
+      "version": "Introduced in version November 2015"
+    },
+    "solidAlignedAxis": {
+      "id": "SweepFeatureInput_solidAlignedAxis",
+      "title": "SweepFeatureInput.solidAlignedAxis Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets the axis to align the solid being swept with. The axis is used when sweeping a solid, and the solid orientation is set to AlignedSolidOrientationType. It can be a sketch line, linear edge, or construction axis.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.solidAlignedAxis\n\n# Set the value of the property.\nsweepFeatureInput_var.solidAlignedAxis = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sweepFeatureInput_var->solidAlignedAxis();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = sweepFeatureInput_var->solidAlignedAxis(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2024"
+    },
+    "solidBody": {
+      "id": "SweepFeatureInput_solidBody",
+      "title": "SweepFeatureInput.solidBody Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets the BRepBody object to sweep. It must be a solid body. Setting this property results in the type being a single path sweep, and if the profile, guide path, or surface are set, they are set to null.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.solidBody\n\n# Set the value of the property.\nsweepFeatureInput_var.solidBody = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sweepFeatureInput_var->solidBody();\n\n// Set the value of the property, where value_var is a BRepBody.\nbool returnValue = sweepFeatureInput_var->solidBody(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2024"
+    },
+    "solidOrientation": {
+      "id": "SweepFeatureInput_solidOrientation",
+      "title": "SweepFeatureInput.solidOrientation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets the solid sweep orientation. It defaults to PerpendicularSolidOrientationType. Setting the solid orientation to AlignedSolidOrientationType requires the solid aligned axis to be set. This property is ignored if sweeping a profile.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.solidOrientation\n\n# Set the value of the property.\nsweepFeatureInput_var.solidOrientation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nSweepSolidOrientationTypes propertyValue = sweepFeatureInput_var->solidOrientation();\n\n// Set the value of the property, where value_var is a SweepSolidOrientationTypes.\nbool returnValue = sweepFeatureInput_var->solidOrientation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2024"
+    },
+    "solidTwistAxis": {
+      "id": "SweepFeatureInput_solidTwistAxis",
+      "title": "SweepFeatureInput.solidTwistAxis Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets the twist axis of the solid being swept. The axis is used when sweeping a solid, and the twist angle is set. It can be a sketch line, linear edge, construction axis, or a face that defines an axis (cylinder, cone, torus, etc.).",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.solidTwistAxis\n\n# Set the value of the property.\nsweepFeatureInput_var.solidTwistAxis = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sweepFeatureInput_var->solidTwistAxis();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = sweepFeatureInput_var->solidTwistAxis(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2024"
+    },
+    "taperAngle": {
+      "id": "SweepFeatureInput_taperAngle",
+      "title": "SweepFeatureInput.taperAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets the taper angle of the sweep. This property is initialized with a taper angle of zero. A negative angle will taper the sweep inward while a positive value will taper the sweep outward. This property is ignored if sweeping a solid or a guide rail or surface has been specified. This property is valid for both parametric and non-parametric extrusions.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.taperAngle\n\n# Set the value of the property.\nsweepFeatureInput_var.taperAngle = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sweepFeatureInput_var->taperAngle();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = sweepFeatureInput_var->taperAngle(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2017"
+    },
+    "targetBaseFeature": {
+      "id": "SweepFeatureInput_targetBaseFeature",
+      "title": "SweepFeatureInput.targetBaseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature. Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.targetBaseFeature\n\n# Set the value of the property.\nsweepFeatureInput_var.targetBaseFeature = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sweepFeatureInput_var->targetBaseFeature();\n\n// Set the value of the property, where value_var is a BaseFeature.\nbool returnValue = sweepFeatureInput_var->targetBaseFeature(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "twistAngle": {
+      "id": "SweepFeatureInput_twistAngle",
+      "title": "SweepFeatureInput.twistAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SweepFeatureInput.h",
+      "description": "Gets and sets the twist angle of the sweep. This property is initialized with a twist angle of zero. When sweeping a solid setting the twist angle requires the solid twist axis to be set. This property is ignored if a guide rail or surface has been specified. This property is valid for both parametric and non-parametric extrusions.",
+      "parent_class": "SweepFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sweepFeatureInput_var.twistAngle\n\n# Set the value of the property.\nsweepFeatureInput_var.twistAngle = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sweepFeatureInput_var->twistAngle();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = sweepFeatureInput_var->twistAngle(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2017"
+    }
+  }
+}

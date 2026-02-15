@@ -1,0 +1,249 @@
+{
+  "id": "ThickenFeatures",
+  "title": "ThickenFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/ThickenFeatures.h",
+  "description": "Collection that provides access to all of the existing Thicken features in a component and supports the ability to create new Thicken features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new Thicken feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a ThickenFeatureInput object. Use properties and methods on this object to define the Thicken feature you want to create and then use the Add method, passing in the ThickenFeatureInput object to create the feature."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified Thicken feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified thicken feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of Thicken features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Thicken Feature API Sample",
+      "description": "Demonstrates creating a new thiken feature."
+    }
+  ],
+  "version": "Introduced in version June 2015",
+  "method_details": {
+    "add": {
+      "id": "ThickenFeatures_add",
+      "title": "ThickenFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThickenFeatures.h",
+      "description": "Creates a new Thicken feature.",
+      "parent_class": "ThickenFeatures",
+      "syntax": {
+        "python": "returnValue = thickenFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = thickenFeatures_var->add(input);"
+      },
+      "return_type": "ThickenFeature",
+      "return_description": "Returns the newly created ThickenFeature object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "ThickenFeatureInput",
+          "description": "A FeatureInput object that defines the desired Thicken feature. Use the createInput method to create a new ThickenFeatureInput object and then use methods on it (the ThickenFeatureInput object) to define the Thicken feature."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "thickenFeatures.add",
+          "description": "Demonstrates the thickenFeatures.add method."
+        },
+        {
+          "name": "Thicken Feature API Sample",
+          "description": "Demonstrates creating a new thiken feature."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "classType": {
+      "id": "ThickenFeatures_classType",
+      "title": "ThickenFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThickenFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ThickenFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ThickenFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ThickenFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version June 2015"
+    },
+    "createInput": {
+      "id": "ThickenFeatures_createInput",
+      "title": "ThickenFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThickenFeatures.h",
+      "description": "Creates a ThickenFeatureInput object. Use properties and methods on this object to define the Thicken feature you want to create and then use the Add method, passing in the ThickenFeatureInput object to create the feature.",
+      "parent_class": "ThickenFeatures",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = thickenFeatures_var.createInput(inputFaces, thickness, isSymmetric, operation)\n\n# Uses optional arguments.\nreturnValue = thickenFeatures_var.createInput(inputFaces, thickness, isSymmetric, operation, isChainSelection)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = thickenFeatures_var->createInput(inputFaces, thickness, isSymmetric, operation);\n\n// Uses optional arguments.\nreturnValue = thickenFeatures_var->createInput(inputFaces, thickness, isSymmetric, operation, isChainSelection);"
+      },
+      "return_type": "ThickenFeatureInput",
+      "return_description": "Returns the newly created ThickenFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "inputFaces",
+          "type": "ObjectCollection",
+          "description": "The faces or patch bodies to thicken. Faces need not be from the same component or body, nor do they need to be connected or touching one another."
+        },
+        {
+          "name": "thickness",
+          "type": "ValueInput",
+          "description": "ValueInput object that defines the thickness."
+        },
+        {
+          "name": "isSymmetric",
+          "type": "boolean",
+          "description": "A boolean value for setting whether to add thickness symmetrically or only on one side of the face/s to thicken"
+        },
+        {
+          "name": "operation",
+          "type": "FeatureOperations",
+          "description": "The feature operation to perform."
+        },
+        {
+          "name": "isChainSelection",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not faces that are tangentially connected to the input faces (if any) will be included in the thicken. The default value is true.   This is an optional argument whose default value is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "thickenFeatures.add",
+          "description": "Demonstrates the thickenFeatures.add method."
+        },
+        {
+          "name": "Thicken Feature API Sample",
+          "description": "Demonstrates creating a new thiken feature."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "item": {
+      "id": "ThickenFeatures_item",
+      "title": "ThickenFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThickenFeatures.h",
+      "description": "Function that returns the specified Thicken feature using an index into the collection.",
+      "parent_class": "ThickenFeatures",
+      "syntax": {
+        "python": "returnValue = thickenFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = thickenFeatures_var->item(index);"
+      },
+      "return_type": "ThickenFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "itemByName": {
+      "id": "ThickenFeatures_itemByName",
+      "title": "ThickenFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThickenFeatures.h",
+      "description": "Function that returns the specified thicken feature using the name of the feature.",
+      "parent_class": "ThickenFeatures",
+      "syntax": {
+        "python": "returnValue = thickenFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = thickenFeatures_var->itemByName(name);"
+      },
+      "return_type": "ThickenFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "ThickenFeatures_count",
+      "title": "ThickenFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThickenFeatures.h",
+      "description": "The number of Thicken features in the collection.",
+      "parent_class": "ThickenFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = thickenFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = thickenFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isValid": {
+      "id": "ThickenFeatures_isValid",
+      "title": "ThickenFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThickenFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ThickenFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = thickenFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = thickenFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "objectType": {
+      "id": "ThickenFeatures_objectType",
+      "title": "ThickenFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ThickenFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ThickenFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = thickenFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = thickenFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    }
+  }
+}

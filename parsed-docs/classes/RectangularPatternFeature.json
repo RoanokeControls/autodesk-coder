@@ -1,0 +1,761 @@
+{
+  "id": "RectangularPatternFeature",
+  "title": "RectangularPatternFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/RectangularPatternFeature.h",
+  "description": "Object that represents an existing rectangular pattern feature in a design.",
+  "parent_class": "Feature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "directionOne",
+      "description": "Returns a Vector3D indicating the positive direction of direction one."
+    },
+    {
+      "name": "directionOneEntity",
+      "description": "Gets and sets the first direction entity. This can be a linear edge, construction axis, sketch line or rectangular pattern feature. If a rectangular pattern feature is set, the directionOneEntity and directionTwoEntity properties return the same rectangular pattern feature.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "directionTwo",
+      "description": "Returns a Vector3D indicating the positive direction of direction two."
+    },
+    {
+      "name": "directionTwoEntity",
+      "description": "Gets and sets the second direction entity. This can be a linear edge, construction axis, sketch line or rectangular pattern feature. If a rectangular pattern feature is set, the directionOneEntity and directionTwoEntity properties return the same rectangular pattern feature. This can be null when not entity has been specified to control the second direction. In this case Fusion will compute a default direction which is 90 degrees to the direction one.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "distanceOne",
+      "description": "Gets the distance in the first direction. Edit the value through ModelParameter. Returns nothing in the case where the feature is non-parametric."
+    },
+    {
+      "name": "distanceTwo",
+      "description": "Gets the distance in the second direction. Edit the value through ModelParameter. Returns nothing in the case where the feature is non-parametric."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "inputEntities",
+      "description": "Gets and sets the input entities. The collection can contain faces, features, bodies or occurrences. All of the entities must be of a single type. For example, it can't contain features and occurrences but only features or occurrences.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isSymmetricInDirectionOne",
+      "description": "Gets and sets if the pattern in direction one is in one direction or symmetric.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isSymmetricInDirectionTwo",
+      "description": "Gets and sets if the pattern in direction two is in one direction or symmetric.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "patternComputeOption",
+      "description": "Gets and sets the compute option for this pattern feature. This property only applies when patterning features and is ignored in the direct modeling environment.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "patternDistanceType",
+      "description": "Gets and sets how the distance between elements is computed. Is initialized to ExtentPatternDistanceType when a new RectangularPatternFeatureInput has been created.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "patternElements",
+      "description": "Gets the PatternElements collection that contains the elements created by this pattern."
+    },
+    {
+      "name": "patternEntityType",
+      "description": "Returns the type of entities the pattern consists of. This can be used to help determine the type of results that will be found in the pattern elements."
+    },
+    {
+      "name": "quantityOne",
+      "description": "Gets the number of instances in the first direction. Edit the value through ModelParameter. Returns nothing in the case where the feature is non-parametric."
+    },
+    {
+      "name": "quantityTwo",
+      "description": "Gets the number of instances in the second direction. Edit the value through ModelParameter. Returns nothing in the case where the feature is non-parametric."
+    },
+    {
+      "name": "resultFeatures",
+      "description": "Get the features that were created for this pattern. Returns null in the case where the feature is parametric."
+    },
+    {
+      "name": "suppressedElementsIds",
+      "description": "Gets and sets the ids of the patterns to suppress.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Manage Participant Bodies API Sample",
+      "description": "Demonstrates how to manage participant During Cut operation. Same API can be used to manage participants During intersection also."
+    },
+    {
+      "name": "RectangularPattern Feature",
+      "description": "Demonstrates creating a new rectangular pattern feature."
+    }
+  ],
+  "version": "Introduced in version November 2014",
+  "property_details": {
+    "assemblyContext": {
+      "id": "RectangularPatternFeature_assemblyContext",
+      "title": "RectangularPatternFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "attributes": {
+      "id": "RectangularPatternFeature_attributes",
+      "title": "RectangularPatternFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "baseFeature": {
+      "id": "RectangularPatternFeature_baseFeature",
+      "title": "RectangularPatternFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "bodies": {
+      "id": "RectangularPatternFeature_bodies",
+      "title": "RectangularPatternFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "directionOne": {
+      "id": "RectangularPatternFeature_directionOne",
+      "title": "RectangularPatternFeature.directionOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Returns a Vector3D indicating the positive direction of direction one.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.directionOne",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->directionOne();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "directionOneEntity": {
+      "id": "RectangularPatternFeature_directionOneEntity",
+      "title": "RectangularPatternFeature.directionOneEntity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Gets and sets the first direction entity. This can be a linear edge, construction axis, sketch line or rectangular pattern feature. If a rectangular pattern feature is set, the directionOneEntity and directionTwoEntity properties return the same rectangular pattern feature. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.directionOneEntity\n\n# Set the value of the property.\nrectangularPatternFeature_var.directionOneEntity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->directionOneEntity();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = rectangularPatternFeature_var->directionOneEntity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "directionTwo": {
+      "id": "RectangularPatternFeature_directionTwo",
+      "title": "RectangularPatternFeature.directionTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Returns a Vector3D indicating the positive direction of direction two.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.directionTwo",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->directionTwo();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "directionTwoEntity": {
+      "id": "RectangularPatternFeature_directionTwoEntity",
+      "title": "RectangularPatternFeature.directionTwoEntity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Gets and sets the second direction entity. This can be a linear edge, construction axis, sketch line or rectangular pattern feature. If a rectangular pattern feature is set, the directionOneEntity and directionTwoEntity properties return the same rectangular pattern feature. This can be null when not entity has been specified to control the second direction. In this case Fusion will compute a default direction which is 90 degrees to the direction one. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.directionTwoEntity\n\n# Set the value of the property.\nrectangularPatternFeature_var.directionTwoEntity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->directionTwoEntity();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = rectangularPatternFeature_var->directionTwoEntity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "distanceOne": {
+      "id": "RectangularPatternFeature_distanceOne",
+      "title": "RectangularPatternFeature.distanceOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Gets the distance in the first direction. Edit the value through ModelParameter. Returns nothing in the case where the feature is non-parametric.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.distanceOne",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->distanceOne();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "distanceTwo": {
+      "id": "RectangularPatternFeature_distanceTwo",
+      "title": "RectangularPatternFeature.distanceTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Gets the distance in the second direction. Edit the value through ModelParameter. Returns nothing in the case where the feature is non-parametric.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.distanceTwo",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->distanceTwo();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "entityToken": {
+      "id": "RectangularPatternFeature_entityToken",
+      "title": "RectangularPatternFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = rectangularPatternFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "errorOrWarningMessage": {
+      "id": "RectangularPatternFeature_errorOrWarningMessage",
+      "title": "RectangularPatternFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = rectangularPatternFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "faces": {
+      "id": "RectangularPatternFeature_faces",
+      "title": "RectangularPatternFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "healthState": {
+      "id": "RectangularPatternFeature_healthState",
+      "title": "RectangularPatternFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = rectangularPatternFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "inputEntities": {
+      "id": "RectangularPatternFeature_inputEntities",
+      "title": "RectangularPatternFeature.inputEntities Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Gets and sets the input entities. The collection can contain faces, features, bodies or occurrences. All of the entities must be of a single type. For example, it can't contain features and occurrences but only features or occurrences. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.inputEntities\n\n# Set the value of the property.\nrectangularPatternFeature_var.inputEntities = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->inputEntities();\n\n// Set the value of the property, where value_var is an ObjectCollection.\nbool returnValue = rectangularPatternFeature_var->inputEntities(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isParametric": {
+      "id": "RectangularPatternFeature_isParametric",
+      "title": "RectangularPatternFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = rectangularPatternFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isSuppressed": {
+      "id": "RectangularPatternFeature_isSuppressed",
+      "title": "RectangularPatternFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.isSuppressed\n\n# Set the value of the property.\nrectangularPatternFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = rectangularPatternFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = rectangularPatternFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isSymmetricInDirectionOne": {
+      "id": "RectangularPatternFeature_isSymmetricInDirectionOne",
+      "title": "RectangularPatternFeature.isSymmetricInDirectionOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Gets and sets if the pattern in direction one is in one direction or symmetric. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.isSymmetricInDirectionOne\n\n# Set the value of the property.\nrectangularPatternFeature_var.isSymmetricInDirectionOne = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = rectangularPatternFeature_var->isSymmetricInDirectionOne();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = rectangularPatternFeature_var->isSymmetricInDirectionOne(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isSymmetricInDirectionTwo": {
+      "id": "RectangularPatternFeature_isSymmetricInDirectionTwo",
+      "title": "RectangularPatternFeature.isSymmetricInDirectionTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Gets and sets if the pattern in direction two is in one direction or symmetric. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.isSymmetricInDirectionTwo\n\n# Set the value of the property.\nrectangularPatternFeature_var.isSymmetricInDirectionTwo = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = rectangularPatternFeature_var->isSymmetricInDirectionTwo();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = rectangularPatternFeature_var->isSymmetricInDirectionTwo(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isValid": {
+      "id": "RectangularPatternFeature_isValid",
+      "title": "RectangularPatternFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = rectangularPatternFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "linkedFeatures": {
+      "id": "RectangularPatternFeature_linkedFeatures",
+      "title": "RectangularPatternFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "name": {
+      "id": "RectangularPatternFeature_name",
+      "title": "RectangularPatternFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.name\n\n# Set the value of the property.\nrectangularPatternFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = rectangularPatternFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = rectangularPatternFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "nativeObject": {
+      "id": "RectangularPatternFeature_nativeObject",
+      "title": "RectangularPatternFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "objectType": {
+      "id": "RectangularPatternFeature_objectType",
+      "title": "RectangularPatternFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = rectangularPatternFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "parentComponent": {
+      "id": "RectangularPatternFeature_parentComponent",
+      "title": "RectangularPatternFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "patternComputeOption": {
+      "id": "RectangularPatternFeature_patternComputeOption",
+      "title": "RectangularPatternFeature.patternComputeOption Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Gets and sets the compute option for this pattern feature. This property only applies when patterning features and is ignored in the direct modeling environment. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.patternComputeOption\n\n# Set the value of the property.\nrectangularPatternFeature_var.patternComputeOption = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPatternComputeOptions propertyValue = rectangularPatternFeature_var->patternComputeOption();\n\n// Set the value of the property, where value_var is a PatternComputeOptions.\nbool returnValue = rectangularPatternFeature_var->patternComputeOption(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2015"
+    },
+    "patternDistanceType": {
+      "id": "RectangularPatternFeature_patternDistanceType",
+      "title": "RectangularPatternFeature.patternDistanceType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Gets and sets how the distance between elements is computed. Is initialized to ExtentPatternDistanceType when a new RectangularPatternFeatureInput has been created. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.patternDistanceType\n\n# Set the value of the property.\nrectangularPatternFeature_var.patternDistanceType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPatternDistanceType propertyValue = rectangularPatternFeature_var->patternDistanceType();\n\n// Set the value of the property, where value_var is a PatternDistanceType.\nbool returnValue = rectangularPatternFeature_var->patternDistanceType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "patternElements": {
+      "id": "RectangularPatternFeature_patternElements",
+      "title": "RectangularPatternFeature.patternElements Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Gets the PatternElements collection that contains the elements created by this pattern.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.patternElements",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->patternElements();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "patternEntityType": {
+      "id": "RectangularPatternFeature_patternEntityType",
+      "title": "RectangularPatternFeature.patternEntityType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Returns the type of entities the pattern consists of. This can be used to help determine the type of results that will be found in the pattern elements.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.patternEntityType",
+        "cpp": "#include \n\n// Get the value of the property.\nPatternEntityTypes propertyValue = rectangularPatternFeature_var->patternEntityType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "quantityOne": {
+      "id": "RectangularPatternFeature_quantityOne",
+      "title": "RectangularPatternFeature.quantityOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Gets the number of instances in the first direction. Edit the value through ModelParameter. Returns nothing in the case where the feature is non-parametric.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.quantityOne",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->quantityOne();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "quantityTwo": {
+      "id": "RectangularPatternFeature_quantityTwo",
+      "title": "RectangularPatternFeature.quantityTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Gets the number of instances in the second direction. Edit the value through ModelParameter. Returns nothing in the case where the feature is non-parametric.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.quantityTwo",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->quantityTwo();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "resultFeatures": {
+      "id": "RectangularPatternFeature_resultFeatures",
+      "title": "RectangularPatternFeature.resultFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Get the features that were created for this pattern. Returns null in the case where the feature is parametric.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.resultFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->resultFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "suppressedElementsIds": {
+      "id": "RectangularPatternFeature_suppressedElementsIds",
+      "title": "RectangularPatternFeature.suppressedElementsIds Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Gets and sets the ids of the patterns to suppress. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.suppressedElementsIds\n\n# Set the value of the property.\nrectangularPatternFeature_var.suppressedElementsIds = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector propertyValue = rectangularPatternFeature_var->suppressedElementsIds();\n\n// Set the value of the property, where value_var is a uinteger.\nbool returnValue = rectangularPatternFeature_var->suppressedElementsIds(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "timelineObject": {
+      "id": "RectangularPatternFeature_timelineObject",
+      "title": "RectangularPatternFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = rectangularPatternFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = rectangularPatternFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "RectangularPatternFeature_classType",
+      "title": "RectangularPatternFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.RectangularPatternFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::RectangularPatternFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version November 2014"
+    },
+    "createForAssemblyContext": {
+      "id": "RectangularPatternFeature_createForAssemblyContext",
+      "title": "RectangularPatternFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "returnValue = rectangularPatternFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = rectangularPatternFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "RectangularPatternFeature",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "deleteMe": {
+      "id": "RectangularPatternFeature_deleteMe",
+      "title": "RectangularPatternFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "returnValue = rectangularPatternFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = rectangularPatternFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version November 2014"
+    },
+    "dissolve": {
+      "id": "RectangularPatternFeature_dissolve",
+      "title": "RectangularPatternFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/RectangularPatternFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "RectangularPatternFeature",
+      "syntax": {
+        "python": "returnValue = rectangularPatternFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = rectangularPatternFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version November 2014"
+    }
+  }
+}

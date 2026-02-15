@@ -1,0 +1,395 @@
+{
+  "id": "AsBuiltJointInput",
+  "title": "AsBuiltJointInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Components/AsBuiltJointInput.h",
+  "description": "Defines all of the information needed to create an as-built joint.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "setAsBallJointMotion",
+      "description": "Defines the relationship between the two joint geometries as a ball joint."
+    },
+    {
+      "name": "setAsCylindricalJointMotion",
+      "description": "Defines the relationship between the two joint geometries as a cylindrical joint."
+    },
+    {
+      "name": "setAsPinSlotJointMotion",
+      "description": "Defines the relationship between the two joint geometries as a pin-slot joint."
+    },
+    {
+      "name": "setAsPlanarJointMotion",
+      "description": "Defines the relationship between the two joint geometries as a planar joint."
+    },
+    {
+      "name": "setAsRevoluteJointMotion",
+      "description": "Defines the relationship between the two joint geometries as a revolute joint."
+    },
+    {
+      "name": "setAsRigidJointMotion",
+      "description": "Defines the relationship between the two joint geometries as a rigid joint."
+    },
+    {
+      "name": "setAsSliderJointMotion",
+      "description": "Defines the relationship between the two joint geometries as a slider joint."
+    }
+  ],
+  "properties": [
+    {
+      "name": "geometry",
+      "description": "Specifies the position of the joint."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "jointMotion",
+      "description": "Returns one of the objects derived from JointMotion that defines how the motion between the two joint geometries is defined. Can be null if the motion hasn't yet been defined."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "occurrenceOne",
+      "description": "Specifies the first of two occurrences the joint is between."
+    },
+    {
+      "name": "occurrenceTwo",
+      "description": "Specifies the second of two occurrences the joint is between."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "As-Built Joint Sample",
+      "description": "Demonstrates creating a new As-Built Joint."
+    }
+  ],
+  "version": "Introduced in version September 2015",
+  "method_details": {
+    "classType": {
+      "id": "AsBuiltJointInput_classType",
+      "title": "AsBuiltJointInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJointInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "AsBuiltJointInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.AsBuiltJointInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::AsBuiltJointInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2015"
+    },
+    "setAsBallJointMotion": {
+      "id": "AsBuiltJointInput_setAsBallJointMotion",
+      "title": "AsBuiltJointInput.setAsBallJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJointInput.h",
+      "description": "Defines the relationship between the two joint geometries as a ball joint.",
+      "parent_class": "AsBuiltJointInput",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = asBuiltJointInput_var.setAsBallJointMotion(pitchDirection, yawDirection)\n\n# Uses optional arguments.\nreturnValue = asBuiltJointInput_var.setAsBallJointMotion(pitchDirection, yawDirection, customPitchDirection, customYawDirection)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = asBuiltJointInput_var->setAsBallJointMotion(pitchDirection, yawDirection);\n\n// Uses optional arguments.\nreturnValue = asBuiltJointInput_var->setAsBallJointMotion(pitchDirection, yawDirection, customPitchDirection, customYawDirection);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "pitchDirection",
+          "type": "JointDirections",
+          "description": "Defines the direction the pitch angle is measured from. This can be ZAxisJointDirection or CustomJointDirection. If CustomJointDirection is specified then you must also provide a value for the customPitchDirection argument."
+        },
+        {
+          "name": "yawDirection",
+          "type": "JointDirections",
+          "description": "Defines the direction the yaw is measured from. This can be XAxisJointDirection or CustomJointDirection. If CustomJointDirection is specified then you must also provide a value for the customYawDirection argument."
+        },
+        {
+          "name": "customPitchDirection",
+          "type": "Base",
+          "description": "If the pitchDirection argument is customPitchDirection this argument is used to define the direction the pitch angel is measured from. This can be several types of entities that can define a direction.   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "customYawDirection",
+          "type": "Base",
+          "description": "If the yawDirection argument is customPitchDirection this argument is used to define the direction the yaw angel is measured from. This can be several types of entities that can define a direction.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "setAsCylindricalJointMotion": {
+      "id": "AsBuiltJointInput_setAsCylindricalJointMotion",
+      "title": "AsBuiltJointInput.setAsCylindricalJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJointInput.h",
+      "description": "Defines the relationship between the two joint geometries as a cylindrical joint.",
+      "parent_class": "AsBuiltJointInput",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = asBuiltJointInput_var.setAsCylindricalJointMotion(rotationAxis)\n\n# Uses optional arguments.\nreturnValue = asBuiltJointInput_var.setAsCylindricalJointMotion(rotationAxis, customRotationAxisEntity)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = asBuiltJointInput_var->setAsCylindricalJointMotion(rotationAxis);\n\n// Uses optional arguments.\nreturnValue = asBuiltJointInput_var->setAsCylindricalJointMotion(rotationAxis, customRotationAxisEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "rotationAxis",
+          "type": "JointDirections",
+          "description": "Specifies which axis the rotation is around. If this is set to CustomJointDirection then the customRotationAxisEntity argument must also be provided."
+        },
+        {
+          "name": "customRotationAxisEntity",
+          "type": "Base",
+          "description": "If the rotationAxis is customAxisEntity this argument is used to specify the entity that defines the custom axis of rotation. This can be several types of entities that an axis can be derived from.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "setAsPinSlotJointMotion": {
+      "id": "AsBuiltJointInput_setAsPinSlotJointMotion",
+      "title": "AsBuiltJointInput.setAsPinSlotJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJointInput.h",
+      "description": "Defines the relationship between the two joint geometries as a pin-slot joint.",
+      "parent_class": "AsBuiltJointInput",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = asBuiltJointInput_var.setAsPinSlotJointMotion(rotationAxis, slideDirection)\n\n# Uses optional arguments.\nreturnValue = asBuiltJointInput_var.setAsPinSlotJointMotion(rotationAxis, slideDirection, customRotationAxisEntity, customSlideDirectionEntity)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = asBuiltJointInput_var->setAsPinSlotJointMotion(rotationAxis, slideDirection);\n\n// Uses optional arguments.\nreturnValue = asBuiltJointInput_var->setAsPinSlotJointMotion(rotationAxis, slideDirection, customRotationAxisEntity, customSlideDirectionEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "rotationAxis",
+          "type": "JointDirections",
+          "description": "Specifies which axis the rotation is around. If this is set to CustomJointDirection then the customRotationAxisEntity argument must also be provided."
+        },
+        {
+          "name": "slideDirection",
+          "type": "JointDirections",
+          "description": "Specifies which axis the slide direction is along. If this is set to CustomJointDirection then the customSlideDirectionEntity argument must also be provided."
+        },
+        {
+          "name": "customRotationAxisEntity",
+          "type": "Base",
+          "description": "If the rotationAxis is customAxisEntity this argument is used to specify the entity that defines the custom axis of rotation. This can be several types of entities that an axis can be derived   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "customSlideDirectionEntity",
+          "type": "Base",
+          "description": "If the slideDirection is CustomJointDirection this argument is used to specify the entity that defines the custom slide direction. This can be several types of entities that can define a direction.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "setAsPlanarJointMotion": {
+      "id": "AsBuiltJointInput_setAsPlanarJointMotion",
+      "title": "AsBuiltJointInput.setAsPlanarJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJointInput.h",
+      "description": "Defines the relationship between the two joint geometries as a planar joint.",
+      "parent_class": "AsBuiltJointInput",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = asBuiltJointInput_var.setAsPlanarJointMotion(normalDirection)\n\n# Uses optional arguments.\nreturnValue = asBuiltJointInput_var.setAsPlanarJointMotion(normalDirection, customNormalDirectionEntity, customPrimarySlideDirection)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = asBuiltJointInput_var->setAsPlanarJointMotion(normalDirection);\n\n// Uses optional arguments.\nreturnValue = asBuiltJointInput_var->setAsPlanarJointMotion(normalDirection, customNormalDirectionEntity, customPrimarySlideDirection);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "normalDirection",
+          "type": "JointDirections",
+          "description": "Defines the direction of the normal of the single degree of rotation. This can be set to XAxisJointDirection, YAxisJointDirection, ZAxisJointDirection, or CustomJointDirection. If set to CustomJointDirection then the customNormalDirectionEntity argument must also be provided."
+        },
+        {
+          "name": "customNormalDirectionEntity",
+          "type": "Base",
+          "description": "If the normalDirection is CustomJointDirection this argument is used to specify the entity that defines the direction of the normal. This can be several types of entities that can define a direction.   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "customPrimarySlideDirection",
+          "type": "Base",
+          "description": "This arguments defines the direction of the primary slide direction. A default primary slide direction is automatically chosen and will be used if this argument is not provided or is null. The secondary slide direction is automatically inferred from the normal and primary slide directions.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "setAsRevoluteJointMotion": {
+      "id": "AsBuiltJointInput_setAsRevoluteJointMotion",
+      "title": "AsBuiltJointInput.setAsRevoluteJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJointInput.h",
+      "description": "Defines the relationship between the two joint geometries as a revolute joint.",
+      "parent_class": "AsBuiltJointInput",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = asBuiltJointInput_var.setAsRevoluteJointMotion(rotationAxis)\n\n# Uses optional arguments.\nreturnValue = asBuiltJointInput_var.setAsRevoluteJointMotion(rotationAxis, customRotationAxisEntity)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = asBuiltJointInput_var->setAsRevoluteJointMotion(rotationAxis);\n\n// Uses optional arguments.\nreturnValue = asBuiltJointInput_var->setAsRevoluteJointMotion(rotationAxis, customRotationAxisEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "rotationAxis",
+          "type": "JointDirections",
+          "description": "Specifies which axis the rotation is around. If this is set to CustomJointDirection then the customRotationAxisEntity argument must also be provided."
+        },
+        {
+          "name": "customRotationAxisEntity",
+          "type": "Base",
+          "description": "If the rotationAxis is customAxisEntity this argument is used to specify the entity that defines the custom axis of rotation. This can be several types of entities that an axis can be derived from.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    },
+    "setAsRigidJointMotion": {
+      "id": "AsBuiltJointInput_setAsRigidJointMotion",
+      "title": "AsBuiltJointInput.setAsRigidJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJointInput.h",
+      "description": "Defines the relationship between the two joint geometries as a rigid joint.",
+      "parent_class": "AsBuiltJointInput",
+      "syntax": {
+        "python": "returnValue = asBuiltJointInput_var.setAsRigidJointMotion()",
+        "cpp": "#include \n\nreturnValue = asBuiltJointInput_var->setAsRigidJointMotion();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "version": "Introduced in version September 2015"
+    },
+    "setAsSliderJointMotion": {
+      "id": "AsBuiltJointInput_setAsSliderJointMotion",
+      "title": "AsBuiltJointInput.setAsSliderJointMotion Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJointInput.h",
+      "description": "Defines the relationship between the two joint geometries as a slider joint.",
+      "parent_class": "AsBuiltJointInput",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = asBuiltJointInput_var.setAsSliderJointMotion(sliderDirection)\n\n# Uses optional arguments.\nreturnValue = asBuiltJointInput_var.setAsSliderJointMotion(sliderDirection, customSliderDirectionEntity)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = asBuiltJointInput_var->setAsSliderJointMotion(sliderDirection);\n\n// Uses optional arguments.\nreturnValue = asBuiltJointInput_var->setAsSliderJointMotion(sliderDirection, customSliderDirectionEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the operation was successful.",
+      "parameters": [
+        {
+          "name": "sliderDirection",
+          "type": "JointDirections",
+          "description": "Specifies which axis the slide direction is along. If this is set to CustomJointDirection then the customSliderDirectionEntity argument must also be provided."
+        },
+        {
+          "name": "customSliderDirectionEntity",
+          "type": "Base",
+          "description": "If the sliderDirection is CustomJointDirection this argument is used to specify the entity that defines the custom slider direction. This can be several types of entities that can define a direction.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "geometry": {
+      "id": "AsBuiltJointInput_geometry",
+      "title": "AsBuiltJointInput.geometry Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJointInput.h",
+      "description": "Specifies the position of the joint.",
+      "parent_class": "AsBuiltJointInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJointInput_var.geometry\n\n# Set the value of the property.\nasBuiltJointInput_var.geometry = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = asBuiltJointInput_var->geometry();\n\n// Set the value of the property, where value_var is a JointGeometry.\nbool returnValue = asBuiltJointInput_var->geometry(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "isValid": {
+      "id": "AsBuiltJointInput_isValid",
+      "title": "AsBuiltJointInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJointInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "AsBuiltJointInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJointInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = asBuiltJointInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "jointMotion": {
+      "id": "AsBuiltJointInput_jointMotion",
+      "title": "AsBuiltJointInput.jointMotion Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJointInput.h",
+      "description": "Returns one of the objects derived from JointMotion that defines how the motion between the two joint geometries is defined. Can be null if the motion hasn't yet been defined.",
+      "parent_class": "AsBuiltJointInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJointInput_var.jointMotion",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = asBuiltJointInput_var->jointMotion();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "objectType": {
+      "id": "AsBuiltJointInput_objectType",
+      "title": "AsBuiltJointInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJointInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "AsBuiltJointInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJointInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = asBuiltJointInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "occurrenceOne": {
+      "id": "AsBuiltJointInput_occurrenceOne",
+      "title": "AsBuiltJointInput.occurrenceOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJointInput.h",
+      "description": "Specifies the first of two occurrences the joint is between.",
+      "parent_class": "AsBuiltJointInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJointInput_var.occurrenceOne\n\n# Set the value of the property.\nasBuiltJointInput_var.occurrenceOne = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = asBuiltJointInput_var->occurrenceOne();\n\n// Set the value of the property, where value_var is an Occurrence.\nbool returnValue = asBuiltJointInput_var->occurrenceOne(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "occurrenceTwo": {
+      "id": "AsBuiltJointInput_occurrenceTwo",
+      "title": "AsBuiltJointInput.occurrenceTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/AsBuiltJointInput.h",
+      "description": "Specifies the second of two occurrences the joint is between.",
+      "parent_class": "AsBuiltJointInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = asBuiltJointInput_var.occurrenceTwo\n\n# Set the value of the property.\nasBuiltJointInput_var.occurrenceTwo = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = asBuiltJointInput_var->occurrenceTwo();\n\n// Set the value of the property, where value_var is an Occurrence.\nbool returnValue = asBuiltJointInput_var->occurrenceTwo(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    }
+  }
+}

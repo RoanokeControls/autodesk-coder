@@ -1,0 +1,12 @@
+{
+  "id": "extrudeFeaturesSymmetricExtent_add_Sample",
+  "title": "extrudeFeatures.add using setSymmetricExtent",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the extrudeFeatures.add method using the setSymmetricExtent method. To use this sample have a design open that contains a sketch with a profile. When you run the script you will be prompted to select the profile that will be used to create the extrusion.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_extrudeFeaturesSymmetricExtent_add(rootComp: adsk.fusion.Design.rootComponent):\n    # Have a profile selected.\n    profile = _ui.selectEntity('Select a profile', 'Profiles').entity\n\n    # Define the required input.\n    extrudeFeatures = rootComp.features.extrudeFeatures\n    operation = adsk.fusion.FeatureOperations.NewBodyFeatureOperation\n    input = extrudeFeatures.createInput(profile, operation)\n    distance = adsk.core.ValueInput.createByString(\"100 mm\")\n    isFullLength = True\n    input.setSymmetricExtent(distance, isFullLength)\n\n    # Create the feature.\n    extrudeFeature = extrudeFeatures.add(input)"
+  }
+}

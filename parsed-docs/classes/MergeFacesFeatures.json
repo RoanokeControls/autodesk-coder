@@ -1,0 +1,135 @@
+{
+  "id": "MergeFacesFeatures",
+  "title": "MergeFacesFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/MergeFacesFeatures.h",
+  "description": "A collection object that supports the ability to merge faces. Merging faces is currently limited to a Direct Modeling design or a body in a base feature. The result of merging faces is a direct B-Rep modification, and the change is not represented as a feature in the browser. As a result, a MergeFacesFeature object does not exist, and this collection only supports the merging faces and not accessing any existing features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new merge face feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a MergeFacesFeatureInput object for defining a simple merge face feature. Use properties and methods on this object to define the merge you want to create and then use the Add method, passing in the MergeFacesFeatureInput object."
+    }
+  ],
+  "properties": [
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version September 2024",
+  "method_details": {
+    "add": {
+      "id": "MergeFacesFeatures_add",
+      "title": "MergeFacesFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MergeFacesFeatures.h",
+      "description": "Creates a new merge face feature.",
+      "parent_class": "MergeFacesFeatures",
+      "syntax": {
+        "python": "returnValue = mergeFacesFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = mergeFacesFeatures_var->add(input);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful. Because this is limited to direct modelling only that directly modifies the B-Rep body and does not create a MergeFacesFeature object there is nothing to return besides if the merge was successful or no.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "MergeFacesFeatureInput",
+          "description": "A MergeFacesFeatureInput object that defines the desired merge. Use the createInput method to create a new MergeFacesFeatureInput object and then use methods on it (the MergeFacesFeatureInput object) to define the merge."
+        }
+      ],
+      "version": "Introduced in version September 2024"
+    },
+    "classType": {
+      "id": "MergeFacesFeatures_classType",
+      "title": "MergeFacesFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MergeFacesFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "MergeFacesFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.MergeFacesFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::MergeFacesFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2024"
+    },
+    "createInput": {
+      "id": "MergeFacesFeatures_createInput",
+      "title": "MergeFacesFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MergeFacesFeatures.h",
+      "description": "Creates a MergeFacesFeatureInput object for defining a simple merge face feature. Use properties and methods on this object to define the merge you want to create and then use the Add method, passing in the MergeFacesFeatureInput object.",
+      "parent_class": "MergeFacesFeatures",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = mergeFacesFeatures_var.createInput(inputFaces)\n\n# Uses optional arguments.\nreturnValue = mergeFacesFeatures_var.createInput(inputFaces, isChainSelection)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = mergeFacesFeatures_var->createInput(inputFaces);\n\n// Uses optional arguments.\nreturnValue = mergeFacesFeatures_var->createInput(inputFaces, isChainSelection);"
+      },
+      "return_type": "MergeFacesFeatureInput",
+      "return_description": "Returns the newly created MergeFacesFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "inputFaces",
+          "type": "BRepFace[]",
+          "description": "An array of BRepFace objects that define the faces the merge will be performed on. The faces need to be connected and from the same body (solid or surface)."
+        },
+        {
+          "name": "isChainSelection",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not faces that are connected and from the same body (solid or surface) will be included in the faces to merge. The default value is false.   This is an optional argument whose default value is False."
+        }
+      ],
+      "version": "Introduced in version September 2024"
+    }
+  },
+  "property_details": {
+    "isValid": {
+      "id": "MergeFacesFeatures_isValid",
+      "title": "MergeFacesFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MergeFacesFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "MergeFacesFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mergeFacesFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = mergeFacesFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "objectType": {
+      "id": "MergeFacesFeatures_objectType",
+      "title": "MergeFacesFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MergeFacesFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "MergeFacesFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mergeFacesFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = mergeFacesFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    }
+  }
+}

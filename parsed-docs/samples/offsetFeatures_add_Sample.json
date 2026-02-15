@@ -1,0 +1,12 @@
+{
+  "id": "offsetFeatures_add_Sample",
+  "title": "offsetFeatures.add",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the offsetFeatures.add method. This is the equivalent of the Offset command in the SURFACE tab.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_offsetFeatures_add(rootComp: adsk.fusion.Design.rootComponent):\n    offsetFace = _ui.selectEntity('Select the face to offset.', 'Faces').entity\n    offsetFaces = adsk.core.ObjectCollection.create()\n    offsetFaces.add(offsetFace)\n    distance = adsk.core.ValueInput.createByReal(2)\n    operation = adsk.fusion.FeatureOperations.NewBodyFeatureOperation\n\n    offsetFeatures = rootComp.features.offsetFeatures\n    input = offsetFeatures.createInput(offsetFaces, distance, operation)\n    offsetFeature = offsetFeatures.add(input)"
+  }
+}

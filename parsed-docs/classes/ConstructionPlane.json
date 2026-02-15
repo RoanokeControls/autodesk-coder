@@ -1,0 +1,544 @@
+{
+  "id": "ConstructionPlane",
+  "title": "ConstructionPlane Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Construction/ConstructionPlane.h",
+  "description": "ConstructionPlane Object",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the construction plane."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this construction plane."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this construction plane is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "component",
+      "description": "Returns the component this construction plane belongs to."
+    },
+    {
+      "name": "definition",
+      "description": "Returns the ConstructionPlaneDefinition object which provides access to the information defining this ConstructionPlane."
+    },
+    {
+      "name": "deriveFeature",
+      "description": "Returns the DeriveFeature if this construction plane is derived from another design. This property returns null if the construction plane is not derived from another design (i.e. isDerived property returns false)."
+    },
+    {
+      "name": "displayBounds",
+      "description": "Gets and sets the display size of the construction plane. The bounding box defines the min and max corners of the plane as defined in the 2D space of the construction plane."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the ConstructionPlane object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same construction plane.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "geometry",
+      "description": "Returns a plane that represents the position and orientation of the construction plane. This geometry is defined in the AssemblyContext of this ConstructionPlane."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of this construction plane."
+    },
+    {
+      "name": "isDeletable",
+      "description": "Indicates if this construction plane can be deleted. Base construction planes can not be deleted."
+    },
+    {
+      "name": "isDerived",
+      "description": "Returns if this construction plane is derived from another design. If true, the construction plane cannot be deleted. You should not attempt to make any edits to the derived construction plane. Any edits made to this derived construction plane will be lost when the derive updates."
+    },
+    {
+      "name": "isLightBulbOn",
+      "description": "Indicates if the light bulb (as displayed in the browser) is on. A construction plane will only be visible if it's light bulb, and that of it's containing folder and parent component/s are also on."
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this construction plane is parametric or not."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Indicates if the construction plane is visible. This property is affected by the AssemblyContext of the construction plane."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the construction plane as it is shown in the browser."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parent",
+      "description": "Returns the parent component or base feature. If both the design and the construction plane are parametric, the parent will be a component. If the design is parametric and the construction plane is not, the parent will be a base feature. If the design is not parametric the parent will be a component."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this construction plane."
+    },
+    {
+      "name": "transform",
+      "description": "Returns the current position and orientation of the construction plane as a matrix. For a parametric construction plane, this property is read-only. For a construction plane in a direct modeling model or in a base feature, this is read-write and can be used to reposition the constructions plane."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Construction Plane API Sample",
+      "description": "Demonstrates creating construction plane by different ways."
+    },
+    {
+      "name": "Loft Feature API Sample",
+      "description": "Demonstrates creating a new loft feature."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "property_details": {
+    "assemblyContext": {
+      "id": "ConstructionPlane_assemblyContext",
+      "title": "ConstructionPlane.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPlane_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "attributes": {
+      "id": "ConstructionPlane_attributes",
+      "title": "ConstructionPlane.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Returns the collection of attributes associated with this construction plane.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPlane_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "baseFeature": {
+      "id": "ConstructionPlane_baseFeature",
+      "title": "ConstructionPlane.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "If this construction plane is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPlane_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "component": {
+      "id": "ConstructionPlane_component",
+      "title": "ConstructionPlane.component Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Returns the component this construction plane belongs to.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.component",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPlane_var->component();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "definition": {
+      "id": "ConstructionPlane_definition",
+      "title": "ConstructionPlane.definition Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Returns the ConstructionPlaneDefinition object which provides access to the information defining this ConstructionPlane.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.definition",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPlane_var->definition();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "deriveFeature": {
+      "id": "ConstructionPlane_deriveFeature",
+      "title": "ConstructionPlane.deriveFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Returns the DeriveFeature if this construction plane is derived from another design. This property returns null if the construction plane is not derived from another design (i.e. isDerived property returns false).",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.deriveFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPlane_var->deriveFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "displayBounds": {
+      "id": "ConstructionPlane_displayBounds",
+      "title": "ConstructionPlane.displayBounds Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Gets and sets the display size of the construction plane. The bounding box defines the min and max corners of the plane as defined in the 2D space of the construction plane.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.displayBounds\n\n# Set the value of the property.\nconstructionPlane_var.displayBounds = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPlane_var->displayBounds();\n\n// Set the value of the property, where value_var is a BoundingBox2D.\nbool returnValue = constructionPlane_var->displayBounds(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "entityToken": {
+      "id": "ConstructionPlane_entityToken",
+      "title": "ConstructionPlane.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Returns a token for the ConstructionPlane object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same construction plane. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = constructionPlane_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "errorOrWarningMessage": {
+      "id": "ConstructionPlane_errorOrWarningMessage",
+      "title": "ConstructionPlane.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = constructionPlane_var->errorOrWarningMessage();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Construction Plane API Sample",
+          "description": "Demonstrates creating construction plane by different ways."
+        }
+      ],
+      "version": "Introduced in version July 2016"
+    },
+    "geometry": {
+      "id": "ConstructionPlane_geometry",
+      "title": "ConstructionPlane.geometry Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Returns a plane that represents the position and orientation of the construction plane. This geometry is defined in the AssemblyContext of this ConstructionPlane.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.geometry",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPlane_var->geometry();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "healthState": {
+      "id": "ConstructionPlane_healthState",
+      "title": "ConstructionPlane.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Returns the current health state of this construction plane.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = constructionPlane_var->healthState();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Construction Plane API Sample",
+          "description": "Demonstrates creating construction plane by different ways."
+        }
+      ],
+      "version": "Introduced in version July 2016"
+    },
+    "isDeletable": {
+      "id": "ConstructionPlane_isDeletable",
+      "title": "ConstructionPlane.isDeletable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Indicates if this construction plane can be deleted. Base construction planes can not be deleted.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.isDeletable",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = constructionPlane_var->isDeletable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isDerived": {
+      "id": "ConstructionPlane_isDerived",
+      "title": "ConstructionPlane.isDerived Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Returns if this construction plane is derived from another design. If true, the construction plane cannot be deleted. You should not attempt to make any edits to the derived construction plane. Any edits made to this derived construction plane will be lost when the derive updates.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.isDerived",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = constructionPlane_var->isDerived();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "isLightBulbOn": {
+      "id": "ConstructionPlane_isLightBulbOn",
+      "title": "ConstructionPlane.isLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Indicates if the light bulb (as displayed in the browser) is on. A construction plane will only be visible if it's light bulb, and that of it's containing folder and parent component/s are also on.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.isLightBulbOn\n\n# Set the value of the property.\nconstructionPlane_var.isLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = constructionPlane_var->isLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = constructionPlane_var->isLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isParametric": {
+      "id": "ConstructionPlane_isParametric",
+      "title": "ConstructionPlane.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Indicates if this construction plane is parametric or not.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = constructionPlane_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "ConstructionPlane_isValid",
+      "title": "ConstructionPlane.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = constructionPlane_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isVisible": {
+      "id": "ConstructionPlane_isVisible",
+      "title": "ConstructionPlane.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Indicates if the construction plane is visible. This property is affected by the AssemblyContext of the construction plane.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = constructionPlane_var->isVisible();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "name": {
+      "id": "ConstructionPlane_name",
+      "title": "ConstructionPlane.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Returns the name of the construction plane as it is shown in the browser.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.name\n\n# Set the value of the property.\nconstructionPlane_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = constructionPlane_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = constructionPlane_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "nativeObject": {
+      "id": "ConstructionPlane_nativeObject",
+      "title": "ConstructionPlane.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "The NativeObject is the object outside the context of an assembly. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPlane_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "ConstructionPlane_objectType",
+      "title": "ConstructionPlane.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = constructionPlane_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "parent": {
+      "id": "ConstructionPlane_parent",
+      "title": "ConstructionPlane.parent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Returns the parent component or base feature. If both the design and the construction plane are parametric, the parent will be a component. If the design is parametric and the construction plane is not, the parent will be a base feature. If the design is not parametric the parent will be a component.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.parent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPlane_var->parent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "timelineObject": {
+      "id": "ConstructionPlane_timelineObject",
+      "title": "ConstructionPlane.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Returns the timeline object associated with this construction plane.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPlane_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "transform": {
+      "id": "ConstructionPlane_transform",
+      "title": "ConstructionPlane.transform Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Returns the current position and orientation of the construction plane as a matrix. For a parametric construction plane, this property is read-only. For a construction plane in a direct modeling model or in a base feature, this is read-write and can be used to reposition the constructions plane.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPlane_var.transform\n\n# Set the value of the property.\nconstructionPlane_var.transform = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPlane_var->transform();\n\n// Set the value of the property, where value_var is a Matrix3D.\nbool returnValue = constructionPlane_var->transform(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "ConstructionPlane_classType",
+      "title": "ConstructionPlane.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ConstructionPlane.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ConstructionPlane::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "createForAssemblyContext": {
+      "id": "ConstructionPlane_createForAssemblyContext",
+      "title": "ConstructionPlane.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "returnValue = constructionPlane_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = constructionPlane_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "ConstructionPlane",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "deleteMe": {
+      "id": "ConstructionPlane_deleteMe",
+      "title": "ConstructionPlane.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlane.h",
+      "description": "Deletes the construction plane.",
+      "parent_class": "ConstructionPlane",
+      "syntax": {
+        "python": "returnValue = constructionPlane_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = constructionPlane_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

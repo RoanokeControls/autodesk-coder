@@ -1,0 +1,71 @@
+{
+  "id": "ECD-ULP-DEVICE",
+  "title": "UL_DEVICE",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "activetechnology",
+      "type": "string (see note)"
+    },
+    {
+      "name": "area",
+      "type": "UL_AREA"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "headline",
+      "type": "string"
+    },
+    {
+      "name": "library",
+      "type": "string"
+    },
+    {
+      "name": "libraryurn",
+      "type": "string (see note)"
+    },
+    {
+      "name": "libraryversion",
+      "type": "int (see note)"
+    },
+    {
+      "name": "name",
+      "type": "string (DEVICE_NAME_LENGTH)"
+    },
+    {
+      "name": "footprint",
+      "type": "UL_FOOTPRINT (new as of EAGLE 9.1, see note)"
+    },
+    {
+      "name": "prefix",
+      "type": "string (DEVICE_PREFIX_LENGTH)"
+    },
+    {
+      "name": "technologies",
+      "type": "string (see note)"
+    },
+    {
+      "name": "value",
+      "type": "string (\"On\" or \"Off\")"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "attributes()",
+      "type": "UL_ATTRIBUTE (see note)"
+    },
+    {
+      "name": "gates()",
+      "type": "UL_GATE"
+    },
+    {
+      "name": "packages3d()",
+      "type": "UL_PACKAGE3D"
+    }
+  ],
+  "content": "- \n \n \n\n \n \n# UL_DEVICE\n\n## Data members\n\n| | |\n| --- | --- |\n| activetechnology | string (see note) |\n| area | UL_AREA |\n| description | string |\n| headline | string |\n| library | string |\n| libraryurn | string (see note) |\n| libraryversion | int (see note) |\n| name | string (DEVICE_NAME_LENGTH) |\n| footprint | UL_FOOTPRINT (new as of EAGLE 9.1, see note) |\n| prefix | string (DEVICE_PREFIX_LENGTH) |\n| technologies | string (see note) |\n| value | string (\"On\" or \"Off\") |\n\n## Loop members\n\n| | |\n| --- | --- |\n| attributes() | UL_ATTRIBUTE (see note) |\n| gates() | UL_GATE |\n| packages3d() | UL_PACKAGE3D |\n\nSee also UL_DEVICESET, UL_LIBRARY, UL_PART\n\n## Constants\n\n| | |\n| --- | --- |\n| DEVICE_NAME_LENGTH | max. recommended length of a device name (used in formatted output only) |\n| DEVICE_PREFIX_LENGTH | max. recommended length of a device prefix (used in formatted output only) |\n\nAll members of UL_DEVICE, except for *name* and *technologies*, return the same values as the respective members of the UL_DEVICESET in which the UL_DEVICE has been defined. The name member returns the name of the package variant this device has been created for using the PACKAGE command. When using the description text keep in mind that it may contain newline characters ('\\n').\n\n## Notes\n\nThe value returned by the *activetechnology* member depends on the context in which it is called:\n\nIf the device is derived from the deviceset that is currently edited in the library editor window, the active technology, set by the TECHNOLOGY command, will be returned.\n\n- \nIf the device is derived from a UL_PART, the actual technology used by the part will be returned.\n\n- \nOtherwise, an empty string will be returned.\n\nThe *footprint* data member returns the footprint that has been assigned to the device through a PACKAGE command. It can be used as a boolean function to check whether a footprint has been assigned to a device (see example below). (Note that the *footprint* data memmber is new as of EAGLE 9.1. For backwards compatibility with previous EAGLE versions, *package* is also supported.)\n\nThe value returned by the technologies member depends on the context in which it is called:\n\n- If the device is derived from a UL_DEVICESET, technologies will return a string containing all of the device's technologies, separated by blanks\n\n- If the device is derived from a UL_PART, only the actual technology used by the part will be returned.\n\nThe *attributes()* loop member takes an additional parameter that specifies for which technology the attributes shall be delivered (see the second example below).\n\nThe *libraryurn* and *libraryversion* are only applicable if this UL_DEVICE comes from a managed library. If not, *libraryurn* will be the empty string and *libraryversion* will be -1.\n\n## Examples\n\n```\nlibrary(L) {\n L.devicesets(S) {\n S.devices(D) {\n if (D.footprint)\n printf(\"Device: %s, Footprint: %s\\n\", D.name, D.footprint.name);\n D.gates(G) {\n printf(\"\\t%s\\n\", G.name);\n }\n }\n }\n }\n\nlibrary(L) {\n L.devicesets(DS) {\n DS.devices(D) {\n string t[];\n int n = strsplit(t, D.technologies, ' ');\n for (int i = 0; i\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

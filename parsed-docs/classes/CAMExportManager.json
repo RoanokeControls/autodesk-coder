@@ -1,0 +1,170 @@
+{
+  "id": "CAMExportManager",
+  "title": "CAMExportManager Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/CAM/CAMExportManager.h",
+  "description": "Export manager used to export the setup's models in one of the formats defined the ExportOptions objects. The export is currently restricted to additive setups only and the availability of the export option and its settings depends on the chosen machine.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "create3MFOptions",
+      "description": "Creates a new 3MF export option."
+    },
+    {
+      "name": "createCAMAdditiveBuildExportOptions",
+      "description": "Creates a new export option based on the print setting's export formats. FFF and DED machines are not supported, their export files are generated using posts."
+    },
+    {
+      "name": "execute",
+      "description": "Executes an export based on the export options."
+    },
+    {
+      "name": "executeWithExportFuture",
+      "description": "Executes an export based on the export options"
+    }
+  ],
+  "properties": [
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version November 2021",
+  "method_details": {
+    "classType": {
+      "id": "CAMExportManager_classType",
+      "title": "CAMExportManager.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMExportManager.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CAMExportManager",
+      "syntax": {
+        "python": "returnValue = adsk.cam.CAMExportManager.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::CAMExportManager::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version November 2021"
+    },
+    "create3MFOptions": {
+      "id": "CAMExportManager_create3MFOptions",
+      "title": "CAMExportManager.create3MFOptions Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMExportManager.h",
+      "description": "Creates a new 3MF export option.",
+      "parent_class": "CAMExportManager",
+      "syntax": {
+        "python": "returnValue = cAMExportManager_var.create3MFOptions()",
+        "cpp": "#include \n\nreturnValue = cAMExportManager_var->create3MFOptions();"
+      },
+      "return_type": "CAM3MFExportOptions",
+      "return_description": "Returns new CAM3MFExportOptions.",
+      "version": "Introduced in version November 2021"
+    },
+    "createCAMAdditiveBuildExportOptions": {
+      "id": "CAMExportManager_createCAMAdditiveBuildExportOptions",
+      "title": "CAMExportManager.createCAMAdditiveBuildExportOptions Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMExportManager.h",
+      "description": "Creates a new export option based on the print setting's export formats. FFF and DED machines are not supported, their export files are generated using posts.",
+      "parent_class": "CAMExportManager",
+      "syntax": {
+        "python": "returnValue = cAMExportManager_var.createCAMAdditiveBuildExportOptions()",
+        "cpp": "#include \n\nreturnValue = cAMExportManager_var->createCAMAdditiveBuildExportOptions();"
+      },
+      "return_type": "CAMAdditiveBuildExportOptions",
+      "return_description": "Returns new CAMAdditiveBuildExportOptions.",
+      "version": "Introduced in version October 2023"
+    },
+    "execute": {
+      "id": "CAMExportManager_execute",
+      "title": "CAMExportManager.execute Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMExportManager.h",
+      "description": "Executes an export based on the export options.",
+      "parent_class": "CAMExportManager",
+      "syntax": {
+        "python": "returnValue = cAMExportManager_var.execute(exportOptions)",
+        "cpp": "#include \n\nreturnValue = cAMExportManager_var->execute(exportOptions);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the export finished successfully.",
+      "parameters": [
+        {
+          "name": "exportOptions",
+          "type": "CAMExportOptions",
+          "description": "The export options defining the export type and necessary meta data."
+        }
+      ],
+      "version": "Introduced in version November 2021"
+    },
+    "executeWithExportFuture": {
+      "id": "CAMExportManager_executeWithExportFuture",
+      "title": "CAMExportManager.executeWithExportFuture Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMExportManager.h",
+      "description": "Executes an export based on the export options",
+      "parent_class": "CAMExportManager",
+      "syntax": {
+        "python": "returnValue = cAMExportManager_var.executeWithExportFuture(exportOptions)",
+        "cpp": "#include \n\nreturnValue = cAMExportManager_var->executeWithExportFuture(exportOptions);"
+      },
+      "return_type": "CAMExportFuture",
+      "return_description": "Returns a CAMExportFuture object if the export has started successfully.",
+      "parameters": [
+        {
+          "name": "exportOptions",
+          "type": "CAMExportOptions",
+          "description": "The export options defining the export type and necessary meta data."
+        }
+      ],
+      "version": "Introduced in version September 2024"
+    }
+  },
+  "property_details": {
+    "isValid": {
+      "id": "CAMExportManager_isValid",
+      "title": "CAMExportManager.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMExportManager.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CAMExportManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMExportManager_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMExportManager_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2021"
+    },
+    "objectType": {
+      "id": "CAMExportManager_objectType",
+      "title": "CAMExportManager.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAMExportManager.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CAMExportManager",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMExportManager_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = cAMExportManager_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2021"
+    }
+  }
+}

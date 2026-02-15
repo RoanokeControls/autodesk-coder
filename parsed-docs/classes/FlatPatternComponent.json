@@ -1,0 +1,1663 @@
+{
+  "id": "FlatPatternComponent",
+  "title": "FlatPatternComponent Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+  "description": "This object represent the root component of a FlatPatternProduct. The flatPattern property will return a FlatPattern object that provides access to the resulting flat pattern geometry.",
+  "parent_class": "Component",
+  "methods": [
+    {
+      "name": "allOccurrencesByComponent",
+      "description": "Returns all occurrences, at any level of the assembly, that reference the specified component. The returned list is read-only."
+    },
+    {
+      "name": "boundingBox2",
+      "description": "Returns the bounding box of the specified entity types within the component."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createBRepEdgeProfile",
+      "description": "Creates a profile based on the outside open edges of a BRepFace."
+    },
+    {
+      "name": "createFlatPattern",
+      "description": "Creates a flat pattern of the sheet metal folded body. The isSheetMetal property of the BRepBody object can be used to determine if a particular body can be flattened. Creating a flat pattern will fail if a flat pattern already exists in the component. You can determine if a flat pattern already exists by checking if the flatPattern property returns a FlatPattern object or null."
+    },
+    {
+      "name": "createOpenProfile",
+      "description": "Creates an open profile based on the input curve(s)."
+    },
+    {
+      "name": "createThumbnail",
+      "description": "Creates a thumbnail for this component. This can be a root component to get a thumbnail that represents the associated file, or it can be any sub component to get a thumbnail of a subset of the complete assembly or individual parts."
+    },
+    {
+      "name": "findBRepUsingPoint",
+      "description": "Finds all the entities of the specified type at the specified location."
+    },
+    {
+      "name": "findBRepUsingRay",
+      "description": "Finds all the B-Rep entities that are intersected by the specified ray. This can return BRepFace, BrepEdge, and BRepVertex objects."
+    },
+    {
+      "name": "getPhysicalProperties",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this component."
+    },
+    {
+      "name": "occurrencesByComponent",
+      "description": "Returns all occurrences at the top-level of this component that reference the specified component. The returned list is read-only."
+    },
+    {
+      "name": "saveCopyAs",
+      "description": "Performs a Save Copy As on this component. This saves the specified component as a new document in the specified location."
+    },
+    {
+      "name": "transformOccurrences",
+      "description": "Transforms a set of occurrences in one step. This provides better performance than transforming them one at a time. This method is only valid when called on the root component because Fusion flattens the entire assembly structure when manipulating the assembly so all transforms are relative to the root component."
+    }
+  ],
+  "properties": [
+    {
+      "name": "activeSheetMetalRule",
+      "description": "Gets and sets the active sheet metal rule. This can return null in the case where the component has never contained any sheet metal related data."
+    },
+    {
+      "name": "allAsBuiltJoints",
+      "description": "Returns all joint origins in this component and any sub components. The joint origins returned are all in the context of this component so any joint origins in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including joint origins, when manipulating an assembly."
+    },
+    {
+      "name": "allAssemblyConstraints",
+      "description": "Returns all assembly constraints in this component and any sub components. The assembly constraints returned are all in the context of this component so any joints in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including joints, when manipulating an assembly."
+    },
+    {
+      "name": "allJointOrigins",
+      "description": "Returns all as-built joints in this component and any sub components. The as-built joints returned are all in the context of this component so any as-built joints in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including as-built joints, when manipulating an assembly."
+    },
+    {
+      "name": "allJoints",
+      "description": "Returns all joints in this component and any sub components. The joints returned are all in the context of this component so any joints in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including joints, when manipulating an assembly."
+    },
+    {
+      "name": "allOccurrences",
+      "description": "Returns all of the occurrences in the assembly regardless of their level within the assembly structure. The returned list is read-only."
+    },
+    {
+      "name": "allRigidGroups",
+      "description": "Returns all rigid groups in this component and any sub components. The rigid groups returned are all in the context of this component so any rigid groups in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including rigid groups, when manipulating an assembly."
+    },
+    {
+      "name": "allTangentRelationships",
+      "description": "Returns all tangent relationships in this component and any sub components. The tangent relationships returned are all in the context of this component so any tangent relationships in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including tangent relationships, when manipulating an assembly."
+    },
+    {
+      "name": "asBuiltJoints",
+      "description": "Returns the collection of as-built joints associated with this component."
+    },
+    {
+      "name": "assemblyConstraints",
+      "description": "Returns the collection of assembly constraints associated with this component."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "boundingBox",
+      "description": "Returns the bounding box of this component. This is always in world space of the component. The boundingBox2 method provides greater control over which types of entities you want included in the bounding box calculation."
+    },
+    {
+      "name": "bRepBodies",
+      "description": "Returns the B-Rep bodies collection associated with this component."
+    },
+    {
+      "name": "canvases",
+      "description": "Returns the canvases collection associated with this component. This provides access to the existing canvases and supports the creation of new canvases."
+    },
+    {
+      "name": "componentColor",
+      "description": "Gets and sets the color associated with a component. This color is only used when the \"Display Component Colors\" command is enabled. Enabling the display of component colors is done through the command or API using the Application.isComponentColorsDisplayed property. When this is on, all bodies in a component will display using the color assigned to the component. Fusion randomly assigns a color to a component when it is created. This property allows you to get and change the assigned default color. Setting this property to null results in a new color being randomly assigned by Fusion. This is the equivalent of the \"Cycle Component Color\" command available in the context menu of a component."
+    },
+    {
+      "name": "constructionAxes",
+      "description": "Returns the construction axes collection associated with this component. This provides access to the existing construction axes and supports the creation of new construction axes."
+    },
+    {
+      "name": "constructionPlanes",
+      "description": "Returns the construction planes collection associated with this component. This provides access to the existing construction planes and supports the creation of new construction planes."
+    },
+    {
+      "name": "constructionPoints",
+      "description": "Returns the construction points collection associated with this component. This provides access to the existing construction points and supports the creation of new construction points."
+    },
+    {
+      "name": "customGraphicsGroups",
+      "description": "Returns the customGraphicsGroups object in this component."
+    },
+    {
+      "name": "dataComponent",
+      "description": "Returns the DataComponent associated with this component. The DataComponent provides ID information that can be used to access this component using the MFG DM API. These ID's don't exist until a component has been saved. The ID's are generated by MFG DM API on the cloud, so there will be a slight delay after saving before the ID's are available. This property returns null in the case the MFG DM API information doesn't exist yet.   When opening a design, the MFG DM API information is obtained from the cloud and as a result may not be available immediately after opening a document. Again, this property will return null in this case too. Essentially, null is returned in all cases where good ID information is not yet available."
+    },
+    {
+      "name": "decals",
+      "description": "Returns the decals collection associated with this component. This provides access to the existing decals and supports the creation of new decals."
+    },
+    {
+      "name": "description",
+      "description": "Gets and sets the description associated with this component."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Component object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same component.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "features",
+      "description": "Returns the collection that provides access to all of the features associated with this component."
+    },
+    {
+      "name": "flatPattern",
+      "description": "Gets the existing flat pattern or returns null in the case where a flat pattern doesn't exist in this component."
+    },
+    {
+      "name": "id",
+      "description": "Returns the persistent ID of the component. This ID is created with the component and does not change. Because this ID does not change, different revisions of the same design or copies of the design asset/file will retain this ID. If components from different designs have the same ID, it indicates they are either different revisions or a copy of the design was made. Therefore, this ID will always be unique within a single design, but may not be unique in an assembly where externally referenced designs include different revisions or copies of a design.   The ID is also the same ID used by PIM (Product Information Model)."
+    },
+    {
+      "name": "isBodiesFolderLightBulbOn",
+      "description": "Gets and sets if the light bulb of the bodies folder as seen in the browser is on or off. This controls the visibility of the solid/surface bodies and the mesh bodies in this component."
+    },
+    {
+      "name": "isCanvasFolderLightBulbOn",
+      "description": "Gets and sets if the light bulb of the canvas folder as seen in the browser is on or off. This controls the visibility of all the canvases in the component."
+    },
+    {
+      "name": "isConstructionFolderLightBulbOn",
+      "description": "Gets and sets if the light bulb of the construction folder as seen in the browser is on or off. This controls the visibility of the (non-origin) construction geometry (i.e. planes, points, axes)."
+    },
+    {
+      "name": "isDecalFolderLightBulbOn",
+      "description": "Gets and sets whether the light bulb of the decal folder, as seen in the browser, is on or off. This controls the visibility of all the decals in the component."
+    },
+    {
+      "name": "isJointOriginsFolderLightBulbOn",
+      "description": "Gets and sets if the light bulb of the joint origins folder as seen in the browser is on or off. This controls the visibility of the joint origins in this occurrence. The light bulb for the folder is component specific and will turn off the joints for all occurrences referencing the component."
+    },
+    {
+      "name": "isJointsFolderLightBulbOn",
+      "description": "Gets and sets if the light bulb of the joints folder as seen in the browser is on or off. This controls the visibility of the joints in this occurrence. The light bulb for the folder is component specific and will turn off the joints for all occurrences referencing the component."
+    },
+    {
+      "name": "isLibraryItem",
+      "description": "Gets whether the component was created from a fasteners library item.\""
+    },
+    {
+      "name": "isOriginFolderLightBulbOn",
+      "description": "Gets and sets if the light bulb of the origin folder as seen in the browser is on or off. This controls the visibility of the origin construction geometry."
+    },
+    {
+      "name": "isSketchFolderLightBulbOn",
+      "description": "Gets and sets if the light bulb of the sketch folder as seen in the browser is on or off. This controls the visibility of the sketches in this component."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "jointOrigins",
+      "description": "Returns the collection of joint origins associated with this component."
+    },
+    {
+      "name": "joints",
+      "description": "Returns the collection of joints associated with this component."
+    },
+    {
+      "name": "material",
+      "description": "Gets and sets the physical material assigned to this component."
+    },
+    {
+      "name": "meshBodies",
+      "description": "Returns the mesh bodies collection associated with this component."
+    },
+    {
+      "name": "mfgdmModelId",
+      "description": "Returns the MFGDM model ID for this component."
+    },
+    {
+      "name": "modelParameters",
+      "description": "Returns the collection of model parameters in the Component."
+    },
+    {
+      "name": "motionLinks",
+      "description": "Returns the collection of MotionLinks associated with this component."
+    },
+    {
+      "name": "name",
+      "description": "Property that gets and sets the name of this component. This is the name shown in the browser for each occurrence referencing this component."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "occurrences",
+      "description": "Property that returns the Occurrences collection associated with this component. This provides access to the occurrences at the top-level of this component and provides the functionality to add new occurrences."
+    },
+    {
+      "name": "opacity",
+      "description": "Gets and sets the opacity override assigned to this component. A value of 1.0 specifies that is it completely opaque and a value of 0.0 specifies that is it completely transparent.   This is only applicable for a non-root local component.   This value is not necessarily related to what the user sees because the opacity is inherited. For example, if you have TopComponent and it has a component in it called SubComponent and you set the opacity of TopComponent to be 0.5, SubComponent will also be shown as slightly transparent even though the opacity property for it will return 1.0. Because a component can be referenced as an occurrence in other components and they can have different opacity settings, it's possible that different instances of the same component can display using different opacity levels. To get the opacity that it is being displayed with use the Occurrence.visibleOpacity property."
+    },
+    {
+      "name": "orientedMinimumBoundingBox",
+      "description": "Returns an oriented bounding box that is best oriented to tightly fit all B-Rep bodies in the component. All other geometry types are ignored."
+    },
+    {
+      "name": "originConstructionPoint",
+      "description": "Returns the origin construction point."
+    },
+    {
+      "name": "parentDesign",
+      "description": "Returns the parent product this component is owned by."
+    },
+    {
+      "name": "partNumber",
+      "description": "Gets and sets the part number associated with this component. Setting this to an empty string will reset it to be the same as the component name."
+    },
+    {
+      "name": "physicalProperties",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this component. Property values will be calculated using the 'LowCalculationAccuracy' setting when using this property to get the PhysicalProperties object. To specify a higher calculation tolerance, use the getPhysicalProperties method instead."
+    },
+    {
+      "name": "preciseBoundingBox",
+      "description": "Returns a bounding box that tightly fits around all B-Rep bodies in the component. All other geometry types are ignored."
+    },
+    {
+      "name": "propertyGroups",
+      "description": "Returns the PropertyGroups object associated with this component."
+    },
+    {
+      "name": "revisionId",
+      "description": "Returns the current revision ID of the component. This ID changes any time the component is modified in any way. By getting and saving the ID when you create any data that is dependent on the component, you can then compare the saved ID with the current ID to determine if the component has changed to know if you should update your data."
+    },
+    {
+      "name": "rigidGroups",
+      "description": "Returns the collection of rigid groups associated with this component."
+    },
+    {
+      "name": "sketches",
+      "description": "Returns the sketches collection associated with this component. This provides access to the existing sketches and supports the creation of new sketches."
+    },
+    {
+      "name": "tangentRelationships",
+      "description": "Returns the collection of tangent relationships associated with this component."
+    },
+    {
+      "name": "xConstructionAxis",
+      "description": "Returns the X origin construction axis."
+    },
+    {
+      "name": "xYConstructionPlane",
+      "description": "Returns the XY origin construction plane."
+    },
+    {
+      "name": "xZConstructionPlane",
+      "description": "Returns the XZ origin construction plane."
+    },
+    {
+      "name": "yConstructionAxis",
+      "description": "Returns the Y origin construction axis."
+    },
+    {
+      "name": "yZConstructionPlane",
+      "description": "Returns the YZ origin construction plane."
+    },
+    {
+      "name": "zConstructionAxis",
+      "description": "Returns the Z origin construction axis."
+    }
+  ],
+  "version": "Introduced in version October 2022",
+  "property_details": {
+    "activeSheetMetalRule": {
+      "id": "FlatPatternComponent_activeSheetMetalRule",
+      "title": "FlatPatternComponent.activeSheetMetalRule Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Gets and sets the active sheet metal rule. This can return null in the case where the component has never contained any sheet metal related data.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.activeSheetMetalRule\n\n# Set the value of the property.\nflatPatternComponent_var.activeSheetMetalRule = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->activeSheetMetalRule();\n\n// Set the value of the property, where value_var is a SheetMetalRule.\nbool returnValue = flatPatternComponent_var->activeSheetMetalRule(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2022"
+    },
+    "allAsBuiltJoints": {
+      "id": "FlatPatternComponent_allAsBuiltJoints",
+      "title": "FlatPatternComponent.allAsBuiltJoints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns all joint origins in this component and any sub components. The joint origins returned are all in the context of this component so any joint origins in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including joint origins, when manipulating an assembly.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.allAsBuiltJoints",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = flatPatternComponent_var->allAsBuiltJoints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "allAssemblyConstraints": {
+      "id": "FlatPatternComponent_allAssemblyConstraints",
+      "title": "FlatPatternComponent.allAssemblyConstraints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns all assembly constraints in this component and any sub components. The assembly constraints returned are all in the context of this component so any joints in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including joints, when manipulating an assembly.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.allAssemblyConstraints",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = flatPatternComponent_var->allAssemblyConstraints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "allJointOrigins": {
+      "id": "FlatPatternComponent_allJointOrigins",
+      "title": "FlatPatternComponent.allJointOrigins Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns all as-built joints in this component and any sub components. The as-built joints returned are all in the context of this component so any as-built joints in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including as-built joints, when manipulating an assembly.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.allJointOrigins",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = flatPatternComponent_var->allJointOrigins();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "allJoints": {
+      "id": "FlatPatternComponent_allJoints",
+      "title": "FlatPatternComponent.allJoints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns all joints in this component and any sub components. The joints returned are all in the context of this component so any joints in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including joints, when manipulating an assembly.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.allJoints",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = flatPatternComponent_var->allJoints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "allOccurrences": {
+      "id": "FlatPatternComponent_allOccurrences",
+      "title": "FlatPatternComponent.allOccurrences Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns all of the occurrences in the assembly regardless of their level within the assembly structure. The returned list is read-only.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.allOccurrences",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->allOccurrences();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "allRigidGroups": {
+      "id": "FlatPatternComponent_allRigidGroups",
+      "title": "FlatPatternComponent.allRigidGroups Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns all rigid groups in this component and any sub components. The rigid groups returned are all in the context of this component so any rigid groups in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including rigid groups, when manipulating an assembly.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.allRigidGroups",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = flatPatternComponent_var->allRigidGroups();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "allTangentRelationships": {
+      "id": "FlatPatternComponent_allTangentRelationships",
+      "title": "FlatPatternComponent.allTangentRelationships Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns all tangent relationships in this component and any sub components. The tangent relationships returned are all in the context of this component so any tangent relationships in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including tangent relationships, when manipulating an assembly.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.allTangentRelationships",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = flatPatternComponent_var->allTangentRelationships();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "asBuiltJoints": {
+      "id": "FlatPatternComponent_asBuiltJoints",
+      "title": "FlatPatternComponent.asBuiltJoints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the collection of as-built joints associated with this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.asBuiltJoints",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->asBuiltJoints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "assemblyConstraints": {
+      "id": "FlatPatternComponent_assemblyConstraints",
+      "title": "FlatPatternComponent.assemblyConstraints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the collection of assembly constraints associated with this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.assemblyConstraints",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->assemblyConstraints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "attributes": {
+      "id": "FlatPatternComponent_attributes",
+      "title": "FlatPatternComponent.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "bRepBodies": {
+      "id": "FlatPatternComponent_bRepBodies",
+      "title": "FlatPatternComponent.bRepBodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the B-Rep bodies collection associated with this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.bRepBodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->bRepBodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "boundingBox": {
+      "id": "FlatPatternComponent_boundingBox",
+      "title": "FlatPatternComponent.boundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the bounding box of this component. This is always in world space of the component. The boundingBox2 method provides greater control over which types of entities you want included in the bounding box calculation.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.boundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->boundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "canvases": {
+      "id": "FlatPatternComponent_canvases",
+      "title": "FlatPatternComponent.canvases Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the canvases collection associated with this component. This provides access to the existing canvases and supports the creation of new canvases.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.canvases",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->canvases();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "componentColor": {
+      "id": "FlatPatternComponent_componentColor",
+      "title": "FlatPatternComponent.componentColor Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Gets and sets the color associated with a component. This color is only used when the \"Display Component Colors\" command is enabled. Enabling the display of component colors is done through the command or API using the Application.isComponentColorsDisplayed property. When this is on, all bodies in a component will display using the color assigned to the component. Fusion randomly assigns a color to a component when it is created. This property allows you to get and change the assigned default color. Setting this property to null results in a new color being randomly assigned by Fusion. This is the equivalent of the \"Cycle Component Color\" command available in the context menu of a component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.componentColor\n\n# Set the value of the property.\nflatPatternComponent_var.componentColor = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->componentColor();\n\n// Set the value of the property, where value_var is a Color.\nbool returnValue = flatPatternComponent_var->componentColor(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2024"
+    },
+    "constructionAxes": {
+      "id": "FlatPatternComponent_constructionAxes",
+      "title": "FlatPatternComponent.constructionAxes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the construction axes collection associated with this component. This provides access to the existing construction axes and supports the creation of new construction axes.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.constructionAxes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->constructionAxes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "constructionPlanes": {
+      "id": "FlatPatternComponent_constructionPlanes",
+      "title": "FlatPatternComponent.constructionPlanes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the construction planes collection associated with this component. This provides access to the existing construction planes and supports the creation of new construction planes.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.constructionPlanes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->constructionPlanes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "constructionPoints": {
+      "id": "FlatPatternComponent_constructionPoints",
+      "title": "FlatPatternComponent.constructionPoints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the construction points collection associated with this component. This provides access to the existing construction points and supports the creation of new construction points.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.constructionPoints",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->constructionPoints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "customGraphicsGroups": {
+      "id": "FlatPatternComponent_customGraphicsGroups",
+      "title": "FlatPatternComponent.customGraphicsGroups Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the customGraphicsGroups object in this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.customGraphicsGroups",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->customGraphicsGroups();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "dataComponent": {
+      "id": "FlatPatternComponent_dataComponent",
+      "title": "FlatPatternComponent.dataComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the DataComponent associated with this component. The DataComponent provides ID information that can be used to access this component using the MFG DM API. These ID's don't exist until a component has been saved. The ID's are generated by MFG DM API on the cloud, so there will be a slight delay after saving before the ID's are available. This property returns null in the case the MFG DM API information doesn't exist yet. When opening a design, the MFG DM API information is obtained from the cloud and as a result may not be available immediately after opening a document. Again, this property will return null in this case too. Essentially, null is returned in all cases where good ID information is not yet available.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.dataComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->dataComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2024"
+    },
+    "decals": {
+      "id": "FlatPatternComponent_decals",
+      "title": "FlatPatternComponent.decals Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the decals collection associated with this component. This provides access to the existing decals and supports the creation of new decals.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.decals",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->decals();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "description": {
+      "id": "FlatPatternComponent_description",
+      "title": "FlatPatternComponent.description Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Gets and sets the description associated with this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.description\n\n# Set the value of the property.\nflatPatternComponent_var.description = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = flatPatternComponent_var->description();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = flatPatternComponent_var->description(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "entityToken": {
+      "id": "FlatPatternComponent_entityToken",
+      "title": "FlatPatternComponent.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns a token for the Component object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same component. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = flatPatternComponent_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "features": {
+      "id": "FlatPatternComponent_features",
+      "title": "FlatPatternComponent.features Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the collection that provides access to all of the features associated with this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.features",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->features();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "flatPattern": {
+      "id": "FlatPatternComponent_flatPattern",
+      "title": "FlatPatternComponent.flatPattern Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Gets the existing flat pattern or returns null in the case where a flat pattern doesn't exist in this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.flatPattern",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->flatPattern();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "id": {
+      "id": "FlatPatternComponent_id",
+      "title": "FlatPatternComponent.id Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the persistent ID of the component. This ID is created with the component and does not change. Because this ID does not change, different revisions of the same design or copies of the design asset/file will retain this ID. If components from different designs have the same ID, it indicates they are either different revisions or a copy of the design was made. Therefore, this ID will always be unique within a single design, but may not be unique in an assembly where externally referenced designs include different revisions or copies of a design. The ID is also the same ID used by PIM (Product Information Model).",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = flatPatternComponent_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isBodiesFolderLightBulbOn": {
+      "id": "FlatPatternComponent_isBodiesFolderLightBulbOn",
+      "title": "FlatPatternComponent.isBodiesFolderLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Gets and sets if the light bulb of the bodies folder as seen in the browser is on or off. This controls the visibility of the solid/surface bodies and the mesh bodies in this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.isBodiesFolderLightBulbOn\n\n# Set the value of the property.\nflatPatternComponent_var.isBodiesFolderLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = flatPatternComponent_var->isBodiesFolderLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = flatPatternComponent_var->isBodiesFolderLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isCanvasFolderLightBulbOn": {
+      "id": "FlatPatternComponent_isCanvasFolderLightBulbOn",
+      "title": "FlatPatternComponent.isCanvasFolderLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Gets and sets if the light bulb of the canvas folder as seen in the browser is on or off. This controls the visibility of all the canvases in the component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.isCanvasFolderLightBulbOn\n\n# Set the value of the property.\nflatPatternComponent_var.isCanvasFolderLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = flatPatternComponent_var->isCanvasFolderLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = flatPatternComponent_var->isCanvasFolderLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2023"
+    },
+    "isConstructionFolderLightBulbOn": {
+      "id": "FlatPatternComponent_isConstructionFolderLightBulbOn",
+      "title": "FlatPatternComponent.isConstructionFolderLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Gets and sets if the light bulb of the construction folder as seen in the browser is on or off. This controls the visibility of the (non-origin) construction geometry (i.e. planes, points, axes).",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.isConstructionFolderLightBulbOn\n\n# Set the value of the property.\nflatPatternComponent_var.isConstructionFolderLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = flatPatternComponent_var->isConstructionFolderLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = flatPatternComponent_var->isConstructionFolderLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isDecalFolderLightBulbOn": {
+      "id": "FlatPatternComponent_isDecalFolderLightBulbOn",
+      "title": "FlatPatternComponent.isDecalFolderLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Gets and sets whether the light bulb of the decal folder, as seen in the browser, is on or off. This controls the visibility of all the decals in the component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.isDecalFolderLightBulbOn\n\n# Set the value of the property.\nflatPatternComponent_var.isDecalFolderLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = flatPatternComponent_var->isDecalFolderLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = flatPatternComponent_var->isDecalFolderLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2024"
+    },
+    "isJointOriginsFolderLightBulbOn": {
+      "id": "FlatPatternComponent_isJointOriginsFolderLightBulbOn",
+      "title": "FlatPatternComponent.isJointOriginsFolderLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Gets and sets if the light bulb of the joint origins folder as seen in the browser is on or off. This controls the visibility of the joint origins in this occurrence. The light bulb for the folder is component specific and will turn off the joints for all occurrences referencing the component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.isJointOriginsFolderLightBulbOn\n\n# Set the value of the property.\nflatPatternComponent_var.isJointOriginsFolderLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = flatPatternComponent_var->isJointOriginsFolderLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = flatPatternComponent_var->isJointOriginsFolderLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "isJointsFolderLightBulbOn": {
+      "id": "FlatPatternComponent_isJointsFolderLightBulbOn",
+      "title": "FlatPatternComponent.isJointsFolderLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Gets and sets if the light bulb of the joints folder as seen in the browser is on or off. This controls the visibility of the joints in this occurrence. The light bulb for the folder is component specific and will turn off the joints for all occurrences referencing the component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.isJointsFolderLightBulbOn\n\n# Set the value of the property.\nflatPatternComponent_var.isJointsFolderLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = flatPatternComponent_var->isJointsFolderLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = flatPatternComponent_var->isJointsFolderLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isLibraryItem": {
+      "id": "FlatPatternComponent_isLibraryItem",
+      "title": "FlatPatternComponent.isLibraryItem Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Gets whether the component was created from a fasteners library item.\"",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.isLibraryItem",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = flatPatternComponent_var->isLibraryItem();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "isOriginFolderLightBulbOn": {
+      "id": "FlatPatternComponent_isOriginFolderLightBulbOn",
+      "title": "FlatPatternComponent.isOriginFolderLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Gets and sets if the light bulb of the origin folder as seen in the browser is on or off. This controls the visibility of the origin construction geometry.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.isOriginFolderLightBulbOn\n\n# Set the value of the property.\nflatPatternComponent_var.isOriginFolderLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = flatPatternComponent_var->isOriginFolderLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = flatPatternComponent_var->isOriginFolderLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isSketchFolderLightBulbOn": {
+      "id": "FlatPatternComponent_isSketchFolderLightBulbOn",
+      "title": "FlatPatternComponent.isSketchFolderLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Gets and sets if the light bulb of the sketch folder as seen in the browser is on or off. This controls the visibility of the sketches in this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.isSketchFolderLightBulbOn\n\n# Set the value of the property.\nflatPatternComponent_var.isSketchFolderLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = flatPatternComponent_var->isSketchFolderLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = flatPatternComponent_var->isSketchFolderLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isValid": {
+      "id": "FlatPatternComponent_isValid",
+      "title": "FlatPatternComponent.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = flatPatternComponent_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "jointOrigins": {
+      "id": "FlatPatternComponent_jointOrigins",
+      "title": "FlatPatternComponent.jointOrigins Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the collection of joint origins associated with this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.jointOrigins",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->jointOrigins();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "joints": {
+      "id": "FlatPatternComponent_joints",
+      "title": "FlatPatternComponent.joints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the collection of joints associated with this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.joints",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->joints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "material": {
+      "id": "FlatPatternComponent_material",
+      "title": "FlatPatternComponent.material Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Gets and sets the physical material assigned to this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.material\n\n# Set the value of the property.\nflatPatternComponent_var.material = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->material();\n\n// Set the value of the property, where value_var is a Material.\nbool returnValue = flatPatternComponent_var->material(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "meshBodies": {
+      "id": "FlatPatternComponent_meshBodies",
+      "title": "FlatPatternComponent.meshBodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the mesh bodies collection associated with this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.meshBodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->meshBodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "mfgdmModelId": {
+      "id": "FlatPatternComponent_mfgdmModelId",
+      "title": "FlatPatternComponent.mfgdmModelId Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the MFGDM model ID for this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.mfgdmModelId",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = flatPatternComponent_var->mfgdmModelId();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2025"
+    },
+    "modelParameters": {
+      "id": "FlatPatternComponent_modelParameters",
+      "title": "FlatPatternComponent.modelParameters Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the collection of model parameters in the Component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.modelParameters",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->modelParameters();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "motionLinks": {
+      "id": "FlatPatternComponent_motionLinks",
+      "title": "FlatPatternComponent.motionLinks Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the collection of MotionLinks associated with this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.motionLinks",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->motionLinks();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2025"
+    },
+    "name": {
+      "id": "FlatPatternComponent_name",
+      "title": "FlatPatternComponent.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Property that gets and sets the name of this component. This is the name shown in the browser for each occurrence referencing this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.name\n\n# Set the value of the property.\nflatPatternComponent_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = flatPatternComponent_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = flatPatternComponent_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "objectType": {
+      "id": "FlatPatternComponent_objectType",
+      "title": "FlatPatternComponent.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = flatPatternComponent_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "occurrences": {
+      "id": "FlatPatternComponent_occurrences",
+      "title": "FlatPatternComponent.occurrences Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Property that returns the Occurrences collection associated with this component. This provides access to the occurrences at the top-level of this component and provides the functionality to add new occurrences.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.occurrences",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->occurrences();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "opacity": {
+      "id": "FlatPatternComponent_opacity",
+      "title": "FlatPatternComponent.opacity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Gets and sets the opacity override assigned to this component. A value of 1.0 specifies that is it completely opaque and a value of 0.0 specifies that is it completely transparent. This is only applicable for a non-root local component. This value is not necessarily related to what the user sees because the opacity is inherited. For example, if you have TopComponent and it has a component in it called SubComponent and you set the opacity of TopComponent to be 0.5, SubComponent will also be shown as slightly transparent even though the opacity property for it will return 1.0. Because a component can be referenced as an occurrence in other components and they can have different opacity settings, it's possible that different instances of the same component can display using different opacity levels. To get the opacity that it is being displayed with use the Occurrence.visibleOpacity property.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.opacity\n\n# Set the value of the property.\nflatPatternComponent_var.opacity = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = flatPatternComponent_var->opacity();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = flatPatternComponent_var->opacity(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "orientedMinimumBoundingBox": {
+      "id": "FlatPatternComponent_orientedMinimumBoundingBox",
+      "title": "FlatPatternComponent.orientedMinimumBoundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns an oriented bounding box that is best oriented to tightly fit all B-Rep bodies in the component. All other geometry types are ignored.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.orientedMinimumBoundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->orientedMinimumBoundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "originConstructionPoint": {
+      "id": "FlatPatternComponent_originConstructionPoint",
+      "title": "FlatPatternComponent.originConstructionPoint Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the origin construction point.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.originConstructionPoint",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->originConstructionPoint();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "parentDesign": {
+      "id": "FlatPatternComponent_parentDesign",
+      "title": "FlatPatternComponent.parentDesign Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the parent product this component is owned by.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.parentDesign",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->parentDesign();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "partNumber": {
+      "id": "FlatPatternComponent_partNumber",
+      "title": "FlatPatternComponent.partNumber Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Gets and sets the part number associated with this component. Setting this to an empty string will reset it to be the same as the component name.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.partNumber\n\n# Set the value of the property.\nflatPatternComponent_var.partNumber = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = flatPatternComponent_var->partNumber();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = flatPatternComponent_var->partNumber(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "physicalProperties": {
+      "id": "FlatPatternComponent_physicalProperties",
+      "title": "FlatPatternComponent.physicalProperties Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this component. Property values will be calculated using the 'LowCalculationAccuracy' setting when using this property to get the PhysicalProperties object. To specify a higher calculation tolerance, use the getPhysicalProperties method instead.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.physicalProperties",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->physicalProperties();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "preciseBoundingBox": {
+      "id": "FlatPatternComponent_preciseBoundingBox",
+      "title": "FlatPatternComponent.preciseBoundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns a bounding box that tightly fits around all B-Rep bodies in the component. All other geometry types are ignored.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.preciseBoundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->preciseBoundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "propertyGroups": {
+      "id": "FlatPatternComponent_propertyGroups",
+      "title": "FlatPatternComponent.propertyGroups Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the PropertyGroups object associated with this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.propertyGroups",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->propertyGroups();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2024"
+    },
+    "revisionId": {
+      "id": "FlatPatternComponent_revisionId",
+      "title": "FlatPatternComponent.revisionId Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the current revision ID of the component. This ID changes any time the component is modified in any way. By getting and saving the ID when you create any data that is dependent on the component, you can then compare the saved ID with the current ID to determine if the component has changed to know if you should update your data.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.revisionId",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = flatPatternComponent_var->revisionId();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "rigidGroups": {
+      "id": "FlatPatternComponent_rigidGroups",
+      "title": "FlatPatternComponent.rigidGroups Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the collection of rigid groups associated with this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.rigidGroups",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->rigidGroups();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "sketches": {
+      "id": "FlatPatternComponent_sketches",
+      "title": "FlatPatternComponent.sketches Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the sketches collection associated with this component. This provides access to the existing sketches and supports the creation of new sketches.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.sketches",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->sketches();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "tangentRelationships": {
+      "id": "FlatPatternComponent_tangentRelationships",
+      "title": "FlatPatternComponent.tangentRelationships Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the collection of tangent relationships associated with this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.tangentRelationships",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->tangentRelationships();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "xConstructionAxis": {
+      "id": "FlatPatternComponent_xConstructionAxis",
+      "title": "FlatPatternComponent.xConstructionAxis Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the X origin construction axis.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.xConstructionAxis",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->xConstructionAxis();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "xYConstructionPlane": {
+      "id": "FlatPatternComponent_xYConstructionPlane",
+      "title": "FlatPatternComponent.xYConstructionPlane Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the XY origin construction plane.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.xYConstructionPlane",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->xYConstructionPlane();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "xZConstructionPlane": {
+      "id": "FlatPatternComponent_xZConstructionPlane",
+      "title": "FlatPatternComponent.xZConstructionPlane Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the XZ origin construction plane.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.xZConstructionPlane",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->xZConstructionPlane();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "yConstructionAxis": {
+      "id": "FlatPatternComponent_yConstructionAxis",
+      "title": "FlatPatternComponent.yConstructionAxis Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the Y origin construction axis.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.yConstructionAxis",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->yConstructionAxis();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "yZConstructionPlane": {
+      "id": "FlatPatternComponent_yZConstructionPlane",
+      "title": "FlatPatternComponent.yZConstructionPlane Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the YZ origin construction plane.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.yZConstructionPlane",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->yZConstructionPlane();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "zConstructionAxis": {
+      "id": "FlatPatternComponent_zConstructionAxis",
+      "title": "FlatPatternComponent.zConstructionAxis Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the Z origin construction axis.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.zConstructionAxis",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->zConstructionAxis();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    }
+  },
+  "method_details": {
+    "allOccurrencesByComponent": {
+      "id": "FlatPatternComponent_allOccurrencesByComponent",
+      "title": "FlatPatternComponent.allOccurrencesByComponent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns all occurrences, at any level of the assembly, that reference the specified component. The returned list is read-only.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "returnValue = flatPatternComponent_var.allOccurrencesByComponent(component)",
+        "cpp": "#include \n\nreturnValue = flatPatternComponent_var->allOccurrencesByComponent(component);"
+      },
+      "return_type": "OccurrenceList",
+      "return_description": "The occurrences referenced by the specified component.",
+      "parameters": [
+        {
+          "name": "component",
+          "type": "Component",
+          "description": "The component that is being referenced by the occurrences that will be returned."
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    },
+    "boundingBox2": {
+      "id": "FlatPatternComponent_boundingBox2",
+      "title": "FlatPatternComponent.boundingBox2 Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the bounding box of the specified entity types within the component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "returnValue = flatPatternComponent_var.boundingBox2(entityTypes)",
+        "cpp": "#include \n\nreturnValue = flatPatternComponent_var->boundingBox2(entityTypes);"
+      },
+      "return_type": "BoundingBox3D",
+      "return_description": "Returns a BoundingBox3D object if the calculation was successful and null in the case where there is no valid geometry and the bounding box is empty.",
+      "parameters": [
+        {
+          "name": "entityTypes",
+          "type": "BoundingBoxEntityTypes",
+          "description": "Bitwise value that specifies the types of entities to include in the calculation of the bounding box."
+        }
+      ],
+      "version": "Introduced in version January 2024"
+    },
+    "classType": {
+      "id": "FlatPatternComponent_classType",
+      "title": "FlatPatternComponent.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.FlatPatternComponent.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::FlatPatternComponent::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version October 2022"
+    },
+    "createBRepEdgeProfile": {
+      "id": "FlatPatternComponent_createBRepEdgeProfile",
+      "title": "FlatPatternComponent.createBRepEdgeProfile Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Creates a profile based on the outside open edges of a BRepFace.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = flatPatternComponent_var.createBRepEdgeProfile(edges)\n\n# Uses optional arguments.\nreturnValue = flatPatternComponent_var.createBRepEdgeProfile(edges, chainEdges)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = flatPatternComponent_var->createBRepEdgeProfile(edges);\n\n// Uses optional arguments.\nreturnValue = flatPatternComponent_var->createBRepEdgeProfile(edges, chainEdges);"
+      },
+      "return_type": "Profile",
+      "return_description": "Returns the new Profile object or null in the case of a failure.",
+      "parameters": [
+        {
+          "name": "edges",
+          "type": "Base",
+          "description": "A single BRepEdge object or an ObjectCollection containing multiple BRepEdge objects, or a BRepLoop object. If a single edge is input, the chainEdges argument is checked to determine if connected edges (they do not need to be tangent) should be automatically found. If multiple edges are provided the chainEdges argument is always treated as false so you must provide all of the edges in the object collection that you want included in the profile. and the edges must all connect together in a single path. if a BRepLoop object is provided, all of the edges in the loop are included in the profile and the chainEdges argument is ignored."
+        },
+        {
+          "name": "chainEdges",
+          "type": "boolean",
+          "description": "If true, this finds any edges that connect to the single input edge and automatically includes them in the profile. If false, only the edges provided will be used to define the profile. This argument is ignored and treated as false if multiple edges or a BRepLoop is input.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    },
+    "createFlatPattern": {
+      "id": "FlatPatternComponent_createFlatPattern",
+      "title": "FlatPatternComponent.createFlatPattern Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Creates a flat pattern of the sheet metal folded body. The isSheetMetal property of the BRepBody object can be used to determine if a particular body can be flattened. Creating a flat pattern will fail if a flat pattern already exists in the component. You can determine if a flat pattern already exists by checking if the flatPattern property returns a FlatPattern object or null.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "returnValue = flatPatternComponent_var.createFlatPattern(stationaryFace)",
+        "cpp": "#include \n\nreturnValue = flatPatternComponent_var->createFlatPattern(stationaryFace);"
+      },
+      "return_type": "FlatPattern",
+      "return_description": "Returns the newly created flat pattern.",
+      "parameters": [
+        {
+          "name": "stationaryFace",
+          "type": "BRepFace",
+          "description": "A planar face in the sheet metal body that is on the top or bottom of the part and not an edge face. This face will be positioned on the X-Y plane of the flat pattern and the rest of the model will be flattened relative to this face. The face must exist on a body that is owned by this component."
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    },
+    "createOpenProfile": {
+      "id": "FlatPatternComponent_createOpenProfile",
+      "title": "FlatPatternComponent.createOpenProfile Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Creates an open profile based on the input curve(s).",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = flatPatternComponent_var.createOpenProfile(curves)\n\n# Uses optional arguments.\nreturnValue = flatPatternComponent_var.createOpenProfile(curves, chainCurves)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = flatPatternComponent_var->createOpenProfile(curves);\n\n// Uses optional arguments.\nreturnValue = flatPatternComponent_var->createOpenProfile(curves, chainCurves);"
+      },
+      "return_type": "Profile",
+      "return_description": "Returns the new Profile object or null in the case of a failure.",
+      "parameters": [
+        {
+          "name": "curves",
+          "type": "Base",
+          "description": "A SketchCurve or an ObjectCollection containing multiple sketch entities. If a single sketch curve is input the chainCurves argument is checked to determine if connected curves (they do not need to be tangent) should be automatically found. If multiple curves are provided the chainCurves argument is always treated as false so you must provide all of the curves in the object collection that you want included in the profile. The provided curves must all connect together in a single path.   The input curves do not need to be in the same sketch, but they do need to geometrically connect for a valid profile to be created."
+        },
+        {
+          "name": "chainCurves",
+          "type": "boolean",
+          "description": "If true, this finds any curves within the same sketch that connect to the single input curve and automatically includes them in the profile. If false, only the curves provided will be used to define the profile. This argument is ignored and treated as false if multiple curves are input.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    },
+    "createThumbnail": {
+      "id": "FlatPatternComponent_createThumbnail",
+      "title": "FlatPatternComponent.createThumbnail Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Creates a thumbnail for this component. This can be a root component to get a thumbnail that represents the associated file, or it can be any sub component to get a thumbnail of a subset of the complete assembly or individual parts.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = flatPatternComponent_var.createThumbnail()\n\n# Uses optional arguments.\nreturnValue = flatPatternComponent_var.createThumbnail(width, height, imageType)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = flatPatternComponent_var->createThumbnail();\n\n// Uses optional arguments.\nreturnValue = flatPatternComponent_var->createThumbnail(width, height, imageType);"
+      },
+      "return_type": "DataObject",
+      "return_description": "Returns a DataObject that you can use to save the thumbnail to a file or to access the binary data of the bitmap directly.",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "integer",
+          "description": "Optional argument to define the width of the thumbnail in pixels. A default width of 256 pixels is used if no width is specified.   This is an optional argument whose default value is 256."
+        },
+        {
+          "name": "height",
+          "type": "integer",
+          "description": "Optional argument to define the height of the thumbnail in pixels. A default height of 256 pixels is used if no height is specified.   This is an optional argument whose default value is 256."
+        },
+        {
+          "name": "imageType",
+          "type": "string",
+          "description": "Optional argument to define the type of image data to create. The default of PNG is used if no type is specified. Valid types include \"PNG\", \"JPG\", \"TIF\", and \"BMP\".   This is an optional argument whose default value is \"PNG\"."
+        }
+      ],
+      "version": "Introduced in version November 2024"
+    },
+    "findBRepUsingPoint": {
+      "id": "FlatPatternComponent_findBRepUsingPoint",
+      "title": "FlatPatternComponent.findBRepUsingPoint Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Finds all the entities of the specified type at the specified location.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = flatPatternComponent_var.findBRepUsingPoint(point, entityType)\n\n# Uses optional arguments.\nreturnValue = flatPatternComponent_var.findBRepUsingPoint(point, entityType, proximityTolerance, visibleEntitiesOnly)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = flatPatternComponent_var->findBRepUsingPoint(point, entityType);\n\n// Uses optional arguments.\nreturnValue = flatPatternComponent_var->findBRepUsingPoint(point, entityType, proximityTolerance, visibleEntitiesOnly);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "Returns an ObjectCollection containing the entities found. The returned collection can be empty indicating nothing was found.",
+      "parameters": [
+        {
+          "name": "point",
+          "type": "Point3D",
+          "description": "Input coordinate that specifies the component space point at which to find the entities."
+        },
+        {
+          "name": "entityType",
+          "type": "BRepEntityTypes",
+          "description": "The type of B-Rep entity wanted. You can also take advantage of B-Rep topology to infer other that other entities were found. For example, If you get a BRepEdge it implies that the faces the edge connects were also found. If a BRepVertex is returned it implies the edges that the vertex connects were found and the faces that the edges connect were found."
+        },
+        {
+          "name": "proximityTolerance",
+          "type": "double",
+          "description": "Specifies the tolerance for the search. All entities within this distance from the search point that match the filter will be returned. If not specified a default tolerance is used.   This is an optional argument whose default value is -1.0."
+        },
+        {
+          "name": "visibleEntitiesOnly",
+          "type": "boolean",
+          "description": "indicates whether or not invisible objects should be included in the search. Defaults to True indicating that invisible objects will be ignored.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    },
+    "findBRepUsingRay": {
+      "id": "FlatPatternComponent_findBRepUsingRay",
+      "title": "FlatPatternComponent.findBRepUsingRay Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Finds all the B-Rep entities that are intersected by the specified ray. This can return BRepFace, BrepEdge, and BRepVertex objects.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = flatPatternComponent_var.findBRepUsingRay(originPoint, rayDirection, entityType)\n\n# Uses optional arguments.\nreturnValue = flatPatternComponent_var.findBRepUsingRay(originPoint, rayDirection, entityType, proximityTolerance, visibleEntitiesOnly, hitPoints)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = flatPatternComponent_var->findBRepUsingRay(originPoint, rayDirection, entityType);\n\n// Uses optional arguments.\nreturnValue = flatPatternComponent_var->findBRepUsingRay(originPoint, rayDirection, entityType, proximityTolerance, visibleEntitiesOnly, hitPoints);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "Returns an ObjectCollection containing the entities found. The returned collection can be empty indicating nothing was found. The points are returned in an order where they are arranged based on their distance from the origin point where the closest point is first. If an entity is hit more than once, the entity is returned once for the first intersection.",
+      "parameters": [
+        {
+          "name": "originPoint",
+          "type": "Point3D",
+          "description": "Input point that defines the origin of the ray. The search for entities begins at this point."
+        },
+        {
+          "name": "rayDirection",
+          "type": "Vector3D",
+          "description": "Input vector that defines the direction of the ray. The ray is infinite so the length of the vector is ignored."
+        },
+        {
+          "name": "entityType",
+          "type": "BRepEntityTypes",
+          "description": "The type of B-Rep entity wanted. You can also take advantage of B-Rep topology to infer other intersections. For example, If you get a BRepEdge it implies that the faces the edge connects were also intersected. If a BRepVertex is returned it implies the edges that the vertex connects were intersected and the faces that the edges connect were intersected."
+        },
+        {
+          "name": "proximityTolerance",
+          "type": "double",
+          "description": "Optional argument that specifies the tolerance for the search. All entities within this distance from the ray and of the specified type will be returned. If not specified a default small tolerance is used.   This is an optional argument whose default value is -1.0."
+        },
+        {
+          "name": "visibleEntitiesOnly",
+          "type": "boolean",
+          "description": "Optional argument that indicates whether or not invisible entities should be included in the search. Defaults to True indicating that invisible entities will be ignored.   This is an optional argument whose default value is True."
+        },
+        {
+          "name": "hitPoints",
+          "type": "ObjectCollection",
+          "description": "An ObjectCollection of Point3D objects that represent the coordinates where the ray hit the found entity. There will be the same number of hit points as returned entities and they will be in the collections in the same order. In other words, hit point 1 corresponds with found entity 1, hit point 2 corresponds with found entity 2, and so on. Because of the proximity tolerance the hitPoint may not actually lie on the entity but will be within the proximity tolerance to it. It's an optional out argument, returns the hit points if an existing ObjectCollection is input. You can create a new ObjectCollection by using the static create method on the ObjectCollection class.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    },
+    "getPhysicalProperties": {
+      "id": "FlatPatternComponent_getPhysicalProperties",
+      "title": "FlatPatternComponent.getPhysicalProperties Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = flatPatternComponent_var.getPhysicalProperties()\n\n# Uses optional arguments.\nreturnValue = flatPatternComponent_var.getPhysicalProperties(accuracy)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = flatPatternComponent_var->getPhysicalProperties();\n\n// Uses optional arguments.\nreturnValue = flatPatternComponent_var->getPhysicalProperties(accuracy);"
+      },
+      "return_type": "PhysicalProperties",
+      "return_description": "Returns a PhysicalProperties object that can be used to get the various physical property related values.",
+      "parameters": [
+        {
+          "name": "accuracy",
+          "type": "CalculationAccuracy",
+          "description": "Specifies the desired level of computational accuracy of the property calculations. The default value of 'LowCalculationAccuracy' returns results within a +/- 1% error margin.   This is an optional argument whose default value is CalculationAccuracy.LowCalculationAccuracy."
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    },
+    "occurrencesByComponent": {
+      "id": "FlatPatternComponent_occurrencesByComponent",
+      "title": "FlatPatternComponent.occurrencesByComponent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns all occurrences at the top-level of this component that reference the specified component. The returned list is read-only.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "returnValue = flatPatternComponent_var.occurrencesByComponent(component)",
+        "cpp": "#include \n\nreturnValue = flatPatternComponent_var->occurrencesByComponent(component);"
+      },
+      "return_type": "OccurrenceList",
+      "return_description": "The occurrences referenced by the specified component.",
+      "parameters": [
+        {
+          "name": "component",
+          "type": "Component",
+          "description": "The component that is being referenced by the occurrences that will be returned."
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    },
+    "saveCopyAs": {
+      "id": "FlatPatternComponent_saveCopyAs",
+      "title": "FlatPatternComponent.saveCopyAs Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Performs a Save Copy As on this component. This saves the specified component as a new document in the specified location.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "returnValue = flatPatternComponent_var.saveCopyAs(name, dataFolder, description, tag)",
+        "cpp": "#include \n\nreturnValue = flatPatternComponent_var->saveCopyAs(name, dataFolder, description, tag);"
+      },
+      "return_type": "DataFileFuture",
+      "return_description": "Returns a DataFileFuture object that can be used to track the progress of the upload and get the resulting DataFile once it's available on A360.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name to use for the new document. If this is an empty string, Fusion will use the name of the component being saved."
+        },
+        {
+          "name": "dataFolder",
+          "type": "DataFolder",
+          "description": "The data folder to save the new document to."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "The description string of the document. This can be an empty string."
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "description": "The tag string of the document. This can be an empty string."
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    },
+    "transformOccurrences": {
+      "id": "FlatPatternComponent_transformOccurrences",
+      "title": "FlatPatternComponent.transformOccurrences Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Transforms a set of occurrences in one step. This provides better performance than transforming them one at a time. This method is only valid when called on the root component because Fusion flattens the entire assembly structure when manipulating the assembly so all transforms are relative to the root component.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "returnValue = flatPatternComponent_var.transformOccurrences(occurrences, transforms, ignoreJoints)",
+        "cpp": "#include \n\nreturnValue = flatPatternComponent_var->transformOccurrences(occurrences, transforms, ignoreJoints);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the transform was successful.",
+      "parameters": [
+        {
+          "name": "occurrences",
+          "type": "Occurrence[]",
+          "description": "An array of Occurrence objects that you want to transform. These must all be in the context of the root component which means proxies must be used for occurrences that are in sub-components."
+        },
+        {
+          "name": "transforms",
+          "type": "Matrix3D[]",
+          "description": "An array of Matrix3D objects that defines the transform to apply to each occurrence. This array must be the same size as the array provided for the occurrences argument and the transform will be applied to the occurrence at the same index in the occurrences array."
+        },
+        {
+          "name": "ignoreJoints",
+          "type": "boolean",
+          "description": "Specifies if the joints are to be ignored and the occurrences are to be positioned based on then specified transform or if the joints should be used and the occurrence is transformed the best it can while still honoring the joints."
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    }
+  }
+}

@@ -1,0 +1,520 @@
+{
+  "id": "ConstructionPoint",
+  "title": "ConstructionPoint Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Construction/ConstructionPoint.h",
+  "description": "ConstructionPoint Object",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the construction point."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this construction point."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this construction point is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "component",
+      "description": "Returns the component this construction point belongs to."
+    },
+    {
+      "name": "definition",
+      "description": "Returns the construction point definition object which provides access to the information defining the construction point."
+    },
+    {
+      "name": "deriveFeature",
+      "description": "Returns the DeriveFeature if this construction point is derived from another design. This property returns null if the construction point is not derived from another design (i.e. isDerived property returns false)."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the ConstructionPoint object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same construction point.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "geometry",
+      "description": "Returns a Point3D object that represents the position of the construction point. The returned geometry is in the AssemblyContext of this ConstructionPoint."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of this construction point."
+    },
+    {
+      "name": "isDeletable",
+      "description": "Indicates if this construction point can be deleted. The base construction point cannot be deleted."
+    },
+    {
+      "name": "isDerived",
+      "description": "Returns if this construction point is derived from another design. If true, the construction point cannot be deleted. You should not attempt to make any edits to the derived construction point. Any edits made to this derived construction point will be lost when the derive updates."
+    },
+    {
+      "name": "isLightBulbOn",
+      "description": "Indicates if the light bulb (as displayed in the browser) is on. A construction point will only be visible if it's light bulb, and that of it's containing folder and parent component/s are also on."
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if the construction point is parametric."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets if the construction point is visible. This property is affected by the AssemblyContext of the construction point."
+    },
+    {
+      "name": "name",
+      "description": "The name of the construction point as it is displayed in the browser."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parent",
+      "description": "Returns the parent component or base feature. If both the design and the construction point are parametric, the parent will be a component. If the design is parametric and the construction point is not, the parent will be a base feature. If the design is not parametric the parent will be a component."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this construction point."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Construction Point API Sample",
+      "description": "Demonstrates creating construction point by different ways"
+    },
+    {
+      "name": "Create Setups From Hole Recognition API Sample",
+      "description": "This sample script demonstrates how to create a correctly oriented setup using Hole Recognition functionality.The Fusion Manufacturing Extension is required for Hole Recognition.The script starts by opening a sample model from the CAM Samples folder via its URN. The model comprises a 3 way coupling containing holes in various orientations and mounted on a fixture. A reference setup is created for the model using a simple stock mode and offsets. The Hole Recognition feature of the Fusion Manufacturing Extension creates 5 hole groups containing 11 holes between them. For each unique hole group vector captured, a new setup is created and its orientation transformed to match the vector."
+    },
+    {
+      "name": "Set Vise Origin As Setup WCS Origin API Sample",
+      "description": "This sample script demonstrates how to define our setup WCS origin relative to our vise origin from either a component, a sketch point or a joint origin.The Work Coordinate System is a reference point set in our CAM workspace and on our machine. All machine coordinates are drawn from the WCS. This script demonstrates defining the WCS by each of 4 alternative methods:Setup by default with no origin defined.Setup using vise origin as WCS origin.Setup using a sketch point as WCS origin.Setup using a joint origin as WCS origin."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "property_details": {
+    "assemblyContext": {
+      "id": "ConstructionPoint_assemblyContext",
+      "title": "ConstructionPoint.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPoint_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "attributes": {
+      "id": "ConstructionPoint_attributes",
+      "title": "ConstructionPoint.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Returns the collection of attributes associated with this construction point.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPoint_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "baseFeature": {
+      "id": "ConstructionPoint_baseFeature",
+      "title": "ConstructionPoint.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "If this construction point is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPoint_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "component": {
+      "id": "ConstructionPoint_component",
+      "title": "ConstructionPoint.component Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Returns the component this construction point belongs to.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.component",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPoint_var->component();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "definition": {
+      "id": "ConstructionPoint_definition",
+      "title": "ConstructionPoint.definition Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Returns the construction point definition object which provides access to the information defining the construction point.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.definition",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPoint_var->definition();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "deriveFeature": {
+      "id": "ConstructionPoint_deriveFeature",
+      "title": "ConstructionPoint.deriveFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Returns the DeriveFeature if this construction point is derived from another design. This property returns null if the construction point is not derived from another design (i.e. isDerived property returns false).",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.deriveFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPoint_var->deriveFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "entityToken": {
+      "id": "ConstructionPoint_entityToken",
+      "title": "ConstructionPoint.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Returns a token for the ConstructionPoint object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same construction point. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = constructionPoint_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "errorOrWarningMessage": {
+      "id": "ConstructionPoint_errorOrWarningMessage",
+      "title": "ConstructionPoint.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = constructionPoint_var->errorOrWarningMessage();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Construction Point API Sample",
+          "description": "Demonstrates creating construction point by different ways"
+        }
+      ],
+      "version": "Introduced in version July 2016"
+    },
+    "geometry": {
+      "id": "ConstructionPoint_geometry",
+      "title": "ConstructionPoint.geometry Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Returns a Point3D object that represents the position of the construction point. The returned geometry is in the AssemblyContext of this ConstructionPoint.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.geometry",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPoint_var->geometry();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "healthState": {
+      "id": "ConstructionPoint_healthState",
+      "title": "ConstructionPoint.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Returns the current health state of this construction point.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = constructionPoint_var->healthState();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Construction Point API Sample",
+          "description": "Demonstrates creating construction point by different ways"
+        }
+      ],
+      "version": "Introduced in version July 2016"
+    },
+    "isDeletable": {
+      "id": "ConstructionPoint_isDeletable",
+      "title": "ConstructionPoint.isDeletable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Indicates if this construction point can be deleted. The base construction point cannot be deleted.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.isDeletable",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = constructionPoint_var->isDeletable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isDerived": {
+      "id": "ConstructionPoint_isDerived",
+      "title": "ConstructionPoint.isDerived Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Returns if this construction point is derived from another design. If true, the construction point cannot be deleted. You should not attempt to make any edits to the derived construction point. Any edits made to this derived construction point will be lost when the derive updates.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.isDerived",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = constructionPoint_var->isDerived();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2026"
+    },
+    "isLightBulbOn": {
+      "id": "ConstructionPoint_isLightBulbOn",
+      "title": "ConstructionPoint.isLightBulbOn Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Indicates if the light bulb (as displayed in the browser) is on. A construction point will only be visible if it's light bulb, and that of it's containing folder and parent component/s are also on.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.isLightBulbOn\n\n# Set the value of the property.\nconstructionPoint_var.isLightBulbOn = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = constructionPoint_var->isLightBulbOn();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = constructionPoint_var->isLightBulbOn(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isParametric": {
+      "id": "ConstructionPoint_isParametric",
+      "title": "ConstructionPoint.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Indicates if the construction point is parametric.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = constructionPoint_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "ConstructionPoint_isValid",
+      "title": "ConstructionPoint.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = constructionPoint_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isVisible": {
+      "id": "ConstructionPoint_isVisible",
+      "title": "ConstructionPoint.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Gets if the construction point is visible. This property is affected by the AssemblyContext of the construction point.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = constructionPoint_var->isVisible();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "name": {
+      "id": "ConstructionPoint_name",
+      "title": "ConstructionPoint.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "The name of the construction point as it is displayed in the browser.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.name\n\n# Set the value of the property.\nconstructionPoint_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = constructionPoint_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = constructionPoint_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "nativeObject": {
+      "id": "ConstructionPoint_nativeObject",
+      "title": "ConstructionPoint.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "The NativeObject is the object outside the context of an assembly. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPoint_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "ConstructionPoint_objectType",
+      "title": "ConstructionPoint.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = constructionPoint_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "parent": {
+      "id": "ConstructionPoint_parent",
+      "title": "ConstructionPoint.parent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Returns the parent component or base feature. If both the design and the construction point are parametric, the parent will be a component. If the design is parametric and the construction point is not, the parent will be a base feature. If the design is not parametric the parent will be a component.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.parent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPoint_var->parent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "timelineObject": {
+      "id": "ConstructionPoint_timelineObject",
+      "title": "ConstructionPoint.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Returns the timeline object associated with this construction point.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPoint_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPoint_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "ConstructionPoint_classType",
+      "title": "ConstructionPoint.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ConstructionPoint.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ConstructionPoint::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "createForAssemblyContext": {
+      "id": "ConstructionPoint_createForAssemblyContext",
+      "title": "ConstructionPoint.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "returnValue = constructionPoint_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = constructionPoint_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "ConstructionPoint",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Create Setups From Hole Recognition API Sample",
+          "description": "This sample script demonstrates how to create a correctly oriented setup using Hole Recognition functionality.The Fusion Manufacturing Extension is required for Hole Recognition.The script starts by opening a sample model from the CAM Samples folder via its URN. The model comprises a 3 way coupling containing holes in various orientations and mounted on a fixture. A reference setup is created for the model using a simple stock mode and offsets. The Hole Recognition feature of the Fusion Manufacturing Extension creates 5 hole groups containing 11 holes between them. For each unique hole group vector captured, a new setup is created and its orientation transformed to match the vector."
+        },
+        {
+          "name": "Set Vise Origin As Setup WCS Origin API Sample",
+          "description": "This sample script demonstrates how to define our setup WCS origin relative to our vise origin from either a component, a sketch point or a joint origin.The Work Coordinate System is a reference point set in our CAM workspace and on our machine. All machine coordinates are drawn from the WCS. This script demonstrates defining the WCS by each of 4 alternative methods:Setup by default with no origin defined.Setup using vise origin as WCS origin.Setup using a sketch point as WCS origin.Setup using a joint origin as WCS origin."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "deleteMe": {
+      "id": "ConstructionPoint_deleteMe",
+      "title": "ConstructionPoint.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPoint.h",
+      "description": "Deletes the construction point.",
+      "parent_class": "ConstructionPoint",
+      "syntax": {
+        "python": "returnValue = constructionPoint_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = constructionPoint_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

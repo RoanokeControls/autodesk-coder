@@ -1,0 +1,26 @@
+{
+  "id": "ECD-ULP-HOLE",
+  "title": "UL_HOLE",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "diameter[layer]",
+      "type": "int (see note)"
+    },
+    {
+      "name": "drill",
+      "type": "int"
+    },
+    {
+      "name": "drillsymbol",
+      "type": "int"
+    },
+    {
+      "name": "x, y",
+      "type": "int (center point)"
+    }
+  ],
+  "loop_members": [],
+  "content": "# UL_HOLE\n\n## Data members\n\n| | |\n| --- | --- |\n| diameter[layer] | int (see note) |\n| drill | int |\n| drillsymbol | int |\n| x, y | int (center point) |\n\nSee also UL_BOARD, UL_FOOTPRINT\n\n## Notes\n\n*diameter[]* is only defined for layers LAYER_TSTOP and LAYER_BSTOP and returns the diameter of the solder stop mask in the given layer.\n\n*drillsymbol* returns the number of the drill symbol that has been assigned to this drill diameter (see the manual for a list of defined drill symbols). A value of 0 means that no symbol has been assigned to this drill diameter.\n\n## Example\n\n```\nboard(B) {\n B.holes(H) {\n printf(\"Hole: (%f %f), drill=%f\\n\",\n u2mm(H.x), u2mm(H.y), u2mm(H.drill));\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

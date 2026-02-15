@@ -1,0 +1,13 @@
+{
+  "id": "CAMParameterChange_Sample_Sample",
+  "title": "CAM Parameter Modification API Sample",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates changing parameters of existing toolpaths.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "import adsk.core, adsk.cam, traceback\n\ndef run(context):\n    ui = None\n    try:\n        app = adsk.core.Application.get()\n        doc = app.activeDocument\n        products = doc.products\n\n        # Get the CAM product\n        cam = adsk.cam.CAM.cast(products.itemByProductType(\"CAMProductType\"))\n\n        # List of all setups\n        setups = cam.setups\n\n        for setup in setups:\n            # Change the program name of each setup to 1234\n            programNameParam = setup.parameters.itemByName('job_programName')\n            programNameParam.expression = \"\\'1234\\'\"\n\n            for operation in setup.operations:\n                # Change tolerance in all operations\n                toleranceParam = operation.parameters.itemByName('tolerance')\n                toleranceParam.expression = \"0.1mm\"\n\n        # Generate all toolpaths, skipping any that are already valid\n        cam.generateAllToolpaths(True)\n\n    except:\n        if ui:\n            ui.messageBox('Failed:\\n{}'.format(traceback.format_exc()))",
+    "cpp": "#include \n#include \n\nusing namespace adsk::core;\nusing namespace adsk::cam;\n\nextern \"C\" XI_EXPORT bool run(const char* context)\n{\n    Ptr doc = Application::get()->activeDocument();\n    Ptr cam = doc->products()->itemByProductType(\"CAMProductType\");\n\n    // List of CAM setups\n    Ptr setups = cam->setups();\n\n    for each (Ptr setup in setups)\n    {\n        // Change the program name for each setup\n        setup->parameters()->itemByName(\"job_programName\")->expression(\"\\'12345\\'\");\n        for each (Ptr operation in setup->allOperations())\n        {\n            // Change the tolerance of each operation\n            operation->parameters()->itemByName(\"tolerance\")->expression(\"0.1mm\");\n        }\n    }\n\n    // Generate all toolpaths\n    cam->generateAllToolpaths(true);\n\n    return true;\n}"
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "id": "ContactSets",
+  "title": "ContactSets Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Components/ContactSets.h",
+  "description": "Provides access to the existing contact sets in a design and supports creating new contact sets.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new contact set for the provided occurrences and/or bodies."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Returns the specified contact set using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns the specified contact set."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of contacts sets in the design."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "SliderJointMotion API Sample",
+      "description": "Demonstrates creating a joint with slider joint motion."
+    }
+  ],
+  "version": "Introduced in version September 2016",
+  "method_details": {
+    "add": {
+      "id": "ContactSets_add",
+      "title": "ContactSets.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/ContactSets.h",
+      "description": "Creates a new contact set for the provided occurrences and/or bodies.",
+      "parent_class": "ContactSets",
+      "syntax": {
+        "python": "returnValue = contactSets_var.add(occurrencesAndBodies)",
+        "cpp": "#include \n\nreturnValue = contactSets_var->add(occurrencesAndBodies);"
+      },
+      "return_type": "ContactSet",
+      "return_description": "Returns the newly created ContactSet or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "occurrencesAndBodies",
+          "type": "Base[]",
+          "description": "An array of Occurrence or BRepBody objects that will be included in the contact set. All occurrences and bodies must be in the context of the root component."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "SliderJointMotion API Sample",
+          "description": "Demonstrates creating a joint with slider joint motion."
+        }
+      ],
+      "version": "Introduced in version September 2016"
+    },
+    "classType": {
+      "id": "ContactSets_classType",
+      "title": "ContactSets.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/ContactSets.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ContactSets",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ContactSets.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ContactSets::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2016"
+    },
+    "item": {
+      "id": "ContactSets_item",
+      "title": "ContactSets.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/ContactSets.h",
+      "description": "Returns the specified contact set using an index into the collection.",
+      "parent_class": "ContactSets",
+      "syntax": {
+        "python": "returnValue = contactSets_var.item(index)",
+        "cpp": "#include \n\nreturnValue = contactSets_var->item(index);"
+      },
+      "return_type": "ContactSet",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version September 2016"
+    },
+    "itemByName": {
+      "id": "ContactSets_itemByName",
+      "title": "ContactSets.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/ContactSets.h",
+      "description": "Returns the specified contact set.",
+      "parent_class": "ContactSets",
+      "syntax": {
+        "python": "returnValue = contactSets_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = contactSets_var->itemByName(name);"
+      },
+      "return_type": "ContactSet",
+      "return_description": "Returns the specified contact set or null there isn't a contact set with that name.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the contact set to return."
+        }
+      ],
+      "version": "Introduced in version September 2016"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "ContactSets_count",
+      "title": "ContactSets.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/ContactSets.h",
+      "description": "Returns the number of contacts sets in the design.",
+      "parent_class": "ContactSets",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = contactSets_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = contactSets_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "isValid": {
+      "id": "ContactSets_isValid",
+      "title": "ContactSets.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/ContactSets.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ContactSets",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = contactSets_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = contactSets_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    },
+    "objectType": {
+      "id": "ContactSets_objectType",
+      "title": "ContactSets.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Components/ContactSets.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ContactSets",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = contactSets_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = contactSets_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2016"
+    }
+  }
+}

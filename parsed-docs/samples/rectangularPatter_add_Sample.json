@@ -1,0 +1,12 @@
+{
+  "id": "rectangularPatter_add_Sample",
+  "title": "rectangularPattern.add",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the rectangularPattern.add method using a selected body and two selected edges to define the directions.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_rectangularPatternFeatures_add(rootComp: adsk.fusion.Component):\n    body = _ui.selectEntity('Select a body to pattern.', 'Bodies').entity\n    directionEdgeOne = _ui.selectEntity('Select direction edge one.', 'LinearEdges').entity\n    directionEdgeTwo = _ui.selectEntity('Select direction edge two.', 'LinearEdges').entity\n\n    bodies = adsk.core.ObjectCollection.create()\n    bodies.add(body)\n    quantityOne = adsk.core.ValueInput.createByReal(4)\n    distanceOne = adsk.core.ValueInput.createByReal(5)\n    quantityTwo = adsk.core.ValueInput.createByReal(3)\n    distanceTwo = adsk.core.ValueInput.createByReal(4)\n    patternDistance = adsk.fusion.PatternDistanceType.SpacingPatternDistanceType\n\n    rectangularPatterns = rootComp.features.rectangularPatternFeatures\n    input = rectangularPatterns.createInput(bodies, directionEdgeOne, quantityOne, distanceOne, patternDistance)\n    input.setDirectionTwo(directionEdgeTwo, quantityTwo, distanceTwo)\n    rectangularPattern = rectangularPatterns.add(input)"
+  }
+}

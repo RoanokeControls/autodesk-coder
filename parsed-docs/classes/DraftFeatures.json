@@ -1,0 +1,239 @@
+{
+  "id": "DraftFeatures",
+  "title": "DraftFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/DraftFeatures.h",
+  "description": "Collection that provides access to all of the existing draft features in a component and supports the ability to create new draft features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new draft feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a DraftFeatureInput object. Use properties and methods on this object to define the draft you want to create and then use the Add method, passing in the DraftFeatureInput object."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified draft feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified draft feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of draft features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Draft Feature API Sample",
+      "description": "Demonstrates creating a new draft feature."
+    }
+  ],
+  "version": "Introduced in version January 2015",
+  "method_details": {
+    "add": {
+      "id": "DraftFeatures_add",
+      "title": "DraftFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatures.h",
+      "description": "Creates a new draft feature.",
+      "parent_class": "DraftFeatures",
+      "syntax": {
+        "python": "returnValue = draftFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = draftFeatures_var->add(input);"
+      },
+      "return_type": "DraftFeature",
+      "return_description": "Returns the newly created DraftFeature object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "DraftFeatureInput",
+          "description": "A DraftFeatureInput object that defines the desired draft. Use the createInput method to create a new DraftFeatureInput object and then use methods on it (the DraftFeatureInput object) to define the draft."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "draftFeatures.add",
+          "description": "Demonstrates the draftFeatures.add method. To use this sample, have a design open that contains at least one body. When you run the sample, you will be prompted to select the face to draft. Because the pull direction is using the base X-Y plane, you need to select a face that is not parallel to the X-Y plane."
+        },
+        {
+          "name": "Draft Feature API Sample",
+          "description": "Demonstrates creating a new draft feature."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "classType": {
+      "id": "DraftFeatures_classType",
+      "title": "DraftFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "DraftFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.DraftFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::DraftFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2015"
+    },
+    "createInput": {
+      "id": "DraftFeatures_createInput",
+      "title": "DraftFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatures.h",
+      "description": "Creates a DraftFeatureInput object. Use properties and methods on this object to define the draft you want to create and then use the Add method, passing in the DraftFeatureInput object.",
+      "parent_class": "DraftFeatures",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = draftFeatures_var.createInput(inputFaces, plane)\n\n# Uses optional arguments.\nreturnValue = draftFeatures_var.createInput(inputFaces, plane, isTangentChain)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = draftFeatures_var->createInput(inputFaces, plane);\n\n// Uses optional arguments.\nreturnValue = draftFeatures_var->createInput(inputFaces, plane, isTangentChain);"
+      },
+      "return_type": "DraftFeatureInput",
+      "return_description": "Returns the newly created DraftFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "inputFaces",
+          "type": "BRepFace[]",
+          "description": "BRepFace array that contains the faces to which draft will be applied. The picked point on face is always the point returned from pointOnFace property of the first BRepFace in this collection."
+        },
+        {
+          "name": "plane",
+          "type": "Base",
+          "description": "Input object that defines the direction in which the draft is applied. This can be a planar BrepFace, or a ConstructionPlane."
+        },
+        {
+          "name": "isTangentChain",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not faces that are tangentially connected to any of the input faces (if any) will also be included. It defaults to true.   This is an optional argument whose default value is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "draftFeatures.add",
+          "description": "Demonstrates the draftFeatures.add method. To use this sample, have a design open that contains at least one body. When you run the sample, you will be prompted to select the face to draft. Because the pull direction is using the base X-Y plane, you need to select a face that is not parallel to the X-Y plane."
+        },
+        {
+          "name": "Draft Feature API Sample",
+          "description": "Demonstrates creating a new draft feature."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "item": {
+      "id": "DraftFeatures_item",
+      "title": "DraftFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatures.h",
+      "description": "Function that returns the specified draft feature using an index into the collection.",
+      "parent_class": "DraftFeatures",
+      "syntax": {
+        "python": "returnValue = draftFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = draftFeatures_var->item(index);"
+      },
+      "return_type": "DraftFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "itemByName": {
+      "id": "DraftFeatures_itemByName",
+      "title": "DraftFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatures.h",
+      "description": "Function that returns the specified draft feature using the name of the feature.",
+      "parent_class": "DraftFeatures",
+      "syntax": {
+        "python": "returnValue = draftFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = draftFeatures_var->itemByName(name);"
+      },
+      "return_type": "DraftFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "DraftFeatures_count",
+      "title": "DraftFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatures.h",
+      "description": "The number of draft features in the collection.",
+      "parent_class": "DraftFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = draftFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = draftFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isValid": {
+      "id": "DraftFeatures_isValid",
+      "title": "DraftFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "DraftFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = draftFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = draftFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "objectType": {
+      "id": "DraftFeatures_objectType",
+      "title": "DraftFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/DraftFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "DraftFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = draftFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = draftFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    }
+  }
+}

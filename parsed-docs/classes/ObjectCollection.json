@@ -1,0 +1,365 @@
+{
+  "id": "ObjectCollection",
+  "title": "ObjectCollection Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/ObjectCollection.h",
+  "description": "Generic collection used to handle lists of any object type.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Adds an object to the end of the collection. Duplicates can be added to the collection."
+    },
+    {
+      "name": "asArray",
+      "description": "Returns the content of the ObjectCollection as an array."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "clear",
+      "description": "Clears the entire contents of the collection."
+    },
+    {
+      "name": "contains",
+      "description": "Returns whether the specified object exists within the collection."
+    },
+    {
+      "name": "create",
+      "description": "Creates a new ObjectCollection object."
+    },
+    {
+      "name": "createWithArray",
+      "description": "Creates a new ObjectCollection that is initialized with the content of the provided array."
+    },
+    {
+      "name": "find",
+      "description": "Finds the specified component in the collection."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified object using an index into the collection."
+    },
+    {
+      "name": "removeByIndex",
+      "description": "Function that removes an item from the list. Will fail if the list is read only."
+    },
+    {
+      "name": "removeByItem",
+      "description": "Function that removes an item from the collection."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of occurrences in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Set Vise Origin As Setup WCS Origin API Sample",
+      "description": "This sample script demonstrates how to define our setup WCS origin relative to our vise origin from either a component, a sketch point or a joint origin.The Work Coordinate System is a reference point set in our CAM workspace and on our machine. All machine coordinates are drawn from the WCS. This script demonstrates defining the WCS by each of 4 alternative methods:Setup by default with no origin defined.Setup using vise origin as WCS origin.Setup using a sketch point as WCS origin.Setup using a joint origin as WCS origin."
+    },
+    {
+      "name": "SketchFittedSplines.add",
+      "description": "Demonstrates the SketchFittedSplines.add method."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "add": {
+      "id": "ObjectCollection_add",
+      "title": "ObjectCollection.add Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ObjectCollection.h",
+      "description": "Adds an object to the end of the collection. Duplicates can be added to the collection.",
+      "parent_class": "ObjectCollection",
+      "syntax": {
+        "python": "returnValue = objectCollection_var.add(item)",
+        "cpp": "#include \n\nreturnValue = objectCollection_var->add(item);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns false if the item was not added.",
+      "parameters": [
+        {
+          "name": "item",
+          "type": "Base",
+          "description": "The item to add to the list."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "asArray": {
+      "id": "ObjectCollection_asArray",
+      "title": "ObjectCollection.asArray Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ObjectCollection.h",
+      "description": "Returns the content of the ObjectCollection as an array.",
+      "parent_class": "ObjectCollection",
+      "syntax": {
+        "python": "returnValue = objectCollection_var.asArray()",
+        "cpp": "#include \n\nreturnValue = objectCollection_var->asArray();"
+      },
+      "return_type": "Base[]",
+      "return_description": "Returns an array of the Fusion objects in the ObjectCollection.",
+      "version": "Introduced in version May 2023"
+    },
+    "classType": {
+      "id": "ObjectCollection_classType",
+      "title": "ObjectCollection.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ObjectCollection.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ObjectCollection",
+      "syntax": {
+        "python": "returnValue = adsk.core.ObjectCollection.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::ObjectCollection::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "clear": {
+      "id": "ObjectCollection_clear",
+      "title": "ObjectCollection.clear Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ObjectCollection.h",
+      "description": "Clears the entire contents of the collection.",
+      "parent_class": "ObjectCollection",
+      "syntax": {
+        "python": "returnValue = objectCollection_var.clear()",
+        "cpp": "#include \n\nreturnValue = objectCollection_var->clear();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "version": "Introduced in version August 2014"
+    },
+    "contains": {
+      "id": "ObjectCollection_contains",
+      "title": "ObjectCollection.contains Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ObjectCollection.h",
+      "description": "Returns whether the specified object exists within the collection.",
+      "parent_class": "ObjectCollection",
+      "syntax": {
+        "python": "returnValue = objectCollection_var.contains(item)",
+        "cpp": "#include \n\nreturnValue = objectCollection_var->contains(item);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the specified item is found in the collection.",
+      "parameters": [
+        {
+          "name": "item",
+          "type": "Base",
+          "description": "The item to look for in the collection."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "create": {
+      "id": "ObjectCollection_create",
+      "title": "ObjectCollection.create Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ObjectCollection.h",
+      "description": "Creates a new ObjectCollection object.",
+      "parent_class": "ObjectCollection",
+      "syntax": {
+        "python": "returnValue = adsk.core.ObjectCollection.create()",
+        "cpp": "#include \n\nreturnValue = adsk::core::ObjectCollection::create();"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "Returns the newly created ObjectCollection.",
+      "version": "Introduced in version August 2014"
+    },
+    "createWithArray": {
+      "id": "ObjectCollection_createWithArray",
+      "title": "ObjectCollection.createWithArray Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ObjectCollection.h",
+      "description": "Creates a new ObjectCollection that is initialized with the content of the provided array.",
+      "parent_class": "ObjectCollection",
+      "syntax": {
+        "python": "returnValue = adsk.core.ObjectCollection.createWithArray(array)",
+        "cpp": "#include \n\nreturnValue = adsk::core::ObjectCollection::createWithArray(array);"
+      },
+      "return_type": "ObjectCollection",
+      "return_description": "Returns the newly created ObjectCollection or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "array",
+          "type": "Base[]",
+          "description": "An array of Fusion objects that are used to populate the ObjectCollection. For this method to succeed, getting the input type correct is critical. The term \"array\" is used generically in the API documentation and describes different things depending on the language being used.   When using C++, std::vector is used to input and output a list of items.However, this particular method requires that the content of the vector be of type core.base. If you have a vector of other types, you need to convert it to core.base. The sample below illustrates converting a vector of Occurrence objects into a vector of core.Base objects.      When using Python, a Python List or Tuple is used as input. Something not obvious is that when an array is returned from a method or property it's not returned as a standard Python List but is a special API-specific class called \"vector\". Typically, you don't notice this isn't a List because it supports Python iteration like a List does. Because the createWithArray method requires a standard Python list as input, you need to convert it to a standard list before using it in the createWithArray method. For example, the Occurrences.asArray method returns an \"array\" of the occurrences, which really returns a vector object of the occurrences. The code below converts the vector into a standard list so it can be used to create an ObjectCollection."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Set Vise Origin As Setup WCS Origin API Sample",
+          "description": "This sample script demonstrates how to define our setup WCS origin relative to our vise origin from either a component, a sketch point or a joint origin.The Work Coordinate System is a reference point set in our CAM workspace and on our machine. All machine coordinates are drawn from the WCS. This script demonstrates defining the WCS by each of 4 alternative methods:Setup by default with no origin defined.Setup using vise origin as WCS origin.Setup using a sketch point as WCS origin.Setup using a joint origin as WCS origin."
+        }
+      ],
+      "version": "Introduced in version May 2023"
+    },
+    "find": {
+      "id": "ObjectCollection_find",
+      "title": "ObjectCollection.find Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ObjectCollection.h",
+      "description": "Finds the specified component in the collection.",
+      "parent_class": "ObjectCollection",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = objectCollection_var.find(item)\n\n# Uses optional arguments.\nreturnValue = objectCollection_var.find(item, startIndex)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = objectCollection_var->find(item);\n\n// Uses optional arguments.\nreturnValue = objectCollection_var->find(item, startIndex);"
+      },
+      "return_type": "integer",
+      "return_description": "Returns the index of the found item. If not found, -1 is returned.",
+      "parameters": [
+        {
+          "name": "item",
+          "type": "Base",
+          "description": "The item to search for within the collection."
+        },
+        {
+          "name": "startIndex",
+          "type": "uinteger",
+          "description": "The index to begin the search.   This is an optional argument whose default value is 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "ObjectCollection_item",
+      "title": "ObjectCollection.item Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ObjectCollection.h",
+      "description": "Function that returns the specified object using an index into the collection.",
+      "parent_class": "ObjectCollection",
+      "syntax": {
+        "python": "returnValue = objectCollection_var.item(index)",
+        "cpp": "#include \n\nreturnValue = objectCollection_var->item(index);"
+      },
+      "return_type": "Base",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "removeByIndex": {
+      "id": "ObjectCollection_removeByIndex",
+      "title": "ObjectCollection.removeByIndex Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ObjectCollection.h",
+      "description": "Function that removes an item from the list. Will fail if the list is read only.",
+      "parent_class": "ObjectCollection",
+      "syntax": {
+        "python": "returnValue = objectCollection_var.removeByIndex(index)",
+        "cpp": "#include \n\nreturnValue = objectCollection_var->removeByIndex(index);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the removal was successful.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item to remove from the collection. The first item has an index of 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "removeByItem": {
+      "id": "ObjectCollection_removeByItem",
+      "title": "ObjectCollection.removeByItem Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ObjectCollection.h",
+      "description": "Function that removes an item from the collection.",
+      "parent_class": "ObjectCollection",
+      "syntax": {
+        "python": "returnValue = objectCollection_var.removeByItem(item)",
+        "cpp": "#include \n\nreturnValue = objectCollection_var->removeByItem(item);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the removal was successful.",
+      "parameters": [
+        {
+          "name": "item",
+          "type": "Base",
+          "description": "The object to remove from the collection."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "ObjectCollection_count",
+      "title": "ObjectCollection.count Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ObjectCollection.h",
+      "description": "Returns the number of occurrences in the collection.",
+      "parent_class": "ObjectCollection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = objectCollection_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = objectCollection_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "ObjectCollection_isValid",
+      "title": "ObjectCollection.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ObjectCollection.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ObjectCollection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = objectCollection_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = objectCollection_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "ObjectCollection_objectType",
+      "title": "ObjectCollection.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ObjectCollection.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ObjectCollection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = objectCollection_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = objectCollection_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

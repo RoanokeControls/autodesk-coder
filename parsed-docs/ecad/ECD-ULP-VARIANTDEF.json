@@ -1,0 +1,14 @@
+{
+  "id": "ECD-ULP-VARIANTDEF",
+  "title": "UL_VARIANTDEF",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "name",
+      "type": "string"
+    }
+  ],
+  "loop_members": [],
+  "content": "# UL_VARIANTDEF\n\n## Data members\n\n| | |\n| --- | --- |\n| name | string |\n\nSee also UL_VARIANT, UL_SCHEMATIC, UL_BOARD, variant()\n\n## Example\n\n```\nschematic(SCH) {\n printf(\"Defined assembly variants:\\n\");\n SCH.variantdefs(VD) {\n printf(\"\\t'%s'\\n\", VD.name);\n }\n printf(\"\\n\");\n printf(\"Part\\tVariantdef\\tValue\\tTechn.\\tPopulated\\n\");\n SCH.parts(P) {\n printf(\"%s\\t%s\\t%s\\t%s\\t%s\\n\", P.name, \"default\", P.value, P.device.activetechnology, \"yes\");\n P.variants(V) {\n printf(\"%s\\t%s\\t%s\\t%s\\t%s\\n\", P.name, V.variantdef.name, V.value, V.technology, V.populate ? \"yes\" : \"no\");\n }\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

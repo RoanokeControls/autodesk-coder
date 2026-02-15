@@ -1,0 +1,332 @@
+{
+  "id": "SketchOffsetCurvesDimension",
+  "title": "SketchOffsetCurvesDimension Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Sketch/SketchOffsetCurvesDimension.h",
+  "description": "A SketchOffsetCurvesDimension object is created automatically whenever curves are offset.",
+  "parent_class": "SketchDimension",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this dimension. The IsDeletable property indicates if this dimension can be deleted."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this sketch dimension."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the SketchDimension object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same sketch dimension.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "isDeletable",
+      "description": "Indicates if this dimension is deletable."
+    },
+    {
+      "name": "isDriving",
+      "description": "Gets and sets if the dimension is Driving or is Driven. Setting this property to true for a given dimension may fail if the result would over constrain the sketch. Fusion does not allow over-constrained sketches."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "offsetConstraint",
+      "description": "Returns the OffsetConstraint object that defines the curve offset. From the constraint you can get the original curves, the offset curves, and the dimension controlling the offset distance."
+    },
+    {
+      "name": "parameter",
+      "description": "Returns the associated parameter or null if there is no associated parameter."
+    },
+    {
+      "name": "parentSketch",
+      "description": "Returns the parent sketch object."
+    },
+    {
+      "name": "textPosition",
+      "description": "Gets and sets position of the dimension text."
+    },
+    {
+      "name": "value",
+      "description": "Gets and sets the current value of the sketch dimension.   In a parametric modeling design and the isDriving property is True, this is exactly equivalent to getting the parameter associated with the dimension and editing its value. Editing this property will result in the parameter value being changed. If isDriving is False, this acts as a read-only property and attempting to set it will fail.   In a direct modeling design the parameter property will return null and this property can be used to get and set the value of the dimension because in this case, there isn't an associated parameter.   The value is always in internal units which means that for dimensions that represent a distance, the value is in Centimeters and for dimensions representing an angle the value is in Radians."
+    }
+  ],
+  "version": "Introduced in version March 2016",
+  "property_details": {
+    "assemblyContext": {
+      "id": "SketchOffsetCurvesDimension_assemblyContext",
+      "title": "SketchOffsetCurvesDimension.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchOffsetCurvesDimension.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "SketchOffsetCurvesDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchOffsetCurvesDimension_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchOffsetCurvesDimension_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2016"
+    },
+    "attributes": {
+      "id": "SketchOffsetCurvesDimension_attributes",
+      "title": "SketchOffsetCurvesDimension.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchOffsetCurvesDimension.h",
+      "description": "Returns the collection of attributes associated with this sketch dimension.",
+      "parent_class": "SketchOffsetCurvesDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchOffsetCurvesDimension_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchOffsetCurvesDimension_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "entityToken": {
+      "id": "SketchOffsetCurvesDimension_entityToken",
+      "title": "SketchOffsetCurvesDimension.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchOffsetCurvesDimension.h",
+      "description": "Returns a token for the SketchDimension object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same sketch dimension. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "SketchOffsetCurvesDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchOffsetCurvesDimension_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchOffsetCurvesDimension_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "isDeletable": {
+      "id": "SketchOffsetCurvesDimension_isDeletable",
+      "title": "SketchOffsetCurvesDimension.isDeletable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchOffsetCurvesDimension.h",
+      "description": "Indicates if this dimension is deletable.",
+      "parent_class": "SketchOffsetCurvesDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchOffsetCurvesDimension_var.isDeletable",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchOffsetCurvesDimension_var->isDeletable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2016"
+    },
+    "isDriving": {
+      "id": "SketchOffsetCurvesDimension_isDriving",
+      "title": "SketchOffsetCurvesDimension.isDriving Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchOffsetCurvesDimension.h",
+      "description": "Gets and sets if the dimension is Driving or is Driven. Setting this property to true for a given dimension may fail if the result would over constrain the sketch. Fusion does not allow over-constrained sketches.",
+      "parent_class": "SketchOffsetCurvesDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchOffsetCurvesDimension_var.isDriving\n\n# Set the value of the property.\nsketchOffsetCurvesDimension_var.isDriving = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchOffsetCurvesDimension_var->isDriving();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchOffsetCurvesDimension_var->isDriving(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2016"
+    },
+    "isValid": {
+      "id": "SketchOffsetCurvesDimension_isValid",
+      "title": "SketchOffsetCurvesDimension.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchOffsetCurvesDimension.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SketchOffsetCurvesDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchOffsetCurvesDimension_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchOffsetCurvesDimension_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2016"
+    },
+    "nativeObject": {
+      "id": "SketchOffsetCurvesDimension_nativeObject",
+      "title": "SketchOffsetCurvesDimension.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchOffsetCurvesDimension.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "SketchOffsetCurvesDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchOffsetCurvesDimension_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchOffsetCurvesDimension_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "objectType": {
+      "id": "SketchOffsetCurvesDimension_objectType",
+      "title": "SketchOffsetCurvesDimension.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchOffsetCurvesDimension.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SketchOffsetCurvesDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchOffsetCurvesDimension_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchOffsetCurvesDimension_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2016"
+    },
+    "offsetConstraint": {
+      "id": "SketchOffsetCurvesDimension_offsetConstraint",
+      "title": "SketchOffsetCurvesDimension.offsetConstraint Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchOffsetCurvesDimension.h",
+      "description": "Returns the OffsetConstraint object that defines the curve offset. From the constraint you can get the original curves, the offset curves, and the dimension controlling the offset distance.",
+      "parent_class": "SketchOffsetCurvesDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchOffsetCurvesDimension_var.offsetConstraint",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchOffsetCurvesDimension_var->offsetConstraint();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "parameter": {
+      "id": "SketchOffsetCurvesDimension_parameter",
+      "title": "SketchOffsetCurvesDimension.parameter Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchOffsetCurvesDimension.h",
+      "description": "Returns the associated parameter or null if there is no associated parameter.",
+      "parent_class": "SketchOffsetCurvesDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchOffsetCurvesDimension_var.parameter",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchOffsetCurvesDimension_var->parameter();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2016"
+    },
+    "parentSketch": {
+      "id": "SketchOffsetCurvesDimension_parentSketch",
+      "title": "SketchOffsetCurvesDimension.parentSketch Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchOffsetCurvesDimension.h",
+      "description": "Returns the parent sketch object.",
+      "parent_class": "SketchOffsetCurvesDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchOffsetCurvesDimension_var.parentSketch",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchOffsetCurvesDimension_var->parentSketch();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2016"
+    },
+    "textPosition": {
+      "id": "SketchOffsetCurvesDimension_textPosition",
+      "title": "SketchOffsetCurvesDimension.textPosition Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchOffsetCurvesDimension.h",
+      "description": "Gets and sets position of the dimension text.",
+      "parent_class": "SketchOffsetCurvesDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchOffsetCurvesDimension_var.textPosition\n\n# Set the value of the property.\nsketchOffsetCurvesDimension_var.textPosition = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchOffsetCurvesDimension_var->textPosition();\n\n// Set the value of the property, where value_var is a Point3D.\nbool returnValue = sketchOffsetCurvesDimension_var->textPosition(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2016"
+    },
+    "value": {
+      "id": "SketchOffsetCurvesDimension_value",
+      "title": "SketchOffsetCurvesDimension.value Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchOffsetCurvesDimension.h",
+      "description": "Gets and sets the current value of the sketch dimension. In a parametric modeling design and the isDriving property is True, this is exactly equivalent to getting the parameter associated with the dimension and editing its value. Editing this property will result in the parameter value being changed. If isDriving is False, this acts as a read-only property and attempting to set it will fail. In a direct modeling design the parameter property will return null and this property can be used to get and set the value of the dimension because in this case, there isn't an associated parameter. The value is always in internal units which means that for dimensions that represent a distance, the value is in Centimeters and for dimensions representing an angle the value is in Radians.",
+      "parent_class": "SketchOffsetCurvesDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchOffsetCurvesDimension_var.value\n\n# Set the value of the property.\nsketchOffsetCurvesDimension_var.value = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sketchOffsetCurvesDimension_var->value();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sketchOffsetCurvesDimension_var->value(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2022"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "SketchOffsetCurvesDimension_classType",
+      "title": "SketchOffsetCurvesDimension.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchOffsetCurvesDimension.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SketchOffsetCurvesDimension",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.SketchOffsetCurvesDimension.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::SketchOffsetCurvesDimension::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version March 2016"
+    },
+    "createForAssemblyContext": {
+      "id": "SketchOffsetCurvesDimension_createForAssemblyContext",
+      "title": "SketchOffsetCurvesDimension.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchOffsetCurvesDimension.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "SketchOffsetCurvesDimension",
+      "syntax": {
+        "python": "returnValue = sketchOffsetCurvesDimension_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = sketchOffsetCurvesDimension_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "SketchOffsetCurvesDimension",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version May 2016"
+    },
+    "deleteMe": {
+      "id": "SketchOffsetCurvesDimension_deleteMe",
+      "title": "SketchOffsetCurvesDimension.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchOffsetCurvesDimension.h",
+      "description": "Deletes this dimension. The IsDeletable property indicates if this dimension can be deleted.",
+      "parent_class": "SketchOffsetCurvesDimension",
+      "syntax": {
+        "python": "returnValue = sketchOffsetCurvesDimension_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = sketchOffsetCurvesDimension_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version March 2016"
+    }
+  }
+}

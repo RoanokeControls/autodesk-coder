@@ -1,0 +1,12 @@
+{
+  "id": "combineFeatures_add_Sample",
+  "title": "combineFeatures.add",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the combineFeatures.add method. To use this sample, have a design open that contains at least two bodies. When you run the sample, you will be prompted to select the bodies and they will joined.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_combineFeatures_add(rootComp: adsk.fusion.Design.rootComponent):\n    # Have the two bodies selected.\n    targetBody = _ui.selectEntity('Select a body', 'Bodies').entity\n    toolBody = _ui.selectEntity('Select Bodies', 'Bodies').entity\n\n    # Define the required inputs and create te combine feature.\n    combineFeatures = rootComp.features.combineFeatures\n    tools = adsk.core.ObjectCollection.create()\n    tools.add(toolBody)\n    input: adsk.fusion.CombineFeatureInput = combineFeatures.createInput(targetBody, tools)\n    input.isNewComponent = False\n    input.isKeepToolBodies = False\n    input.operation = adsk.fusion.FeatureOperations.JoinFeatureOperation\n    combineFeature = combineFeatures.add(input)"
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "id": "CustomEvent",
+  "title": "CustomEvent Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/CustomEvent.h",
+  "description": "A CustomEvent is primarily used to send an event from a worker thread you've created back to your add-in, which is running in the primary thread. It's also possible for add-ins to cooperate and another add-in can trigger this event in your add-in by knowing the custom event id.",
+  "parent_class": "Event",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Add a handler to be notified when the event occurs."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "remove",
+      "description": "Removes a handler from the event."
+    }
+  ],
+  "properties": [
+    {
+      "name": "eventId",
+      "description": "Returns the id that was assigned to this event when it was registered. Each custom event has it's own unique id."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "name",
+      "description": "The name of the event - e.g. \"DocumentOpening\""
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "sender",
+      "description": "The object that is firing the event. For example, in the case of a command input event this will return the command."
+    }
+  ],
+  "version": "Introduced in version January 2017",
+  "method_details": {
+    "add": {
+      "id": "CustomEvent_add",
+      "title": "CustomEvent.add Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/CustomEvent.h",
+      "description": "Add a handler to be notified when the event occurs.",
+      "parent_class": "CustomEvent",
+      "syntax": {
+        "python": "returnValue = customEvent_var.add(handler)",
+        "cpp": "#include \n\nreturnValue = customEvent_var->add(handler);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the addition of the handler was successful.",
+      "parameters": [
+        {
+          "name": "handler",
+          "type": "CustomEventHandler",
+          "description": "The handler object to be called when this event is fired."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Custom Event for Command Dialog",
+          "description": "Demonstrates using a custom event to process getting information in the background to display in a command dialog. This is an add-in and should be copied and pasted into an add-in project."
+        },
+        {
+          "name": "Custom Event Sample",
+          "description": "Demonstrates the ability to call into the main thread from a worker thread. This sample is an add-in. To use it, use the Scripts and Add-Ins command to create a new add-in. Delete all of the code in the newly created add-in and replace it with the code below. Have a model open that has a parameter named \"Length\". Load the add-in. The add-in will change the value of the parameter every two seconds using a random value between 1 and 10."
+        }
+      ],
+      "version": "Introduced in version January 2017"
+    },
+    "classType": {
+      "id": "CustomEvent_classType",
+      "title": "CustomEvent.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/CustomEvent.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CustomEvent",
+      "syntax": {
+        "python": "returnValue = adsk.core.CustomEvent.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::CustomEvent::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2017"
+    },
+    "remove": {
+      "id": "CustomEvent_remove",
+      "title": "CustomEvent.remove Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/CustomEvent.h",
+      "description": "Removes a handler from the event.",
+      "parent_class": "CustomEvent",
+      "syntax": {
+        "python": "returnValue = customEvent_var.remove(handler)",
+        "cpp": "#include \n\nreturnValue = customEvent_var->remove(handler);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if removal of the handler was successful.",
+      "parameters": [
+        {
+          "name": "handler",
+          "type": "CustomEventHandler",
+          "description": "The handler object to be removed from the event."
+        }
+      ],
+      "version": "Introduced in version January 2017"
+    }
+  },
+  "property_details": {
+    "eventId": {
+      "id": "CustomEvent_eventId",
+      "title": "CustomEvent.eventId Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/CustomEvent.h",
+      "description": "Returns the id that was assigned to this event when it was registered. Each custom event has it's own unique id.",
+      "parent_class": "CustomEvent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customEvent_var.eventId",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customEvent_var->eventId();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "isValid": {
+      "id": "CustomEvent_isValid",
+      "title": "CustomEvent.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/CustomEvent.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CustomEvent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customEvent_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customEvent_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "name": {
+      "id": "CustomEvent_name",
+      "title": "CustomEvent.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/CustomEvent.h",
+      "description": "The name of the event - e.g. \"DocumentOpening\"",
+      "parent_class": "CustomEvent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customEvent_var.name",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customEvent_var->name();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "objectType": {
+      "id": "CustomEvent_objectType",
+      "title": "CustomEvent.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/CustomEvent.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CustomEvent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customEvent_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customEvent_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    },
+    "sender": {
+      "id": "CustomEvent_sender",
+      "title": "CustomEvent.sender Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/CustomEvent.h",
+      "description": "The object that is firing the event. For example, in the case of a command input event this will return the command.",
+      "parent_class": "CustomEvent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customEvent_var.sender",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customEvent_var->sender();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2017"
+    }
+  }
+}

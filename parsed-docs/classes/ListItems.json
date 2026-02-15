@@ -1,0 +1,223 @@
+{
+  "id": "ListItems",
+  "title": "ListItems Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/ListItems.h",
+  "description": "Provides access to the list of items in a check box list. This object supports the ability to add items to the list and iterate through the existing items.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Adds a new item to the list."
+    },
+    {
+      "name": "addSeparator",
+      "description": "Adds a separator to the list. This is not supported for button rows."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "clear",
+      "description": "Clears all of the items from the list."
+    },
+    {
+      "name": "item",
+      "description": "Returns the specified check box list item using an index into the collection."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Gets the number of items in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Command Inputs API Sample",
+      "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.  You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+    }
+  ],
+  "version": "Introduced in version January 2015",
+  "method_details": {
+    "add": {
+      "id": "ListItems_add",
+      "title": "ListItems.add Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItems.h",
+      "description": "Adds a new item to the list.",
+      "parent_class": "ListItems",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = listItems_var.add(name, isSelected)\n\n# Uses optional arguments.\nreturnValue = listItems_var.add(name, isSelected, icon, beforeIndex)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = listItems_var->add(name, isSelected);\n\n// Uses optional arguments.\nreturnValue = listItems_var->add(name, isSelected, icon, beforeIndex);"
+      },
+      "return_type": "ListItem",
+      "return_description": "Returns the new ListControlItem or null in the case of a failure.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of this item as it is displayed in the list."
+        },
+        {
+          "name": "isSelected",
+          "type": "boolean",
+          "description": "Sets whether this item is selected or not. If this list is associated with a control or input that can only have one item selected any other selected items will be unselected and this one will be the only selected item."
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "description": "The path to the folder containing the image files to use for the icon. This is an optional argument but is required in the case of ButtonRowCommandInput objects. It is optional in the case of a DropDownCommandInput whose style is LabeledIconDropDownStyle and for ListControlType whose type is not RadioButtonListType. In other cases it is not used and is ignored.   Icons can be defined using either PNG or SVG files. More information about icons can be found in the user manual topic User Interface Customization.   This is an optional argument whose default value is \"\"."
+        },
+        {
+          "name": "beforeIndex",
+          "type": "integer",
+          "description": "The position of the item within the list. This value indicates the index of the current item to insert this new item just before. For example, a value of 0 will insert it before the first item in the list. An index of -1 will position the button at the bottom of the list.   This is an optional argument whose default value is -1."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Command Inputs API Sample",
+          "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.\u00a0You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    },
+    "addSeparator": {
+      "id": "ListItems_addSeparator",
+      "title": "ListItems.addSeparator Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItems.h",
+      "description": "Adds a separator to the list. This is not supported for button rows.",
+      "parent_class": "ListItems",
+      "syntax": {
+        "python": "returnValue = listItems_var.addSeparator(beforeIndex)",
+        "cpp": "#include \n\nreturnValue = listItems_var->addSeparator(beforeIndex);"
+      },
+      "return_type": "ListItem",
+      "return_description": "Returns the new ListControlItem or null in the case of a failure.",
+      "parameters": [
+        {
+          "name": "beforeIndex",
+          "type": "integer",
+          "description": "The position of the item within the list. This value indicates the index of the current item to insert this new item just before. For example, a value of 0 will insert it before the first item in the list. An index of -1 will position the button at the bottom of the list."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "classType": {
+      "id": "ListItems_classType",
+      "title": "ListItems.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItems.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ListItems",
+      "syntax": {
+        "python": "returnValue = adsk.core.ListItems.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::ListItems::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2015"
+    },
+    "clear": {
+      "id": "ListItems_clear",
+      "title": "ListItems.clear Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItems.h",
+      "description": "Clears all of the items from the list.",
+      "parent_class": "ListItems",
+      "syntax": {
+        "python": "returnValue = listItems_var.clear()",
+        "cpp": "#include \n\nreturnValue = listItems_var->clear();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "version": "Introduced in version June 2017"
+    },
+    "item": {
+      "id": "ListItems_item",
+      "title": "ListItems.item Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItems.h",
+      "description": "Returns the specified check box list item using an index into the collection.",
+      "parent_class": "ListItems",
+      "syntax": {
+        "python": "returnValue = listItems_var.item(index)",
+        "cpp": "#include \n\nreturnValue = listItems_var->item(index);"
+      },
+      "return_type": "ListItem",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version January 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "ListItems_count",
+      "title": "ListItems.count Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItems.h",
+      "description": "Gets the number of items in the collection.",
+      "parent_class": "ListItems",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = listItems_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = listItems_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "isValid": {
+      "id": "ListItems_isValid",
+      "title": "ListItems.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItems.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ListItems",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = listItems_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = listItems_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    },
+    "objectType": {
+      "id": "ListItems_objectType",
+      "title": "ListItems.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ListItems.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ListItems",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = listItems_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = listItems_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2015"
+    }
+  }
+}

@@ -1,0 +1,775 @@
+{
+  "id": "SketchText",
+  "title": "SketchText Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Sketch/SketchText.h",
+  "description": "Text in a sketch.",
+  "parent_class": "SketchEntity",
+  "methods": [
+    {
+      "name": "asCurves",
+      "description": "Returns the underlying curves that define the outline of the text. Calling this does not affect the SketchText and does not create any new sketch geometry but returns the geometrical definition of the sketch outline."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates a proxy object for the SketchText object that represents the SketchText object in the context of an assembly. The context is defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the entity from the sketch."
+    },
+    {
+      "name": "explode",
+      "description": "Explodes the SketchText into a set of curves. The original SketchText is deleted as a result of calling this."
+    },
+    {
+      "name": "redefineAsAlongPath",
+      "description": "Sets this SketchTextInput to define text that follows along a specified path."
+    },
+    {
+      "name": "redefineAsFitOnPath",
+      "description": "Sets this SketchTextInput to define text that fits along a specified path. Fitting on a path will space the characters so the text fits along the entire length of the path entity."
+    }
+  ],
+  "properties": [
+    {
+      "name": "angle",
+      "description": "**RETIRED** Gets and sets the angle of the text relative to the x-axis of the x-y plane of the sketch."
+    },
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "boundaryLines",
+      "description": "**RETIRED** Returns the four sketch lines that define the boundary of the sketch text. By adding constraints to these lines you can associatively control the size, position and angle of the sketch text."
+    },
+    {
+      "name": "boundingBox",
+      "description": "Returns the bounding box of the entity in sketch space."
+    },
+    {
+      "name": "definition",
+      "description": "Gets the definition that is currently used to specify how the sketch text is defined."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the SketchEntity object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same sketch entity.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "fontName",
+      "description": "Gets and sets the name of the font to use."
+    },
+    {
+      "name": "geometricConstraints",
+      "description": "Returns the sketch constraints that are attached to this curve."
+    },
+    {
+      "name": "height",
+      "description": "**RETIRED** This property has been retired and you should instead use the heightParameter property to access the parameter controlling the text height and use its properties to get and set the height."
+    },
+    {
+      "name": "heightParameter",
+      "description": "Returns the model parameter that was created when the sketch text was created that controls the height of the sketch text. To edit the height, you can use the expression and value properties of the returned ModelParameter object."
+    },
+    {
+      "name": "is2D",
+      "description": "Indicates if this curve lies entirely on the sketch x-y plane."
+    },
+    {
+      "name": "isDeletable",
+      "description": "Indicates if this sketch entity can be deleted. There are cases, especially with sketch points where another entity is dependent on an entity so deleting it is not allowed. For example, you can't delete the center point of circle by itself but deleting the circle will delete the point. The same is true for the end points of a line."
+    },
+    {
+      "name": "isFixed",
+      "description": "Indicates if this geometry is \"fixed\"."
+    },
+    {
+      "name": "isFullyConstrained",
+      "description": "Indicates if this sketch entity is fully constrained."
+    },
+    {
+      "name": "isHorizontalFlip",
+      "description": "Gets and sets if the text is flipped horizontally."
+    },
+    {
+      "name": "isLinked",
+      "description": "Indicates if this sketch entity was created by a projection, inclusion, or driven by an API script. If this returns true, then the entity is presented to the user as not editable and with a 'break link' command available."
+    },
+    {
+      "name": "isReference",
+      "description": "Indicates if this geometry is a reference. Changing this property from true to false removes the reference. This property can not be set to true if it is already false."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVerticalFlip",
+      "description": "Gets and sets if the text is flipped vertically."
+    },
+    {
+      "name": "isVisible",
+      "description": "When a sketch is created, geometry is sometimes automatically added to the sketch. For example a sketch point that references the origin point is always included and if a face was selected to create the sketch on, geometry from the face is also included. This automatically created geometry behaves in a special way in that it is invisible but is available for selection and it also participates in profile calculations. It's not possible to make them visible but they can be deleted and they can be used for any other standard sketch operation."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentSketch",
+      "description": "Returns the parent sketch."
+    },
+    {
+      "name": "position",
+      "description": "**RETIRED** Gets and sets the position of the text on the x-y plane of the sketch. The text must lie on the x-y plane so the Z component of the point is ignored and always treated as zero."
+    },
+    {
+      "name": "referencedEntity",
+      "description": "Returns the referenced entity in the case where IsReference is true. However, this property can also return null when IsReference is true in the case where the reference is not parametric."
+    },
+    {
+      "name": "sketchDimensions",
+      "description": "Returns the sketch dimensions that are attached to this curve."
+    },
+    {
+      "name": "text",
+      "description": "**RETIRED** This property has been retired and you should now use the textValue and expression properties of the Parameter object associated with this SketchText, which you can obtain by using the SketchText.textParameter property."
+    },
+    {
+      "name": "textParameter",
+      "description": "Returns the model parameter that was created when the sketch text was created that controls the contents of the sketch text. To edit the text, you can use the expression and textValue properties of the returned ModelParameter object."
+    },
+    {
+      "name": "textStyle",
+      "description": "Gets and sets the text style to apply to the entire text. This is a bitwise enum so styles can be combined to apply multiple styles. For example you can apply bold and underline."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Sketch Text API Sample",
+      "description": "Demonstrates creating sketch text by creating both mult-line text and text along a curve."
+    }
+  ],
+  "version": "Introduced in version March 2015",
+  "property_details": {
+    "angle": {
+      "id": "SketchText_angle",
+      "title": "SketchText.angle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets and sets the angle of the text relative to the x-axis of the x-y plane of the sketch. Remarks",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.angle\n\n# Set the value of the property.\nsketchText_var.angle = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sketchText_var->angle();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sketchText_var->angle(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "assemblyContext": {
+      "id": "SketchText_assemblyContext",
+      "title": "SketchText.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchText_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "attributes": {
+      "id": "SketchText_attributes",
+      "title": "SketchText.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchText_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "boundaryLines": {
+      "id": "SketchText_boundaryLines",
+      "title": "SketchText.boundaryLines Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Returns the four sketch lines that define the boundary of the sketch text. By adding constraints to these lines you can associatively control the size, position and angle of the sketch text. Remarks",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.boundaryLines",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchText_var->boundaryLines();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "boundingBox": {
+      "id": "SketchText_boundingBox",
+      "title": "SketchText.boundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Returns the bounding box of the entity in sketch space.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.boundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchText_var->boundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "definition": {
+      "id": "SketchText_definition",
+      "title": "SketchText.definition Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Gets the definition that is currently used to specify how the sketch text is defined.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.definition",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchText_var->definition();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "entityToken": {
+      "id": "SketchText_entityToken",
+      "title": "SketchText.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Returns a token for the SketchEntity object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same sketch entity. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchText_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "fontName": {
+      "id": "SketchText_fontName",
+      "title": "SketchText.fontName Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Gets and sets the name of the font to use.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.fontName\n\n# Set the value of the property.\nsketchText_var.fontName = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchText_var->fontName();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = sketchText_var->fontName(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "geometricConstraints": {
+      "id": "SketchText_geometricConstraints",
+      "title": "SketchText.geometricConstraints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Returns the sketch constraints that are attached to this curve.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.geometricConstraints",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchText_var->geometricConstraints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "height": {
+      "id": "SketchText_height",
+      "title": "SketchText.height Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. This property has been retired and you should instead use the heightParameter property to access the parameter controlling the text height and use its properties to get and set the height. Remarks",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.height\n\n# Set the value of the property.\nsketchText_var.height = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sketchText_var->height();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sketchText_var->height(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "heightParameter": {
+      "id": "SketchText_heightParameter",
+      "title": "SketchText.heightParameter Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Returns the model parameter that was created when the sketch text was created that controls the height of the sketch text. To edit the height, you can use the expression and value properties of the returned ModelParameter object.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.heightParameter",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchText_var->heightParameter();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2025"
+    },
+    "is2D": {
+      "id": "SketchText_is2D",
+      "title": "SketchText.is2D Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Indicates if this curve lies entirely on the sketch x-y plane.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.is2D",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchText_var->is2D();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "isDeletable": {
+      "id": "SketchText_isDeletable",
+      "title": "SketchText.isDeletable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Indicates if this sketch entity can be deleted. There are cases, especially with sketch points where another entity is dependent on an entity so deleting it is not allowed. For example, you can't delete the center point of circle by itself but deleting the circle will delete the point. The same is true for the end points of a line.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.isDeletable",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchText_var->isDeletable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isFixed": {
+      "id": "SketchText_isFixed",
+      "title": "SketchText.isFixed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Indicates if this geometry is \"fixed\".",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.isFixed\n\n# Set the value of the property.\nsketchText_var.isFixed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchText_var->isFixed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchText_var->isFixed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "isFullyConstrained": {
+      "id": "SketchText_isFullyConstrained",
+      "title": "SketchText.isFullyConstrained Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Indicates if this sketch entity is fully constrained.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.isFullyConstrained",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchText_var->isFullyConstrained();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2016"
+    },
+    "isHorizontalFlip": {
+      "id": "SketchText_isHorizontalFlip",
+      "title": "SketchText.isHorizontalFlip Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Gets and sets if the text is flipped horizontally.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.isHorizontalFlip\n\n# Set the value of the property.\nsketchText_var.isHorizontalFlip = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchText_var->isHorizontalFlip();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchText_var->isHorizontalFlip(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "isLinked": {
+      "id": "SketchText_isLinked",
+      "title": "SketchText.isLinked Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Indicates if this sketch entity was created by a projection, inclusion, or driven by an API script. If this returns true, then the entity is presented to the user as not editable and with a 'break link' command available.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.isLinked",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchText_var->isLinked();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "isReference": {
+      "id": "SketchText_isReference",
+      "title": "SketchText.isReference Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Indicates if this geometry is a reference. Changing this property from true to false removes the reference. This property can not be set to true if it is already false.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.isReference\n\n# Set the value of the property.\nsketchText_var.isReference = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchText_var->isReference();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchText_var->isReference(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "isValid": {
+      "id": "SketchText_isValid",
+      "title": "SketchText.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchText_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "isVerticalFlip": {
+      "id": "SketchText_isVerticalFlip",
+      "title": "SketchText.isVerticalFlip Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Gets and sets if the text is flipped vertically.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.isVerticalFlip\n\n# Set the value of the property.\nsketchText_var.isVerticalFlip = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchText_var->isVerticalFlip();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchText_var->isVerticalFlip(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version December 2020"
+    },
+    "isVisible": {
+      "id": "SketchText_isVisible",
+      "title": "SketchText.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "When a sketch is created, geometry is sometimes automatically added to the sketch. For example a sketch point that references the origin point is always included and if a face was selected to create the sketch on, geometry from the face is also included. This automatically created geometry behaves in a special way in that it is invisible but is available for selection and it also participates in profile calculations. It's not possible to make them visible but they can be deleted and they can be used for any other standard sketch operation.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.isVisible",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchText_var->isVisible();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "nativeObject": {
+      "id": "SketchText_nativeObject",
+      "title": "SketchText.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchText_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2022"
+    },
+    "objectType": {
+      "id": "SketchText_objectType",
+      "title": "SketchText.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchText_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "parentSketch": {
+      "id": "SketchText_parentSketch",
+      "title": "SketchText.parentSketch Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Returns the parent sketch.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.parentSketch",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchText_var->parentSketch();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "position": {
+      "id": "SketchText_position",
+      "title": "SketchText.position Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets and sets the position of the text on the x-y plane of the sketch. The text must lie on the x-y plane so the Z component of the point is ignored and always treated as zero. Remarks",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.position\n\n# Set the value of the property.\nsketchText_var.position = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchText_var->position();\n\n// Set the value of the property, where value_var is a Point3D.\nbool returnValue = sketchText_var->position(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "referencedEntity": {
+      "id": "SketchText_referencedEntity",
+      "title": "SketchText.referencedEntity Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Returns the referenced entity in the case where IsReference is true. However, this property can also return null when IsReference is true in the case where the reference is not parametric.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.referencedEntity",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchText_var->referencedEntity();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "sketchDimensions": {
+      "id": "SketchText_sketchDimensions",
+      "title": "SketchText.sketchDimensions Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Returns the sketch dimensions that are attached to this curve.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.sketchDimensions",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchText_var->sketchDimensions();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "text": {
+      "id": "SketchText_text",
+      "title": "SketchText.text Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. This property has been retired and you should now use the textValue and expression properties of the Parameter object associated with this SketchText, which you can obtain by using the SketchText.textParameter property. Remarks",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.text\n\n# Set the value of the property.\nsketchText_var.text = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchText_var->text();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = sketchText_var->text(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "textParameter": {
+      "id": "SketchText_textParameter",
+      "title": "SketchText.textParameter Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Returns the model parameter that was created when the sketch text was created that controls the contents of the sketch text. To edit the text, you can use the expression and textValue properties of the returned ModelParameter object.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.textParameter",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchText_var->textParameter();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2025"
+    },
+    "textStyle": {
+      "id": "SketchText_textStyle",
+      "title": "SketchText.textStyle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Gets and sets the text style to apply to the entire text. This is a bitwise enum so styles can be combined to apply multiple styles. For example you can apply bold and underline.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchText_var.textStyle\n\n# Set the value of the property.\nsketchText_var.textStyle = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nTextStyles propertyValue = sketchText_var->textStyle();\n\n// Set the value of the property, where value_var is a TextStyles.\nbool returnValue = sketchText_var->textStyle(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    }
+  },
+  "method_details": {
+    "asCurves": {
+      "id": "SketchText_asCurves",
+      "title": "SketchText.asCurves Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Returns the underlying curves that define the outline of the text. Calling this does not affect the SketchText and does not create any new sketch geometry but returns the geometrical definition of the sketch outline.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "returnValue = sketchText_var.asCurves()",
+        "cpp": "#include \n\nreturnValue = sketchText_var->asCurves();"
+      },
+      "return_type": "Curve3D[]",
+      "return_description": "Returns an array of transient curves that represent the outline of the text.",
+      "version": "Introduced in version August 2016"
+    },
+    "classType": {
+      "id": "SketchText_classType",
+      "title": "SketchText.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.SketchText.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::SketchText::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version March 2015"
+    },
+    "createForAssemblyContext": {
+      "id": "SketchText_createForAssemblyContext",
+      "title": "SketchText.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Creates a proxy object for the SketchText object that represents the SketchText object in the context of an assembly. The context is defined by the input occurrence.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "returnValue = sketchText_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = sketchText_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "SketchText",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version May 2022"
+    },
+    "deleteMe": {
+      "id": "SketchText_deleteMe",
+      "title": "SketchText.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Deletes the entity from the sketch.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "returnValue = sketchText_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = sketchText_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true is the delete was successful.",
+      "version": "Introduced in version March 2015"
+    },
+    "explode": {
+      "id": "SketchText_explode",
+      "title": "SketchText.explode Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Explodes the SketchText into a set of curves. The original SketchText is deleted as a result of calling this.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "returnValue = sketchText_var.explode()",
+        "cpp": "#include \n\nreturnValue = sketchText_var->explode();"
+      },
+      "return_type": "SketchCurve[]",
+      "return_description": "Returns an array of the sketch curves that were created that represent the text.",
+      "version": "Introduced in version August 2016"
+    },
+    "redefineAsAlongPath": {
+      "id": "SketchText_redefineAsAlongPath",
+      "title": "SketchText.redefineAsAlongPath Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Sets this SketchTextInput to define text that follows along a specified path.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "returnValue = sketchText_var.redefineAsAlongPath(path, isAbovePath, horizontalAlignment, characterSpacing)",
+        "cpp": "#include \n\nreturnValue = sketchText_var->redefineAsAlongPath(path, isAbovePath, horizontalAlignment, characterSpacing);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the setting the definition was successful.",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "Base",
+          "description": "The entity that defines the path for the text. This can be a SketchCurve or BRepEdge object."
+        },
+        {
+          "name": "isAbovePath",
+          "type": "boolean",
+          "description": "Indicates if the text should be positioned above or below the path entity."
+        },
+        {
+          "name": "horizontalAlignment",
+          "type": "HorizontalAlignments",
+          "description": "Specifies the horizontal alignment of the text with respect to the path curve."
+        },
+        {
+          "name": "characterSpacing",
+          "type": "double",
+          "description": "The spacing between the characters. This is an additional spacing to apply that is defined as a percentage of the default spacing. A spacing of 0 indicates no additional spacing. A spacing of 50 indicates to use the default plus 50% of the default."
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    },
+    "redefineAsFitOnPath": {
+      "id": "SketchText_redefineAsFitOnPath",
+      "title": "SketchText.redefineAsFitOnPath Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchText.h",
+      "description": "Sets this SketchTextInput to define text that fits along a specified path. Fitting on a path will space the characters so the text fits along the entire length of the path entity.",
+      "parent_class": "SketchText",
+      "syntax": {
+        "python": "returnValue = sketchText_var.redefineAsFitOnPath(path, isAbovePath)",
+        "cpp": "#include \n\nreturnValue = sketchText_var->redefineAsFitOnPath(path, isAbovePath);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the setting the definition was successful.",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "Base",
+          "description": "The entity that defines the path for the text. This can be a SketchCurve or BRepEdge object."
+        },
+        {
+          "name": "isAbovePath",
+          "type": "boolean",
+          "description": "Indicates if the text should be positioned above or below the path entity."
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    }
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "id": "UntrimFeatureInput",
+  "title": "UntrimFeatureInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/UntrimFeatureInput.h",
+  "description": "This class defines the methods and properties that pertain to the definition of an Untrim feature.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "setLoops",
+      "description": "Set the loops to be removed."
+    },
+    {
+      "name": "setLoopsFromFaces",
+      "description": "Set the loops to be removed from a set of faces."
+    }
+  ],
+  "properties": [
+    {
+      "name": "extensionDistance",
+      "description": "Gets and sets the ValueInput object that defines the extension distance applied to faces when an external boundary is removed."
+    },
+    {
+      "name": "facesToUntrim",
+      "description": "Gets the face objects to untrim. Returns null/None in the case where loops are specified instead of faces."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "loopsToUntrim",
+      "description": "Gets the loop objects to untrim. Returns null/None in the case where faces are specified instead of loops"
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "untrimLoopType",
+      "description": "Gets the loop type to be untrimmed. This is only used when faces are being untrimmed and is ignored for loops."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Untrim Feature API Sample",
+      "description": "Demonstrates creating a new untrim feature."
+    }
+  ],
+  "version": "Introduced in version January 2021",
+  "method_details": {
+    "classType": {
+      "id": "UntrimFeatureInput_classType",
+      "title": "UntrimFeatureInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatureInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "UntrimFeatureInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.UntrimFeatureInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::UntrimFeatureInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version January 2021"
+    },
+    "setLoops": {
+      "id": "UntrimFeatureInput_setLoops",
+      "title": "UntrimFeatureInput.setLoops Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatureInput.h",
+      "description": "Set the loops to be removed.",
+      "parent_class": "UntrimFeatureInput",
+      "syntax": {
+        "python": "returnValue = untrimFeatureInput_var.setLoops(loops)",
+        "cpp": "#include \n\nreturnValue = untrimFeatureInput_var->setLoops(loops);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns whether the operation was successful",
+      "parameters": [
+        {
+          "name": "loops",
+          "type": "BRepLoop[]",
+          "description": "Redefines this input to remove loops from the body. If faces were previously defined, that information will be lost. Only loops that do not have a connected face can be removed (the edges in the loop have a single face) The array can only contain loops from surface bodies, (the isSolid property of the BRepBody returns false)."
+        }
+      ],
+      "version": "Introduced in version January 2021"
+    },
+    "setLoopsFromFaces": {
+      "id": "UntrimFeatureInput_setLoopsFromFaces",
+      "title": "UntrimFeatureInput.setLoopsFromFaces Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatureInput.h",
+      "description": "Set the loops to be removed from a set of faces.",
+      "parent_class": "UntrimFeatureInput",
+      "syntax": {
+        "python": "returnValue = untrimFeatureInput_var.setLoopsFromFaces(faces, untrimLoopType)",
+        "cpp": "#include \n\nreturnValue = untrimFeatureInput_var->setLoopsFromFaces(faces, untrimLoopType);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns whether the operation was successful",
+      "parameters": [
+        {
+          "name": "faces",
+          "type": "BRepFace[]",
+          "description": "An array of BRepFace objects that will have the loops of the specified types removed. Only loops that do not have a connected face can be removed (the edges in the loop have a single face). The array can only contain faces from surface bodies, (the isSolid property of the BRepBody returns false)."
+        },
+        {
+          "name": "untrimLoopType",
+          "type": "UntrimLoopTypes",
+          "description": "The loop type to be untrimmed (AllLoopUntrimType, InternalLoopUntrimType, or ExternalLoopUntrimType)."
+        }
+      ],
+      "version": "Introduced in version January 2021"
+    }
+  },
+  "property_details": {
+    "extensionDistance": {
+      "id": "UntrimFeatureInput_extensionDistance",
+      "title": "UntrimFeatureInput.extensionDistance Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatureInput.h",
+      "description": "Gets and sets the ValueInput object that defines the extension distance applied to faces when an external boundary is removed.",
+      "parent_class": "UntrimFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeatureInput_var.extensionDistance\n\n# Set the value of the property.\nuntrimFeatureInput_var.extensionDistance = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = untrimFeatureInput_var->extensionDistance();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = untrimFeatureInput_var->extensionDistance(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "facesToUntrim": {
+      "id": "UntrimFeatureInput_facesToUntrim",
+      "title": "UntrimFeatureInput.facesToUntrim Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatureInput.h",
+      "description": "Gets the face objects to untrim. Returns null/None in the case where loops are specified instead of faces.",
+      "parent_class": "UntrimFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeatureInput_var.facesToUntrim",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = untrimFeatureInput_var->facesToUntrim();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "isValid": {
+      "id": "UntrimFeatureInput_isValid",
+      "title": "UntrimFeatureInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatureInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "UntrimFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeatureInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = untrimFeatureInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "loopsToUntrim": {
+      "id": "UntrimFeatureInput_loopsToUntrim",
+      "title": "UntrimFeatureInput.loopsToUntrim Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatureInput.h",
+      "description": "Gets the loop objects to untrim. Returns null/None in the case where faces are specified instead of loops",
+      "parent_class": "UntrimFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeatureInput_var.loopsToUntrim",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = untrimFeatureInput_var->loopsToUntrim();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "objectType": {
+      "id": "UntrimFeatureInput_objectType",
+      "title": "UntrimFeatureInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatureInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "UntrimFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeatureInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = untrimFeatureInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "untrimLoopType": {
+      "id": "UntrimFeatureInput_untrimLoopType",
+      "title": "UntrimFeatureInput.untrimLoopType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/UntrimFeatureInput.h",
+      "description": "Gets the loop type to be untrimmed. This is only used when faces are being untrimmed and is ignored for loops.",
+      "parent_class": "UntrimFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = untrimFeatureInput_var.untrimLoopType",
+        "cpp": "#include \n\n// Get the value of the property.\nUntrimLoopTypes propertyValue = untrimFeatureInput_var->untrimLoopType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    }
+  }
+}

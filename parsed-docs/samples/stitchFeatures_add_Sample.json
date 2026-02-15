@@ -1,0 +1,12 @@
+{
+  "id": "stitchFeatures_add_Sample",
+  "title": "stitchFeatures.add",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the stitchFeatures.add method.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_stitchFeatures_add(rootComp: adsk.fusion.Component):\n    # Have the two bodies selected and add them to an ObjectCollection.\n    body1: adsk.fusion.BRepBodies = _ui.selectEntity('Select a surface body.', 'Bodies').entity\n    body2: adsk.fusion.BRepBodies = _ui.selectEntity('Select a connecting surface body.', 'Bodies').entity\n    bodies = adsk.core.ObjectCollection.create()\n    bodies.add(body1)\n    bodies.add(body2)\n\n    stitchFeatures = rootComp.features.stitchFeatures\n    tolerance = adsk.core.ValueInput.createByReal(.01)\n    operation = adsk.fusion.FeatureOperations.NewBodyFeatureOperation\n    input = stitchFeatures.createInput(bodies, tolerance, operation)\n    stitchFeature = stitchFeatures.add(input)"
+  }
+}

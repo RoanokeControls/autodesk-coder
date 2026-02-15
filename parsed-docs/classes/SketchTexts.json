@@ -1,0 +1,304 @@
+{
+  "id": "SketchTexts",
+  "title": "SketchTexts Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Sketch/SketchTexts.h",
+  "description": "The collection of text blocks in a sketch. This provides access to the existing text blocks and supports creating new text blocks.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a sketch text."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "**RETIRED** Creates a SketchTextInput object that can be used to define additional settings when creating sketch text. The SketchTextInput object is equivalent to the Sketch Text dialog in that it collects all of the input required to create sketch text. Once the properties of the SketchTextInput object have been defined, use the add method to create the sketch text."
+    },
+    {
+      "name": "createInput2",
+      "description": "**RETIRED** This method has been retired and replaced by createInput3. Use the new method to define text using an expression that can combine literal text with parameter values."
+    },
+    {
+      "name": "createInput3",
+      "description": "Creates a SketchTextInput object that is used to define the additional input to create text. The SketchTextInput object is equivalent to the Sketch Text dialog in that it collects all of the input required to create sketch text. You must call setAsFitOnPath, setAsAlongPath, or setAsMultiLine methods to define one of the three types of text. Once the properties of the SketchTextInput object have been defined, pass the SketchTextInput to the add method to create the sketch text."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified sketch text using an index into the collection."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of texts in the sketch."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "SketchTextInput.setAsAlongPath",
+      "description": "Demonstrates the SketchTextInput.setAsAlongPath method."
+    },
+    {
+      "name": "SketchTextInput.setAsFitOnPath",
+      "description": "Demoonstrates the SketchTextInput.setAsFitOnPath method."
+    },
+    {
+      "name": "SketchTextInput.setAsMultiLine",
+      "description": "Demonstrates the SketchTextInput.setAsMultiLine method."
+    },
+    {
+      "name": "Sketch Text API Sample",
+      "description": "Demonstrates creating sketch text by creating both mult-line text and text along a curve."
+    }
+  ],
+  "version": "Introduced in version March 2015",
+  "method_details": {
+    "add": {
+      "id": "SketchTexts_add",
+      "title": "SketchTexts.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTexts.h",
+      "description": "Creates a sketch text.",
+      "parent_class": "SketchTexts",
+      "syntax": {
+        "python": "returnValue = sketchTexts_var.add(input)",
+        "cpp": "#include \n\nreturnValue = sketchTexts_var->add(input);"
+      },
+      "return_type": "SketchText",
+      "return_description": "Returns the newly created SketchText object or null in the case of failure.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "SketchTextInput",
+          "description": "A SketchTextInput object created using the SketchTexts.createInput method."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "SketchTextInput.setAsAlongPath",
+          "description": "Demonstrates the SketchTextInput.setAsAlongPath method."
+        },
+        {
+          "name": "SketchTextInput.setAsFitOnPath",
+          "description": "Demoonstrates the SketchTextInput.setAsFitOnPath method."
+        },
+        {
+          "name": "SketchTextInput.setAsMultiLine",
+          "description": "Demonstrates the SketchTextInput.setAsMultiLine method."
+        },
+        {
+          "name": "Sketch Text API Sample",
+          "description": "Demonstrates creating sketch text by creating both mult-line text and text along a curve."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    },
+    "classType": {
+      "id": "SketchTexts_classType",
+      "title": "SketchTexts.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTexts.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SketchTexts",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.SketchTexts.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::SketchTexts::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version March 2015"
+    },
+    "createInput": {
+      "id": "SketchTexts_createInput",
+      "title": "SketchTexts.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTexts.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Creates a SketchTextInput object that can be used to define additional settings when creating sketch text. The SketchTextInput object is equivalent to the Sketch Text dialog in that it collects all of the input required to create sketch text. Once the properties of the SketchTextInput object have been defined, use the add method to create the sketch text. Remarks",
+      "parent_class": "SketchTexts",
+      "syntax": {
+        "python": "returnValue = sketchTexts_var.createInput(formattedText, height, position)",
+        "cpp": "#include \n\nreturnValue = sketchTexts_var->createInput(formattedText, height, position);"
+      },
+      "return_type": "SketchTextInput",
+      "return_description": "Returns a SketchTextInput object that can be used to set additional formatting and is used as input to the add method.",
+      "parameters": [
+        {
+          "name": "formattedText",
+          "type": "string",
+          "description": "The text used for the sketch text. This is a simple string as no additional formatting is currently supported."
+        },
+        {
+          "name": "height",
+          "type": "double",
+          "description": "The height of the text in centimeters."
+        },
+        {
+          "name": "position",
+          "type": "Point3D",
+          "description": "The position of the text on the x-y plane of the sketch. The text must lie on the x-y plane so the Z component of the point is ignored and always treated as zero."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    },
+    "createInput2": {
+      "id": "SketchTexts_createInput2",
+      "title": "SketchTexts.createInput2 Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTexts.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. This method has been retired and replaced by createInput3. Use the new method to define text using an expression that can combine literal text with parameter values. Remarks",
+      "parent_class": "SketchTexts",
+      "syntax": {
+        "python": "returnValue = sketchTexts_var.createInput2(formattedText, height)",
+        "cpp": "#include \n\nreturnValue = sketchTexts_var->createInput2(formattedText, height);"
+      },
+      "return_type": "SketchTextInput",
+      "return_description": "Returns a SketchTextInput object that can be used to set additional formatting and is used as input to the add method.",
+      "parameters": [
+        {
+          "name": "formattedText",
+          "type": "string",
+          "description": "The text used for the sketch text. This is the equivalent of the text that would be entered into the \"Text\" command dialog. It can be a simple string or it can be an expression that combines text with parameter values. In the case of a simple string, no quotes are needed, but for an expression, text should be quoted using a single quote."
+        },
+        {
+          "name": "height",
+          "type": "double",
+          "description": "The height of the text in centimeters."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "SketchTextInput.setAsAlongPath",
+          "description": "Demonstrates the SketchTextInput.setAsAlongPath method."
+        },
+        {
+          "name": "SketchTextInput.setAsFitOnPath",
+          "description": "Demoonstrates the SketchTextInput.setAsFitOnPath method."
+        },
+        {
+          "name": "SketchTextInput.setAsMultiLine",
+          "description": "Demonstrates the SketchTextInput.setAsMultiLine method."
+        },
+        {
+          "name": "Sketch Text API Sample",
+          "description": "Demonstrates creating sketch text by creating both mult-line text and text along a curve."
+        }
+      ],
+      "version": "Introduced in version December 2020"
+    },
+    "createInput3": {
+      "id": "SketchTexts_createInput3",
+      "title": "SketchTexts.createInput3 Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTexts.h",
+      "description": "Creates a SketchTextInput object that is used to define the additional input to create text. The SketchTextInput object is equivalent to the Sketch Text dialog in that it collects all of the input required to create sketch text. You must call setAsFitOnPath, setAsAlongPath, or setAsMultiLine methods to define one of the three types of text. Once the properties of the SketchTextInput object have been defined, pass the SketchTextInput to the add method to create the sketch text.",
+      "parent_class": "SketchTexts",
+      "syntax": {
+        "python": "returnValue = sketchTexts_var.createInput3(expression, height)",
+        "cpp": "#include \n\nreturnValue = sketchTexts_var->createInput3(expression, height);"
+      },
+      "return_type": "SketchTextInput",
+      "return_description": "Returns a SketchTextInput object that can be used to set additional formatting and is used as input to the add method.",
+      "parameters": [
+        {
+          "name": "expression",
+          "type": "string",
+          "description": "This defines the expression of the parameter that will be created when this SketchText is created. It can be a simple string or it can be an expression that combines text with parameter values. Simple text must be enclosed within single quotes, the same as it is required in the TEXT command dialog.   An example of a valid expression is: \"'Length: ' + lengthParam\" and will result in \"Length: 3.0 mm\". The expression result can be obtained by using the text property on the created SketchTextInput object."
+        },
+        {
+          "name": "height",
+          "type": "ValueInput",
+          "description": "A ValueInput that defines the height of the text. This value is used to create a parameter that will control the height of the text. It can be a value where it defines the height of the text in centimeters, or it can be a string where it defines the equation of the parameter and must evaluate to a valid length."
+        }
+      ],
+      "version": "Introduced in version November 2025"
+    },
+    "item": {
+      "id": "SketchTexts_item",
+      "title": "SketchTexts.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTexts.h",
+      "description": "Function that returns the specified sketch text using an index into the collection.",
+      "parent_class": "SketchTexts",
+      "syntax": {
+        "python": "returnValue = sketchTexts_var.item(index)",
+        "cpp": "#include \n\nreturnValue = sketchTexts_var->item(index);"
+      },
+      "return_type": "SketchText",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "SketchTexts_count",
+      "title": "SketchTexts.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTexts.h",
+      "description": "Returns the number of texts in the sketch.",
+      "parent_class": "SketchTexts",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchTexts_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = sketchTexts_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "isValid": {
+      "id": "SketchTexts_isValid",
+      "title": "SketchTexts.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTexts.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SketchTexts",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchTexts_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchTexts_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    },
+    "objectType": {
+      "id": "SketchTexts_objectType",
+      "title": "SketchTexts.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchTexts.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SketchTexts",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchTexts_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchTexts_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2015"
+    }
+  }
+}

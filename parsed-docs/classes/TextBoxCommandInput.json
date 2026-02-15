@@ -1,0 +1,387 @@
+{
+  "id": "TextBoxCommandInput",
+  "title": "TextBoxCommandInput Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+  "description": "Provides a command input to interact with a text box.",
+  "parent_class": "CommandInput",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this Command input."
+    }
+  ],
+  "properties": [
+    {
+      "name": "commandInputs",
+      "description": "Gets the CommandInputs class of the parent, which can be a Command, GroupCommandInput or TabCommandInput."
+    },
+    {
+      "name": "formattedText",
+      "description": "Gets and sets the formatted text displayed in the dialog."
+    },
+    {
+      "name": "id",
+      "description": "Gets the unique identifier for this input in the command's CommandInputs."
+    },
+    {
+      "name": "isEnabled",
+      "description": "Gets or sets if this input is currently enabled or disabled for user interaction.   Currently, the isEnabled property does not disable SelectionCommandInput objects but instead has the same effect as the SelectionCommandInput.hasFocus property."
+    },
+    {
+      "name": "isFullWidth",
+      "description": "Gets or sets if this input fills the entire width of the dialog. If true, the name is ignored and the input control will fill the entire width of the command dialog. The default value for this property in a new command input if false, or not to fill the width. This property does not apply to GroupCommandInputs or TabCommandInputs."
+    },
+    {
+      "name": "isReadOnly",
+      "description": "Gets and sets if the text box is read-only or not. If it is read-only the user cannot edit the text."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets or sets if this input will be visible to the user.   Setting a SelectionCommandInput to be invisible will clear any selections it currently has."
+    },
+    {
+      "name": "name",
+      "description": "Gets the user visible name of this input."
+    },
+    {
+      "name": "numRows",
+      "description": "Gets and sets the height of the text box as defined by the number of rows of text that can be displayed. If the text is larger than will fit in the box a scroll bar will automatically be displayed."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentCommand",
+      "description": "Gets the parent Command."
+    },
+    {
+      "name": "parentCommandInput",
+      "description": "Gets the parent CommandInput if this commandInput is the child of a TabCommandInput or GroupCommandInput. Returns null if there is no parent."
+    },
+    {
+      "name": "text",
+      "description": "Gets and sets the text in the text box. When text is set using the text property, any HTML formatting is ignored and the full string will be displayed in the text box. For example, if you specify the string \"Here is a <b>Bold</b> word\", and use the formattedText property, you will see \"Here is a Bold word\" in the text box. However, if you use the text property, you will see \"Here is a <b>Bold</b> word\" and when you get the text property you will get back \"Here is a <b>Bold</b> word\". This can be useful if you're using the text box to have the user enter HTML code so it's treated as a simple string."
+    },
+    {
+      "name": "toolClipFilename",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text."
+    },
+    {
+      "name": "tooltip",
+      "description": "Gets or sets the base tooltip string. This is always shown for commands. If the tooltip description and/or tool clip are also specified then the tooltip will progressively display more information as the user hovers the mouse over the control."
+    },
+    {
+      "name": "tooltipDescription",
+      "description": "Gets or sets additional text to display progressively along with the tooltip. The text for the description can contain some basic HTML formatting tags to format the tags. For example the br tag can be used to create multiple paragraphs. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Command Inputs API Sample",
+      "description": "Creates a command dialog that demonstrates all of the available command inputs.\n\nTo use the sample, create a new Python or C++ script and copy and paste this code, replacing the default code.  You also need to unpack this zip file which contains a resource folder into the same folder where the source code file (.py or .cpp) is."
+    }
+  ],
+  "version": "Introduced in version June 2015",
+  "method_details": {
+    "classType": {
+      "id": "TextBoxCommandInput_classType",
+      "title": "TextBoxCommandInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "returnValue = adsk.core.TextBoxCommandInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::TextBoxCommandInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version June 2015"
+    },
+    "deleteMe": {
+      "id": "TextBoxCommandInput_deleteMe",
+      "title": "TextBoxCommandInput.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Deletes this Command input.",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "returnValue = textBoxCommandInput_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = textBoxCommandInput_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version August 2020"
+    }
+  },
+  "property_details": {
+    "commandInputs": {
+      "id": "TextBoxCommandInput_commandInputs",
+      "title": "TextBoxCommandInput.commandInputs Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Gets the CommandInputs class of the parent, which can be a Command, GroupCommandInput or TabCommandInput.",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textBoxCommandInput_var.commandInputs",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = textBoxCommandInput_var->commandInputs();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "formattedText": {
+      "id": "TextBoxCommandInput_formattedText",
+      "title": "TextBoxCommandInput.formattedText Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Gets and sets the formatted text displayed in the dialog. Remarks",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textBoxCommandInput_var.formattedText\n\n# Set the value of the property.\ntextBoxCommandInput_var.formattedText = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = textBoxCommandInput_var->formattedText();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = textBoxCommandInput_var->formattedText(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "id": {
+      "id": "TextBoxCommandInput_id",
+      "title": "TextBoxCommandInput.id Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Gets the unique identifier for this input in the command's CommandInputs.",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textBoxCommandInput_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = textBoxCommandInput_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isEnabled": {
+      "id": "TextBoxCommandInput_isEnabled",
+      "title": "TextBoxCommandInput.isEnabled Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Gets or sets if this input is currently enabled or disabled for user interaction. Currently, the isEnabled property does not disable SelectionCommandInput objects but instead has the same effect as the SelectionCommandInput.hasFocus property.",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textBoxCommandInput_var.isEnabled\n\n# Set the value of the property.\ntextBoxCommandInput_var.isEnabled = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = textBoxCommandInput_var->isEnabled();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = textBoxCommandInput_var->isEnabled(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isFullWidth": {
+      "id": "TextBoxCommandInput_isFullWidth",
+      "title": "TextBoxCommandInput.isFullWidth Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Gets or sets if this input fills the entire width of the dialog. If true, the name is ignored and the input control will fill the entire width of the command dialog. The default value for this property in a new command input if false, or not to fill the width. This property does not apply to GroupCommandInputs or TabCommandInputs.",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textBoxCommandInput_var.isFullWidth\n\n# Set the value of the property.\ntextBoxCommandInput_var.isFullWidth = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = textBoxCommandInput_var->isFullWidth();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = textBoxCommandInput_var->isFullWidth(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isReadOnly": {
+      "id": "TextBoxCommandInput_isReadOnly",
+      "title": "TextBoxCommandInput.isReadOnly Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Gets and sets if the text box is read-only or not. If it is read-only the user cannot edit the text.",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textBoxCommandInput_var.isReadOnly\n\n# Set the value of the property.\ntextBoxCommandInput_var.isReadOnly = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = textBoxCommandInput_var->isReadOnly();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = textBoxCommandInput_var->isReadOnly(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isValid": {
+      "id": "TextBoxCommandInput_isValid",
+      "title": "TextBoxCommandInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textBoxCommandInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = textBoxCommandInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isVisible": {
+      "id": "TextBoxCommandInput_isVisible",
+      "title": "TextBoxCommandInput.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Gets or sets if this input will be visible to the user. Setting a SelectionCommandInput to be invisible will clear any selections it currently has.",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textBoxCommandInput_var.isVisible\n\n# Set the value of the property.\ntextBoxCommandInput_var.isVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = textBoxCommandInput_var->isVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = textBoxCommandInput_var->isVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "name": {
+      "id": "TextBoxCommandInput_name",
+      "title": "TextBoxCommandInput.name Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Gets the user visible name of this input.",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textBoxCommandInput_var.name",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = textBoxCommandInput_var->name();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "numRows": {
+      "id": "TextBoxCommandInput_numRows",
+      "title": "TextBoxCommandInput.numRows Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Gets and sets the height of the text box as defined by the number of rows of text that can be displayed. If the text is larger than will fit in the box a scroll bar will automatically be displayed.",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textBoxCommandInput_var.numRows\n\n# Set the value of the property.\ntextBoxCommandInput_var.numRows = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = textBoxCommandInput_var->numRows();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = textBoxCommandInput_var->numRows(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "objectType": {
+      "id": "TextBoxCommandInput_objectType",
+      "title": "TextBoxCommandInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textBoxCommandInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = textBoxCommandInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "parentCommand": {
+      "id": "TextBoxCommandInput_parentCommand",
+      "title": "TextBoxCommandInput.parentCommand Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Gets the parent Command.",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textBoxCommandInput_var.parentCommand",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = textBoxCommandInput_var->parentCommand();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "parentCommandInput": {
+      "id": "TextBoxCommandInput_parentCommandInput",
+      "title": "TextBoxCommandInput.parentCommandInput Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Gets the parent CommandInput if this commandInput is the child of a TabCommandInput or GroupCommandInput. Returns null if there is no parent.",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textBoxCommandInput_var.parentCommandInput",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = textBoxCommandInput_var->parentCommandInput();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "text": {
+      "id": "TextBoxCommandInput_text",
+      "title": "TextBoxCommandInput.text Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Gets and sets the text in the text box. When text is set using the text property, any HTML formatting is ignored and the full string will be displayed in the text box. For example, if you specify the string \"Here is a <b>Bold</b> word\", and use the formattedText property, you will see \"Here is a Bold word\" in the text box. However, if you use the text property, you will see \"Here is a <b>Bold</b> word\" and when you get the text property you will get back \"Here is a <b>Bold</b> word\". This can be useful if you're using the text box to have the user enter HTML code so it's treated as a simple string.",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textBoxCommandInput_var.text\n\n# Set the value of the property.\ntextBoxCommandInput_var.text = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = textBoxCommandInput_var->text();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = textBoxCommandInput_var->text(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "toolClipFilename": {
+      "id": "TextBoxCommandInput_toolClipFilename",
+      "title": "TextBoxCommandInput.toolClipFilename Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Gets or sets the full filename of the image file (PNG) used for the tool clip. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text.",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textBoxCommandInput_var.toolClipFilename\n\n# Set the value of the property.\ntextBoxCommandInput_var.toolClipFilename = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = textBoxCommandInput_var->toolClipFilename();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = textBoxCommandInput_var->toolClipFilename(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "tooltip": {
+      "id": "TextBoxCommandInput_tooltip",
+      "title": "TextBoxCommandInput.tooltip Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Gets or sets the base tooltip string. This is always shown for commands. If the tooltip description and/or tool clip are also specified then the tooltip will progressively display more information as the user hovers the mouse over the control.",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textBoxCommandInput_var.tooltip\n\n# Set the value of the property.\ntextBoxCommandInput_var.tooltip = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = textBoxCommandInput_var->tooltip();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = textBoxCommandInput_var->tooltip(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "tooltipDescription": {
+      "id": "TextBoxCommandInput_tooltipDescription",
+      "title": "TextBoxCommandInput.tooltipDescription Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/TextBoxCommandInput.h",
+      "description": "Gets or sets additional text to display progressively along with the tooltip. The text for the description can contain some basic HTML formatting tags to format the tags. For example the br tag can be used to create multiple paragraphs. The tooltip is always shown but as the user hovers over the control it will progressively display the tool clip and description text.",
+      "parent_class": "TextBoxCommandInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = textBoxCommandInput_var.tooltipDescription\n\n# Set the value of the property.\ntextBoxCommandInput_var.tooltipDescription = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = textBoxCommandInput_var->tooltipDescription();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = textBoxCommandInput_var->tooltipDescription(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    }
+  }
+}

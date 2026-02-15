@@ -1,0 +1,632 @@
+{
+  "id": "BaseFeature",
+  "title": "BaseFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/BaseFeature.h",
+  "description": "The BaseFeature class represents a direct edit feature within a parametric design.",
+  "parent_class": "Feature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    },
+    {
+      "name": "finishEdit",
+      "description": "Exits from edit mode in the user-interface. If this base feature in not in edit mode, then nothing happens."
+    },
+    {
+      "name": "startEdit",
+      "description": "Set the user-interface so that the base body is in edit mode."
+    },
+    {
+      "name": "updateBody",
+      "description": "Update an existing source BRepBody created by this BaseFeature. The input BRepBody definition will be copied into the existing BRepBody."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "constructionAxes",
+      "description": "Returns an array of the construction axes associated with this base feature."
+    },
+    {
+      "name": "constructionPlanes",
+      "description": "Returns an array of the construction planes associated with this base feature."
+    },
+    {
+      "name": "constructionPoints",
+      "description": "Returns an array of the construction points associated with this base feature."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "meshBodies",
+      "description": "Returns an array of the mesh bodies associated with this base feature."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "sketches",
+      "description": "Returns an array of the sketches associated with this base feature."
+    },
+    {
+      "name": "sourceBodies",
+      "description": "Returns the B-Rep bodies owned by the base feature.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. The result bodies can be obtained by using the bodies property of the BaseFeature object.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "BaseFeature Sample",
+      "description": "Creates a new base feature."
+    }
+  ],
+  "version": "Introduced in version September 2015",
+  "property_details": {
+    "assemblyContext": {
+      "id": "BaseFeature_assemblyContext",
+      "title": "BaseFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = baseFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "attributes": {
+      "id": "BaseFeature_attributes",
+      "title": "BaseFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = baseFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "baseFeature": {
+      "id": "BaseFeature_baseFeature",
+      "title": "BaseFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = baseFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "bodies": {
+      "id": "BaseFeature_bodies",
+      "title": "BaseFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = baseFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "constructionAxes": {
+      "id": "BaseFeature_constructionAxes",
+      "title": "BaseFeature.constructionAxes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Returns an array of the construction axes associated with this base feature.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.constructionAxes",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = baseFeature_var->constructionAxes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "constructionPlanes": {
+      "id": "BaseFeature_constructionPlanes",
+      "title": "BaseFeature.constructionPlanes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Returns an array of the construction planes associated with this base feature.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.constructionPlanes",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = baseFeature_var->constructionPlanes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "constructionPoints": {
+      "id": "BaseFeature_constructionPoints",
+      "title": "BaseFeature.constructionPoints Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Returns an array of the construction points associated with this base feature.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.constructionPoints",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = baseFeature_var->constructionPoints();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "entityToken": {
+      "id": "BaseFeature_entityToken",
+      "title": "BaseFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = baseFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "errorOrWarningMessage": {
+      "id": "BaseFeature_errorOrWarningMessage",
+      "title": "BaseFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = baseFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "faces": {
+      "id": "BaseFeature_faces",
+      "title": "BaseFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = baseFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "healthState": {
+      "id": "BaseFeature_healthState",
+      "title": "BaseFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = baseFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "isParametric": {
+      "id": "BaseFeature_isParametric",
+      "title": "BaseFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = baseFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "isSuppressed": {
+      "id": "BaseFeature_isSuppressed",
+      "title": "BaseFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.isSuppressed\n\n# Set the value of the property.\nbaseFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = baseFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = baseFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "isValid": {
+      "id": "BaseFeature_isValid",
+      "title": "BaseFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = baseFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "linkedFeatures": {
+      "id": "BaseFeature_linkedFeatures",
+      "title": "BaseFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = baseFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "meshBodies": {
+      "id": "BaseFeature_meshBodies",
+      "title": "BaseFeature.meshBodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Returns an array of the mesh bodies associated with this base feature.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.meshBodies",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = baseFeature_var->meshBodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "name": {
+      "id": "BaseFeature_name",
+      "title": "BaseFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.name\n\n# Set the value of the property.\nbaseFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = baseFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = baseFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "nativeObject": {
+      "id": "BaseFeature_nativeObject",
+      "title": "BaseFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = baseFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version January 2021"
+    },
+    "objectType": {
+      "id": "BaseFeature_objectType",
+      "title": "BaseFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = baseFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "parentComponent": {
+      "id": "BaseFeature_parentComponent",
+      "title": "BaseFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = baseFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    },
+    "sketches": {
+      "id": "BaseFeature_sketches",
+      "title": "BaseFeature.sketches Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Returns an array of the sketches associated with this base feature.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.sketches",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = baseFeature_var->sketches();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "sourceBodies": {
+      "id": "BaseFeature_sourceBodies",
+      "title": "BaseFeature.sourceBodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Returns the B-Rep bodies owned by the base feature. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. The result bodies can be obtained by using the bodies property of the BaseFeature object. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.sourceBodies",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = baseFeature_var->sourceBodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "timelineObject": {
+      "id": "BaseFeature_timelineObject",
+      "title": "BaseFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = baseFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = baseFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "BaseFeature_classType",
+      "title": "BaseFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.BaseFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::BaseFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2015"
+    },
+    "createForAssemblyContext": {
+      "id": "BaseFeature_createForAssemblyContext",
+      "title": "BaseFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "returnValue = baseFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = baseFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "BaseFeature",
+      "return_description": "Returns the proxy object or null if this is not the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version January 2021"
+    },
+    "deleteMe": {
+      "id": "BaseFeature_deleteMe",
+      "title": "BaseFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "returnValue = baseFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = baseFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version September 2015"
+    },
+    "dissolve": {
+      "id": "BaseFeature_dissolve",
+      "title": "BaseFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "returnValue = baseFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = baseFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version September 2015"
+    },
+    "finishEdit": {
+      "id": "BaseFeature_finishEdit",
+      "title": "BaseFeature.finishEdit Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Exits from edit mode in the user-interface. If this base feature in not in edit mode, then nothing happens.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "returnValue = baseFeature_var.finishEdit()",
+        "cpp": "#include \n\nreturnValue = baseFeature_var->finishEdit();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "related_samples": [
+        {
+          "name": "BaseFeature Sample",
+          "description": "Creates a new base feature."
+        }
+      ],
+      "version": "Introduced in version May 2016"
+    },
+    "startEdit": {
+      "id": "BaseFeature_startEdit",
+      "title": "BaseFeature.startEdit Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Set the user-interface so that the base body is in edit mode.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "returnValue = baseFeature_var.startEdit()",
+        "cpp": "#include \n\nreturnValue = baseFeature_var->startEdit();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "related_samples": [
+        {
+          "name": "BaseFeature Sample",
+          "description": "Creates a new base feature."
+        }
+      ],
+      "version": "Introduced in version May 2016"
+    },
+    "updateBody": {
+      "id": "BaseFeature_updateBody",
+      "title": "BaseFeature.updateBody Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/BaseFeature.h",
+      "description": "Update an existing source BRepBody created by this BaseFeature. The input BRepBody definition will be copied into the existing BRepBody.",
+      "parent_class": "BaseFeature",
+      "syntax": {
+        "python": "returnValue = baseFeature_var.updateBody(sourceBody, newBody)",
+        "cpp": "#include \n\nreturnValue = baseFeature_var->updateBody(sourceBody, newBody);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the body was updated, or false if the update failed.",
+      "parameters": [
+        {
+          "name": "sourceBody",
+          "type": "BRepBody",
+          "description": "The source BRepBody to update. The source bodies of a BaseFeature are only available from the bodies collection of the BaseFeature when the BaseFeature is in edit mode."
+        },
+        {
+          "name": "newBody",
+          "type": "BRepBody",
+          "description": "The BRepBody whose definition will be used to replace the existing source body's definition."
+        }
+      ],
+      "version": "Introduced in version January 2021"
+    }
+  }
+}

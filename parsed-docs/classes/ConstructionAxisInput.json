@@ -1,0 +1,371 @@
+{
+  "id": "ConstructionAxisInput",
+  "title": "ConstructionAxisInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Construction/ConstructionAxisInput.h",
+  "description": "A ConstructionAxisInput is a throwaway object used to create a ConstructionAxis The usage pattern is: a. create a ConstructionAxisInput (ConstructionAxes.CreateInput) b. call one of the member functions to specify how the ConstructionAxis is created c. create the ConstructionAxis (call ConstructionAxes.Add) d. stop referencing the ConstructionAxisInput (so it gets deleted).",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "setByCircularFace",
+      "description": "This input method is for creating an axis coincident with the axis of a cylindrical, conical or torus face.   This can result in a parametric or non-parametric construction axis depending on whether the parent component is parametric or is a direct edit component."
+    },
+    {
+      "name": "setByEdge",
+      "description": "This input method is for creating a construction axis from a specified linear/circular edge or sketch curve. This can result in a parametric or non-parametric construction axis depending on whether the parent component is parametric or is a direct edit component."
+    },
+    {
+      "name": "setByLine",
+      "description": "This input method is for creating a non-parametric construction axis whose position in space is defined by an InfiniteLine3D object.   This method of defining a construction axis is only valid when working in the direct modeling mode. This is not valid when working in the parametric modeling mode and will fail."
+    },
+    {
+      "name": "setByNormalToFaceAtPoint",
+      "description": "This input method if for creating a construction axis normal to a specified face or sketch profile and that passes through a specified point. This can result in a parametric or non-parametric construction axis depending on whether the parent component is parametric or is a direct edit component."
+    },
+    {
+      "name": "setByPerpendicularAtPoint",
+      "description": "This input method is for creating an axis that is normal to a face at a specified point."
+    },
+    {
+      "name": "setByTwoPlanes",
+      "description": "This input method is for creating a construction axis coincident with the intersection of two planes or planar faces. This will fail if the two planes are parallel. This can result in a parametric or non-parametric construction axis depending on whether the parent component is parametric or is a direct edit component."
+    },
+    {
+      "name": "setByTwoPoints",
+      "description": "This input method is for creating a construction axis that passes through the two points (work points, sketch points or vertices). This will fail if the two points are coincident. This can result in a parametric or non-parametric construction axis depending on whether the parent component is parametric or is a direct edit component."
+    }
+  ],
+  "properties": [
+    {
+      "name": "creationOccurrence",
+      "description": "In order for geometry to be transformed correctly, an Occurrence for creation needs to be specified when the ConstructionAxis is created based on geometry (e.g. a straight edge) in another component AND (the ConstructionAxis) is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI"
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "targetBaseOrFormFeature",
+      "description": "When creating a construction axis that is owned by a base or form feature, set this property to the base or form feature you want to associate the new construction plane with. By default, this is null, meaning it will not be associated with a base or form feature.   Because of a current limitation, if you want to create a construction axis associated with a base or form feature, you must set this property AND call the startEdit method of the base or form feature, create the feature, and then call the finishEdit method of the base or form feature. The base or form feature must be in an \"edit\" state to be able to add any additional items to it."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Construction Axis API Sample",
+      "description": "Demonstrates creating construction axis in various ways."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "classType": {
+      "id": "ConstructionAxisInput_classType",
+      "title": "ConstructionAxisInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionAxisInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ConstructionAxisInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ConstructionAxisInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ConstructionAxisInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "setByCircularFace": {
+      "id": "ConstructionAxisInput_setByCircularFace",
+      "title": "ConstructionAxisInput.setByCircularFace Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionAxisInput.h",
+      "description": "This input method is for creating an axis coincident with the axis of a cylindrical, conical or torus face. This can result in a parametric or non-parametric construction axis depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionAxisInput",
+      "syntax": {
+        "python": "returnValue = constructionAxisInput_var.setByCircularFace(circularFace)",
+        "cpp": "#include \n\nreturnValue = constructionAxisInput_var->setByCircularFace(circularFace);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionAxisInput is successful.",
+      "parameters": [
+        {
+          "name": "circularFace",
+          "type": "BRepFace",
+          "description": "The face from a cylinder, cone, or torus."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Axis API Sample",
+          "description": "Demonstrates creating construction axis in various ways."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByEdge": {
+      "id": "ConstructionAxisInput_setByEdge",
+      "title": "ConstructionAxisInput.setByEdge Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionAxisInput.h",
+      "description": "This input method is for creating a construction axis from a specified linear/circular edge or sketch curve. This can result in a parametric or non-parametric construction axis depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionAxisInput",
+      "syntax": {
+        "python": "returnValue = constructionAxisInput_var.setByEdge(edgeEntity)",
+        "cpp": "#include \n\nreturnValue = constructionAxisInput_var->setByEdge(edgeEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionAxisInput is successful.",
+      "parameters": [
+        {
+          "name": "edgeEntity",
+          "type": "Base",
+          "description": "A linear/circular edge, construction line, or sketch line"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Axis API Sample",
+          "description": "Demonstrates creating construction axis in various ways."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByLine": {
+      "id": "ConstructionAxisInput_setByLine",
+      "title": "ConstructionAxisInput.setByLine Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionAxisInput.h",
+      "description": "This input method is for creating a non-parametric construction axis whose position in space is defined by an InfiniteLine3D object. This method of defining a construction axis is only valid when working in the direct modeling mode. This is not valid when working in the parametric modeling mode and will fail.",
+      "parent_class": "ConstructionAxisInput",
+      "syntax": {
+        "python": "returnValue = constructionAxisInput_var.setByLine(line)",
+        "cpp": "#include \n\nreturnValue = constructionAxisInput_var->setByLine(line);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionAxisInput is successful.",
+      "parameters": [
+        {
+          "name": "line",
+          "type": "InfiniteLine3D",
+          "description": "An InFiniteLine3D object"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Axis API Sample",
+          "description": "Demonstrates creating construction axis in various ways."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByNormalToFaceAtPoint": {
+      "id": "ConstructionAxisInput_setByNormalToFaceAtPoint",
+      "title": "ConstructionAxisInput.setByNormalToFaceAtPoint Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionAxisInput.h",
+      "description": "This input method if for creating a construction axis normal to a specified face or sketch profile and that passes through a specified point. This can result in a parametric or non-parametric construction axis depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionAxisInput",
+      "syntax": {
+        "python": "returnValue = constructionAxisInput_var.setByNormalToFaceAtPoint(face, pointEntity)",
+        "cpp": "#include \n\nreturnValue = constructionAxisInput_var->setByNormalToFaceAtPoint(face, pointEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionAxisInput is successful.",
+      "parameters": [
+        {
+          "name": "face",
+          "type": "BRepFace",
+          "description": "The face (BRepFace object) to create the axis normal to."
+        },
+        {
+          "name": "pointEntity",
+          "type": "Base",
+          "description": "A construction point, sketch point or vertex the axis passes through. This point does not have to lie on the face."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Axis API Sample",
+          "description": "Demonstrates creating construction axis in various ways."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByPerpendicularAtPoint": {
+      "id": "ConstructionAxisInput_setByPerpendicularAtPoint",
+      "title": "ConstructionAxisInput.setByPerpendicularAtPoint Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionAxisInput.h",
+      "description": "This input method is for creating an axis that is normal to a face at a specified point.",
+      "parent_class": "ConstructionAxisInput",
+      "syntax": {
+        "python": "returnValue = constructionAxisInput_var.setByPerpendicularAtPoint(face, pointEntity)",
+        "cpp": "#include \n\nreturnValue = constructionAxisInput_var->setByPerpendicularAtPoint(face, pointEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionAxisInput is successful.",
+      "parameters": [
+        {
+          "name": "face",
+          "type": "BRepFace",
+          "description": "A face (BRepFace object) to create the axis normal to."
+        },
+        {
+          "name": "pointEntity",
+          "type": "Base",
+          "description": "A construction point, sketch point or vertex the axis is to pass through."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Axis API Sample",
+          "description": "Demonstrates creating construction axis in various ways."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByTwoPlanes": {
+      "id": "ConstructionAxisInput_setByTwoPlanes",
+      "title": "ConstructionAxisInput.setByTwoPlanes Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionAxisInput.h",
+      "description": "This input method is for creating a construction axis coincident with the intersection of two planes or planar faces. This will fail if the two planes are parallel. This can result in a parametric or non-parametric construction axis depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionAxisInput",
+      "syntax": {
+        "python": "returnValue = constructionAxisInput_var.setByTwoPlanes(planarEntityOne, planarEntityTwo)",
+        "cpp": "#include \n\nreturnValue = constructionAxisInput_var->setByTwoPlanes(planarEntityOne, planarEntityTwo);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionAxisInput is successful.",
+      "parameters": [
+        {
+          "name": "planarEntityOne",
+          "type": "Base",
+          "description": "The first planar face or construction plane to intersect"
+        },
+        {
+          "name": "planarEntityTwo",
+          "type": "Base",
+          "description": "The second planar face or construction plane to intersect"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Axis API Sample",
+          "description": "Demonstrates creating construction axis in various ways."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByTwoPoints": {
+      "id": "ConstructionAxisInput_setByTwoPoints",
+      "title": "ConstructionAxisInput.setByTwoPoints Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionAxisInput.h",
+      "description": "This input method is for creating a construction axis that passes through the two points (work points, sketch points or vertices). This will fail if the two points are coincident. This can result in a parametric or non-parametric construction axis depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionAxisInput",
+      "syntax": {
+        "python": "returnValue = constructionAxisInput_var.setByTwoPoints(pointEntityOne, pointEntityTwo)",
+        "cpp": "#include \n\nreturnValue = constructionAxisInput_var->setByTwoPoints(pointEntityOne, pointEntityTwo);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionAxisInput is successful.",
+      "parameters": [
+        {
+          "name": "pointEntityOne",
+          "type": "Base",
+          "description": "The first construction point, sketch point or vertex the axis passes through"
+        },
+        {
+          "name": "pointEntityTwo",
+          "type": "Base",
+          "description": "The second construction point, sketch point or vertex the axis passes through"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Axis API Sample",
+          "description": "Demonstrates creating construction axis in various ways."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "creationOccurrence": {
+      "id": "ConstructionAxisInput_creationOccurrence",
+      "title": "ConstructionAxisInput.creationOccurrence Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionAxisInput.h",
+      "description": "In order for geometry to be transformed correctly, an Occurrence for creation needs to be specified when the ConstructionAxis is created based on geometry (e.g. a straight edge) in another component AND (the ConstructionAxis) is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI",
+      "parent_class": "ConstructionAxisInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionAxisInput_var.creationOccurrence\n\n# Set the value of the property.\nconstructionAxisInput_var.creationOccurrence = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionAxisInput_var->creationOccurrence();\n\n// Set the value of the property, where value_var is an Occurrence.\nbool returnValue = constructionAxisInput_var->creationOccurrence(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "ConstructionAxisInput_isValid",
+      "title": "ConstructionAxisInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionAxisInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ConstructionAxisInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionAxisInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = constructionAxisInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "ConstructionAxisInput_objectType",
+      "title": "ConstructionAxisInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionAxisInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ConstructionAxisInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionAxisInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = constructionAxisInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "targetBaseOrFormFeature": {
+      "id": "ConstructionAxisInput_targetBaseOrFormFeature",
+      "title": "ConstructionAxisInput.targetBaseOrFormFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionAxisInput.h",
+      "description": "When creating a construction axis that is owned by a base or form feature, set this property to the base or form feature you want to associate the new construction plane with. By default, this is null, meaning it will not be associated with a base or form feature. Because of a current limitation, if you want to create a construction axis associated with a base or form feature, you must set this property AND call the startEdit method of the base or form feature, create the feature, and then call the finishEdit method of the base or form feature. The base or form feature must be in an \"edit\" state to be able to add any additional items to it.",
+      "parent_class": "ConstructionAxisInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionAxisInput_var.targetBaseOrFormFeature\n\n# Set the value of the property.\nconstructionAxisInput_var.targetBaseOrFormFeature = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionAxisInput_var->targetBaseOrFormFeature();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = constructionAxisInput_var->targetBaseOrFormFeature(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    }
+  }
+}

@@ -1,0 +1,310 @@
+{
+  "id": "Timeline",
+  "title": "Timeline Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Fusion/Timeline.h",
+  "description": "A collection of TimelineObjects in a parametric design.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteAllAfterMarker",
+      "description": "Deletes all objects in the timeline that are after the current position of the marker."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified item in the timeline using an index into the collection. The items are returned in the order they appear in the timeline."
+    },
+    {
+      "name": "moveToBeginning",
+      "description": "Moves the marker to the beginning of the timeline."
+    },
+    {
+      "name": "moveToEnd",
+      "description": "Moves the marker to the end of the timeline."
+    },
+    {
+      "name": "movetoNextStep",
+      "description": "Moves the marker to the next step in the timeline."
+    },
+    {
+      "name": "moveToPreviousStep",
+      "description": "Moves the marker to the previous step in the timeline."
+    },
+    {
+      "name": "play",
+      "description": "Plays the timeline beginning at the current position of the marker."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of items in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "markerPosition",
+      "description": "Gets and sets the current position of the marker where 0 is at the beginning of the timeline and the value of Timeline.count is the end of the timeline."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "timelineGroups",
+      "description": "Returns the collection of groups within the timeline."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Extrude Feature API Sample",
+      "description": "Demonstrates creating a new extrude feature."
+    },
+    {
+      "name": "Fillet Feature Edit API Sample",
+      "description": "Demonstrates editing a fillet feature. To successfully run this sample you can use this Ruled Surface Feature API Sample"
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "classType": {
+      "id": "Timeline_classType",
+      "title": "Timeline.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Timeline.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "Timeline",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.Timeline.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::Timeline::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "deleteAllAfterMarker": {
+      "id": "Timeline_deleteAllAfterMarker",
+      "title": "Timeline.deleteAllAfterMarker Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Timeline.h",
+      "description": "Deletes all objects in the timeline that are after the current position of the marker.",
+      "parent_class": "Timeline",
+      "syntax": {
+        "python": "returnValue = timeline_var.deleteAllAfterMarker()",
+        "cpp": "#include \n\nreturnValue = timeline_var->deleteAllAfterMarker();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "version": "Introduced in version January 2016"
+    },
+    "item": {
+      "id": "Timeline_item",
+      "title": "Timeline.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Timeline.h",
+      "description": "Function that returns the specified item in the timeline using an index into the collection. The items are returned in the order they appear in the timeline.",
+      "parent_class": "Timeline",
+      "syntax": {
+        "python": "returnValue = timeline_var.item(index)",
+        "cpp": "#include \n\nreturnValue = timeline_var->item(index);"
+      },
+      "return_type": "TimelineObject",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Extrude Feature API Sample",
+          "description": "Demonstrates creating a new extrude feature."
+        },
+        {
+          "name": "Ruled Surface Feature API Sample",
+          "description": "Demonstrates creating a new ruled surface feature."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "moveToBeginning": {
+      "id": "Timeline_moveToBeginning",
+      "title": "Timeline.moveToBeginning Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Timeline.h",
+      "description": "Moves the marker to the beginning of the timeline.",
+      "parent_class": "Timeline",
+      "syntax": {
+        "python": "returnValue = timeline_var.moveToBeginning()",
+        "cpp": "#include \n\nreturnValue = timeline_var->moveToBeginning();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the move is successful",
+      "version": "Introduced in version August 2014"
+    },
+    "moveToEnd": {
+      "id": "Timeline_moveToEnd",
+      "title": "Timeline.moveToEnd Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Timeline.h",
+      "description": "Moves the marker to the end of the timeline.",
+      "parent_class": "Timeline",
+      "syntax": {
+        "python": "returnValue = timeline_var.moveToEnd()",
+        "cpp": "#include \n\nreturnValue = timeline_var->moveToEnd();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the move is successful",
+      "related_samples": [
+        {
+          "name": "Extrude Feature API Sample",
+          "description": "Demonstrates creating a new extrude feature."
+        },
+        {
+          "name": "Fillet Feature Edit API Sample",
+          "description": "Demonstrates editing a fillet feature. To successfully run this sample you can use this Ruled Surface Feature API Sample"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "moveToPreviousStep": {
+      "id": "Timeline_moveToPreviousStep",
+      "title": "Timeline.moveToPreviousStep Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Timeline.h",
+      "description": "Moves the marker to the previous step in the timeline.",
+      "parent_class": "Timeline",
+      "syntax": {
+        "python": "returnValue = timeline_var.moveToPreviousStep()",
+        "cpp": "#include \n\nreturnValue = timeline_var->moveToPreviousStep();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the move is successful",
+      "version": "Introduced in version August 2014"
+    },
+    "movetoNextStep": {
+      "id": "Timeline_movetoNextStep",
+      "title": "Timeline.movetoNextStep Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Timeline.h",
+      "description": "Moves the marker to the next step in the timeline.",
+      "parent_class": "Timeline",
+      "syntax": {
+        "python": "returnValue = timeline_var.movetoNextStep()",
+        "cpp": "#include \n\nreturnValue = timeline_var->movetoNextStep();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the move is successful",
+      "version": "Introduced in version August 2014"
+    },
+    "play": {
+      "id": "Timeline_play",
+      "title": "Timeline.play Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Timeline.h",
+      "description": "Plays the timeline beginning at the current position of the marker.",
+      "parent_class": "Timeline",
+      "syntax": {
+        "python": "returnValue = timeline_var.play()",
+        "cpp": "#include \n\nreturnValue = timeline_var->play();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if playing the timeline was successful",
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "Timeline_count",
+      "title": "Timeline.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Timeline.h",
+      "description": "Returns the number of items in the collection.",
+      "parent_class": "Timeline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = timeline_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = timeline_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "Timeline_isValid",
+      "title": "Timeline.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Timeline.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "Timeline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = timeline_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = timeline_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "markerPosition": {
+      "id": "Timeline_markerPosition",
+      "title": "Timeline.markerPosition Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Timeline.h",
+      "description": "Gets and sets the current position of the marker where 0 is at the beginning of the timeline and the value of Timeline.count is the end of the timeline.",
+      "parent_class": "Timeline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = timeline_var.markerPosition\n\n# Set the value of the property.\ntimeline_var.markerPosition = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = timeline_var->markerPosition();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = timeline_var->markerPosition(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "Timeline_objectType",
+      "title": "Timeline.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Timeline.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "Timeline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = timeline_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = timeline_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "timelineGroups": {
+      "id": "Timeline_timelineGroups",
+      "title": "Timeline.timelineGroups Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/Timeline.h",
+      "description": "Returns the collection of groups within the timeline.",
+      "parent_class": "Timeline",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = timeline_var.timelineGroups",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = timeline_var->timelineGroups();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

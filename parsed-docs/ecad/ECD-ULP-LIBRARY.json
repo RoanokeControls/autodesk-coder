@@ -1,0 +1,59 @@
+{
+  "id": "ECD-ULP-LIBRARY",
+  "title": "UL_LIBRARY",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "editable",
+      "type": "int (see note)"
+    },
+    {
+      "name": "description",
+      "type": "string (see note)"
+    },
+    {
+      "name": "grid",
+      "type": "UL_GRID"
+    },
+    {
+      "name": "headline",
+      "type": "string"
+    },
+    {
+      "name": "id",
+      "type": "string (see note)"
+    },
+    {
+      "name": "name",
+      "type": "string (LIBRARY_NAME_LENGTH, see note)"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "devices()",
+      "type": "UL_DEVICE"
+    },
+    {
+      "name": "devicesets()",
+      "type": "UL_DEVICESET"
+    },
+    {
+      "name": "layers()",
+      "type": "UL_LAYER"
+    },
+    {
+      "name": "footprints()",
+      "type": "UL_FOOTPRINT (new as of EAGLE 9.1, see note)"
+    },
+    {
+      "name": "packages3d()",
+      "type": "UL_PACKAGE3D"
+    },
+    {
+      "name": "symbols()",
+      "type": "UL_SYMBOL"
+    }
+  ],
+  "content": "# UL_LIBRARY\n\n## Data members\n\n| | |\n| --- | --- |\n| editable | int (see note) |\n| description | string (see note) |\n| grid | UL_GRID |\n| headline | string |\n| id | string (see note) |\n| name | string (LIBRARY_NAME_LENGTH, see note) |\n\n## Loop members\n\n| | |\n| --- | --- |\n| devices() | UL_DEVICE |\n| devicesets() | UL_DEVICESET |\n| layers() | UL_LAYER |\n| footprints() | UL_FOOTPRINT (new as of EAGLE 9.1, see note) |\n| packages3d() | UL_PACKAGE3D |\n| symbols() | UL_SYMBOL |\n\n## Constants\n\n| | |\n| --- | --- |\n| LIBRARY_NAME_LENGTH | max. recommended length of a library name (used in formatted output only) |\n\nThe *devices()* member loops through all the package variants and technologies of all UL_DEVICESETs in the library, thus resulting in all the actual device variations available. The *devicesets()* member only loops through the UL_DEVICESETs, which in turn can be queried for their UL_DEVICE members.\n\n## Note\n\nThe *footprints()* member is new as of EAGLE 9.1. For backwards compatibility with previous EAGLE versions, packages() is available as an alias.\n\nThe *description* member returns the complete descriptive text as defined with the DESCRIPTION command, while the headline member returns only the first line of the description, without any HTML tags. When using the description text keep in mind that it may contain newline characters ('\\n'). The description and headline information is only available within a library drawing, not if the library is derived form a UL_BOARD or UL_SCHEMATIC context.\n\nIf the library is derived form a UL_BOARD or UL_SCHEMATIC context, *name* returns the pure library name (without path or extension). Otherwise, it returns the full library file name.\n\nThe *id* member is only applicable if this UL_LIBRARY refers to a managed library. If not, id will be the empty string.\n\nThe *editable* member returns the value 1, if the library is editable by the user (the user owns the library). Otherwise it returns 0.\n\n## Example\n\n```\nlibrary(L) {\n L.devices(D) printf(\"Dev: %s\\n\", D.name);\n L.devicesets(D) printf(\"Dev: %s\\n\", D.name);\n L.footprints(F) printf(\"Fpt: %s\\n\", F.name);\n L.packages3d(P) printf(\"3dp: %s\\n\", P.name);\n L.symbols(S) printf(\"Sym: %s\\n\", S.name);\n }\nschematic(S) {\n S.libraries(L) printf(\"Library: %s\\n\", L.name);\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

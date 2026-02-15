@@ -1,0 +1,239 @@
+{
+  "id": "SplitFaceFeatures",
+  "title": "SplitFaceFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/SplitFaceFeatures.h",
+  "description": "Collection that provides access to all of the existing split face features in a component and supports the ability to create new split face features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new split face feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a SplitFaceFeatureInput object. Use properties and methods on this object to define the split face you want to create and then use the Add method, passing in the SplitFaceFeatureInput object.   A newly created SplitFaceFeatureInput object defaults to creating a split face feature using the \"Split with Surface\" option. You can use functions on the SplitFaceFeatureInput object to define a different type of split type."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified split face feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified split face feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of split face features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Split Face Feature API Sample",
+      "description": "Demonstrates creating a new split face feature."
+    }
+  ],
+  "version": "Introduced in version June 2015",
+  "method_details": {
+    "add": {
+      "id": "SplitFaceFeatures_add",
+      "title": "SplitFaceFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitFaceFeatures.h",
+      "description": "Creates a new split face feature.",
+      "parent_class": "SplitFaceFeatures",
+      "syntax": {
+        "python": "returnValue = splitFaceFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = splitFaceFeatures_var->add(input);"
+      },
+      "return_type": "SplitFaceFeature",
+      "return_description": "Returns the newly created SplitFaceFeature object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "SplitFaceFeatureInput",
+          "description": "A SplitFaceFeatureInput object that defines the desired split face feature. Use the createInput method to create a new SplitFaceFeatureInput object and then use methods on it (the SplitFaceFeatureInput object) to define the split face."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "splitFaceFeatures.add",
+          "description": "Demonstrates the splitFaceFeatures.add method by spliting a face with another intersecting face."
+        },
+        {
+          "name": "Split Face Feature API Sample",
+          "description": "Demonstrates creating a new split face feature."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "classType": {
+      "id": "SplitFaceFeatures_classType",
+      "title": "SplitFaceFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitFaceFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SplitFaceFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.SplitFaceFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::SplitFaceFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version June 2015"
+    },
+    "createInput": {
+      "id": "SplitFaceFeatures_createInput",
+      "title": "SplitFaceFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitFaceFeatures.h",
+      "description": "Creates a SplitFaceFeatureInput object. Use properties and methods on this object to define the split face you want to create and then use the Add method, passing in the SplitFaceFeatureInput object. A newly created SplitFaceFeatureInput object defaults to creating a split face feature using the \"Split with Surface\" option. You can use functions on the SplitFaceFeatureInput object to define a different type of split type.",
+      "parent_class": "SplitFaceFeatures",
+      "syntax": {
+        "python": "returnValue = splitFaceFeatures_var.createInput(facesToSplit, splittingTool, isSplittingToolExtended)",
+        "cpp": "#include \n\nreturnValue = splitFaceFeatures_var->createInput(facesToSplit, splittingTool, isSplittingToolExtended);"
+      },
+      "return_type": "SplitFaceFeatureInput",
+      "return_description": "Returns the newly created SplitFaceFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "facesToSplit",
+          "type": "ObjectCollection",
+          "description": "Input the faces to be split. The collection can contain one or more faces from solid and/or open bodies."
+        },
+        {
+          "name": "splittingTool",
+          "type": "Base",
+          "description": "Input entity(s) that defines the splitting tool. The splitting tool can be a single entity or an ObjectCollection containing solid and/or open bodies, construction planes, faces, or sketch curves that partially or fully intersect the faces that are being split."
+        },
+        {
+          "name": "isSplittingToolExtended",
+          "type": "boolean",
+          "description": "A boolean value for setting whether or not the splittingTool is to be automatically extended (if possible) so as to completely intersect the faces that are to be split. This is only used when the split type is \"split with surface\" which is the default type when a new createInput is created. Use functions on the returned SplitFaceFeatureInput to define a different type of split type."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "splitFaceFeatures.add",
+          "description": "Demonstrates the splitFaceFeatures.add method by spliting a face with another intersecting face."
+        },
+        {
+          "name": "Split Face Feature API Sample",
+          "description": "Demonstrates creating a new split face feature."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "item": {
+      "id": "SplitFaceFeatures_item",
+      "title": "SplitFaceFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitFaceFeatures.h",
+      "description": "Function that returns the specified split face feature using an index into the collection.",
+      "parent_class": "SplitFaceFeatures",
+      "syntax": {
+        "python": "returnValue = splitFaceFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = splitFaceFeatures_var->item(index);"
+      },
+      "return_type": "SplitFaceFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "itemByName": {
+      "id": "SplitFaceFeatures_itemByName",
+      "title": "SplitFaceFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitFaceFeatures.h",
+      "description": "Function that returns the specified split face feature using the name of the feature.",
+      "parent_class": "SplitFaceFeatures",
+      "syntax": {
+        "python": "returnValue = splitFaceFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = splitFaceFeatures_var->itemByName(name);"
+      },
+      "return_type": "SplitFaceFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "SplitFaceFeatures_count",
+      "title": "SplitFaceFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitFaceFeatures.h",
+      "description": "The number of split face features in the collection.",
+      "parent_class": "SplitFaceFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitFaceFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = splitFaceFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isValid": {
+      "id": "SplitFaceFeatures_isValid",
+      "title": "SplitFaceFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitFaceFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SplitFaceFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitFaceFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = splitFaceFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "objectType": {
+      "id": "SplitFaceFeatures_objectType",
+      "title": "SplitFaceFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/SplitFaceFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SplitFaceFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = splitFaceFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = splitFaceFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    }
+  }
+}

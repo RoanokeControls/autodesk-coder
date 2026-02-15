@@ -1,0 +1,26 @@
+{
+  "id": "ECD-ULP-VARIANT",
+  "title": "UL_VARIANT",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "populate",
+      "type": "int (0=do not populate, 1=populate)"
+    },
+    {
+      "name": "value",
+      "type": "string"
+    },
+    {
+      "name": "technology",
+      "type": "string"
+    },
+    {
+      "name": "variantdef",
+      "type": "UL_VARIANTDEF"
+    }
+  ],
+  "loop_members": [],
+  "content": "# UL_VARIANT\n\n## Data members\n\n| | |\n| --- | --- |\n| populate | int (0=do not populate, 1=populate) |\n| value | string |\n| technology | string |\n| variantdef | UL_VARIANTDEF |\n\nSee also UL_VARIANTDEF, UL_PART, variant()\n\n## Example\n\n```\nschematic(SCH) {\n printf(\"Defined assembly variants:\\n\");\n SCH.variantdefs(VD) {\n printf(\"\\t'%s'\\n\", VD.name);\n }\n printf(\"\\n\");\n printf(\"Part\\tVariantdef\\tValue\\tTechn.\\tPopulated\\n\");\n SCH.parts(P) {\n printf(\"%s\\t%s\\t%s\\t%s\\t%s\\n\", P.name, \"default\", P.value, P.device.activetechnology, \"yes\");\n P.variants(V) {\n printf(\"%s\\t%s\\t%s\\t%s\\t%s\\n\", P.name, V.variantdef.name, V.value, V.technology, V.populate ? \"yes\" : \"no\");\n }\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

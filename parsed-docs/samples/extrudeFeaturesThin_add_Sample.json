@@ -1,0 +1,12 @@
+{
+  "id": "extrudeFeaturesThin_add_Sample",
+  "title": "extrudeFeatures.add using thin extrude",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the extrudeFeatures.add method using the setThinExtrude method. To use this sample have a design open that contains a sketch with a profile. When you run the script you will be prompted to select the profile that will be used to create the thin extrusion.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_extrudeFeaturesThin_add(rootComp: adsk.fusion.Design.rootComponent):\n    # Have the profile selected.\n    filter =  adsk.core.SelectionCommandInput.Profiles\n    profile = _ui.selectEntity('Select a profile', filter).entity\n\n    # Define the required input.\n    extrudeFeatures = rootComp.features.extrudeFeatures\n    operation = adsk.fusion.FeatureOperations.NewBodyFeatureOperation\n    input = extrudeFeatures.createInput(profile, operation)\n    wallLocation = adsk.fusion.ThinExtrudeWallLocation.Center\n    wallThickness = adsk.core.ValueInput.createByString(\"2 mm\")\n    input.setThinExtrude(wallLocation, wallThickness)\n    distance = adsk.core.ValueInput.createByString(\"100 mm\")\n    isFullLength = True\n    input.setSymmetricExtent(distance, isFullLength)\n\n    # Create the feature.\n    extrudeFeature = extrudeFeatures.add(input)"
+  }
+}

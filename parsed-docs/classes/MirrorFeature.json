@@ -1,0 +1,567 @@
+{
+  "id": "MirrorFeature",
+  "title": "MirrorFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/MirrorFeature.h",
+  "description": "Object that represents an existing mirror feature in a design.",
+  "parent_class": "Feature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "inputEntities",
+      "description": "Gets and sets the entities that are mirrored. It can contain faces, features, bodies, or components. The input must all be of a single type. For example, you can't provide a body and a component but the collection must be either all bodies or all components.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isCombine",
+      "description": "Gets and sets whether combine is set when doing the Mirror. When true, the mirrored geometry will be Boolean unioned with the original solid or surface body(s) when they connect within the stitch tolerance defined with the stitchTolerance property. If the bodies cannot be unioned or stitched the result will be separate bodies.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "mirrorPlane",
+      "description": "Gets and sets the mirror plane. This can be either a planar face or construction plane. This works only for parametric features.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "patternComputeOption",
+      "description": "Gets and sets the compute option for this mirror feature. This property only applies when mirroring features and is ignored in the direct modeling environment.   To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "patternElements",
+      "description": "Gets the PatternElements collection that contains the elements created by this pattern."
+    },
+    {
+      "name": "resultFeatures",
+      "description": "Get the features that were created for this mirror. Returns null in the case where the feature is not parametric."
+    },
+    {
+      "name": "stitchTolerance",
+      "description": "Returns the parameter controlling the Stitch tolerance to use when stitching mirrored surface bodies with the original bodies. You can edit the tolerance by editing the value of the parameter object."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Mirror Feature API Sample",
+      "description": "Demonstrates creating a new mirror feature"
+    }
+  ],
+  "version": "Introduced in version November 2014",
+  "property_details": {
+    "assemblyContext": {
+      "id": "MirrorFeature_assemblyContext",
+      "title": "MirrorFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = mirrorFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "attributes": {
+      "id": "MirrorFeature_attributes",
+      "title": "MirrorFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = mirrorFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "baseFeature": {
+      "id": "MirrorFeature_baseFeature",
+      "title": "MirrorFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = mirrorFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "bodies": {
+      "id": "MirrorFeature_bodies",
+      "title": "MirrorFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = mirrorFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "entityToken": {
+      "id": "MirrorFeature_entityToken",
+      "title": "MirrorFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = mirrorFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "errorOrWarningMessage": {
+      "id": "MirrorFeature_errorOrWarningMessage",
+      "title": "MirrorFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = mirrorFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "faces": {
+      "id": "MirrorFeature_faces",
+      "title": "MirrorFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = mirrorFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "healthState": {
+      "id": "MirrorFeature_healthState",
+      "title": "MirrorFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = mirrorFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2016"
+    },
+    "inputEntities": {
+      "id": "MirrorFeature_inputEntities",
+      "title": "MirrorFeature.inputEntities Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Gets and sets the entities that are mirrored. It can contain faces, features, bodies, or components. The input must all be of a single type. For example, you can't provide a body and a component but the collection must be either all bodies or all components. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.inputEntities\n\n# Set the value of the property.\nmirrorFeature_var.inputEntities = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = mirrorFeature_var->inputEntities();\n\n// Set the value of the property, where value_var is an ObjectCollection.\nbool returnValue = mirrorFeature_var->inputEntities(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isCombine": {
+      "id": "MirrorFeature_isCombine",
+      "title": "MirrorFeature.isCombine Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Gets and sets whether combine is set when doing the Mirror. When true, the mirrored geometry will be Boolean unioned with the original solid or surface body(s) when they connect within the stitch tolerance defined with the stitchTolerance property. If the bodies cannot be unioned or stitched the result will be separate bodies. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.isCombine\n\n# Set the value of the property.\nmirrorFeature_var.isCombine = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = mirrorFeature_var->isCombine();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = mirrorFeature_var->isCombine(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2020"
+    },
+    "isParametric": {
+      "id": "MirrorFeature_isParametric",
+      "title": "MirrorFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = mirrorFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isSuppressed": {
+      "id": "MirrorFeature_isSuppressed",
+      "title": "MirrorFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.isSuppressed\n\n# Set the value of the property.\nmirrorFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = mirrorFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = mirrorFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "isValid": {
+      "id": "MirrorFeature_isValid",
+      "title": "MirrorFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = mirrorFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "linkedFeatures": {
+      "id": "MirrorFeature_linkedFeatures",
+      "title": "MirrorFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = mirrorFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "mirrorPlane": {
+      "id": "MirrorFeature_mirrorPlane",
+      "title": "MirrorFeature.mirrorPlane Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Gets and sets the mirror plane. This can be either a planar face or construction plane. This works only for parametric features. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.mirrorPlane\n\n# Set the value of the property.\nmirrorFeature_var.mirrorPlane = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = mirrorFeature_var->mirrorPlane();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = mirrorFeature_var->mirrorPlane(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "name": {
+      "id": "MirrorFeature_name",
+      "title": "MirrorFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.name\n\n# Set the value of the property.\nmirrorFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = mirrorFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = mirrorFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "nativeObject": {
+      "id": "MirrorFeature_nativeObject",
+      "title": "MirrorFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of its parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = mirrorFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "objectType": {
+      "id": "MirrorFeature_objectType",
+      "title": "MirrorFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = mirrorFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "parentComponent": {
+      "id": "MirrorFeature_parentComponent",
+      "title": "MirrorFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = mirrorFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "patternComputeOption": {
+      "id": "MirrorFeature_patternComputeOption",
+      "title": "MirrorFeature.patternComputeOption Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Gets and sets the compute option for this mirror feature. This property only applies when mirroring features and is ignored in the direct modeling environment. To set this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.patternComputeOption\n\n# Set the value of the property.\nmirrorFeature_var.patternComputeOption = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPatternComputeOptions propertyValue = mirrorFeature_var->patternComputeOption();\n\n// Set the value of the property, where value_var is a PatternComputeOptions.\nbool returnValue = mirrorFeature_var->patternComputeOption(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2015"
+    },
+    "patternElements": {
+      "id": "MirrorFeature_patternElements",
+      "title": "MirrorFeature.patternElements Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Gets the PatternElements collection that contains the elements created by this pattern.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.patternElements",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = mirrorFeature_var->patternElements();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "resultFeatures": {
+      "id": "MirrorFeature_resultFeatures",
+      "title": "MirrorFeature.resultFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Get the features that were created for this mirror. Returns null in the case where the feature is not parametric.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.resultFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = mirrorFeature_var->resultFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    },
+    "stitchTolerance": {
+      "id": "MirrorFeature_stitchTolerance",
+      "title": "MirrorFeature.stitchTolerance Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Returns the parameter controlling the Stitch tolerance to use when stitching mirrored surface bodies with the original bodies. You can edit the tolerance by editing the value of the parameter object.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.stitchTolerance",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = mirrorFeature_var->stitchTolerance();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2020"
+    },
+    "timelineObject": {
+      "id": "MirrorFeature_timelineObject",
+      "title": "MirrorFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = mirrorFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = mirrorFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2014"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "MirrorFeature_classType",
+      "title": "MirrorFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.MirrorFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::MirrorFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version November 2014"
+    },
+    "createForAssemblyContext": {
+      "id": "MirrorFeature_createForAssemblyContext",
+      "title": "MirrorFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "returnValue = mirrorFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = mirrorFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "MirrorFeature",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version November 2014"
+    },
+    "deleteMe": {
+      "id": "MirrorFeature_deleteMe",
+      "title": "MirrorFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "returnValue = mirrorFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = mirrorFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version November 2014"
+    },
+    "dissolve": {
+      "id": "MirrorFeature_dissolve",
+      "title": "MirrorFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/MirrorFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "MirrorFeature",
+      "syntax": {
+        "python": "returnValue = mirrorFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = mirrorFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version November 2014"
+    }
+  }
+}

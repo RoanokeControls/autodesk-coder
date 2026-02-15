@@ -1,0 +1,160 @@
+{
+  "id": "AdditiveSetupUtility",
+  "title": "AdditiveSetupUtility Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/ModifyUtility/AdditiveSetupUtility.h",
+  "description": "AdditiveSetupUtility provides functionality for modifications of additive setups.",
+  "parent_class": "ModifyUtility",
+  "methods": [
+    {
+      "name": "assignPartsToBodyPreset",
+      "description": "Assigns an array of parts to the body preset operation corresponding to the chosen PrintSettingItem in the PrintSetting. If a part has been previously assigned to a different preset (i.e. the default preset), it will be removed from its previous owner to ensure a body can only be mapped to one preset. If the previous owner preset ends up being empty, it will be removed from the setup."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "removeExcessParts",
+      "description": "Remove components from setups, that are outside of the buildroom."
+    },
+    {
+      "name": "splitSupport",
+      "description": "Splits support structure of given target bodies into separate mesh body."
+    }
+  ],
+  "properties": [
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version September 2023",
+  "method_details": {
+    "assignPartsToBodyPreset": {
+      "id": "AdditiveSetupUtility_assignPartsToBodyPreset",
+      "title": "AdditiveSetupUtility.assignPartsToBodyPreset Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/ModifyUtility/AdditiveSetupUtility.h",
+      "description": "Assigns an array of parts to the body preset operation corresponding to the chosen PrintSettingItem in the PrintSetting. If a part has been previously assigned to a different preset (i.e. the default preset), it will be removed from its previous owner to ensure a body can only be mapped to one preset. If the previous owner preset ends up being empty, it will be removed from the setup.",
+      "parent_class": "AdditiveSetupUtility",
+      "syntax": {
+        "python": "returnValue = additiveSetupUtility_var.assignPartsToBodyPreset(parts, presetName)",
+        "cpp": "#include \n\nreturnValue = additiveSetupUtility_var->assignPartsToBodyPreset(parts, presetName);"
+      },
+      "return_type": "Operation",
+      "return_description": "The preset corresponding to the preset name. Returns null if the preset has been removed from the setup due to passing an empty or invalid array.",
+      "parameters": [
+        {
+          "name": "parts",
+          "type": "Base[]",
+          "description": "Parts to be assigned to a preset. The array may contain BRepBody, MeshBody or Occurrence objects. If occurrences are passed in, the preset will contain their resolved bodies or meshes. If the array is empty, the preset will be removed from the setup, but the PrintSettingItem will stay in the PrintSetting."
+        },
+        {
+          "name": "presetName",
+          "type": "string",
+          "description": "The name of the PrintSettingItem defined in the PrintSetting, which serves as the basis for the to be created operation."
+        }
+      ],
+      "version": "Introduced in version July 2024"
+    },
+    "classType": {
+      "id": "AdditiveSetupUtility_classType",
+      "title": "AdditiveSetupUtility.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/ModifyUtility/AdditiveSetupUtility.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "AdditiveSetupUtility",
+      "syntax": {
+        "python": "returnValue = adsk.cam.AdditiveSetupUtility.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::AdditiveSetupUtility::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2023"
+    },
+    "removeExcessParts": {
+      "id": "AdditiveSetupUtility_removeExcessParts",
+      "title": "AdditiveSetupUtility.removeExcessParts Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/ModifyUtility/AdditiveSetupUtility.h",
+      "description": "Remove components from setups, that are outside of the buildroom.",
+      "parent_class": "AdditiveSetupUtility",
+      "syntax": {
+        "python": "returnValue = additiveSetupUtility_var.removeExcessParts()",
+        "cpp": "#include \n\nreturnValue = additiveSetupUtility_var->removeExcessParts();"
+      },
+      "return_type": "integer",
+      "return_description": "Returns count of removed parts on success and -1 on failure.",
+      "version": "Introduced in version January 2024"
+    },
+    "splitSupport": {
+      "id": "AdditiveSetupUtility_splitSupport",
+      "title": "AdditiveSetupUtility.splitSupport Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/ModifyUtility/AdditiveSetupUtility.h",
+      "description": "Splits support structure of given target bodies into separate mesh body.",
+      "parent_class": "AdditiveSetupUtility",
+      "syntax": {
+        "python": "returnValue = additiveSetupUtility_var.splitSupport(targets, splitType)",
+        "cpp": "#include \n\nreturnValue = additiveSetupUtility_var->splitSupport(targets, splitType);"
+      },
+      "return_type": "boolean",
+      "return_description": "True on success, false on errors",
+      "parameters": [
+        {
+          "name": "targets",
+          "type": "Base[]",
+          "description": "Targets contain any input bodies whose support is to be inserted into a new mesh body. Input target must belong to the setup and must be part of the associated manufacturing model. Raises an error if any input target is not part of the setup or is not part of the associated manufacturing model."
+        },
+        {
+          "name": "splitType",
+          "type": "SplitSupportTypes",
+          "description": "The splitType defines the behavior for support that contains solid and open mesh geometry."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    }
+  },
+  "property_details": {
+    "isValid": {
+      "id": "AdditiveSetupUtility_isValid",
+      "title": "AdditiveSetupUtility.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/ModifyUtility/AdditiveSetupUtility.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "AdditiveSetupUtility",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = additiveSetupUtility_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = additiveSetupUtility_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "objectType": {
+      "id": "AdditiveSetupUtility_objectType",
+      "title": "AdditiveSetupUtility.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/ModifyUtility/AdditiveSetupUtility.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "AdditiveSetupUtility",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = additiveSetupUtility_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = additiveSetupUtility_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    }
+  }
+}

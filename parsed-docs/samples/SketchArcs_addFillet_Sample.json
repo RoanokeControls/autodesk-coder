@@ -1,0 +1,12 @@
+{
+  "id": "SketchArcs_addFillet_Sample",
+  "title": "SketchArcs.addFillet",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the SketchArcs.addFillet method.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_Arcs_addFillet(sketch: adsk.fusion.Sketch):\n    # Create two connected lines\n    lines = sketch.sketchCurves.sketchLines\n    startPoint = adsk.core.Point3D.create(0, 0, 0)\n    endPoint = adsk.core.Point3D.create(3, 1, 0)\n    line1 = lines.addByTwoPoints(startPoint, endPoint)\n    line2 = lines.addByTwoPoints(line1.endSketchPoint, adsk.core.Point3D.create(1, 4, 0))\n\n    # Create arc by adding fillet between the two lines\n    arcs = sketch.sketchCurves.sketchArcs\n    arc = arcs.addFillet(line1, line1.endSketchPoint.geometry, line2, line2.startSketchPoint.geometry, 1)"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "SketchChamferSample_Sample",
+  "title": "Sketch Chamfer API Sample",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates creating a new sketch point.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "#Author-Autodesk Inc. \n#Description-Create a sketch chamfer\n\nimport adsk.core, adsk.fusion, traceback\n\ndef run(context):\n    ui = None\n    try:\n        app = adsk.core.Application.get()\n        ui  = app.userInterface\n\n        doc = app.documents.add(adsk.core.DocumentTypes.FusionDesignDocumentType)\n        design = app.activeProduct\n        \n        # Get the root component of the active design.\n        rootComp = design.rootComponent\n\n        # Create a new sketch on the xy plane.\n        sketches = rootComp.sketches\n        xyPlane = rootComp.xYConstructionPlane\n        sketch = sketches.add(xyPlane)\n\n        # Draw two point rectangle.\n        lines = sketch.sketchCurves.sketchLines\n        lineList = lines.addTwoPointRectangle(adsk.core.Point3D.create(0, 0, 0), adsk.core.Point3D.create(5, 5, 0))\n        \n        # Add a distance distance chamfer.\n        line = sketch.sketchCurves.sketchLines.addDistanceChamfer(lineList[0], lineList[0].endSketchPoint.geometry, lineList[1], lineList[1].startSketchPoint.geometry, 1,1)\n        \n        # Add a distance angle chamfer.\n        line = sketch.sketchCurves.sketchLines.addAngleChamfer(lineList[1], lineList[1].endSketchPoint.geometry, lineList[2], lineList[2].startSketchPoint.geometry, 1,1)\n\n    except:\n        if ui:\n            ui.messageBox('Failed:\\n{}'.format(traceback.format_exc()))"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "circularPatternFeatures_add_Sample",
+  "title": "circularPatternFeatures.add",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the circularPatternFeatures.add method. To use the sample have a design open that contains at least one body. When you run the script, it will prompt you to select a body, which will be patterned around the base Y-axis.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_circularPatternFeatures_add(rootComp: adsk.fusion.Design.rootComponent):\n    # Have the body to be pattern selected and add it to a collection.\n    selectedBody = _ui.selectEntity('Select a body', 'Bodies').entity\n    inputEntities = adsk.core.ObjectCollection.create()\n    inputEntities.add(selectedBody)\n\n    # Define the required inputs and create the feature.\n    circularFeats = rootComp.features.circularPatternFeatures\n    yAxis: adsk.core.Base = rootComp.yConstructionAxis\n    circularFeatInput = circularFeats.createInput(inputEntities, yAxis)\n    circularFeatInput.quantity = adsk.core.ValueInput.createByReal(5)\n    circularFeatInput.totalAngle = adsk.core.ValueInput.createByString('180 deg')\n    circularFeatInput.isSymmetric = False\n    circularFeat = circularFeats.add(circularFeatInput)"
+  }
+}

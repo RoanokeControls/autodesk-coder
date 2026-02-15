@@ -1,0 +1,12 @@
+{
+  "id": "extrudeFeaturesThroughAllExtent_add_Sample",
+  "title": "extrudeFeatures.add using ThroughAllExtent",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the extrudeFeatures.add method using the ThroughAllExtent method.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_extrudeFeaturesThroughAllExtent_add(rootComp: adsk.fusion.Design.rootComponent):\n    filter =  adsk.core.SelectionCommandInput.Profiles\n    profile = _ui.selectEntity('Select a profile', filter).entity\n    operation = adsk.fusion.FeatureOperations.CutFeatureOperation\n    thruAllExtent = adsk.fusion.ThroughAllExtentDefinition.create()\n\n    extrudeFeatures: adsk.fusion.ExtrudeFeatures = rootComp.features.extrudeFeatures\n    input = extrudeFeatures.createInput(profile, operation)\n    # You may need to change this to PositiveExtentDirection depending on your model.\n    input.setOneSideExtent(thruAllExtent, adsk.fusion.ExtentDirections.NegativeExtentDirection)\n    extrudeFeature = extrudeFeatures.add(input)"
+  }
+}

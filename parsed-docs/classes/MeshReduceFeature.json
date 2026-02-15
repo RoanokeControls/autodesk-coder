@@ -1,0 +1,542 @@
+{
+  "id": "MeshReduceFeature",
+  "title": "MeshReduceFeature Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+  "description": "Object that represents an existing mesh reduce feature in a design. To change the properties of this feature, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+  "parent_class": "MeshFeature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "facecount",
+      "description": "Gets and sets the target face count for the reduced mesh as a target for the reduction. Only valid if meshReduceTargetType is FaceCountMeshReduceTargetType."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "maximumDeviation",
+      "description": "Controls the maximum deviation of the reduced mesh to the original mesh. Only valid if meshReduceTargetType is MaximumDeviationMeshReduceTargetType."
+    },
+    {
+      "name": "mesh",
+      "description": "Gets and sets the input mesh body.   To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)"
+    },
+    {
+      "name": "meshReduceMethodType",
+      "description": "Gets and sets the type of mesh reduce."
+    },
+    {
+      "name": "meshReduceTargetType",
+      "description": "Gets and sets the target criteria for the reduction."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "proportion",
+      "description": "Gets and sets the proportion of number of faces of the reduced mesh to the number of faces of original mesh as a target for the reduction. The value can range between 0 and 100 percent. Only valid if meshReduceTargetType is ProportionMeshReduceTargetType."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    }
+  ],
+  "version": "Introduced in version March 2024",
+  "property_details": {
+    "assemblyContext": {
+      "id": "MeshReduceFeature_assemblyContext",
+      "title": "MeshReduceFeature.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshReduceFeature_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "attributes": {
+      "id": "MeshReduceFeature_attributes",
+      "title": "MeshReduceFeature.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshReduceFeature_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "baseFeature": {
+      "id": "MeshReduceFeature_baseFeature",
+      "title": "MeshReduceFeature.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshReduceFeature_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "bodies": {
+      "id": "MeshReduceFeature_bodies",
+      "title": "MeshReduceFeature.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshReduceFeature_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "entityToken": {
+      "id": "MeshReduceFeature_entityToken",
+      "title": "MeshReduceFeature.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = meshReduceFeature_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "errorOrWarningMessage": {
+      "id": "MeshReduceFeature_errorOrWarningMessage",
+      "title": "MeshReduceFeature.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = meshReduceFeature_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "facecount": {
+      "id": "MeshReduceFeature_facecount",
+      "title": "MeshReduceFeature.facecount Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Gets and sets the target face count for the reduced mesh as a target for the reduction. Only valid if meshReduceTargetType is FaceCountMeshReduceTargetType.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.facecount",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshReduceFeature_var->facecount();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "faces": {
+      "id": "MeshReduceFeature_faces",
+      "title": "MeshReduceFeature.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshReduceFeature_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "healthState": {
+      "id": "MeshReduceFeature_healthState",
+      "title": "MeshReduceFeature.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = meshReduceFeature_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "isParametric": {
+      "id": "MeshReduceFeature_isParametric",
+      "title": "MeshReduceFeature.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = meshReduceFeature_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "isSuppressed": {
+      "id": "MeshReduceFeature_isSuppressed",
+      "title": "MeshReduceFeature.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.isSuppressed\n\n# Set the value of the property.\nmeshReduceFeature_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = meshReduceFeature_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = meshReduceFeature_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "isValid": {
+      "id": "MeshReduceFeature_isValid",
+      "title": "MeshReduceFeature.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = meshReduceFeature_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "linkedFeatures": {
+      "id": "MeshReduceFeature_linkedFeatures",
+      "title": "MeshReduceFeature.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshReduceFeature_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "maximumDeviation": {
+      "id": "MeshReduceFeature_maximumDeviation",
+      "title": "MeshReduceFeature.maximumDeviation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Controls the maximum deviation of the reduced mesh to the original mesh. Only valid if meshReduceTargetType is MaximumDeviationMeshReduceTargetType.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.maximumDeviation",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshReduceFeature_var->maximumDeviation();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "mesh": {
+      "id": "MeshReduceFeature_mesh",
+      "title": "MeshReduceFeature.mesh Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Gets and sets the input mesh body. To use this property, you need to position the timeline marker to immediately before this feature. This can be accomplished using the following code: thisFeature.timelineObject.rollTo(True)",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.mesh\n\n# Set the value of the property.\nmeshReduceFeature_var.mesh = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshReduceFeature_var->mesh();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = meshReduceFeature_var->mesh(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "meshReduceTargetType": {
+      "id": "MeshReduceFeature_meshReduceTargetType",
+      "title": "MeshReduceFeature.meshReduceTargetType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Gets and sets the target criteria for the reduction.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.meshReduceTargetType\n\n# Set the value of the property.\nmeshReduceFeature_var.meshReduceTargetType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nMeshReduceTargetTypes propertyValue = meshReduceFeature_var->meshReduceTargetType();\n\n// Set the value of the property, where value_var is a MeshReduceTargetTypes.\nbool returnValue = meshReduceFeature_var->meshReduceTargetType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "name": {
+      "id": "MeshReduceFeature_name",
+      "title": "MeshReduceFeature.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.name\n\n# Set the value of the property.\nmeshReduceFeature_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = meshReduceFeature_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = meshReduceFeature_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "nativeObject": {
+      "id": "MeshReduceFeature_nativeObject",
+      "title": "MeshReduceFeature.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshReduceFeature_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "objectType": {
+      "id": "MeshReduceFeature_objectType",
+      "title": "MeshReduceFeature.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = meshReduceFeature_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "parentComponent": {
+      "id": "MeshReduceFeature_parentComponent",
+      "title": "MeshReduceFeature.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshReduceFeature_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "proportion": {
+      "id": "MeshReduceFeature_proportion",
+      "title": "MeshReduceFeature.proportion Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Gets and sets the proportion of number of faces of the reduced mesh to the number of faces of original mesh as a target for the reduction. The value can range between 0 and 100 percent. Only valid if meshReduceTargetType is ProportionMeshReduceTargetType.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.proportion",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshReduceFeature_var->proportion();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    },
+    "timelineObject": {
+      "id": "MeshReduceFeature_timelineObject",
+      "title": "MeshReduceFeature.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = meshReduceFeature_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "MeshReduceFeature_classType",
+      "title": "MeshReduceFeature.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.MeshReduceFeature.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::MeshReduceFeature::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version March 2024"
+    },
+    "createForAssemblyContext": {
+      "id": "MeshReduceFeature_createForAssemblyContext",
+      "title": "MeshReduceFeature.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "returnValue = meshReduceFeature_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = meshReduceFeature_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "MeshReduceFeature",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version March 2024"
+    },
+    "deleteMe": {
+      "id": "MeshReduceFeature_deleteMe",
+      "title": "MeshReduceFeature.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "returnValue = meshReduceFeature_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = meshReduceFeature_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version March 2024"
+    },
+    "dissolve": {
+      "id": "MeshReduceFeature_dissolve",
+      "title": "MeshReduceFeature.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "returnValue = meshReduceFeature_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = meshReduceFeature_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version March 2024"
+    },
+    "meshReduceMethodType": {
+      "id": "MeshReduceFeature_meshReduceMethodType",
+      "title": "MeshReduceFeature.meshReduceMethodType Property",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/MeshBody/MeshReduceFeature.h",
+      "description": "Gets and sets the type of mesh reduce.",
+      "parent_class": "MeshReduceFeature",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = meshReduceFeature_var.meshReduceMethodType\n\n# Set the value of the property.\nmeshReduceFeature_var.meshReduceMethodType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nMeshReduceMethodTypes propertyValue = meshReduceFeature_var->meshReduceMethodType();\n\n// Set the value of the property, where value_var is a MeshReduceMethodTypes.\nbool returnValue = meshReduceFeature_var->meshReduceMethodType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version March 2024"
+    }
+  }
+}

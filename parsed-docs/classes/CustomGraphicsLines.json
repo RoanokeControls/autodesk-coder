@@ -1,0 +1,559 @@
+{
+  "id": "CustomGraphicsLines",
+  "title": "CustomGraphicsLines Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+  "description": "Represents lines drawn in the graphics window.",
+  "parent_class": "CustomGraphicsEntity",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the entity from the custom graphics group."
+    },
+    {
+      "name": "getOpacity",
+      "description": "Gets the opacity of the graphics entity."
+    },
+    {
+      "name": "setOpacity",
+      "description": "Sets the opacity of the graphics entity. By default, when a new entity is it is completely opaque and does not override the opacity defined by the material."
+    }
+  ],
+  "properties": [
+    {
+      "name": "billBoarding",
+      "description": "Gets and sets the billboarding behavior of this custom graphics entity. To define billboarding you can set this property using a CustomGraphicsBillBoard objects that you statically create using the create method of the CustomGraphicsBillBoard class. To remove billboarding from this entity you can set this property to null.   Billboarding is used to specify that the orientation of custom graphics is defined relative to the screen instead of model space. This is commonly used for legends and symbols that you want to always face the user, even as the camera is rotated."
+    },
+    {
+      "name": "boundingBox",
+      "description": "Returns a box oriented parallel to the world x-y-x axes that contains the graphics entity. Depending on whether the graphics are drawn in model space or screen space this will return the bounding box in either centimeters (model) or pixels (screen). In the case where it returns the bounding box in pixel space, the Z coordinates of the box will be 0 and can be ignored."
+    },
+    {
+      "name": "color",
+      "description": "Gets and sets the current color definition for this entity. The color of custom graphics can be defined in many ways; solid color, simple material, and appearance."
+    },
+    {
+      "name": "coordinates",
+      "description": "Gets and sets the CustomGraphicsCoordinates object that defines the coordinates of the vertices of the lines. A CustomGraphicsCoordinates object can be created using the static create method of the CustomGraphicsCoordinates class."
+    },
+    {
+      "name": "cullMode",
+      "description": "Gets and sets the culling model to use when rendering the entity. Culling is used when the entity contains a mesh or B-Rep faces and defines which sides of the mesh or face are rendered. This is primarily used for a watertight mesh or solid B-Rep so that the \"inside\" of the faces is not rendered since it's never visible to the user.   When a new graphics entity is created its default cull mode is CustomGraphicsCullBack which will optimize the rendering of \"solid\" meshes so the inside is not rendered."
+    },
+    {
+      "name": "depthPriority",
+      "description": "Gets and sets the depth priority associated with the graphics entity. The depth priority defines how one graphics entity will be drawn with respect to another entity. This is useful when there are entities that lie in the same space so it's ambiguous which should be drawn on the other. For example, if you draw a curve on a planar mesh and want the curve to be completely visible. You can set the depth priority of the curve to be greater than the mesh so it will be drawn after the mesh and will remain visible.   When a new graphics entity is created it's default depth priority is 0."
+    },
+    {
+      "name": "id",
+      "description": "An id you can specify for the entity. By default, all new graphics entities do not have an id and this property will return an empty string. But in cases where entities will be selected, assigning an id can make understanding what was selected much easier."
+    },
+    {
+      "name": "indexList",
+      "description": "Gets and sets an array of integers that represent indices into the coordinates to define the order the coordinates are used to draw the lines. An empty array indicates that no index list is used and coordinates are used in the order they're provided in the provided CustomGraphicsCoordinates object."
+    },
+    {
+      "name": "isLineStrip",
+      "description": "Defines if the coordinates are used to define a series of individual lines or a connected set of lines (line strip). If individual lines are drawn (this property is false), each pair of coordinates define a single line. If a line strip is drawn (this property is true), the first pair of coordinates define the first line and the third coordinate defines a line that connects to the second coordinate. The fourth coordinate creates a line connecting to the third coordinate, and so on."
+    },
+    {
+      "name": "isScreenSpaceLineStyle",
+      "description": "Specifies if the line style is computed based on the screen or model space. The default is based on the screen which means the style is drawn the same regardless of how you zoom in or out of the view. That is the length of lines and spaces are based on pixels. If it is drawn relative to model space then the lines and spaces are defined in centimeters and will zooming in and out will change the apparent spacing."
+    },
+    {
+      "name": "isSelectable",
+      "description": "Gets and sets if the graphics entity is selectable within the graphics window. By default, when a new entity is created it is selectable."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets and sets if the graphics entity is visible in the graphics window. By default, when a new entity is created it is visible."
+    },
+    {
+      "name": "lineStripLengths",
+      "description": "If isLineStrip is true, this property defines the number of coordinates to use in the line strips. It is an array of integers that defines the number of coordinates for each line strip. An empty array indicates that a single line strip is to be drawn."
+    },
+    {
+      "name": "lineStylePattern",
+      "description": "The line style to apply to the line. The default is to draw a continuous line."
+    },
+    {
+      "name": "lineStyleScale",
+      "description": "Defines the scale as it relates to how the line style is applied. The effect is to shrink or expand the line style as it is applied to the line. This does not affect the line width."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name displayed when this entity is selected. If no name has been set, \"Custom Graphics\" will be displayed."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parent",
+      "description": "Returns the parent Component for a top-level group or the CustomGraphicsGroup object for graphics entities and child groups."
+    },
+    {
+      "name": "transform",
+      "description": "Gets and sets the transform associated with the graphics entity. When a new graphics entity is created its default transform is an identity matrix which results in the graphics entity being displayed in model space using the original coordinate data used to define the entity."
+    },
+    {
+      "name": "viewPlacement",
+      "description": "Gets and sets the graphics view placement being applied to this graphics entity. A CustomGraphicsViewPlacement object can be created using the static create method of the class. When assigned to a graphics entity the position of the graphics is defined relative to the view in 2D view space (pixels) rather than in 3D model space (centimeters)."
+    },
+    {
+      "name": "viewScale",
+      "description": "Gets and sets the graphics view scale being applied to this graphics entity. A CustomGraphicsViewScale object can be created using the static create method of the class. When assigned to a graphics entity the size of the graphics entity is defined in view space (pixels) instead of model space (centimeters)."
+    },
+    {
+      "name": "weight",
+      "description": "Defines the thickness of the line in pixels."
+    }
+  ],
+  "version": "Introduced in version September 2017",
+  "property_details": {
+    "billBoarding": {
+      "id": "CustomGraphicsLines_billBoarding",
+      "title": "CustomGraphicsLines.billBoarding Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Gets and sets the billboarding behavior of this custom graphics entity. To define billboarding you can set this property using a CustomGraphicsBillBoard objects that you statically create using the create method of the CustomGraphicsBillBoard class. To remove billboarding from this entity you can set this property to null. Billboarding is used to specify that the orientation of custom graphics is defined relative to the screen instead of model space. This is commonly used for legends and symbols that you want to always face the user, even as the camera is rotated.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.billBoarding\n\n# Set the value of the property.\ncustomGraphicsLines_var.billBoarding = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsLines_var->billBoarding();\n\n// Set the value of the property, where value_var is a CustomGraphicsBillBoard.\nbool returnValue = customGraphicsLines_var->billBoarding(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "boundingBox": {
+      "id": "CustomGraphicsLines_boundingBox",
+      "title": "CustomGraphicsLines.boundingBox Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Returns a box oriented parallel to the world x-y-x axes that contains the graphics entity. Depending on whether the graphics are drawn in model space or screen space this will return the bounding box in either centimeters (model) or pixels (screen). In the case where it returns the bounding box in pixel space, the Z coordinates of the box will be 0 and can be ignored.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.boundingBox",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsLines_var->boundingBox();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "color": {
+      "id": "CustomGraphicsLines_color",
+      "title": "CustomGraphicsLines.color Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Gets and sets the current color definition for this entity. The color of custom graphics can be defined in many ways; solid color, simple material, and appearance.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.color\n\n# Set the value of the property.\ncustomGraphicsLines_var.color = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsLines_var->color();\n\n// Set the value of the property, where value_var is a CustomGraphicsColorEffect.\nbool returnValue = customGraphicsLines_var->color(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "coordinates": {
+      "id": "CustomGraphicsLines_coordinates",
+      "title": "CustomGraphicsLines.coordinates Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Gets and sets the CustomGraphicsCoordinates object that defines the coordinates of the vertices of the lines. A CustomGraphicsCoordinates object can be created using the static create method of the CustomGraphicsCoordinates class.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.coordinates\n\n# Set the value of the property.\ncustomGraphicsLines_var.coordinates = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsLines_var->coordinates();\n\n// Set the value of the property, where value_var is a CustomGraphicsCoordinates.\nbool returnValue = customGraphicsLines_var->coordinates(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "cullMode": {
+      "id": "CustomGraphicsLines_cullMode",
+      "title": "CustomGraphicsLines.cullMode Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Gets and sets the culling model to use when rendering the entity. Culling is used when the entity contains a mesh or B-Rep faces and defines which sides of the mesh or face are rendered. This is primarily used for a watertight mesh or solid B-Rep so that the \"inside\" of the faces is not rendered since it's never visible to the user. When a new graphics entity is created its default cull mode is CustomGraphicsCullBack which will optimize the rendering of \"solid\" meshes so the inside is not rendered.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.cullMode\n\n# Set the value of the property.\ncustomGraphicsLines_var.cullMode = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nCustomGraphicsCullModes propertyValue = customGraphicsLines_var->cullMode();\n\n// Set the value of the property, where value_var is a CustomGraphicsCullModes.\nbool returnValue = customGraphicsLines_var->cullMode(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "depthPriority": {
+      "id": "CustomGraphicsLines_depthPriority",
+      "title": "CustomGraphicsLines.depthPriority Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Gets and sets the depth priority associated with the graphics entity. The depth priority defines how one graphics entity will be drawn with respect to another entity. This is useful when there are entities that lie in the same space so it's ambiguous which should be drawn on the other. For example, if you draw a curve on a planar mesh and want the curve to be completely visible. You can set the depth priority of the curve to be greater than the mesh so it will be drawn after the mesh and will remain visible. When a new graphics entity is created it's default depth priority is 0.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.depthPriority\n\n# Set the value of the property.\ncustomGraphicsLines_var.depthPriority = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ninteger propertyValue = customGraphicsLines_var->depthPriority();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = customGraphicsLines_var->depthPriority(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "id": {
+      "id": "CustomGraphicsLines_id",
+      "title": "CustomGraphicsLines.id Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "An id you can specify for the entity. By default, all new graphics entities do not have an id and this property will return an empty string. But in cases where entities will be selected, assigning an id can make understanding what was selected much easier.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.id\n\n# Set the value of the property.\ncustomGraphicsLines_var.id = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customGraphicsLines_var->id();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = customGraphicsLines_var->id(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "indexList": {
+      "id": "CustomGraphicsLines_indexList",
+      "title": "CustomGraphicsLines.indexList Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Gets and sets an array of integers that represent indices into the coordinates to define the order the coordinates are used to draw the lines. An empty array indicates that no index list is used and coordinates are used in the order they're provided in the provided CustomGraphicsCoordinates object.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.indexList\n\n# Set the value of the property.\ncustomGraphicsLines_var.indexList = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector propertyValue = customGraphicsLines_var->indexList();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = customGraphicsLines_var->indexList(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "isLineStrip": {
+      "id": "CustomGraphicsLines_isLineStrip",
+      "title": "CustomGraphicsLines.isLineStrip Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Defines if the coordinates are used to define a series of individual lines or a connected set of lines (line strip). If individual lines are drawn (this property is false), each pair of coordinates define a single line. If a line strip is drawn (this property is true), the first pair of coordinates define the first line and the third coordinate defines a line that connects to the second coordinate. The fourth coordinate creates a line connecting to the third coordinate, and so on.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.isLineStrip\n\n# Set the value of the property.\ncustomGraphicsLines_var.isLineStrip = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customGraphicsLines_var->isLineStrip();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = customGraphicsLines_var->isLineStrip(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "isScreenSpaceLineStyle": {
+      "id": "CustomGraphicsLines_isScreenSpaceLineStyle",
+      "title": "CustomGraphicsLines.isScreenSpaceLineStyle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Specifies if the line style is computed based on the screen or model space. The default is based on the screen which means the style is drawn the same regardless of how you zoom in or out of the view. That is the length of lines and spaces are based on pixels. If it is drawn relative to model space then the lines and spaces are defined in centimeters and will zooming in and out will change the apparent spacing.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.isScreenSpaceLineStyle\n\n# Set the value of the property.\ncustomGraphicsLines_var.isScreenSpaceLineStyle = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customGraphicsLines_var->isScreenSpaceLineStyle();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = customGraphicsLines_var->isScreenSpaceLineStyle(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "isSelectable": {
+      "id": "CustomGraphicsLines_isSelectable",
+      "title": "CustomGraphicsLines.isSelectable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Gets and sets if the graphics entity is selectable within the graphics window. By default, when a new entity is created it is selectable.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.isSelectable\n\n# Set the value of the property.\ncustomGraphicsLines_var.isSelectable = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customGraphicsLines_var->isSelectable();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = customGraphicsLines_var->isSelectable(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "isValid": {
+      "id": "CustomGraphicsLines_isValid",
+      "title": "CustomGraphicsLines.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customGraphicsLines_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "isVisible": {
+      "id": "CustomGraphicsLines_isVisible",
+      "title": "CustomGraphicsLines.isVisible Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Gets and sets if the graphics entity is visible in the graphics window. By default, when a new entity is created it is visible.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.isVisible\n\n# Set the value of the property.\ncustomGraphicsLines_var.isVisible = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = customGraphicsLines_var->isVisible();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = customGraphicsLines_var->isVisible(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "lineStripLengths": {
+      "id": "CustomGraphicsLines_lineStripLengths",
+      "title": "CustomGraphicsLines.lineStripLengths Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "If isLineStrip is true, this property defines the number of coordinates to use in the line strips. It is an array of integers that defines the number of coordinates for each line strip. An empty array indicates that a single line strip is to be drawn.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.lineStripLengths\n\n# Set the value of the property.\ncustomGraphicsLines_var.lineStripLengths = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector propertyValue = customGraphicsLines_var->lineStripLengths();\n\n// Set the value of the property, where value_var is an integer.\nbool returnValue = customGraphicsLines_var->lineStripLengths(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "lineStylePattern": {
+      "id": "CustomGraphicsLines_lineStylePattern",
+      "title": "CustomGraphicsLines.lineStylePattern Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "The line style to apply to the line. The default is to draw a continuous line.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.lineStylePattern\n\n# Set the value of the property.\ncustomGraphicsLines_var.lineStylePattern = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nLineStylePatterns propertyValue = customGraphicsLines_var->lineStylePattern();\n\n// Set the value of the property, where value_var is a LineStylePatterns.\nbool returnValue = customGraphicsLines_var->lineStylePattern(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "lineStyleScale": {
+      "id": "CustomGraphicsLines_lineStyleScale",
+      "title": "CustomGraphicsLines.lineStyleScale Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Defines the scale as it relates to how the line style is applied. The effect is to shrink or expand the line style as it is applied to the line. This does not affect the line width.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.lineStyleScale\n\n# Set the value of the property.\ncustomGraphicsLines_var.lineStyleScale = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = customGraphicsLines_var->lineStyleScale();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = customGraphicsLines_var->lineStyleScale(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "name": {
+      "id": "CustomGraphicsLines_name",
+      "title": "CustomGraphicsLines.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Gets and sets the name displayed when this entity is selected. If no name has been set, \"Custom Graphics\" will be displayed.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.name\n\n# Set the value of the property.\ncustomGraphicsLines_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customGraphicsLines_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = customGraphicsLines_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "objectType": {
+      "id": "CustomGraphicsLines_objectType",
+      "title": "CustomGraphicsLines.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = customGraphicsLines_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "parent": {
+      "id": "CustomGraphicsLines_parent",
+      "title": "CustomGraphicsLines.parent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Returns the parent Component for a top-level group or the CustomGraphicsGroup object for graphics entities and child groups.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.parent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsLines_var->parent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "transform": {
+      "id": "CustomGraphicsLines_transform",
+      "title": "CustomGraphicsLines.transform Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Gets and sets the transform associated with the graphics entity. When a new graphics entity is created its default transform is an identity matrix which results in the graphics entity being displayed in model space using the original coordinate data used to define the entity.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.transform\n\n# Set the value of the property.\ncustomGraphicsLines_var.transform = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsLines_var->transform();\n\n// Set the value of the property, where value_var is a Matrix3D.\nbool returnValue = customGraphicsLines_var->transform(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "viewPlacement": {
+      "id": "CustomGraphicsLines_viewPlacement",
+      "title": "CustomGraphicsLines.viewPlacement Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Gets and sets the graphics view placement being applied to this graphics entity. A CustomGraphicsViewPlacement object can be created using the static create method of the class. When assigned to a graphics entity the position of the graphics is defined relative to the view in 2D view space (pixels) rather than in 3D model space (centimeters).",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.viewPlacement\n\n# Set the value of the property.\ncustomGraphicsLines_var.viewPlacement = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsLines_var->viewPlacement();\n\n// Set the value of the property, where value_var is a CustomGraphicsViewPlacement.\nbool returnValue = customGraphicsLines_var->viewPlacement(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "viewScale": {
+      "id": "CustomGraphicsLines_viewScale",
+      "title": "CustomGraphicsLines.viewScale Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Gets and sets the graphics view scale being applied to this graphics entity. A CustomGraphicsViewScale object can be created using the static create method of the class. When assigned to a graphics entity the size of the graphics entity is defined in view space (pixels) instead of model space (centimeters).",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.viewScale\n\n# Set the value of the property.\ncustomGraphicsLines_var.viewScale = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = customGraphicsLines_var->viewScale();\n\n// Set the value of the property, where value_var is a CustomGraphicsViewScale.\nbool returnValue = customGraphicsLines_var->viewScale(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    },
+    "weight": {
+      "id": "CustomGraphicsLines_weight",
+      "title": "CustomGraphicsLines.weight Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Defines the thickness of the line in pixels.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = customGraphicsLines_var.weight\n\n# Set the value of the property.\ncustomGraphicsLines_var.weight = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = customGraphicsLines_var->weight();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = customGraphicsLines_var->weight(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2017"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "CustomGraphicsLines_classType",
+      "title": "CustomGraphicsLines.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.CustomGraphicsLines.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::CustomGraphicsLines::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2017"
+    },
+    "deleteMe": {
+      "id": "CustomGraphicsLines_deleteMe",
+      "title": "CustomGraphicsLines.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Deletes the entity from the custom graphics group.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "returnValue = customGraphicsLines_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = customGraphicsLines_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the deletion was successful.",
+      "version": "Introduced in version September 2017"
+    },
+    "getOpacity": {
+      "id": "CustomGraphicsLines_getOpacity",
+      "title": "CustomGraphicsLines.getOpacity Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Gets the opacity of the graphics entity.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "(returnValue, opacity, isOverride) = customGraphicsLines_var.getOpacity()",
+        "cpp": "#include getOpacity(opacity, isOverride);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if getting the opacity information was successful.",
+      "parameters": [
+        {
+          "name": "opacity",
+          "type": "double",
+          "description": "The opacity value where 1.0 is completely opaque and 0.0 is completely transparent."
+        },
+        {
+          "name": "isOverride",
+          "type": "boolean",
+          "description": "Indicates if this entities opacity will override the opacity defined by the material. If true, it will override the material opacity and if false the opacity values will accumulate."
+        }
+      ],
+      "version": "Introduced in version September 2017"
+    },
+    "setOpacity": {
+      "id": "CustomGraphicsLines_setOpacity",
+      "title": "CustomGraphicsLines.setOpacity Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Graphics/CustomGraphicsLines.h",
+      "description": "Sets the opacity of the graphics entity. By default, when a new entity is it is completely opaque and does not override the opacity defined by the material.",
+      "parent_class": "CustomGraphicsLines",
+      "syntax": {
+        "python": "returnValue = customGraphicsLines_var.setOpacity(opacity, isOverride)",
+        "cpp": "#include \n\nreturnValue = customGraphicsLines_var->setOpacity(opacity, isOverride);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if setting the opacity information was successful.",
+      "parameters": [
+        {
+          "name": "opacity",
+          "type": "double",
+          "description": "The opacity value where 1.0 is completely opaque and 0.0 is completely transparent."
+        },
+        {
+          "name": "isOverride",
+          "type": "boolean",
+          "description": "Indicates if this entities opacity will override the opacity defined by the material. If true, it will override the material opacity and if false the opacity values will accumulate."
+        }
+      ],
+      "version": "Introduced in version September 2017"
+    }
+  }
+}

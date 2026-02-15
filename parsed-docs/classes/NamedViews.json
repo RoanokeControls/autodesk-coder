@@ -1,0 +1,257 @@
+{
+  "id": "NamedViews",
+  "title": "NamedViews Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/NamedViews.h",
+  "description": "Collection that provides access to all of the existing named views associated with a Product and supports the creation of new named views.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new named view."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Returns the specified named view using an index into the collection. The four standard named views (\"TOP\", \"FRONT\", \"RIGHT\", and \"HOME\") are not accessible through this method. For the predefined view use the properties on this collection that provide direct access to the specific named view."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns the specified named view using the name of the named view. The four standard named views (\"TOP\", \"FRONT\", \"RIGHT\", and \"HOME\") are not accessible through this method. For the predefined view use the properties on this collection that provide direct access to the specific named view."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of named views associated with the product. The four standard named views (\"TOP\", \"FRONT\", \"RIGHT\", and \"HOME\") are not included in this count. Only user-created named view are counted."
+    },
+    {
+      "name": "frontNamedView",
+      "description": "Returns the standard named view called \"FRONT\"."
+    },
+    {
+      "name": "homeNamedView",
+      "description": "Returns the standard named view called \"HOME\"."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "rightNamedView",
+      "description": "Returns the standard named view called \"RIGHT\"."
+    },
+    {
+      "name": "topNamedView",
+      "description": "Returns the standard named view called \"TOP\"."
+    }
+  ],
+  "version": "Introduced in version September 2023",
+  "method_details": {
+    "add": {
+      "id": "NamedViews_add",
+      "title": "NamedViews.add Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/NamedViews.h",
+      "description": "Creates a new named view.",
+      "parent_class": "NamedViews",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = namedViews_var.add(camera)\n\n# Uses optional arguments.\nreturnValue = namedViews_var.add(camera, name)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = namedViews_var->add(camera);\n\n// Uses optional arguments.\nreturnValue = namedViews_var->add(camera, name);"
+      },
+      "return_type": "NamedView",
+      "return_description": "Returns the newly created NamedView object or fails if invalid input was provided.",
+      "parameters": [
+        {
+          "name": "camera",
+          "type": "Camera",
+          "description": "The camera that defines the view. To create a named view for the active viewport you can get a camera from the active viewport and provide it as input to this method."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the named view. This must be unique with respect to other named views in the product. This is optional and if not provided a default unique name will be generated.   This is an optional argument whose default value is \"\"."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    },
+    "classType": {
+      "id": "NamedViews_classType",
+      "title": "NamedViews.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/NamedViews.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "NamedViews",
+      "syntax": {
+        "python": "returnValue = adsk.core.NamedViews.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::NamedViews::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2023"
+    },
+    "item": {
+      "id": "NamedViews_item",
+      "title": "NamedViews.item Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/NamedViews.h",
+      "description": "Returns the specified named view using an index into the collection. The four standard named views (\"TOP\", \"FRONT\", \"RIGHT\", and \"HOME\") are not accessible through this method. For the predefined view use the properties on this collection that provide direct access to the specific named view.",
+      "parent_class": "NamedViews",
+      "syntax": {
+        "python": "returnValue = namedViews_var.item(index)",
+        "cpp": "#include \n\nreturnValue = namedViews_var->item(index);"
+      },
+      "return_type": "NamedView",
+      "return_description": "Returns the specified named view or an error if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the named view within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    },
+    "itemByName": {
+      "id": "NamedViews_itemByName",
+      "title": "NamedViews.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/NamedViews.h",
+      "description": "Returns the specified named view using the name of the named view. The four standard named views (\"TOP\", \"FRONT\", \"RIGHT\", and \"HOME\") are not accessible through this method. For the predefined view use the properties on this collection that provide direct access to the specific named view.",
+      "parent_class": "NamedViews",
+      "syntax": {
+        "python": "returnValue = namedViews_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = namedViews_var->itemByName(name);"
+      },
+      "return_type": "NamedView",
+      "return_description": "Returns null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the named view within the collection to return."
+        }
+      ],
+      "version": "Introduced in version September 2023"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "NamedViews_count",
+      "title": "NamedViews.count Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/NamedViews.h",
+      "description": "Returns the number of named views associated with the product. The four standard named views (\"TOP\", \"FRONT\", \"RIGHT\", and \"HOME\") are not included in this count. Only user-created named view are counted.",
+      "parent_class": "NamedViews",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = namedViews_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = namedViews_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "frontNamedView": {
+      "id": "NamedViews_frontNamedView",
+      "title": "NamedViews.frontNamedView Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/NamedViews.h",
+      "description": "Returns the standard named view called \"FRONT\".",
+      "parent_class": "NamedViews",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = namedViews_var.frontNamedView",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = namedViews_var->frontNamedView();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "homeNamedView": {
+      "id": "NamedViews_homeNamedView",
+      "title": "NamedViews.homeNamedView Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/NamedViews.h",
+      "description": "Returns the standard named view called \"HOME\".",
+      "parent_class": "NamedViews",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = namedViews_var.homeNamedView",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = namedViews_var->homeNamedView();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "isValid": {
+      "id": "NamedViews_isValid",
+      "title": "NamedViews.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/NamedViews.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "NamedViews",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = namedViews_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = namedViews_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "objectType": {
+      "id": "NamedViews_objectType",
+      "title": "NamedViews.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/NamedViews.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "NamedViews",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = namedViews_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = namedViews_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "rightNamedView": {
+      "id": "NamedViews_rightNamedView",
+      "title": "NamedViews.rightNamedView Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/NamedViews.h",
+      "description": "Returns the standard named view called \"RIGHT\".",
+      "parent_class": "NamedViews",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = namedViews_var.rightNamedView",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = namedViews_var->rightNamedView();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    },
+    "topNamedView": {
+      "id": "NamedViews_topNamedView",
+      "title": "NamedViews.topNamedView Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/NamedViews.h",
+      "description": "Returns the standard named view called \"TOP\".",
+      "parent_class": "NamedViews",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = namedViews_var.topNamedView",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = namedViews_var->topNamedView();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2023"
+    }
+  }
+}

@@ -1,0 +1,552 @@
+{
+  "id": "FlatPattern",
+  "title": "FlatPattern Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/SheetMetal/FlatPattern.h",
+  "description": "The FlatPattern object provides access to the flattened representation of a folded part. This supports most of the functionality of a regular component like creating sketches, construction geometry, and most features. Functionality that is not supported in a flat pattern will fail if you attempt to use it. For example, the creation of occurrences and new components is not supported. Also the creation of sheet metal features is not supported.",
+  "parent_class": "Feature",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features."
+    },
+    {
+      "name": "dissolve",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features."
+    },
+    {
+      "name": "getBendInfo",
+      "description": "Returns bend information for the specified bend."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this face."
+    },
+    {
+      "name": "baseFeature",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null."
+    },
+    {
+      "name": "bendLinesBody",
+      "description": "Returns the wire B-Rep body that represents the bend lines of the flattened sheet metal part."
+    },
+    {
+      "name": "bodies",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features.   For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies.   When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations.   You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available."
+    },
+    {
+      "name": "bottomFace",
+      "description": "Returns the \"bottom\" face of the flat pattern B-Rep body."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "errorOrWarningMessage",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string."
+    },
+    {
+      "name": "extentLinesBody",
+      "description": "Returns the wire B-Rep body that represents the extent lines of the flattened sheet metal part."
+    },
+    {
+      "name": "faces",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features.   Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available."
+    },
+    {
+      "name": "flatBody",
+      "description": "Returns the B-Rep body that represents the flattened sheet metal part."
+    },
+    {
+      "name": "foldedBody",
+      "description": "Returns the folded B-Rep body in the design that this flat pattern was created from."
+    },
+    {
+      "name": "healthState",
+      "description": "Returns the current health state of the feature."
+    },
+    {
+      "name": "isParametric",
+      "description": "Indicates if this feature is parametric or not."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "linkedFeatures",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface."
+    },
+    {
+      "name": "name",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric)."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parentComponent",
+      "description": "Returns the parent component that owns this feature."
+    },
+    {
+      "name": "sideFaces",
+      "description": "Returns the \"side\" faces of the flat pattern B-Rep body. These are the faces around the edge of the flat pattern that connect the top and bottom faces."
+    },
+    {
+      "name": "timelineObject",
+      "description": "Returns the timeline object associated with this feature."
+    },
+    {
+      "name": "topFace",
+      "description": "Returns the \"top\" face of the flat pattern B-Rep body."
+    }
+  ],
+  "version": "Introduced in version October 2022",
+  "property_details": {
+    "assemblyContext": {
+      "id": "FlatPattern_assemblyContext",
+      "title": "FlatPattern.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPattern_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "attributes": {
+      "id": "FlatPattern_attributes",
+      "title": "FlatPattern.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns the collection of attributes associated with this face.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPattern_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "baseFeature": {
+      "id": "FlatPattern_baseFeature",
+      "title": "FlatPattern.baseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "If this feature is associated with a base feature, this property will return that base feature. If it's not associated with a base feature, this property will return null.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.baseFeature",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPattern_var->baseFeature();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "bendLinesBody": {
+      "id": "FlatPattern_bendLinesBody",
+      "title": "FlatPattern.bendLinesBody Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns the wire B-Rep body that represents the bend lines of the flattened sheet metal part.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.bendLinesBody",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPattern_var->bendLinesBody();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "bodies": {
+      "id": "FlatPattern_bodies",
+      "title": "FlatPattern.bodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns the bodies that were modified or created by this feature. This property works for both parametric and non-parametric features. For a BaseFeature, this property has two different behaviors depending on if the BaseFeature is active for edit or not. When the base feature is active, this property returns the bodies owned by the base feature or the source bodies. When the base feature is not active, this property returns the result bodies. When a body is added to a base feature, that body is owned by the base feature and is only seen in the UI when the base feature is active. This body is referred to as a \"source body\". Fusion creates a parametric copy of the body when you exit the base feature. This copy is referred to as the \"result body,\" and it is used for subsequent modeling operations. You can map between the source and result bodies by using their position within the bodies returned. To get a valid list of result bodies, you should roll the timeline to immediately after the base feature node in the timeline. Otherwise, subsequent operations could have done something to cause one or more bodies to no longer be available.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.bodies",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPattern_var->bodies();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "bottomFace": {
+      "id": "FlatPattern_bottomFace",
+      "title": "FlatPattern.bottomFace Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns the \"bottom\" face of the flat pattern B-Rep body.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.bottomFace",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPattern_var->bottomFace();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "entityToken": {
+      "id": "FlatPattern_entityToken",
+      "title": "FlatPattern.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns a token for the Feature object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same feature. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = flatPattern_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "errorOrWarningMessage": {
+      "id": "FlatPattern_errorOrWarningMessage",
+      "title": "FlatPattern.errorOrWarningMessage Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns the error or warning message in the case where the healthState property returns either WarningFeatureHealthState or ErrorFeatureHealthState. Otherwise this property returns an empty string.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.errorOrWarningMessage",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = flatPattern_var->errorOrWarningMessage();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "extentLinesBody": {
+      "id": "FlatPattern_extentLinesBody",
+      "title": "FlatPattern.extentLinesBody Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns the wire B-Rep body that represents the extent lines of the flattened sheet metal part.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.extentLinesBody",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPattern_var->extentLinesBody();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "faces": {
+      "id": "FlatPattern_faces",
+      "title": "FlatPattern.faces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns the faces that were created by this feature. This works for both parametric and non-parametric features. Depending on the modifications made to the body after the feature was created, this may not return all of the faces. For example, when a component is created from a body, the original body and its faces no longer exist, so this won't return any faces. However, you can roll the timeline to immediately after the feature, and all the original faces will be available.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.faces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPattern_var->faces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "flatBody": {
+      "id": "FlatPattern_flatBody",
+      "title": "FlatPattern.flatBody Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns the B-Rep body that represents the flattened sheet metal part.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.flatBody",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPattern_var->flatBody();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "foldedBody": {
+      "id": "FlatPattern_foldedBody",
+      "title": "FlatPattern.foldedBody Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns the folded B-Rep body in the design that this flat pattern was created from.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.foldedBody",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPattern_var->foldedBody();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "healthState": {
+      "id": "FlatPattern_healthState",
+      "title": "FlatPattern.healthState Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns the current health state of the feature.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.healthState",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureHealthStates propertyValue = flatPattern_var->healthState();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isParametric": {
+      "id": "FlatPattern_isParametric",
+      "title": "FlatPattern.isParametric Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Indicates if this feature is parametric or not.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.isParametric",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = flatPattern_var->isParametric();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isSuppressed": {
+      "id": "FlatPattern_isSuppressed",
+      "title": "FlatPattern.isSuppressed Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Gets and sets if this feature is suppressed. This is only valid for parametric features.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.isSuppressed\n\n# Set the value of the property.\nflatPattern_var.isSuppressed = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = flatPattern_var->isSuppressed();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = flatPattern_var->isSuppressed(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "isValid": {
+      "id": "FlatPattern_isValid",
+      "title": "FlatPattern.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = flatPattern_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "linkedFeatures": {
+      "id": "FlatPattern_linkedFeatures",
+      "title": "FlatPattern.linkedFeatures Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns the set of features that are linked to this feature. The set of linked features are all of the features that were created in various components as the result of a single feature being created in the user interface.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.linkedFeatures",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPattern_var->linkedFeatures();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "name": {
+      "id": "FlatPattern_name",
+      "title": "FlatPattern.name Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns the name of the feature as seen in the browser (non-parametric) or in the timeline (parametric).",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.name\n\n# Set the value of the property.\nflatPattern_var.name = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = flatPattern_var->name();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = flatPattern_var->name(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "objectType": {
+      "id": "FlatPattern_objectType",
+      "title": "FlatPattern.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = flatPattern_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "parentComponent": {
+      "id": "FlatPattern_parentComponent",
+      "title": "FlatPattern.parentComponent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns the parent component that owns this feature.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.parentComponent",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPattern_var->parentComponent();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "sideFaces": {
+      "id": "FlatPattern_sideFaces",
+      "title": "FlatPattern.sideFaces Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns the \"side\" faces of the flat pattern B-Rep body. These are the faces around the edge of the flat pattern that connect the top and bottom faces.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.sideFaces",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPattern_var->sideFaces();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "timelineObject": {
+      "id": "FlatPattern_timelineObject",
+      "title": "FlatPattern.timelineObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns the timeline object associated with this feature.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.timelineObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPattern_var->timelineObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    },
+    "topFace": {
+      "id": "FlatPattern_topFace",
+      "title": "FlatPattern.topFace Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns the \"top\" face of the flat pattern B-Rep body.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPattern_var.topFace",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPattern_var->topFace();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version October 2022"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "FlatPattern_classType",
+      "title": "FlatPattern.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.FlatPattern.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::FlatPattern::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version October 2022"
+    },
+    "deleteMe": {
+      "id": "FlatPattern_deleteMe",
+      "title": "FlatPattern.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Deletes the feature. This works for both parametric and non-parametric features.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "returnValue = flatPattern_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = flatPattern_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the delete was successful or not.",
+      "version": "Introduced in version October 2022"
+    },
+    "dissolve": {
+      "id": "FlatPattern_dissolve",
+      "title": "FlatPattern.dissolve Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Dissolves the feature so that the feature information is lost and only the B-Rep geometry defined by the feature remains. This is only valid for non-parametric features.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "returnValue = flatPattern_var.dissolve()",
+        "cpp": "#include \n\nreturnValue = flatPattern_var->dissolve();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns a bool indicating if the dissolve was successful or not.",
+      "version": "Introduced in version October 2022"
+    },
+    "getBendInfo": {
+      "id": "FlatPattern_getBendInfo",
+      "title": "FlatPattern.getBendInfo Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPattern.h",
+      "description": "Returns bend information for the specified bend.",
+      "parent_class": "FlatPattern",
+      "syntax": {
+        "python": "(returnValue, isBendUp, bendAngle) = flatPattern_var.getBendInfo(bendEdge)",
+        "cpp": "#include  bendEdge;\nboolean isBendUp;\ndouble bendAngle;\nboolean returnValue = flatPattern_var->getBendInfo(bendEdge, isBendUp, bendAngle);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the bend information was successfully returned.",
+      "parameters": [
+        {
+          "name": "bendEdge",
+          "type": "BRepEdge",
+          "description": "The wire BrepEdge that represents a bend line in the model. The edges are obtained from the wire body returned by the bendLinesBody property."
+        },
+        {
+          "name": "isBendUp",
+          "type": "boolean",
+          "description": "Indicates if the bend is in the natural direction of the bend line or in the opposite direction. Returns true if the bend is in the same direction as the input bend line."
+        },
+        {
+          "name": "bendAngle",
+          "type": "double",
+          "description": "Returns the bend angle of the bend in radians."
+        }
+      ],
+      "version": "Introduced in version October 2022"
+    }
+  }
+}

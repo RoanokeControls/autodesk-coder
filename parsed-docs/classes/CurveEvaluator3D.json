@@ -1,0 +1,732 @@
+{
+  "id": "CurveEvaluator3D",
+  "title": "CurveEvaluator3D Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Geometry/CurveEvaluator3D.h",
+  "description": "3D curve evaluator that is obtained from a transient curve and allows you to perform various evaluations on the curve.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "getCurvature",
+      "description": "Get the curvature value at a parameter position on the curve."
+    },
+    {
+      "name": "getCurvatures",
+      "description": "Get the curvature values at a number of parameter positions on the curve."
+    },
+    {
+      "name": "getEndPoints",
+      "description": "Get the end points of the curve."
+    },
+    {
+      "name": "getFirstDerivative",
+      "description": "Get the first derivative of the curve at the specified parameter position."
+    },
+    {
+      "name": "getFirstDerivatives",
+      "description": "Get the first derivatives of the curve at the specified parameter positions."
+    },
+    {
+      "name": "getLengthAtParameter",
+      "description": "Get the length of the curve between two parameter positions on the curve."
+    },
+    {
+      "name": "getParameterAtLength",
+      "description": "Get the parameter position on the curve that is the specified curve length from the specified starting parameter position."
+    },
+    {
+      "name": "getParameterAtPoint",
+      "description": "Get the parameter position that correspond to a point on the curve. For reliable results, the point should lie on the curve within model tolerance. If the point does not lie on the curve, the parameter of the nearest point on the curve will generally be returned."
+    },
+    {
+      "name": "getParameterExtents",
+      "description": "Get the parametric range of the curve."
+    },
+    {
+      "name": "getParametersAtPoints",
+      "description": "Get the parameter positions that correspond to a set of points on the curve. For reliable results, the points should lie on the curve within model tolerance. If the points do not lie on the curve, the parameter of the nearest point on the curve will generally be returned."
+    },
+    {
+      "name": "getPointAtParameter",
+      "description": "Get the point on the curve that corresponds to evaluating a parameter position on the curve."
+    },
+    {
+      "name": "getPointsAtParameters",
+      "description": "Get the points on the curve that correspond to evaluating a set of parameter positions on the curve."
+    },
+    {
+      "name": "getSecondDerivative",
+      "description": "Get the second derivative of the curve at the specified parameter position."
+    },
+    {
+      "name": "getSecondDerivatives",
+      "description": "Get the second derivatives of the curve at the specified parameter positions."
+    },
+    {
+      "name": "getStrokes",
+      "description": "Get a sequence of points between two curve parameter positions. The points will be a linear interpolation along the curve between these two parameter positions where the maximum deviation between the curve and each line segment will not exceed the specified tolerance value."
+    },
+    {
+      "name": "getTangent",
+      "description": "Get the tangent to the curve at a parameter position on the curve."
+    },
+    {
+      "name": "getTangents",
+      "description": "Get the tangent to the curve at a number of parameter positions on the curve."
+    },
+    {
+      "name": "getThirdDerivative",
+      "description": "Get the third derivative of the curve at the specified parameter position."
+    },
+    {
+      "name": "getThirdDerivatives",
+      "description": "Get the third derivatives of the curve at the specified parameter positions."
+    }
+  ],
+  "properties": [
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "SketchArcs.split",
+      "description": "Demonstrates the SketchArc.split method."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "classType": {
+      "id": "CurveEvaluator3D_classType",
+      "title": "CurveEvaluator3D.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "returnValue = adsk.core.CurveEvaluator3D.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::CurveEvaluator3D::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "getCurvature": {
+      "id": "CurveEvaluator3D_getCurvature",
+      "title": "CurveEvaluator3D.getCurvature Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the curvature value at a parameter position on the curve.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, direction, curvature) = curveEvaluator3D_var.getCurvature(parameter)",
+        "cpp": "#include  direction;\ndouble curvature;\nboolean returnValue = curveEvaluator3D_var->getCurvature(parameter, direction, curvature);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the curvature was successfully returned.",
+      "parameters": [
+        {
+          "name": "parameter",
+          "type": "double",
+          "description": "The parameter position to return the curvature information at. This value must be within the range of the parameter extents as provided by getParameterExtents."
+        },
+        {
+          "name": "direction",
+          "type": "Vector3D",
+          "description": "The output direction of the curvature at the position on the curve."
+        },
+        {
+          "name": "curvature",
+          "type": "double",
+          "description": "The output magnitude of the curvature at the position on the curve."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getCurvatures": {
+      "id": "CurveEvaluator3D_getCurvatures",
+      "title": "CurveEvaluator3D.getCurvatures Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the curvature values at a number of parameter positions on the curve.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, directions, curvatures) = curveEvaluator3D_var.getCurvatures(parameters)",
+        "cpp": "#include getCurvatures(parameters, directions, curvatures);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the curvatures were successfully returned.",
+      "parameters": [
+        {
+          "name": "parameters",
+          "type": "double[]",
+          "description": "The array of parameter positions to return curvature information at. Each parameter value must be within the range of the parameter extents as provided by getParameterExtents."
+        },
+        {
+          "name": "directions",
+          "type": "Vector3D[]",
+          "description": "The output array of the direction of the curvature at each position on the curve. The length of this array will be the same as the length of the parameters array provided."
+        },
+        {
+          "name": "curvatures",
+          "type": "double[]",
+          "description": "The output array of the magnitude of the curvature at the position on the curve. The length of this array will be the same as the length of the parameters array provided."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getEndPoints": {
+      "id": "CurveEvaluator3D_getEndPoints",
+      "title": "CurveEvaluator3D.getEndPoints Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the end points of the curve.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, startPoint, endPoint) = curveEvaluator3D_var.getEndPoints()",
+        "cpp": "#include  startPoint;\nPtr endPoint;\nboolean returnValue = curveEvaluator3D_var->getEndPoints(startPoint, endPoint);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the end points were successfully returned.",
+      "parameters": [
+        {
+          "name": "startPoint",
+          "type": "Point3D",
+          "description": "The output start point of the curve. If the curve is unbounded at the start, this value will be null."
+        },
+        {
+          "name": "endPoint",
+          "type": "Point3D",
+          "description": "The output end point of the curve. If the curve is unbounded at the end, this value will be null."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getFirstDerivative": {
+      "id": "CurveEvaluator3D_getFirstDerivative",
+      "title": "CurveEvaluator3D.getFirstDerivative Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the first derivative of the curve at the specified parameter position.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, firstDerivative) = curveEvaluator3D_var.getFirstDerivative(parameter)",
+        "cpp": "#include  firstDerivative;\nboolean returnValue = curveEvaluator3D_var->getFirstDerivative(parameter, firstDerivative);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the first derivative was successfully returned.",
+      "parameters": [
+        {
+          "name": "parameter",
+          "type": "double",
+          "description": "The parameter position to get the curve first derivative at. The parameter value must be within the range of the parameter extents as provided by getParameterExtents."
+        },
+        {
+          "name": "firstDerivative",
+          "type": "Vector3D",
+          "description": "The output first derivative vector at the parameter position specified."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getFirstDerivatives": {
+      "id": "CurveEvaluator3D_getFirstDerivatives",
+      "title": "CurveEvaluator3D.getFirstDerivatives Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the first derivatives of the curve at the specified parameter positions.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, firstDerivatives) = curveEvaluator3D_var.getFirstDerivatives(parameters)",
+        "cpp": "#include getFirstDerivatives(parameters, firstDerivatives);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the first derivatives were successfully returned.",
+      "parameters": [
+        {
+          "name": "parameters",
+          "type": "double[]",
+          "description": "The array of parameter positions to get the curve first derivative at. Each parameter value must be within the range of the parameter extents as provided by getParameterExtents."
+        },
+        {
+          "name": "firstDerivatives",
+          "type": "Vector3D[]",
+          "description": "The output array of first derivative vectors at each parameter position specified. The length of this array is equal to the length of the parameters array specified."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getLengthAtParameter": {
+      "id": "CurveEvaluator3D_getLengthAtParameter",
+      "title": "CurveEvaluator3D.getLengthAtParameter Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the length of the curve between two parameter positions on the curve.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, length) = curveEvaluator3D_var.getLengthAtParameter(fromParameter, toParameter)",
+        "cpp": "#include getLengthAtParameter(fromParameter, toParameter, length);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the length was successfully returned.",
+      "parameters": [
+        {
+          "name": "fromParameter",
+          "type": "double",
+          "description": "The parameter position to measure the curve length from. This value must be within the range of the parameter extents as provided by getParameterExtents."
+        },
+        {
+          "name": "toParameter",
+          "type": "double",
+          "description": "The parameter position to measure the curve length to. This value must be within the range of the parameter extents as provided by getParameterExtents."
+        },
+        {
+          "name": "length",
+          "type": "double",
+          "description": "The output curve length between the from and to parameter positions on the curve."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getParameterAtLength": {
+      "id": "CurveEvaluator3D_getParameterAtLength",
+      "title": "CurveEvaluator3D.getParameterAtLength Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the parameter position on the curve that is the specified curve length from the specified starting parameter position.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, parameter) = curveEvaluator3D_var.getParameterAtLength(fromParameter, length)",
+        "cpp": "#include getParameterAtLength(fromParameter, length, parameter);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the parameter was successfully returned.",
+      "parameters": [
+        {
+          "name": "fromParameter",
+          "type": "double",
+          "description": "The parameter position to start measuring the curve length from. This value must be within the range of the parameter extents as provided by getParameterExtents."
+        },
+        {
+          "name": "length",
+          "type": "double",
+          "description": "The curve length to offset the from parameter by. A negative length value will offset in the negative parameter direction."
+        },
+        {
+          "name": "parameter",
+          "type": "double",
+          "description": "The output parameter value that is the specified curve length from the starting parameter position."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getParameterAtPoint": {
+      "id": "CurveEvaluator3D_getParameterAtPoint",
+      "title": "CurveEvaluator3D.getParameterAtPoint Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the parameter position that correspond to a point on the curve. For reliable results, the point should lie on the curve within model tolerance. If the point does not lie on the curve, the parameter of the nearest point on the curve will generally be returned.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, parameter) = curveEvaluator3D_var.getParameterAtPoint(point)",
+        "cpp": "#include  point;\ndouble parameter;\nboolean returnValue = curveEvaluator3D_var->getParameterAtPoint(point, parameter);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true of the parameter was successfully returned.",
+      "parameters": [
+        {
+          "name": "point",
+          "type": "Point3D",
+          "description": "The point to get the curve parameter value at."
+        },
+        {
+          "name": "parameter",
+          "type": "double",
+          "description": "The output parameter position corresponding to the point."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getParameterExtents": {
+      "id": "CurveEvaluator3D_getParameterExtents",
+      "title": "CurveEvaluator3D.getParameterExtents Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the parametric range of the curve.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, startParameter, endParameter) = curveEvaluator3D_var.getParameterExtents()",
+        "cpp": "#include getParameterExtents(startParameter, endParameter);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the curve is bounded and the parameter extents were successfully returned.",
+      "parameters": [
+        {
+          "name": "startParameter",
+          "type": "double",
+          "description": "The output lower bound of the parameter range."
+        },
+        {
+          "name": "endParameter",
+          "type": "double",
+          "description": "The output upper bound of the parameter range."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "SketchArcs.split",
+          "description": "Demonstrates the SketchArc.split method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getParametersAtPoints": {
+      "id": "CurveEvaluator3D_getParametersAtPoints",
+      "title": "CurveEvaluator3D.getParametersAtPoints Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the parameter positions that correspond to a set of points on the curve. For reliable results, the points should lie on the curve within model tolerance. If the points do not lie on the curve, the parameter of the nearest point on the curve will generally be returned.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, parameters) = curveEvaluator3D_var.getParametersAtPoints(points)",
+        "cpp": "#include getParametersAtPoints(points, parameters);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the parameters were successfully returned.",
+      "parameters": [
+        {
+          "name": "points",
+          "type": "Point3D[]",
+          "description": "An array of points to get the curve parameter values at."
+        },
+        {
+          "name": "parameters",
+          "type": "double[]",
+          "description": "The output array of parameter positions corresponding to the set of points. The length of this array will be equal to the length of the points array specified."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getPointAtParameter": {
+      "id": "CurveEvaluator3D_getPointAtParameter",
+      "title": "CurveEvaluator3D.getPointAtParameter Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the point on the curve that corresponds to evaluating a parameter position on the curve.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, point) = curveEvaluator3D_var.getPointAtParameter(parameter)",
+        "cpp": "#include  point;\nboolean returnValue = curveEvaluator3D_var->getPointAtParameter(parameter, point);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the point was successfully returned.",
+      "parameters": [
+        {
+          "name": "parameter",
+          "type": "double",
+          "description": "The parameter position to evaluate the curve position at. The parameter value must be within the range of the parameter extents as provided by getParameterExtents."
+        },
+        {
+          "name": "point",
+          "type": "Point3D",
+          "description": "The output curve position corresponding to evaluating the curve at that parameter position."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "SketchArcs.split",
+          "description": "Demonstrates the SketchArc.split method."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getPointsAtParameters": {
+      "id": "CurveEvaluator3D_getPointsAtParameters",
+      "title": "CurveEvaluator3D.getPointsAtParameters Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the points on the curve that correspond to evaluating a set of parameter positions on the curve.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, points) = curveEvaluator3D_var.getPointsAtParameters(parameters)",
+        "cpp": "#include getPointsAtParameters(parameters, points);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the points were successfully returned.",
+      "parameters": [
+        {
+          "name": "parameters",
+          "type": "double[]",
+          "description": "The array of parameter positions to evaluate the curve position at. Each parameter value must be within the range of the parameter extents as provided by getParameterExtents."
+        },
+        {
+          "name": "points",
+          "type": "Point3D[]",
+          "description": "The output array of curve positions corresponding to evaluating the curve at that parameter position. The length of this array will be equal to the length of the parameters array specified."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getSecondDerivative": {
+      "id": "CurveEvaluator3D_getSecondDerivative",
+      "title": "CurveEvaluator3D.getSecondDerivative Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the second derivative of the curve at the specified parameter position.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, secondDerivative) = curveEvaluator3D_var.getSecondDerivative(parameter)",
+        "cpp": "#include  secondDerivative;\nboolean returnValue = curveEvaluator3D_var->getSecondDerivative(parameter, secondDerivative);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the second derivative was successfully returned.",
+      "parameters": [
+        {
+          "name": "parameter",
+          "type": "double",
+          "description": "The parameter position to get the curve second derivative at. The parameter value must be within the range of the parameter extents as provided by getParameterExtents."
+        },
+        {
+          "name": "secondDerivative",
+          "type": "Vector3D",
+          "description": "The output second derivative vector at the parameter position specified."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getSecondDerivatives": {
+      "id": "CurveEvaluator3D_getSecondDerivatives",
+      "title": "CurveEvaluator3D.getSecondDerivatives Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the second derivatives of the curve at the specified parameter positions.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, secondDerivatives) = curveEvaluator3D_var.getSecondDerivatives(parameters)",
+        "cpp": "#include getSecondDerivatives(parameters, secondDerivatives);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the second derivatives were successfully returned.",
+      "parameters": [
+        {
+          "name": "parameters",
+          "type": "double[]",
+          "description": "The array of parameter positions to get the curve second derivative at. Each parameter value must be within the range of the parameter extents as provided by getParameterExtents."
+        },
+        {
+          "name": "secondDerivatives",
+          "type": "Vector3D[]",
+          "description": "The output array of second derivative vectors at each parameter position specified. The length of this array is equal to the length of the parameters array specified."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getStrokes": {
+      "id": "CurveEvaluator3D_getStrokes",
+      "title": "CurveEvaluator3D.getStrokes Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get a sequence of points between two curve parameter positions. The points will be a linear interpolation along the curve between these two parameter positions where the maximum deviation between the curve and each line segment will not exceed the specified tolerance value.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, vertexCoordinates) = curveEvaluator3D_var.getStrokes(fromParameter, toParameter, tolerance)",
+        "cpp": "#include getStrokes(fromParameter, toParameter, tolerance, vertexCoordinates);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the interpolation points were successfully returned.",
+      "parameters": [
+        {
+          "name": "fromParameter",
+          "type": "double",
+          "description": "The starting parameter position to interpolate points from. The parameter value must be within the range of the parameter extents as provided by getParameterExtents."
+        },
+        {
+          "name": "toParameter",
+          "type": "double",
+          "description": "The ending parameter position to interpolate points to. The parameter value must be within the range of the parameter extents as provided by getParameterExtents."
+        },
+        {
+          "name": "tolerance",
+          "type": "double",
+          "description": "The maximum distance tolerance between the curve and the linear interpolation."
+        },
+        {
+          "name": "vertexCoordinates",
+          "type": "Point3D[]",
+          "description": "The output array of linear interpolation points."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getTangent": {
+      "id": "CurveEvaluator3D_getTangent",
+      "title": "CurveEvaluator3D.getTangent Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the tangent to the curve at a parameter position on the curve.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, tangent) = curveEvaluator3D_var.getTangent(parameter)",
+        "cpp": "#include  tangent;\nboolean returnValue = curveEvaluator3D_var->getTangent(parameter, tangent);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the tangent was successfully returned.",
+      "parameters": [
+        {
+          "name": "parameter",
+          "type": "double",
+          "description": "The parameter position to return the tangent at. This value must be within the range of the parameter extents as provided by getParameterExtents."
+        },
+        {
+          "name": "tangent",
+          "type": "Vector3D",
+          "description": "The output tangent vector at the curve position."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getTangents": {
+      "id": "CurveEvaluator3D_getTangents",
+      "title": "CurveEvaluator3D.getTangents Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the tangent to the curve at a number of parameter positions on the curve.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, tangents) = curveEvaluator3D_var.getTangents(parameters)",
+        "cpp": "#include getTangents(parameters, tangents);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the tangents were successfully returned.",
+      "parameters": [
+        {
+          "name": "parameters",
+          "type": "double[]",
+          "description": "The array of parameter positions to return the tangent at. Each parameter value must be within the range of the parameter extents as provided by getParameterExtents."
+        },
+        {
+          "name": "tangents",
+          "type": "Vector3D[]",
+          "description": "The output array of tangent vectors for each position on the curve. The length of this array will be the same as the length of the parameters array provided."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getThirdDerivative": {
+      "id": "CurveEvaluator3D_getThirdDerivative",
+      "title": "CurveEvaluator3D.getThirdDerivative Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the third derivative of the curve at the specified parameter position.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, thirdDerivative) = curveEvaluator3D_var.getThirdDerivative(parameter)",
+        "cpp": "#include  thirdDerivative;\nboolean returnValue = curveEvaluator3D_var->getThirdDerivative(parameter, thirdDerivative);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the third derivative was successfully returned.",
+      "parameters": [
+        {
+          "name": "parameter",
+          "type": "double",
+          "description": "The parameter position to get the curve third derivative at. The parameter value must be within the range of the parameter extents as provided by getParameterExtents."
+        },
+        {
+          "name": "thirdDerivative",
+          "type": "Vector3D",
+          "description": "The output third derivative vector at the parameter position specified."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "getThirdDerivatives": {
+      "id": "CurveEvaluator3D_getThirdDerivatives",
+      "title": "CurveEvaluator3D.getThirdDerivatives Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Get the third derivatives of the curve at the specified parameter positions.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "(returnValue, thirdDerivatives) = curveEvaluator3D_var.getThirdDerivatives(parameters)",
+        "cpp": "#include getThirdDerivatives(parameters, thirdDerivatives);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the third derivatives were successfully returned.",
+      "parameters": [
+        {
+          "name": "parameters",
+          "type": "double[]",
+          "description": "The array of parameter positions to get the curve third derivative at. Each parameter value must be within the range of the parameter extents as provided by getParameterExtents."
+        },
+        {
+          "name": "thirdDerivatives",
+          "type": "Vector3D[]",
+          "description": "The output array of third derivative vectors at each parameter position specified. The length of this array is equal to the length of the parameters array specified."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "isValid": {
+      "id": "CurveEvaluator3D_isValid",
+      "title": "CurveEvaluator3D.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = curveEvaluator3D_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = curveEvaluator3D_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "CurveEvaluator3D_objectType",
+      "title": "CurveEvaluator3D.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Geometry/CurveEvaluator3D.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "CurveEvaluator3D",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = curveEvaluator3D_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = curveEvaluator3D_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

@@ -1,0 +1,310 @@
+{
+  "id": "ConfigurationInsertStandardDesignColumn",
+  "title": "ConfigurationInsertStandardDesignColumn Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Configurations/ConfigurationInsertStandardDesignColumn.h",
+  "description": "This object represents a column in the table that controls which design should be referenced by an occurrence. The column contains a list of designs that have been specified for that column. One of the designs is specified for each cell in the column. That design will be referenced by the occurrence when the row that cell is in is active.",
+  "parent_class": "ConfigurationColumn",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this column from the table. Property columns cannot be deleted. If the table was obtained from a DataFile, this method will fail."
+    },
+    {
+      "name": "getCell",
+      "description": "Gets the cell in this column at the specified row. The first row has an index of 0 and does not include the header row."
+    },
+    {
+      "name": "getCellByRowId",
+      "description": "Gets the cell in this column at the row specified by its ID."
+    },
+    {
+      "name": "getCellByRowName",
+      "description": "Gets the cell in this column at the row specified by its name."
+    }
+  ],
+  "properties": [
+    {
+      "name": "id",
+      "description": "The id of the column. This is constant and cannot be changed by the user."
+    },
+    {
+      "name": "index",
+      "description": "The index position of this column within the table. The first column is at index 0 and does not include the \"Name\" column."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "occurrence",
+      "description": "Returns the occurrence being controlled by this column.   This property returns null when the table being queried was obtained from a DataFile object."
+    },
+    {
+      "name": "parentTable",
+      "description": "Returns the parent table this column is in."
+    },
+    {
+      "name": "replaceDesigns",
+      "description": "Provides access to the list of replace designs that have been defined for this column. Using the returned collection you can define new ConfigurationReplaceDesign objects. Use the cells in the column to specify which one of the defined replace designs is used for a specific row."
+    },
+    {
+      "name": "rowCount",
+      "description": "Returns the number of rows in this column."
+    },
+    {
+      "name": "title",
+      "description": "The title of this column. In a top table, this can only be edited for suppression, visibility, parameter, and theme table columns. It behaves as read-only for all other types. In a theme table, the title of all the columns can be modified except for the column that represents the root component for materials and appearances.   If the table was obtained from a DataFile, this property behaves as read-only for all the columns."
+    }
+  ],
+  "version": "Introduced in version September 2025",
+  "method_details": {
+    "classType": {
+      "id": "ConfigurationInsertStandardDesignColumn_classType",
+      "title": "ConfigurationInsertStandardDesignColumn.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationInsertStandardDesignColumn.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ConfigurationInsertStandardDesignColumn",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ConfigurationInsertStandardDesignColumn.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ConfigurationInsertStandardDesignColumn::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version September 2025"
+    },
+    "deleteMe": {
+      "id": "ConfigurationInsertStandardDesignColumn_deleteMe",
+      "title": "ConfigurationInsertStandardDesignColumn.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationInsertStandardDesignColumn.h",
+      "description": "Deletes this column from the table. Property columns cannot be deleted. If the table was obtained from a DataFile, this method will fail.",
+      "parent_class": "ConfigurationInsertStandardDesignColumn",
+      "syntax": {
+        "python": "returnValue = configurationInsertStandardDesignColumn_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = configurationInsertStandardDesignColumn_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the deletion was successful.",
+      "version": "Introduced in version September 2025"
+    },
+    "getCell": {
+      "id": "ConfigurationInsertStandardDesignColumn_getCell",
+      "title": "ConfigurationInsertStandardDesignColumn.getCell Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationInsertStandardDesignColumn.h",
+      "description": "Gets the cell in this column at the specified row. The first row has an index of 0 and does not include the header row.",
+      "parent_class": "ConfigurationInsertStandardDesignColumn",
+      "syntax": {
+        "python": "returnValue = configurationInsertStandardDesignColumn_var.getCell(rowIndex)",
+        "cpp": "#include \n\nreturnValue = configurationInsertStandardDesignColumn_var->getCell(rowIndex);"
+      },
+      "return_type": "ConfigurationInsertStandardDesignCell",
+      "return_description": "Returns the specified cell if successful and null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "rowIndex",
+          "type": "uinteger",
+          "description": "The index of the row to return the cell for. The first row has an index of 0."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    },
+    "getCellByRowId": {
+      "id": "ConfigurationInsertStandardDesignColumn_getCellByRowId",
+      "title": "ConfigurationInsertStandardDesignColumn.getCellByRowId Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationInsertStandardDesignColumn.h",
+      "description": "Gets the cell in this column at the row specified by its ID.",
+      "parent_class": "ConfigurationInsertStandardDesignColumn",
+      "syntax": {
+        "python": "returnValue = configurationInsertStandardDesignColumn_var.getCellByRowId(rowId)",
+        "cpp": "#include \n\nreturnValue = configurationInsertStandardDesignColumn_var->getCellByRowId(rowId);"
+      },
+      "return_type": "ConfigurationInsertStandardDesignCell",
+      "return_description": "Returns the specified cell if successful and null if the id is not found.",
+      "parameters": [
+        {
+          "name": "rowId",
+          "type": "string",
+          "description": "The ID of the row to return the cell for."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    },
+    "getCellByRowName": {
+      "id": "ConfigurationInsertStandardDesignColumn_getCellByRowName",
+      "title": "ConfigurationInsertStandardDesignColumn.getCellByRowName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationInsertStandardDesignColumn.h",
+      "description": "Gets the cell in this column at the row specified by its name.",
+      "parent_class": "ConfigurationInsertStandardDesignColumn",
+      "syntax": {
+        "python": "returnValue = configurationInsertStandardDesignColumn_var.getCellByRowName(rowName)",
+        "cpp": "#include \n\nreturnValue = configurationInsertStandardDesignColumn_var->getCellByRowName(rowName);"
+      },
+      "return_type": "ConfigurationInsertStandardDesignCell",
+      "return_description": "Returns the specified cell if successful and null if the name is not found.",
+      "parameters": [
+        {
+          "name": "rowName",
+          "type": "string",
+          "description": "The name of the row to return the cell for."
+        }
+      ],
+      "version": "Introduced in version September 2025"
+    }
+  },
+  "property_details": {
+    "id": {
+      "id": "ConfigurationInsertStandardDesignColumn_id",
+      "title": "ConfigurationInsertStandardDesignColumn.id Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationInsertStandardDesignColumn.h",
+      "description": "The id of the column. This is constant and cannot be changed by the user.",
+      "parent_class": "ConfigurationInsertStandardDesignColumn",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationInsertStandardDesignColumn_var.id",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = configurationInsertStandardDesignColumn_var->id();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "index": {
+      "id": "ConfigurationInsertStandardDesignColumn_index",
+      "title": "ConfigurationInsertStandardDesignColumn.index Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationInsertStandardDesignColumn.h",
+      "description": "The index position of this column within the table. The first column is at index 0 and does not include the \"Name\" column.",
+      "parent_class": "ConfigurationInsertStandardDesignColumn",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationInsertStandardDesignColumn_var.index",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = configurationInsertStandardDesignColumn_var->index();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "isValid": {
+      "id": "ConfigurationInsertStandardDesignColumn_isValid",
+      "title": "ConfigurationInsertStandardDesignColumn.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationInsertStandardDesignColumn.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ConfigurationInsertStandardDesignColumn",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationInsertStandardDesignColumn_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = configurationInsertStandardDesignColumn_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "objectType": {
+      "id": "ConfigurationInsertStandardDesignColumn_objectType",
+      "title": "ConfigurationInsertStandardDesignColumn.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationInsertStandardDesignColumn.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ConfigurationInsertStandardDesignColumn",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationInsertStandardDesignColumn_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = configurationInsertStandardDesignColumn_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "occurrence": {
+      "id": "ConfigurationInsertStandardDesignColumn_occurrence",
+      "title": "ConfigurationInsertStandardDesignColumn.occurrence Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationInsertStandardDesignColumn.h",
+      "description": "Returns the occurrence being controlled by this column. This property returns null when the table being queried was obtained from a DataFile object.",
+      "parent_class": "ConfigurationInsertStandardDesignColumn",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationInsertStandardDesignColumn_var.occurrence",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = configurationInsertStandardDesignColumn_var->occurrence();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "parentTable": {
+      "id": "ConfigurationInsertStandardDesignColumn_parentTable",
+      "title": "ConfigurationInsertStandardDesignColumn.parentTable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationInsertStandardDesignColumn.h",
+      "description": "Returns the parent table this column is in.",
+      "parent_class": "ConfigurationInsertStandardDesignColumn",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationInsertStandardDesignColumn_var.parentTable",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = configurationInsertStandardDesignColumn_var->parentTable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "replaceDesigns": {
+      "id": "ConfigurationInsertStandardDesignColumn_replaceDesigns",
+      "title": "ConfigurationInsertStandardDesignColumn.replaceDesigns Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationInsertStandardDesignColumn.h",
+      "description": "Provides access to the list of replace designs that have been defined for this column. Using the returned collection you can define new ConfigurationReplaceDesign objects. Use the cells in the column to specify which one of the defined replace designs is used for a specific row.",
+      "parent_class": "ConfigurationInsertStandardDesignColumn",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationInsertStandardDesignColumn_var.replaceDesigns",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = configurationInsertStandardDesignColumn_var->replaceDesigns();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "rowCount": {
+      "id": "ConfigurationInsertStandardDesignColumn_rowCount",
+      "title": "ConfigurationInsertStandardDesignColumn.rowCount Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationInsertStandardDesignColumn.h",
+      "description": "Returns the number of rows in this column.",
+      "parent_class": "ConfigurationInsertStandardDesignColumn",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationInsertStandardDesignColumn_var.rowCount",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = configurationInsertStandardDesignColumn_var->rowCount();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    },
+    "title": {
+      "id": "ConfigurationInsertStandardDesignColumn_title",
+      "title": "ConfigurationInsertStandardDesignColumn.title Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Configurations/ConfigurationInsertStandardDesignColumn.h",
+      "description": "The title of this column. In a top table, this can only be edited for suppression, visibility, parameter, and theme table columns. It behaves as read-only for all other types. In a theme table, the title of all the columns can be modified except for the column that represents the root component for materials and appearances. If the table was obtained from a DataFile, this property behaves as read-only for all the columns.",
+      "parent_class": "ConfigurationInsertStandardDesignColumn",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = configurationInsertStandardDesignColumn_var.title\n\n# Set the value of the property.\nconfigurationInsertStandardDesignColumn_var.title = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = configurationInsertStandardDesignColumn_var->title();\n\n// Set the value of the property, where value_var is a string.\nbool returnValue = configurationInsertStandardDesignColumn_var->title(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2025"
+    }
+  }
+}

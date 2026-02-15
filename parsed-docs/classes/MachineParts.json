@@ -1,0 +1,203 @@
+{
+  "id": "MachineParts",
+  "title": "MachineParts Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/Machine/MachineParts.h",
+  "description": "Object that represents a collection of machine parts. These parts are the children of another part or the collection of base parts from MachineKinematics.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Add a new part to this collection. The part's parent will be set to the owner of this collection, or null if this is the root parts collection.   If the passed MachinePartInput has a MachineAxisInput a new MachineAxis will be created."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createPartInput",
+      "description": "Create a new MachinePartInput."
+    },
+    {
+      "name": "item",
+      "description": "Get the part at index in this collection."
+    },
+    {
+      "name": "itemById",
+      "description": "Get the part with the given ID."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Get the number of parts in this collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "method_details": {
+    "add": {
+      "id": "MachineParts_add",
+      "title": "MachineParts.add Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineParts.h",
+      "description": "Add a new part to this collection. The part's parent will be set to the owner of this collection, or null if this is the root parts collection. If the passed MachinePartInput has a MachineAxisInput a new MachineAxis will be created.",
+      "parent_class": "MachineParts",
+      "syntax": {
+        "python": "returnValue = machineParts_var.add(partInput)",
+        "cpp": "#include \n\nreturnValue = machineParts_var->add(partInput);"
+      },
+      "return_type": "MachinePart",
+      "return_description": "Returns the newly created MachinePart or null if creation failed.",
+      "parameters": [
+        {
+          "name": "partInput",
+          "type": "MachinePartInput",
+          "description": "Part input object used to create the new MachinePart."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "classType": {
+      "id": "MachineParts_classType",
+      "title": "MachineParts.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineParts.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "MachineParts",
+      "syntax": {
+        "python": "returnValue = adsk.cam.MachineParts.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::MachineParts::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    },
+    "createPartInput": {
+      "id": "MachineParts_createPartInput",
+      "title": "MachineParts.createPartInput Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineParts.h",
+      "description": "Create a new MachinePartInput.",
+      "parent_class": "MachineParts",
+      "syntax": {
+        "python": "returnValue = machineParts_var.createPartInput(partType)",
+        "cpp": "#include \n\nreturnValue = machineParts_var->createPartInput(partType);"
+      },
+      "return_type": "MachinePartInput",
+      "return_description": "Returns the new MachinePartInput or null if creation failed.",
+      "parameters": [
+        {
+          "name": "partType",
+          "type": "MachinePartTypes",
+          "description": "The type of part to create. When this parameter is Axis, you must set a value for axisInput."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "item": {
+      "id": "MachineParts_item",
+      "title": "MachineParts.item Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineParts.h",
+      "description": "Get the part at index in this collection.",
+      "parent_class": "MachineParts",
+      "syntax": {
+        "python": "returnValue = machineParts_var.item(index)",
+        "cpp": "#include \n\nreturnValue = machineParts_var->item(index);"
+      },
+      "return_type": "MachinePart",
+      "return_description": "The MachinePart at index.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "integer",
+          "description": "The index of the part."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "itemById": {
+      "id": "MachineParts_itemById",
+      "title": "MachineParts.itemById Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineParts.h",
+      "description": "Get the part with the given ID.",
+      "parent_class": "MachineParts",
+      "syntax": {
+        "python": "returnValue = machineParts_var.itemById(id)",
+        "cpp": "#include \n\nreturnValue = machineParts_var->itemById(id);"
+      },
+      "return_type": "MachinePart",
+      "return_description": "Returns the MachinePart with the given ID, or null if the given ID does not match any part in the collection.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The ID for the part to get."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "MachineParts_count",
+      "title": "MachineParts.count Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineParts.h",
+      "description": "Get the number of parts in this collection.",
+      "parent_class": "MachineParts",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = machineParts_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = machineParts_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "MachineParts_isValid",
+      "title": "MachineParts.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineParts.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "MachineParts",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = machineParts_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = machineParts_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "MachineParts_objectType",
+      "title": "MachineParts.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/Machine/MachineParts.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "MachineParts",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = machineParts_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = machineParts_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  }
+}

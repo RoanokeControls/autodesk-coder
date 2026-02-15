@@ -1,0 +1,376 @@
+{
+  "id": "ToolbarControls",
+  "title": "ToolbarControls Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/UserInterface/ToolbarControls.h",
+  "description": "ToolbarControls is a collection of ToolbarControl objects displayed in a toolbar or menu.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "addCommand",
+      "description": "Adds a button to the controls in the toolbar, panel, or drop-down. The ID of the created command control is inherited from the associated command definition."
+    },
+    {
+      "name": "addDropDown",
+      "description": "Adds a drop-down to the controls in the toolbar, panel, or drop-down. When the drop-down is initially created it will be empty. you can get the associated ToolbarControls object from the DropDownControl to add additional controls to the drop-down."
+    },
+    {
+      "name": "addSeparator",
+      "description": "Adds a separator to the controls in the toolbar, panel, or drop-down."
+    },
+    {
+      "name": "addSplitButton",
+      "description": "Adds a split button to the controls in a toolbar. A split button has two active areas that the user can click; the main button portion and the drop-down arrow. Clicking the main button, executes the displayed command. Clicking the drop-down displays the drop-down with additional commands.   The split button itself does not fire any events, but the buttons within it will fire events to their associated command definitions."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Returns the ToolbarControl at the specified index. When iterating by index, the controls are returned in the same order as they are shown in the user interface."
+    },
+    {
+      "name": "itemById",
+      "description": "Returns the ToolbarControl at the specified ID."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Gets the number of controls in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Palette Sample",
+      "description": "Demonstrates how to create a palette, how to dock and snap palettes and how Fusion communicates with the palette HTML. The sample is an add-in.  To use it, create a new Python add-in and replace the code with the code below. You also need to create an html file using the name and code below. The html file needs to be in the same folder as the py file.\n\tWhen you load the add-in, you'll see two new commands under the ADD-INS panel of the TOOLS tab. The \"Show Custom Palette\" command will cause the custom palette to be displayed. It will remain displayed until you click its Close button. Clicking the \"Click to send info to Fusion\" button on the palette, will send information to your add-in, which uses the API to display that information in a message box. Running the \"Send Info to HTML\" command to send data to the javascript running in the palette, which uses it to update the content of a paragraph.\n\npalette.html"
+    },
+    {
+      "name": "Write user interface to a file API Sample",
+      "description": "Writes out the full structure of the Fusion user interface. This information is useful when editing the user-interface, as discussed in the usre manual topic User-Interface Customization with Fusion's API"
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "addCommand": {
+      "id": "ToolbarControls_addCommand",
+      "title": "ToolbarControls.addCommand Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ToolbarControls.h",
+      "description": "Adds a button to the controls in the toolbar, panel, or drop-down. The ID of the created command control is inherited from the associated command definition.",
+      "parent_class": "ToolbarControls",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = toolbarControls_var.addCommand(commandDefinition)\n\n# Uses optional arguments.\nreturnValue = toolbarControls_var.addCommand(commandDefinition, positionID, isBefore)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = toolbarControls_var->addCommand(commandDefinition);\n\n// Uses optional arguments.\nreturnValue = toolbarControls_var->addCommand(commandDefinition, positionID, isBefore);"
+      },
+      "return_type": "CommandControl",
+      "return_description": "Returns the newly created CommandControl object or null if the creation fails.",
+      "parameters": [
+        {
+          "name": "commandDefinition",
+          "type": "CommandDefinition",
+          "description": "The associated CommandDefinition that defines the resources and receives events related to this control."
+        },
+        {
+          "name": "positionID",
+          "type": "string",
+          "description": "Specifies the reference id of the control to position this control relative to. Not setting this value indicates that the control will be created at the end of all other controls in toolbar. The isBefore parameter specifies whether to place the control before or after the reference control.   This is an optional argument whose default value is \"\"."
+        },
+        {
+          "name": "isBefore",
+          "type": "boolean",
+          "description": "Specifies whether to place the control before or after the reference control specified by the positionID parameter. This argument is ignored is positionID is not specified.   This is an optional argument whose default value is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Palette Sample",
+          "description": "Demonstrates how to create a palette, how to dock and snap palettes and how Fusion communicates with the palette HTML. The sample is an add-in.\u00a0To use it, create a new Python add-in and replace the code with the code below. You also need to create an html file using the name and code below. The html file needs to be in the same folder as the py file.\n\tWhen you load the add-in, you'll see two new commands under the ADD-INS panel of the TOOLS tab. The \"Show Custom Palette\" command will cause the custom palette to be displayed. It will remain displayed until you click its Close button. Clicking the \"Click to send info to Fusion\" button on the palette, will send information to your add-in, which uses the API to display that information in a message box. Running the \"Send Info to HTML\" command to send data to the javascript running in the palette, which uses it to update the content of a paragraph.\n\npalette.html"
+        },
+        {
+          "name": "Customizing the UI using the API Sample",
+          "description": "Demonstrates how to work with tabs, panels, and command in the user interface. The full source for C++ and Python samples can be downloaded. This is especially useful for getting the resource files."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addDropDown": {
+      "id": "ToolbarControls_addDropDown",
+      "title": "ToolbarControls.addDropDown Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ToolbarControls.h",
+      "description": "Adds a drop-down to the controls in the toolbar, panel, or drop-down. When the drop-down is initially created it will be empty. you can get the associated ToolbarControls object from the DropDownControl to add additional controls to the drop-down.",
+      "parent_class": "ToolbarControls",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = toolbarControls_var.addDropDown(text, resourceFolder)\n\n# Uses optional arguments.\nreturnValue = toolbarControls_var.addDropDown(text, resourceFolder, id, positionID, isBefore)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = toolbarControls_var->addDropDown(text, resourceFolder);\n\n// Uses optional arguments.\nreturnValue = toolbarControls_var->addDropDown(text, resourceFolder, id, positionID, isBefore);"
+      },
+      "return_type": "DropDownControl",
+      "return_description": "Returns the newly created DropDownControl object or null if the creation fails.",
+      "parameters": [
+        {
+          "name": "text",
+          "type": "string",
+          "description": "The text displayed for the drop-down in a menu. For a drop-down in a toolbar this argument is ignored because an icon is used."
+        },
+        {
+          "name": "resourceFolder",
+          "type": "string",
+          "description": "This argument defines the resource folder that contains the images used for the icon when the drop-down is in a toolbar. Icons can be defined using either PNG or SVG files. More information about icons can be found in the user manual topic User Interface Customization."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Optional unique ID for the control. It must be unique with respect to other controls in this collection. If the default empty string is provided, Fusion will create a unique ID.   This is an optional argument whose default value is \"\"."
+        },
+        {
+          "name": "positionID",
+          "type": "string",
+          "description": "Specifies the reference id of the control to position this control relative to. Not setting this value indicates that the control will be created at the end of all other controls in toolbar. The isBefore parameter specifies whether to place the control before or after the reference control.   This is an optional argument whose default value is \"\"."
+        },
+        {
+          "name": "isBefore",
+          "type": "boolean",
+          "description": "Specifies whether to place the control before or after the reference control specified by the positionID parameter. This argument is ignored is positionID is not specified.   This is an optional argument whose default value is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Customizing the UI using the API Sample",
+          "description": "Demonstrates how to work with tabs, panels, and command in the user interface. The full source for C++ and Python samples can be downloaded. This is especially useful for getting the resource files."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addSeparator": {
+      "id": "ToolbarControls_addSeparator",
+      "title": "ToolbarControls.addSeparator Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ToolbarControls.h",
+      "description": "Adds a separator to the controls in the toolbar, panel, or drop-down.",
+      "parent_class": "ToolbarControls",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = toolbarControls_var.addSeparator()\n\n# Uses optional arguments.\nreturnValue = toolbarControls_var.addSeparator(id, positionID, isBefore)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = toolbarControls_var->addSeparator();\n\n// Uses optional arguments.\nreturnValue = toolbarControls_var->addSeparator(id, positionID, isBefore);"
+      },
+      "return_type": "SeparatorControl",
+      "return_description": "Returns the newly created separator controls or null if the creation fails.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Optional unique ID for the control. It must be unique with respect to other controls in this collection. If the default empty string is provided, Fusion will create a unique ID.   This is an optional argument whose default value is \"\"."
+        },
+        {
+          "name": "positionID",
+          "type": "string",
+          "description": "Specifies the reference id of the control to position this separator control relative to. Not setting this value indicates that the separator control will be created at the end of all other controls in toolbar. The isBefore parameter specifies whether to place the control before or after the reference control.   This is an optional argument whose default value is \"\"."
+        },
+        {
+          "name": "isBefore",
+          "type": "boolean",
+          "description": "Specifies whether to place the separator control before or after the reference control specified by the positionID parameter. This argument is ignored is positionID is not specified.   This is an optional argument whose default value is True."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Customizing the UI using the API Sample",
+          "description": "Demonstrates how to work with tabs, panels, and command in the user interface. The full source for C++ and Python samples can be downloaded. This is especially useful for getting the resource files."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "addSplitButton": {
+      "id": "ToolbarControls_addSplitButton",
+      "title": "ToolbarControls.addSplitButton Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ToolbarControls.h",
+      "description": "Adds a split button to the controls in a toolbar. A split button has two active areas that the user can click; the main button portion and the drop-down arrow. Clicking the main button, executes the displayed command. Clicking the drop-down displays the drop-down with additional commands. The split button itself does not fire any events, but the buttons within it will fire events to their associated command definitions.",
+      "parent_class": "ToolbarControls",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = toolbarControls_var.addSplitButton(defaultDefinition, additionalDefinitions, showLastUsed)\n\n# Uses optional arguments.\nreturnValue = toolbarControls_var.addSplitButton(defaultDefinition, additionalDefinitions, showLastUsed, id, positionID, isBefore)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = toolbarControls_var->addSplitButton(defaultDefinition, additionalDefinitions, showLastUsed);\n\n// Uses optional arguments.\nreturnValue = toolbarControls_var->addSplitButton(defaultDefinition, additionalDefinitions, showLastUsed, id, positionID, isBefore);"
+      },
+      "return_type": "SplitButtonControl",
+      "return_description": "Returns the newly created SplitButtonControl object or null if the creation fails.",
+      "parameters": [
+        {
+          "name": "defaultDefinition",
+          "type": "CommandDefinition",
+          "description": "A command definition that will be used to create the main button. A button will also be created in the drop-down for this definition."
+        },
+        {
+          "name": "additionalDefinitions",
+          "type": "CommandDefinition[]",
+          "description": "An array of command definitions that will be used to create the buttons on the drop-down."
+        },
+        {
+          "name": "showLastUsed",
+          "type": "boolean",
+          "description": "Specifies if the split button should have the behavior where the command shown on the main button changes to the last executed command."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Optional unique ID for the control. It must be unique with respect to other controls in this collection. If the default empty string is provided, Fusion will create a unique ID.   This is an optional argument whose default value is \"\"."
+        },
+        {
+          "name": "positionID",
+          "type": "string",
+          "description": "Specifies the reference id of the control to position this control relative to. Not setting this value indicates that the control will be created at the end of all other controls in toolbar. The isBefore parameter specifies whether to place the control before or after the reference control.   This is an optional argument whose default value is \"\"."
+        },
+        {
+          "name": "isBefore",
+          "type": "boolean",
+          "description": "Specifies whether to place the control before or after the reference control specified by the positionID parameter. This argument is ignored is positionID is not specified   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "classType": {
+      "id": "ToolbarControls_classType",
+      "title": "ToolbarControls.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ToolbarControls.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ToolbarControls",
+      "syntax": {
+        "python": "returnValue = adsk.core.ToolbarControls.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::ToolbarControls::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "ToolbarControls_item",
+      "title": "ToolbarControls.item Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ToolbarControls.h",
+      "description": "Returns the ToolbarControl at the specified index. When iterating by index, the controls are returned in the same order as they are shown in the user interface.",
+      "parent_class": "ToolbarControls",
+      "syntax": {
+        "python": "returnValue = toolbarControls_var.item(index)",
+        "cpp": "#include \n\nreturnValue = toolbarControls_var->item(index);"
+      },
+      "return_type": "ToolbarControl",
+      "return_description": "Returns the ToolbarControl at the specified index or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the control within the collection to return. The first item in the collection has in index of 0."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Write user interface to a file API Sample",
+          "description": "Writes out the full structure of the Fusion user interface. This information is useful when editing the user-interface, as discussed in the usre manual topic User-Interface Customization with Fusion's API"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "itemById": {
+      "id": "ToolbarControls_itemById",
+      "title": "ToolbarControls.itemById Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ToolbarControls.h",
+      "description": "Returns the ToolbarControl at the specified ID.",
+      "parent_class": "ToolbarControls",
+      "syntax": {
+        "python": "returnValue = toolbarControls_var.itemById(id)",
+        "cpp": "#include \n\nreturnValue = toolbarControls_var->itemById(id);"
+      },
+      "return_type": "ToolbarControl",
+      "return_description": "Returns the ToolbarControl with the specified ID or null if no control has this ID.",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "The ID of the control within the collection to return."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Palette Sample",
+          "description": "Demonstrates how to create a palette, how to dock and snap palettes and how Fusion communicates with the palette HTML. The sample is an add-in.\u00a0To use it, create a new Python add-in and replace the code with the code below. You also need to create an html file using the name and code below. The html file needs to be in the same folder as the py file.\n\tWhen you load the add-in, you'll see two new commands under the ADD-INS panel of the TOOLS tab. The \"Show Custom Palette\" command will cause the custom palette to be displayed. It will remain displayed until you click its Close button. Clicking the \"Click to send info to Fusion\" button on the palette, will send information to your add-in, which uses the API to display that information in a message box. Running the \"Send Info to HTML\" command to send data to the javascript running in the palette, which uses it to update the content of a paragraph.\n\npalette.html"
+        },
+        {
+          "name": "Customizing the UI using the API Sample",
+          "description": "Demonstrates how to work with tabs, panels, and command in the user interface. The full source for C++ and Python samples can be downloaded. This is especially useful for getting the resource files."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "ToolbarControls_count",
+      "title": "ToolbarControls.count Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ToolbarControls.h",
+      "description": "Gets the number of controls in the collection.",
+      "parent_class": "ToolbarControls",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = toolbarControls_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = toolbarControls_var->count();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Write user interface to a file API Sample",
+          "description": "Writes out the full structure of the Fusion user interface. This information is useful when editing the user-interface, as discussed in the usre manual topic User-Interface Customization with Fusion's API"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "ToolbarControls_isValid",
+      "title": "ToolbarControls.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ToolbarControls.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ToolbarControls",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = toolbarControls_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = toolbarControls_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "ToolbarControls_objectType",
+      "title": "ToolbarControls.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/UserInterface/ToolbarControls.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ToolbarControls",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = toolbarControls_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = toolbarControls_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "id": "ECD-ULP-DIMENSION",
+  "title": "UL_DIMENSION",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "dtype",
+      "type": "int (DIMENSION_...)"
+    },
+    {
+      "name": "layer",
+      "type": "int"
+    },
+    {
+      "name": "extlength",
+      "type": "int"
+    },
+    {
+      "name": "extoffset",
+      "type": "int"
+    },
+    {
+      "name": "extwidth",
+      "type": "int"
+    },
+    {
+      "name": "precision",
+      "type": "int"
+    },
+    {
+      "name": "ratio",
+      "type": "int"
+    },
+    {
+      "name": "size",
+      "type": "int"
+    },
+    {
+      "name": "unit",
+      "type": "int (GRID_UNIT_...)"
+    },
+    {
+      "name": "visible",
+      "type": "int (unit, 0=off, 1=on)"
+    },
+    {
+      "name": "width",
+      "type": "int"
+    },
+    {
+      "name": "x1, y1",
+      "type": "int (first reference point)"
+    },
+    {
+      "name": "x2, y2",
+      "type": "int (second reference point)"
+    },
+    {
+      "name": "x3, y3",
+      "type": "int (alignment reference point)"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "texts()",
+      "type": "UL_TEXT"
+    },
+    {
+      "name": "wires()",
+      "type": "UL_WIRE"
+    }
+  ],
+  "content": "# UL_DIMENSION\n\n## Data members\n\n| | |\n| --- | --- |\n| dtype | int (DIMENSION_...) |\n| layer | int |\n| extlength | int |\n| extoffset | int |\n| extwidth | int |\n| precision | int |\n| ratio | int |\n| size | int |\n| unit | int (GRID_UNIT_...) |\n| visible | int (unit, 0=off, 1=on) |\n| width | int |\n| x1, y1 | int (first reference point) |\n| x2, y2 | int (second reference point) |\n| x3, y3 | int (alignment reference point) |\n\n## Loop members\n\n| | |\n| --- | --- |\n| texts() | UL_TEXT |\n| wires() | UL_WIRE |\n\nSee also UL_BOARD, UL_GRID, UL_FOOTPRINT, UL_SHEET, UL_SYMBOL\n\n## Constants\n\n| | |\n| --- | --- |\n| DIMENSION_PARALLEL | linear dimension with parallel measurement line |\n| DIMENSION_HORIZONTAL | linear dimension with horizontal measurement line |\n| DIMENSION_VERTICAL | linear dimension with vertical measurement line |\n| DIMENSION_RADIUS | radial dimension |\n| DIMENSION_DIAMETER | diameter dimension |\n| DIMENSION_ANGLE | angle dimension |\n| DIMENSION_LEADER | an arbitrary pointer |\n\n## Note\n\nThe *texts()* and *wires()* loop members loop through all the texts and wires the dimension consists of.\n\n## Example\n\n```\nboard(B) {\n B.dimensions(D) {\n printf(\"Dimension: (%f %f), (%f %f), (%f %f)\\n\",\n u2mm(D.x1), u2mm(D.y1), u2mm(D.x2), u2mm(D.y2), u2mm(D.x3), u2mm(D.y3));\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

@@ -1,0 +1,216 @@
+{
+  "id": "SketchEllipticalArcs",
+  "title": "SketchEllipticalArcs Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Sketch/SketchEllipticalArcs.h",
+  "description": "The collection of elliptical arcs in a sketch. This provides access to the existing elliptical arcs and supports the methods to create new elliptical arcs.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "addByAngle",
+      "description": "Creates an elliptical sketch arc where the sweep of the arc is defined by the start and sweep angles."
+    },
+    {
+      "name": "addByEndPoints",
+      "description": "Creates an elliptical sketch arc where the sweep of the arc is defined by two points."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified sketch elliptical arc using an index into the collection."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of elliptical arcs in the sketch."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "addByAngle": {
+      "id": "SketchEllipticalArcs_addByAngle",
+      "title": "SketchEllipticalArcs.addByAngle Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArcs.h",
+      "description": "Creates an elliptical sketch arc where the sweep of the arc is defined by the start and sweep angles.",
+      "parent_class": "SketchEllipticalArcs",
+      "syntax": {
+        "python": "returnValue = sketchEllipticalArcs_var.addByAngle(centerPoint, majorAxis, minorAxis, startAngle, sweepAngle)",
+        "cpp": "#include \n\nreturnValue = sketchEllipticalArcs_var->addByAngle(centerPoint, majorAxis, minorAxis, startAngle, sweepAngle);"
+      },
+      "return_type": "SketchEllipticalArc",
+      "return_description": "Returns the newly created SketchEllipticalArc or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "centerPoint",
+          "type": "Base",
+          "description": "The center point of the ellipse. This can be either an existing SketchPoint or a Point3D object."
+        },
+        {
+          "name": "majorAxis",
+          "type": "Vector3D",
+          "description": "The direction of the major axis. The magnitude of this vector defines the major radius."
+        },
+        {
+          "name": "minorAxis",
+          "type": "Vector3D",
+          "description": "The direction of the minor axis. The magnitude of this vector defines the minor radius. This vector should be perpendicular to the major axis."
+        },
+        {
+          "name": "startAngle",
+          "type": "double",
+          "description": "The start angle of the elliptical arc in radians, where 0 is along the major axis."
+        },
+        {
+          "name": "sweepAngle",
+          "type": "double",
+          "description": "The sweep angle of the elliptical arc in radians, where a positive value is counterclockwise."
+        }
+      ],
+      "version": "Introduced in version May 2022"
+    },
+    "addByEndPoints": {
+      "id": "SketchEllipticalArcs_addByEndPoints",
+      "title": "SketchEllipticalArcs.addByEndPoints Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArcs.h",
+      "description": "Creates an elliptical sketch arc where the sweep of the arc is defined by two points.",
+      "parent_class": "SketchEllipticalArcs",
+      "syntax": {
+        "python": "returnValue = sketchEllipticalArcs_var.addByEndPoints(centerPoint, majorAxis, minorAxis, startPoint, endPoint)",
+        "cpp": "#include \n\nreturnValue = sketchEllipticalArcs_var->addByEndPoints(centerPoint, majorAxis, minorAxis, startPoint, endPoint);"
+      },
+      "return_type": "SketchEllipticalArc",
+      "return_description": "Returns the newly created SketchEllipticalArc or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "centerPoint",
+          "type": "Base",
+          "description": "The center point of the ellipse. This can be either an existing SketchPoint or a Point3D object."
+        },
+        {
+          "name": "majorAxis",
+          "type": "Vector3D",
+          "description": "The direction of the major axis. The magnitude of this vector defines the major radius."
+        },
+        {
+          "name": "minorAxis",
+          "type": "Vector3D",
+          "description": "The direction of the minor axis. The magnitude of this vector defines the minor radius. This vector should be perpendicular to the major axis."
+        },
+        {
+          "name": "startPoint",
+          "type": "Base",
+          "description": "The start point of the elliptical arc. This can be either an existing SketchPoint or a Point3D object. The point should lie on the defined ellipse."
+        },
+        {
+          "name": "endPoint",
+          "type": "Base",
+          "description": "The end point of the elliptical arc. This can be either an existing SketchPoint or a Point3D object. The point should lie on the defined ellipse and the elliptical arc is defined by a counterclockwise sweep from the start point to the end point."
+        }
+      ],
+      "version": "Introduced in version May 2022"
+    },
+    "classType": {
+      "id": "SketchEllipticalArcs_classType",
+      "title": "SketchEllipticalArcs.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArcs.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SketchEllipticalArcs",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.SketchEllipticalArcs.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::SketchEllipticalArcs::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "SketchEllipticalArcs_item",
+      "title": "SketchEllipticalArcs.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArcs.h",
+      "description": "Function that returns the specified sketch elliptical arc using an index into the collection.",
+      "parent_class": "SketchEllipticalArcs",
+      "syntax": {
+        "python": "returnValue = sketchEllipticalArcs_var.item(index)",
+        "cpp": "#include \n\nreturnValue = sketchEllipticalArcs_var->item(index);"
+      },
+      "return_type": "SketchEllipticalArc",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "SketchEllipticalArcs_count",
+      "title": "SketchEllipticalArcs.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArcs.h",
+      "description": "Returns the number of elliptical arcs in the sketch.",
+      "parent_class": "SketchEllipticalArcs",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArcs_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = sketchEllipticalArcs_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "SketchEllipticalArcs_isValid",
+      "title": "SketchEllipticalArcs.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArcs.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SketchEllipticalArcs",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArcs_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchEllipticalArcs_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "SketchEllipticalArcs_objectType",
+      "title": "SketchEllipticalArcs.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchEllipticalArcs.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SketchEllipticalArcs",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchEllipticalArcs_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchEllipticalArcs_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

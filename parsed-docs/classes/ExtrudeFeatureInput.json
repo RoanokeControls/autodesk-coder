@@ -1,0 +1,827 @@
+{
+  "id": "ExtrudeFeatureInput",
+  "title": "ExtrudeFeatureInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+  "description": "This class defines the methods and properties that pertain to the definition of an extrude feature. This class also provides properties for setting/getting the Profile and Operation of the extrude. The Profile and Operation are defined when the ExtrudeFeatures.createInput method is called so they do not exist as properties on this class.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "setAllExtent",
+      "description": "**RETIRED** Sets the extrusion extents option to 'All' (i.e. the extrusion is through-all, in both directions.) This method will fail in the case of a non-parametric extrusion."
+    },
+    {
+      "name": "setDistanceExtent",
+      "description": "**RETIRED** Sets the extrusion extents option to 'Distance'."
+    },
+    {
+      "name": "setOneSideExtent",
+      "description": "Defines the extrusion to go in one direction from the profile. The extent of the extrusion is defined by the extent argument."
+    },
+    {
+      "name": "setOneSideToExtent",
+      "description": "**RETIRED** Sets the extrusion Direction option to 'One Side' and the Extents option to 'To' (a specified face)"
+    },
+    {
+      "name": "setSymmetricExtent",
+      "description": "Defines the extrusion to go symmetrically in both directions from the profile."
+    },
+    {
+      "name": "setThinExtrude",
+      "description": "Changes the extrude feature to be a thin extrude. This is only valid if the isThinExtrude property is False. If the extrusion is already a thin extrude, you can use the properties on the ExtrudeFeature to modify the thin extrude specific values."
+    },
+    {
+      "name": "setTwoSidesDistanceExtent",
+      "description": "**RETIRED** Sets the extrusion extents option to 'Two Side'. This method will fail in the case of a non-parametric extrusion."
+    },
+    {
+      "name": "setTwoSidesExtent",
+      "description": "Defines the extrusion to go in both directions from the profile. The extent is defined independently for each direction using the input arguments."
+    },
+    {
+      "name": "setTwoSidesToExtent",
+      "description": "**RETIRED** Set the extrusion Direction option to 'Two Side'. This method will fail in the case of a non-parametric extrusion."
+    }
+  ],
+  "properties": [
+    {
+      "name": "creationOccurrence",
+      "description": "In order for geometry to be transformed correctly, an Occurrence for creation needs to be specified when the Extrusion is created based on geometry (e.g. a profile and/or face(s)) in another component AND (the Extrusion) is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI"
+    },
+    {
+      "name": "extentOne",
+      "description": "Gets the extent assigned for a single sided extrude or side one of a two-sided extrusion. To set the extent, use one of the set methods on the ExtrudeFeatureInput object."
+    },
+    {
+      "name": "extentTwo",
+      "description": "Gets the extent assigned for side two of the extrusion. If the extrude is single sided extrude this property will return null. The hasTwoExtents property can be used to determine if there are two sides or not. To set the extent, use one of the set methods on the ExtrudeFeatureInput object."
+    },
+    {
+      "name": "hasTwoExtents",
+      "description": "Property that indicates if the extrusion is a single or two-sided extrusion. If false, the extentTwo and taperAngleTwo properties should not be used."
+    },
+    {
+      "name": "isSolid",
+      "description": "Specifies if the extrusion should be created as a solid or surface. If it's a surface then there aren't any end caps and it's open. When an ExtrudeFeature input is created, this is initialized to true so a solid will be created if it's not changed."
+    },
+    {
+      "name": "isThinExtrude",
+      "description": "Sets or returns whether the extrude is a thin extrude. Setting it as false will make it a regular extrude."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "operation",
+      "description": "Gets and sets the type of operation performed by the extrusion."
+    },
+    {
+      "name": "participantBodies",
+      "description": "Gets and sets the list of bodies that will participate in the feature when the operation is a cut or intersection.   If this property has not been set, the default behavior is that all bodies that are intersected by the feature will participate.   This property can return null in the case where the feature has not been fully defined so that possible intersecting bodies can be computed."
+    },
+    {
+      "name": "profile",
+      "description": "Gets and sets the profiles or planar faces used to define the shape of the extrude. This property can return or be set with a single profile, a single planar face, or an ObjectCollection consisting of multiple profiles and planar faces. When an ObjectCollection is used all of the profiles and faces must be co-planar.   To create a surface (non-solid) extrusion, you can use the createOpenProfile and createBRepEdgeProfile methods of the Component object to create an open profile. The isSolid property of the ExtrudeFeatureInput property must also be False."
+    },
+    {
+      "name": "startExtent",
+      "description": "Gets and sets the extent used to define the start of the extrusion. When a new ExtrudeFeatureInput object is created the start extent is initialized to be the profile plane but you can change it to a profile plane with offset or from an object by setting this property with either a OffsetStartDefinition or an EntityStartDefinition object. You can get either one of those objects by using the static create method on the class."
+    },
+    {
+      "name": "taperAngle",
+      "description": "**RETIRED** Gets and sets the taper angle of the extrusion. This is used to define the taper angle for a single sided and symmetric and defines the angle for side one of a two sided extrusion. This property is initialized with a taper angle of zero. A negative angle will taper the extrusion inward while a positive value will taper the extrusion outward. This property is valid for both parametric and non-parametric extrusions."
+    },
+    {
+      "name": "taperAngleOne",
+      "description": "Gets the value that will be used as the taper angle for a single sided extrusion or side one of a two-sided extrusion. To set the taper angle, use one of the set methods on the ExtrudeFeatureInput object."
+    },
+    {
+      "name": "taperAngleTwo",
+      "description": "Gets the value that will be used as the taper angle for side two of a two-sided extrusion. If the extrusion is single-sided, this property will return null. The hasTwoExtents property can be used to determine if there are two sides or not. To set the taper angle, use one of the set methods on the ExtrudeFeatureInput object."
+    },
+    {
+      "name": "targetBaseFeature",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature.   Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it."
+    },
+    {
+      "name": "thinExtrudeWallLocationOne",
+      "description": "Gets and sets the wall location for a one sided thin extrude or side one of a two sided thin extrude"
+    },
+    {
+      "name": "thinExtrudeWallLocationTwo",
+      "description": "Gets and sets the wall location for side two of a two sided thin extrude"
+    },
+    {
+      "name": "thinExtrudeWallThicknessOne",
+      "description": "Gets and sets the wall thickness for a one sided thin extrude or side one of a two sided thin extrude"
+    },
+    {
+      "name": "thinExtrudeWallThicknessTwo",
+      "description": "Gets and sets the wall thickness for side two of a two sided thin extrude"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Extrude Feature API Sample",
+      "description": "Demonstrates creating a new extrude feature."
+    },
+    {
+      "name": "Manage Participant Bodies API Sample",
+      "description": "Demonstrates how to manage participant During Cut operation. Same API can be used to manage participants During intersection also."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "classType": {
+      "id": "ExtrudeFeatureInput_classType",
+      "title": "ExtrudeFeatureInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ExtrudeFeatureInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ExtrudeFeatureInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "setAllExtent": {
+      "id": "ExtrudeFeatureInput_setAllExtent",
+      "title": "ExtrudeFeatureInput.setAllExtent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Sets the extrusion extents option to 'All' (i.e. the extrusion is through-all, in both directions.) This method will fail in the case of a non-parametric extrusion. Remarks",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "returnValue = extrudeFeatureInput_var.setAllExtent(direction)",
+        "cpp": "#include \n\nreturnValue = extrudeFeatureInput_var->setAllExtent(direction);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful",
+      "parameters": [
+        {
+          "name": "direction",
+          "type": "ExtentDirections",
+          "description": "The direction can be either positive, negative, or symmetric."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setDistanceExtent": {
+      "id": "ExtrudeFeatureInput_setDistanceExtent",
+      "title": "ExtrudeFeatureInput.setDistanceExtent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Sets the extrusion extents option to 'Distance'. Remarks",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "returnValue = extrudeFeatureInput_var.setDistanceExtent(isSymmetric, distance)",
+        "cpp": "#include \n\nreturnValue = extrudeFeatureInput_var->setDistanceExtent(isSymmetric, distance);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful",
+      "parameters": [
+        {
+          "name": "isSymmetric",
+          "type": "boolean",
+          "description": "Set to 'true' for an extrusion symmetrical about the profile plane"
+        },
+        {
+          "name": "distance",
+          "type": "ValueInput",
+          "description": "ValueInput object that defines the extrude distance. If the isSymmetric argument is 'false', a positive or negative distance can be used to control the direction."
+        }
+      ],
+      "version": "Introduced in version November 2016"
+    },
+    "setOneSideExtent": {
+      "id": "ExtrudeFeatureInput_setOneSideExtent",
+      "title": "ExtrudeFeatureInput.setOneSideExtent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Defines the extrusion to go in one direction from the profile. The extent of the extrusion is defined by the extent argument.",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = extrudeFeatureInput_var.setOneSideExtent(extent, direction)\n\n# Uses optional arguments.\nreturnValue = extrudeFeatureInput_var.setOneSideExtent(extent, direction, taperAngle)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = extrudeFeatureInput_var->setOneSideExtent(extent, direction);\n\n// Uses optional arguments.\nreturnValue = extrudeFeatureInput_var->setOneSideExtent(extent, direction, taperAngle);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true is setting the input to a one sided extent was successful.",
+      "parameters": [
+        {
+          "name": "extent",
+          "type": "ExtentDefinition",
+          "description": "An ExtentDefinition object that defines how the extent of the extrusion is defined. This can be a specified distance (DistanceExtentDefinition), to an entity (ToEntityExtent), or through-all (AllExtentDefinition). These objects can be obtained by using the static create method on the appropriate class."
+        },
+        {
+          "name": "direction",
+          "type": "ExtentDirections",
+          "description": "Specifies the direction of the extrusion. PositiveExtentDirection and NegativeExtentDirection are valid values. PositiveExtentDirection is in the same direction as the normal of the profile's parent sketch plane."
+        },
+        {
+          "name": "taperAngle",
+          "type": "ValueInput",
+          "description": "Optional argument that specifies the taper angle. If omitted a taper angle of 0 is used.   This is an optional argument whose default value is null."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Extrude Feature API Sample",
+          "description": "Demonstrates creating a new extrude feature."
+        },
+        {
+          "name": "extrudeFeatures.add using setOneSideExtent",
+          "description": "Demonstrates the extrudeFeatures.add method using the setOneSideExtent method. To use this sample have a design open that contains a sketch with a profile. When you run the script you will be prompted to select the profile that will be used to create the extrusion."
+        },
+        {
+          "name": "extrudeFeatures.add using ThroughAllExtent",
+          "description": "Demonstrates the extrudeFeatures.add method using the ThroughAllExtent method."
+        },
+        {
+          "name": "Manage Participant Bodies API Sample",
+          "description": "Demonstrates how to manage participant During Cut operation. Same API can be used to manage participants During intersection also."
+        }
+      ],
+      "version": "Introduced in version November 2016"
+    },
+    "setOneSideToExtent": {
+      "id": "ExtrudeFeatureInput_setOneSideToExtent",
+      "title": "ExtrudeFeatureInput.setOneSideToExtent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Sets the extrusion Direction option to 'One Side' and the Extents option to 'To' (a specified face) Remarks",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = extrudeFeatureInput_var.setOneSideToExtent(toEntity, matchShape)\n\n# Uses optional arguments.\nreturnValue = extrudeFeatureInput_var.setOneSideToExtent(toEntity, matchShape, directionHint)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = extrudeFeatureInput_var->setOneSideToExtent(toEntity, matchShape);\n\n// Uses optional arguments.\nreturnValue = extrudeFeatureInput_var->setOneSideToExtent(toEntity, matchShape, directionHint);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "toEntity",
+          "type": "Base",
+          "description": "The entity that defines the \"to\" extent. The valid types of entities can vary depending on the type of feature this is being used with. For an extrude it can be a BRepBody, BRepFace, BRepVertex, ConstructionPlane, or ConstructionPoint."
+        },
+        {
+          "name": "matchShape",
+          "type": "boolean",
+          "description": "If the matchShape argument is 'true', the toEntity is extended to fully intersect the extrusion."
+        },
+        {
+          "name": "directionHint",
+          "type": "Vector3D",
+          "description": "Specifies the direction of the extrusion. This is only used in the case where there are two possible solutions and the extrusion can hit the toEntity in either direction. An example is if the profile of the extrusion is within a hole. The extrusion will intersect the cylinder of the hole in either direction.   Typically there is only a single solution and the direction is determined automatically.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setSymmetricExtent": {
+      "id": "ExtrudeFeatureInput_setSymmetricExtent",
+      "title": "ExtrudeFeatureInput.setSymmetricExtent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Defines the extrusion to go symmetrically in both directions from the profile.",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = extrudeFeatureInput_var.setSymmetricExtent(distance, isFullLength)\n\n# Uses optional arguments.\nreturnValue = extrudeFeatureInput_var.setSymmetricExtent(distance, isFullLength, taperAngle)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = extrudeFeatureInput_var->setSymmetricExtent(distance, isFullLength);\n\n// Uses optional arguments.\nreturnValue = extrudeFeatureInput_var->setSymmetricExtent(distance, isFullLength, taperAngle);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true is setting the extent was successful.",
+      "parameters": [
+        {
+          "name": "distance",
+          "type": "ValueInput",
+          "description": "The distance of the extrusions. This is either the full length of half of the length of the final extrusion depending on the value of the isFullLength property."
+        },
+        {
+          "name": "isFullLength",
+          "type": "boolean",
+          "description": "Defines if the value defines the full length of the extrusion or half of the length. A value of true indicates it defines the full length."
+        },
+        {
+          "name": "taperAngle",
+          "type": "ValueInput",
+          "description": "Optional argument that specifies the taper angle. The same taper angle is used for both sides for a symmetric extrusion. If omitted a taper angle of 0 is used.   This is an optional argument whose default value is null."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Extrude Feature API Sample",
+          "description": "Demonstrates creating a new extrude feature."
+        },
+        {
+          "name": "extrudeFeatures.add using setSymmetricExtent",
+          "description": "Demonstrates the extrudeFeatures.add method using the setSymmetricExtent method. To use this sample have a design open that contains a sketch with a profile. When you run the script you will be prompted to select the profile that will be used to create the extrusion."
+        },
+        {
+          "name": "extrudeFeatures.add using thin extrude",
+          "description": "Demonstrates the extrudeFeatures.add method using the setThinExtrude method. To use this sample have a design open that contains a sketch with a profile. When you run the script you will be prompted to select the profile that will be used to create the thin extrusion."
+        }
+      ],
+      "version": "Introduced in version November 2016"
+    },
+    "setThinExtrude": {
+      "id": "ExtrudeFeatureInput_setThinExtrude",
+      "title": "ExtrudeFeatureInput.setThinExtrude Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Changes the extrude feature to be a thin extrude. This is only valid if the isThinExtrude property is False. If the extrusion is already a thin extrude, you can use the properties on the ExtrudeFeature to modify the thin extrude specific values.",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = extrudeFeatureInput_var.setThinExtrude(thinExtrudeWallLocationOne, thinExtrudeWallThicknessOne)\n\n# Uses optional arguments.\nreturnValue = extrudeFeatureInput_var.setThinExtrude(thinExtrudeWallLocationOne, thinExtrudeWallThicknessOne, thinExtrudeWallLocationTwo, thinExtrudeWallThicknessTwo)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = extrudeFeatureInput_var->setThinExtrude(thinExtrudeWallLocationOne, thinExtrudeWallThicknessOne);\n\n// Uses optional arguments.\nreturnValue = extrudeFeatureInput_var->setThinExtrude(thinExtrudeWallLocationOne, thinExtrudeWallThicknessOne, thinExtrudeWallLocationTwo, thinExtrudeWallThicknessTwo);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "thinExtrudeWallLocationOne",
+          "type": "ThinExtrudeWallLocation",
+          "description": "Specifies the position of the thin wall extrude with respect to the profile being extruded. This defines the direction for a single sided thin extrude or side one of a two-sided extrusion."
+        },
+        {
+          "name": "thinExtrudeWallThicknessOne",
+          "type": "ValueInput",
+          "description": "A ValueInput object that defines the thickness for a single sided thin extrude or side one of a two-sided extrusion ."
+        },
+        {
+          "name": "thinExtrudeWallLocationTwo",
+          "type": "ThinExtrudeWallLocation",
+          "description": "Optional argument that specifies the position of side two of a two-sided extrusion. This argument is ignored for a single sided thin extrude.   This is an optional argument whose default value is ThinExtrudeWallLocation.Side1."
+        },
+        {
+          "name": "thinExtrudeWallThicknessTwo",
+          "type": "ValueInput",
+          "description": "Optional argument that is a ValueInput object that defines the thickness for side two of a two-sided extrusion. This argument is ignored for a single sided thin extrude.   This is an optional argument whose default value is null."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "extrudeFeatures.add using thin extrude",
+          "description": "Demonstrates the extrudeFeatures.add method using the setThinExtrude method. To use this sample have a design open that contains a sketch with a profile. When you run the script you will be prompted to select the profile that will be used to create the thin extrusion."
+        }
+      ],
+      "version": "Introduced in version April 2021"
+    },
+    "setTwoSidesDistanceExtent": {
+      "id": "ExtrudeFeatureInput_setTwoSidesDistanceExtent",
+      "title": "ExtrudeFeatureInput.setTwoSidesDistanceExtent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Sets the extrusion extents option to 'Two Side'. This method will fail in the case of a non-parametric extrusion. Remarks",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "returnValue = extrudeFeatureInput_var.setTwoSidesDistanceExtent(distanceOne, distanceTwo)",
+        "cpp": "#include \n\nreturnValue = extrudeFeatureInput_var->setTwoSidesDistanceExtent(distanceOne, distanceTwo);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful",
+      "parameters": [
+        {
+          "name": "distanceOne",
+          "type": "ValueInput",
+          "description": "ValueInput object that defines the extrude distance for the first side."
+        },
+        {
+          "name": "distanceTwo",
+          "type": "ValueInput",
+          "description": "ValueInput object that defines the extrude distance for the second side."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setTwoSidesExtent": {
+      "id": "ExtrudeFeatureInput_setTwoSidesExtent",
+      "title": "ExtrudeFeatureInput.setTwoSidesExtent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Defines the extrusion to go in both directions from the profile. The extent is defined independently for each direction using the input arguments.",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = extrudeFeatureInput_var.setTwoSidesExtent(sideOneExtent, sideTwoExtent)\n\n# Uses optional arguments.\nreturnValue = extrudeFeatureInput_var.setTwoSidesExtent(sideOneExtent, sideTwoExtent, sideOneTaperAngle, sideTwoTaperAngle)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = extrudeFeatureInput_var->setTwoSidesExtent(sideOneExtent, sideTwoExtent);\n\n// Uses optional arguments.\nreturnValue = extrudeFeatureInput_var->setTwoSidesExtent(sideOneExtent, sideTwoExtent, sideOneTaperAngle, sideTwoTaperAngle);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true is setting the extent was successful.",
+      "parameters": [
+        {
+          "name": "sideOneExtent",
+          "type": "ExtentDefinition",
+          "description": "An ExtentDefinition object that defines how the extent of the extrusion towards side one is defined. This can be a specified distance (DistanceExtentDefinition), to an entity (ToEntityExtent), or through-all (AllExtentDefinition). These objects can be obtained by using the static create method on the appropriate class."
+        },
+        {
+          "name": "sideTwoExtent",
+          "type": "ExtentDefinition",
+          "description": "An ExtentDefinition object that defines how the extent of the extrusion towards side two is defined. This can be a specified distance (DistanceExtentDefinition), to an entity (ToEntityExtent), or through-all (AllExtentDefinition). These objects can be obtained by using the static create method on the appropriate class."
+        },
+        {
+          "name": "sideOneTaperAngle",
+          "type": "ValueInput",
+          "description": "Optional argument that specifies the taper angle for side one. If omitted a taper angle of 0 is used.   This is an optional argument whose default value is null."
+        },
+        {
+          "name": "sideTwoTaperAngle",
+          "type": "ValueInput",
+          "description": "Optional argument that specifies the taper angle for side two. If omitted a taper angle of 0 is used.   This is an optional argument whose default value is null."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Extrude Feature API Sample",
+          "description": "Demonstrates creating a new extrude feature."
+        },
+        {
+          "name": "extrudeFeatures.add using setTwoSidesExtent",
+          "description": "Demonstrates the extrudeFeatures.add method using the setTwoSidesExtent method. To use this sample have a design open that contains a profile and a body that is positioned away from the profile but is a size where when the profile is extruded it will intersect the body. When you run the script you will be prompted to select the profile that will be used to create the extrusion and the body to extrude to. The extrusion will be created up to the body with an offset and will also be offset from the sketch plane."
+        }
+      ],
+      "version": "Introduced in version November 2016"
+    },
+    "setTwoSidesToExtent": {
+      "id": "ExtrudeFeatureInput_setTwoSidesToExtent",
+      "title": "ExtrudeFeatureInput.setTwoSidesToExtent Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Set the extrusion Direction option to 'Two Side'. This method will fail in the case of a non-parametric extrusion. Remarks",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "returnValue = extrudeFeatureInput_var.setTwoSidesToExtent(toEntityOne, toEntityTwo, matchShape)",
+        "cpp": "#include \n\nreturnValue = extrudeFeatureInput_var->setTwoSidesToExtent(toEntityOne, toEntityTwo, matchShape);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful.",
+      "parameters": [
+        {
+          "name": "toEntityOne",
+          "type": "Base",
+          "description": "The first entity that defines the \"to\" extent. The valid types of entities can vary depending on the type of feature this is being used with. For an extrude it can be a BRepBody, BRepFace, BRepVertex, ConstructionPlane, or ConstructionPoint."
+        },
+        {
+          "name": "toEntityTwo",
+          "type": "Base",
+          "description": "The second entity that defines the \"to\" extent. The valid types of entities can vary depending on the type of feature this is being used with. For an extrude it can be a BRepBody, BRepFace, BRepVertex, ConstructionPlane, or ConstructionPoint."
+        },
+        {
+          "name": "matchShape",
+          "type": "boolean",
+          "description": "If the matchShape argument is 'true', the toEntity is extended to fully intersect the extrusion."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "creationOccurrence": {
+      "id": "ExtrudeFeatureInput_creationOccurrence",
+      "title": "ExtrudeFeatureInput.creationOccurrence Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "In order for geometry to be transformed correctly, an Occurrence for creation needs to be specified when the Extrusion is created based on geometry (e.g. a profile and/or face(s)) in another component AND (the Extrusion) is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.creationOccurrence\n\n# Set the value of the property.\nextrudeFeatureInput_var.creationOccurrence = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeatureInput_var->creationOccurrence();\n\n// Set the value of the property, where value_var is an Occurrence.\nbool returnValue = extrudeFeatureInput_var->creationOccurrence(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "extentOne": {
+      "id": "ExtrudeFeatureInput_extentOne",
+      "title": "ExtrudeFeatureInput.extentOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Gets the extent assigned for a single sided extrude or side one of a two-sided extrusion. To set the extent, use one of the set methods on the ExtrudeFeatureInput object.",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.extentOne",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeatureInput_var->extentOne();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2016"
+    },
+    "extentTwo": {
+      "id": "ExtrudeFeatureInput_extentTwo",
+      "title": "ExtrudeFeatureInput.extentTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Gets the extent assigned for side two of the extrusion. If the extrude is single sided extrude this property will return null. The hasTwoExtents property can be used to determine if there are two sides or not. To set the extent, use one of the set methods on the ExtrudeFeatureInput object.",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.extentTwo",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeatureInput_var->extentTwo();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2016"
+    },
+    "hasTwoExtents": {
+      "id": "ExtrudeFeatureInput_hasTwoExtents",
+      "title": "ExtrudeFeatureInput.hasTwoExtents Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Property that indicates if the extrusion is a single or two-sided extrusion. If false, the extentTwo and taperAngleTwo properties should not be used.",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.hasTwoExtents",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = extrudeFeatureInput_var->hasTwoExtents();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2016"
+    },
+    "isSolid": {
+      "id": "ExtrudeFeatureInput_isSolid",
+      "title": "ExtrudeFeatureInput.isSolid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Specifies if the extrusion should be created as a solid or surface. If it's a surface then there aren't any end caps and it's open. When an ExtrudeFeature input is created, this is initialized to true so a solid will be created if it's not changed.",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.isSolid\n\n# Set the value of the property.\nextrudeFeatureInput_var.isSolid = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = extrudeFeatureInput_var->isSolid();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = extrudeFeatureInput_var->isSolid(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Extrude Feature API Sample",
+          "description": "Demonstrates creating a new extrude feature."
+        },
+        {
+          "name": "Manage Participant Bodies API Sample",
+          "description": "Demonstrates how to manage participant During Cut operation. Same API can be used to manage participants During intersection also."
+        }
+      ],
+      "version": "Introduced in version March 2015"
+    },
+    "isThinExtrude": {
+      "id": "ExtrudeFeatureInput_isThinExtrude",
+      "title": "ExtrudeFeatureInput.isThinExtrude Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Sets or returns whether the extrude is a thin extrude. Setting it as false will make it a regular extrude.",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.isThinExtrude\n\n# Set the value of the property.\nextrudeFeatureInput_var.isThinExtrude = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = extrudeFeatureInput_var->isThinExtrude();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = extrudeFeatureInput_var->isThinExtrude(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2021"
+    },
+    "isValid": {
+      "id": "ExtrudeFeatureInput_isValid",
+      "title": "ExtrudeFeatureInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = extrudeFeatureInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "ExtrudeFeatureInput_objectType",
+      "title": "ExtrudeFeatureInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = extrudeFeatureInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "operation": {
+      "id": "ExtrudeFeatureInput_operation",
+      "title": "ExtrudeFeatureInput.operation Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Gets and sets the type of operation performed by the extrusion.",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.operation\n\n# Set the value of the property.\nextrudeFeatureInput_var.operation = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nFeatureOperations propertyValue = extrudeFeatureInput_var->operation();\n\n// Set the value of the property, where value_var is a FeatureOperations.\nbool returnValue = extrudeFeatureInput_var->operation(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "participantBodies": {
+      "id": "ExtrudeFeatureInput_participantBodies",
+      "title": "ExtrudeFeatureInput.participantBodies Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Gets and sets the list of bodies that will participate in the feature when the operation is a cut or intersection. If this property has not been set, the default behavior is that all bodies that are intersected by the feature will participate. This property can return null in the case where the feature has not been fully defined so that possible intersecting bodies can be computed.",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.participantBodies\n\n# Set the value of the property.\nextrudeFeatureInput_var.participantBodies = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = extrudeFeatureInput_var->participantBodies();\n\n// Set the value of the property, where value_var is a BRepBody.\nbool returnValue = extrudeFeatureInput_var->participantBodies(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Manage Participant Bodies API Sample",
+          "description": "Demonstrates how to manage participant During Cut operation. Same API can be used to manage participants During intersection also."
+        }
+      ],
+      "version": "Introduced in version January 2017"
+    },
+    "profile": {
+      "id": "ExtrudeFeatureInput_profile",
+      "title": "ExtrudeFeatureInput.profile Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Gets and sets the profiles or planar faces used to define the shape of the extrude. This property can return or be set with a single profile, a single planar face, or an ObjectCollection consisting of multiple profiles and planar faces. When an ObjectCollection is used all of the profiles and faces must be co-planar. To create a surface (non-solid) extrusion, you can use the createOpenProfile and createBRepEdgeProfile methods of the Component object to create an open profile. The isSolid property of the ExtrudeFeatureInput property must also be False.",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.profile\n\n# Set the value of the property.\nextrudeFeatureInput_var.profile = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeatureInput_var->profile();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = extrudeFeatureInput_var->profile(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "startExtent": {
+      "id": "ExtrudeFeatureInput_startExtent",
+      "title": "ExtrudeFeatureInput.startExtent Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Gets and sets the extent used to define the start of the extrusion. When a new ExtrudeFeatureInput object is created the start extent is initialized to be the profile plane but you can change it to a profile plane with offset or from an object by setting this property with either a OffsetStartDefinition or an EntityStartDefinition object. You can get either one of those objects by using the static create method on the class.",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.startExtent\n\n# Set the value of the property.\nextrudeFeatureInput_var.startExtent = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeatureInput_var->startExtent();\n\n// Set the value of the property, where value_var is an ExtentDefinition.\nbool returnValue = extrudeFeatureInput_var->startExtent(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Extrude Feature API Sample",
+          "description": "Demonstrates creating a new extrude feature."
+        }
+      ],
+      "version": "Introduced in version November 2016"
+    },
+    "taperAngle": {
+      "id": "ExtrudeFeatureInput_taperAngle",
+      "title": "ExtrudeFeatureInput.taperAngle Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "This function is retired. See more information in the 'Remarks' section below. Gets and sets the taper angle of the extrusion. This is used to define the taper angle for a single sided and symmetric and defines the angle for side one of a two sided extrusion. This property is initialized with a taper angle of zero. A negative angle will taper the extrusion inward while a positive value will taper the extrusion outward. This property is valid for both parametric and non-parametric extrusions. Remarks",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.taperAngle\n\n# Set the value of the property.\nextrudeFeatureInput_var.taperAngle = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeatureInput_var->taperAngle();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = extrudeFeatureInput_var->taperAngle(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "taperAngleOne": {
+      "id": "ExtrudeFeatureInput_taperAngleOne",
+      "title": "ExtrudeFeatureInput.taperAngleOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Gets the value that will be used as the taper angle for a single sided extrusion or side one of a two-sided extrusion. To set the taper angle, use one of the set methods on the ExtrudeFeatureInput object.",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.taperAngleOne",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeatureInput_var->taperAngleOne();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2016"
+    },
+    "taperAngleTwo": {
+      "id": "ExtrudeFeatureInput_taperAngleTwo",
+      "title": "ExtrudeFeatureInput.taperAngleTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Gets the value that will be used as the taper angle for side two of a two-sided extrusion. If the extrusion is single-sided, this property will return null. The hasTwoExtents property can be used to determine if there are two sides or not. To set the taper angle, use one of the set methods on the ExtrudeFeatureInput object.",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.taperAngleTwo",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeatureInput_var->taperAngleTwo();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version November 2016"
+    },
+    "targetBaseFeature": {
+      "id": "ExtrudeFeatureInput_targetBaseFeature",
+      "title": "ExtrudeFeatureInput.targetBaseFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "When creating a feature that is owned by a base feature, set this property to the base feature you want to associate the new feature with. By default, this is null, meaning it will not be associated with a base feature. Because of a current limitation, if you want to create a feature associated with a base feature, you must set this property AND call the startEdit method of the base feature, create the feature, and then call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it.",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.targetBaseFeature\n\n# Set the value of the property.\nextrudeFeatureInput_var.targetBaseFeature = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeatureInput_var->targetBaseFeature();\n\n// Set the value of the property, where value_var is a BaseFeature.\nbool returnValue = extrudeFeatureInput_var->targetBaseFeature(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "BaseFeature Sample",
+          "description": "Creates a new base feature."
+        }
+      ],
+      "version": "Introduced in version May 2016"
+    },
+    "thinExtrudeWallLocationOne": {
+      "id": "ExtrudeFeatureInput_thinExtrudeWallLocationOne",
+      "title": "ExtrudeFeatureInput.thinExtrudeWallLocationOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Gets and sets the wall location for a one sided thin extrude or side one of a two sided thin extrude",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.thinExtrudeWallLocationOne\n\n# Set the value of the property.\nextrudeFeatureInput_var.thinExtrudeWallLocationOne = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nThinExtrudeWallLocation propertyValue = extrudeFeatureInput_var->thinExtrudeWallLocationOne();\n\n// Set the value of the property, where value_var is a ThinExtrudeWallLocation.\nbool returnValue = extrudeFeatureInput_var->thinExtrudeWallLocationOne(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2021"
+    },
+    "thinExtrudeWallLocationTwo": {
+      "id": "ExtrudeFeatureInput_thinExtrudeWallLocationTwo",
+      "title": "ExtrudeFeatureInput.thinExtrudeWallLocationTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Gets and sets the wall location for side two of a two sided thin extrude",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.thinExtrudeWallLocationTwo\n\n# Set the value of the property.\nextrudeFeatureInput_var.thinExtrudeWallLocationTwo = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nThinExtrudeWallLocation propertyValue = extrudeFeatureInput_var->thinExtrudeWallLocationTwo();\n\n// Set the value of the property, where value_var is a ThinExtrudeWallLocation.\nbool returnValue = extrudeFeatureInput_var->thinExtrudeWallLocationTwo(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2021"
+    },
+    "thinExtrudeWallThicknessOne": {
+      "id": "ExtrudeFeatureInput_thinExtrudeWallThicknessOne",
+      "title": "ExtrudeFeatureInput.thinExtrudeWallThicknessOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Gets and sets the wall thickness for a one sided thin extrude or side one of a two sided thin extrude",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.thinExtrudeWallThicknessOne\n\n# Set the value of the property.\nextrudeFeatureInput_var.thinExtrudeWallThicknessOne = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeatureInput_var->thinExtrudeWallThicknessOne();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = extrudeFeatureInput_var->thinExtrudeWallThicknessOne(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2021"
+    },
+    "thinExtrudeWallThicknessTwo": {
+      "id": "ExtrudeFeatureInput_thinExtrudeWallThicknessTwo",
+      "title": "ExtrudeFeatureInput.thinExtrudeWallThicknessTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/ExtrudeFeatureInput.h",
+      "description": "Gets and sets the wall thickness for side two of a two sided thin extrude",
+      "parent_class": "ExtrudeFeatureInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = extrudeFeatureInput_var.thinExtrudeWallThicknessTwo\n\n# Set the value of the property.\nextrudeFeatureInput_var.thinExtrudeWallThicknessTwo = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = extrudeFeatureInput_var->thinExtrudeWallThicknessTwo();\n\n// Set the value of the property, where value_var is a ValueInput.\nbool returnValue = extrudeFeatureInput_var->thinExtrudeWallThicknessTwo(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2021"
+    }
+  }
+}

@@ -1,0 +1,349 @@
+{
+  "id": "ChainSelection",
+  "title": "ChainSelection Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/GeometrySelections/ChainSelection.h",
+  "description": "Represents a chain type of curve selection. Allows B-Rep edges and sketch geometry for the inputGeometry property. The automatic tool side detection is currently disabled when using the API, thus the side is determined based on the direction of the first edge and the z-axis of the tool orientation. This class overrides the value property of its GeometrySelection parent to return the result edge selection. The result may contain more edges than the input if gaps between the desired start and end edge were automatically filled.",
+  "parent_class": "CurveSelection",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    }
+  ],
+  "properties": [
+    {
+      "name": "endExtensionLength",
+      "description": "Property that gets and sets the length of the extension of an open curve at the end of the chain. The value is specified in centimeters. This is only applicable to open contours and when DistanceCap is chosen as the extension cap."
+    },
+    {
+      "name": "error",
+      "description": "Gets the last warning string encountered after the selection was applied to a parent."
+    },
+    {
+      "name": "extensionMethod",
+      "description": "Property that gets and sets extension method to use. The default is TangentExtension. Only applicable to open contours."
+    },
+    {
+      "name": "extensionType",
+      "description": "Property that gets and sets the desired extension type method. The default is DistanceCap. This is only applicable to open contours."
+    },
+    {
+      "name": "hasError",
+      "description": "Gets if errors were encountered when applying the selection to a a parent."
+    },
+    {
+      "name": "hasWarning",
+      "description": "Gets if warnings were encountered when applying the selection to a parent."
+    },
+    {
+      "name": "inputGeometry",
+      "description": "Get or set the value of the input geometry. If the value originates from a component instead of an occurrence, or an occurrence outside of the CAM environment, then the subpath is checked against the CAM model tree. For some child classes, this may be the same as the value property, but might also consist of fewer elements. Valid elements depend on the capabilities of the derived class. An exception is thrown if the matching fails or the given entity does not match the expected type."
+    },
+    {
+      "name": "isOpen",
+      "description": "Property to get or set if an open contour should be closed or not. If true and the input does not specify a closed contour, additional curve segments will be generated to close the contour."
+    },
+    {
+      "name": "isOpenAllowed",
+      "description": "Property to specify if the underlying CadContours2DParameterValue allows open contours. Some examples of some open contours are adaptive clearing 3d and swarf. And, some examples of closed contours are face and machining boundary."
+    },
+    {
+      "name": "isReverted",
+      "description": "Property to control if the curve is reverted or not. The curve needs to be reverted, if Fusion's guess does not match the user's expectation.   The initial tool placement depends on the first input edge or sketch line and the height of the bordering faces or sketch boundaries, with the tool being placed outside of the higher face or sketch boundary."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "startExtensionLength",
+      "description": "Property that gets and sets the length of the extension of an open curve at the start of the chain. This is only applicable to open contours and when DistanceCap is chosen as the extension cap."
+    },
+    {
+      "name": "value",
+      "description": "Returns the resulting value of the selection. In general, this returns the input selection, but child classes can override the return value if needed. Refer to the child classes comments for further details. The collection may contain duplicates. For OperationInputs, the return value may not be the same as for Operations, as additional geometry selected by child classes is not evaluated for OperationInputs."
+    },
+    {
+      "name": "warning",
+      "description": "Gets the last warning string encountered after the selection was applied to a parent."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Hole and Pocket Recognition API Sample",
+      "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+    },
+    {
+      "name": "Manufacturing Workflow API Sample",
+      "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+    }
+  ],
+  "version": "Introduced in version April 2023",
+  "method_details": {
+    "classType": {
+      "id": "ChainSelection_classType",
+      "title": "ChainSelection.classType Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ChainSelection.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ChainSelection",
+      "syntax": {
+        "python": "returnValue = adsk.cam.ChainSelection.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::ChainSelection::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version April 2023"
+    },
+    "extensionMethod": {
+      "id": "ChainSelection_extensionMethod",
+      "title": "ChainSelection.extensionMethod Property",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ChainSelection.h",
+      "description": "Property that gets and sets extension method to use. The default is TangentExtension. Only applicable to open contours.",
+      "parent_class": "ChainSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chainSelection_var.extensionMethod\n\n# Set the value of the property.\nchainSelection_var.extensionMethod = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nExtensionMethods propertyValue = chainSelection_var->extensionMethod();\n\n// Set the value of the property, where value_var is an ExtensionMethods.\nbool returnValue = chainSelection_var->extensionMethod(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    }
+  },
+  "property_details": {
+    "endExtensionLength": {
+      "id": "ChainSelection_endExtensionLength",
+      "title": "ChainSelection.endExtensionLength Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ChainSelection.h",
+      "description": "Property that gets and sets the length of the extension of an open curve at the end of the chain. The value is specified in centimeters. This is only applicable to open contours and when DistanceCap is chosen as the extension cap.",
+      "parent_class": "ChainSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chainSelection_var.endExtensionLength\n\n# Set the value of the property.\nchainSelection_var.endExtensionLength = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = chainSelection_var->endExtensionLength();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = chainSelection_var->endExtensionLength(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "error": {
+      "id": "ChainSelection_error",
+      "title": "ChainSelection.error Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ChainSelection.h",
+      "description": "Gets the last warning string encountered after the selection was applied to a parent.",
+      "parent_class": "ChainSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chainSelection_var.error",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = chainSelection_var->error();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "extensionType": {
+      "id": "ChainSelection_extensionType",
+      "title": "ChainSelection.extensionType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ChainSelection.h",
+      "description": "Property that gets and sets the desired extension type method. The default is DistanceCap. This is only applicable to open contours.",
+      "parent_class": "ChainSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chainSelection_var.extensionType\n\n# Set the value of the property.\nchainSelection_var.extensionType = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nExtensionTypes propertyValue = chainSelection_var->extensionType();\n\n// Set the value of the property, where value_var is an ExtensionTypes.\nbool returnValue = chainSelection_var->extensionType(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "hasError": {
+      "id": "ChainSelection_hasError",
+      "title": "ChainSelection.hasError Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ChainSelection.h",
+      "description": "Gets if errors were encountered when applying the selection to a a parent.",
+      "parent_class": "ChainSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chainSelection_var.hasError",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = chainSelection_var->hasError();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "hasWarning": {
+      "id": "ChainSelection_hasWarning",
+      "title": "ChainSelection.hasWarning Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ChainSelection.h",
+      "description": "Gets if warnings were encountered when applying the selection to a parent.",
+      "parent_class": "ChainSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chainSelection_var.hasWarning",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = chainSelection_var->hasWarning();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    },
+    "inputGeometry": {
+      "id": "ChainSelection_inputGeometry",
+      "title": "ChainSelection.inputGeometry Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ChainSelection.h",
+      "description": "Get or set the value of the input geometry. If the value originates from a component instead of an occurrence, or an occurrence outside of the CAM environment, then the subpath is checked against the CAM model tree. For some child classes, this may be the same as the value property, but might also consist of fewer elements. Valid elements depend on the capabilities of the derived class. An exception is thrown if the matching fails or the given entity does not match the expected type.",
+      "parent_class": "ChainSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chainSelection_var.inputGeometry\n\n# Set the value of the property.\nchainSelection_var.inputGeometry = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = chainSelection_var->inputGeometry();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = chainSelection_var->inputGeometry(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        },
+        {
+          "name": "Manufacturing Workflow API Sample",
+          "description": "Manufacturing Workflow API SampleThis sample script starts by creating a simple component which is then used to describe a milling workflow. It creates a setup, a few operations, pick some tools from a Fusion sample tool library using loops and queries and ends up post-processing the operations out using an NC Program."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "isOpen": {
+      "id": "ChainSelection_isOpen",
+      "title": "ChainSelection.isOpen Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ChainSelection.h",
+      "description": "Property to get or set if an open contour should be closed or not. If true and the input does not specify a closed contour, additional curve segments will be generated to close the contour.",
+      "parent_class": "ChainSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chainSelection_var.isOpen\n\n# Set the value of the property.\nchainSelection_var.isOpen = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = chainSelection_var->isOpen();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = chainSelection_var->isOpen(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isOpenAllowed": {
+      "id": "ChainSelection_isOpenAllowed",
+      "title": "ChainSelection.isOpenAllowed Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ChainSelection.h",
+      "description": "Property to specify if the underlying CadContours2DParameterValue allows open contours. Some examples of some open contours are adaptive clearing 3d and swarf. And, some examples of closed contours are face and machining boundary.",
+      "parent_class": "ChainSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chainSelection_var.isOpenAllowed",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = chainSelection_var->isOpenAllowed();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "isReverted": {
+      "id": "ChainSelection_isReverted",
+      "title": "ChainSelection.isReverted Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ChainSelection.h",
+      "description": "Property to control if the curve is reverted or not. The curve needs to be reverted, if Fusion's guess does not match the user's expectation. The initial tool placement depends on the first input edge or sketch line and the height of the bordering faces or sketch boundaries, with the tool being placed outside of the higher face or sketch boundary.",
+      "parent_class": "ChainSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chainSelection_var.isReverted\n\n# Set the value of the property.\nchainSelection_var.isReverted = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = chainSelection_var->isReverted();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = chainSelection_var->isReverted(value_var);"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Hole and Pocket Recognition API Sample",
+          "description": "This sample script demonstrates three different methods for feature recognition: one for holes and two for pockets.The script starts by creating a simple component which is then used to demonstrate the three methods. After the features are recognised they are coloured and milling and drilling operations are created for each feature.RecognizedHoleGroup returns a list of BRepFaces that can be used as selections for the drilling operation. RecognizedPocket also return some BRepFaces but it needs additional processing before the output can be used for creating machining operations.The sample script demonstrates a couple of different methods, including finding the pocket BRepFaces and creating sketches from the recognized pockets.This script works only if the Manufacturing Extension is active."
+        }
+      ],
+      "version": "Introduced in version April 2023"
+    },
+    "isValid": {
+      "id": "ChainSelection_isValid",
+      "title": "ChainSelection.isValid Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ChainSelection.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ChainSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chainSelection_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = chainSelection_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "objectType": {
+      "id": "ChainSelection_objectType",
+      "title": "ChainSelection.objectType Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ChainSelection.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ChainSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chainSelection_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = chainSelection_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "startExtensionLength": {
+      "id": "ChainSelection_startExtensionLength",
+      "title": "ChainSelection.startExtensionLength Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ChainSelection.h",
+      "description": "Property that gets and sets the length of the extension of an open curve at the start of the chain. This is only applicable to open contours and when DistanceCap is chosen as the extension cap.",
+      "parent_class": "ChainSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chainSelection_var.startExtensionLength\n\n# Set the value of the property.\nchainSelection_var.startExtensionLength = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = chainSelection_var->startExtensionLength();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = chainSelection_var->startExtensionLength(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "value": {
+      "id": "ChainSelection_value",
+      "title": "ChainSelection.value Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ChainSelection.h",
+      "description": "Returns the resulting value of the selection. In general, this returns the input selection, but child classes can override the return value if needed. Refer to the child classes comments for further details. The collection may contain duplicates. For OperationInputs, the return value may not be the same as for Operations, as additional geometry selected by child classes is not evaluated for OperationInputs.",
+      "parent_class": "ChainSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chainSelection_var.value",
+        "cpp": "#include \n\n// Get the value of the property.\nstd::vector> propertyValue = chainSelection_var->value();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version April 2023"
+    },
+    "warning": {
+      "id": "ChainSelection_warning",
+      "title": "ChainSelection.warning Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/GeometrySelections/ChainSelection.h",
+      "description": "Gets the last warning string encountered after the selection was applied to a parent.",
+      "parent_class": "ChainSelection",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = chainSelection_var.warning",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = chainSelection_var->warning();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2023"
+    }
+  }
+}

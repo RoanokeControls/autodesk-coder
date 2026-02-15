@@ -1,0 +1,111 @@
+{
+  "id": "ECD-ULP-BOARD",
+  "title": "UL_BOARD",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "alwaysvectorfont",
+      "type": "int (ALWAYS_VECTOR_FONT_..., see note)"
+    },
+    {
+      "name": "area",
+      "type": "UL_AREA"
+    },
+    {
+      "name": "checked",
+      "type": "int (see note)"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "grid",
+      "type": "UL_GRID"
+    },
+    {
+      "name": "headline",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string (see note)"
+    },
+    {
+      "name": "verticaltext",
+      "type": "int (VERTICAL_TEXT_...)"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "attributes()",
+      "type": "UL_ATTRIBUTE (see note)"
+    },
+    {
+      "name": "circles()",
+      "type": "UL_CIRCLE"
+    },
+    {
+      "name": "classes()",
+      "type": "UL_CLASS"
+    },
+    {
+      "name": "dimensions()",
+      "type": "UL_DIMENSION"
+    },
+    {
+      "name": "elements()",
+      "type": "UL_ELEMENT"
+    },
+    {
+      "name": "errors()",
+      "type": "UL_ERROR"
+    },
+    {
+      "name": "frames()",
+      "type": "UL_FRAME"
+    },
+    {
+      "name": "holes()",
+      "type": "UL_HOLE"
+    },
+    {
+      "name": "layers()",
+      "type": "UL_LAYER"
+    },
+    {
+      "name": "libraries()",
+      "type": "UL_LIBRARY"
+    },
+    {
+      "name": "polycutouts()",
+      "type": "UL_POLYCUTOUT"
+    },
+    {
+      "name": "polyshapes()",
+      "type": "UL_POLYSHAPE"
+    },
+    {
+      "name": "rectangles()",
+      "type": "UL_RECTANGLE"
+    },
+    {
+      "name": "signals()",
+      "type": "UL_SIGNAL"
+    },
+    {
+      "name": "texts()",
+      "type": "UL_TEXT"
+    },
+    {
+      "name": "variantdefs()",
+      "type": "UL_VARIANTDEF"
+    },
+    {
+      "name": "wires()",
+      "type": "UL_WIRE"
+    }
+  ],
+  "content": "# UL_BOARD\n\n## Data members\n\n| | |\n| --- | --- |\n| alwaysvectorfont | int (ALWAYS_VECTOR_FONT_..., see note) |\n| area | UL_AREA |\n| checked | int (see note) |\n| description | string |\n| grid | UL_GRID |\n| headline | string |\n| name | string (see note) |\n| verticaltext | int (VERTICAL_TEXT_...) |\n\n## Loop members\n\n| | |\n| --- | --- |\n| attributes() | UL_ATTRIBUTE (see note) |\n| circles() | UL_CIRCLE |\n| classes() | UL_CLASS |\n| dimensions() | UL_DIMENSION |\n| elements() | UL_ELEMENT |\n| errors() | UL_ERROR |\n| frames() | UL_FRAME |\n| holes() | UL_HOLE |\n| layers() | UL_LAYER |\n| libraries() | UL_LIBRARY |\n| polycutouts() | UL_POLYCUTOUT |\n| polyshapes() | UL_POLYSHAPE |\n| rectangles() | UL_RECTANGLE |\n| signals() | UL_SIGNAL |\n| texts() | UL_TEXT |\n| variantdefs() | UL_VARIANTDEF |\n| wires() | UL_WIRE |\n\nSee also UL_LIBRARY, UL_SCHEMATIC, variant()\n\n## Constants\n\n| | |\n| --- | --- |\n| ALWAYS_VECTOR_FONT_GUI | alwaysvectorfont is set in the user interface dialog |\n| ALWAYS_VECTOR_FONT_PERSISTENT | alwaysvectorfont is set persistent in this board |\n| VERTICAL_TEXT_UP | reading direction for vertical texts: up |\n| VERTICAL_TEXT_DOWN | reading direction for vertical texts: down |\n\n## Notes\n\nThe value returned by *alwaysvectorfont* can be used in boolean context or can be masked with the `ALWAYS_VECTOR_FONT_...` constants to determine the source of this setting, as in\n\n```\nif (B.alwaysvectorfont) {\n // alwaysvectorfont is set in general\n }\nif (B.alwaysvectorfont & ALWAYS_VECTOR_FONT_GUI) {\n // alwaysvectorfont is set in the user interface\n }\n```\n\nThe value returned by *checked* can be used in boolean context and is set only after a recent 'Design Rule Check' (DRC).\n\nThe name member returns the full file name, including the directory.\n\nThe *attributes()* loop member loops through the global attributes.\n\n## Example\n\n```\nboard(B) {\n B.elements(E) printf(\"Element: %s\\n\", E.name);\n B.signals(S) printf(\"Signal: %s\\n\", S.name);\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

@@ -1,0 +1,203 @@
+{
+  "id": "BRepBodies",
+  "title": "BRepBodies Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/BRep/BRepBodies.h",
+  "description": "The BRepBodies collection provides access to all of the B-Rep bodies within a component.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new BRepBody object. The input can be a persisted or transient BRepBody and the result is a persisted BRepBody. In a direct modeling design, the BRepBody is created within the component the BRepBodies collection was obtained from. In a parametric modeling design, the new BRepBody is created within the specified Base Feature.   Because of a current limitation, if you want to create a BRepBody in a parametric model, you must first call the edit method of the base feature, then use the add method to create the body, and finally call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified body using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns a specific body using the name of the body within the collection."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of bodies in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Get Volume of Active Design API Sample",
+      "description": "Traverses through the active design and totals the volume of every body within the design."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "add": {
+      "id": "BRepBodies_add",
+      "title": "BRepBodies.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBodies.h",
+      "description": "Creates a new BRepBody object. The input can be a persisted or transient BRepBody and the result is a persisted BRepBody. In a direct modeling design, the BRepBody is created within the component the BRepBodies collection was obtained from. In a parametric modeling design, the new BRepBody is created within the specified Base Feature. Because of a current limitation, if you want to create a BRepBody in a parametric model, you must first call the edit method of the base feature, then use the add method to create the body, and finally call the finishEdit method of the base feature. The base feature must be in an \"edit\" state to be able to add any additional items to it.",
+      "parent_class": "BRepBodies",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = bRepBodies_var.add(body)\n\n# Uses optional arguments.\nreturnValue = bRepBodies_var.add(body, targetBaseFeature)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = bRepBodies_var->add(body);\n\n// Uses optional arguments.\nreturnValue = bRepBodies_var->add(body, targetBaseFeature);"
+      },
+      "return_type": "BRepBody",
+      "return_description": "Returns the newly created BRepBody or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "body",
+          "type": "BRepBody",
+          "description": "The input BRepBody. Typically this is a transient BRepBody but that's not a requirement. In any case, there is not any association back to the original BRepBody."
+        },
+        {
+          "name": "targetBaseFeature",
+          "type": "BaseFeature",
+          "description": "The BaseFeature object that this BRep body will be associated with. This is an optional requirement. It is required in a parametric modeling design but is ignored in a direct modeling design.   This is an optional argument whose default value is null."
+        }
+      ],
+      "version": "Introduced in version May 2016"
+    },
+    "classType": {
+      "id": "BRepBodies_classType",
+      "title": "BRepBodies.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBodies.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "BRepBodies",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.BRepBodies.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::BRepBodies::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "BRepBodies_item",
+      "title": "BRepBodies.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBodies.h",
+      "description": "Function that returns the specified body using an index into the collection.",
+      "parent_class": "BRepBodies",
+      "syntax": {
+        "python": "returnValue = bRepBodies_var.item(index)",
+        "cpp": "#include \n\nreturnValue = bRepBodies_var->item(index);"
+      },
+      "return_type": "BRepBody",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Get Volume of Active Design API Sample",
+          "description": "Traverses through the active design and totals the volume of every body within the design."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "itemByName": {
+      "id": "BRepBodies_itemByName",
+      "title": "BRepBodies.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBodies.h",
+      "description": "Returns a specific body using the name of the body within the collection.",
+      "parent_class": "BRepBodies",
+      "syntax": {
+        "python": "returnValue = bRepBodies_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = bRepBodies_var->itemByName(name);"
+      },
+      "return_type": "BRepBody",
+      "return_description": "The BRepBody or null if a body with the defined name is not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the body, as seen in the browser, to return."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "BRepBodies_count",
+      "title": "BRepBodies.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBodies.h",
+      "description": "Returns the number of bodies in the collection.",
+      "parent_class": "BRepBodies",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBodies_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = bRepBodies_var->count();"
+      },
+      "property_value": "Samples",
+      "related_samples": [
+        {
+          "name": "Delete Empty Components",
+          "description": "Deletes empty components from the active design."
+        },
+        {
+          "name": "Get Volume of Active Design API Sample",
+          "description": "Traverses through the active design and totals the volume of every body within the design."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "BRepBodies_isValid",
+      "title": "BRepBodies.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBodies.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "BRepBodies",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBodies_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = bRepBodies_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "BRepBodies_objectType",
+      "title": "BRepBodies.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBodies.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "BRepBodies",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = bRepBodies_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = bRepBodies_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

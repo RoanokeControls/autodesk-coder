@@ -1,0 +1,12 @@
+{
+  "id": "extendFeatures_add_Sample",
+  "title": "extendFeatures.add",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the extendFeatures.add method.  To use this sample, have a design open that contains at least one surface body. When you run the sample, you will be prompted to select an open edge of the body.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_extendFeatures_add(rootComp: adsk.fusion.Design.rootComponent):\n    # Have the edge to extend selected and add it to an ObjectCollection. \n    # This must be on a surface body and be an open edge or the creation \n    # of the feature will fail.\n    edge: adsk.fusion.BRepEdge = _ui.selectEntity('Select edge to extend', 'Edges').entity\n    edges = adsk.core.ObjectCollection.create()\n    edges.add(edge)\n\n    # Define the needed input.    \n    distance = adsk.core.ValueInput.createByReal(5)\n    extendType = adsk.fusion.SurfaceExtendTypes.NaturalSurfaceExtendType\n    extendFeatures = rootComp.features.extendFeatures\n    input: adsk.fusion.ExtendFeatureInput = extendFeatures.createInput(edges, distance, extendType)\n    input.extendAlignment = adsk.fusion.SurfaceExtendAlignment.FreeEdges\n\n    # Create the feature.\n    extendFeature = extendFeatures.add(input)"
+  }
+}

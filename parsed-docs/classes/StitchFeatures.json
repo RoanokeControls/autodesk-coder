@@ -1,0 +1,239 @@
+{
+  "id": "StitchFeatures",
+  "title": "StitchFeatures Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Features/StitchFeatures.h",
+  "description": "Collection that provides access to all of the existing Stitch features in a component and supports the ability to create new Stitch features.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Creates a new stitch feature."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createInput",
+      "description": "Creates a StitchFeatureInput object. Use properties and methods on this object to define the stitch feature you want to create and then use the Add method, passing in the StitchFeatureInput object."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified stitch feature using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Function that returns the specified stitch feature using the name of the feature."
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "The number of Stitch features in the collection."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Stitch Feature API Sample",
+      "description": "Demonstrates creating a new stitch feature."
+    }
+  ],
+  "version": "Introduced in version June 2015",
+  "method_details": {
+    "add": {
+      "id": "StitchFeatures_add",
+      "title": "StitchFeatures.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/StitchFeatures.h",
+      "description": "Creates a new stitch feature.",
+      "parent_class": "StitchFeatures",
+      "syntax": {
+        "python": "returnValue = stitchFeatures_var.add(input)",
+        "cpp": "#include \n\nreturnValue = stitchFeatures_var->add(input);"
+      },
+      "return_type": "StitchFeature",
+      "return_description": "Returns the newly created StitchFeature object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "input",
+          "type": "StitchFeatureInput",
+          "description": "A StitchFeatureInput object that defines the desired stitch feature. Use the createInput method to create a new StitchFeatureInput object and then use methods on it (the StitchFeatureInput object) to define the stitch feature."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "stitchFeatures.add",
+          "description": "Demonstrates the stitchFeatures.add method."
+        },
+        {
+          "name": "Stitch Feature API Sample",
+          "description": "Demonstrates creating a new stitch feature."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "classType": {
+      "id": "StitchFeatures_classType",
+      "title": "StitchFeatures.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/StitchFeatures.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "StitchFeatures",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.StitchFeatures.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::StitchFeatures::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version June 2015"
+    },
+    "createInput": {
+      "id": "StitchFeatures_createInput",
+      "title": "StitchFeatures.createInput Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/StitchFeatures.h",
+      "description": "Creates a StitchFeatureInput object. Use properties and methods on this object to define the stitch feature you want to create and then use the Add method, passing in the StitchFeatureInput object.",
+      "parent_class": "StitchFeatures",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = stitchFeatures_var.createInput(stitchSurfaces, tolerance)\n\n# Uses optional arguments.\nreturnValue = stitchFeatures_var.createInput(stitchSurfaces, tolerance, operation)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = stitchFeatures_var->createInput(stitchSurfaces, tolerance);\n\n// Uses optional arguments.\nreturnValue = stitchFeatures_var->createInput(stitchSurfaces, tolerance, operation);"
+      },
+      "return_type": "StitchFeatureInput",
+      "return_description": "Returns the newly created StitchFeatureInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "stitchSurfaces",
+          "type": "ObjectCollection",
+          "description": "The surfaces (open BRepBodies) to stitch together. Stitching surfaces can form multiple closed volumes resulting in multiple solids. Stitch Surfaces can form multiple BRepShells (entirely connected set of entities) that would result in a single non-solid BRepBody."
+        },
+        {
+          "name": "tolerance",
+          "type": "ValueInput",
+          "description": "ValueInput object that defines the stitching tolerance. It must define a distance value."
+        },
+        {
+          "name": "operation",
+          "type": "FeatureOperations",
+          "description": "Specifies the operation type for the result when the final result is a closed solid. Otherwise this argument is ignored.   This is an optional argument whose default value is FeatureOperations.NewBodyFeatureOperation."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "stitchFeatures.add",
+          "description": "Demonstrates the stitchFeatures.add method."
+        },
+        {
+          "name": "Stitch Feature API Sample",
+          "description": "Demonstrates creating a new stitch feature."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "item": {
+      "id": "StitchFeatures_item",
+      "title": "StitchFeatures.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/StitchFeatures.h",
+      "description": "Function that returns the specified stitch feature using an index into the collection.",
+      "parent_class": "StitchFeatures",
+      "syntax": {
+        "python": "returnValue = stitchFeatures_var.item(index)",
+        "cpp": "#include \n\nreturnValue = stitchFeatures_var->item(index);"
+      },
+      "return_type": "StitchFeature",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version June 2015"
+    },
+    "itemByName": {
+      "id": "StitchFeatures_itemByName",
+      "title": "StitchFeatures.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/StitchFeatures.h",
+      "description": "Function that returns the specified stitch feature using the name of the feature.",
+      "parent_class": "StitchFeatures",
+      "syntax": {
+        "python": "returnValue = stitchFeatures_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = stitchFeatures_var->itemByName(name);"
+      },
+      "return_type": "StitchFeature",
+      "return_description": "Returns the specified item or null if the specified name was not found.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the feature within the collection to return. This is the name seen in the timeline."
+        }
+      ],
+      "version": "Introduced in version September 2015"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "StitchFeatures_count",
+      "title": "StitchFeatures.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/StitchFeatures.h",
+      "description": "The number of Stitch features in the collection.",
+      "parent_class": "StitchFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = stitchFeatures_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = stitchFeatures_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "isValid": {
+      "id": "StitchFeatures_isValid",
+      "title": "StitchFeatures.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/StitchFeatures.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "StitchFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = stitchFeatures_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = stitchFeatures_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    },
+    "objectType": {
+      "id": "StitchFeatures_objectType",
+      "title": "StitchFeatures.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Features/StitchFeatures.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "StitchFeatures",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = stitchFeatures_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = stitchFeatures_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version June 2015"
+    }
+  }
+}

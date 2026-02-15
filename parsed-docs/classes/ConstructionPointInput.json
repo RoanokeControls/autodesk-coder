@@ -1,0 +1,305 @@
+{
+  "id": "ConstructionPointInput",
+  "title": "ConstructionPointInput Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Construction/ConstructionPointInput.h",
+  "description": "A ConstructionPointInput is a throwaway object used to create a ConstructionPoint The usage pattern is a. create a ConstructionPointInput (ConstructionPoints.CreateInput) b. call one of the member functions to specify how the ConstructionPoint is created c. create the ConstructionPoint (call ConstructionPoints.Add) d. stop referencing the ConstructionPointInput (so it gets deleted).",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "setByCenter",
+      "description": "This input method is for creating a construction point at the center of a spherical face (sphere or torus), circular edge or sketch arc/circle This can result in a parametric or non-parametric construction point depending on whether the parent component is parametric or is a direct edit component."
+    },
+    {
+      "name": "setByEdgePlane",
+      "description": "This input method is for creating a construction point at the intersection of a construction plane, planar face or sketch profile and a linear edge, construction axis or sketch line. This can result in a parametric or non-parametric construction point depending on whether the parent component is parametric or is a direct edit component."
+    },
+    {
+      "name": "setByPoint",
+      "description": "This input method is for creating a construction point on the specified point or vertex. The point can be either a B-Rep vertex, SketchPoint, or a Point3D object.   Providing a Point3D object is only valid when working in the direct edit modeling mode. This is not valid when working in the parametric modeling mode and will fail.   Even when providing a B-Rep vertex, or SketchPoint the result will be non-parametric if the parent component is a direct edit component."
+    },
+    {
+      "name": "setByThreePlanes",
+      "description": "This input method is for creating a construction point at the intersection of the three planes or planar faces. This can result in a parametric or non-parametric construction point depending on whether the parent component is parametric or is a direct edit component."
+    },
+    {
+      "name": "setByTwoEdges",
+      "description": "This input method is for creating a construction point at the intersection of the two linear edges or sketch lines. The edges can be B-Rep edges or sketch lines. This can result in a parametric or non-parametric construction point depending on whether the parent component is parametric or is a direct edit component."
+    }
+  ],
+  "properties": [
+    {
+      "name": "creationOccurrence",
+      "description": "In order for geometry to be transformed correctly, an occurrence for creation needs to be specified when the ConstructionPoint is created based on geometry (e.g. a sketch point) in another component AND (the ConstructionPoint) is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI"
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "targetBaseOrFormFeature",
+      "description": "When creating a construction point that is owned by a base or form feature, set this property to the base or form feature you want to associate the new construction point with. By default, this is null, meaning it will not be associated with a base or form feature.   Because of a current limitation, if you want to create a construction point associated with a base or form feature, you must set this property AND call the startEdit method of the base or form feature, create the feature, and then call the finishEdit method of the base or form feature. The base or form feature must be in an \"edit\" state to be able to add any additional items to it."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Construction Point API Sample",
+      "description": "Demonstrates creating construction point by different ways"
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "classType": {
+      "id": "ConstructionPointInput_classType",
+      "title": "ConstructionPointInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPointInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ConstructionPointInput",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ConstructionPointInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ConstructionPointInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "setByCenter": {
+      "id": "ConstructionPointInput_setByCenter",
+      "title": "ConstructionPointInput.setByCenter Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPointInput.h",
+      "description": "This input method is for creating a construction point at the center of a spherical face (sphere or torus), circular edge or sketch arc/circle This can result in a parametric or non-parametric construction point depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionPointInput",
+      "syntax": {
+        "python": "returnValue = constructionPointInput_var.setByCenter(circularEntity)",
+        "cpp": "#include \n\nreturnValue = constructionPointInput_var->setByCenter(circularEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionPointInput is successful.",
+      "parameters": [
+        {
+          "name": "circularEntity",
+          "type": "Base",
+          "description": "A spherical face (sphere or torus), circular edge or sketch arc/circle"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Point API Sample",
+          "description": "Demonstrates creating construction point by different ways"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByEdgePlane": {
+      "id": "ConstructionPointInput_setByEdgePlane",
+      "title": "ConstructionPointInput.setByEdgePlane Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPointInput.h",
+      "description": "This input method is for creating a construction point at the intersection of a construction plane, planar face or sketch profile and a linear edge, construction axis or sketch line. This can result in a parametric or non-parametric construction point depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionPointInput",
+      "syntax": {
+        "python": "returnValue = constructionPointInput_var.setByEdgePlane(edge, plane)",
+        "cpp": "#include \n\nreturnValue = constructionPointInput_var->setByEdgePlane(edge, plane);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionPointInput is successful.",
+      "parameters": [
+        {
+          "name": "edge",
+          "type": "Base",
+          "description": "A linear B-Rep edge, construction axis or sketch line."
+        },
+        {
+          "name": "plane",
+          "type": "Base",
+          "description": "A plane, planar B-Rep face or construction plane."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Point API Sample",
+          "description": "Demonstrates creating construction point by different ways"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByPoint": {
+      "id": "ConstructionPointInput_setByPoint",
+      "title": "ConstructionPointInput.setByPoint Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPointInput.h",
+      "description": "This input method is for creating a construction point on the specified point or vertex. The point can be either a B-Rep vertex, SketchPoint, or a Point3D object. Providing a Point3D object is only valid when working in the direct edit modeling mode. This is not valid when working in the parametric modeling mode and will fail. Even when providing a B-Rep vertex, or SketchPoint the result will be non-parametric if the parent component is a direct edit component.",
+      "parent_class": "ConstructionPointInput",
+      "syntax": {
+        "python": "returnValue = constructionPointInput_var.setByPoint(point)",
+        "cpp": "#include \n\nreturnValue = constructionPointInput_var->setByPoint(point);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionPointInput is successful.",
+      "parameters": [
+        {
+          "name": "point",
+          "type": "Base",
+          "description": "A B-Rep vertex, SketchPoint, or Point object"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Point API Sample",
+          "description": "Demonstrates creating construction point by different ways"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByThreePlanes": {
+      "id": "ConstructionPointInput_setByThreePlanes",
+      "title": "ConstructionPointInput.setByThreePlanes Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPointInput.h",
+      "description": "This input method is for creating a construction point at the intersection of the three planes or planar faces. This can result in a parametric or non-parametric construction point depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionPointInput",
+      "syntax": {
+        "python": "returnValue = constructionPointInput_var.setByThreePlanes(planeOne, planeTwo, planeThree)",
+        "cpp": "#include \n\nreturnValue = constructionPointInput_var->setByThreePlanes(planeOne, planeTwo, planeThree);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionPointInput is successful.",
+      "parameters": [
+        {
+          "name": "planeOne",
+          "type": "Base",
+          "description": "The first plane or planar face to intersect"
+        },
+        {
+          "name": "planeTwo",
+          "type": "Base",
+          "description": "The second plane or planar face to intersect"
+        },
+        {
+          "name": "planeThree",
+          "type": "Base",
+          "description": "The third plane or planar face to intersect"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Point API Sample",
+          "description": "Demonstrates creating construction point by different ways"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "setByTwoEdges": {
+      "id": "ConstructionPointInput_setByTwoEdges",
+      "title": "ConstructionPointInput.setByTwoEdges Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPointInput.h",
+      "description": "This input method is for creating a construction point at the intersection of the two linear edges or sketch lines. The edges can be B-Rep edges or sketch lines. This can result in a parametric or non-parametric construction point depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionPointInput",
+      "syntax": {
+        "python": "returnValue = constructionPointInput_var.setByTwoEdges(edgeOne, edgeTwo)",
+        "cpp": "#include \n\nreturnValue = constructionPointInput_var->setByTwoEdges(edgeOne, edgeTwo);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the creation of the ConstructionPointInput is successful.",
+      "parameters": [
+        {
+          "name": "edgeOne",
+          "type": "Base",
+          "description": "The first B-Rep edge or sketch line"
+        },
+        {
+          "name": "edgeTwo",
+          "type": "Base",
+          "description": "The second B-Rep edge or sketch line"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Construction Point API Sample",
+          "description": "Demonstrates creating construction point by different ways"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "creationOccurrence": {
+      "id": "ConstructionPointInput_creationOccurrence",
+      "title": "ConstructionPointInput.creationOccurrence Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPointInput.h",
+      "description": "In order for geometry to be transformed correctly, an occurrence for creation needs to be specified when the ConstructionPoint is created based on geometry (e.g. a sketch point) in another component AND (the ConstructionPoint) is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI",
+      "parent_class": "ConstructionPointInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPointInput_var.creationOccurrence\n\n# Set the value of the property.\nconstructionPointInput_var.creationOccurrence = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPointInput_var->creationOccurrence();\n\n// Set the value of the property, where value_var is an Occurrence.\nbool returnValue = constructionPointInput_var->creationOccurrence(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "ConstructionPointInput_isValid",
+      "title": "ConstructionPointInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPointInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ConstructionPointInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPointInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = constructionPointInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "ConstructionPointInput_objectType",
+      "title": "ConstructionPointInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPointInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ConstructionPointInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPointInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = constructionPointInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "targetBaseOrFormFeature": {
+      "id": "ConstructionPointInput_targetBaseOrFormFeature",
+      "title": "ConstructionPointInput.targetBaseOrFormFeature Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPointInput.h",
+      "description": "When creating a construction point that is owned by a base or form feature, set this property to the base or form feature you want to associate the new construction point with. By default, this is null, meaning it will not be associated with a base or form feature. Because of a current limitation, if you want to create a construction point associated with a base or form feature, you must set this property AND call the startEdit method of the base or form feature, create the feature, and then call the finishEdit method of the base or form feature. The base or form feature must be in an \"edit\" state to be able to add any additional items to it.",
+      "parent_class": "ConstructionPointInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = constructionPointInput_var.targetBaseOrFormFeature\n\n# Set the value of the property.\nconstructionPointInput_var.targetBaseOrFormFeature = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = constructionPointInput_var->targetBaseOrFormFeature();\n\n// Set the value of the property, where value_var is a Base.\nbool returnValue = constructionPointInput_var->targetBaseOrFormFeature(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    }
+  }
+}

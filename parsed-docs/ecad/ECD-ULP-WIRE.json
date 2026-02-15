@@ -1,0 +1,47 @@
+{
+  "id": "ECD-ULP-WIRE",
+  "title": "UL_WIRE",
+  "type": "ulp_object",
+  "description": "",
+  "data_members": [
+    {
+      "name": "arc",
+      "type": "UL_ARC"
+    },
+    {
+      "name": "cap",
+      "type": "int (CAP_...)"
+    },
+    {
+      "name": "curve",
+      "type": "real"
+    },
+    {
+      "name": "layer",
+      "type": "int"
+    },
+    {
+      "name": "style",
+      "type": "int (WIRE_STYLE_...)"
+    },
+    {
+      "name": "width",
+      "type": "int"
+    },
+    {
+      "name": "x1, y1",
+      "type": "int (starting point)"
+    },
+    {
+      "name": "x2, y2",
+      "type": "int (end point)"
+    }
+  ],
+  "loop_members": [
+    {
+      "name": "pieces()",
+      "type": "UL_WIRE (see note)"
+    }
+  ],
+  "content": "# UL_WIRE\n\n## Data members\n\n| | |\n| --- | --- |\n| arc | UL_ARC |\n| cap | int (CAP_...) |\n| curve | real |\n| layer | int |\n| style | int (WIRE_STYLE_...) |\n| width | int |\n| x1, y1 | int (starting point) |\n| x2, y2 | int (end point) |\n\n## Loop members\n\n| | |\n| --- | --- |\n| pieces() | UL_WIRE (see note) |\n\nSee also UL_BOARD, UL_FOOTPRINT, UL_SEGMENT, UL_SHEET, UL_SIGNAL, UL_SYMBOL, UL_ARC\n\n## Constants\n\n| | |\n| --- | --- |\n| CAP_FLAT | flat arc ends |\n| CAP_ROUND | round arc ends |\n| WIRE_STYLE_CONTINUOUS | continuous |\n| WIRE_STYLE_LONGDASH | long dash |\n| WIRE_STYLE_SHORTDASH | short dash |\n| WIRE_STYLE_DASHDOT | dash dot |\n\n## Wire style\n\nA UL_WIRE that has a style other than WIRE_STYLE_CONTINUOUS can use the *pieces()* loop member to access the individual segments that constitute for example a dashed wire. If *pieces()* is called for a UL_WIRE with WIRE_STYLE_CONTINUOUS, a single segment will be accessible which is just the same as the original UL_WIRE. The *pieces()* loop member can't be called from a UL_WIRE that itself has been returned by a call to *pieces()*. This would cause an infinite recursion.\n\n## Arcs at wire level\n\nArcs are basically wires, with a few additional properties. At the first level arcs are treated exactly the same as wires, meaning they have a start and an end point, a width, layer and wire style. In addition to these an arc, at the wire level, has a *cap* and a *curve* parameter. *cap* defines whether the arc endings are round or flat, and *curve* defines the \"curvature\" of the arc. \n\nThe valid range for *curve* is -360 to +360, and its value means what part of a full circle the arc consists of. A value of 90, for instance, would result in a 90\u00b0 arc, while 180 would give you a semicircle. The maximum value of 360 can only be reached theoretically, since this would mean that the arc consists of a full circle, which, because the start and end points have to lie on the circle, would have to have an infinitely large diameter. Positive values for curve mean that the arc is drawn in a mathematically positive sense (i.e. counterclockwise). If curve is 0, the arc is a straight line (\"no curvature\"), which is actually a wire.\n\nThe *cap* parameter only has a meaning for actual arcs, and will always return CAP_ROUND for a straight wire.\n\nWhether or not an UL_WIRE is an arc can be determined by checking the boolean return value of the *arc* data member. If it returns 0, we have a straight wire, otherwise an arc. If *arc* returns a non-zero value it may be further dereferenced to access the UL_ARC specific parameters start and end angle, radius and center point. Note that you may only need these additional parameters if you are going to draw the arc or process it in other ways where the actual shape is important.\n\n## Example\n\n```\nboard(B) {\n B.wires(W) {\n printf(\"Wire: (%f %f) (%f %f)\\n\",\n u2mm(W.x1), u2mm(W.y1), u2mm(W.x2), u2mm(W.y2));\n }\n }\n```\n\n \n \n \n \n **Parent page:** Object types"
+}

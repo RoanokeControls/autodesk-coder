@@ -1,0 +1,313 @@
+{
+  "id": "ValueInput",
+  "title": "ValueInput Object",
+  "type": "class",
+  "namespace": "adsk::core",
+  "header_file": "Core/Application/ValueInput.h",
+  "description": "A ValueInput provides a flexible way of specifying a string, a double, a boolean, or object reference. No semantics are associated with a ValueInput (e.g. is the string valid, can the string be converted to a double) - it is merely a way of supplying information in either string, double, boolean or object reference form as a function parameter. ValueInput objects are typically used to specify things like an extrude depth, or hole diameter, etc.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createByBoolean",
+      "description": "Creates a new ValueInput object that contains a boolean value."
+    },
+    {
+      "name": "createByObject",
+      "description": "Creates a new ValueInput object that contains a reference to any Fusion object."
+    },
+    {
+      "name": "createByReal",
+      "description": "Creates a new ValueInput object using a double. For example, if you create a value using the double value 2 and use it as input for a length, it will be interpreted as 2 cm because centimeters are the internal unit for length. Values defined by a real are always interpreted to be in the appropriate internal unit. For example, if the value 2 is used to define the depth of an extrusion (a length value), it will be 2 cm because cm is the internal unit for lengths. If the value 2 is used to define the angle of the extrude, it will be 2 radians because radians are the internal unit for angles."
+    },
+    {
+      "name": "createByString",
+      "description": "When a string is used to create a value it needs to be evaluated as an expression so its value can be determined using the UnitsManager class. The units of an expression can be explicitly defined or will default to the current default units. For example, if you create an expression with the string \"6\" and specify it as a length, it will use the current active units. If the current active units are defined as inches the expression will be interpreted as 6 inches. You can specify the units as part of the string (i.e. \"6 mm\"). You can also use equations in the string (i.e. \"6 + 5mm\")   In order for an expression to be valid, its units must be compatible with the value it represents. For example if you specify \"5 in + 3 cm\" as an expression to supply the value of an angle, it will fail because the units of the expression define a length."
+    }
+  ],
+  "properties": [
+    {
+      "name": "booleanValue",
+      "description": "Gets the boolean value, if there is one. Returns false AND GetLastError returns ValueNotOfType if there is no boolean value. You can use the valueType property to determine which value type is currently used."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectReference",
+      "description": "Gets the object being referenced, if there is one. Returns null AND GetLastError returns ValueNotOfType if there is no object reference. You can use the valueType property to determine which value type is currently used."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "realValue",
+      "description": "Gets the real value, if there is one. Returns -1 AND GetLastError returns ValueNotOfType if there is no real value. You can use the valueType property to determine which value type is currently used."
+    },
+    {
+      "name": "stringValue",
+      "description": "Gets the string value, if there is one. Returns an empty string AND GetLastError returns ValueNotOfType if there is no string value. You can use the valueType property to determine which value type is currently used."
+    },
+    {
+      "name": "valueType",
+      "description": "Returns the type of value this ValueInput currently represents."
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Loft Feature API Sample",
+      "description": "Demonstrates creating a new loft feature."
+    },
+    {
+      "name": "Patch Feature API Sample",
+      "description": "Demonstrates creating a new patch feature."
+    },
+    {
+      "name": "Simple Extrusion Sample",
+      "description": "Creates a new extrusion feature, resulting in a new component."
+    },
+    {
+      "name": "Simple Revolve Feature Sample",
+      "description": "Creates a new revolve feature, resulting in a new component."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "property_details": {
+    "booleanValue": {
+      "id": "ValueInput_booleanValue",
+      "title": "ValueInput.booleanValue Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ValueInput.h",
+      "description": "Gets the boolean value, if there is one. Returns false AND GetLastError returns ValueNotOfType if there is no boolean value. You can use the valueType property to determine which value type is currently used.",
+      "parent_class": "ValueInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueInput_var.booleanValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = valueInput_var->booleanValue();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2020"
+    },
+    "isValid": {
+      "id": "ValueInput_isValid",
+      "title": "ValueInput.isValid Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ValueInput.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ValueInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueInput_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = valueInput_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectReference": {
+      "id": "ValueInput_objectReference",
+      "title": "ValueInput.objectReference Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ValueInput.h",
+      "description": "Gets the object being referenced, if there is one. Returns null AND GetLastError returns ValueNotOfType if there is no object reference. You can use the valueType property to determine which value type is currently used.",
+      "parent_class": "ValueInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueInput_var.objectReference",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = valueInput_var->objectReference();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    },
+    "objectType": {
+      "id": "ValueInput_objectType",
+      "title": "ValueInput.objectType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ValueInput.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ValueInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueInput_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = valueInput_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "realValue": {
+      "id": "ValueInput_realValue",
+      "title": "ValueInput.realValue Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ValueInput.h",
+      "description": "Gets the real value, if there is one. Returns -1 AND GetLastError returns ValueNotOfType if there is no real value. You can use the valueType property to determine which value type is currently used.",
+      "parent_class": "ValueInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueInput_var.realValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = valueInput_var->realValue();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "stringValue": {
+      "id": "ValueInput_stringValue",
+      "title": "ValueInput.stringValue Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ValueInput.h",
+      "description": "Gets the string value, if there is one. Returns an empty string AND GetLastError returns ValueNotOfType if there is no string value. You can use the valueType property to determine which value type is currently used.",
+      "parent_class": "ValueInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueInput_var.stringValue",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = valueInput_var->stringValue();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "valueType": {
+      "id": "ValueInput_valueType",
+      "title": "ValueInput.valueType Property",
+      "type": "property",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ValueInput.h",
+      "description": "Returns the type of value this ValueInput currently represents.",
+      "parent_class": "ValueInput",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = valueInput_var.valueType",
+        "cpp": "#include \n\n// Get the value of the property.\nValueTypes propertyValue = valueInput_var->valueType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2016"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "ValueInput_classType",
+      "title": "ValueInput.classType Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ValueInput.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ValueInput",
+      "syntax": {
+        "python": "returnValue = adsk.core.ValueInput.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::core::ValueInput::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "createByBoolean": {
+      "id": "ValueInput_createByBoolean",
+      "title": "ValueInput.createByBoolean Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ValueInput.h",
+      "description": "Creates a new ValueInput object that contains a boolean value.",
+      "parent_class": "ValueInput",
+      "syntax": {
+        "python": "returnValue = adsk.core.ValueInput.createByBoolean(booleanValue)",
+        "cpp": "#include \n\nreturnValue = adsk::core::ValueInput::createByBoolean(booleanValue);"
+      },
+      "return_type": "ValueInput",
+      "return_description": "Returns the newly created ValueInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "booleanValue",
+          "type": "boolean",
+          "description": "Boolean value."
+        }
+      ],
+      "version": "Introduced in version May 2020"
+    },
+    "createByObject": {
+      "id": "ValueInput_createByObject",
+      "title": "ValueInput.createByObject Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ValueInput.h",
+      "description": "Creates a new ValueInput object that contains a reference to any Fusion object.",
+      "parent_class": "ValueInput",
+      "syntax": {
+        "python": "returnValue = adsk.core.ValueInput.createByObject(objectReference)",
+        "cpp": "#include \n\nreturnValue = adsk::core::ValueInput::createByObject(objectReference);"
+      },
+      "return_type": "ValueInput",
+      "return_description": "Returns the newly created ValueInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "objectReference",
+          "type": "Base",
+          "description": "The Fusion object that you want to create the ValueInput for."
+        }
+      ],
+      "version": "Introduced in version August 2016"
+    },
+    "createByReal": {
+      "id": "ValueInput_createByReal",
+      "title": "ValueInput.createByReal Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ValueInput.h",
+      "description": "Creates a new ValueInput object using a double. For example, if you create a value using the double value 2 and use it as input for a length, it will be interpreted as 2 cm because centimeters are the internal unit for length. Values defined by a real are always interpreted to be in the appropriate internal unit. For example, if the value 2 is used to define the depth of an extrusion (a length value), it will be 2 cm because cm is the internal unit for lengths. If the value 2 is used to define the angle of the extrude, it will be 2 radians because radians are the internal unit for angles.",
+      "parent_class": "ValueInput",
+      "syntax": {
+        "python": "returnValue = adsk.core.ValueInput.createByReal(realValue)",
+        "cpp": "#include \n\nreturnValue = adsk::core::ValueInput::createByReal(realValue);"
+      },
+      "return_type": "ValueInput",
+      "return_description": "Returns the newly created ValueInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "realValue",
+          "type": "double",
+          "description": "a double value"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Simple Extrusion Sample",
+          "description": "Creates a new extrusion feature, resulting in a new component."
+        },
+        {
+          "name": "Simple Revolve Feature Sample",
+          "description": "Creates a new revolve feature, resulting in a new component."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "createByString": {
+      "id": "ValueInput_createByString",
+      "title": "ValueInput.createByString Method",
+      "type": "method",
+      "namespace": "adsk::core",
+      "header_file": "Core/Application/ValueInput.h",
+      "description": "When a string is used to create a value it needs to be evaluated as an expression so its value can be determined using the UnitsManager class. The units of an expression can be explicitly defined or will default to the current default units. For example, if you create an expression with the string \"6\" and specify it as a length, it will use the current active units. If the current active units are defined as inches the expression will be interpreted as 6 inches. You can specify the units as part of the string (i.e. \"6 mm\"). You can also use equations in the string (i.e. \"6 + 5mm\") In order for an expression to be valid, its units must be compatible with the value it represents. For example if you specify \"5 in + 3 cm\" as an expression to supply the value of an angle, it will fail because the units of the expression define a length.",
+      "parent_class": "ValueInput",
+      "syntax": {
+        "python": "returnValue = adsk.core.ValueInput.createByString(stringValue)",
+        "cpp": "#include \n\nreturnValue = adsk::core::ValueInput::createByString(stringValue);"
+      },
+      "return_type": "ValueInput",
+      "return_description": "Returns the newly created ValueInput object or null if the creation failed.",
+      "parameters": [
+        {
+          "name": "stringValue",
+          "type": "string",
+          "description": "The expression string"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Patch Feature API Sample",
+          "description": "Demonstrates creating a new patch feature."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

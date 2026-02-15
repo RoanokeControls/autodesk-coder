@@ -1,0 +1,182 @@
+#usage "Export Library to JSON\n"
+       "Run this ULP with a library open in the Fusion Electronics Library Editor.\n"
+       "It exports all devicesets, devices, footprints, symbols, gates, and pins\n"
+       "to a JSON file for indexing by the MCP server.\n"
+       "\n"
+       "Usage: RUN export-library.ulp [output-path]\n"
+
+// ── Helpers ────────────────────────────────────────────────────────────────
+
+// Escape a string for JSON output
+string json_escape(string s) {
+    string result = "";
+    int i;
+    for (i = 0; s[i]; i++) {
+        if (s[i] == '\\')      result += "\\\\";
+        else if (s[i] == '"')  result += "\\\"";
+        else if (s[i] == '\n') result += "\\n";
+        else if (s[i] == '\r') result += "\\r";
+        else if (s[i] == '\t') result += "\\t";
+        else {
+            string c;
+            sprintf(c, "%c", s[i]);
+            result += c;
+        }
+    }
+    return result;
+}
+
+// ── Main ───────────────────────────────────────────────────────────────────
+
+string outputFile;
+int first;
+int firstInner;
+
+if (argc > 1) {
+    outputFile = argv[1];
+} else {
+    outputFile = dlgFileSave("Save Library JSON Export", "", "JSON Files (*.json);;All Files (*)");
+    if (outputFile == "") exit(0);
+}
+
+library(LIB) {
+    output(outputFile) {
+        printf("{\n");
+        printf("  \"library_name\": \"%s\",\n", json_escape(LIB.name));
+        printf("  \"library_headline\": \"%s\",\n", json_escape(LIB.headline));
+        printf("  \"library_description\": \"%s\",\n", json_escape(LIB.description));
+
+        // ── Devicesets ─────────────────────────────────────────────────
+
+        printf("  \"devicesets\": [\n");
+        first = 1;
+        LIB.devicesets(DS) {
+            if (!first) printf(",\n");
+            first = 0;
+
+            printf("    {\n");
+            printf("      \"name\": \"%s\",\n", json_escape(DS.name));
+            printf("      \"prefix\": \"%s\",\n", json_escape(DS.prefix));
+            printf("      \"description\": \"%s\",\n", json_escape(DS.description));
+            printf("      \"headline\": \"%s\",\n", json_escape(DS.headline));
+            printf("      \"value\": \"%s\",\n", json_escape(DS.value));
+
+            // Gates
+            printf("      \"gates\": [");
+            firstInner = 1;
+            DS.gates(G) {
+                if (!firstInner) printf(", ");
+                firstInner = 0;
+                printf("{\"name\": \"%s\", \"symbol\": \"%s\", \"x\": %d, \"y\": %d}",
+                    json_escape(G.name),
+                    json_escape(G.symbol.name),
+                    G.x, G.y);
+            }
+            printf("],\n");
+
+            // Devices (package variants)
+            printf("      \"devices\": [");
+            firstInner = 1;
+            DS.devices(D) {
+                if (!firstInner) printf(", ");
+                firstInner = 0;
+                string fpName = "";
+                if (D.footprint) fpName = D.footprint.name;
+                printf("{\"name\": \"%s\", \"footprint\": \"%s\", \"technologies\": \"%s\", \"description\": \"%s\"}",
+                    json_escape(D.name),
+                    json_escape(fpName),
+                    json_escape(D.technologies),
+                    json_escape(D.description));
+            }
+            printf("]\n");
+
+            printf("    }");
+        }
+        printf("\n  ],\n");
+
+        // ── Footprints ─────────────────────────────────────────────────
+
+        printf("  \"footprints\": [\n");
+        first = 1;
+        LIB.footprints(FP) {
+            if (!first) printf(",\n");
+            first = 0;
+
+            printf("    {\n");
+            printf("      \"name\": \"%s\",\n", json_escape(FP.name));
+            printf("      \"description\": \"%s\",\n", json_escape(FP.description));
+            printf("      \"headline\": \"%s\",\n", json_escape(FP.headline));
+
+            // Pads
+            printf("      \"pads\": [");
+            firstInner = 1;
+            FP.contacts(C) {
+                if (C.pad) {
+                    if (!firstInner) printf(", ");
+                    firstInner = 0;
+                    printf("{\"name\": \"%s\", \"x\": %d, \"y\": %d, \"drill\": %d}",
+                        json_escape(C.name),
+                        C.pad.x, C.pad.y, C.pad.drill);
+                }
+            }
+            printf("],\n");
+
+            // SMDs
+            printf("      \"smds\": [");
+            firstInner = 1;
+            FP.contacts(C) {
+                if (C.smd) {
+                    if (!firstInner) printf(", ");
+                    firstInner = 0;
+                    printf("{\"name\": \"%s\", \"x\": %d, \"y\": %d}",
+                        json_escape(C.name),
+                        C.smd.x, C.smd.y);
+                }
+            }
+            printf("]\n");
+
+            printf("    }");
+        }
+        printf("\n  ],\n");
+
+        // ── Symbols ────────────────────────────────────────────────────
+
+        printf("  \"symbols\": [\n");
+        first = 1;
+        LIB.symbols(SYM) {
+            if (!first) printf(",\n");
+            first = 0;
+
+            printf("    {\n");
+            printf("      \"name\": \"%s\",\n", json_escape(SYM.name));
+            printf("      \"description\": \"%s\",\n", json_escape(SYM.description));
+            printf("      \"headline\": \"%s\",\n", json_escape(SYM.headline));
+
+            // Pins
+            printf("      \"pins\": [");
+            firstInner = 1;
+            SYM.pins(P) {
+                if (!firstInner) printf(", ");
+                firstInner = 0;
+                printf("{\"name\": \"%s\", \"x\": %d, \"y\": %d, \"direction\": %d, \"function\": %d, \"length\": %d, \"visible\": %d}",
+                    json_escape(P.name),
+                    P.x, P.y,
+                    P.direction,
+                    P.function,
+                    P.length,
+                    P.visible);
+            }
+            printf("]\n");
+
+            printf("    }");
+        }
+        printf("\n  ]\n");
+
+        printf("}\n");
+    }
+
+    dlgMessageBox("Library exported to:\n" + outputFile +
+        "\n\nCopy this file to:\n" +
+        "~/development/autodesk-coder/library-data/\n" +
+        "and run the indexer script.");
+}

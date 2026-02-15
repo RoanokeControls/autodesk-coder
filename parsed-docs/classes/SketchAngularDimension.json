@@ -1,0 +1,351 @@
+{
+  "id": "SketchAngularDimension",
+  "title": "SketchAngularDimension Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+  "description": "An angular dimension in a sketch.",
+  "parent_class": "SketchDimension",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "createForAssemblyContext",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes this dimension. The IsDeletable property indicates if this dimension can be deleted."
+    }
+  ],
+  "properties": [
+    {
+      "name": "assemblyContext",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this sketch dimension."
+    },
+    {
+      "name": "entityToken",
+      "description": "Returns a token for the SketchDimension object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same sketch dimension.   When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them."
+    },
+    {
+      "name": "isDeletable",
+      "description": "Indicates if this dimension is deletable."
+    },
+    {
+      "name": "isDriving",
+      "description": "Gets and sets if the dimension is Driving or is Driven. Setting this property to true for a given dimension may fail if the result would over constrain the sketch. Fusion does not allow over-constrained sketches."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "lineOne",
+      "description": "The first line being constrained."
+    },
+    {
+      "name": "lineTwo",
+      "description": "The second line being constrained."
+    },
+    {
+      "name": "nativeObject",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "parameter",
+      "description": "Returns the associated parameter or null if there is no associated parameter."
+    },
+    {
+      "name": "parentSketch",
+      "description": "Returns the parent sketch object."
+    },
+    {
+      "name": "textPosition",
+      "description": "Gets and sets position of the dimension text."
+    },
+    {
+      "name": "value",
+      "description": "Gets and sets the current value of the sketch dimension.   In a parametric modeling design and the isDriving property is True, this is exactly equivalent to getting the parameter associated with the dimension and editing its value. Editing this property will result in the parameter value being changed. If isDriving is False, this acts as a read-only property and attempting to set it will fail.   In a direct modeling design the parameter property will return null and this property can be used to get and set the value of the dimension because in this case, there isn't an associated parameter.   The value is always in internal units which means that for dimensions that represent a distance, the value is in Centimeters and for dimensions representing an angle the value is in Radians."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "property_details": {
+    "assemblyContext": {
+      "id": "SketchAngularDimension_assemblyContext",
+      "title": "SketchAngularDimension.assemblyContext Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly but is already the native object.",
+      "parent_class": "SketchAngularDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchAngularDimension_var.assemblyContext",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchAngularDimension_var->assemblyContext();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "attributes": {
+      "id": "SketchAngularDimension_attributes",
+      "title": "SketchAngularDimension.attributes Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+      "description": "Returns the collection of attributes associated with this sketch dimension.",
+      "parent_class": "SketchAngularDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchAngularDimension_var.attributes",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchAngularDimension_var->attributes();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2016"
+    },
+    "entityToken": {
+      "id": "SketchAngularDimension_entityToken",
+      "title": "SketchAngularDimension.entityToken Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+      "description": "Returns a token for the SketchDimension object. This can be saved and used at a later time with the Design.findEntityByToken method to get back the same sketch dimension. When using entity tokens it's important to understand that the token string returned for a specific entity can be different over time. However, even if you have two different token strings that were obtained from the same entity, when you use findEntityByToken they will both return the same entity. Because of that you should never compare entity tokens as way to determine what the token represents. Instead, you need to use the findEntityByToken method to get the two entities identified by the tokens and then compare them.",
+      "parent_class": "SketchAngularDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchAngularDimension_var.entityToken",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchAngularDimension_var->entityToken();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version September 2020"
+    },
+    "isDeletable": {
+      "id": "SketchAngularDimension_isDeletable",
+      "title": "SketchAngularDimension.isDeletable Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+      "description": "Indicates if this dimension is deletable.",
+      "parent_class": "SketchAngularDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchAngularDimension_var.isDeletable",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchAngularDimension_var->isDeletable();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isDriving": {
+      "id": "SketchAngularDimension_isDriving",
+      "title": "SketchAngularDimension.isDriving Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+      "description": "Gets and sets if the dimension is Driving or is Driven. Setting this property to true for a given dimension may fail if the result would over constrain the sketch. Fusion does not allow over-constrained sketches.",
+      "parent_class": "SketchAngularDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchAngularDimension_var.isDriving\n\n# Set the value of the property.\nsketchAngularDimension_var.isDriving = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchAngularDimension_var->isDriving();\n\n// Set the value of the property, where value_var is a boolean.\nbool returnValue = sketchAngularDimension_var->isDriving(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2015"
+    },
+    "isValid": {
+      "id": "SketchAngularDimension_isValid",
+      "title": "SketchAngularDimension.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "SketchAngularDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchAngularDimension_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = sketchAngularDimension_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "lineOne": {
+      "id": "SketchAngularDimension_lineOne",
+      "title": "SketchAngularDimension.lineOne Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+      "description": "The first line being constrained.",
+      "parent_class": "SketchAngularDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchAngularDimension_var.lineOne",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchAngularDimension_var->lineOne();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "lineTwo": {
+      "id": "SketchAngularDimension_lineTwo",
+      "title": "SketchAngularDimension.lineTwo Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+      "description": "The second line being constrained.",
+      "parent_class": "SketchAngularDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchAngularDimension_var.lineTwo",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchAngularDimension_var->lineTwo();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "nativeObject": {
+      "id": "SketchAngularDimension_nativeObject",
+      "title": "SketchAngularDimension.nativeObject Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+      "description": "The NativeObject is the object outside the context of an assembly and in the context of it's parent component. Returns null in the case where this object is not in the context of an assembly but is already the native object.",
+      "parent_class": "SketchAngularDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchAngularDimension_var.nativeObject",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchAngularDimension_var->nativeObject();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "SketchAngularDimension_objectType",
+      "title": "SketchAngularDimension.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "SketchAngularDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchAngularDimension_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = sketchAngularDimension_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "parameter": {
+      "id": "SketchAngularDimension_parameter",
+      "title": "SketchAngularDimension.parameter Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+      "description": "Returns the associated parameter or null if there is no associated parameter.",
+      "parent_class": "SketchAngularDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchAngularDimension_var.parameter",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchAngularDimension_var->parameter();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "parentSketch": {
+      "id": "SketchAngularDimension_parentSketch",
+      "title": "SketchAngularDimension.parentSketch Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+      "description": "Returns the parent sketch object.",
+      "parent_class": "SketchAngularDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchAngularDimension_var.parentSketch",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchAngularDimension_var->parentSketch();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "textPosition": {
+      "id": "SketchAngularDimension_textPosition",
+      "title": "SketchAngularDimension.textPosition Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+      "description": "Gets and sets position of the dimension text.",
+      "parent_class": "SketchAngularDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchAngularDimension_var.textPosition\n\n# Set the value of the property.\nsketchAngularDimension_var.textPosition = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = sketchAngularDimension_var->textPosition();\n\n// Set the value of the property, where value_var is a Point3D.\nbool returnValue = sketchAngularDimension_var->textPosition(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "value": {
+      "id": "SketchAngularDimension_value",
+      "title": "SketchAngularDimension.value Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+      "description": "Gets and sets the current value of the sketch dimension. In a parametric modeling design and the isDriving property is True, this is exactly equivalent to getting the parameter associated with the dimension and editing its value. Editing this property will result in the parameter value being changed. If isDriving is False, this acts as a read-only property and attempting to set it will fail. In a direct modeling design the parameter property will return null and this property can be used to get and set the value of the dimension because in this case, there isn't an associated parameter. The value is always in internal units which means that for dimensions that represent a distance, the value is in Centimeters and for dimensions representing an angle the value is in Radians.",
+      "parent_class": "SketchAngularDimension",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = sketchAngularDimension_var.value\n\n# Set the value of the property.\nsketchAngularDimension_var.value = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\ndouble propertyValue = sketchAngularDimension_var->value();\n\n// Set the value of the property, where value_var is a double.\nbool returnValue = sketchAngularDimension_var->value(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version July 2022"
+    }
+  },
+  "method_details": {
+    "classType": {
+      "id": "SketchAngularDimension_classType",
+      "title": "SketchAngularDimension.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "SketchAngularDimension",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.SketchAngularDimension.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::SketchAngularDimension::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "createForAssemblyContext": {
+      "id": "SketchAngularDimension_createForAssemblyContext",
+      "title": "SketchAngularDimension.createForAssemblyContext Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+      "description": "Creates or returns a proxy for the native object - i.e. a new object that represents this object but adds the assembly context defined by the input occurrence.",
+      "parent_class": "SketchAngularDimension",
+      "syntax": {
+        "python": "returnValue = sketchAngularDimension_var.createForAssemblyContext(occurrence)",
+        "cpp": "#include \n\nreturnValue = sketchAngularDimension_var->createForAssemblyContext(occurrence);"
+      },
+      "return_type": "SketchAngularDimension",
+      "return_description": "Returns the proxy object or null if this isn't the NativeObject.",
+      "parameters": [
+        {
+          "name": "occurrence",
+          "type": "Occurrence",
+          "description": "The occurrence that defines the context to create the proxy in."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "deleteMe": {
+      "id": "SketchAngularDimension_deleteMe",
+      "title": "SketchAngularDimension.deleteMe Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Sketch/SketchAngularDimension.h",
+      "description": "Deletes this dimension. The IsDeletable property indicates if this dimension can be deleted.",
+      "parent_class": "SketchAngularDimension",
+      "syntax": {
+        "python": "returnValue = sketchAngularDimension_var.deleteMe()",
+        "cpp": "#include \n\nreturnValue = sketchAngularDimension_var->deleteMe();"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the delete was successful.",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

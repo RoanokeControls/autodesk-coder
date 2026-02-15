@@ -1,0 +1,340 @@
+{
+  "id": "ParameterList",
+  "title": "ParameterList Object",
+  "type": "class",
+  "namespace": "adsk::fusion",
+  "header_file": "Fusion/Fusion/ParameterList.h",
+  "description": "Transient object used to pass a set of parameters.",
+  "parent_class": "Base",
+  "methods": [
+    {
+      "name": "add",
+      "description": "Adds a parameter to the list. This does not create a new parameter, it adds an existing parameter to the list. Note that duplicates can exist in the list."
+    },
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "contains",
+      "description": "Indicates whether or not ParameterList collection contains a specified parameter"
+    },
+    {
+      "name": "create",
+      "description": "Creates a parameter list that the client can use for various purposes. Use ParameterList.Add to add parameters to the list after creating it."
+    },
+    {
+      "name": "find",
+      "description": "Finds the specified parameter in the list. The search can be started at a specified index rather than from the beginning of the list. If not found, -1 is returned."
+    },
+    {
+      "name": "item",
+      "description": "Function that returns the specified parameter using an index into the collection."
+    },
+    {
+      "name": "itemByName",
+      "description": "Returns the specified parameter using the name of the parameter as it is displayed in the parameters dialog"
+    },
+    {
+      "name": "removeByIndex",
+      "description": "Method that removes a parameter from the list using the index of the item in the list Will fail if the list is read only."
+    },
+    {
+      "name": "removeByItem",
+      "description": "Method that removes a parameter from the list by specifying the parameter (item) to remove"
+    }
+  ],
+  "properties": [
+    {
+      "name": "count",
+      "description": "Returns the number of parameters in the collection."
+    },
+    {
+      "name": "isReadOnly",
+      "description": "Indicates if the list is read-only Some lists returned by API calls (instead of lists created by the user) are read only. Items cannot be added or remove from such a list."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    }
+  ],
+  "related_samples": [
+    {
+      "name": "Create Animation API Sample",
+      "description": "Creates a series of images of a design where a parameter is being changed. The series of images can be used to create an animation using other software. To run this sample, have a part open that contains a parameter named \"Length\". The parameter should be able to be successfully modified from 10 to 15 centimeters. Run the sample and choose or create a directory for the output. After running you should have a folder full of images that are snapshots of each parameter value."
+    }
+  ],
+  "version": "Introduced in version August 2014",
+  "method_details": {
+    "add": {
+      "id": "ParameterList_add",
+      "title": "ParameterList.add Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ParameterList.h",
+      "description": "Adds a parameter to the list. This does not create a new parameter, it adds an existing parameter to the list. Note that duplicates can exist in the list.",
+      "parent_class": "ParameterList",
+      "syntax": {
+        "python": "returnValue = parameterList_var.add(parameter)",
+        "cpp": "#include \n\nreturnValue = parameterList_var->add(parameter);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful. This method will fail if the list is read-only",
+      "parameters": [
+        {
+          "name": "parameter",
+          "type": "Parameter",
+          "description": "The existing parameter to add to the list"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "classType": {
+      "id": "ParameterList_classType",
+      "title": "ParameterList.classType Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ParameterList.h",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType().",
+      "parent_class": "ParameterList",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ParameterList.classType()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ParameterList::classType();"
+      },
+      "return_type": "string",
+      "return_description": "Returns a string indicating the type of the object.",
+      "version": "Introduced in version August 2014"
+    },
+    "contains": {
+      "id": "ParameterList_contains",
+      "title": "ParameterList.contains Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ParameterList.h",
+      "description": "Indicates whether or not ParameterList collection contains a specified parameter",
+      "parent_class": "ParameterList",
+      "syntax": {
+        "python": "returnValue = parameterList_var.contains(parameter)",
+        "cpp": "#include \n\nreturnValue = parameterList_var->contains(parameter);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if list contains the specified parameter",
+      "parameters": [
+        {
+          "name": "parameter",
+          "type": "Parameter",
+          "description": "The parameter to look for in the list"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "create": {
+      "id": "ParameterList_create",
+      "title": "ParameterList.create Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ParameterList.h",
+      "description": "Creates a parameter list that the client can use for various purposes. Use ParameterList.Add to add parameters to the list after creating it.",
+      "parent_class": "ParameterList",
+      "syntax": {
+        "python": "returnValue = adsk.fusion.ParameterList.create()",
+        "cpp": "#include \n\nreturnValue = adsk::fusion::ParameterList::create();"
+      },
+      "return_type": "ParameterList",
+      "return_description": "Returns a ParameterList",
+      "version": "Introduced in version August 2014"
+    },
+    "find": {
+      "id": "ParameterList_find",
+      "title": "ParameterList.find Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ParameterList.h",
+      "description": "Finds the specified parameter in the list. The search can be started at a specified index rather than from the beginning of the list. If not found, -1 is returned.",
+      "parent_class": "ParameterList",
+      "syntax": {
+        "python": "# Uses no optional arguments.\nreturnValue = parameterList_var.find(parameter)\n\n# Uses optional arguments.\nreturnValue = parameterList_var.find(parameter, startIndex)",
+        "cpp": "#include \n\n// Uses no optional arguments.\nreturnValue = parameterList_var->find(parameter);\n\n// Uses optional arguments.\nreturnValue = parameterList_var->find(parameter, startIndex);"
+      },
+      "return_type": "integer",
+      "return_description": "Returns the index of the parameter found in the list.",
+      "parameters": [
+        {
+          "name": "parameter",
+          "type": "Parameter",
+          "description": "The parameter to find"
+        },
+        {
+          "name": "startIndex",
+          "type": "uinteger",
+          "description": "the index in the list to start the search from   This is an optional argument whose default value is 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "item": {
+      "id": "ParameterList_item",
+      "title": "ParameterList.item Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ParameterList.h",
+      "description": "Function that returns the specified parameter using an index into the collection.",
+      "parent_class": "ParameterList",
+      "syntax": {
+        "python": "returnValue = parameterList_var.item(index)",
+        "cpp": "#include \n\nreturnValue = parameterList_var->item(index);"
+      },
+      "return_type": "Parameter",
+      "return_description": "Returns the specified item or null if an invalid index was specified.",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the item within the collection to return. The first item in the collection has an index of 0."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "itemByName": {
+      "id": "ParameterList_itemByName",
+      "title": "ParameterList.itemByName Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ParameterList.h",
+      "description": "Returns the specified parameter using the name of the parameter as it is displayed in the parameters dialog",
+      "parent_class": "ParameterList",
+      "syntax": {
+        "python": "returnValue = parameterList_var.itemByName(name)",
+        "cpp": "#include \n\nreturnValue = parameterList_var->itemByName(name);"
+      },
+      "return_type": "Parameter",
+      "return_description": "Returns the specified item or null if an invalid name was specified.",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "The name of the parameter as it is displayed in the parameters dialog"
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Create Animation API Sample",
+          "description": "Creates a series of images of a design where a parameter is being changed. The series of images can be used to create an animation using other software. To run this sample, have a part open that contains a parameter named \"Length\". The parameter should be able to be successfully modified from 10 to 15 centimeters. Run the sample and choose or create a directory for the output. After running you should have a folder full of images that are snapshots of each parameter value."
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "removeByIndex": {
+      "id": "ParameterList_removeByIndex",
+      "title": "ParameterList.removeByIndex Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ParameterList.h",
+      "description": "Method that removes a parameter from the list using the index of the item in the list Will fail if the list is read only.",
+      "parent_class": "ParameterList",
+      "syntax": {
+        "python": "returnValue = parameterList_var.removeByIndex(index)",
+        "cpp": "#include \n\nreturnValue = parameterList_var->removeByIndex(index);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful. This method will fail if the list is read-only",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "uinteger",
+          "description": "The index of the parameter to be removed from the list"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    },
+    "removeByItem": {
+      "id": "ParameterList_removeByItem",
+      "title": "ParameterList.removeByItem Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ParameterList.h",
+      "description": "Method that removes a parameter from the list by specifying the parameter (item) to remove",
+      "parent_class": "ParameterList",
+      "syntax": {
+        "python": "returnValue = parameterList_var.removeByItem(item)",
+        "cpp": "#include \n\nreturnValue = parameterList_var->removeByItem(item);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if successful. This method will fail if the list is read-only",
+      "parameters": [
+        {
+          "name": "item",
+          "type": "Parameter",
+          "description": "The parameter item to remove from the list"
+        }
+      ],
+      "version": "Introduced in version August 2014"
+    }
+  },
+  "property_details": {
+    "count": {
+      "id": "ParameterList_count",
+      "title": "ParameterList.count Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ParameterList.h",
+      "description": "Returns the number of parameters in the collection.",
+      "parent_class": "ParameterList",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = parameterList_var.count",
+        "cpp": "#include \n\n// Get the value of the property.\nuinteger propertyValue = parameterList_var->count();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isReadOnly": {
+      "id": "ParameterList_isReadOnly",
+      "title": "ParameterList.isReadOnly Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ParameterList.h",
+      "description": "Indicates if the list is read-only Some lists returned by API calls (instead of lists created by the user) are read only. Items cannot be added or remove from such a list.",
+      "parent_class": "ParameterList",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = parameterList_var.isReadOnly",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = parameterList_var->isReadOnly();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "isValid": {
+      "id": "ParameterList_isValid",
+      "title": "ParameterList.isValid Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ParameterList.h",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference.",
+      "parent_class": "ParameterList",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = parameterList_var.isValid",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = parameterList_var->isValid();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    },
+    "objectType": {
+      "id": "ParameterList_objectType",
+      "title": "ParameterList.objectType Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Fusion/ParameterList.h",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object. It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():",
+      "parent_class": "ParameterList",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = parameterList_var.objectType",
+        "cpp": "#include \n\n// Get the value of the property.\nstring propertyValue = parameterList_var->objectType();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version August 2014"
+    }
+  }
+}

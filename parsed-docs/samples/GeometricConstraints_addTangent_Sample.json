@@ -1,0 +1,12 @@
+{
+  "id": "GeometricConstraints_addTangent_Sample",
+  "title": "GeometricConstraints.addTangent",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates the GeometricConstraints.addTangent method.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "def demo_GeometricConstraints_addTangent(sketch: adsk.fusion.Sketch):\n   # Create a sketch line and sketch arc that is connected to the line.\n    arc = sketch.sketchCurves.sketchArcs.addByThreePoints(adsk.core.Point3D.create(0, 0, 0), \n                                                          adsk.core.Point3D.create(10, 5, 0),\n                                                          adsk.core.Point3D.create(0, 10, 0))\n    line = sketch.sketchCurves.sketchLines.addByTwoPoints(arc.endSketchPoint, adsk.core.Point3D.create(-5, 12, 0))\n\n    # Create a tangent constraint between the line and arc.\n    constraints = sketch.geometricConstraints\n    tangentConstraint = constraints.addTangent(arc, line)"
+  }
+}

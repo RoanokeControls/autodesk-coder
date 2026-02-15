@@ -1,0 +1,12 @@
+{
+  "id": "AutoConstrainSample_Sample",
+  "title": "AutoConstrain Sample",
+  "type": "sample",
+  "namespace": "",
+  "header_file": "",
+  "description": "Demonstrates using the AutoConstrain API to automatically add geometric constraints and dimensions to a sketch. This sample creates a simple sketch with a rectangle and circle, then applies automatic constraints using the origin point as a datum.",
+  "parent_class": "",
+  "code_samples": {
+    "python": "import adsk.core, adsk.fusion, traceback\n\ndef run(context):\n    ui = None\n    try:\n        app = adsk.core.Application.get()\n        ui = app.userInterface\n        \n        # Create a new document\n        doc = app.documents.add(adsk.core.DocumentTypes.FusionDesignDocumentType)\n        \n        product = app.activeProduct\n        design = adsk.fusion.Design.cast(product)\n        rootComp = design.rootComponent\n        \n        # Create a sketch on XY plane\n        sketches = rootComp.sketches\n        sketch = sketches.add(rootComp.xYConstructionPlane)\n        \n        # Create simple geometry: Rectangle + Circle\n        sketchLines = sketch.sketchCurves.sketchLines\n        rectangleLines = sketchLines.addTwoPointRectangle(\n            adsk.core.Point3D.create(0, 0, 0),\n            adsk.core.Point3D.create(10, 5, 0)\n        )\n        \n        circles = sketch.sketchCurves.sketchCircles\n        circle = circles.addByCenterRadius(\n            adsk.core.Point3D.create(5, 2.5, 0),\n            2\n        )\n        \n        # Create AutoConstrainInput\n        autoConstrainInput = sketch.createAutoConstrainInput()\n        \n        # Set the origin point as datum\n        originPoint = sketch.originPoint\n        autoConstrainInput.datumPoint = originPoint\n        \n        # Execute autoConstrain\n        result = sketch.autoConstrain(autoConstrainInput)\n        \n        # Get results\n        addedConstraints = len(result.addedConstraints)\n        addedDimensions = len(result.addedDimensions)\n        isFullyConstrained = result.isFullyConstrained\n        \n        # Log AutoConstrain results\n        app.log(f'AutoConstrain Results:')\n        app.log(f'  Datum Point: Origin')\n        app.log(f'  Added Constraints: {addedConstraints}')\n        app.log(f'  Added Dimensions: {addedDimensions}')\n        app.log(f'  Is Fully Constrained: {isFullyConstrained}')\n        \n        \n    except:\n        if ui:\n            ui.messageBox('Failed:\\n{}'.format(traceback.format_exc()))"
+  }
+}
