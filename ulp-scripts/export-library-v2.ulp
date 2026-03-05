@@ -1,0 +1,313 @@
+#usage "Export Library to JSON (v2 — full detail)\n"
+       "Run this ULP with a library open in the Fusion Electronics Library Editor.\n"
+       "Exports complete library data including pad sizes, graphics, connect\n"
+       "mappings, and version info — enough to reconstruct a .lbr XML file.\n"
+       "\n"
+       "Usage: RUN export-library-v2.ulp [output-path]\n"
+
+// ── Helpers ────────────────────────────────────────────────────────────────
+
+string json_escape(string s) {
+    string result = "";
+    int i;
+    for (i = 0; s[i]; i++) {
+        if (s[i] == '\\')      result += "\\\\";
+        else if (s[i] == '"')  result += "\\\"";
+        else if (s[i] == '\n') result += "\\n";
+        else if (s[i] == '\r') result += "\\r";
+        else if (s[i] == '\t') result += "\\t";
+        else {
+            string c;
+            sprintf(c, "%c", s[i]);
+            result += c;
+        }
+    }
+    return result;
+}
+
+// Comma helper — prints comma before item if not first
+int gFirst;
+void comma() { if (!gFirst) printf(", "); gFirst = 0; }
+void resetFirst() { gFirst = 1; }
+
+// ── Main ───────────────────────────────────────────────────────────────────
+
+string outputFile;
+
+if (argc > 1) {
+    outputFile = argv[1];
+} else {
+    outputFile = dlgFileSave("Save Library JSON Export (v2)", "", "JSON Files (*.json);;All Files (*)");
+    if (outputFile == "") exit(0);
+}
+
+library(LIB) {
+    output(outputFile) {
+        // Get timestamp
+        string ts;
+        sprintf(ts, "%d", time());
+
+        printf("{\n");
+        printf("  \"format_version\": 2,\n");
+        printf("  \"export_timestamp\": %s,\n", ts);
+        printf("  \"library_name\": \"%s\",\n", json_escape(LIB.name));
+        printf("  \"library_headline\": \"%s\",\n", json_escape(LIB.headline));
+        printf("  \"library_description\": \"%s\",\n", json_escape(LIB.description));
+
+        // ── Footprints ───────────────────────────────────────────────
+        printf("  \"footprints\": [\n");
+        resetFirst();
+        LIB.footprints(FP) {
+            comma();
+            printf("{\n");
+            printf("      \"name\": \"%s\",\n", json_escape(FP.name));
+            printf("      \"description\": \"%s\",\n", json_escape(FP.description));
+
+            // SMD pads — full detail
+            printf("      \"smds\": [");
+            int fs = 1;
+            FP.contacts(C) {
+                if (C.smd) {
+                    if (!fs) printf(", ");
+                    fs = 0;
+                    printf("{\"name\": \"%s\", \"x\": %d, \"y\": %d, \"dx\": %d, \"dy\": %d, \"layer\": %d, \"roundness\": %d, \"angle\": %f}",
+                        json_escape(C.name),
+                        C.smd.x, C.smd.y,
+                        C.smd.dx, C.smd.dy,
+                        C.smd.layer,
+                        C.smd.roundness,
+                        C.smd.angle);
+                }
+            }
+            printf("],\n");
+
+            // THT pads — full detail
+            printf("      \"pads\": [");
+            fs = 1;
+            FP.contacts(C) {
+                if (C.pad) {
+                    if (!fs) printf(", ");
+                    fs = 0;
+                    printf("{\"name\": \"%s\", \"x\": %d, \"y\": %d, \"drill\": %d, \"diameter\": %d, \"shape\": %d, \"angle\": %f, \"elongation\": %d, \"flags\": %d}",
+                        json_escape(C.name),
+                        C.pad.x, C.pad.y,
+                        C.pad.drill,
+                        C.pad.diameter[17],
+                        C.pad.shape[17],
+                        C.pad.angle,
+                        C.pad.elongation,
+                        C.pad.flags);
+                }
+            }
+            printf("],\n");
+
+            // Wires (silkscreen outlines, etc.)
+            printf("      \"wires\": [");
+            fs = 1;
+            FP.wires(W) {
+                if (!fs) printf(", ");
+                fs = 0;
+                printf("{\"x1\": %d, \"y1\": %d, \"x2\": %d, \"y2\": %d, \"width\": %d, \"layer\": %d, \"curve\": %f}",
+                    W.x1, W.y1, W.x2, W.y2, W.width, W.layer, W.curve);
+            }
+            printf("],\n");
+
+            // Circles
+            printf("      \"circles\": [");
+            fs = 1;
+            FP.circles(CI) {
+                if (!fs) printf(", ");
+                fs = 0;
+                printf("{\"x\": %d, \"y\": %d, \"radius\": %d, \"width\": %d, \"layer\": %d}",
+                    CI.x, CI.y, CI.radius, CI.width, CI.layer);
+            }
+            printf("],\n");
+
+            // Rectangles
+            printf("      \"rectangles\": [");
+            fs = 1;
+            FP.rectangles(R) {
+                if (!fs) printf(", ");
+                fs = 0;
+                printf("{\"x1\": %d, \"y1\": %d, \"x2\": %d, \"y2\": %d, \"layer\": %d, \"angle\": %f}",
+                    R.x1, R.y1, R.x2, R.y2, R.layer, R.angle);
+            }
+            printf("],\n");
+
+            // Texts (>NAME, >VALUE, etc.)
+            printf("      \"texts\": [");
+            fs = 1;
+            FP.texts(T) {
+                if (!fs) printf(", ");
+                fs = 0;
+                printf("{\"value\": \"%s\", \"x\": %d, \"y\": %d, \"size\": %d, \"layer\": %d, \"font\": %d, \"ratio\": %d, \"angle\": %f, \"mirror\": %d, \"align\": %d}",
+                    json_escape(T.value),
+                    T.x, T.y, T.size, T.layer,
+                    T.font, T.ratio, T.angle, T.mirror, T.align);
+            }
+            printf("],\n");
+
+            // Holes
+            printf("      \"holes\": [");
+            fs = 1;
+            FP.holes(H) {
+                if (!fs) printf(", ");
+                fs = 0;
+                printf("{\"x\": %d, \"y\": %d, \"drill\": %d}",
+                    H.x, H.y, H.drill);
+            }
+            printf("]\n");
+
+            printf("    }");
+        }
+        printf("\n  ],\n");
+
+        // ── Symbols ──────────────────────────────────────────────────
+        printf("  \"symbols\": [\n");
+        resetFirst();
+        LIB.symbols(SYM) {
+            comma();
+            printf("{\n");
+            printf("      \"name\": \"%s\",\n", json_escape(SYM.name));
+            printf("      \"description\": \"%s\",\n", json_escape(SYM.description));
+
+            // Pins
+            printf("      \"pins\": [");
+            int fs = 1;
+            SYM.pins(P) {
+                if (!fs) printf(", ");
+                fs = 0;
+                printf("{\"name\": \"%s\", \"x\": %d, \"y\": %d, \"direction\": %d, \"function\": %d, \"length\": %d, \"visible\": %d, \"angle\": %f, \"swaplevel\": %d}",
+                    json_escape(P.name),
+                    P.x, P.y,
+                    P.direction, P.function, P.length, P.visible,
+                    P.angle, P.swaplevel);
+            }
+            printf("],\n");
+
+            // Wires (symbol graphics)
+            printf("      \"wires\": [");
+            fs = 1;
+            SYM.wires(W) {
+                if (!fs) printf(", ");
+                fs = 0;
+                printf("{\"x1\": %d, \"y1\": %d, \"x2\": %d, \"y2\": %d, \"width\": %d, \"layer\": %d, \"curve\": %f}",
+                    W.x1, W.y1, W.x2, W.y2, W.width, W.layer, W.curve);
+            }
+            printf("],\n");
+
+            // Circles
+            printf("      \"circles\": [");
+            fs = 1;
+            SYM.circles(CI) {
+                if (!fs) printf(", ");
+                fs = 0;
+                printf("{\"x\": %d, \"y\": %d, \"radius\": %d, \"width\": %d, \"layer\": %d}",
+                    CI.x, CI.y, CI.radius, CI.width, CI.layer);
+            }
+            printf("],\n");
+
+            // Rectangles
+            printf("      \"rectangles\": [");
+            fs = 1;
+            SYM.rectangles(R) {
+                if (!fs) printf(", ");
+                fs = 0;
+                printf("{\"x1\": %d, \"y1\": %d, \"x2\": %d, \"y2\": %d, \"layer\": %d, \"angle\": %f}",
+                    R.x1, R.y1, R.x2, R.y2, R.layer, R.angle);
+            }
+            printf("],\n");
+
+            // Texts
+            printf("      \"texts\": [");
+            fs = 1;
+            SYM.texts(T) {
+                if (!fs) printf(", ");
+                fs = 0;
+                printf("{\"value\": \"%s\", \"x\": %d, \"y\": %d, \"size\": %d, \"layer\": %d, \"font\": %d, \"ratio\": %d, \"angle\": %f, \"mirror\": %d, \"align\": %d}",
+                    json_escape(T.value),
+                    T.x, T.y, T.size, T.layer,
+                    T.font, T.ratio, T.angle, T.mirror, T.align);
+            }
+            printf("]\n");
+
+            printf("    }");
+        }
+        printf("\n  ],\n");
+
+        // ── Devicesets ───────────────────────────────────────────────
+        printf("  \"devicesets\": [\n");
+        resetFirst();
+        LIB.devicesets(DS) {
+            comma();
+            printf("{\n");
+            printf("      \"name\": \"%s\",\n", json_escape(DS.name));
+            printf("      \"prefix\": \"%s\",\n", json_escape(DS.prefix));
+            printf("      \"description\": \"%s\",\n", json_escape(DS.description));
+            printf("      \"headline\": \"%s\",\n", json_escape(DS.headline));
+            printf("      \"value\": \"%s\",\n", json_escape(DS.value));
+            printf("      \"urn\": \"%s\",\n", json_escape(DS.urn));
+            printf("      \"library_urn\": \"%s\",\n", json_escape(DS.libraryurn));
+            printf("      \"library_version\": %d,\n", DS.libraryversion);
+
+            // Gates
+            printf("      \"gates\": [");
+            int fs = 1;
+            DS.gates(G) {
+                if (!fs) printf(", ");
+                fs = 0;
+                printf("{\"name\": \"%s\", \"symbol\": \"%s\", \"x\": %d, \"y\": %d, \"addlevel\": %d, \"swaplevel\": %d}",
+                    json_escape(G.name),
+                    json_escape(G.symbol.name),
+                    G.x, G.y, G.addlevel, G.swaplevel);
+            }
+            printf("],\n");
+
+            // Devices with connect mappings
+            printf("      \"devices\": [");
+            fs = 1;
+            DS.devices(D) {
+                if (!fs) printf(", ");
+                fs = 0;
+
+                string fpName = "";
+                if (D.footprint) fpName = D.footprint.name;
+
+                printf("{\"name\": \"%s\", \"footprint\": \"%s\", \"technologies\": \"%s\",\n",
+                    json_escape(D.name),
+                    json_escape(fpName),
+                    json_escape(D.technologies));
+
+                // Connect mappings: iterate gates → pins → contacts
+                printf("        \"connects\": [");
+                int fc = 1;
+                D.gates(G) {
+                    G.symbol.pins(P) {
+                        P.contacts(C) {
+                            if (!fc) printf(", ");
+                            fc = 0;
+                            printf("{\"gate\": \"%s\", \"pin\": \"%s\", \"pad\": \"%s\"}",
+                                json_escape(G.name),
+                                json_escape(P.name),
+                                json_escape(C.name));
+                        }
+                    }
+                }
+                printf("]}");
+            }
+            printf("]\n");
+
+            printf("    }");
+        }
+        printf("\n  ]\n");
+
+        printf("}\n");
+    }
+
+    string msg;
+    sprintf(msg, "Library exported (v2 format) to:\n%s\n\n"
+        "Copy to: ~/development/autodesk-coder/library-data/\n"
+        "Then run: python3 scripts/index_library.py library-data/<file>.json",
+        outputFile);
+    dlgMessageBox(msg);
+}
