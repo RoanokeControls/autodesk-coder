@@ -87,6 +87,7 @@ autodesk-coder/
     scrape_ecad.py       — Scrape ECAD/ULP docs from help.autodesk.com
     index_ecad.py        — Index ECAD docs into search corpus
     index_library.py     — Index exported library JSON into search corpus
+    check_api_updates.py — Check upstream Autodesk docs for changes (SessionStart hook)
   ulp-scripts/
     export-library.ulp   — ULP script to export a Fusion Electronics library to JSON
   library-data/
@@ -114,6 +115,26 @@ python scripts/index_ecad.py
 # Re-index a library export
 python scripts/index_library.py library-data/rec-library.json
 ```
+
+## API Update Checker
+A SessionStart hook automatically checks if upstream Autodesk docs have changed since the last scrape. If updates are detected, you'll see a notification with details.
+
+Manual commands:
+```bash
+# Initialize/reset saved state (run after scraping fresh docs)
+python3 scripts/check_api_updates.py --init
+
+# Manual check (verbose output)
+python3 scripts/check_api_updates.py
+
+# Deep check with version extraction
+python3 scripts/check_api_updates.py --deep
+
+# Hook mode (silent unless changes detected, JSON output)
+python3 scripts/check_api_updates.py --hook
+```
+
+If the checker reports upstream changes, re-run the scraping/parsing pipeline (see "Re-indexing Data" above) and then `--init` to reset the saved state.
 
 ## API Namespaces Quick Reference
 - `adsk::core` (337 classes) — Application, UI, geometry primitives, events, commands
