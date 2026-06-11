@@ -1,0 +1,163 @@
+{
+  "id": "AdditiveFEAOperation",
+  "title": "AdditiveFEAOperation Object",
+  "type": "class",
+  "namespace": "adsk::cam",
+  "header_file": "Cam/AdditiveFEA/AdditiveFEAOperation.h",
+  "description": "The AdditiveFEAOperation represents a finite element analysis for metal additive manufacturing processes.  The inherited generateToolpath() method can only be called if the Autodesk Fusion Manufacturing Extension is active.",
+  "parent_class": "OperationBase",
+  "methods": [
+    {
+      "name": "classType",
+      "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
+    },
+    {
+      "name": "copyAfter",
+      "description": "Creates a duplicate of the operation in the tree after the given operation. Throws an exception if a not allowed copy operation is made for example copying a operation out of a setup."
+    },
+    {
+      "name": "copyBefore",
+      "description": "Creates a duplicate of the operation in the tree before the given operation. Throws an exception if a not allowed copy operation is made for example copying a operation out of a setup."
+    },
+    {
+      "name": "copyInto",
+      "description": "Creates a duplicate of the operation into the given container. You can only copy into containers, such as setups or folders. Copied operation will be copied at the end of all operations already in the container. Throws an exception if a not allowed copy operation is made for example copying a setup into a setup."
+    },
+    {
+      "name": "deleteMe",
+      "description": "Deletes the operation from the document. In case of a setup or folder, all containing child operations will be deleted as well. Note: Child classes may overwrite this function and throw an exception if the object cannot be deleted."
+    },
+    {
+      "name": "duplicate",
+      "description": "Creates a duplicate of the operation in the tree after the itself."
+    },
+    {
+      "name": "modifyUtility",
+      "description": "Get ModifyUtility for the current operation by given utility type."
+    },
+    {
+      "name": "moveAfter",
+      "description": "Move operation in tree after the given operation. Throws an exception if a not allowed move is made for example moving a operation out of a setup."
+    },
+    {
+      "name": "moveBefore",
+      "description": "Move operation in tree before the given operation. Throws an exception if a not allowed move is made for example moving a operation out of a setup."
+    },
+    {
+      "name": "moveInto",
+      "description": "Move operation in tree into the given container. This only works with setups, patterns and folders. Moved operation will be moved at the end of all operations already in the container. Throws an exception if a not allowed move is made for example moving a setup into a setup."
+    }
+  ],
+  "properties": [
+    {
+      "name": "attributes",
+      "description": "Returns the collection of attributes associated with this object."
+    },
+    {
+      "name": "error",
+      "description": "Returns a message corresponding to any active error associated with the value of this parameter."
+    },
+    {
+      "name": "generatedDataCollection",
+      "description": "Get the generated data associated with a given operation base instance. The type of data depends on the strategy type and might not be available for all strategy types. The available types can be found in GeneratedData.cs"
+    },
+    {
+      "name": "hasError",
+      "description": "Gets if errors were encountered when generating the operation."
+    },
+    {
+      "name": "hasWarning",
+      "description": "Gets if problems were encountered when generating the operation."
+    },
+    {
+      "name": "isLightBulbOn",
+      "description": "Gets if this operation is currently visible in the graphics window. Use the isLightBulbOn to change if the eye icon beside the operation node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children so this property does not indicate if the operation is actually visible, just that it should be visible if all of its parent nodes are also visible. Use the isVisible property to determine if it's actually visible."
+    },
+    {
+      "name": "isOptional",
+      "description": "Gets and sets the \"Optional\" property value of the operation. Gets/sets true if the operation is optional."
+    },
+    {
+      "name": "isProtected",
+      "description": "Gets and sets the \"protected\" property value of the operation. Gets/sets true if the operation is protected."
+    },
+    {
+      "name": "isSelected",
+      "description": "Gets if this operation is selected in the 'Setups' browser."
+    },
+    {
+      "name": "isSuppressed",
+      "description": "Gets and sets the \"Suppressed\" property value of the operation. Gets/sets true if the operation is suppressed."
+    },
+    {
+      "name": "isValid",
+      "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isVisible",
+      "description": "Gets if this operation is currently visible in the graphics window. Use the isLightBulbOn to change if the eye icon beside the operation node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children. This property indicates the final result and whether this operation is actually visible or not."
+    },
+    {
+      "name": "logFileContents",
+      "description": "Contents of the human-readable log file generated by the solver. This property can be fetched during execution to monitor progress, or after execution is finished to confirm success or troubleshoot errors."
+    },
+    {
+      "name": "name",
+      "description": "Gets and sets the name of the operation as seen in the browser.\u00a0This name is unique as compared to the names of all other operations in the document."
+    },
+    {
+      "name": "noteIconColor",
+      "description": "The color of the note icon. This represents the color of the note icon in the browser, which is displayed next to the operation name when the operation has notes."
+    },
+    {
+      "name": "notes",
+      "description": "Gets and sets the notes of the operation."
+    },
+    {
+      "name": "objectType",
+      "description": "This property is supported by all objects in the API and returns a string that contains the full name (namespace::objecttype) describing the type of the object.   It's often useful to use this in combination with the classType method to see if an object is a certain type. For example: if obj.objectType == adsk.core.Point3D.classType():"
+    },
+    {
+      "name": "operationId",
+      "description": "Returns the id of the operation.\u00a0This id is unique as compared to the ids of all other operations in the document. This id will not change when changing the order or parent of the operation. This id will remain valid when the document is saved and reloaded."
+    },
+    {
+      "name": "parameters",
+      "description": "Gets the CAMParameters collection for this operation."
+    },
+    {
+      "name": "parentSetup",
+      "description": "Gets the Setup this operation belongs to."
+    },
+    {
+      "name": "signalFileContents",
+      "description": "Contents of the machine-readable simsignal file generated by the solver.\u00a0Each line of the file is a JSON object.\u00a0These signals are meant to be more stable than logFileContents(), but less human-readable."
+    },
+    {
+      "name": "strategy",
+      "description": "Gets the name of the strategy associated with this operation."
+    },
+    {
+      "name": "warning",
+      "description": "Returns a message corresponding to any active warning associated with the value of this parameter."
+    }
+  ],
+  "version": "Introduced in version April 2026",
+  "property_details": {
+    "noteIconColor": {
+      "id": "AdditiveFEAOperation_noteIconColor",
+      "title": "AdditiveFEAOperation.noteIconColor Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/AdditiveFEA/AdditiveFEAOperation.h",
+      "description": "The color of the note icon. This represents the color of the note icon in the browser, which is displayed next to the operation name when the operation has notes.",
+      "parent_class": "AdditiveFEAOperation",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = additiveFEAOperation_var.noteIconColor\n\n# Set the value of the property.\nadditiveFEAOperation_var.noteIconColor = propertyValue",
+        "cpp": "#include \n\n// Get the value of the property.\nNoteIconColors propertyValue = additiveFEAOperation_var->noteIconColor();\n\n// Set the value of the property, where value_var is a NoteIconColors.\nbool returnValue = additiveFEAOperation_var->noteIconColor(value_var);"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2026"
+    }
+  }
+}

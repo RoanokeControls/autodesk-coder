@@ -44,8 +44,12 @@
       "description": "Finds all the B-Rep entities that are intersected by the specified ray. This can return BRepFace, BrepEdge, and BRepVertex objects."
     },
     {
+      "name": "findMeshUsingRay",
+      "description": "Finds all mesh bodies that are intersected by the specified ray."
+    },
+    {
       "name": "getPhysicalProperties",
-      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this component."
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc. of this component."
     },
     {
       "name": "occurrencesByComponent",
@@ -91,7 +95,7 @@
     },
     {
       "name": "allTangentRelationships",
-      "description": "Returns all tangent relationships in this component and any sub components. The tangent relationships returned are all in the context of this component so any tangent relationships in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including tangent relationships, when manipulating an assembly."
+      "description": "**RETIRED** Returns all tangent relationships in this component and any sub components. The tangent relationships returned are all in the context of this component so any tangent relationships in sub components will be proxies. This is primarily useful when used from the root component because Fusion flattens the assembly structure, including tangent relationships, when manipulating an assembly."
     },
     {
       "name": "asBuiltJoints",
@@ -267,7 +271,11 @@
     },
     {
       "name": "physicalProperties",
-      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this component. Property values will be calculated using the 'LowCalculationAccuracy' setting when using this property to get the PhysicalProperties object. To specify a higher calculation tolerance, use the getPhysicalProperties method instead."
+      "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc. of this component. Property values will be calculated using the 'LowCalculationAccuracy' setting when using this property to get the PhysicalProperties object. To specify a higher calculation tolerance, use the getPhysicalProperties method instead."
+    },
+    {
+      "name": "pmiAnnotations",
+      "description": "Returns the PMI collection associated with this component. This provides access to the existing PMI and supports the creation of new PMI."
     },
     {
       "name": "preciseBoundingBox",
@@ -291,7 +299,11 @@
     },
     {
       "name": "tangentRelationships",
-      "description": "Returns the collection of tangent relationships associated with this component."
+      "description": "**RETIRED** Returns the collection of tangent relationships associated with this component."
+    },
+    {
+      "name": "userCoordinateSystems",
+      "description": "Returns the user coordinate systems collection associated with this component. This provides access to the existing user coordinate systems and supports the creation of new user coordinate systems."
     },
     {
       "name": "xConstructionAxis",
@@ -1279,6 +1291,21 @@
       },
       "property_value": "Version",
       "version": "Introduced in version October 2022"
+    },
+    "userCoordinateSystems": {
+      "id": "FlatPatternComponent_userCoordinateSystems",
+      "title": "FlatPatternComponent.userCoordinateSystems Property",
+      "type": "property",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Returns the user coordinate systems collection associated with this component. This provides access to the existing user coordinate systems and supports the creation of new user coordinate systems.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = flatPatternComponent_var.userCoordinateSystems",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = flatPatternComponent_var->userCoordinateSystems();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2026"
     }
   },
   "method_details": {
@@ -1658,6 +1685,44 @@
         }
       ],
       "version": "Introduced in version October 2022"
+    },
+    "findMeshUsingRay": {
+      "id": "FlatPatternComponent_findMeshUsingRay",
+      "title": "FlatPatternComponent.findMeshUsingRay Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/SheetMetal/FlatPatternComponent.h",
+      "description": "Finds all mesh bodies that are intersected by the specified ray.",
+      "parent_class": "FlatPatternComponent",
+      "syntax": {
+        "python": "# Uses no optional arguments.\n(returnValue, hitPoints) = flatPatternComponent_var.findMeshUsingRay(originPoint, rayDirection)\n\n# Uses optional arguments.\n(returnValue, hitPoints) = flatPatternComponent_var.findMeshUsingRay(originPoint, rayDirection, visibleEntitiesOnly)",
+        "cpp": "#include  originPoint;\nPtr rayDirection;\nPoint3D[] hitPoints;\nPtr returnValue = flatPatternComponent_var->findMeshUsingRay(originPoint, rayDirection, hitPoints);\n\n// Uses optional arguments.\n// Declare the output arguments.\nboolean visibleEntitiesOnly;\n\n// Call the function.\nPtr returnValue = flatPatternComponent_var->findMeshUsingRay(originPoint, rayDirection, hitPoints, visibleEntitiesOnly);"
+      },
+      "return_type": "MeshBody[]",
+      "return_description": "Returns an array containing the mesh bodies found. The returned array can be empty indicating nothing was found. The points are returned in an order where they are arranged based on their distance from the origin point where the closest point is first. If an mesh body is hit more than once, the entity is returned once for the first intersection.",
+      "parameters": [
+        {
+          "name": "originPoint",
+          "type": "Point3D",
+          "description": "Input point that defines the origin of the ray. The search for entities begins at this point."
+        },
+        {
+          "name": "rayDirection",
+          "type": "Vector3D",
+          "description": "Input vector that defines the direction of the ray. The ray is infinite so the length of the vector is ignored."
+        },
+        {
+          "name": "hitPoints",
+          "type": "Point3D[]",
+          "description": "The output array of points that represent the coordinates where the ray hit the found entity. There will be the same number of hit points as returned entities. In other words, hit point 1 corresponds with found entity 1, hit point 2 corresponds with found entity 2, and so on."
+        },
+        {
+          "name": "visibleEntitiesOnly",
+          "type": "boolean",
+          "description": "Optional argument that indicates whether or not invisible entities should be included in the search. Defaults to True indicating that invisible entities will be ignored.   This is an optional argument whose default value is True."
+        }
+      ],
+      "version": "Introduced in version May 2026"
     }
   }
 }

@@ -12,8 +12,8 @@
       "description": "Static function that all classes support that returns the type of the class as a string. The returned string matches the string returned by the objectType property. For example if you have a reference to an object and you want to check if it's a SketchLine you can use myObject.objectType == fusion.SketchLine.classType()."
     },
     {
-      "name": "createEmpty",
-      "description": "Create an empty CAMTemplate"
+      "name": "createEmptyHoleTemplate",
+      "description": "Create an empty CAMTemplate. This template will represent a hole template."
     },
     {
       "name": "createFromFile",
@@ -60,6 +60,10 @@
     {
       "name": "isValid",
       "description": "Indicates if this object is still valid, i.e. hasn't been deleted or some other action done to invalidate the reference."
+    },
+    {
+      "name": "isValidTemplate",
+      "description": "Whether or not this template is in an appropriate state to be used. This means it has operations and, for hole templates, has an appropriate hole signature."
     },
     {
       "name": "name",
@@ -180,6 +184,21 @@
       },
       "property_value": "Version",
       "version": "Introduced in version May 2025"
+    },
+    "isValidTemplate": {
+      "id": "CAMTemplate_isValidTemplate",
+      "title": "CAMTemplate.isValidTemplate Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplate.h",
+      "description": "Whether or not this template is in an appropriate state to be used. This means it has operations and, for hole templates, has an appropriate hole signature.",
+      "parent_class": "CAMTemplate",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAMTemplate_var.isValidTemplate",
+        "cpp": "#include \n\n// Get the value of the property.\nboolean propertyValue = cAMTemplate_var->isValidTemplate();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2026"
     }
   },
   "method_details": {
@@ -366,6 +385,22 @@
         }
       ],
       "version": "Introduced in version May 2025"
+    },
+    "createEmptyHoleTemplate": {
+      "id": "CAMTemplate_createEmptyHoleTemplate",
+      "title": "CAMTemplate.createEmptyHoleTemplate Method",
+      "type": "method",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAMTemplate/CAMTemplate.h",
+      "description": "Create an empty CAMTemplate. This template will represent a hole template.",
+      "parent_class": "CAMTemplate",
+      "syntax": {
+        "python": "returnValue = adsk.cam.CAMTemplate.createEmptyHoleTemplate()",
+        "cpp": "#include \n\nreturnValue = adsk::cam::CAMTemplate::createEmptyHoleTemplate();"
+      },
+      "return_type": "CAMTemplate",
+      "return_description": "Returns the newly created template.",
+      "version": "Introduced in version May 2026"
     }
   }
 }

@@ -16,6 +16,10 @@
       "description": "Creates a new body where the faces and edges are converted to different types of geometry based on the input options. This is particularly useful when you need a body made up entirely of NURBS surfaces.   The tempId on the faces, edges, and vertices on the new body will match with the corresponding tempId on the original body. In cases where faces are split as a result of the conversion there can be more than one face or edge in the new body that matches to a single face or edge in the original body. The findByTempId method will find the entity with the matching id."
     },
     {
+      "name": "convertToSheetMetal",
+      "description": "Converts the current BRepBody to a sheet metal body. This is applicable only if the body is not already a sheet metal body (isSheetMetal is false)."
+    },
+    {
       "name": "copy",
       "description": "Copies the body to the clipboard.   This property is only valid if the IsTransient property is false."
     },
@@ -44,12 +48,16 @@
       "description": "Returns all of the faces, edges, or vertices that match the input ID."
     },
     {
+      "name": "findThicknessAtFace",
+      "description": "Finds the thickness of the body at the specified face by casting a ray from the face along its inward normal and measuring the distance to the first opposite face of the body that is hit."
+    },
+    {
       "name": "getPhysicalProperties",
       "description": "Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, moments, etc of this body."
     },
     {
       "name": "moveToComponent",
-      "description": "Moves this body from it's current component into the root component or the component owned by the specified occurrence."
+      "description": "Moves this body from its current component into the root component or the component owned by the specified occurrence."
     },
     {
       "name": "pointContainment",
@@ -71,7 +79,7 @@
     },
     {
       "name": "assemblyContext",
-      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this BRepBody object is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly. but is already the native object. Also returns null in the case where this body is transient."
+      "description": "Returns the assembly occurrence (i.e. the occurrence) of this object in an assembly. This is only valid in the case where this BRepBody object is acting as a proxy in an assembly. Returns null in the case where the object is not in the context of an assembly, but is already the native object. Also returns null in the case where this body is transient."
     },
     {
       "name": "attributes",
@@ -115,7 +123,7 @@
     },
     {
       "name": "isLightBulbOn",
-      "description": "Gets and set if the light bulb beside the body node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children so this property does not indicate if the body is actually visible, just that it should be visible if all of it's parent nodes are also visible. Use the isVisible property to determine if it's actually visible.   This property is only valid if the IsTransient property is false."
+      "description": "Gets and sets if the light bulb beside the body node in the browser is on or not. Parent nodes in the browser can have their light bulb off which affects all of their children so this property does not indicate if the body is actually visible, just that it should be visible if all of its parent nodes are also visible. Use the isVisible property to determine if it's actually visible.   This property is only valid if the IsTransient property is false."
     },
     {
       "name": "isSelectable",
@@ -171,7 +179,7 @@
     },
     {
       "name": "opacity",
-      "description": "Gets and sets the opacity override assigned to this body. A value of 1.0 specifies that is it completely opaque and a value of 0.0 specifies that is it completely transparent.   This value is not necessarily related to what the user sees because the opacity is inherited. For example, if you this body is in a component and that component's opacity is set to something other than 1.0, the body will also be shown as slightly transparent even though the opacity property for the body will return 1.0. Because the component that contains the body can be referenced as an occurrence in other components and they can have different opacity settings, it's possible that different instances of the same body can display using different opacity levels. To get the opacity that it is being displayed with use the BrepBody.visibleOpacity property.   This is the API equivalent of the \"Opacity Control\" command available for the body in the browser."
+      "description": "Gets and sets the opacity override assigned to this body. A value of 1.0 specifies that it is completely opaque and a value of 0.0 specifies that it is completely transparent.   This value is not necessarily related to what the user sees because the opacity is inherited. For example, if this body is in a component and that component's opacity is set to something other than 1.0, the body will also be shown as slightly transparent even though the opacity property for the body will return 1.0. Because the component that contains the body can be referenced as an occurrence in other components and they can have different opacity settings, it's possible that different instances of the same body can display using different opacity levels. To get the opacity that it is being displayed with use the BRepBody.visibleOpacity property.   This is the API equivalent of the \"Opacity Control\" command available for the body in the browser."
     },
     {
       "name": "orientedMinimumBoundingBox",
@@ -207,7 +215,7 @@
     },
     {
       "name": "visibleOpacity",
-      "description": "The user can set an override opacity for components and bodies these opacity overrides combine if children and parent components have overrides. This property returns the actual opacity that is being used to render the body. To set the opacity use the opacity property of the BRepBody object."
+      "description": "The user can set an override opacity for components and bodies. These opacity overrides combine if children and parent components have overrides. This property returns the actual opacity that is being used to render the body. To set the opacity use the opacity property of the BRepBody object."
     },
     {
       "name": "volume",
@@ -1110,6 +1118,79 @@
         }
       ],
       "version": "Introduced in version August 2014"
+    },
+    "convertToSheetMetal": {
+      "id": "BRepBody_convertToSheetMetal",
+      "title": "BRepBody.convertToSheetMetal Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Converts the current BRepBody to a sheet metal body. This is applicable only if the body is not already a sheet metal body (isSheetMetal is false).",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "returnValue = bRepBody_var.convertToSheetMetal(baseFace, sheetMetalRule)",
+        "cpp": "#include \n\nreturnValue = bRepBody_var->convertToSheetMetal(baseFace, sheetMetalRule);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the conversion was successful. Returns false in the case of failure.",
+      "parameters": [
+        {
+          "name": "baseFace",
+          "type": "BRepFace",
+          "description": "Specifies a BRepFace that will be used to determine the thickness of the body."
+        },
+        {
+          "name": "sheetMetalRule",
+          "type": "SheetMetalRule",
+          "description": "If the parent component is a standard component, this method will convert it to a sheet metal component. The specified design or library sheet metal rule will be copied and applied as the active sheet metal rule of the sheet metal component. The Thickness value of the copied sheet metal rule will be changed to the thickness determined by the baseFace of this BRepBody. If the parent component is already a sheet metal component, this argument will be ignored and the active sheet metal rule will be used."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Convert To Sheet Metal Sample",
+          "description": "Demonstrates finding the thickness of a body at a face and converting a BRepBody to sheet metal."
+        }
+      ],
+      "version": "Introduced in version May 2026"
+    },
+    "findThicknessAtFace": {
+      "id": "BRepBody_findThicknessAtFace",
+      "title": "BRepBody.findThicknessAtFace Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/BRep/BRepBody.h",
+      "description": "Finds the thickness of the body at the specified face by casting a ray from the face along its inward normal and measuring the distance to the first opposite face of the body that is hit.",
+      "parent_class": "BRepBody",
+      "syntax": {
+        "python": "# Uses no optional arguments.\n(returnValue, thickness) = bRepBody_var.findThicknessAtFace(face)\n\n# Uses optional arguments.\n(returnValue, thickness) = bRepBody_var.findThicknessAtFace(face, hitPoint)",
+        "cpp": "#include  face;\ndouble thickness;\nboolean returnValue = bRepBody_var->findThicknessAtFace(face, thickness);\n\n// Uses optional arguments.\n// Declare the output arguments.\nPtr hitPoint;\n\n// Call the function.\nPtr returnValue = bRepBody_var->findThicknessAtFace(face, thickness, hitPoint);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the thickness was successfully determined. Returns false if it could not be determined, for example if the face is non-planar or has no parallel opposite face.",
+      "parameters": [
+        {
+          "name": "face",
+          "type": "BRepFace",
+          "description": "Specifies a planar BRepFace on the body from which to measure the thickness."
+        },
+        {
+          "name": "thickness",
+          "type": "double",
+          "description": "The output thickness value in centimeters."
+        },
+        {
+          "name": "hitPoint",
+          "type": "Point3D",
+          "description": "An optional Point3D that specifies the point on the face from which to cast the ray. The point must lie on the given face. If not specified, a point is automatically chosen on the face.   This is an optional argument whose default value is null."
+        }
+      ],
+      "related_samples": [
+        {
+          "name": "Convert To Sheet Metal Sample",
+          "description": "Demonstrates finding the thickness of a body at a face and converting a BRepBody to sheet metal."
+        }
+      ],
+      "version": "Introduced in version May 2026"
     }
   }
 }

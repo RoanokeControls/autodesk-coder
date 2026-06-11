@@ -7,8 +7,8 @@ This project provides Claude with deep knowledge of the Autodesk Fusion API via 
 - **User**: Steve Hall (WhiteHallEngineering)
 - **Primary workflows**: PCB/schematic design (Electronics), CNC machining (CAM), 3D parametric modeling
 - **CNC hardware**: WorkBee CNC (needs appropriate post-processor considerations)
-- **Languages**: Both Python and C++ for Fusion API scripting; ULP for electronics automation
-- **Fusion version**: Latest (January 2026 API)
+- **Languages**: Both Python and C++ for Fusion API scripting; ULP for electronics automation. As of the May 2026 release there is also an initial **read-only Electronics Python API** (`adsk::electron` namespace) — prefer it for *reading* schematic/board/library data; ULP is still required for *editing* and most automation.
+- **Fusion version**: Latest (May 2026 API — synced 2026-06-11)
 - **Company library**: REC Standard Library (454 parts indexed — ESP32, capacitors, LEDs, connectors, headers, etc.)
 
 ## MCP Tools Available
@@ -87,6 +87,8 @@ autodesk-coder/
     scrape_ecad.py       — Scrape ECAD/ULP docs from help.autodesk.com
     index_ecad.py        — Index ECAD docs into search corpus
     index_library.py     — Index exported library JSON into search corpus
+    scrape_api_update.py — Incrementally fetch only the new/changed pages from a release's
+                           "What's New" page and MERGE them into parsed-docs (no CHM needed)
     check_api_updates.py — Check upstream Autodesk docs for changes (SessionStart hook)
   ulp-scripts/
     export-library.ulp   — ULP script to export a Fusion Electronics library to JSON
@@ -116,6 +118,20 @@ python scripts/index_ecad.py
 python scripts/index_library.py library-data/rec-library.json
 ```
 
+### Incremental release update (no CHM download)
+When the update checker reports a new release, you don't need to re-extract the full
+offline-help CHM. This fetches only the pages the new release's "What's New" page lists
+as new/changed and merges them into `parsed-docs/` (preserving existing API/ECAD/library
+data and the original per-member detail pages):
+```bash
+python3 scripts/scrape_api_update.py --dry-run   # preview which pages will be fetched
+python3 scripts/scrape_api_update.py             # fetch + merge
+python3 scripts/check_api_updates.py --init      # pin checker state to the new release
+# then restart Claude Code (server loads parsed-docs JSON at startup — no npm build needed)
+```
+The May 2026 sync (run 2026-06-11) used this path: +117 classes incl. the `adsk::electron`
+Electronics Python API, +256 methods, +942 properties. Corpus 18,576 → 19,891 items.
+
 ## API Update Checker
 A SessionStart hook automatically checks if upstream Autodesk docs have changed since the last scrape. If updates are detected, you'll see a notification with details.
 
@@ -138,9 +154,12 @@ If the checker reports upstream changes, re-run the scraping/parsing pipeline (s
 
 ## API Namespaces Quick Reference
 - `adsk::core` (337 classes) — Application, UI, geometry primitives, events, commands
-- `adsk::fusion` (829 classes) — Design, sketches, features, BRep, components, joints
-- `adsk::cam` (205 classes) — CAM, setups, operations, toolpaths, tools, post-processing
+- `adsk::fusion` (838 classes) — Design, sketches, features, BRep, components, joints
+- `adsk::cam` (209 classes) — CAM, setups, operations, toolpaths, tools, post-processing
+- `adsk::electron` (104 classes) — **NEW in May 2026.** Read-only Electronics Python API: `EcadDesign`, `Schematic`, `Board`, `Library`, `Symbol`, `Package`, `Device`/`DeviceSet`, `Gate`, `Net`/`Signal`, `Via`, `Pad`/`Smd`, `Junction`, `Label`, `Bus`, `PolyPour`/`PolyCutout`, plus `ElectronManager` / `ElectronicsExportManager`. Distinct from the ULP/ECAD docs below (those are the EAGLE-derived ULP language; this is the native Python object model). Use `list_namespace adsk::electron` to browse.
 - `adsk::drawing` (6 classes) — Drawing views and sheets
 - `adsk::volume` (30 classes) — Volume/lattice operations
-- `ECAD/ULP` (49 object types) — Schematics, boards, nets, pins, pads, signals, routing
+- `ECAD/ULP` (49 object types) — ULP automation language: schematics, boards, nets, pins, pads, signals, routing
 - `REC Library` (454 parts) — Company standard components (ESP32, passives, connectors, etc.)
+
+> **Note on `adsk::electron` member detail:** the May 2026 sync captured every electronics class with its full method/property *tables* (names + descriptions, via `get_class`), but per-member detail pages (`get_member` syntax/params) were only fetched for the members Autodesk flagged as new. If `get_member` lacks syntax for an electronics member, fall back to `get_class` for the description. Run `scripts/scrape_api_update.py` again (or extend it) to deep-fetch those if needed.

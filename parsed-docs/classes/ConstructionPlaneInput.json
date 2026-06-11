@@ -4,7 +4,7 @@
   "type": "class",
   "namespace": "adsk::fusion",
   "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
-  "description": "A ConstructionPlaneInput is a throwaway object used to create a ConstructionPlane The usage pattern is: a. create a ConstructionPlaneInput (ConstructionPlanes.CreateInput) b. call one of the member functions to specify how the ConstructionPlane is created c. create the ConstructionPlane (call ConstructionPlanes.Add) d. stop referencing the ConstructionPlaneInput (so it gets deleted).",
+  "description": "A ConstructionPlaneInput is a throwaway object used to create a ConstructionPlane. The usage pattern is: a. create a ConstructionPlaneInput (ConstructionPlanes.CreateInput) b. call one of the member functions to specify how the ConstructionPlane is created c. create the ConstructionPlane (call ConstructionPlanes.Add) d. stop referencing the ConstructionPlaneInput (so it gets deleted).",
   "parent_class": "Base",
   "methods": [
     {
@@ -14,6 +14,10 @@
     {
       "name": "setByAngle",
       "description": "This input method is for creating a construction plane through an edge, axis or line at a specified angle. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component."
+    },
+    {
+      "name": "setByAngleOnCurvedFace",
+      "description": "This input method is for creating a construction plane through the axis inferred from a cylindrical or conical curved face at a specified angle. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component."
     },
     {
       "name": "setByDistanceOnPath",
@@ -55,7 +59,7 @@
   "properties": [
     {
       "name": "creationOccurrence",
-      "description": "In order for geometry to be transformed correctly, an Occurrence for creation needs to be specified when the ConstructionPlane is created based on geometry (e.g. a planarEntity) in another component AND (the ConstructionPlane) is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI"
+      "description": "In order for geometry to be transformed correctly, an Occurrence for creation needs to be specified when the ConstructionPlane is created based on geometry (e.g. a planarEntity) in another component AND (the ConstructionPlane) is not in the root component. The CreationOccurrence is analogous to the active occurrence in the UI."
     },
     {
       "name": "isValid",
@@ -439,6 +443,39 @@
         }
       ],
       "version": "Introduced in version August 2014"
+    },
+    "setByAngleOnCurvedFace": {
+      "id": "ConstructionPlaneInput_setByAngleOnCurvedFace",
+      "title": "ConstructionPlaneInput.setByAngleOnCurvedFace Method",
+      "type": "method",
+      "namespace": "adsk::fusion",
+      "header_file": "Fusion/Construction/ConstructionPlaneInput.h",
+      "description": "This input method is for creating a construction plane through the axis inferred from a cylindrical or conical curved face at a specified angle. This can result in a parametric or non-parametric construction plane depending on whether the parent component is parametric or is a direct edit component.",
+      "parent_class": "ConstructionPlaneInput",
+      "syntax": {
+        "python": "returnValue = constructionPlaneInput_var.setByAngleOnCurvedFace(curvedFace, angle, planarEntity)",
+        "cpp": "#include \n\nreturnValue = constructionPlaneInput_var->setByAngleOnCurvedFace(curvedFace, angle, planarEntity);"
+      },
+      "return_type": "boolean",
+      "return_description": "Returns true if the construction plane definition is successful.",
+      "parameters": [
+        {
+          "name": "curvedFace",
+          "type": "Base",
+          "description": "The cylindrical or conical curved face from which the axis of rotation is inferred."
+        },
+        {
+          "name": "angle",
+          "type": "ValueInput",
+          "description": "The angle at which to create the plane."
+        },
+        {
+          "name": "planarEntity",
+          "type": "Base",
+          "description": "The planar face or construction plane the angle is measured from. A zero angle creates a plane whose normal is aligned with this plane's normal, so the result is deterministic when an explicit planarEntity is provided."
+        }
+      ],
+      "version": "Introduced in version May 2026"
     }
   },
   "property_details": {

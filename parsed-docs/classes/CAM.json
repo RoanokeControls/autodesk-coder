@@ -41,7 +41,7 @@
     },
     {
       "name": "findAttributes",
-      "description": "Find attributes attached to objects in this product that match the group and or attribute name. This does not find attributes attached directly to the Product or Document objects but finds the attributes attached to entities within the product.   The search string for both the groupName and attributeName arguments can be either an absolute name value, or a regular expression. With an absolute name, the search string must match the entire groupName or attributeName, including case. An empty string will match everything. For example if you have an attribute group named \"MyStuff\" that contains the attribute \"Length1\", using the search string \"MyStuff\" as the group name and \"Length1\" as the attribute name will find the attributes with those names. Searching for \"MyStuff\" as the group name and \"\" as the attribute name will find all attributes that have \"MyStuff\" as the group name.   Regular expressions provide a more flexible way of searching. To use a regular expression, prefix the input string for the groupName or attributeName arguments with \"re:\". The regular expression much match the entire group or attribute name. For example if you have a group that contains attributes named \"Length1\", \"Length2\", \"Width1\", and \"Width2\" and want to find any of the length attributes you can use a regular expression using the string \"re:Length.*\". For more information on attributes see the Attributes topic in the user manual."
+      "description": "Find attributes attached to objects in this product that match the group and or attribute name. This does not find attributes attached directly to the Product or Document objects but finds the attributes attached to entities within the product.   The search string for both the groupName and attributeName arguments can be either an absolute name value, or a regular expression. With an absolute name, the search string must match the entire groupName or attributeName, including case. An empty string will match everything. For example if you have an attribute group named \"MyStuff\" that contains the attribute \"Length1\", using the search string \"MyStuff\" as the group name and \"Length1\" as the attribute name will find the attributes with those names. Searching for \"MyStuff\" as the group name and \"\" as the attribute name will find all attributes that have \"MyStuff\" as the group name.   Regular expressions provide a more flexible way of searching. To use a regular expression, prefix the input string for the groupName or attributeName arguments with \"re:\". The regular expression much match the entire group or attribute name. For example, if you have a group that contains attributes named \"Length1\", \"Length2\", \"Width1\", and \"Width2\" and want to find any of the length attributes you can use a regular expression using the string \"re:Length.*\". For more information on attributes see the Attributes topic in the user manual."
     },
     {
       "name": "generateAllSetupSheets",
@@ -84,6 +84,10 @@
     {
       "name": "allOperations",
       "description": "Gets a collection containing all of the operations in the document. This includes all operations nested in folders and patterns."
+    },
+    {
+      "name": "analyses",
+      "description": "Gets the collection of design analyses associated with this design, created in the Manufacture workspace."
     },
     {
       "name": "attributes",
@@ -623,6 +627,21 @@
       },
       "property_value": "Version",
       "version": "Introduced in version January 2016"
+    },
+    "analyses": {
+      "id": "CAM_analyses",
+      "title": "CAM.analyses Property",
+      "type": "property",
+      "namespace": "adsk::cam",
+      "header_file": "Cam/CAM/CAM.h",
+      "description": "Gets the collection of design analyses associated with this design, created in the Manufacture workspace.",
+      "parent_class": "CAM",
+      "syntax": {
+        "python": "# Get the value of the property.\npropertyValue = cAM_var.analyses",
+        "cpp": "#include \n\n// Get the value of the property.\nPtr propertyValue = cAM_var->analyses();"
+      },
+      "property_value": "Version",
+      "version": "Introduced in version May 2026"
     }
   },
   "method_details": {
