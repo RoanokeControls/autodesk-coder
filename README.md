@@ -1,12 +1,12 @@
 # Autodesk Fusion API - Claude Code MCP Server
 
-A local MCP (Model Context Protocol) server that gives Claude Code deep knowledge of the Autodesk Fusion API, ECAD/ULP electronics docs, and your company's component library. Instead of guessing API method names or signatures, Claude looks them up in real time across 18,500+ indexed entries.
+A local MCP (Model Context Protocol) server that gives Claude Code deep knowledge of the Autodesk Fusion API, ECAD/ULP electronics docs, and your company's component library. Instead of guessing API method names or signatures, Claude looks them up in real time across 19,800+ indexed entries (Fusion API synced to the May 2026 release).
 
 ## What It Does
 
 When you ask Claude to write a Fusion script, it queries the MCP server to:
 
-- **Look up exact API signatures** — methods, properties, events, return types, parameters for all 1,409 Fusion API classes
+- **Look up exact API signatures** — methods, properties, events, return types, parameters for all 1,526 Fusion API classes
 - **Find code samples** — 217 working examples in both Python and C++ covering CAM, sketches, features, UI commands, and more
 - **Reference ECAD/ULP docs** — 49 ULP object types, language reference, and editor commands for schematic and PCB automation
 - **Search your parts library** — finds real components from your indexed Fusion Electronics library by name, footprint, or description
@@ -16,7 +16,7 @@ When you ask Claude to write a Fusion script, it queries the MCP server to:
 ```
 Claude Code  <--stdio-->  MCP Server (Node.js/TypeScript)
                               |
-                              +-- MiniSearch (full-text search, 18,500+ items)
+                              +-- MiniSearch (full-text search, 19,800+ items)
                               +-- parsed-docs/ (structured JSON from API docs)
                               +-- library data (indexed component library)
 ```
@@ -35,12 +35,13 @@ The MCP server exposes 7 tools:
 
 ## Data Sources
 
-### Fusion API (16,823 items)
-Extracted from the official `FusionAPI.chm` help file. Covers all five namespaces:
+### Fusion API (18,100+ items)
+Originally extracted from the official `FusionAPI.chm` help file; incrementally synced to the May 2026 release via `scripts/scrape_api_update.py`. Covers six namespaces:
 
 - `adsk::core` (337 classes) — Application, UI, geometry, events, commands
-- `adsk::fusion` (829 classes) — Design, sketches, features, BRep, components
-- `adsk::cam` (205 classes) — CAM setups, operations, toolpaths, post-processing
+- `adsk::fusion` (838 classes) — Design, sketches, features, BRep, components
+- `adsk::cam` (209 classes) — CAM setups, operations, toolpaths, post-processing
+- `adsk::electron` (104 classes) — Read-only Electronics Python API (schematics, boards, libraries) — new in May 2026
 - `adsk::drawing` (6 classes) — Drawing views and sheets
 - `adsk::volume` (30 classes) — Volume/lattice operations
 
