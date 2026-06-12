@@ -68,6 +68,8 @@ When working on Fusion API tasks, always use these tools from the `fusion-api-do
 ```
 autodesk-coder/
   CLAUDE.md              — This file (project instructions for Claude)
+  README.md              — Project overview
+  CHANGELOG.md           — Maintenance log + handoff (current state, follow-ups, sync history)
   .mcp.json              — MCP server registration for Claude Code
   mcp-server/
     src/index.ts         — MCP server source (TypeScript, ESM)
