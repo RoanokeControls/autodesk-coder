@@ -14,7 +14,7 @@ This project provides Claude with deep knowledge of the Autodesk Fusion API via 
 ## MCP Tools Available
 When working on Fusion API tasks, always use these tools from the `fusion-api-docs` MCP server:
 
-1. **search_api** - Full-text search across 18,500+ entries (Fusion API + ECAD/ULP + REC Library). Start here when exploring.
+1. **search_api** - Full-text search across 19,800+ entries (Fusion API + ECAD/ULP + REC Library). Start here when exploring.
    - `query`: keywords or description of what you need
    - `type_filter`: "all", "class", "method", "property", "event", "sample", "guide", "ecad_object", "ecad_member", "ecad_command", "ecad_guide", "library_part", "library_variant", "library_footprint", "library_symbol"
    - `limit`: max results (default 20)
@@ -77,9 +77,9 @@ autodesk-coder/
     tsconfig.json        — TypeScript config (NodeNext module resolution)
     dist/                — Compiled JS output (run `npm run build` to regenerate)
   parsed-docs/
-    search_corpus.json   — 18,500+ item search index (Fusion API + ECAD + library)
+    search_corpus.json   — 19,800+ item search index (Fusion API + ECAD + library)
     index.json           — Class/namespace/sample/guide/ecad metadata
-    classes/             — 1,409 class JSON files
+    classes/             — 1,526 class JSON files
     samples/             — 217 code sample JSON files
     guides/              — 43 guide JSON files
     ecad/                — 72 ECAD/ULP doc JSON files
